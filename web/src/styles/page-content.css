@@ -125,10 +125,13 @@ h4 {
 
 .intro .intro-body .brand-heading {
     font-size: 40px;
+    text-shadow: 4px 10px 10px #000000;
+    font-weight: bold;
 }
 
 .intro .intro-body .intro-text {
     font-size: 18px;
+    text-shadow: 2px 5px 5px #000000;
 }
 
 @media (min-width: 767px) {
