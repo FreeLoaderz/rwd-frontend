@@ -1,7 +1,6 @@
 import {AfterContentInit, Component, HostListener, Inject, OnInit, ViewChild} from '@angular/core';
 import {Title} from "@angular/platform-browser";
 import {SystemService} from "../common/system.service";
-import {WebsocketSubscriber} from "../common/websocket-subscriber";
 import {NotifierService} from "angular-notifier";
 import {DOCUMENT} from '@angular/common';
 import {ModalDirective} from "ngx-bootstrap/modal";
@@ -10,6 +9,7 @@ import {Router} from "@angular/router";
 import { HttpClientModule } from '@angular/common/http';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { NotificationComponent } from '../common/components/notification.component';
 
 @Component({
     selector: 'navbar',
@@ -20,7 +20,7 @@ import { Observable } from 'rxjs';
 /**
  * Navigation Bar components
  */
-export class NavbarComponent extends WebsocketSubscriber implements OnInit, AfterContentInit {
+export class NavbarComponent extends NotificationComponent implements OnInit, AfterContentInit {
     public notificationMessage: string;
     public notificationMessages: Array<string> = [];
     public notificationError: boolean;
@@ -28,7 +28,7 @@ export class NavbarComponent extends WebsocketSubscriber implements OnInit, Afte
     public elem: any;
     public alert: string = "none";
     public userMenu: MenuItem[];
-    public loginMenuItem: MenuItem;
+    public connectMenuItem: MenuItem;
     public login1 : boolean = false;
     postId;
     
@@ -36,7 +36,7 @@ export class NavbarComponent extends WebsocketSubscriber implements OnInit, Afte
 
     constructor(@Inject(DOCUMENT) private document: any, public router: Router, public titleService: Title,
                 public systemService: SystemService, public notifierService: NotifierService, private http: HttpClient) {
-        super("NavBar", notifierService);
+        super(notifierService);
         this.host = location.hostname;
         this.systemService.init();
     }
@@ -46,7 +46,6 @@ export class NavbarComponent extends WebsocketSubscriber implements OnInit, Afte
      */
     ngOnInit() {
         this.elem = document.documentElement;
-        this.systemService.register(this);
     }
 
     ngAfterContentInit() {
@@ -55,12 +54,12 @@ export class NavbarComponent extends WebsocketSubscriber implements OnInit, Afte
     }
 
     public setupMenu() {
-        this.loginMenuItem = {
-            label: 'Login',
-            id: 'Login',
+        this.connectMenuItem = {
+            label: 'Connect',
+            id: 'Connect',
             icon: 'fas fa-sign-in-alt',
             command: (event) => {
-                this.showLoginModal();
+                this.showWalletConnect();
             }
         };
         if (!this.loggedIn()) {
@@ -68,7 +67,7 @@ export class NavbarComponent extends WebsocketSubscriber implements OnInit, Afte
                 label: 'Connect Wallet',
                 id: 'UserMenu',
                 icon: 'fas fa-user',
-                items: [this.loginMenuItem
+                items: [this.connectMenuItem
                 ]
             }];
         } else {
@@ -76,7 +75,7 @@ export class NavbarComponent extends WebsocketSubscriber implements OnInit, Afte
                 label: 'Wallet Connected',
                 id: 'UserMenu',
                 icon: 'fas fa-user',
-                items: [this.loginMenuItem
+                items: [this.connectMenuItem
                 ]
             }];
         }
@@ -105,9 +104,6 @@ export class NavbarComponent extends WebsocketSubscriber implements OnInit, Afte
 
     }
 
-    public routeToGameDay() {
-
-    }
 
     public loggedIn(): boolean {
         
@@ -145,7 +141,7 @@ export class NavbarComponent extends WebsocketSubscriber implements OnInit, Afte
     public hideDownloadModal() {
     }
 
-    public showLoginModal() {
+    public showWalletConnect() {
         globalThis.cardano.ccvault.enable().then(function(api) { 
             globalThis.myTestApi = api; 
          }).then(
@@ -187,27 +183,6 @@ export class NavbarComponent extends WebsocketSubscriber implements OnInit, Afte
 
     }
 
-    public downloadFile() {
-
-    }
-
-    /**
-     * Process any data coming through the webSocket
-     * @param data
-     */
-    public processData(data: any) {
-        if (data.type === 'SYSTEM') {
-            if (data.showDialog === true) {
-                this.showNotificationModal(data.message, data.error);
-            } else {
-                if (data.error === true) {
-                    this.errorNotification(data.message);
-                } else {
-                    this.infoNotification(data.message);
-                }
-            }
-        }
-    }
 }
 
 
