@@ -2,12 +2,8 @@ import {Injectable} from '@angular/core';
 
 @Injectable()
 export class SystemService {
-    public static hostIp: string;
     public static host: string;
     public static isAndroid: boolean = true;
-    public static propertyMap: any = new Map();
-    public static dateFormat = "YY-MM-dd HH:mm:ss.SSS";
-    public static timezone = "UTC";
     public static screenWidth: number;
     public static screenHeight: number;
 

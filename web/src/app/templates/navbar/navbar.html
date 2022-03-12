@@ -3,17 +3,17 @@
         <ul class="navbar-nav ms-2 mb-2">
             <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-home"> HOME</i></a></li>
         </ul>
-        <ul *ngIf="!loggedIn()" class="navbar-nav ms-auto me-2 mb-2 mb-lg-0">
+        <ul *ngIf="!connected()" class="navbar-nav ms-auto me-2 mb-2 mb-lg-0">
             
-            <li class="nav-item"><a class="nav-link" (click)="showLoginModal()"><i class="fas fa-sign-in-alt"> LOGIN/SIGNUP</i></a>
+            <li class="nav-item"><a class="nav-link" (click)="showConnectModal()"><i class="fas fa-sign-in-alt"> Connect</i></a>
             </li>
             <li class="nav-item"><a class="nav-link" href="#contact"><i class="fas fa-question-circle"> HELP</i></a>
             </li>
         </ul>
-        <ul *ngIf="loggedIn()" class="navbar-nav ms-auto me-2 mb-2 mb-lg-0">
+        <ul *ngIf="connected()" class="navbar-nav ms-auto me-2 mb-2 mb-lg-0">
             <li class="nav-item"><a class="nav-link" (click)="claimTestModal()"><i class="fas fa-sign-in-alt"> Claim</i></a>
             </li>
-            <li class="nav-item"><a class="nav-link" (click)="logout()"><i class="fas fa-sign-in-alt"> Disconnect</i></a>
+            <li class="nav-item"><a class="nav-link" (click)="disconnectWallet()"><i class="fas fa-sign-in-alt"> Disconnect</i></a>
             </li>
             <li class="nav-item"><a class="nav-link" href="/#/wallet"><i class="fas fa-book"> WALLET</i></a>
             </li>
@@ -22,25 +22,28 @@
         </ul>
     </div>
 </nav>
-<div bsModal #notificationModal="bs-modal" class="modal fade" role="dialog" tabindex="-1"
+<div bsModal #connectModal="bs-modal" class="modal fade" role="dialog" tabindex="-1"
      [config]="{backdrop: 'static'}">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title pull-left">System Notification</h4>
+                <h4 class="modal-title text-center">Connect Wallet</h4>
             </div>
             <div class="modal-body" style="padding: .1em !important;max-height: 200px;overflow-y: auto">
-                <span *ngFor="let msg of notificationMessages" class="ms-3">
-                    <span *ngIf="notificationError" class="invalid-error">{{msg}}</span>
-                    <span *ngIf="!notificationError">{{msg}}</span>
-                    <br>
-                </span>
-            </div>
-            <div class="modal-footer">
-                <button pButton type="button" class="p-button-secondary" icon="fas fa-times"
-                        title="Close"
+                <button pButton type="button" class="p-button-default" icon="fas fa-times"
+                        title="Connect ccvault" label="ccvault"
                         iconPos="left"
-                        (click)="hideNotificationModal()"></button>
+                        (click)="connectCCVault()"></button>
+                <button pButton type="button" class="p-button-default" icon="fas fa-times"
+                        title="Connect Nami" label="Nami"
+                        iconPos="left"
+                        (click)="connectNami()"></button>
+            </div>
+            <div class="modal-footer text-center">
+                <button pButton type="button" class="p-button-secondary" icon="fas fa-times"
+                        title="Cancel" label="Cancel"
+                        iconPos="left"
+                        (click)="hideConnectModal()"></button>
             </div>
         </div>
     </div>
