@@ -12,35 +12,6 @@
     background-color: #061c35;
 }
 
-.status {
-    font-size: large;
-    cursor: pointer;
-}
-
-.status.none {
-    color: #999999 !important;
-}
-
-.status.ok {
-    color: green !important;
-}
-
-.status.warn {
-    color: yellow !important;
-}
-
-.status.error {
-    color: red !important;
-}
-
-.status.info {
-    color: blue !important;
-}
-
-.invalid-error {
-    color: #ff0200 !important;
-}
-
 #footer {
     bottom: 5px;
     text-align: center;
@@ -63,4 +34,8 @@
 .navbar li a.active {
     outline: 0 !important;
     color: #8bcbff !important;
+}
+
+a i::before {
+    margin-right: .25rem;
 }

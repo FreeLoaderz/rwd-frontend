@@ -1,0 +1,22 @@
+<section id="dashboard" class="container content-section">
+    <div class="sidebyside">
+        <div class="blackdiv sidemenu ms-2 me-2 row">
+            <button pButton pRipple class="p-button-text no-ul"
+                    title="Collect Rewards"
+                    (click)="showCollectRewards()"><i class="fa-solid fa-coins me-2"></i>Rewards
+            </button>
+            <button pButton pRipple class="p-button-text no-ul mt-2 mb-2"
+                    title="Show reward history"
+                    (click)="showHistory()"><i class="fa-solid fa-clock-rotate-left me-2"></i>Reward History
+            </button>
+            <hr class="white">
+            <button pButton pRipple class="p-button-rounded p-button-text no-ul" style="margin-bottom: .5rem !important"
+                    title="Send us feedback"
+                    (click)="showFeedback()"><i class="fa-solid fa-message me-2"></i>Feedback
+            </button>
+        </div>
+        <div class="sidebar-content ms-5" style="padding-top: 0px !important">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</section>
