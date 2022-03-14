@@ -1,0 +1,386 @@
+/* This file is to make CSS overrides to some of the CSS classes we import from various libraries as needed */
+:root {
+    --bs-dark-rgb: 8.6, 18.8, 34.9 !important;
+    --bs-body-bg: #061c35 !important;
+}
+
+html {
+    height: 100%
+}
+
+body {
+    overflow-x: hidden !important;
+    overscroll-behavior: none !important;
+    padding-top: 0px !important;
+    background: url('../assets/background.png') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    min-height: 100%;
+}
+
+@keyframes blink {
+    from, to {
+        opacity: 1
+    }
+    50% {
+        opacity: 0
+    }
+}
+
+.container-fluid {
+    padding-left: 5px !important;
+}
+
+.p-menuitem-link,
+.p-menuitem-list,
+.p-menuitem-icon,
+.p-menuitem-text {
+    font-size: .75rem !important;
+    background: #061c35 !important;
+}
+.p-menu {
+    width: 7rem !important;
+    background: #061c35 !important;
+}
+
+.p-menu-list {
+    border: 0px !important;
+    background: #061c35 !important;
+}
+
+.header {
+    height: 80vh;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+}
+
+.popoutClass {
+    padding: 0 !important;
+    margin-left: 0px !important;
+}
+
+.blinking {
+    animation: blink 2s ease-in infinite;
+}
+
+.blinking20 {
+    animation: blink 2000ms linear infinite;
+}
+
+.popoutContent {
+    border: 2px solid !important;
+    border-color: #010919 !important;
+}
+
+*:focus {
+    outline: 0 !important;
+    box-shadow: none !important;
+}
+
+*:active {
+    outline: 0 !important;
+    box-shadow: none !important;
+}
+
+*:hover {
+    outline: 0 !important;
+    box-shadow: none !important;
+}
+
+#unmodified .p-inputtext {
+    color: dimgray;
+}
+
+
+.p-grid {
+    border: none;
+    box-shadow: none;
+    text-decoration: none;
+    border-radius: 0;
+    background: #ffffff;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.p-dataview .p-paginator-bottom {
+    border-width: 1px 1px 1px 1px !important;
+}
+
+.p-menubar {
+    padding-right: 0 !important;
+    background: #010919 !important;
+    color: #fff !important;
+    border: 0px !important;
+}
+
+.p-menubar .p-menuitem-link .p-menuitem-icon {
+    margin-left: .5em !important;
+}
+
+.p-menubar .p-submenu-list {
+    border: 0px !important;
+    width: fit-content !important;
+    padding-right: 3px;
+}
+
+.p-menubar .p-menubar-root-list {
+    overflow: visible !important;
+}
+
+.p-menubar .p-menubar-root-list > .p-menuitem > .p-menuitem-link:hover {
+    background: #626262 !important;
+    color: #FFFFFF !important;
+}
+
+.p-menubar .p-menuitem-link {
+    padding: 6px 6px !important;
+    background: #010919 !important;
+    color: #fff;
+    font-size: 1rem !important;
+    border: 0px !important;
+}
+
+.p-menubar .p-menubar-root-list {
+    width: fit-content !important;
+    overflow: visible !important;
+}
+
+.p-menubar .p-menubar-root-list > .p-menuitem > .p-menuitem-link {
+    width: fit-content !important;
+    overflow: visible !important;
+}
+
+.p-menubar .p-menubar-root-list > .p-menuitem.p-menuitem-active > .p-menuitem-link {
+    background: #153359 !important;
+    color: #FFFFFF !important;
+    overflow: visible !important;
+}
+
+.p-menubar-root-list > .p-menuitem-active > p-menubarsub > .p-submenu-list {
+    width: fit-content;
+    background: #153359 !important;
+}
+
+.p-menubar .p-menuitem-link:hover {
+    background: #153359 !important;
+    color: #FFFFFF !important;
+}
+
+.p-menubar .p-menubar-button {
+    background: #153359 !important;
+    color: #FFFFFF !important;
+}
+
+.p-menubar .p-menubar-button:hover {
+    background: #153359 !important;
+    color: #FFFFFF !important;
+}
+
+.p-menubar .p-menubar-root-list > .p-menuitem.p-menuitem-active > .p-menuitem-link .p-menuitem-icon, .p-menubar .p-menubar-root-list > .p-menuitem.p-menuitem-active > .p-menuitem-link .p-menuitem-text, .p-menubar .p-menubar-root-list > .p-menuitem.p-menuitem-active > .p-menuitem-link .p-submenu-icon, .p-menubar .p-menubar-root-list > .p-menuitem.p-menuitem-active > .p-menuitem-link:not(.p-disabled):hover .p-menuitem-icon, .p-menubar .p-menubar-root-list > .p-menuitem.p-menuitem-active > .p-menuitem-link:not(.p-disabled):hover .p-menuitem-text, .p-menubar .p-menubar-root-list > .p-menuitem.p-menuitem-active > .p-menuitem-link:not(.p-disabled):hover .p-submenu-icon {
+    color: #FFFFFF !important;
+}
+
+.p-menuitem-icon {
+    color: #FFFFFF !important;
+}
+
+.p-menuitem-text {
+    color: #FFFFFF !important;
+}
+
+.p-submenu-icon {
+    color: #FFFFFF !important;
+}
+
+.p-menubar .p-menubar-root-list > .p-menuitem.p-menuitem-active > .p-menuitem-link .p-menuitem-icon, .p-menubar .p-menubar-root-list > .p-menuitem.p-menuitem-active > .p-menuitem-link .p-menuitem-text, .p-menubar .p-menubar-root-list > .p-menuitem.p-menuitem-active > .p-menuitem-link .p-submenu-icon, .p-menubar .p-menubar-root-list > .p-menuitem.p-menuitem-active > .p-menuitem-link:not(.p-disabled):hover .p-menuitem-icon, .p-menubar .p-menubar-root-list > .p-menuitem.p-menuitem-active > .p-menuitem-link:not(.p-disabled):hover .p-menuitem-text, .p-menubar .p-menubar-root-list > .p-menuitem.p-menuitem-active > .p-menuitem-link:not(.p-disabled):hover .p-submenu-icon {
+    color: #FFFFFF !important;
+}
+
+.p-submenu {
+    white-space: nowrap;
+    width: auto !important;
+}
+
+li a {
+    font-size: 18px;
+}
+
+li {
+    font-size: 18px;
+}
+
+a.inverted {
+    color: #153359 !important;
+    font-weight: bold;
+}
+
+a.inverted:hover {
+    cursor: pointer !important;
+    color: blue !important;
+    text-shadow: none !important;
+}
+
+a.inverted:focus,
+a.inverted:active {
+    cursor: pointer !important;
+    color: blue !important;
+    text-shadow: none !important;
+}
+
+a {
+    color: white !important;
+    -webkit-transition: all .2s ease-in-out;
+    -moz-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+}
+
+a:hover {
+    cursor: pointer !important;
+    color: #8bcbff !important;
+    text-shadow: 0 0 4px #8bcbff,
+    0 0 8px #8bcbff,
+    0 0 16px rgb(0, 102, 255),
+    0 0 24px rgb(0, 102, 255),
+    0 0 36px rgb(0, 102, 255) !important;
+}
+
+a:focus,
+a:active {
+    cursor: pointer !important;
+    color: #8bcbff !important;
+    text-shadow: none !important;
+}
+
+.spanlink {
+    color: white !important;
+    -webkit-transition: all .2s ease-in-out;
+    -moz-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+}
+
+.spanlink:hover {
+    cursor: pointer !important;
+    color: #8bcbff !important;
+    text-shadow: 0 0 4px #8bcbff,
+    0 0 8px #8bcbff,
+    0 0 16px rgb(0, 102, 255),
+    0 0 24px rgb(0, 102, 255),
+    0 0 36px rgb(0, 102, 255) !important;
+}
+
+.spanlink:focus,
+.spanlnk:hover {
+    cursor: pointer !important;
+    color: #8bcbff !important;
+    text-shadow: none !important;
+}
+
+
+.form-control {
+    width: auto !important;
+}
+
+.subrow {
+    margin-bottom: 10px;
+    flex-wrap: nowrap !important;
+}
+
+.subrow > label {
+    padding-top: 5px;
+}
+
+.modal-content {
+    -moz-border-radius: 25px 25px 25px 25px !important;
+    -webkit-border-radius: 25px !important;
+    border-radius: 25px 25px 25px 25px !important;
+    -moz-box-shadow: 3px 3px 5px #000000FF !important;
+    -webkit-box-shadow: 3px 3px 5px #000000FF !important;
+    box-shadow: 3px 3px 5px #000000FF !important;
+}
+
+.modal-plugin {
+     padding: 1rem;
+}
+
+.modal-header {
+    font-weight: bold !important;
+    color: #153359 !important;
+    border-bottom: 0px !important;
+    margin: 0;
+    display:inline-flex !important;
+}
+
+.modal-footer {
+    font-weight: bold !important;
+    color: #153359 !important;
+    border-top: 0px !important;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.modal-body {
+    font-weight: bold !important;
+    color: #153359 !important;
+    border: 0px !important;
+}
+
+.modal-dialog {
+    font-weight: bold !important;
+    color: #153359 !important;
+    border: 0px !important;
+}
+
+.sidebar-header > h4 {
+    text-decoration: underline;
+}
+
+.sidebar-content {
+    width: 100%;
+}
+
+.sidebar-content-header {
+    width: 100%;
+}
+
+.sidebar-content-header > h4 {
+    text-decoration: underline;
+}
+.single-display {
+    margin-left: auto !important;
+    margin-right: auto !important;
+    padding-top: 45px !important;
+}
+.h2 {
+    background: transparent !important;
+}
+
+.no-ul {
+    text-decoration: none !important;
+}
+.no-up {
+    text-transform: none !important;
+}
+a.p-button {
+    display: block !important;
+}
+a.p-button > p {
+    float: left !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+}
+a.p-button > i {
+    float: left !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+}
+a.p-button > p-image {
+    float: right !important;
+}
+#contact.content-section {
+    height: auto !important;
+}
