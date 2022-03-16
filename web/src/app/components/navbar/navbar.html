@@ -51,6 +51,20 @@
                         <p-image src="../../assets/icons/nami.png" alt="Nami" width="25" height="25">
                         </p-image>
                     </a>
+                    <a pButton pRipple class="p-button-rounded p-button-outlined no-ul inverted mt-3"
+                       (click)="connectGero()"
+                       [title]="geroAvailable() ? 'Connect to Gero':'Gero wallet not installed'">
+                        <p class="ms-1">Gero</p>
+                        <p-image src="../../assets/icons/gero.png" alt="Gero" width="25" height="25">
+                        </p-image>
+                    </a>
+                    <a pButton pRipple class="p-button-rounded p-button-outlined no-ul inverted mt-3"
+                       (click)="connectFlint()"
+                       [title]="flintAvailable() ? 'Connect to Flint':'Flint wallet not installed'">
+                        <p class="ms-1">Flint</p>
+                        <p-image src="../../assets/icons/flint.png" alt="Flint" width="25" height="25">
+                        </p-image>
+                    </a>
                 </div>
             </div>
             <div class="modal-footer">
