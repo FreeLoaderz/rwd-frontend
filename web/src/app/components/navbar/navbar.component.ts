@@ -120,7 +120,7 @@ export class NavbarComponent extends NotificationComponent implements AfterConte
         }
     }
 
-    //Gero Wallet
+    // Gero Wallet
     public connectGero() {
         if (globalThis.cardano.gero != null) {
             globalThis.cardano.gero.enable().then((api) => {
@@ -139,7 +139,7 @@ export class NavbarComponent extends NotificationComponent implements AfterConte
     }
 
 
-    //Flint
+    // Flint
     public connectFlint() {
         if (globalThis.cardano.flint != null) {
             globalThis.cardano.flint.enable().then((api) => {
@@ -169,7 +169,10 @@ export class NavbarComponent extends NotificationComponent implements AfterConte
     }
 
     public anyWalletAvailable(): boolean {
-        if ((this.ccvaultAvailable()) || (this.namiAvailable())) {
+        if ((this.ccvaultAvailable()) ||
+            (this.namiAvailable()) ||
+            (this.flintAvailable()) ||
+            (this.geroAvailable())) {
             return true;
         }
         return false;
