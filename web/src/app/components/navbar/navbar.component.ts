@@ -120,6 +120,44 @@ export class NavbarComponent extends NotificationComponent implements AfterConte
         }
     }
 
+    // Gero Wallet
+    public connectGero() {
+        if (globalThis.cardano.gero != null) {
+            globalThis.cardano.gero.enable().then((api) => {
+                    this.finishWalletConnect(api, "gero");
+                }
+            ).catch((e) => {
+                this.errorNotification("Could not connect with Gero!");
+            });
+        } else {
+            this.errorNotification("Gero extension not installed");
+        }
+    }
+
+    public geroAvailable(): boolean {
+        return (globalThis.cardano.gero != null);
+    }
+
+
+    // Flint
+    public connectFlint() {
+        if (globalThis.cardano.flint != null) {
+            globalThis.cardano.flint.enable().then((api) => {
+                    this.finishWalletConnect(api, "flint");
+                }
+            ).catch((e) => {
+                this.errorNotification("Could not connect with flint!");
+            });
+        } else {
+            this.errorNotification("Flint extension not installed");
+        }
+
+    }
+
+    public flintAvailable(): boolean {
+        return (globalThis.cardano.flint != null);
+    }
+
     public finishWalletConnect(api: any, source: string) {
         if (api != null) {
             console.log(api);
@@ -131,7 +169,10 @@ export class NavbarComponent extends NotificationComponent implements AfterConte
     }
 
     public anyWalletAvailable(): boolean {
-        if ((this.ccvaultAvailable()) || (this.namiAvailable())) {
+        if ((this.ccvaultAvailable()) ||
+            (this.namiAvailable()) ||
+            (this.flintAvailable()) ||
+            (this.geroAvailable())) {
             return true;
         }
         return false;
