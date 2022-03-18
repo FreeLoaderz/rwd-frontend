@@ -1,14 +1,14 @@
 import {Component, OnInit} from '@angular/core';
-import {NotificationComponent} from "../common/notification.component";
+import {NotificationComponent} from "../../../common/components/notification/notification.component";
 import {NotifierService} from "angular-notifier";
 import {Router} from "@angular/router";
-import {Wallet} from "../../data/wallet";
-import {RestService} from "../../services/rest.service";
-import {WalletObserverService} from "../../services/wallet-observer.service";
+import {Wallet} from "../../../common/data/wallet";
+import {RestService} from "../../../common/services/rest.service";
+import {WalletObserverService} from "../../../common/services/wallet-observer.service";
 
 @Component({
     selector: 'dashboard',
-    styleUrls: ['../../../styles/page-content.css'],
+    styleUrls: ['../../styles/page-content.css'],
     templateUrl: './dashboard.html'
 })
 export class DashboardComponent extends NotificationComponent implements OnInit {

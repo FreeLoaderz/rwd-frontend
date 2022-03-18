@@ -1,11 +1,11 @@
 import {Component, OnInit} from "@angular/core";
-import {NotificationComponent} from "../../common/notification.component";
+import {NotificationComponent} from "../../../../common/components/notification/notification.component";
 import {Router} from "@angular/router";
 import {NotifierService} from "angular-notifier";
 
 @Component({
     selector: 'feedback',
-    styleUrls: ['../../../../styles/page-content.css'],
+    styleUrls: ['../../../styles/page-content.css'],
     templateUrl: './feedback.html'
 })
 

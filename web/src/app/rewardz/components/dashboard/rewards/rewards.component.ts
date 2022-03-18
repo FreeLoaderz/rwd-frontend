@@ -1,15 +1,15 @@
 import {Component, OnInit} from "@angular/core";
-import {NotificationComponent} from "../../common/notification.component";
+import {NotificationComponent} from "../../../../common/components/notification/notification.component";
 import {Router} from "@angular/router";
 import {NotifierService} from "angular-notifier";
-import {RestService} from "../../../services/rest.service";
-import {AvailableTokens} from "../../../data/available-tokens";
+import {RestService} from "../../../../common/services/rest.service";
+import {AvailableTokens} from "../../../../common/data/available-tokens";
 import {Observable, Subscription} from "rxjs";
-import {WalletObserverService} from "../../../services/wallet-observer.service";
+import {WalletObserverService} from "../../../../common/services/wallet-observer.service";
 
 @Component({
     selector: 'rewards',
-    styleUrls: ['../../../../styles/page-content.css'],
+    styleUrls: ['../../../styles/page-content.css'],
     templateUrl: './rewards.html'
 })
 
