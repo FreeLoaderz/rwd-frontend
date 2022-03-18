@@ -1,7 +1,6 @@
-import {Component} from '@angular/core';
-import {Router} from "@angular/router";
+import {Component, OnInit} from '@angular/core';
+import {Router, Routes} from "@angular/router";
 import {TosidropWelcomeComponent} from "../welcome/tosidrop-welcome.component";
-import {Title} from "@angular/platform-browser";
 
 @Component({
     selector: 'tosidrop',
@@ -12,18 +11,24 @@ import {Title} from "@angular/platform-browser";
 /**
  * Navigation Bar rewards
  */
-export class TosidropNavbarComponent {
+export class TosidropNavbarComponent implements OnInit {
 
-    constructor(public router: Router, public titleService: Title) {
-        this.titleService.setTitle("TosiDrop");
-        this.router.config.push( {
-            path: '',
-            redirectTo: '/welcome',
-        });
-        this.router.config.push( {
-            path: '/welcome',
-            component: TosidropWelcomeComponent,
-        });
+    constructor(public router: Router) {
+    }
+
+    ngOnInit() {
+        const routes: Routes = [
+            {
+                path: '',
+                redirectTo: '/welcome',
+            },
+            {
+                path: '/welcome',
+                component: TosidropWelcomeComponent,
+            }
+        ];
+        this.router.resetConfig([...routes]);
         console.log(this.router.config);
+
     }
 }

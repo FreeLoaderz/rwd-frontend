@@ -3,15 +3,11 @@ import {NgModule} from "@angular/core";
 import {TosidropWelcomeComponent} from "./components/welcome/tosidrop-welcome.component";
 import {RestService} from "../common/services/rest.service";
 import {WalletObserverService} from "../common/services/wallet-observer.service";
-import {AppTosidropRoutingModule} from "./app-tosidrop-routing.module";
 import {ImageModule} from "primeng/image";
 import {ModalModule} from "ngx-bootstrap/modal";
 import {TosidropNavbarComponent} from "./components/navbar/tosidrop-navbar.component";
 import {NotifierModule, NotifierOptions} from "angular-notifier";
-import {HttpClientModule} from "@angular/common/http";
-import {RewardzNavbarComponent} from "../rewardz/components/navbar/rewardz-navbar.component";
-import {Route, RouterModule} from "@angular/router";
-import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {Route, Router, RouterModule} from "@angular/router";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {TooltipModule} from "ngx-bootstrap/tooltip";
 import {OverlayPanelModule} from "primeng/overlaypanel";
@@ -22,6 +18,7 @@ import {MenubarModule} from "primeng/menubar";
 import {DataViewModule} from "primeng/dataview";
 import {ButtonModule} from "primeng/button";
 import {WalletService} from "../common/services/wallet.service";
+import {HttpClientModule} from "@angular/common/http";
 
 const customNotifierOptions: NotifierOptions = {
     position: {
@@ -65,14 +62,13 @@ const customNotifierOptions: NotifierOptions = {
         overlap: 150
     }
 };
-
 const routes: Route[] = [];
 
 @NgModule({
     declarations: [TosidropNavbarComponent, TosidropWelcomeComponent],
-    imports: [CommonModule, ModalModule.forRoot(), RouterModule.forRoot(routes),
-        NotifierModule.withConfig(customNotifierOptions),
-        RouterModule, FormsModule, ReactiveFormsModule,
+    imports: [CommonModule, ModalModule.forRoot(),
+        NotifierModule.withConfig(customNotifierOptions), HttpClientModule,
+        FormsModule, ReactiveFormsModule,
         ModalModule.forRoot(), TooltipModule.forRoot(), OverlayPanelModule,
         CheckboxModule, TableModule,
         DropdownModule, MenubarModule, DataViewModule, ImageModule,

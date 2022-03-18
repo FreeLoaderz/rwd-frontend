@@ -14,10 +14,6 @@ import {ImageModule} from "primeng/image";
 import {ModalModule} from "ngx-bootstrap/modal";
 import {RewardzNavbarComponent} from "./components/navbar/rewardz-navbar.component";
 import {NotifierModule, NotifierOptions} from "angular-notifier";
-import {TosidropNavbarComponent} from "../tosidrop/components/navbar/tosidrop-navbar.component";
-import {HttpClientModule} from "@angular/common/http";
-import {RouterModule} from "@angular/router";
-import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {TooltipModule} from "ngx-bootstrap/tooltip";
 import {OverlayPanelModule} from "primeng/overlaypanel";
@@ -27,7 +23,6 @@ import {DropdownModule} from "primeng/dropdown";
 import {MenubarModule} from "primeng/menubar";
 import {DataViewModule} from "primeng/dataview";
 import {ButtonModule} from "primeng/button";
-import {BrowserModule} from "@angular/platform-browser";
 import {WalletService} from "../common/services/wallet.service";
 
 const customNotifierOptions: NotifierOptions = {
@@ -78,7 +73,7 @@ const customNotifierOptions: NotifierOptions = {
         FeedbackComponent, HistoryComponent],
     imports: [CommonModule, AppRewardzRoutingModule, ModalModule.forRoot(),
         NotifierModule.withConfig(customNotifierOptions),
-        RouterModule, FormsModule, ReactiveFormsModule,
+        FormsModule, ReactiveFormsModule,
         ModalModule.forRoot(), TooltipModule.forRoot(), OverlayPanelModule,
         CheckboxModule, TableModule,
         DropdownModule, MenubarModule, DataViewModule, ImageModule,

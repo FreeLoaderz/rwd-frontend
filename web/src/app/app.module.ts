@@ -2,10 +2,6 @@ import {DoBootstrap, NgModule} from '@angular/core';
 import {HashLocationStrategy, LocationStrategy} from "@angular/common";
 import {TosidropNavbarComponent} from "./tosidrop/components/navbar/tosidrop-navbar.component";
 import {RewardzNavbarComponent} from "./rewardz/components/navbar/rewardz-navbar.component";
-import {AppTosidropRoutingModule} from "./tosidrop/app-tosidrop-routing.module";
-import {AppRewardzRoutingModule} from "./rewardz/app-rewardz-routing.module";
-import {AppTosidropModule} from "./tosidrop/app-tosidrop.module";
-import {AppRewardzModule} from "./rewardz/app-rewardz.module";
 import {Route, RouterModule, Routes} from "@angular/router";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {HttpClientModule} from "@angular/common/http";
@@ -24,12 +20,11 @@ import {RestService} from "./common/services/rest.service";
 import {WalletObserverService} from "./common/services/wallet-observer.service";
 import {BrowserModule} from "@angular/platform-browser";
 import {WalletService} from "./common/services/wallet.service";
-const routes: Route[] = [
 
-];
+const routes: Route[] = [];
 
 @NgModule({
-    imports: [BrowserModule, BrowserAnimationsModule, HttpClientModule,   RouterModule.forRoot(routes), RouterModule,
+    imports: [BrowserModule, BrowserAnimationsModule, HttpClientModule, RouterModule.forRoot(routes),
         FormsModule, ReactiveFormsModule,
         ModalModule.forRoot(), TooltipModule.forRoot(), OverlayPanelModule,
         CheckboxModule, TableModule,
