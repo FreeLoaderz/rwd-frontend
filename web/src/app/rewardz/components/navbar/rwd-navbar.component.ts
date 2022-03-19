@@ -1,35 +1,71 @@
-import {AfterContentInit, Component, HostListener, Inject, ViewChild} from '@angular/core';
+import {AfterContentInit, Component, HostListener, Inject, OnInit, ViewChild} from '@angular/core';
 import {Title} from "@angular/platform-browser";
 import {NotifierService} from "angular-notifier";
 import {ModalDirective} from "ngx-bootstrap/modal";
 import {MenuItem} from "primeng/api";
-import { Router} from "@angular/router";
+import {Router, Routes} from "@angular/router";
 import {NotificationComponent} from '../../../common/components/notification/notification.component';
 import {WalletService} from "../../../common/services/wallet.service";
+import {WelcomeComponent} from "../welcome/welcome.component";
+import {DashboardComponent} from "../dashboard/dashboard.component";
+import {RewardsComponent} from "../dashboard/rewards/rewards.component";
+import {HistoryComponent} from "../dashboard/history/history.component";
+import {FeedbackComponent} from "../dashboard/feedback/feedback.component";
+import {WalletObserverService} from "../../../common/services/wallet-observer.service";
+import {Subscription} from "rxjs";
 
 @Component({
     selector: 'rewardz',
-    templateUrl: './rewardz-navbar.html',
+    templateUrl: './rwd-navbar.html',
     styleUrls: ['../../styles/navbar.css'],
 })
 
 /**
  * Navigation Bar rewards
  */
-export class RewardzNavbarComponent extends NotificationComponent implements AfterContentInit {
+export class RwdNavbarComponent extends NotificationComponent implements OnInit, AfterContentInit {
     public userMenu: MenuItem[];
     public connectMenuItem: MenuItem;
     public walletSubstring: string;
+    public walletLoaded: boolean = false;
+    public walletSubscription: Subscription;
+
     @ViewChild('connectModal', {static: false}) public connectModal: ModalDirective;
-    constructor(public router: Router, public titleService: Title,
+    constructor(public router: Router, public titleService: Title, public walletObserverService: WalletObserverService,
                 public notifierService: NotifierService, public walletService: WalletService) {
         super(notifierService);
         this.titleService.setTitle("Rewardz");
-        globalThis.wallet = null;
-        globalThis.walletApi = null;
-        console.log(this.router.url);
     }
 
+    ngOnInit() {
+        const routes: Routes = [
+            {
+                path: '',
+                redirectTo: '/welcome',
+                pathMatch: 'full'
+            },
+            {
+                path: 'welcome',
+                component: WelcomeComponent,
+            },
+            {
+                path: 'dashboard',
+                component: DashboardComponent,
+                children: [
+                    {path: '', redirectTo: 'rewards', pathMatch: 'full'},
+                    {path: 'rewards', component: RewardsComponent},
+                    {path: 'history', component: HistoryComponent},
+                    {path: 'feedback', component: FeedbackComponent}
+                ]
+            }
+        ];
+        this.router.resetConfig([...routes]);
+        this.walletSubscription = this.walletObserverService.loaded$.subscribe(
+            loaded => {
+                this.walletLoaded = loaded;
+            }
+        );
+    }
     ngAfterContentInit() {
         this.setupMenu();
         this.disconnectWallet();

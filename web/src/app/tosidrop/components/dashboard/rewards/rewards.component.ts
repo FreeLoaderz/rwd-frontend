@@ -31,7 +31,6 @@ export class RewardsComponent extends NotificationComponent implements OnInit {
     }
 
     public listTokens() {
-        console.log(globalThis.wallet);
         globalThis.avialableTokens = new AvailableTokens();
         this.restService.listTokens()
             .then(res => this.processTokenList(res))

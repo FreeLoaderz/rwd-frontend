@@ -1,8 +1,5 @@
 import {DoBootstrap, NgModule} from '@angular/core';
-import {HashLocationStrategy, LocationStrategy} from "@angular/common";
-import {TosidropNavbarComponent} from "./tosidrop/components/navbar/tosidrop-navbar.component";
-import {RewardzNavbarComponent} from "./rewardz/components/navbar/rewardz-navbar.component";
-import {Route, RouterModule, Routes} from "@angular/router";
+import {Route, RouterModule} from "@angular/router";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {HttpClientModule} from "@angular/common/http";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
@@ -20,21 +17,65 @@ import {RestService} from "./common/services/rest.service";
 import {WalletObserverService} from "./common/services/wallet-observer.service";
 import {BrowserModule} from "@angular/platform-browser";
 import {WalletService} from "./common/services/wallet.service";
+import {NotifierModule, NotifierOptions} from "angular-notifier";
+import {RwdNavbarComponent} from "./rewardz/components/navbar/rwd-navbar.component";
+import {TosidropNavbarComponent} from "./tosidrop/components/navbar/tosidrop-navbar.component";
+
+const customNotifierOptions: NotifierOptions = {
+    position: {
+        horizontal: {
+            position: 'right',
+            distance: 12
+        },
+        vertical: {
+            position: 'bottom',
+            distance: 12,
+            gap: 10
+        }
+    },
+    theme: 'material',
+    behaviour: {
+        autoHide: 5000,
+        onClick: false,
+        onMouseover: 'pauseAutoHide',
+        showDismissButton: false,
+        stacking: 5
+    },
+    animations: {
+        enabled: true,
+        show: {
+            preset: 'slide',
+            speed: 300,
+            easing: 'ease'
+        },
+
+        hide: {
+            preset: 'fade',
+            speed: 300,
+            easing: 'ease',
+            offset: 50
+        },
+
+        shift: {
+            speed: 300,
+            easing: 'ease' // All standard CSS easing methods work
+        },
+        overlap: 150
+    }
+};
 
 const routes: Route[] = [];
 
 @NgModule({
     imports: [BrowserModule, BrowserAnimationsModule, HttpClientModule, RouterModule.forRoot(routes),
         FormsModule, ReactiveFormsModule,
+        NotifierModule.withConfig(customNotifierOptions),
         ModalModule.forRoot(), TooltipModule.forRoot(), OverlayPanelModule,
         CheckboxModule, TableModule,
         DropdownModule, MenubarModule, DataViewModule, ImageModule,
         ButtonModule],
-    entryComponents: [TosidropNavbarComponent, RewardzNavbarComponent],
-    providers: [RestService, WalletObserverService, WalletService, {
-        provide: LocationStrategy,
-        useClass: HashLocationStrategy
-    }],
+    entryComponents: [RwdNavbarComponent, TosidropNavbarComponent],
+    providers: [RestService, WalletObserverService, WalletService],
 })
 
 
@@ -42,20 +83,16 @@ export class AppModule implements DoBootstrap {
 
     ngDoBootstrap(app) {
         document.querySelector('#pre-load').remove();
-        if (!window.location.pathname.toLowerCase().includes("tosidrop")) {
-            console.log("tosidrop");
+        if (window.location.hostname.toLowerCase().includes("tosidrop")) {
             const componentElement = document.createElement("tosidrop");
             document.body.appendChild(componentElement);
             import("./tosidrop/app-tosidrop.module");
-            import("./tosidrop/app-tosidrop-routing.module");
             app.bootstrap(TosidropNavbarComponent);
         } else {
-            console.log("rewardz");
             const componentElement = document.createElement("rewardz");
             document.body.appendChild(componentElement);
             import("./rewardz/app-rewardz.module");
-            import("./rewardz/app-rewardz-routing.module");
-            app.bootstrap(RewardzNavbarComponent);
+            app.bootstrap(RwdNavbarComponent);
         }
     }
 }

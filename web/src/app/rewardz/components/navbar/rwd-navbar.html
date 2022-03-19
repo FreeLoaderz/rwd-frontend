@@ -1,10 +1,10 @@
 <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark bg-clear">
     <div class="container-fluid">
         <ul *ngIf="!connected()" class="navbar-nav ms-2 mb-2">
-            <li class="nav-item"><a class="nav-link" href="#"><i class="fa-solid fa-home me-1"></i> HOME</a></li>
+            <li class="nav-item"><a class="nav-link" href="#"><i class="fa-solid fa-face-frown me-1"></i>RWD Icon?</a></li>
         </ul>
         <ul *ngIf="connected()" class="navbar-nav ms-2 mb-2">
-            <li class="nav-item"><a class="nav-link"><i class="fa-solid fa-face-frown me-1"></i>App Icon?</a></li>
+            <li class="nav-item"><a class="nav-link"><i class="fa-solid fa-face-frown me-1"></i>RWD Icon?</a></li>
         </ul>
         <ul *ngIf="!connected()" class="navbar-nav ms-auto me-2 mb-2 mb-lg-0">
             <li class="nav-item"><a class="nav-link" (click)="showConnectModal()"><i class="fa-solid fa-wallet me-1"></i>Connect</a>
@@ -14,7 +14,8 @@
         </ul>
         <ul *ngIf="connected()" class="navbar-nav ms-auto me-2 mb-2 mb-lg-0">
             <li class="nav-item">
-                <a class="nav-link" (click)="disconnectWallet()"><i class="fa-solid fa-right-from-bracket me-1"></i>{{getWalletSubstring()}}</a>
+                <a *ngIf="walletLoaded" class="nav-link" (click)="disconnectWallet()"><i class="fa-solid fa-right-from-bracket me-1"></i>{{getWalletSubstring()}}</a>
+                <a *ngIf="!walletLoaded" class="nav-link"><i class="fa-solid fa-spinner request-spinner"></i></a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#contact"><i class="fa-solid fa-question-circle me-1"></i>HELP</a>

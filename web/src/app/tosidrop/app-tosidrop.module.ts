@@ -1,13 +1,12 @@
-import {CommonModule, HashLocationStrategy, LocationStrategy} from "@angular/common";
+import {CommonModule} from "@angular/common";
 import {NgModule} from "@angular/core";
-import {TosidropWelcomeComponent} from "./components/welcome/tosidrop-welcome.component";
+import {WelcomeComponent} from "./components/welcome/welcome.component";
 import {RestService} from "../common/services/rest.service";
 import {WalletObserverService} from "../common/services/wallet-observer.service";
 import {ImageModule} from "primeng/image";
 import {ModalModule} from "ngx-bootstrap/modal";
 import {TosidropNavbarComponent} from "./components/navbar/tosidrop-navbar.component";
 import {NotifierModule, NotifierOptions} from "angular-notifier";
-import {Route, Router, RouterModule} from "@angular/router";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {TooltipModule} from "ngx-bootstrap/tooltip";
 import {OverlayPanelModule} from "primeng/overlaypanel";
@@ -19,6 +18,12 @@ import {DataViewModule} from "primeng/dataview";
 import {ButtonModule} from "primeng/button";
 import {WalletService} from "../common/services/wallet.service";
 import {HttpClientModule} from "@angular/common/http";
+import {FooterComponent} from "./components/footer/footer.component";
+import {InfoComponent} from "./components/welcome/info/info.component";
+import {DashboardComponent} from "./components/dashboard/dashboard.component";
+import {RewardsComponent} from "./components/dashboard/rewards/rewards.component";
+import {FeedbackComponent} from "./components/dashboard/feedback/feedback.component";
+import {HistoryComponent} from "./components/dashboard/history/history.component";
 
 const customNotifierOptions: NotifierOptions = {
     position: {
@@ -62,10 +67,10 @@ const customNotifierOptions: NotifierOptions = {
         overlap: 150
     }
 };
-const routes: Route[] = [];
 
 @NgModule({
-    declarations: [TosidropNavbarComponent, TosidropWelcomeComponent],
+    declarations: [TosidropNavbarComponent, WelcomeComponent, FooterComponent, InfoComponent, DashboardComponent, RewardsComponent,
+        FeedbackComponent, HistoryComponent],
     imports: [CommonModule, ModalModule.forRoot(),
         NotifierModule.withConfig(customNotifierOptions), HttpClientModule,
         FormsModule, ReactiveFormsModule,
@@ -73,10 +78,7 @@ const routes: Route[] = [];
         CheckboxModule, TableModule,
         DropdownModule, MenubarModule, DataViewModule, ImageModule,
         ButtonModule],
-    providers: [RestService, WalletObserverService, WalletService, {
-        provide: LocationStrategy,
-        useClass: HashLocationStrategy
-    }],
+    providers: [RestService, WalletObserverService, WalletService],
     entryComponents: [TosidropNavbarComponent],
 })
 export class AppTosidropModule {

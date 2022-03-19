@@ -35,7 +35,3 @@
     outline: 0 !important;
     color: #8bcbff !important;
 }
-
-a i::before {
-    margin-right: .25rem;
-}

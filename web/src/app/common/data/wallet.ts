@@ -10,6 +10,7 @@ export class Wallet {
     public script: Script;
     public network: number;
     public balance: number;
+    public maskedBalance: string;
 
     constructor(data: any) {
         if (data != null) {
@@ -44,6 +45,9 @@ export class Wallet {
             }
             if (data.balance) {
                 this.balance = +data.balance;
+            }
+            if (data.maskedBalance) {
+                this.maskedBalance = data.maskedBalance;
             }
         }
     }

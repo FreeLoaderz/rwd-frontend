@@ -2,17 +2,16 @@ import {RewardsComponent} from "./components/dashboard/rewards/rewards.component
 import {HistoryComponent} from "./components/dashboard/history/history.component";
 import {InfoComponent} from "./components/welcome/info/info.component";
 import {FeedbackComponent} from "./components/dashboard/feedback/feedback.component";
-import {CommonModule, HashLocationStrategy, LocationStrategy} from "@angular/common";
+import {CommonModule} from "@angular/common";
 import {FooterComponent} from "./components/footer/footer.component";
 import {NgModule} from "@angular/core";
 import {DashboardComponent} from "./components/dashboard/dashboard.component";
-import {RewardzWelcomeComponent} from "./components/welcome/rewardz-welcome.component";
+import {WelcomeComponent} from "./components/welcome/welcome.component";
 import {RestService} from "../common/services/rest.service";
 import {WalletObserverService} from "../common/services/wallet-observer.service";
-import {AppRewardzRoutingModule} from "./app-rewardz-routing.module";
 import {ImageModule} from "primeng/image";
 import {ModalModule} from "ngx-bootstrap/modal";
-import {RewardzNavbarComponent} from "./components/navbar/rewardz-navbar.component";
+import {RwdNavbarComponent} from "./components/navbar/rwd-navbar.component";
 import {NotifierModule, NotifierOptions} from "angular-notifier";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {TooltipModule} from "ngx-bootstrap/tooltip";
@@ -69,20 +68,17 @@ const customNotifierOptions: NotifierOptions = {
 };
 
 @NgModule({
-    declarations: [RewardzNavbarComponent, RewardzWelcomeComponent, FooterComponent, InfoComponent, DashboardComponent, RewardsComponent,
+    declarations: [RwdNavbarComponent, WelcomeComponent, FooterComponent, InfoComponent, DashboardComponent, RewardsComponent,
         FeedbackComponent, HistoryComponent],
-    imports: [CommonModule, AppRewardzRoutingModule, ModalModule.forRoot(),
+    imports: [CommonModule, ModalModule.forRoot(),
         NotifierModule.withConfig(customNotifierOptions),
         FormsModule, ReactiveFormsModule,
         ModalModule.forRoot(), TooltipModule.forRoot(), OverlayPanelModule,
         CheckboxModule, TableModule,
         DropdownModule, MenubarModule, DataViewModule, ImageModule,
         ButtonModule],
-    providers: [RestService, WalletObserverService, WalletService, {
-        provide: LocationStrategy,
-        useClass: HashLocationStrategy
-    }],
-    entryComponents: [RewardzNavbarComponent],
+    providers: [RestService, WalletObserverService, WalletService],
+    entryComponents: [RwdNavbarComponent],
 })
 export class AppRewardzModule {
 }

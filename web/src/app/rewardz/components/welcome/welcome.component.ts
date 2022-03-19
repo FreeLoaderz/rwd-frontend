@@ -3,12 +3,12 @@ import {Component} from '@angular/core';
 @Component({
     selector: 'welcome',
     styleUrls: ['../../styles/page-content.css'],
-    templateUrl: './rewardz-welcome.html'
+    templateUrl: './welcome.html'
 })
 /**
  * Main Dashboard for the queries
  */
-export class RewardzWelcomeComponent {
+export class WelcomeComponent {
 
     constructor() {
     }
