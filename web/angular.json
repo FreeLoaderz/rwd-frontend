@@ -39,7 +39,7 @@
               "node_modules/jquery/dist/jquery.slim.js",
               "node_modules/bootstrap/dist/js/bootstrap.js",
               "node_modules/quill/dist/quill.js",
-              "src/assets/scripts/navbar.js"
+              "src/assets/scripts/rwd-navbar.js"
             ]
           },
           "configurations": {
@@ -58,6 +58,26 @@
                   "with": "src/environments/environment.prod.ts"
                 }
               ]
+            },
+            "development": {
+              "optimization": false,
+              "sourceMap": true,
+              "namedChunks": true,
+              "extractLicenses": true,
+              "vendorChunk": true,
+              "buildOptimizer": false,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "6mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
             }
           }
         },
@@ -69,6 +89,9 @@
           "configurations": {
             "production": {
               "browserTarget": "web:build:production"
+            },
+            "development": {
+              "browserTarget": "web:build:development"
             }
           }
         },

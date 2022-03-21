@@ -1,0 +1,37 @@
+.navbar {
+    margin-bottom: 0 !important;
+    border-bottom: 0px !important;
+    text-transform: uppercase !important;
+    font-family: Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+    padding-bottom: 0 !important;
+}
+.bg-clear {
+    --bs-bg-opacity: 0;
+}
+.bg-dark {
+    background-color: #061c35;
+}
+
+#footer {
+    bottom: 5px;
+    text-align: center;
+    width: 100%;
+}
+
+.navbar li.active {
+    outline: none;
+    background-color: rgba(95, 119, 255, 0.3);
+}
+
+.navbar li a {
+    -webkit-transition: background .3s ease-in-out;
+    -moz-transition: background .3s ease-in-out;
+    transition: background .3s ease-in-out;
+}
+
+.navbar li a:hover,
+.navbar li a:focus,
+.navbar li a.active {
+    outline: 0 !important;
+    color: #8bcbff !important;
+}

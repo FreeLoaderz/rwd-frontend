@@ -1,0 +1,331 @@
+body {
+    overflow-x: hidden;
+    overscroll-behavior: none;
+    webkit-tap-highlight-color: rgb(21, 51, 89);
+}
+
+#wrapper {
+    padding-left: 0;
+    margin-top: 0px;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+#content-wrapper {
+    width: 100%;
+    position: absolute;
+    padding: 15px;
+}
+
+.inline {
+    display: inline-block;
+    float: left;
+    width: 100%;
+}
+
+label {
+    font-weight: bold;
+}
+
+h4 {
+    font-weight: bold;
+}
+
+.grid-item {
+    margin: .5em;
+    border: 1px solid #dee2e6;
+    max-width: 30vw !important;
+    min-width: 325px !important;
+}
+
+.grid-item-top,
+.grid-item-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.grid-item-content {
+    text-align: center;
+}
+
+.grid-entry {
+    padding-top: 0rem !important;
+    padding-bottom: 0rem !important;
+    border: 0px !important;
+    border-width: 0px !important;
+}
+
+@-webkit-keyframes pulsate {
+    0% {
+        opacity: 0.25;
+    }
+    17% {
+        opacity: 0.5;
+    }
+    34% {
+        opacity: 0.75;
+    }
+    50% {
+        opacity: 1.0;
+    }
+    67% {
+        opacity: .75;
+    }
+    84% {
+        opacity: 0.5;
+    }
+    100% {
+        opacity: 0.25;
+    }
+}
+
+.intro {
+    display: table;
+    width: 100%;
+    height: 85vh !important;
+    text-align: center;
+    color: #fff;
+    background: transparent;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+
+.intro .intro-body {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.intro .intro-body .brand-heading {
+    font-size: 40px;
+    text-shadow: 4px 10px 10px #000000;
+    font-weight: bold;
+}
+
+.intro .intro-body .intro-text {
+    font-size: 18px;
+    text-shadow: 2px 5px 5px #000000;
+}
+
+.info-section {
+    width: 100%;
+    padding: 50px 0;
+    color: #fff;
+    background-color: transparent;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+    min-height: 600px;
+}
+
+@media (min-width: 767px) {
+    .intro {
+        height: 100%;
+        padding: 0;
+    }
+
+    .intro .intro-body .brand-heading {
+        font-size: 100px;
+    }
+
+    .intro .intro-body .intro-text {
+        font-size: 25px;
+    }
+}
+
+.btn-circle {
+    width: 70px;
+    height: 70px;
+    margin-top: 15px;
+    padding: 7px 16px;
+    border: 2px solid #fff;
+    border-radius: 35px;
+    font-size: 40px;
+    color: #fff;
+    background: 0 0;
+    -webkit-transition: background .3s ease-in-out;
+    -moz-transition: background .3s ease-in-out;
+    transition: background .3s ease-in-out;
+}
+
+.btn-circle:hover,
+.btn-circle:focus {
+    outline: 0;
+    color: #fff;
+    background: rgba(255, 255, 255, .1);
+}
+
+.btn-circle i.animated {
+    -webkit-transition-property: -webkit-transform;
+    -webkit-transition-duration: 1s;
+    -moz-transition-property: -moz-transform;
+    -moz-transition-duration: 1s;
+}
+
+.btn-circle:hover i.animated {
+    -webkit-animation-name: pulse;
+    -moz-animation-name: pulse;
+    -webkit-animation-duration: 1.5s;
+    -moz-animation-duration: 1.5s;
+    -webkit-animation-iteration-count: infinite;
+    -moz-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear;
+    -moz-animation-timing-function: linear;
+}
+
+@-moz-keyframes pulse {
+
+    0% {
+        -moz-transform: scale(1);
+        transform: scale(1);
+    }
+
+    50% {
+        -moz-transform: scale(1.2);
+        transform: scale(1.2);
+    }
+
+    100% {
+        -moz-transform: scale(1);
+        transform: scale(1);
+    }
+}
+
+.content-section {
+    padding-top: 50px;
+    color: #fff;
+    width: 100%;
+    height: 100vh;
+    background-color: transparent;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+
+.sub-content-section {
+    padding-top: 0px;
+}
+
+.btn {
+    text-transform: uppercase;
+    font-family: Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 400;
+    -webkit-transition: all .3s ease-in-out;
+    -moz-transition: all .3s ease-in-out;
+    transition: all .3s ease-in-out;
+}
+
+.btn-default {
+    border: 1px solid blue;
+    color: blue;
+    background-color: transparent;
+}
+
+.btn-default:hover,
+.btn-default:focus {
+    border: 1px solid blue;
+    outline: 0;
+    color: white;
+    background-color: blue;
+}
+
+ul.banner-social-buttons {
+    margin-top: 0;
+    display: inline-flex;
+    padding: 0;
+}
+
+::-moz-selection {
+    text-shadow: gray !important;
+    background: #fcfcfc;
+    background: rgba(95, 119, 255, 0.3);
+}
+
+::selection {
+    text-shadow: gray !important;
+    background: #fcfcfc;
+    background: rgba(95, 119, 255, 0.3);
+}
+
+img::selection {
+    background: 0 0;
+}
+
+img::-moz-selection {
+    background: 0 0;
+}
+
+.sidebyside {
+    display: flex;
+    width: 100%;
+    align-items: stretch;
+}
+
+li + li {
+    margin-left: 1rem;
+}
+
+.grid-item {
+    margin: .5em;
+    border: 1px solid black;
+    max-width: 225px !important;
+    min-width: 225px !important;
+    max-height: 225px !important;
+    min-height: 225px !important;
+}
+
+.grid-item-top,
+.grid-item-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.grid-item-content {
+    text-align: center;
+}
+
+.grid-entry {
+    padding-top: 0rem !important;
+    padding-bottom: 0rem !important;
+    border: 0px !important;
+    border-width: 0px !important;
+}
+
+hr.white {
+    background: white !important;
+    border: 1px solid white !important;
+    border-color: white !important;
+    opacity: .5 !important;
+    margin: auto !important;
+    width: 90% !important;
+    margin-top: 0.5rem !important;
+}
+
+div.sidemenu > button.p-button {
+    margin: auto !important;
+    width: 90% !important;
+    margin-top: .5rem !important;
+}
+
+.blackdiv {
+    background: black !important;
+    border-radius: 25px;
+    padding: 25px;
+}
+
+.sidemenu {
+    width: 250px !important;
+    max-height: 165px !important;
+    padding: 0px !important;
+}

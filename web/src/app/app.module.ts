@@ -1,34 +1,25 @@
-import {NgModule} from '@angular/core';
-import {BrowserModule} from '@angular/platform-browser';
-import {AppRoutingModule} from "./app-routing.module";
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {WelcomeComponent} from "./components/welcome/welcome.component";
+import {DoBootstrap, NgModule} from '@angular/core';
+import {Route, RouterModule} from "@angular/router";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {HttpClientModule} from "@angular/common/http";
-import {HashLocationStrategy, LocationStrategy} from "@angular/common";
-import {NavbarComponent} from "./components/navbar/navbar.component";
-import {TableModule} from "primeng/table";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {ModalModule} from "ngx-bootstrap/modal";
 import {TooltipModule} from "ngx-bootstrap/tooltip";
-import {RouterModule} from "@angular/router";
-import {NotifierModule, NotifierOptions} from "angular-notifier";
 import {OverlayPanelModule} from "primeng/overlaypanel";
-import {DragDropModule} from "@angular/cdk/drag-drop";
+import {CheckboxModule} from "primeng/checkbox";
+import {TableModule} from "primeng/table";
 import {DropdownModule} from "primeng/dropdown";
 import {MenubarModule} from "primeng/menubar";
-import {CheckboxModule} from "primeng/checkbox";
 import {DataViewModule} from "primeng/dataview";
-import {FooterComponent} from "./components/footer/footer.component";
-import {RestService} from "./services/rest.service";
-import {ButtonModule} from "primeng/button";
-import {RippleModule} from "primeng/ripple";
 import {ImageModule} from "primeng/image";
-import {InfoComponent} from "./components/welcome/info/info.component";
-import {DashboardComponent} from "./components/dashboard/dashboard.component";
-import {RewardsComponent} from "./components/dashboard/rewards/rewards.component";
-import {FeedbackComponent} from "./components/dashboard/feedback/feedback.component";
-import {HistoryComponent} from "./components/dashboard/history/history.component";
-import {WalletObserverService} from "./services/wallet-observer.service";
+import {ButtonModule} from "primeng/button";
+import {RestService} from "./common/services/rest.service";
+import {WalletObserverService} from "./common/services/wallet-observer.service";
+import {BrowserModule} from "@angular/platform-browser";
+import {WalletService} from "./common/services/wallet.service";
+import {NotifierModule, NotifierOptions} from "angular-notifier";
+import {RwdNavbarComponent} from "./rewardz/components/navbar/rwd-navbar.component";
+import {TosidropNavbarComponent} from "./tosidrop/components/navbar/tosidrop-navbar.component";
 
 const customNotifierOptions: NotifierOptions = {
     position: {
@@ -73,20 +64,35 @@ const customNotifierOptions: NotifierOptions = {
     }
 };
 
+const routes: Route[] = [];
+
 @NgModule({
-    declarations: [WelcomeComponent, NavbarComponent, FooterComponent, InfoComponent, DashboardComponent, RewardsComponent,
-    FeedbackComponent, HistoryComponent],
-    imports: [BrowserModule, FormsModule, ReactiveFormsModule, AppRoutingModule, RouterModule,
-        ModalModule.forRoot(), TooltipModule.forRoot(), OverlayPanelModule, DragDropModule,
-        BrowserAnimationsModule, HttpClientModule, CheckboxModule, TableModule,
-        DropdownModule, MenubarModule, DataViewModule, ButtonModule, RippleModule, ImageModule,
+    imports: [BrowserModule, BrowserAnimationsModule, HttpClientModule, RouterModule.forRoot(routes),
+        FormsModule, ReactiveFormsModule,
         NotifierModule.withConfig(customNotifierOptions),
-    ],
-    bootstrap: [NavbarComponent],
-    providers: [RestService, WalletObserverService, {
-        provide: LocationStrategy,
-        useClass: HashLocationStrategy
-    }]
+        ModalModule.forRoot(), TooltipModule.forRoot(), OverlayPanelModule,
+        CheckboxModule, TableModule,
+        DropdownModule, MenubarModule, DataViewModule, ImageModule,
+        ButtonModule],
+    entryComponents: [RwdNavbarComponent, TosidropNavbarComponent],
+    providers: [RestService, WalletObserverService, WalletService],
 })
-export class AppModule {
+
+
+export class AppModule implements DoBootstrap {
+
+    ngDoBootstrap(app) {
+        document.querySelector('#pre-load').remove();
+        if (window.location.hostname.toLowerCase().includes("tosidrop")) {
+            const componentElement = document.createElement("tosidrop");
+            document.body.appendChild(componentElement);
+            import("./tosidrop/app-tosidrop.module");
+            app.bootstrap(TosidropNavbarComponent);
+        } else {
+            const componentElement = document.createElement("rewardz");
+            document.body.appendChild(componentElement);
+            import("./rewardz/app-rewardz.module");
+            app.bootstrap(RwdNavbarComponent);
+        }
+    }
 }
