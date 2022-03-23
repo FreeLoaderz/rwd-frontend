@@ -8,11 +8,18 @@ html {
     height: 100%
 }
 
+.no-webp > body {
+    background: url('../assets/rwd-background.png') no-repeat center center fixed;
+}
+
+.webp > body {
+    background: url('../assets/rwd-background.webp') no-repeat center center fixed;
+}
+
 body {
     overflow-x: hidden !important;
     overscroll-behavior: none !important;
     padding-top: 0px !important;
-    background: url('../assets/rwd-background.png') no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
