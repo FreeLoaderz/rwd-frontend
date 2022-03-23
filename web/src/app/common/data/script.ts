@@ -1,5 +1,5 @@
 import {MarketPlace} from "./market-place";
-import {SpoRewardClaim} from "./rwd-specific";
+import {SpoRewardClaim} from "./spo-reward-claim";
 
 export class Script {
     public Marketplace: MarketPlace;

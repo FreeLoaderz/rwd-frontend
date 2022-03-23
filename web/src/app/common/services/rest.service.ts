@@ -22,6 +22,17 @@ export class RestService {
             .catch(this.handleError);
     }
 
+    public fakeListTokens(url: string) {
+        const headers = new HttpHeaders().set('Content-Type', 'application/json').set('authorization', 'Eevoo0aemah1ohY6Oheehee4ivahR5ae');
+        RestService.processingRequest = true;
+
+        return this.httpClient
+            .post(url, globalThis.wallet, {headers: headers})
+            .toPromise()
+            .then(res => this.processResponse(res))
+            .catch(this.handleError);
+    }
+
     public claimTokens() {
         const headers = new HttpHeaders().set('Content-Type', 'application/json').set('authorization', 'Eevoo0aemah1ohY6Oheehee4ivahR5ae');
         const url = '/contracts/22/mp/claim';

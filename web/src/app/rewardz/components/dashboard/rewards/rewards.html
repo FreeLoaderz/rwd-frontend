@@ -1,6 +1,21 @@
 <section id="rewards">
     <div class="blackdiv" style="width: 100%;height: 100%">
         <h4>REWARDS</h4>
+        <input type="text" class="form-control col-sm-3 mt-5"
+               placeholder="LIST TOKENS URL.."
+               [(ngModel)]="listURL"
+               tooltip="Enter the List Tokens URL..">
+        <div class="row subrow mt-5">
+            <button pButton [disabled]="(listURL == null || listURL === '')"
+                    title="List tokens" style="width: unset"
+                    (click)="listTokens()" class="p-button p-button-primary ms-3 me-auto"
+                    label="List Tokens" icon="fa-solid fa-coins">
+            </button>
+        </div>
+        <div class="row">
+            <span *ngIf="listReturn != null" [ngModel]="listReturn"></span>
+        </div>
+
         <input type="text" class="form-control col-sm-3 mt-5 mb-5"
                placeholder="URL.."
                [(ngModel)]="submitURL"
@@ -48,13 +63,16 @@
             </ng-template>
         </p-table>
         <div class="row subrow mt-5">
-            <button pButton [disabled]="tokens.length === 0"
+            <button pButton [disabled]="(tokens.length === 0 || submitURL == null || submitURL === '')"
                     title="Claim tokens" style="width: unset"
                     (click)="claimSelectedTokens()" class="p-button p-button-primary ms-3 me-auto"
                     label="Claim" icon="fa-solid fa-coins">
             </button>
             <p-fileUpload #fileUpload style="width: unset" class="ms-auto me-2" customUpload="true" [mode]="'basic'" [auto]="true"
                           maxFileSize="1000000"  (uploadHandler)="onUpload($event)" chooseLabel="Upload CSV"></p-fileUpload>
+        </div>
+        <div class="row">
+            <span *ngIf="claimReturn != null" [ngModel]="claimReturn"></span>
         </div>
     </div>
 </section>

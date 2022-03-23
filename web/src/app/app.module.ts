@@ -75,7 +75,7 @@ const routes: Route[] = [];
         DropdownModule, MenubarModule, DataViewModule, ImageModule,
         ButtonModule],
     entryComponents: [RwdNavbarComponent, TosidropNavbarComponent],
-    providers: [RestService, WalletObserverService, WalletService],
+    providers: [RestService, WalletObserverService, WalletService]
 })
 
 
