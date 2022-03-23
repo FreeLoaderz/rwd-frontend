@@ -23,6 +23,7 @@ import {MenubarModule} from "primeng/menubar";
 import {DataViewModule} from "primeng/dataview";
 import {ButtonModule} from "primeng/button";
 import {WalletService} from "../common/services/wallet.service";
+import {FileUploadModule} from "primeng/fileupload";
 
 const customNotifierOptions: NotifierOptions = {
     position: {
@@ -70,7 +71,7 @@ const customNotifierOptions: NotifierOptions = {
 @NgModule({
     declarations: [RwdNavbarComponent, WelcomeComponent, FooterComponent, InfoComponent, DashboardComponent, RewardsComponent,
         FeedbackComponent, HistoryComponent],
-    imports: [CommonModule, ModalModule.forRoot(),
+    imports: [CommonModule, ModalModule.forRoot(), FileUploadModule,
         NotifierModule.withConfig(customNotifierOptions),
         FormsModule, ReactiveFormsModule,
         ModalModule.forRoot(), TooltipModule.forRoot(), OverlayPanelModule,

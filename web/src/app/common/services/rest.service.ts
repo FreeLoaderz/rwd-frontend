@@ -34,6 +34,16 @@ export class RestService {
             .catch(this.handleError);
     }
 
+    public fakeClaimTokens(url: string) {
+        const headers = new HttpHeaders().set('Content-Type', 'application/json').set('authorization', 'Eevoo0aemah1ohY6Oheehee4ivahR5ae');
+        RestService.processingRequest = true;
+        return this.httpClient
+            .post(url, globalThis.wallet, {headers: headers})
+            .toPromise()
+            .then(res => this.processResponse(res))
+            .catch(this.handleError);
+    }
+
     public signTx(signature: any, data: any) {
         const headers = new HttpHeaders().set('Content-Type', 'application/json').set('authorization', 'Eevoo0aemah1ohY6Oheehee4ivahR5ae');
         const url = '/contracts/finalize/22/mp/' + data.id;
