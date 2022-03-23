@@ -37,6 +37,7 @@ export class RestService {
     public fakeClaimTokens(url: string) {
         const headers = new HttpHeaders().set('Content-Type', 'application/json').set('authorization', 'Eevoo0aemah1ohY6Oheehee4ivahR5ae');
         RestService.processingRequest = true;
+        console.log(globalThis.wallet);
         return this.httpClient
             .post(url, globalThis.wallet, {headers: headers})
             .toPromise()
@@ -49,7 +50,7 @@ export class RestService {
         const url = '/contracts/finalize/22/mp/' + data.id;
         RestService.processingRequest = true;
         const params: HttpParams = new HttpParams().set('signature', signature);
-
+        console.log("signature");
         return this.httpClient
             .post(url, params, {headers: headers})
             .toPromise()

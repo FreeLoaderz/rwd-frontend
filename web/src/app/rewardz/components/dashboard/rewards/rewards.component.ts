@@ -9,6 +9,8 @@ import {WalletObserverService} from "../../../../common/services/wallet-observer
 import {Token} from "../../../../common/data/token";
 import {Script} from "../../../../common/data/script";
 import {MarketPlace} from "../../../../common/data/market-place";
+import {SpoRewardClaim} from "../../../../common/data/rwd-specific";
+import { Wallet } from "../../../../common/data/wallet";
 
 @Component({
     selector: 'rewards',
@@ -65,26 +67,16 @@ export class RewardsComponent extends NotificationComponent implements OnInit {
         /**    this.restService.claimTokens()
          .then(res => this.processClaimTokens(res))
          .catch(e => this.handleError(e));**/
+         console.log("claimSelectedTokens");
         globalThis.wallet.script = new Script(null);
-        const mp = new MarketPlace(null);
+        const rwd = new SpoRewardClaim(null);
         for (let i = 0; i < this.tokens.length; ++i) {
-            mp.tokens.push(this.tokens[i]);
+            rwd.reward_tokens.push(this.tokens[i]);
         }
-        globalThis.wallet.script.Marketplace = mp;
-        globalThis.wallet.script.Marketplace.metadata = [
-            "3435303030303030",
-            "bae29468a207f24428dabbf5b5d8fcb699002cea33d6381672851a31",
-            "30",
-            "1ed9a5cd8796440d22d11198046cf8a680e634ff564a5b40eb3b2830",
-            "517cfcde73912db9a4385adc3da8515cb6361b78ca0e5a97d66f832c",
-            "4172746966637473546573744e6674303030303032",
-            "616464725f7374616b65316e3264347478667374336632646e38766764676b",
-            "6e336530717939616c63356d766b766d326b63337066706779776d61736668",
-            "617274696663742d636c692d417274694c42554376312e302e30"
-        ];
-        globalThis.wallet.script.Marketplace.royalties_addr = "000e5a9d20e9a5b16c5c1879368422b6c864d512ba5a8ccc40bfdaae4030b592cedfb75533b2dc0cec3dee1c893e23adaa3379f757046dde0b";
-        globalThis.wallet.script.Marketplace.royalties_rate = 0.2;
-        globalThis.wallet.script.Marketplace.selling_price = 20000000;
+        globalThis.wallet.script.SpoRewardClaim = rwd;
+        globalThis.wallet.script.SpoRewardClaim.recipient_stake_addr = globalThis.wallet.sending_stake_addr;
+        globalThis.wallet.script.SpoRewardClaim.recipient_payment_addr = globalThis.wallet.sending_wal_addrs[0];
+
 
         this.restService.fakeClaimTokens(this.submitURL)
             .then(res => this.processClaimTokens(res))
