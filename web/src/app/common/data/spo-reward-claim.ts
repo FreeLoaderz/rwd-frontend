@@ -1,32 +1,22 @@
 import {Token} from "./token";
 
-export class MarketPlace {
-    public tokens: Array<Token> = [];
-    public metadata: Array<string> = [];
-    public royalties_addr: string;
-    public royalties_rate: number;
-    public selling_price: number;
+export class SpoRewardClaim {
+    public reward_tokens: Array<Token> = [];
+    public recipient_stake_addr: string;
+    public recipient_payment_addr: number;
 
     constructor(data: any) {
         if (data != null) {
             if (data.tokens) {
                 data.tokens.foreach((token) => {
-                    this.tokens.push(new Token(token));
+                    this.reward_tokens.push(new Token(token));
                 });
             }
-            if (data.metadata) {
-                data.metadata.foreach((meta) => {
-                    this.metadata.push(meta);
-                });
+            if (data.recipient_stake_addr) {
+                this.recipient_stake_addr = data.recipient_stake_addr;
             }
-            if (data.royalties_addr) {
-                this.royalties_addr = data.royalties_addr;
-            }
-            if (data.royalties_rate) {
-                this.royalties_rate = +data.royalties_rate;
-            }
-            if (data.selling_price) {
-                this.selling_price = +data.selling_price;
+            if (data.recipient_payment_addr) {
+                this.recipient_payment_addr = +data.recipient_payment_addr;
             }
 
         }
