@@ -12,7 +12,6 @@ export abstract class NotificationComponent {
     }
 
     errorNotification(message: string) {
-        console.log(message);
         this.notifier.notify('error', message);
     }
 
