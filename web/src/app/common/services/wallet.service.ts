@@ -124,22 +124,29 @@ export class WalletService {
             globalThis.walletApi.getNetworkId()
                 .then(data => this.processNetworkId(data))
                 .catch(e => this.handleError(e));
-            globalThis.walletApi.getRewardAddresses()
-                .then(res => this.processRewardAddresses(res))
-                .catch(e => this.handleError(e));
-            globalThis.walletApi.getUtxos()
-                .then(res => this.processUtxos(res))
-                .catch(e => this.handleError(e));
-            globalThis.walletApi.getUnusedAddresses()
-                .then(res => this.processUnusedAddresses(res))
-                .catch(e => this.handleError(e));
-            globalThis.walletApi.experimental.getCollateral()
-                .then(res => this.processCollateral(res))
-                .catch(e => this.handleError(e));
-            globalThis.walletApi.getBalance()
-                .then(res => this.processMaskedBalance(res))
-                .catch(e => this.handleError(e));
+            this.updateWallet();
+            this.numWalletCalls++;
         }
+    }
+
+    public updateWallet() {
+        this.walletObserver.setloaded(false);
+        this.numWalletCalls = 5;
+        globalThis.walletApi.getRewardAddresses()
+            .then(res => this.processRewardAddresses(res))
+            .catch(e => this.handleError(e));
+        globalThis.walletApi.getUtxos()
+            .then(res => this.processUtxos(res))
+            .catch(e => this.handleError(e));
+        globalThis.walletApi.getUnusedAddresses()
+            .then(res => this.processUnusedAddresses(res))
+            .catch(e => this.handleError(e));
+        globalThis.walletApi.experimental.getCollateral()
+            .then(res => this.processCollateral(res))
+            .catch(e => this.handleError(e));
+        globalThis.walletApi.getBalance()
+            .then(res => this.processMaskedBalance(res))
+            .catch(e => this.handleError(e));
     }
 
     /**

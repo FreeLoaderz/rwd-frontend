@@ -15,6 +15,7 @@ import {WalletObserverService} from "../../../../common/services/wallet-observer
 
 export class RewardsComponent extends NotificationComponent implements OnInit {
     public walletSubscription: Subscription;
+    public claimSubscription: Subscription;
 
     constructor(public router: Router, public notifierService: NotifierService, public restService: RestService,
                 public walletObserverService: WalletObserverService) {

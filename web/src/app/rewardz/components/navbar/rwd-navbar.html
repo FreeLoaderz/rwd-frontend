@@ -1,20 +1,24 @@
 <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark bg-clear">
     <div class="container-fluid">
         <ul *ngIf="!connected()" class="navbar-nav ms-2 mb-2">
-            <li class="nav-item"><a class="nav-link" href="#"><i class="fa-solid fa-face-frown me-1"></i>RWD Icon?</a></li>
+            <li class="nav-item"><a class="nav-link" href="#"><i class="fa-solid fa-face-frown me-1"></i>RWD Icon?</a>
+            </li>
         </ul>
         <ul *ngIf="connected()" class="navbar-nav ms-2 mb-2">
-            <li class="nav-item"><a class="nav-link"><i class="fa-solid fa-face-frown me-1"></i>RWD Icon?</a></li>
+            <li *ngIf="isTestNet" class="nav-item"><a class="nav-link"><i class="fa-solid fa-face-frown me-1"></i>TESTNET</a></li>
+            <li *ngIf="!isTestNet" class="nav-item"><a class="nav-link"><i class="fa-solid fa-face-frown me-1"></i>RWD Icon?</a></li>
         </ul>
         <ul *ngIf="!connected()" class="navbar-nav ms-auto me-2 mb-2 mb-lg-0">
-            <li class="nav-item"><a class="nav-link" (click)="showConnectModal()"><i class="fa-solid fa-wallet me-1"></i>Connect</a>
+            <li class="nav-item"><a class="nav-link" (click)="showConnectModal()"><i
+                    class="fa-solid fa-wallet me-1"></i>Connect</a>
             </li>
             <li class="nav-item"><a class="nav-link" href="#contact"><i class="fa-solid fa-question-circle me-1"></i>HELP</a>
             </li>
         </ul>
         <ul *ngIf="connected()" class="navbar-nav ms-auto me-2 mb-2 mb-lg-0">
             <li class="nav-item">
-                <a *ngIf="walletLoaded" class="nav-link" (click)="disconnectWallet()"><i class="fa-solid fa-right-from-bracket me-1"></i>{{getWalletSubstring()}}</a>
+                <a *ngIf="walletLoaded" class="nav-link" (click)="disconnectWallet()"><i
+                        class="fa-solid fa-right-from-bracket me-1"></i>{{getWalletSubstring()}}</a>
                 <a *ngIf="!walletLoaded" class="nav-link"><i class="fa-solid fa-spinner request-spinner"></i></a>
             </li>
             <li class="nav-item">
@@ -40,27 +44,27 @@
                 <div class="ms-2 me-2 row">
                     <a pButton class="p-button-rounded p-button-outlined no-ul inverted"
                        [title]="ccvaultAvailable() ? 'Connect to CCVault':'CCVault wallet not installed'"
-                       (click)="connectCCVault()">
+                       (click)="ccvaultAvailable() ? connectCCVault(): openCCVault()    ">
                         <p class="ms-1">CCVault</p>
                         <p-image src="../../assets/icons/ccvault.png" alt="CCVault" width="25" height="25">
                         </p-image>
                     </a>
                     <a pButton class="p-button-rounded p-button-outlined no-ul inverted mt-3"
-                       (click)="connectNami()"
+                       (click)="namiAvailable() ? connectNami(): openNami()"
                        [title]="namiAvailable() ? 'Connect to Nami':'Nami wallet not installed'">
                         <p class="ms-1">Nami</p>
                         <p-image src="../../assets/icons/nami.png" alt="Nami" width="25" height="25">
                         </p-image>
                     </a>
                     <a pButton class="p-button-rounded p-button-outlined no-ul inverted mt-3"
-                       (click)="connectGero()"
+                       (click)="geroAvailable() ? connectGero(): openGero()"
                        [title]="geroAvailable() ? 'Connect to Gero':'Gero wallet not installed'">
                         <p class="ms-1">Gero</p>
                         <p-image src="../../assets/icons/gero.png" alt="Gero" width="25" height="25">
                         </p-image>
                     </a>
                     <a pButton class="p-button-rounded p-button-outlined no-ul inverted mt-3"
-                       (click)="connectFlint()"
+                       (click)="flintAvailable() ? connectFlint() : openFlint()"
                        [title]="flintAvailable() ? 'Connect to Flint':'Flint wallet not installed'">
                         <p class="ms-1">Flint</p>
                         <p-image src="../../assets/icons/flint.png" alt="Flint" width="25" height="25">

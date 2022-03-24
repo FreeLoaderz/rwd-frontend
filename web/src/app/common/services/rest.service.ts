@@ -2,12 +2,13 @@ import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
 import {Injectable} from "@angular/core";
 import {Observable} from "rxjs";
 import {Wallet} from "../data/wallet";
+import {WalletObserverService} from "./wallet-observer.service";
 
 @Injectable()
 export class RestService {
     public static processingRequest: boolean = false;
 
-    constructor(private httpClient: HttpClient) {
+    constructor(private httpClient: HttpClient, private walletObserver: WalletObserverService) {
     }
 
     public listTokens() {
