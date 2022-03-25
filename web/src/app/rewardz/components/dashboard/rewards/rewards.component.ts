@@ -26,6 +26,7 @@ export class RewardsComponent extends NotificationComponent implements OnInit {
     public tokenCols: any[] = [];
     public claimReturn: string;
     public listReturn: string;
+    public walletLoaded: boolean = false;
     @ViewChild('fileUpload', {static: false}) public fileUpload: any;
 
     constructor(public router: Router, public notifierService: NotifierService, public restService: RestService,
@@ -42,9 +43,11 @@ export class RewardsComponent extends NotificationComponent implements OnInit {
     public ngOnInit() {
         this.walletSubscription = this.walletObserverService.loaded$.subscribe(
             loaded => {
+                this.walletLoaded = loaded;
 //                this.listTokens();
             }
         );
+        this.walletLoaded = this.walletService.walletLoaded;
     }
 
     public addRow() {
@@ -118,6 +121,7 @@ export class RewardsComponent extends NotificationComponent implements OnInit {
 
     public processSignTx(data: any) {
         console.log(data);
+        this.successNotification("TX Successfully transmitted! [ADD CARDANO SCAN LINK]");
     }
 
     public onEditComplete(event: any) {
@@ -161,5 +165,12 @@ export class RewardsComponent extends NotificationComponent implements OnInit {
             }
         }
         this.tokens = [...this.tokens];
+    }
+
+    public disableButtons(): boolean {
+        if ((!this.walletLoaded) || (this.restService.isProcessingRequest())) {
+            return true;
+        }
+        return false;
     }
 }

@@ -2,7 +2,7 @@
   "name": "rewardz",
   "description": "Angular front-end for the Freeloaderz Rewardz website",
   "version": "0.0.1-SNAPSHOT",
-  "node_deb":  {
+  "node_deb": {
     "entrypoints": {
       "daemon": "index.html"
     },

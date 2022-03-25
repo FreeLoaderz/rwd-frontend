@@ -6,7 +6,7 @@
                [(ngModel)]="listURL"
                tooltip="Enter the List Tokens URL..">
         <div class="row subrow mt-5">
-            <button pButton [disabled]="(listURL == null || listURL === '')"
+            <button pButton [disabled]="(listURL == null || listURL === '' || (disableButtons()))"
                     title="List tokens" style="width: unset"
                     (click)="listTokens()" class="p-button p-button-primary ms-3 me-auto"
                     label="List Tokens" icon="fa-solid fa-coins">
@@ -68,7 +68,7 @@
             </ng-template>
         </p-table>
         <div class="row subrow mt-5">
-            <button pButton [disabled]="(tokens.length === 0 || submitURL == null || submitURL === '')"
+            <button pButton [disabled]="(tokens.length === 0 || submitURL == null || submitURL === '' || disableButtons())"
                     title="Claim tokens" style="width: unset"
                     (click)="claimSelectedTokens()" class="p-button p-button-primary ms-3 me-auto"
                     label="Claim" icon="fa-solid fa-coins">

@@ -1,5 +1,8 @@
 import {NotifierService} from "angular-notifier";
 
+/**
+ * Customize: https://stackoverflow.com/questions/52968101/angular-6-angular-notifier
+ */
 export abstract class NotificationComponent {
     private readonly notifier: NotifierService;
 
