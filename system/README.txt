@@ -1,3 +1,2 @@
-Copy the directories under this folder to the root directory of the system you want to setup.
+Run bootstrap.sh to setup the system for the Rewardz front end
 
-Execute the genDHParams.sh file to generate the DH parameters for Apache2
