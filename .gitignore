@@ -19,3 +19,4 @@ dist/
 web/*.deb
 web/.idea
 web/.angular
+web/package-lock.json
