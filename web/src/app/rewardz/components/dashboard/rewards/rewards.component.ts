@@ -122,6 +122,7 @@ export class RewardsComponent extends NotificationComponent implements OnInit {
     public processSignTx(data: any) {
         console.log(data);
         this.successNotification("TX Successfully transmitted! [ADD CARDANO SCAN LINK]");
+        this.walletService.updateWallet();
     }
 
     public onEditComplete(event: any) {
