@@ -8,6 +8,7 @@
 *.ear
 *.zip
 *.tar.gz
+*.tgz
 *.rar
 
 .classpath

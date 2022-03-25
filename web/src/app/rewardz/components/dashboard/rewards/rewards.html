@@ -44,6 +44,7 @@
                         {{col.header}}
                         <p-sortIcon [field]="col.field"></p-sortIcon>
                     </th>
+                    <th>Delete</th>
                 </tr>
             </ng-template>
             <ng-template pTemplate="body" let-rowData let-columns="columns">
@@ -59,6 +60,10 @@
                             </ng-template>
                         </p-cellEditor>
                     </td>
+                    <td class="text-center">
+                        <button pButton class="p-button p-button-danger" title="Delete this row"
+                                icon="fa-solid fa-trash-can" (click)="delete(rowData)"></button>
+                    </td>
                 </tr>
             </ng-template>
         </p-table>
@@ -68,8 +73,10 @@
                     (click)="claimSelectedTokens()" class="p-button p-button-primary ms-3 me-auto"
                     label="Claim" icon="fa-solid fa-coins">
             </button>
-            <p-fileUpload #fileUpload style="width: unset" class="ms-auto me-2" customUpload="true" [mode]="'basic'" [auto]="true"
-                          maxFileSize="1000000"  (uploadHandler)="onUpload($event)" chooseLabel="Upload CSV"></p-fileUpload>
+            <p-fileUpload #fileUpload style="width: unset" class="ms-auto me-2" customUpload="true" [mode]="'basic'"
+                          [auto]="true"
+                          maxFileSize="1000000" (uploadHandler)="onUpload($event)"
+                          chooseLabel="Upload CSV"></p-fileUpload>
         </div>
         <div class="row">
             <span *ngIf="claimReturn != null" [ngModel]="claimReturn"></span>

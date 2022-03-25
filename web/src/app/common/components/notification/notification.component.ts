@@ -24,7 +24,7 @@ export abstract class NotificationComponent {
     }
 
     warnNotification(message: string) {
-        this.notifier.notify('warn', message);
+        this.notifier.notify('warning', message);
     }
 
     showNotification(data: any) {

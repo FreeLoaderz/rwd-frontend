@@ -8,9 +8,8 @@ import {Observable, Subscription} from "rxjs";
 import {WalletObserverService} from "../../../../common/services/wallet-observer.service";
 import {Token} from "../../../../common/data/token";
 import {Script} from "../../../../common/data/script";
-import {MarketPlace} from "../../../../common/data/market-place";
 import {SpoRewardClaim} from "../../../../common/data/spo-reward-claim";
-import {Wallet} from "../../../../common/data/wallet";
+import {WalletService} from "../../../../common/services/wallet.service";
 
 @Component({
     selector: 'rewards',
@@ -30,7 +29,7 @@ export class RewardsComponent extends NotificationComponent implements OnInit {
     @ViewChild('fileUpload', {static: false}) public fileUpload: any;
 
     constructor(public router: Router, public notifierService: NotifierService, public restService: RestService,
-                public walletObserverService: WalletObserverService) {
+                public walletObserverService: WalletObserverService, public walletService: WalletService) {
         super(notifierService);
         this.tokenCols = [
             {field: 'tokenname', header: 'Token Name'},
@@ -61,8 +60,8 @@ export class RewardsComponent extends NotificationComponent implements OnInit {
             .then(res => this.processTokenList(res))
             .catch(e => this.handleError(e));
 //        this.restService.listTokens()
-  //          .then(res => this.processTokenList(res))
-    //        .catch(e => this.handleError(e));
+        //          .then(res => this.processTokenList(res))
+        //        .catch(e => this.handleError(e));
     }
 
     public processTokenList(data: any) {
@@ -72,25 +71,36 @@ export class RewardsComponent extends NotificationComponent implements OnInit {
     }
 
     public claimSelectedTokens() {
-        /**    this.restService.claimTokens()
-         .then(res => this.processClaimTokens(res))
-         .catch(e => this.handleError(e));**/
-        this.claimReturn = null;
-        console.log("claimSelectedTokens");
-        globalThis.wallet.script = new Script(null);
-        const rwd = new SpoRewardClaim(null);
-        for (let i = 0; i < this.tokens.length; ++i) {
-            if ((this.tokens[i] != null) && (this.tokens[i].tokenname != null)) {
-                rwd.reward_tokens.push(this.tokens[i]);
-            }
+        if (this.claimSubscription == null) {
+            this.claimSubscription = this.walletObserverService.loaded$.subscribe(loaded => {
+                if (loaded) {
+                    /**    this.restService.claimTokens()
+                     .then(res => this.processClaimTokens(res))
+                     .catch(e => this.handleError(e));**/
+                    this.claimReturn = null;
+                    console.log("claimSelectedTokens");
+                    globalThis.wallet.script = new Script(null);
+                    const rwd = new SpoRewardClaim(null);
+                    for (let i = 0; i < this.tokens.length; ++i) {
+                        if ((this.tokens[i] != null) && (this.tokens[i].tokenname != null)) {
+                            rwd.reward_tokens.push(this.tokens[i]);
+                        }
+                    }
+                    globalThis.wallet.script.SpoRewardClaim = rwd;
+                    globalThis.wallet.script.SpoRewardClaim.recipient_stake_addr = globalThis.wallet.sending_stake_addr;
+                    globalThis.wallet.script.SpoRewardClaim.recipient_payment_addr = globalThis.wallet.sending_wal_addrs[0];
+                    this.claimSubscription.unsubscribe();
+                    this.claimSubscription = null;
+                    this.infoNotification("Submitting token claim");
+                    this.restService.fakeClaimTokens(this.submitURL)
+                        .then(res => this.processClaimTokens(res))
+                        .catch(e => this.handleError(e));
+                }
+            });
+            this.walletService.updateWallet();
+        } else {
+            this.warnNotification("Please wait.. currently attempting to claim tokens.");
         }
-        globalThis.wallet.script.SpoRewardClaim = rwd;
-        globalThis.wallet.script.SpoRewardClaim.recipient_stake_addr = globalThis.wallet.sending_stake_addr;
-        globalThis.wallet.script.SpoRewardClaim.recipient_payment_addr = globalThis.wallet.sending_wal_addrs[0];
-
-        this.restService.fakeClaimTokens(this.submitURL)
-            .then(res => this.processClaimTokens(res))
-            .catch(e => this.handleError(e));
     }
 
     public processClaimTokens(data: any) {
@@ -141,5 +151,15 @@ export class RewardsComponent extends NotificationComponent implements OnInit {
         };
         this.tokens = [...this.tokens];
         this.fileUpload.clear();
+    }
+
+    public delete(token: Token) {
+        for (let i = 0; i < this.tokens.length; ++i) {
+            if (this.tokens[i].tokenname === token.tokenname) {
+                this.tokens.splice(i, 1);
+                break;
+            }
+        }
+        this.tokens = [...this.tokens];
     }
 }

@@ -1,7 +1,16 @@
 {
-  "name": "RWD",
-  "description": "Node Angular front-end",
+  "name": "rewardz",
+  "description": "Angular front-end for the Freeloaderz Rewardz website",
   "version": "0.0.1-SNAPSHOT",
+  "node_deb":  {
+    "entrypoints": {
+      "daemon": "index.html"
+    },
+    "templates": {
+      "postinst": "debian/postinst.sh",
+      "postrm": "debian/postrm.sh"
+    }
+  },
   "scripts": {
     "ng": "ng",
     "start": "ng serve --proxy-config proxy.conf.json",
@@ -30,6 +39,7 @@
     "core-js": "3.21.1",
     "jquery": "3.6.0",
     "ngx-bootstrap": "8.0.0",
+    "node-deb": "0.10.7",
     "npm": "8.5.5",
     "popper.js": "1.16.1-lts",
     "primeflex": "3.1.3",
