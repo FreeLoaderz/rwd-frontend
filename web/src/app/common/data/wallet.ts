@@ -10,6 +10,7 @@ export class Wallet {
     public script: Script;
     public network: number;
     public balance: number;
+    public lovelaces: number;
     public maskedBalance: string;
 
     constructor(data: any) {

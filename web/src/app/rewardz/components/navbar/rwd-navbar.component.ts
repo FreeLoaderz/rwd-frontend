@@ -29,8 +29,10 @@ export class RwdNavbarComponent extends NotificationComponent implements OnInit,
     public walletSubstring: string;
     public walletLoaded: boolean = false;
     public walletSubscription: Subscription;
+    public isTestNet: boolean = false;
 
     @ViewChild('connectModal', {static: false}) public connectModal: ModalDirective;
+
     constructor(public router: Router, public titleService: Title, public walletObserverService: WalletObserverService,
                 public notifierService: NotifierService, public walletService: WalletService) {
         super(notifierService);
@@ -63,13 +65,31 @@ export class RwdNavbarComponent extends NotificationComponent implements OnInit,
         this.walletSubscription = this.walletObserverService.loaded$.subscribe(
             loaded => {
                 this.walletLoaded = loaded;
+                this.isTestNet = (globalThis.wallet.network === 0);
             }
         );
     }
+
     ngAfterContentInit() {
         this.setupMenu();
         this.disconnectWallet();
         this.getScreenSize(null);
+    }
+
+    public openNami() {
+        window.open("https://namiwallet.io/", "_blank");
+    }
+
+    public openFlint() {
+        window.open("https://www.dcspark.io/", "_blank");
+    }
+
+    public openCCVault() {
+        window.open("https://ccvault.io/app/mainnet/welcome", "_blank");
+    }
+
+    public openGero() {
+        window.open("https://gerowallet.io/", "_blank");
     }
 
     public setupMenu() {

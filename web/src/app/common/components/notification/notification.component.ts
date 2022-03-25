@@ -1,5 +1,8 @@
 import {NotifierService} from "angular-notifier";
 
+/**
+ * Customize: https://stackoverflow.com/questions/52968101/angular-6-angular-notifier
+ */
 export abstract class NotificationComponent {
     private readonly notifier: NotifierService;
 
@@ -24,7 +27,7 @@ export abstract class NotificationComponent {
     }
 
     warnNotification(message: string) {
-        this.notifier.notify('warn', message);
+        this.notifier.notify('warning', message);
     }
 
     showNotification(data: any) {

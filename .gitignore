@@ -8,6 +8,7 @@
 *.ear
 *.zip
 *.tar.gz
+*.tgz
 *.rar
 
 .classpath
@@ -18,3 +19,4 @@ dist/
 web/*.deb
 web/.idea
 web/.angular
+web/package-lock.json

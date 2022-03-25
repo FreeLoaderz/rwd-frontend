@@ -1,7 +1,6 @@
 import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
 import {Injectable} from "@angular/core";
-import {Observable} from "rxjs";
-import {Wallet} from "../data/wallet";
+import {lastValueFrom} from "rxjs";
 
 @Injectable()
 export class RestService {
@@ -15,9 +14,18 @@ export class RestService {
         const url = '/contracts/22/mp/list';
         RestService.processingRequest = true;
 
-        return this.httpClient
-            .post(url, globalThis.wallet, {headers: headers})
-            .toPromise()
+        return lastValueFrom(this.httpClient
+            .post(url, globalThis.wallet, {headers: headers}))
+            .then(res => this.processResponse(res))
+            .catch(this.handleError);
+    }
+
+    public fakeListTokens(url: string) {
+        const headers = new HttpHeaders().set('Content-Type', 'application/json').set('authorization', 'Eevoo0aemah1ohY6Oheehee4ivahR5ae');
+        RestService.processingRequest = true;
+
+        return lastValueFrom(this.httpClient
+            .post(url, globalThis.wallet, {headers: headers}))
             .then(res => this.processResponse(res))
             .catch(this.handleError);
     }
@@ -27,9 +35,18 @@ export class RestService {
         const url = '/contracts/22/mp/claim';
         RestService.processingRequest = true;
 
-        return this.httpClient
-            .post(url, globalThis.wallet, {headers: headers})
-            .toPromise()
+        return lastValueFrom(this.httpClient
+            .post(url, globalThis.wallet, {headers: headers}))
+            .then(res => this.processResponse(res))
+            .catch(this.handleError);
+    }
+
+    public fakeClaimTokens(url: string) {
+        const headers = new HttpHeaders().set('Content-Type', 'application/json').set('authorization', 'Eevoo0aemah1ohY6Oheehee4ivahR5ae');
+        RestService.processingRequest = true;
+        console.log(globalThis.wallet);
+        return lastValueFrom(this.httpClient
+            .post(url, globalThis.wallet, {headers: headers}))
             .then(res => this.processResponse(res))
             .catch(this.handleError);
     }
@@ -39,10 +56,9 @@ export class RestService {
         const url = '/contracts/finalize/22/mp/' + data.id;
         RestService.processingRequest = true;
         const params: HttpParams = new HttpParams().set('signature', signature);
-
-        return this.httpClient
-            .post(url, params, {headers: headers})
-            .toPromise()
+        console.log("signature");
+        return lastValueFrom(this.httpClient
+            .post(url, params, {headers: headers}))
             .then(res => this.processResponse(res))
             .catch(this.handleError);
     }
@@ -59,6 +75,6 @@ export class RestService {
     private handleError(error: any) {
         // bubble the error up to be handled by the component
         RestService.processingRequest = false;
-        return error;
+        throw error;
     }
 }

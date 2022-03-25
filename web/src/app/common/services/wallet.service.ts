@@ -1,14 +1,18 @@
 import {Injectable} from "@angular/core";
 import {Wallet} from "../data/wallet";
 import {WalletObserverService} from "./wallet-observer.service";
+import * as wasm from "../../../assets/scripts/cardano_serialization_lib.min.js";
 
 @Injectable()
 export class WalletService {
     public walletSubstring: string;
     public numWalletCalls: number = 0;
+    public walletLoaded: boolean = false;
 
     constructor(public walletObserver: WalletObserverService) {
-
+        this.walletObserver.loaded$.subscribe(loaded => {
+            this.walletLoaded = loaded;
+        });
     }
 
     /**
@@ -124,22 +128,29 @@ export class WalletService {
             globalThis.walletApi.getNetworkId()
                 .then(data => this.processNetworkId(data))
                 .catch(e => this.handleError(e));
-            globalThis.walletApi.getRewardAddresses()
-                .then(res => this.processRewardAddresses(res))
-                .catch(e => this.handleError(e));
-            globalThis.walletApi.getUtxos()
-                .then(res => this.processUtxos(res))
-                .catch(e => this.handleError(e));
-            globalThis.walletApi.getUnusedAddresses()
-                .then(res => this.processUnusedAddresses(res))
-                .catch(e => this.handleError(e));
-            globalThis.walletApi.experimental.getCollateral()
-                .then(res => this.processCollateral(res))
-                .catch(e => this.handleError(e));
-            globalThis.walletApi.getBalance()
-                .then(res => this.processMaskedBalance(res))
-                .catch(e => this.handleError(e));
+            this.updateWallet();
+            this.numWalletCalls++;
         }
+    }
+
+    public updateWallet() {
+        this.walletObserver.setloaded(false);
+        this.numWalletCalls = 5;
+        globalThis.walletApi.getRewardAddresses()
+            .then(res => this.processRewardAddresses(res))
+            .catch(e => this.handleError(e));
+        globalThis.walletApi.getUtxos()
+            .then(res => this.processUtxos(res))
+            .catch(e => this.handleError(e));
+        globalThis.walletApi.getUnusedAddresses()
+            .then(res => this.processUnusedAddresses(res))
+            .catch(e => this.handleError(e));
+        globalThis.walletApi.experimental.getCollateral()
+            .then(res => this.processCollateral(res))
+            .catch(e => this.handleError(e));
+        globalThis.walletApi.getBalance()
+            .then(res => this.processMaskedBalance(res))
+            .catch(e => this.handleError(e));
     }
 
     /**
@@ -221,6 +232,14 @@ export class WalletService {
      */
     private processMaskedBalance(data: any) {
         globalThis.wallet.maskedBalance = data;
+        try {
+            const balance = wasm.Value.from_bytes(this.hexToBytes(data));
+            globalThis.wallet.lovelaces = balance.coin().to_str();
+            globalThis.wallet.balance = (globalThis.wallet.lovelaces / 1000000);
+            console.log("ADA Balance [" + globalThis.wallet.balance + "]");
+        } catch (e) {
+            console.log(e);
+        }
         if (--this.numWalletCalls === 0) {
             this.walletObserver.setloaded(true);
         }
@@ -266,5 +285,13 @@ export class WalletService {
             return this.walletSubstring;
         }
         return "";
+    }
+
+    public hexToBytes(hex: string) {
+        const bytes = [];
+        for (let i = 0; i < hex.length; i += 2) {
+            bytes.push(parseInt(hex.substring(i, (i + 2)), 16));
+        }
+        return bytes;
     }
 }

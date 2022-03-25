@@ -12,7 +12,7 @@ import {WalletObserverService} from "../common/services/wallet-observer.service"
 import {ImageModule} from "primeng/image";
 import {ModalModule} from "ngx-bootstrap/modal";
 import {RwdNavbarComponent} from "./components/navbar/rwd-navbar.component";
-import {NotifierModule, NotifierOptions} from "angular-notifier";
+import {NotifierContainerComponent, NotifierModule, NotifierOptions} from "angular-notifier";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {TooltipModule} from "ngx-bootstrap/tooltip";
 import {OverlayPanelModule} from "primeng/overlaypanel";
@@ -23,6 +23,7 @@ import {MenubarModule} from "primeng/menubar";
 import {DataViewModule} from "primeng/dataview";
 import {ButtonModule} from "primeng/button";
 import {WalletService} from "../common/services/wallet.service";
+import {FileUploadModule} from "primeng/fileupload";
 
 const customNotifierOptions: NotifierOptions = {
     position: {
@@ -70,7 +71,7 @@ const customNotifierOptions: NotifierOptions = {
 @NgModule({
     declarations: [RwdNavbarComponent, WelcomeComponent, FooterComponent, InfoComponent, DashboardComponent, RewardsComponent,
         FeedbackComponent, HistoryComponent],
-    imports: [CommonModule, ModalModule.forRoot(),
+    imports: [CommonModule, ModalModule.forRoot(), FileUploadModule,
         NotifierModule.withConfig(customNotifierOptions),
         FormsModule, ReactiveFormsModule,
         ModalModule.forRoot(), TooltipModule.forRoot(), OverlayPanelModule,
