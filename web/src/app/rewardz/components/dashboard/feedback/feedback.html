@@ -2,5 +2,54 @@
     <div class="blackdiv" style="width: 600px;height: 300px">
         <h4>FEEDBACK</h4>
         <p>Generic feedback form (depends backend)</p>
+        <form [formGroup] = "feedbackForm" (ngSubmit)="submitFeedback()">
+ 
+            <input type="text" class="form-control col-sm-3 mt-5 mb-5"
+            placeholder="Name.."
+            formContralName = "name"
+            tooltip="Enter your name..">
+            <div *ngIf="feedbackForm.get('name').errors?.required">
+                Name is required
+            </div>
+
+            <input type="text" class="form-control col-sm-3 mt-5 mb-5"
+            placeholder="Email.."
+            formContralName = "email"
+            tooltip="Enter your email..">
+            <div  *ngIf="feedbackForm.get('email').errors?.required">
+                Email is required
+            </div>
+
+            <div  *ngIf="feedbackForm.get('email').errors?.email">
+                Email address is invalid
+            </div>
+
+            <input type="text" class="form-control col-sm-3 mt-5 mb-5"
+            placeholder="Subject.."
+            formContralName = "email"
+            tooltip="Enter the subject..">
+
+            <div  *ngIf="feedbackForm.get('subject').errors?.required">
+                Subject is required
+            </div>
+
+            <input type="text" class="form-control col-sm-3 mt-5 mb-5"
+            placeholder="Message.."
+            formContralName = "message"
+            tooltip="Enter the message..">
+
+            <div  *ngIf="feedbackForm.get('message').errors?.required">
+                Subject is required
+            </div>
+            
+            <div class="row subrow mt-5">
+                <button 
+                        title="Submit Feedback" style="width: unset"
+                        type="submit"
+                        class="p-button p-button-primary ms-3 me-auto"
+                        label="Submit Feedback" icon="fa-solid fa-coins">
+                </button>
+            </div>
+        </form>
     </div>
 </section>
