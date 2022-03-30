@@ -1,6 +1,6 @@
 {
   "/rwd/*": {
-    "target": "http://localhost:4000/rwd/multisig/2/sporwc",
+    "target": "http://localhost:4000/",
     "secure": false,
     "logLevel": "debug",
     "changeOrigin": true,

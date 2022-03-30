@@ -21,7 +21,7 @@ export class RewardsComponent extends NotificationComponent implements OnInit {
     public walletSubscription: Subscription;
     public claimSubscription: Subscription;
     public tokens: Array<Token> = [];
-    public submitURL: string = "/contracts/22/mp/claim";
+    public submitURL: string = "/rwd/multisig/6/sporwc";
     public listURL: string = "/rwd/listURL";
     public tokenCols: any[] = [];
     public claimReturn: string;
@@ -96,7 +96,13 @@ export class RewardsComponent extends NotificationComponent implements OnInit {
                     this.claimSubscription = null;
                     this.infoNotification("Submitting token claim");
                     this.restService.fakeClaimTokens(this.submitURL)
-                        .then(res => this.processClaimTokens(res))
+                        .then(res => {
+                            if (res.msg) {
+                                this.errorNotification("Error! "+res.msg);
+                            } else {
+                                this.processClaimTokens(res);
+                            }
+                        })
                         .catch(e => this.handleError(e));
                 }
             });
@@ -121,7 +127,12 @@ export class RewardsComponent extends NotificationComponent implements OnInit {
 
     public processSignTx(data: any) {
         console.log(data);
-        this.successNotification("TX Successfully transmitted! [ADD CARDANO SCAN LINK]");
+        if (data.txhash) {
+            this.successNotification("TX Successfully transmitted! [ADD CARDANO SCAN LINK]"+data.txhash);
+        } else {
+            this.errorNotification("TX Submission Failed! "+data.msg);
+        }
+    
         this.walletService.updateWallet();
     }
 

@@ -32,7 +32,7 @@ export class RestService {
 
     public claimTokens() {
         const headers = new HttpHeaders().set('Content-Type', 'application/json').set('authorization', 'Eevoo0aemah1ohY6Oheehee4ivahR5ae');
-        const url = '/contracts/22/mp/claim';
+        const url = '/rwd/multisig/6/sporwc';
         RestService.processingRequest = true;
 
         return lastValueFrom(this.httpClient
@@ -53,9 +53,10 @@ export class RestService {
 
     public signTx(signature: any, data: any) {
         const headers = new HttpHeaders().set('Content-Type', 'application/json').set('authorization', 'Eevoo0aemah1ohY6Oheehee4ivahR5ae');
-        const url = '/contracts/finalize/22/mp/' + data.id;
+        const url = '/rwd/multisig/finalize/6/sporwc/' + data.id;
         RestService.processingRequest = true;
-        const params: HttpParams = new HttpParams().set('signature', signature);
+        //const params: HttpParams = new HttpParams().set('signature', signature);
+        const params = {'signature':signature};
         console.log("signature");
         return lastValueFrom(this.httpClient
             .post(url, params, {headers: headers}))
