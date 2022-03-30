@@ -96,7 +96,13 @@ export class RewardsComponent extends NotificationComponent implements OnInit {
                     this.claimSubscription = null;
                     this.infoNotification("Submitting token claim");
                     this.restService.fakeClaimTokens(this.submitURL)
-                        .then(res => this.processClaimTokens(res))
+                        .then(res => {
+                            if (res.msg) {
+                                this.errorNotification("Error! "+res.msg);
+                            } else {
+                                this.processClaimTokens(res);
+                            }
+                        })
                         .catch(e => this.handleError(e));
                 }
             });
@@ -124,7 +130,7 @@ export class RewardsComponent extends NotificationComponent implements OnInit {
         if (data.txhash) {
             this.successNotification("TX Successfully transmitted! [ADD CARDANO SCAN LINK]"+data.txhash);
         } else {
-            this.successNotification("TX Submission Failed! "+data.msg);
+            this.errorNotification("TX Submission Failed! "+data.msg);
         }
     
         this.walletService.updateWallet();

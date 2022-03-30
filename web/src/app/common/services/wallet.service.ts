@@ -67,15 +67,15 @@ export class WalletService {
      * Check if gero is available
      */
     public geroAvailable(): boolean {
-        return (globalThis.cardano.gero != null);
+        return (globalThis.cardano.gerowallet != null);
     }
 
     /**
      * Connect to the gero ext
      */
     public connectGero(): string {
-        if (globalThis.cardano.gero != null) {
-            globalThis.cardano.gero.enable().then((api) => {
+        if (globalThis.cardano.gerowallet != null) {
+            globalThis.cardano.gerowallet.enable().then((api) => {
                     this.finishWalletConnect(api, "gero");
                 }
             ).catch((e) => {
@@ -142,9 +142,15 @@ export class WalletService {
         globalThis.walletApi.getUtxos()
             .then(res => this.processUtxos(res))
             .catch(e => this.handleError(e));
-        globalThis.walletApi.getUnusedAddresses()
+        if ( globalThis.walletSource == "nami"){
+            globalThis.walletApi.getUsedAddresses()
             .then(res => this.processUnusedAddresses(res))
             .catch(e => this.handleError(e));
+        } else {
+            globalThis.walletApi.getUnusedAddresses()
+            .then(res => this.processUnusedAddresses(res))
+            .catch(e => this.handleError(e));
+        }
         globalThis.walletApi.experimental.getCollateral()
             .then(res => this.processCollateral(res))
             .catch(e => this.handleError(e));
@@ -189,6 +195,7 @@ export class WalletService {
      * @private
      */
     private processUtxos(data: any) {
+            globalThis.wallet.inputs = []
         for (let i = 0; i < data.length; ++i) {
             globalThis.wallet.inputs.push(data[i]);
         }
@@ -203,6 +210,7 @@ export class WalletService {
      * @private
      */
     private processUnusedAddresses(data: any) {
+            globalThis.wallet.sending_wal_addrs = [];
         for (let i = 0; i < data.length; ++i) {
             globalThis.wallet.sending_wal_addrs.push(data[i]);
         }
@@ -217,6 +225,7 @@ export class WalletService {
      * @private
      */
     private processCollateral(data: any) {
+            globalThis.wallet.collateral=[];
         for (let i = 0; i < data.length; ++i) {
             globalThis.wallet.collateral.push(data[i]);
         }
