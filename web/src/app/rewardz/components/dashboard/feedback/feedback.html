@@ -7,7 +7,8 @@
                    placeholder="Name.."
                    [formControl]="feedbackForm.controls['name']"
                    tooltip="Enter your name..">
-            <div *ngIf="feedbackForm.get('name').errors?.required" class="invalid-error">
+            <div *ngIf="feedbackForm.get('name').errors?.required
+                && (feedbackForm.get('name').dirty || feedbackForm.get('name').touched)" class="invalid-error">
                 Name is required
             </div>
 
@@ -15,11 +16,13 @@
                    placeholder="Email.."
                    [formControl]="feedbackForm.controls['email']"
                    tooltip="Enter your email..">
-            <div *ngIf="feedbackForm.get('email').errors?.required" class="invalid-error">
+            <div *ngIf="feedbackForm.get('email').errors?.required
+                    && (feedbackForm.get('email').dirty || feedbackForm.get('email').touched)" class="invalid-error">
                 Email is required
             </div>
 
-            <div *ngIf="feedbackForm.get('email').errors?.email" class="invalid-error">
+            <div *ngIf="feedbackForm.get('email').errors?.email
+                        && (feedbackForm.get('email').dirty || feedbackForm.get('email').touched)" class="invalid-error">
                 Email address is invalid
             </div>
 
@@ -28,7 +31,8 @@
                    [formControl]="feedbackForm.controls['subject']"
                    tooltip="Enter the subject..">
 
-            <div *ngIf="feedbackForm.get('subject').errors?.required" class="invalid-error">
+            <div *ngIf="feedbackForm.get('subject').errors?.required
+                && (feedbackForm.get('subject').dirty || feedbackForm.get('subject').touched)" class="invalid-error">
                 Subject is required
             </div>
 
@@ -37,7 +41,8 @@
                    [formControl]="feedbackForm.controls['message']"
                    tooltip="Enter the message..">
 
-            <div *ngIf="feedbackForm.get('message').errors?.required" class="invalid-error">
+            <div *ngIf="feedbackForm.get('message').errors?.required
+                        && (feedbackForm.get('message').dirty || feedbackForm.get('message').touched)" class="invalid-error">
                 Message is required
             </div>
 

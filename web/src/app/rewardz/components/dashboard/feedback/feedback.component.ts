@@ -25,9 +25,8 @@ export class FeedbackComponent extends NotificationComponent {
 
 
     public submitFeedback() {
-        console.log('Here');
-        // if (this.feedbackForm.valid) {
-        //     console.log('Form submitted')
-        // }
+        if (this.feedbackForm.valid) {
+            console.log(this.feedbackForm.value)
+        }
     }
 }
