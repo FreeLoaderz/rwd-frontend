@@ -2,5 +2,59 @@
     <div class="blackdiv" style="width: 600px;height: 300px">
         <h4>FEEDBACK</h4>
         <p>Generic feedback form (depends backend)</p>
+        <form [formGroup]="feedbackForm" (ngSubmit)="submitFeedback()">
+            <input type="text" class="form-control col-sm-3 mt-5 mb-5"
+                   placeholder="Name.."
+                   [formControl]="feedbackForm.controls['name']"
+                   tooltip="Enter your name..">
+            <div *ngIf="feedbackForm.get('name').errors?.required
+                && (feedbackForm.get('name').dirty || feedbackForm.get('name').touched)" class="invalid-error">
+                Name is required
+            </div>
+
+            <input type="text" class="form-control col-sm-3 mt-5 mb-5"
+                   placeholder="Email.."
+                   [formControl]="feedbackForm.controls['email']"
+                   tooltip="Enter your email..">
+            <div *ngIf="feedbackForm.get('email').errors?.required
+                    && (feedbackForm.get('email').dirty || feedbackForm.get('email').touched)" class="invalid-error">
+                Email is required
+            </div>
+
+            <div *ngIf="feedbackForm.get('email').errors?.email
+                        && (feedbackForm.get('email').dirty || feedbackForm.get('email').touched)" class="invalid-error">
+                Email address is invalid
+            </div>
+
+            <input type="text" class="form-control col-sm-3 mt-5 mb-5"
+                   placeholder="Subject.."
+                   [formControl]="feedbackForm.controls['subject']"
+                   tooltip="Enter the subject..">
+
+            <div *ngIf="feedbackForm.get('subject').errors?.required
+                && (feedbackForm.get('subject').dirty || feedbackForm.get('subject').touched)" class="invalid-error">
+                Subject is required
+            </div>
+
+            <input type="text" class="form-control col-sm-3 mt-5 mb-5"
+                   placeholder="Message.."
+                   [formControl]="feedbackForm.controls['message']"
+                   tooltip="Enter the message..">
+
+            <div *ngIf="feedbackForm.get('message').errors?.required
+                        && (feedbackForm.get('message').dirty || feedbackForm.get('message').touched)" class="invalid-error">
+                Message is required
+            </div>
+
+            <div class="row subrow mt-5">
+                <button pButton
+                        [disabled]="!feedbackForm.valid"
+                        title="Submit Feedback" style="width: unset"
+                        type="submit"
+                        class="p-button p-button-primary ms-3 me-auto"
+                        label="Submit Feedback" icon="fa-solid fa-paper-plane">
+                </button>
+            </div>
+        </form>
     </div>
 </section>
