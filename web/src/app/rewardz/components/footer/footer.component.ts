@@ -10,10 +10,7 @@ import {Component, Injectable} from "@angular/core";
  *
  */
 export class FooterComponent {
-    public year: number;
 
     constructor() {
-        const now = new Date();
-        this.year = now.getFullYear();
     }
 }
