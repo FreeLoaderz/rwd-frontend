@@ -1,6 +1,7 @@
 import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
 import {Injectable} from "@angular/core";
 import {lastValueFrom} from "rxjs";
+import * as wasm from "../../../assets/scripts/cardano_serialization_lib.min.js";
 
 @Injectable()
 export class RestService {
@@ -10,29 +11,30 @@ export class RestService {
     }
 
     public listTokens() {
-        const headers = new HttpHeaders().set('Content-Type', 'application/json').set('authorization', 'Eevoo0aemah1ohY6Oheehee4ivahR5ae');
-        const url = '/contracts/22/mp/list';
+        const headers = new HttpHeaders().set('authorization', 'Eevoo0aemah1ohY6Oheehee4ivahR5ae');
+        const url = '/rwdinfo/rewards/all/'+ globalThis.wallet.sending_stake_addr;
         RestService.processingRequest = true;
 
         return lastValueFrom(this.httpClient
-            .post(url, globalThis.wallet, {headers: headers}))
+            .get(url, {headers: headers}))
             .then(res => this.processResponse(res))
             .catch(this.handleError);
     }
 
     public fakeListTokens(url: string) {
-        const headers = new HttpHeaders().set('Content-Type', 'application/json').set('authorization', 'Eevoo0aemah1ohY6Oheehee4ivahR5ae');
+        const headers = new HttpHeaders().set('authorization', 'Eevoo0aemah1ohY6Oheehee4ivahR5ae');
+        const urln = url + "/" + globalThis.wallet.sending_stake_addr;
         RestService.processingRequest = true;
 
         return lastValueFrom(this.httpClient
-            .post(url, globalThis.wallet, {headers: headers}))
+            .get(urln, {headers: headers}))
             .then(res => this.processResponse(res))
             .catch(this.handleError);
     }
 
     public claimTokens() {
         const headers = new HttpHeaders().set('Content-Type', 'application/json').set('authorization', 'Eevoo0aemah1ohY6Oheehee4ivahR5ae');
-        const url = '/rwd/multisig/6/sporwc';
+        const url = '/rwdbuild/multisig/6/sporwc';
         RestService.processingRequest = true;
 
         return lastValueFrom(this.httpClient
@@ -53,7 +55,7 @@ export class RestService {
 
     public signTx(signature: any, data: any) {
         const headers = new HttpHeaders().set('Content-Type', 'application/json').set('authorization', 'Eevoo0aemah1ohY6Oheehee4ivahR5ae');
-        const url = '/rwd/multisig/finalize/6/sporwc/' + data.id;
+        const url = '/rwdbuild/multisig/finalize/6/sporwc/' + data.id;
         RestService.processingRequest = true;
         //const params: HttpParams = new HttpParams().set('signature', signature);
         const params = {'signature':signature};
@@ -77,5 +79,13 @@ export class RestService {
         // bubble the error up to be handled by the component
         RestService.processingRequest = false;
         throw error;
+    }
+
+    public hexToBytes(hex: string) {
+        const bytes = [];
+        for (let i = 0; i < hex.length; i += 2) {
+            bytes.push(parseInt(hex.substring(i, (i + 2)), 16));
+        }
+        return bytes;
     }
 }

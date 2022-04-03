@@ -21,8 +21,8 @@ export class RewardsComponent extends NotificationComponent implements OnInit {
     public walletSubscription: Subscription;
     public claimSubscription: Subscription;
     public tokens: Array<Token> = [];
-    public submitURL: string = "/rwd/multisig/6/sporwc";
-    public listURL: string = "/rwd/listURL";
+    public submitURL: string = "/rwdbuild/multisig/6/sporwc";
+    public listURL: string = "/rwdinfo/rewards/all";
     public tokenCols: any[] = [];
     public claimReturn: string;
     public listReturn: string;
@@ -68,8 +68,18 @@ export class RewardsComponent extends NotificationComponent implements OnInit {
     }
 
     public processTokenList(data: any) {
+        this.tokens = [];
         console.log("processTokenList");
         console.log(data);
+        for (let i = 0; i < data.length; ++i) {
+            console.log(data[i])
+            const newToken = new Token(null);
+            newToken.tokenname = data[i].tokenname;
+            newToken.currencysymbol = data[i].policy;
+            newToken.fingerprint = data[i].fingerprint;
+            newToken.amount = data[i].tot_earned - data[i].tot_claimed;
+            this.tokens.push(newToken);
+        }
         // push each to availableTokens
     }
 
