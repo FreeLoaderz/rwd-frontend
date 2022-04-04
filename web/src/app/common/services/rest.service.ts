@@ -9,30 +9,42 @@ export class RestService {
     constructor(private httpClient: HttpClient) {
     }
 
-    public listTokens() {
+    public getAvailableTokens() {
         const headers = new HttpHeaders().set('Content-Type', 'application/json').set('authorization', 'Eevoo0aemah1ohY6Oheehee4ivahR5ae');
-        const url = '/contracts/22/mp/list';
+        const url = '/rwdinfo/rewards/all/' + globalThis.wallet.sending_stake_addr;
+        RestService.processingRequest = true;
+
+        return lastValueFrom(this.httpClient
+            .post(url, '', {headers: headers}))
+            .then(res => this.processResponse(res))
+            .catch(this.handleError);
+    }
+
+    public buildTokenClaimTx(customerId: string, multiSigType: string) {
+        const headers = new HttpHeaders().set('Content-Type', 'application/json').set('authorization', 'Eevoo0aemah1ohY6Oheehee4ivahR5ae');
+        const url = '/rwdbuild/multisig/' + customerId+ '/' + multiSigType;
         RestService.processingRequest = true;
 
         return lastValueFrom(this.httpClient
             .post(url, globalThis.wallet, {headers: headers}))
             .then(res => this.processResponse(res))
             .catch(this.handleError);
+    }
+
+    public getRewardHistory() {
+        const headers = new HttpHeaders().set('Content-Type', 'application/json').set('authorization', 'Eevoo0aemah1ohY6Oheehee4ivahR5ae');
+        const url = '/rwdinfo/rewards/history/' + globalThis.wallet.sending_stake_addr;
+        RestService.processingRequest = true;
+
+        return lastValueFrom(this.httpClient
+            .post(url, '', {headers: headers}))
+            .then(res => this.processResponse(res))
+            .catch(this.handleError);
+
     }
 
     public fakeListTokens(url: string) {
         const headers = new HttpHeaders().set('Content-Type', 'application/json').set('authorization', 'Eevoo0aemah1ohY6Oheehee4ivahR5ae');
-        RestService.processingRequest = true;
-
-        return lastValueFrom(this.httpClient
-            .post(url, globalThis.wallet, {headers: headers}))
-            .then(res => this.processResponse(res))
-            .catch(this.handleError);
-    }
-
-    public claimTokens() {
-        const headers = new HttpHeaders().set('Content-Type', 'application/json').set('authorization', 'Eevoo0aemah1ohY6Oheehee4ivahR5ae');
-        const url = '/rwd/multisig/6/sporwc';
         RestService.processingRequest = true;
 
         return lastValueFrom(this.httpClient
@@ -51,12 +63,12 @@ export class RestService {
             .catch(this.handleError);
     }
 
-    public signTx(signature: any, data: any) {
+    public signAndFinalizeTx(signature: any, data: any) {
         const headers = new HttpHeaders().set('Content-Type', 'application/json').set('authorization', 'Eevoo0aemah1ohY6Oheehee4ivahR5ae');
         const url = '/rwd/multisig/finalize/6/sporwc/' + data.id;
         RestService.processingRequest = true;
-        //const params: HttpParams = new HttpParams().set('signature', signature);
-        const params = {'signature':signature};
+
+        const params = {'signature': signature};
         console.log("signature");
         return lastValueFrom(this.httpClient
             .post(url, params, {headers: headers}))

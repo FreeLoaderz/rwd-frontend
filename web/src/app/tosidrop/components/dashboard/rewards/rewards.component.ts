@@ -32,7 +32,7 @@ export class RewardsComponent extends NotificationComponent implements OnInit {
 
     public listTokens() {
         globalThis.avialableTokens = new AvailableTokens();
-        this.restService.listTokens()
+        this.restService.getAvailableTokens()
             .then(res => this.processTokenList(res))
             .catch(e => this.handleError(e));
     }
@@ -44,7 +44,7 @@ export class RewardsComponent extends NotificationComponent implements OnInit {
     }
 
     public claimSelectedTokens() {
-        this.restService.claimTokens()
+        this.restService.buildTokenClaimTx()
             .then(res => this.processClaimTokens(res))
             .catch(e => this.handleError(e));
     }
