@@ -21,8 +21,8 @@ export class RewardsComponent extends NotificationComponent implements OnInit {
     public walletSubscription: Subscription;
     public claimSubscription: Subscription;
     public tokens: Array<Token> = [];
-    public submitURL: string = "/rwd/multisig/6/sporwc";
-    public listURL: string = "/rwd/listURL";
+    public submitURL: string = "/rwdbuild/multisig/6/sporwc";
+    public listURL: string = "/rwdinfo/rewards/all";
     public tokenCols: any[] = [];
     public claimReturn: string;
     public listReturn: string;
@@ -44,7 +44,9 @@ export class RewardsComponent extends NotificationComponent implements OnInit {
         this.walletSubscription = this.walletObserverService.loaded$.subscribe(
             loaded => {
                 this.walletLoaded = loaded;
-//                this.listTokens();
+                if (loaded === true) {
+                    this.listTokens();
+                }
             }
         );
         this.walletLoaded = this.walletService.walletLoaded;
@@ -59,17 +61,24 @@ export class RewardsComponent extends NotificationComponent implements OnInit {
         this.claimReturn = null;
         console.log(globalThis.wallet);
         globalThis.avialableTokens = new AvailableTokens();
-        this.restService.fakeListTokens(this.listURL)
+        this.restService.getAvailableTokens()
             .then(res => this.processTokenList(res))
             .catch(e => this.handleError(e));
-//        this.restService.listTokens()
-        //          .then(res => this.processTokenList(res))
-        //        .catch(e => this.handleError(e));
     }
 
     public processTokenList(data: any) {
+        this.tokens = [];
         console.log("processTokenList");
         console.log(data);
+        for (let i = 0; i < data.length; ++i) {
+            console.log(data[i]);
+            const newToken = new Token(null);
+            newToken.tokenname = data[i].tokenname;
+            newToken.currencysymbol = data[i].policy;
+            newToken.fingerprint = data[i].fingerprint;
+            newToken.amount = data[i].tot_earned - data[i].tot_claimed;
+            this.tokens.push(newToken);
+        }
         // push each to availableTokens
     }
 
@@ -77,9 +86,9 @@ export class RewardsComponent extends NotificationComponent implements OnInit {
         if (this.claimSubscription == null) {
             this.claimSubscription = this.walletObserverService.loaded$.subscribe(loaded => {
                 if (loaded) {
-                    /**    this.restService.claimTokens()
+                        this.restService.buildTokenClaimTx("6", "sporwc")
                      .then(res => this.processClaimTokens(res))
-                     .catch(e => this.handleError(e));**/
+                     .catch(e => this.handleError(e));
                     this.claimReturn = null;
                     console.log("claimSelectedTokens");
                     globalThis.wallet.script = new Script(null);
@@ -98,7 +107,7 @@ export class RewardsComponent extends NotificationComponent implements OnInit {
                     this.restService.fakeClaimTokens(this.submitURL)
                         .then(res => {
                             if (res.msg) {
-                                this.errorNotification("Error! "+res.msg);
+                                this.errorNotification("Error! " + res.msg);
                             } else {
                                 this.processClaimTokens(res);
                             }
@@ -119,7 +128,7 @@ export class RewardsComponent extends NotificationComponent implements OnInit {
         const signature = globalThis.walletApi.signTx(data.tx, true);
         signature.then((finalSignature: Observable<string>) => {
             console.log(finalSignature);
-            this.restService.signTx(finalSignature, data)
+            this.restService.signAndFinalizeTx(finalSignature, data)
                 .then(res => this.processSignTx(res))
                 .catch(e => this.handleError(e));
         });
@@ -128,11 +137,11 @@ export class RewardsComponent extends NotificationComponent implements OnInit {
     public processSignTx(data: any) {
         console.log(data);
         if (data.txhash) {
-            this.successNotification("TX Successfully transmitted! [ADD CARDANO SCAN LINK]"+data.txhash);
+            this.successNotification("TX Successfully transmitted! [ADD CARDANO SCAN LINK]" + data.txhash);
         } else {
-            this.errorNotification("TX Submission Failed! "+data.msg);
+            this.errorNotification("TX Submission Failed! " + data.msg);
         }
-    
+
         this.walletService.updateWallet();
     }
 

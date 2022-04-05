@@ -1,11 +1,28 @@
 {
-  "/rwd/*": {
-    "target": "http://localhost:4000/",
+  "/rwdbuild": {
+    "target": {
+      "host": "3.12.169.113",
+      "protocol": "http",
+      "port": 4000
+    },
     "secure": false,
     "logLevel": "debug",
     "changeOrigin": true,
     "pathRewrite": {
-      "^/rwd": ""
+      "^/rwdbuild": ""
+    }
+  },
+  "/rwdinfo": {
+    "target": {
+      "host": "3.131.11.216",
+      "protocol": "http",
+      "port": 4000
+    },
+    "secure": false,
+    "logLevel": "debug",
+    "changeOrigin": true,
+    "pathRewrite": {
+      "^/rwdinfo": ""
     }
   }
 }

@@ -25,7 +25,7 @@ export class RewardsComponent extends NotificationComponent implements OnInit {
     public ngOnInit() {
         this.walletSubscription = this.walletObserverService.loaded$.subscribe(
             loaded => {
-                this.listTokens();
+      //          this.listTokens();
             }
         );
     }
@@ -44,16 +44,16 @@ export class RewardsComponent extends NotificationComponent implements OnInit {
     }
 
     public claimSelectedTokens() {
-        this.restService.buildTokenClaimTx()
-            .then(res => this.processClaimTokens(res))
-            .catch(e => this.handleError(e));
+   //     this.restService.buildTokenClaimTx()
+     //       .then(res => this.processClaimTokens(res))
+       //     .catch(e => this.handleError(e));
     }
 
     public processClaimTokens(data: any) {
         const signature = globalThis.walletApi.signTx(data.tx, true);
         signature.then((finalSignature: Observable<string>) => {
             console.log(finalSignature);
-            this.restService.signTx(finalSignature, data)
+            this.restService.signAndFinalizeTx(finalSignature, data)
                 .then(res => this.processSignTx(res))
                 .catch(e => this.handleError(e));
         });
