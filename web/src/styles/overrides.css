@@ -406,3 +406,9 @@ a.p-button > p-image {
     transform: rotate(360deg);
 }
 }
+.p-dataview .p-dataview-content {
+    background-color: transparent !important;
+}
+.p-grid {
+    background-color: transparent !important;
+}

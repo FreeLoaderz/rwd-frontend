@@ -3,6 +3,7 @@ export class Token {
     public currencysymbol: string;
     public fingerprint: string;
     public amount: number;
+    public selected: boolean = false;
 
     constructor(data: any) {
         if (data != null) {

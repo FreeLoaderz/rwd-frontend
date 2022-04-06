@@ -38,6 +38,7 @@ h4 {
     border: 1px solid #dee2e6;
     max-width: 30vw !important;
     min-width: 325px !important;
+    background-color: black !important;
 }
 
 .grid-item-top,
@@ -274,21 +275,32 @@ li + li {
 }
 
 .grid-item {
+    border: none !important;
     margin: .5em;
-    border: 1px solid black;
-    max-width: 225px !important;
-    min-width: 225px !important;
-    max-height: 225px !important;
-    min-height: 225px !important;
+    -moz-border-radius: 25px 25px 25px 25px !important;
+    -webkit-border-radius: 25px !important;
+    border-radius: 25px 25px 25px 25px !important;
+    -moz-box-shadow: 3px 3px 5px #000000FF !important;
+    -webkit-box-shadow: 3px 3px 5px #000000FF !important;
+    box-shadow: 6px 6px 9px #1c1c1c !important;
+
+    max-width: 200px !important;
+    min-width: 200px !important;
+    max-height: 200px !important;
+    min-height: 200px !important;
+}
+.grid-item:active, .grid-item:focus, .grid-item:hover {
+    box-shadow: 8px 8px 14px 0px rgb(0, 0, 0) !important;
+    transform: scale(1.1, 1.1);
 }
 
 .grid-item-top,
 .grid-item-bottom {
+    color: white !important;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding-top: 5px;
-    padding-bottom: 5px;
+    padding: 10px 10px 10px 10px;
 }
 
 .grid-item-content {

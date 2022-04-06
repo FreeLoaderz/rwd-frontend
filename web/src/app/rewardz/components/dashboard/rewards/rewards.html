@@ -1,85 +1,30 @@
 <section id="rewards">
-    <div class="blackdiv" style="width: 100%;height: 100%">
-        <h4>REWARDS</h4>
-        <input type="text" class="form-control col-sm-3 mt-5"
-               placeholder="LIST TOKENS URL.."
-               [(ngModel)]="listURL"
-               tooltip="Enter the List Tokens URL..">
-        <div class="row subrow mt-5">
-            <button pButton [disabled]="(listURL == null || listURL === '' || (disableButtons()))"
-                    title="List tokens" style="width: unset"
-                    (click)="listTokens()" class="p-button p-button-primary ms-3 me-auto"
-                    label="List Tokens" icon="fa-solid fa-coins">
-            </button>
-        </div>
-        <div class="row">
-            <span *ngIf="listReturn != null" [ngModel]="listReturn"></span>
-        </div>
-
-        <input type="text" class="form-control col-sm-3 mt-5 mb-5"
-               placeholder="URL.."
-               [(ngModel)]="submitURL"
-               tooltip="Enter the submit URL..">
-        <p-table #tokenTable [columns]="tokenCols" [value]="tokens"
-                 exportFilename="tokens" (onEditComplete)="onEditComplete($event)"
-                 [resizableColumns]="true" [rowHover]="true">
-            <ng-template pTemplate="caption">
-                <div class="ui-helper-clearfix" style="height: 20px !important;">
-                    <button type="button" pButton icon="fa-solid fa-download" iconPos="left"
-                            label=""
-                            title="Export CSV"
-                            (click)="tokenTable.exportCSV()"
-                            style="float: right;margin-top: -10px !important;"></button>
-                    <button type="button" pButton icon="fa-solid fa-plus" iconPos="left"
-                            label=""
-                            title="Add Token"
-                            class="p-button p-button-success ms-auto me-2"
-                            (click)="addRow()"
-                            style="float: right;margin-top: -10px !important;"></button>
+    <div style="width: 100%;height: 100%">
+        <p-dataView #tokenView [value]="tokens" layout="grid" filterBy="tokenname">
+            <ng-template let-token pTemplate="gridItem">
+                <div class="ms-auto me-auto" style="padding:0 !important;">
+                    <div class="grid-item">
+                        <div class="grid-item-top">
+                            <span class="ms-2">{{token.amount}} available</span>
+                        </div>
+                        <div class="grid-item-content">
+                            <img src="assets/ada.png">
+                            <button *ngIf="!token.selected" pButton
+                                    title="Claim Token"
+                                    (click)="toggleSelect(token)"
+                                    class="p-button p-button-rounded p-button-primary ms-auto me-auto mb-2"
+                                    label="Claim Token" icon="fa-solid fa-square">
+                            </button>
+                            <button *ngIf="token.selected" pButton
+                                    title="Claim Token"
+                                    (click)="toggleSelect(token)"
+                                    class="p-button p-button-rounded p-button-success ms-auto me-auto mb-2"
+                                    label="Claim Token" icon="fa-solid fa-square-check">
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </ng-template>
-            <ng-template pTemplate="header" let-columns>
-                <tr>
-                    <th *ngFor="let col of columns" [pSortableColumn]="col.field" pResizableColumn>
-                        {{col.header}}
-                        <p-sortIcon [field]="col.field"></p-sortIcon>
-                    </th>
-                    <th>Delete</th>
-                </tr>
-            </ng-template>
-            <ng-template pTemplate="body" let-rowData let-columns="columns">
-                <tr>
-                    <td *ngFor="let col of columns" pEditableColumn [pEditableColumn]="rowData"
-                        [pEditableColumnField]="col.field">
-                        <p-cellEditor>
-                            <ng-template pTemplate="input">
-                                <input pInputText type="text" [(ngModel)]="rowData[col.field]">
-                            </ng-template>
-                            <ng-template pTemplate="output">
-                                <span tooltip="Click to edit">{{rowData[col.field]}}</span>
-                            </ng-template>
-                        </p-cellEditor>
-                    </td>
-                    <td class="text-center">
-                        <button pButton class="p-button p-button-danger" title="Delete this row"
-                                icon="fa-solid fa-trash-can" (click)="delete(rowData)"></button>
-                    </td>
-                </tr>
-            </ng-template>
-        </p-table>
-        <div class="row subrow mt-5">
-            <button pButton [disabled]="(tokens.length === 0 || submitURL == null || submitURL === '' || disableButtons())"
-                    title="Claim tokens" style="width: unset"
-                    (click)="claimSelectedTokens()" class="p-button p-button-primary ms-3 me-auto"
-                    label="Claim" icon="fa-solid fa-coins">
-            </button>
-            <p-fileUpload #fileUpload style="width: unset" class="ms-auto me-2" customUpload="true" [mode]="'basic'"
-                          [auto]="true"
-                          maxFileSize="1000000" (uploadHandler)="onUpload($event)"
-                          chooseLabel="Upload CSV"></p-fileUpload>
-        </div>
-        <div class="row">
-            <span *ngIf="claimReturn != null" [ngModel]="claimReturn"></span>
-        </div>
+        </p-dataView>
     </div>
 </section>
