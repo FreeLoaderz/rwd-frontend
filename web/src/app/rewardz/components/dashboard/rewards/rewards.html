@@ -1,14 +1,19 @@
-<section id="rewards">
-    <div style="width: 100%;height: 100%">
+<section id="rewards" style="height: 100vh">
+    <div *ngIf="walletLoaded" style="width: 80vw;height: 100vh">
+        <div style="display:flex">
+            <h4 style="color: white">Available Rewards</h4>
+        </div>
         <p-dataView #tokenView [value]="tokens" layout="grid" filterBy="tokenname">
             <ng-template let-token pTemplate="gridItem">
-                <div class="ms-auto me-auto" style="padding:0 !important;">
+                <div class="ms-4 mb-4" style="padding:0 !important;">
                     <div class="grid-item">
                         <div class="grid-item-top">
                             <span class="ms-2">{{token.amount}} available</span>
                         </div>
-                        <div class="grid-item-content">
+                        <div class="grid-item-content" style="margin-top: 0.75rem !important;">
                             <img src="assets/ada.png">
+                        </div>
+                        <div class="grid-item-bottom">
                             <button *ngIf="!token.selected" pButton
                                     title="Claim Token"
                                     (click)="toggleSelect(token)"
@@ -25,6 +30,20 @@
                     </div>
                 </div>
             </ng-template>
+            <ng-template pTemplate="empty">
+                <h4 style="color: white">No tokens available to be claimed</h4>
+            </ng-template>
         </p-dataView>
+        <div style="display: flex">
+            <button *ngIf="selectedTokens.size > 0" pButton
+                    title="Submit Claims" style="float: right"
+                    (click)="claimSelectedTokens()"
+                    class="p-button p-button-rounded p-button-primary ms-auto me-5"
+                    label="Submit Claims" icon="fa-solid fa-coins">
+            </button>
+        </div>
+    </div>
+    <div *ngIf="!walletLoaded" style="width: 100%;height: 100%">
+        <h4 style="color: white"><i class="fa-solid fa-spinner request-spinner me-2"></i>Searching for tokens...</h4>
     </div>
 </section>

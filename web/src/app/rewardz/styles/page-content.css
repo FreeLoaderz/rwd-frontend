@@ -35,7 +35,6 @@ h4 {
 
 .grid-item {
     margin: .5em;
-    border: 1px solid #dee2e6;
     max-width: 30vw !important;
     min-width: 325px !important;
     background-color: black !important;
@@ -49,7 +48,10 @@ h4 {
     padding-top: 5px;
     padding-bottom: 5px;
 }
-
+.grid-item-bottom {
+    position: relative;
+    bottom: -15px;
+}
 .grid-item-content {
     text-align: center;
 }
@@ -282,7 +284,7 @@ li + li {
     border-radius: 25px 25px 25px 25px !important;
     -moz-box-shadow: 3px 3px 5px #000000FF !important;
     -webkit-box-shadow: 3px 3px 5px #000000FF !important;
-    box-shadow: 6px 6px 9px #1c1c1c !important;
+    box-shadow: 6px 6px 9px #000000FF !important;
 
     max-width: 200px !important;
     min-width: 200px !important;

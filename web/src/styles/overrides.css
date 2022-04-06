@@ -249,11 +249,6 @@ a {
 a:hover {
     cursor: pointer !important;
     color: #8bcbff !important;
-    text-shadow: 0 0 4px #8bcbff,
-    0 0 8px #8bcbff,
-    0 0 16px rgb(0, 102, 255),
-    0 0 24px rgb(0, 102, 255),
-    0 0 36px rgb(0, 102, 255) !important;
 }
 
 a:focus,
@@ -273,11 +268,6 @@ a:active {
 .spanlink:hover {
     cursor: pointer !important;
     color: #8bcbff !important;
-    text-shadow: 0 0 4px #8bcbff,
-    0 0 8px #8bcbff,
-    0 0 16px rgb(0, 102, 255),
-    0 0 24px rgb(0, 102, 255),
-    0 0 36px rgb(0, 102, 255) !important;
 }
 
 .spanlink:focus,
@@ -392,6 +382,11 @@ a.p-button > p-image {
     height: auto !important;
 }
 
+button.p-button:hover, button.p-button:active  {
+    cursor: pointer !important;
+    color: #8bcbff !important;
+ }
+
 .request-spinner {
     color: #FFFFFF !important;
     -webkit-animation: fa-spin 2s infinite linear;
@@ -412,3 +407,7 @@ a.p-button > p-image {
 .p-grid {
     background-color: transparent !important;
 }
+.p-dataview-emptymessage {
+    color: white !important;
+}
+
