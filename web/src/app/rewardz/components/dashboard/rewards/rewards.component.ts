@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewChild} from "@angular/core";
+import {Component, OnDestroy, OnInit, ViewChild} from "@angular/core";
 import {NotificationComponent} from "../../../../common/components/notification/notification.component";
 import {Router} from "@angular/router";
 import {NotifierService} from "angular-notifier";
@@ -18,7 +18,7 @@ import {Title} from "@angular/platform-browser";
     templateUrl: './rewards.html'
 })
 
-export class RewardsComponent extends NotificationComponent implements OnInit {
+export class RewardsComponent extends NotificationComponent implements OnInit, OnDestroy {
     public walletSubscription: Subscription;
     public claimSubscription: Subscription;
     public tokens: Array<Token> = [];
@@ -51,6 +51,10 @@ export class RewardsComponent extends NotificationComponent implements OnInit {
         if (this.walletLoaded === true) {
             this.listTokens();
         }
+    }
+
+    public ngOnDestroy() {
+        this.walletSubscription.unsubscribe();
     }
 
     public listTokens() {

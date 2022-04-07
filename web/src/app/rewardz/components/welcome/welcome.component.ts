@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import {Title} from "@angular/platform-browser";
 
 @Component({
     selector: 'welcome',
@@ -10,6 +11,7 @@ import {Component} from '@angular/core';
  */
 export class WelcomeComponent {
 
-    constructor() {
+    constructor(public titleService: Title) {
+        this.titleService.setTitle("Smart Claimz");
     }
 }

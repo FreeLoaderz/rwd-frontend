@@ -1,7 +1,7 @@
 <section id="rewards" style="height: 100vh">
     <div *ngIf="walletLoaded" style="width: 80vw;height: 100vh">
         <div style="display:flex">
-            <h4 style="color: white">Available Rewards</h4>
+            <h4>Available Rewards</h4>
         </div>
         <p-dataView #tokenView [value]="tokens" layout="grid" filterBy="tokenname">
             <ng-template let-token pTemplate="gridItem">
@@ -31,7 +31,7 @@
                 </div>
             </ng-template>
             <ng-template pTemplate="empty">
-                <h4 style="color: white">No tokens available to be claimed</h4>
+                <h4>No tokens available to be claimed</h4>
             </ng-template>
         </p-dataView>
         <div style="display: flex">
@@ -44,6 +44,6 @@
         </div>
     </div>
     <div *ngIf="!walletLoaded" style="width: 100%;height: 100%">
-        <h4 style="color: white"><i class="fa-solid fa-spinner request-spinner me-2"></i>Searching for tokens...</h4>
+        <h4><i class="fa-solid fa-spinner request-spinner me-2"></i>Searching for tokens...</h4>
     </div>
 </section>

@@ -1,8 +1,41 @@
 <section id="rewards">
-    <div class="blackdiv" style="width: 600px;height: 300px">
-        <h4>HISTORY</h4>
-        <p>Automatically get Claim history (depends backend)</p>
-        <p>Show simple history</p>
-        <p>Allow user to select history for details</p>
+    <h4>HISTORY</h4>
+<!--
+    <div *ngIf="!walletLoaded" style="width: 100%;height: 100%">
+        <h4><i class="fa-solid fa-spinner request-spinner me-2"></i>Searching for tokens...</h4>
+    </div>
+-->
+    <div *ngIf="claimHistoryArray.length === 0" style="width: 65vw;height: 85vh">
+        <h4>No claim history available</h4>
+    </div>
+    <div *ngIf="claimHistoryArray.length > 0" class="blackdiv" style="width: 65vw;height: 85vh">
+        <p-table  #historyTable [columns]="historyCols" [value]="claimHistoryArray"
+                 exportFilename="{{exportFileName}}"
+                 [resizableColumns]="true" [rowHover]="true">
+            <ng-template pTemplate="caption">
+                <div class="ui-helper-clearfix" style="height: 20px !important;">
+                    <button type="button" pButton icon="fa-solid fa-download" iconPos="left"
+                            label="CSV"
+                            title="Export CSV"
+                            (click)="historyTable.exportCSV()"
+                            style="float: right;margin-top: -10px !important;"></button>
+                </div>
+            </ng-template>
+            <ng-template pTemplate="header" let-columns>
+                <tr>
+                    <th *ngFor="let col of columns" [pSortableColumn]="col.field" pResizableColumn>
+                        {{col.header}}
+                        <p-sortIcon [field]="col.field"></p-sortIcon>
+                    </th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-rowData let-columns="columns">
+                <tr>
+                    <td *ngFor="let col of columns" [ngSwitch]="col.field" class="ui-resizable-column">
+                        <span *ngSwitchDefault>{{rowData[col.field]}}</span>
+                    </td>
+                </tr>
+            </ng-template>
+        </p-table>
     </div>
 </section>

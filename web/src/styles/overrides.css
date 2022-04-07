@@ -118,96 +118,6 @@ body {
     border-width: 1px 1px 1px 1px !important;
 }
 
-.p-menubar {
-    padding-right: 0 !important;
-    background: #010919 !important;
-    color: #fff !important;
-    border: 0px !important;
-}
-
-.p-menubar .p-menuitem-link .p-menuitem-icon {
-    margin-left: .5em !important;
-}
-
-.p-menubar .p-submenu-list {
-    border: 0px !important;
-    width: fit-content !important;
-    padding-right: 3px;
-}
-
-.p-menubar .p-menubar-root-list {
-    overflow: visible !important;
-}
-
-.p-menubar .p-menubar-root-list > .p-menuitem > .p-menuitem-link:hover {
-    background: #626262 !important;
-    color: #FFFFFF !important;
-}
-
-.p-menubar .p-menuitem-link {
-    padding: 6px 6px !important;
-    background: #010919 !important;
-    color: #fff;
-    font-size: 1rem !important;
-    border: 0px !important;
-}
-
-.p-menubar .p-menubar-root-list {
-    width: fit-content !important;
-    overflow: visible !important;
-}
-
-.p-menubar .p-menubar-root-list > .p-menuitem > .p-menuitem-link {
-    width: fit-content !important;
-    overflow: visible !important;
-}
-
-.p-menubar .p-menubar-root-list > .p-menuitem.p-menuitem-active > .p-menuitem-link {
-    background: #153359 !important;
-    color: #FFFFFF !important;
-    overflow: visible !important;
-}
-
-.p-menubar-root-list > .p-menuitem-active > p-menubarsub > .p-submenu-list {
-    width: fit-content;
-    background: #153359 !important;
-}
-
-.p-menubar .p-menuitem-link:hover {
-    background: #153359 !important;
-    color: #FFFFFF !important;
-}
-
-.p-menubar .p-menubar-button {
-    background: #153359 !important;
-    color: #FFFFFF !important;
-}
-
-.p-menubar .p-menubar-button:hover {
-    background: #153359 !important;
-    color: #FFFFFF !important;
-}
-
-.p-menubar .p-menubar-root-list > .p-menuitem.p-menuitem-active > .p-menuitem-link .p-menuitem-icon, .p-menubar .p-menubar-root-list > .p-menuitem.p-menuitem-active > .p-menuitem-link .p-menuitem-text, .p-menubar .p-menubar-root-list > .p-menuitem.p-menuitem-active > .p-menuitem-link .p-submenu-icon, .p-menubar .p-menubar-root-list > .p-menuitem.p-menuitem-active > .p-menuitem-link:not(.p-disabled):hover .p-menuitem-icon, .p-menubar .p-menubar-root-list > .p-menuitem.p-menuitem-active > .p-menuitem-link:not(.p-disabled):hover .p-menuitem-text, .p-menubar .p-menubar-root-list > .p-menuitem.p-menuitem-active > .p-menuitem-link:not(.p-disabled):hover .p-submenu-icon {
-    color: #FFFFFF !important;
-}
-
-.p-menuitem-icon {
-    color: #FFFFFF !important;
-}
-
-.p-menuitem-text {
-    color: #FFFFFF !important;
-}
-
-.p-submenu-icon {
-    color: #FFFFFF !important;
-}
-
-.p-menubar .p-menubar-root-list > .p-menuitem.p-menuitem-active > .p-menuitem-link .p-menuitem-icon, .p-menubar .p-menubar-root-list > .p-menuitem.p-menuitem-active > .p-menuitem-link .p-menuitem-text, .p-menubar .p-menubar-root-list > .p-menuitem.p-menuitem-active > .p-menuitem-link .p-submenu-icon, .p-menubar .p-menubar-root-list > .p-menuitem.p-menuitem-active > .p-menuitem-link:not(.p-disabled):hover .p-menuitem-icon, .p-menubar .p-menubar-root-list > .p-menuitem.p-menuitem-active > .p-menuitem-link:not(.p-disabled):hover .p-menuitem-text, .p-menubar .p-menubar-root-list > .p-menuitem.p-menuitem-active > .p-menuitem-link:not(.p-disabled):hover .p-submenu-icon {
-    color: #FFFFFF !important;
-}
-
 .p-submenu {
     white-space: nowrap;
     width: auto !important;
@@ -248,13 +158,13 @@ a {
 
 a:hover {
     cursor: pointer !important;
-    color: #8bcbff !important;
+    color: #df4863 !important;
 }
 
 a:focus,
 a:active {
     cursor: pointer !important;
-    color: #8bcbff !important;
+    color: #df4863 !important;
     text-shadow: none !important;
 }
 
@@ -267,13 +177,13 @@ a:active {
 
 .spanlink:hover {
     cursor: pointer !important;
-    color: #8bcbff !important;
+    color: #df4863 !important;
 }
 
 .spanlink:focus,
 .spanlnk:hover {
     cursor: pointer !important;
-    color: #8bcbff !important;
+    color: #df4863 !important;
     text-shadow: none !important;
 }
 
@@ -355,7 +265,9 @@ a:active {
 .h2 {
     background: transparent !important;
 }
-
+h4 {
+    color: #8dc0d3 !important;
+}
 .no-ul {
     text-decoration: none !important;
 }
@@ -384,8 +296,21 @@ a.p-button > p-image {
 
 button.p-button:hover, button.p-button:active  {
     cursor: pointer !important;
-    color: #8bcbff !important;
+    color: #df4863 !important;
  }
+
+.navbar li a:hover,
+.navbar li a:focus,
+.navbar li a.active {
+    outline: 0 !important;
+    color: #df4863 !important;
+}
+
+button.active {
+    cursor: pointer !important;
+    color: #df4863 !important;
+    text-shadow: none !important;
+}
 
 .request-spinner {
     color: #FFFFFF !important;
