@@ -84,8 +84,8 @@ export class RwdNavbarComponent extends NotificationComponent implements OnInit,
         window.open("https://www.dcspark.io/", "_blank");
     }
 
-    public openCCVault() {
-        window.open("https://ccvault.io/app/mainnet/welcome", "_blank");
+    public openEternl() {
+        window.open("https://eternl.io/app/mainnet/welcome", "_blank");
     }
 
     public openGero() {
@@ -143,12 +143,12 @@ export class RwdNavbarComponent extends NotificationComponent implements OnInit,
         return (globalThis.wallet != null);
     }
 
-    public ccvaultAvailable(): boolean {
-        return this.walletService.ccvaultAvailable();
+    public eternlAvailable(): boolean {
+        return this.walletService.eternlAvailable();
     }
 
-    public connectCCVault() {
-        const error = this.walletService.connectCCVault();
+    public connectEternl() {
+        const error = this.walletService.connectEternl();
         if (error != null) {
             this.errorNotification(error);
         } else {
