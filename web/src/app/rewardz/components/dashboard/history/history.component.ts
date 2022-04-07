@@ -45,7 +45,6 @@ export class HistoryComponent extends NotificationComponent implements OnInit, O
                     this.restService.getRewardHistory()
                         .then(res => this.processHistory(res))
                         .catch(e => this.handleError(e));
-
                 }
             }
         );

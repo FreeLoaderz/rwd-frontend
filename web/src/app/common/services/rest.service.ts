@@ -38,7 +38,7 @@ export class RestService {
         RestService.processingRequest = true;
 
         return lastValueFrom(this.httpClient
-            .post(url, '', {headers: headers}))
+            .get(url, {headers: headers}))
             .then(res => this.processResponse(res))
             .catch(this.handleError);
 
