@@ -1,3 +1,5 @@
+import {UtilityService} from "../services/utility.service";
+
 export class Token {
     public tokenname: string;
     public currencysymbol: string;
@@ -8,16 +10,29 @@ export class Token {
     constructor(data: any) {
         if (data != null) {
             if (data.tokenname) {
-                this.tokenname = data.tokenname;
+                try {
+                    // Yes, has to be done twice
+                    this.tokenname = UtilityService.hexToString(UtilityService.hexToString(data.tokenname));
+                } catch (e: any) {
+                    console.log("Could not convert token name [" + data.tokenname + "]");
+                    this.tokenname = data.tokenname;
+                }
             }
-            if (data.currencysymbol) {
+            if (data.policy) {
+                this.currencysymbol = data.policy;
+            } else if (data.currencysymbol) {
                 this.currencysymbol = data.currencysymbol;
             }
             if (data.fingerprint) {
                 this.fingerprint = data.fingerprint;
             }
-            if (data.amount) {
+            if ((data.tot_earned) && (data.tot_claimed)) {
+                this.amount = data.tot_earned - data.tot_claimed;
+            } else if (data.amount) {
                 this.amount = +data.amount;
+            }
+            if (data.selected != null) {
+                this.selected = data.selected;
             }
         }
     }

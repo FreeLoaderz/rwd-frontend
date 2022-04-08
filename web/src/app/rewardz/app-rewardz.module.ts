@@ -12,7 +12,7 @@ import {WalletObserverService} from "../common/services/wallet-observer.service"
 import {ImageModule} from "primeng/image";
 import {ModalModule} from "ngx-bootstrap/modal";
 import {RwdNavbarComponent} from "./components/navbar/rwd-navbar.component";
-import {NotifierContainerComponent, NotifierModule, NotifierOptions} from "angular-notifier";
+import {NotifierModule, NotifierOptions} from "angular-notifier";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {TooltipModule} from "ngx-bootstrap/tooltip";
 import {OverlayPanelModule} from "primeng/overlaypanel";

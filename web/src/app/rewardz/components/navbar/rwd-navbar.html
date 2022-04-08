@@ -4,7 +4,7 @@
             <li class="nav-item"><img src="assets/smartclaimz-small.png"></li>
         </ul>
         <ul *ngIf="connected()" class="navbar-nav ms-2 mb-2">
-            <li *ngIf="isTestNet" class="nav-item"><a class="nav-link"><i class="fa-solid fa-face-frown me-1"></i>TESTNET</a></li>
+            <li *ngIf="isTestNet" class="nav-item"><img src="assets/smartclaimz-small.png" style="border: 1px solid #ff0000;"></li>
             <li *ngIf="!isTestNet" class="nav-item"><img src="assets/smartclaimz-small.png"></li>
         </ul>
         <ul *ngIf="!connected()" class="navbar-nav ms-auto me-2 mb-2 mb-lg-0">
@@ -31,7 +31,7 @@
     <div class="modal-dialog modal-dialog-centered" style="width: 350px">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title ms-0 me-auto">Connect a wallet</h4>
+                <h4 class="modal-title ms-0 me-auto" style="color: #153359 !important">Connect a wallet</h4>
                 <span class="ms-auto">
                 <button pButton class="p-button-rounded p-button-text p-button-plain" icon="pi pi-times"
                         title="Cancel"
@@ -76,7 +76,8 @@
         </div>
     </div>
 </div>
-<notifier-container></notifier-container>
+<notifier-container>
+</notifier-container>
 <div class="container-fluid" style="padding-top: 75px">
     <router-outlet></router-outlet>
     <footer id="footer"></footer>

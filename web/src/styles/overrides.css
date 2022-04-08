@@ -156,6 +156,12 @@ a {
     transition: all .2s ease-in-out;
 }
 
+a.notifier__notification-message:hover,
+a.notifier__notification-message:active,
+a.notifier__notification-message:focus{
+    color: white !important
+}
+
 a:hover {
     cursor: pointer !important;
     color: #df4863 !important;
@@ -266,7 +272,7 @@ a:active {
     background: transparent !important;
 }
 h4 {
-    color: #8dc0d3 !important;
+    color: #ffffff !important;
 }
 .no-ul {
     text-decoration: none !important;
@@ -296,6 +302,11 @@ a.p-button > p-image {
 
 button.p-button:hover, button.p-button:active  {
     cursor: pointer !important;
+    color: white !important;
+}
+
+button.p-button-text:hover, button.p-button-text:active  {
+    cursor: pointer !important;
     color: #df4863 !important;
  }
 
@@ -306,9 +317,14 @@ button.p-button:hover, button.p-button:active  {
     color: #df4863 !important;
 }
 
-button.active {
+button.p-button-text.active {
     cursor: pointer !important;
     color: #df4863 !important;
+    text-shadow: none !important;
+}
+button.active {
+    cursor: pointer !important;
+    color: white !important;
     text-shadow: none !important;
 }
 

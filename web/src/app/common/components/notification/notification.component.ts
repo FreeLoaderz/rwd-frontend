@@ -1,4 +1,5 @@
 import {NotifierService} from "angular-notifier";
+import {TemplateRef} from "@angular/core";
 
 /**
  * Customize: https://stackoverflow.com/questions/52968101/angular-6-angular-notifier
@@ -8,6 +9,14 @@ export abstract class NotificationComponent {
 
     protected constructor(public notifierService: NotifierService) {
         this.notifier = notifierService;
+    }
+
+    customNotification(type: string, message: string, template: TemplateRef<any>) {
+        this.notifier.show({
+            message: message,
+            type: type,
+            template: template
+        });
     }
 
     defaultNotification(message: string) {

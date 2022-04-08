@@ -46,7 +46,7 @@ export class RestService {
 
     public signAndFinalizeTx(signature: any, data: any) {
         const headers = new HttpHeaders().set('Content-Type', 'application/json').set('authorization', 'Eevoo0aemah1ohY6Oheehee4ivahR5ae');
-        const url = '/rwdbuild/multisig/finalize/6/sporwc/' + data.id;
+        const url = '/rwdbuild/multisig/finalize/1/sporwc/' + data.id;
         RestService.processingRequest = true;
 
         const params = {'signature': signature};
@@ -69,13 +69,5 @@ export class RestService {
         // bubble the error up to be handled by the component
         RestService.processingRequest = false;
         throw error;
-    }
-
-    public hexToBytes(hex: string) {
-        const bytes = [];
-        for (let i = 0; i < hex.length; i += 2) {
-            bytes.push(parseInt(hex.substring(i, (i + 2)), 16));
-        }
-        return bytes;
     }
 }

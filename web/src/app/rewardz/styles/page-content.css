@@ -40,22 +40,30 @@ h4 {
     background-color: black !important;
 }
 
+.grid-item-top{
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+    padding-left: .5rem;
+}
+
 .grid-item-top,
 .grid-item-bottom {
+    color: white !important;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding-top: 5px;
-    padding-bottom: 5px;
-}
-.grid-item-bottom {
-    position: relative;
-    bottom: -15px;
-}
-.grid-item-content {
-    text-align: center;
 }
 
+.grid-item-bottom {
+    position: relative;
+    bottom: -.33rem;
+}
+
+.grid-item-token-name {
+    color: white;
+    margin-top: .5rem;
+    margin-bottom: .5rem;
+}
 .grid-entry {
     padding-top: 0rem !important;
     padding-bottom: 0rem !important;
@@ -107,7 +115,7 @@ h4 {
 
 .intro .intro-body .brand-heading {
     font-size: 40px;
-    text-shadow: 4px 10px 10px #000000;
+    text-shadow: 4px .5rem .5rem #000000;
     font-weight: bold;
 }
 
@@ -296,17 +304,10 @@ li + li {
     transform: scale(1.1, 1.1);
 }
 
-.grid-item-top,
-.grid-item-bottom {
-    color: white !important;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px 10px 10px 10px;
-}
 
 .grid-item-content {
     text-align: center;
+    margin-top: 0.45rem;
 }
 
 .grid-entry {

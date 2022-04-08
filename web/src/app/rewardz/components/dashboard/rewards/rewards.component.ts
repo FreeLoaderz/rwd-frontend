@@ -26,7 +26,11 @@ export class RewardsComponent extends NotificationComponent implements OnInit, O
     public claimReturn: string;
     public listReturn: string;
     public walletLoaded: boolean = false;
+    public initialized: boolean = false;
+    public scanURLs = ["https://explorer.cardano-testnet.iohkdev.io/tx/", "https://explorer.cardano.org/tx/"];
+
     @ViewChild('tokenView', {static: false}) public tokenView: any;
+    @ViewChild('notificationTemplate', {static: false}) public notificationTemplate: any;
 
     constructor(public router: Router, public notifierService: NotifierService, public restService: RestService,
                 public walletObserverService: WalletObserverService, public walletService: WalletService,
@@ -42,7 +46,7 @@ export class RewardsComponent extends NotificationComponent implements OnInit, O
         this.walletSubscription = this.walletObserverService.loaded$.subscribe(
             loaded => {
                 this.walletLoaded = loaded;
-                if (loaded === true) {
+                if ((loaded === true) && (!this.initialized)) {
                     this.listTokens();
                 }
             }
@@ -55,25 +59,25 @@ export class RewardsComponent extends NotificationComponent implements OnInit, O
 
     public ngOnDestroy() {
         this.walletSubscription.unsubscribe();
+        if (this.claimSubscription != null) {
+            this.claimSubscription.unsubscribe();
+            this.claimSubscription = null;
+        }
     }
 
     public listTokens() {
         globalThis.tokens = [];
-        /**     if (location.hostname === 'localhost') {
-            let tokenName = 1;
-            let fingerprint = 100;
-            for (let i = 1; i < 101; i++) {
-                const example: Token = {
-                    "tokenname": "token".concat((tokenName++).toFixed(0)),
-                    "currencysymbol": "dd78158839fae805523ba4c0aa5cd3d7fa4adb43f7ae8c7ebf1d5dd9",
-                    "fingerprint": "fp".concat((fingerprint++).toFixed(0)),
-                    "amount": i,
-                    "selected": false
-                };
-                globalThis.tokens.push(example);
-            }
+        /**   if (location.hostname === 'localhost') {
+            const example: Token = new Token({
+                "tokenname": "3734346434393465",
+                "currencysymbol": "dd78158839fae805523ba4c0aa5cd3d7fa4adb43f7ae8c7ebf1d5dd9",
+                "fingerprint": "sajdfqhw4iuhqwieufwae",
+                "amount": 1000,
+                selected: false
+            });
+            globalThis.tokens.push(example);
             this.tokens = [...globalThis.tokens];
-        } else {**/
+        } else { **/
         this.claimReturn = null;
         console.log(globalThis.wallet);
         globalThis.avialableTokens = new AvailableTokens();
@@ -88,16 +92,13 @@ export class RewardsComponent extends NotificationComponent implements OnInit, O
         console.log(data);
         for (let i = 0; i < data.length; ++i) {
             console.log(data[i]);
-            const newToken = new Token(null);
-            newToken.tokenname = data[i].tokenname;
-            newToken.currencysymbol = data[i].policy;
-            newToken.fingerprint = data[i].fingerprint;
-            newToken.amount = data[i].tot_earned - data[i].tot_claimed;
+            const newToken = new Token(data);
             if (newToken.amount > 0) {
                 globalThis.tokens.push(newToken);
             }
         }
         this.tokens = [...globalThis.tokens];
+        this.initialized = true;
     }
 
     public claimSelectedTokens() {
@@ -116,11 +117,12 @@ export class RewardsComponent extends NotificationComponent implements OnInit, O
                     globalThis.wallet.script.SpoRewardClaim = rwd;
                     globalThis.wallet.script.SpoRewardClaim.recipient_stake_addr = globalThis.wallet.sending_stake_addr;
                     globalThis.wallet.script.SpoRewardClaim.recipient_payment_addr = globalThis.wallet.sending_wal_addrs[0];
-                    this.claimSubscription.unsubscribe();
-                    this.claimSubscription = null;
                     this.infoNotification("Submitting token claim");
-                    this.restService.buildTokenClaimTx("6", "sporwc")
+                    this.restService.buildTokenClaimTx("1", "sporwc")
                         .then(res => {
+                            this.selectedTokens.clear();
+                            this.claimSubscription.unsubscribe();
+                            this.claimSubscription = null;
                             if (res.msg) {
                                 this.errorNotification("Error! " + res.msg);
                             } else {
@@ -151,13 +153,16 @@ export class RewardsComponent extends NotificationComponent implements OnInit, O
 
     public processSignTx(data: any) {
         console.log(data);
-        if (data.txhash) {
-            this.successNotification("TX Successfully transmitted! [ADD CARDANO SCAN LINK]" + data.txhash);
+        if ((data != null) && (data.txhash != null)) {
+            const txURL = "<br><a class=\"notifier__notification-message\" target=\"_blank\" href=\"" +
+                this.scanURLs[globalThis.wallet.network] + data.txhash + "\">" + data.txhash + "</a>";
+            this.customNotification("success", "TX Successfully transmitted! " + txURL, this.notificationTemplate);
         } else {
             this.errorNotification("TX Submission Failed! " + data.msg);
         }
-
         this.walletService.updateWallet();
+        // list of tokens is now stale and wallet has to be updated..
+        this.initialized = false;
     }
 
     public disableButtons(): boolean {

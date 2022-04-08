@@ -2,6 +2,7 @@ import {Injectable} from "@angular/core";
 import {Wallet} from "../data/wallet";
 import {WalletObserverService} from "./wallet-observer.service";
 import * as wasm from "../../../assets/scripts/cardano_serialization_lib.min.js";
+import {UtilityService} from "./utility.service";
 
 @Injectable()
 export class WalletService {
@@ -142,14 +143,14 @@ export class WalletService {
         globalThis.walletApi.getUtxos()
             .then(res => this.processUtxos(res))
             .catch(e => this.handleError(e));
-        if ( globalThis.walletSource == "nami"){
+        if (globalThis.walletSource === "nami") {
             globalThis.walletApi.getUsedAddresses()
-            .then(res => this.processUnusedAddresses(res))
-            .catch(e => this.handleError(e));
+                .then(res => this.processUnusedAddresses(res))
+                .catch(e => this.handleError(e));
         } else {
             globalThis.walletApi.getUnusedAddresses()
-            .then(res => this.processUnusedAddresses(res))
-            .catch(e => this.handleError(e));
+                .then(res => this.processUnusedAddresses(res))
+                .catch(e => this.handleError(e));
         }
         globalThis.walletApi.experimental.getCollateral()
             .then(res => this.processCollateral(res))
@@ -195,7 +196,7 @@ export class WalletService {
      * @private
      */
     private processUtxos(data: any) {
-            globalThis.wallet.inputs = []
+        globalThis.wallet.inputs = [];
         for (let i = 0; i < data.length; ++i) {
             globalThis.wallet.inputs.push(data[i]);
         }
@@ -210,7 +211,7 @@ export class WalletService {
      * @private
      */
     private processUnusedAddresses(data: any) {
-            globalThis.wallet.sending_wal_addrs = [];
+        globalThis.wallet.sending_wal_addrs = [];
         for (let i = 0; i < data.length; ++i) {
             globalThis.wallet.sending_wal_addrs.push(data[i]);
         }
@@ -225,7 +226,7 @@ export class WalletService {
      * @private
      */
     private processCollateral(data: any) {
-            globalThis.wallet.collateral=[];
+        globalThis.wallet.collateral = [];
         for (let i = 0; i < data.length; ++i) {
             globalThis.wallet.collateral.push(data[i]);
         }
@@ -242,7 +243,7 @@ export class WalletService {
     private processMaskedBalance(data: any) {
         globalThis.wallet.maskedBalance = data;
         try {
-            const balance = wasm.Value.from_bytes(this.hexToBytes(data));
+            const balance = wasm.Value.from_bytes(UtilityService.hexToBytes(data));
             globalThis.wallet.lovelaces = balance.coin().to_str();
             globalThis.wallet.balance = (globalThis.wallet.lovelaces / 1000000);
             console.log("ADA Balance [" + globalThis.wallet.balance + "]");
@@ -294,13 +295,5 @@ export class WalletService {
             return this.walletSubstring;
         }
         return "";
-    }
-
-    public hexToBytes(hex: string) {
-        const bytes = [];
-        for (let i = 0; i < hex.length; i += 2) {
-            bytes.push(parseInt(hex.substring(i, (i + 2)), 16));
-        }
-        return bytes;
     }
 }
