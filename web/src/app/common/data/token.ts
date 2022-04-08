@@ -11,8 +11,9 @@ export class Token {
         if (data != null) {
             if (data.tokenname) {
                 try {
-                    // Yes, has to be done twice
-                    this.tokenname = UtilityService.hexToString(UtilityService.hexToString(data.tokenname));
+                    // Yes, has to be done twice 
+                    // No this is just in the blockchain metadata here just once
+                    this.tokenname = UtilityService.hexToString(data.tokenname);
                 } catch (e: any) {
                     console.log("Could not convert token name [" + data.tokenname + "]");
                     this.tokenname = data.tokenname;
