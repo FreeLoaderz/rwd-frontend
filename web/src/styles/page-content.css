@@ -373,6 +373,14 @@ div.sidemenu > button.p-button {
     transform: translate(-50%, -50%);
 }
 
+.horizontal-center-div {
+    margin-top: 5rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
 #network {
     position: sticky;
     bottom: 0px;

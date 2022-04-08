@@ -1,38 +1,47 @@
 <section id="rewards">
-    <h4>HISTORY</h4>
-<!--
-    <div *ngIf="!walletLoaded" style="width: 100%;height: 100%">
-        <h4><i class="fa-solid fa-spinner request-spinner me-2"></i>Searching for tokens...</h4>
-    </div>
--->
+    <h4>Reward Claim History</h4>
+    <!--
+        <div *ngIf="!walletLoaded" style="width: 100%;height: 100%">
+            <h4><i class="fa-solid fa-spinner request-spinner me-2"></i>Searching for tokens...</h4>
+        </div>
+    -->
     <div *ngIf="claimHistoryArray.length === 0" style="width: 65vw;height: 85vh">
         <h4>No claim history available</h4>
     </div>
-    <div *ngIf="claimHistoryArray.length > 0" class="blackdiv" style="width: 65vw;height: 85vh">
-        <p-table  #historyTable [columns]="historyCols" [value]="claimHistoryArray"
-                 exportFilename="{{exportFileName}}"
+    <div *ngIf="claimHistoryArray.length > 0" class="blackdiv" style="max-width: 70%">
+        <p-table #historyTable [columns]="historyCols" [value]="claimHistoryArray"
+                 exportFilename="{{exportFileName}}" [rows]="15"
+                 [paginator]="true" [globalFilterFields]="['displayName','txhash']"
                  [resizableColumns]="true" [rowHover]="true">
             <ng-template pTemplate="caption">
                 <div class="ui-helper-clearfix" style="height: 20px !important;">
                     <button type="button" pButton icon="fa-solid fa-download" iconPos="left"
                             label="CSV"
+                            class="p-button p-button-rounded p-button-primary"
                             title="Export CSV"
                             (click)="historyTable.exportCSV()"
                             style="float: right;margin-top: -10px !important;"></button>
+                    <input pInputText style="float: right;margin-top: -7px !important;" class="me-2" type="text"
+                           (input)="historyTable.filterGlobal($event.target.value, 'contains')" placeholder="Search"/>
                 </div>
             </ng-template>
             <ng-template pTemplate="header" let-columns>
                 <tr>
                     <th *ngFor="let col of columns" [pSortableColumn]="col.field" pResizableColumn>
+                        <span *ngIf="!col.hidden">
                         {{col.header}}
                         <p-sortIcon [field]="col.field"></p-sortIcon>
+                        </span>
                     </th>
                 </tr>
             </ng-template>
             <ng-template pTemplate="body" let-rowData let-columns="columns">
                 <tr>
                     <td *ngFor="let col of columns" [ngSwitch]="col.field" class="ui-resizable-column">
+                        <span *ngIf="!col.hidden">
                         <span *ngSwitchDefault>{{rowData[col.field]}}</span>
+                        <span *ngSwitchCase="'txURL'" [innerHTML]="rowData[col.field]"></span>
+                            </span>
                     </td>
                 </tr>
             </ng-template>

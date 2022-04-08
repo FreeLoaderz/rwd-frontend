@@ -11,6 +11,7 @@ import {Script} from "../../../data/script";
 import {SpoRewardClaim} from "../../../data/spo-reward-claim";
 import {WalletService} from "../../../services/wallet.service";
 import {Title} from "@angular/platform-browser";
+import {UtilityService} from "../../../services/utility.service";
 
 @Component({
     selector: 'rewards',
@@ -27,7 +28,6 @@ export class RewardsComponent extends NotificationComponent implements OnInit, O
     public walletLoaded: boolean = false;
     public initialized: boolean = false;
     public listingTokens: boolean = false;
-    public scanURLs = ["https://testnet.cardanoscan.io/transaction/", "https://testnet.cardanoscan.io/transaction/"];
 
     @ViewChild('tokenView', {static: false}) public tokenView: any;
     @ViewChild('notificationTemplate', {static: false}) public notificationTemplate: any;
@@ -69,7 +69,7 @@ export class RewardsComponent extends NotificationComponent implements OnInit, O
     public listTokens() {
         this.listingTokens = true;
         globalThis.tokens = [];
-    /**    if (location.hostname === 'localhost') {
+        /**    if (location.hostname === 'localhost') {
             const example: Token = new Token({
                 "tokenname": "744d494e",
                 "currencysymbol": "dd78158839fae805523ba4c0aa5cd3d7fa4adb43f7ae8c7ebf1d5dd9",
@@ -81,12 +81,12 @@ export class RewardsComponent extends NotificationComponent implements OnInit, O
             this.tokens = [...globalThis.tokens];
             this.listingTokens = false;
         } else {**/
-            this.claimReturn = null;
-            globalThis.avialableTokens = new AvailableTokens();
-            this.restService.getAvailableTokens()
-                .then(res => this.processTokenList(res))
-                .catch(e => this.handleError(e));
-     //   }
+        this.claimReturn = null;
+        globalThis.avialableTokens = new AvailableTokens();
+        this.restService.getAvailableTokens()
+            .then(res => this.processTokenList(res))
+            .catch(e => this.processError(e));
+        //   }
     }
 
     public processTokenList(data: any) {
@@ -130,7 +130,7 @@ export class RewardsComponent extends NotificationComponent implements OnInit, O
                                 this.processClaimTokens(res);
                             }
                         })
-                        .catch(e => this.handleError(e));
+                        .catch(e => this.processError(e));
                 }
             });
             this.walletService.updateWallet();
@@ -141,22 +141,21 @@ export class RewardsComponent extends NotificationComponent implements OnInit, O
 
     public processClaimTokens(data: any) {
         this.claimReturn = data;
-        console.log("processClaimToken results:");
         console.log(data);
         const signature = globalThis.walletApi.signTx(data.tx, true);
         signature.then((finalSignature: Observable<string>) => {
             console.log(finalSignature);
+            this.selectedTokens.clear();
             this.restService.signAndFinalizeTx(globalThis.customerId, globalThis.multiSigType, finalSignature, data)
                 .then(res => this.processSignTx(res))
-                .catch(e => this.handleError(e));
+                .catch(e => this.processError(e));
         });
     }
 
     public processSignTx(data: any) {
         console.log(data);
         if ((data != null) && (data.txhash != null)) {
-            const txURL = "<br><a class=\"notifier__notification-message\" target=\"_blank\" href=\"" +
-                this.scanURLs[globalThis.wallet.network] + data.txhash + "\">" + data.txhash + "</a>";
+            const txURL = UtilityService.generateTxHashURL(data.txhash, true);
             this.customNotification("success", "TX Successfully transmitted! " + txURL, this.notificationTemplate);
         } else {
             this.errorNotification("TX Submission Failed! " + data.msg);
@@ -181,5 +180,12 @@ export class RewardsComponent extends NotificationComponent implements OnInit, O
             token.selected = true;
             this.selectedTokens.set(token.fingerprint, token);
         }
+    }
+
+    public processError(error) {
+        this.selectedTokens.clear();
+        this.listingTokens = false;
+        this.claimSubscription.unsubscribe();
+        this.handleError(error);
     }
 }

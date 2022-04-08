@@ -47,6 +47,7 @@ body {
     font-size: .75rem !important;
     background: #061c35 !important;
 }
+
 .p-menu {
     width: 7rem !important;
     background: #061c35 !important;
@@ -158,7 +159,7 @@ a {
 
 a.notifier__notification-message:hover,
 a.notifier__notification-message:active,
-a.notifier__notification-message:focus{
+a.notifier__notification-message:focus {
     color: white !important
 }
 
@@ -218,7 +219,7 @@ a:active {
 }
 
 .modal-plugin {
-     padding: 1rem;
+    padding: 1rem;
 }
 
 .modal-header {
@@ -226,7 +227,7 @@ a:active {
     color: #153359 !important;
     border-bottom: 0px !important;
     margin: 0;
-    display:inline-flex !important;
+    display: inline-flex !important;
 }
 
 .modal-footer {
@@ -264,52 +265,62 @@ a:active {
 .sidebar-content-header > h4 {
     text-decoration: underline;
 }
+
 .single-display {
     margin-left: auto !important;
     margin-right: auto !important;
     padding-top: 45px !important;
 }
+
 .h2 {
     background: transparent !important;
 }
+
 h4 {
     color: #ffffff !important;
 }
+
 .no-ul {
     text-decoration: none !important;
 }
+
 .no-up {
     text-transform: none !important;
 }
+
 a.p-button {
     display: block !important;
 }
+
 a.p-button > p {
     float: left !important;
     margin-top: 0 !important;
     margin-bottom: 0 !important;
 }
+
 a.p-button > i {
     float: left !important;
     margin-top: 0 !important;
     margin-bottom: 0 !important;
 }
+
 a.p-button > p-image {
     float: right !important;
 }
+
 #contact.content-section {
     height: auto !important;
 }
 
-button.p-button:hover, button.p-button:active  {
+button.p-button:hover, button.p-button:active {
     cursor: pointer !important;
     color: white !important;
 }
 
-button.p-button-text:hover, button.p-button-text:active  {
+button.p-button-text:hover, button.p-button-text:active {
     cursor: pointer !important;
     color: #df4863 !important;
- }
+}
 
 .navbar li a:hover,
 .navbar li a:focus,
@@ -323,6 +334,7 @@ button.p-button-text.active {
     color: #df4863 !important;
     text-shadow: none !important;
 }
+
 button.active {
     cursor: pointer !important;
     color: white !important;
@@ -336,20 +348,63 @@ button.active {
 }
 
 @keyframes fa-spin {
-0% {
-    transform: rotate(0deg);
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
 }
-100% {
-    transform: rotate(360deg);
-}
-}
+
 .p-dataview .p-dataview-content {
     background-color: transparent !important;
 }
+
 .p-grid {
     background-color: transparent !important;
 }
+
 .p-dataview-emptymessage {
     color: white !important;
 }
 
+.p-datatable-header,
+.p-datatable-table,
+.p-datatable-thead,
+.p-datatable-tbody {
+    background: transparent !important;
+    color: white !important;
+    border: 0 !important;
+}
+
+th.p-resizable-column {
+    border: 0 !important;
+}
+
+.p-datatable .p-datatable-tbody > tr > td {
+    background: transparent !important;
+    color: white !important;
+    border: 0 !important;
+}
+
+.p-datatable .p-datatable-tbody > tr {
+    background: transparent !important;
+    color: white !important;
+    border: 0 !important;
+}
+
+.p-datatable-thead > tr > th {
+    background: transparent !important;
+    color: white !important;
+}
+
+.p-datatable-tbody > tr > td > span {
+    background: transparent !important;
+    color: white !important;
+}
+
+.p-paginator {
+    background: transparent !important;
+    color: white !important;
+    border: 0 !important;
+}
