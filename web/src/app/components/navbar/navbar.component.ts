@@ -29,10 +29,11 @@ export class NavbarComponent extends NotificationComponent implements OnInit, Af
     public isMenuCollapsed: boolean = true;
     public screenWidth: number;
     public screenHeight: number;
-
+    public fullScreen: boolean = false;
+    public docElem: any;
     @ViewChild('connectModal', {static: false}) public connectModal: ModalDirective;
 
-    constructor(@Inject(DOCUMENT) private document: Document,
+    constructor(@Inject(DOCUMENT) private document: any,
                 public router: Router, public titleService: Title, public walletObserverService: WalletObserverService,
                 public notifierService: NotifierService, public walletService: WalletService) {
         super(notifierService);
@@ -42,6 +43,7 @@ export class NavbarComponent extends NotificationComponent implements OnInit, Af
     }
 
     ngOnInit() {
+        this.docElem = this.document.documentElement;
         this.walletSubscription = this.walletObserverService.loaded$.subscribe(
             loaded => {
                 this.walletLoaded = loaded;
@@ -230,4 +232,46 @@ export class NavbarComponent extends NotificationComponent implements OnInit, Af
             this.document.getElementById(sourceId).classList.add("nav-active");
         }
     }
+
+    toggleFullScreen() {
+        if (this.fullScreen) {
+            this.closeFullscreen();
+        } else {
+            this.openFullscreen();
+        }
+    }
+
+    openFullscreen() {
+        this.fullScreen = true;
+        if (this.docElem.requestFullscreen) {
+            this.docElem.requestFullscreen();
+        } else if (this.docElem.mozRequestFullScreen) {
+            /* Firefox */
+            this.docElem.mozRequestFullScreen();
+        } else if (this.docElem.webkitRequestFullscreen) {
+            /* Chrome, Safari and Opera */
+            this.docElem.webkitRequestFullscreen();
+        } else if (this.docElem.msRequestFullscreen) {
+            /* IE/Edge */
+            this.docElem.msRequestFullscreen();
+        }
+    }
+
+    /* Close fullscreen */
+    closeFullscreen() {
+        this.fullScreen = false;
+        if (this.document.exitFullscreen) {
+            this.document.exitFullscreen();
+        } else if (this.document.mozCancelFullScreen) {
+            /* Firefox */
+            this.document.mozCancelFullScreen();
+        } else if (this.document.webkitExitFullscreen) {
+            /* Chrome, Safari and Opera */
+            this.document.webkitExitFullscreen();
+        } else if (this.document.msExitFullscreen) {
+            /* IE/Edge */
+            this.document.msExitFullscreen();
+        }
+    }
+
 }

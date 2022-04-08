@@ -185,7 +185,10 @@ export class RewardsComponent extends NotificationComponent implements OnInit, O
     public processError(error) {
         this.selectedTokens.clear();
         this.listingTokens = false;
-        this.claimSubscription.unsubscribe();
+        if (this.claimSubscription != null) {
+            this.claimSubscription.unsubscribe();
+            this.claimSubscription = null;
+        }
         this.handleError(error);
     }
 }

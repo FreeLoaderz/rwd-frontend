@@ -1,10 +1,9 @@
 <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark bg-clear">
     <div class="container-fluid">
-        <ul *ngIf="!connected()" class="navbar-nav ms-2 mb-2">
-            <li class="nav-item"><img src="../../../assets/smartclaimz-small.png"></li>
-        </ul>
-        <ul *ngIf="connected()" class="navbar-nav ms-2 mb-2">
-            <li class="nav-item"><img src="../../../assets/smartclaimz-small.png"></li>
+        <ul class="navbar-nav ms-2 mb-2">
+            <li class="nav-item">
+                <img src="../../../assets/smartclaimz-small.png" (click)="toggleFullScreen()" style="cursor: pointer !important">
+            </li>
         </ul>
         <button class="navbar-toggler ms-auto me-2" type="button" data-bs-toggle="collapse"
                 data-bs-target="#mainnav" (click)="isMenuCollapsed = !isMenuCollapsed">
