@@ -408,3 +408,9 @@ th.p-resizable-column {
     color: white !important;
     border: 0 !important;
 }
+
+ul.banner-social-buttons > li > a:hover,
+ul.banner-social-buttons > li > a:focus,
+ul.banner-social-buttons > li > a:active {
+    color: white !important;
+}
