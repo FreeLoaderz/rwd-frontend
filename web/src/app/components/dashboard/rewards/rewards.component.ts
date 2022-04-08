@@ -111,7 +111,7 @@ export class RewardsComponent extends NotificationComponent implements OnInit, O
                     globalThis.wallet.script = new Script(null);
                     const rwd = new SpoRewardClaim(null);
                     for (let i = 0; i < this.tokens.length; ++i) {
-                        if ((this.tokens[i] != null) && (this.tokens[i].tokenname != null)) {
+                        if ((this.tokens[i] != null) && (this.tokens[i].selected)) {
                             rwd.reward_tokens.push(this.tokens[i]);
                         }
                     }
