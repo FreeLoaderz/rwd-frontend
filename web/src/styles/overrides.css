@@ -199,6 +199,7 @@ a:active {
 }
 
 .subrow {
+    display: flex;
     margin-bottom: 10px;
     flex-wrap: nowrap !important;
 }

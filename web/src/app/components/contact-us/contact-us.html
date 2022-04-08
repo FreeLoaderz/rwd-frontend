@@ -1,0 +1,84 @@
+<section id="contact" class="ms-5 me-5 content-section">
+    <div class="sidebyside">
+        <div class="ms-2 me-2" style="min-width: 200px !important;max-width: 200px !important; ">
+        </div>
+        <div class="sidebar-content ms-5" style="padding-top: 0px !important">
+            <h4>Contact US</h4>
+            <form [formGroup]="contactUsForm" (ngSubmit)="submitFeedback()">
+                <input type="text" class="form-control col-sm-3 mt-5 mb-5"
+                       placeholder="Name.."
+                       [formControl]="contactUsForm.controls['name']"
+                       tooltip="Enter your name..">
+                <div *ngIf="contactUsForm.get('name').errors?.required
+                && (contactUsForm.get('name').dirty || contactUsForm.get('name').touched)" class="invalid-error">
+                    Name is required
+                </div>
+                <input type="text" class="form-control col-sm-3 mt-5 mb-5"
+                       placeholder="Email.."
+                       [formControl]="contactUsForm.controls['email']"
+                       tooltip="Enter your email..">
+                <div *ngIf="contactUsForm.get('email').errors?.required
+                    && (contactUsForm.get('email').dirty || contactUsForm.get('email').touched)" class="invalid-error">
+                    Email is required
+                </div>
+                <div *ngIf="contactUsForm.get('email').errors?.email
+                        && (contactUsForm.get('email').dirty || contactUsForm.get('email').touched)"
+                     class="invalid-error">
+                    Email address is invalid
+                </div>
+                <input type="text" class="form-control col-sm-3 mt-5 mb-5"
+                       placeholder="Subject.."
+                       [formControl]="contactUsForm.controls['subject']"
+                       tooltip="Enter the subject..">
+                <div *ngIf="contactUsForm.get('subject').errors?.required
+                && (contactUsForm.get('subject').dirty || contactUsForm.get('subject').touched)" class="invalid-error">
+                    Subject is required
+                </div>
+                <textarea class="form-control col-sm-3 mt-5 mb-5"
+                          rows="5"
+                          cols="50"
+                          placeholder="Message.."
+                          [formControl]="contactUsForm.controls['message']"
+                          tooltip="Enter the message..">
+                   tooltip="Enter the message.."></textarea>
+                <div *ngIf="contactUsForm.get('message').errors?.required
+                        && (contactUsForm.get('message').dirty || contactUsForm.get('message').touched)"
+                     class="invalid-error">
+                    Message is required
+                </div>
+                <div class="row subrow mt-5">
+                    <button pButton
+                            [disabled]="!contactUsForm.valid"
+                            title="Send message" style="width: auto;"
+                            type="submit"
+                            class="p-button p-button-primary ms-3 me-auto"
+                            label="Send" icon="fa-solid fa-paper-plane">
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="contact-info-section mt-5">
+        <div class="container text-center ms-auto me-auto">
+            <p></p>
+            <p><a href="mailto:info@freeloaderz.io">info@freeloaderz.io</a>
+            </p>
+            <ul class="list-inline banner-social-buttons mt-5">
+                <li>
+                    <a href="https://twitter.com/Freeloaderz2022" target="_blank" class="btn btn-default btn-lg"><i
+                            class="fa-brands fa-twitter fa-fw"></i> <span
+                            class="ms-2 network-name">Twitter</span></a>
+                </li>
+                <li>
+                    <a href="https://linkedin.com/in/chrisenunez" target="_blank" class="btn btn-default btn-lg"><i
+                            class="fa-brands fa-linkedin fa-fw"></i> <span class="ms-2 network-name">LinkedIn</span></a>
+                </li>
+                <li>
+                    <a href="https://discord.gg/E98Ghnmqkw" target="_blank" class="btn btn-default btn-lg"><i
+                            class="fa-brands fa-discord fa-fw"></i><span
+                            class="ms-2 network-name">Discord</span></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</section>
