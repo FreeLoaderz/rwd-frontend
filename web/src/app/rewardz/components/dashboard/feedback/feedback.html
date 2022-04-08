@@ -36,10 +36,12 @@
                 Subject is required
             </div>
 
-            <input type="text" class="form-control col-sm-3 mt-5 mb-5"
+            <textarea class="form-control col-sm-3 mt-5 mb-5"
+                   rows="5"
+                   cols="50"
                    placeholder="Message.."
                    [formControl]="feedbackForm.controls['message']"
-                   tooltip="Enter the message..">
+                   tooltip="Enter the message.."></textarea>
 
             <div *ngIf="feedbackForm.get('message').errors?.required
                         && (feedbackForm.get('message').dirty || feedbackForm.get('message').touched)" class="invalid-error">
