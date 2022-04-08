@@ -31,11 +31,12 @@ export class HistoryComponent extends NotificationComponent implements OnInit, O
         this.titleService.setTitle("History");
         this.historyCols = [
             {field: 'displayTS', header: 'Date/Time'},
+            {field: 'stake_addr', header: 'Stake Address', hidden: true},
+            {field: 'payment_addr', header: 'Payment Address', hidden: true},
             {field: 'displayName', header: 'Token Name'},
             {field: 'amount', header: 'Amount'},
             {field: 'txURL', header: 'Tx Hash'},
-            {field: 'txhash', header: 'Raw Tx Hash', hidden: true}
-        ];
+            {field: 'txhash', header: 'Raw Tx Hash', hidden: true}];
         const dateString = this.datePipe.transform(new Date(), 'yyyy-MM-dd');
         this.exportFileName = "Historical_SmartClaimz_".concat(dateString);
     }
