@@ -4,58 +4,60 @@
         </div>
         <div class="sidebar-content ms-5" style="padding-top: 0px !important">
             <h4>Contact US</h4>
-            <form [formGroup]="contactUsForm" (ngSubmit)="submitFeedback()">
-                <input type="text" class="form-control col-sm-3 mt-5 mb-5"
-                       placeholder="Name.."
-                       [formControl]="contactUsForm.controls['name']"
-                       tooltip="Enter your name..">
-                <div *ngIf="contactUsForm.get('name').errors?.required
+            <div class="blackdiv" style="padding-top: 0px !important;max-width: 70%">
+                <form [formGroup]="contactUsForm" (ngSubmit)="submitFeedback()" style="padding-top: 1.5rem;">
+                    <div *ngIf="contactUsForm.get('name').errors?.required
                 && (contactUsForm.get('name').dirty || contactUsForm.get('name').touched)" class="invalid-error">
-                    Name is required
-                </div>
-                <input type="text" class="form-control col-sm-3 mt-5 mb-5"
-                       placeholder="Email.."
-                       [formControl]="contactUsForm.controls['email']"
-                       tooltip="Enter your email..">
-                <div *ngIf="contactUsForm.get('email').errors?.required
+                        Name is required
+                    </div>
+                    <input type="text" class="form-control col-sm-3 mb-3"
+                           placeholder="Name.."
+                           [formControl]="contactUsForm.controls['name']"
+                           tooltip="Enter your name..">
+                    <div *ngIf="contactUsForm.get('email').errors?.required
                     && (contactUsForm.get('email').dirty || contactUsForm.get('email').touched)" class="invalid-error">
-                    Email is required
-                </div>
-                <div *ngIf="contactUsForm.get('email').errors?.email
+                        Email is required
+                    </div>
+                    <div *ngIf="contactUsForm.get('email').errors?.email
                         && (contactUsForm.get('email').dirty || contactUsForm.get('email').touched)"
-                     class="invalid-error">
-                    Email address is invalid
-                </div>
-                <input type="text" class="form-control col-sm-3 mt-5 mb-5"
-                       placeholder="Subject.."
-                       [formControl]="contactUsForm.controls['subject']"
-                       tooltip="Enter the subject..">
-                <div *ngIf="contactUsForm.get('subject').errors?.required
+                         class="invalid-error">
+                        Email address is invalid
+                    </div>
+                    <input type="text" class="form-control col-sm-3 mb-3"
+                           placeholder="Email.."
+                           [formControl]="contactUsForm.controls['email']"
+                           tooltip="Enter your email..">
+                    <div *ngIf="contactUsForm.get('subject').errors?.required
                 && (contactUsForm.get('subject').dirty || contactUsForm.get('subject').touched)" class="invalid-error">
-                    Subject is required
-                </div>
-                <textarea class="form-control col-sm-3 mt-5 mb-5"
-                          rows="5"
-                          cols="50"
-                          placeholder="Message.."
-                          [formControl]="contactUsForm.controls['message']"
-                          tooltip="Enter the message..">
-                   tooltip="Enter the message.."></textarea>
-                <div *ngIf="contactUsForm.get('message').errors?.required
+                        Subject is required
+                    </div>
+                    <input type="text" class="form-control col-sm-3 mb-3"
+                           placeholder="Subject.."
+                           [formControl]="contactUsForm.controls['subject']"
+                           tooltip="Enter the subject..">
+                    <div *ngIf="contactUsForm.get('message').errors?.required
                         && (contactUsForm.get('message').dirty || contactUsForm.get('message').touched)"
-                     class="invalid-error">
-                    Message is required
-                </div>
-                <div class="row subrow mt-5">
-                    <button pButton
-                            [disabled]="!contactUsForm.valid"
-                            title="Send message" style="width: auto;"
-                            type="submit"
-                            class="p-button p-button-primary ms-3 me-auto"
-                            label="Send" icon="fa-solid fa-paper-plane">
-                    </button>
-                </div>
-            </form>
+                         class="invalid-error">
+                        Message is required
+                    </div>
+                    <textarea class="form-control col-sm-3 mb-3"
+                              rows="5"
+                              cols="50"
+                              placeholder="Message.."
+                              [formControl]="contactUsForm.controls['message']"
+                              tooltip="Enter the message..">
+                   tooltip="Enter the message.."></textarea>
+                    <div class="row subrow">
+                        <button pButton
+                                [disabled]="!contactUsForm.valid"
+                                title="Send message" style="width: auto;"
+                                type="submit"
+                                class="p-button p-button-primary ms-3 me-auto"
+                                label="Send" icon="fa-solid fa-paper-plane">
+                        </button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
     <div class="contact-info-section mt-5">
