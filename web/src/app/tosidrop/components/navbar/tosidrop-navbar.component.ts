@@ -121,12 +121,12 @@ export class TosidropNavbarComponent extends NotificationComponent implements On
         return (globalThis.wallet != null);
     }
 
-    public ccvaultAvailable(): boolean {
-        return this.walletService.ccvaultAvailable();
+    public eternlAvailable(): boolean {
+        return this.walletService.eternlAvailable();
     }
 
-    public connectCCVault() {
-        const error = this.walletService.connectCCVault();
+    public connectEternl() {
+        const error = this.walletService.connectEternl();
         if (error != null) {
             this.errorNotification(error);
         } else {

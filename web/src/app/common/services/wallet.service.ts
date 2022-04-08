@@ -17,25 +17,25 @@ export class WalletService {
     }
 
     /**
-     * Check if ccvault is available
+     * Check if eternl is available
      */
-    public ccvaultAvailable(): boolean {
-        return (globalThis.cardano.ccvault != null);
+    public eternlAvailable(): boolean {
+        return (globalThis.cardano.eternl != null);
     }
 
     /**
-     * Connect to ccvault wallet ext
+     * Connect to eternl wallet ext
      */
-    public connectCCVault(): string {
-        if (globalThis.cardano.ccvault != null) {
-            globalThis.cardano.ccvault.enable().then((api) => {
-                    this.finishWalletConnect(api, "ccvault");
+    public connectEternl(): string {
+        if (globalThis.cardano.eternl != null) {
+            globalThis.cardano.eternl.enable().then((api) => {
+                    this.finishWalletConnect(api, "eternl");
                 }
             ).catch((e) => {
-                return ("Could not connect with CCVault!");
+                return ("Could not connect with Eternl!");
             });
         } else {
-            return ("CCVault extension not installed");
+            return ("Eternl extension not installed");
         }
         return null;
     }
@@ -272,7 +272,7 @@ export class WalletService {
      * @TODO should display something for the user if false
      */
     public anyWalletAvailable(): boolean {
-        if ((this.ccvaultAvailable()) ||
+        if ((this.eternlAvailable()) ||
             (this.namiAvailable()) ||
             (this.flintAvailable()) ||
             (this.geroAvailable())) {
