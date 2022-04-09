@@ -47,6 +47,7 @@ body {
     font-size: .75rem !important;
     background: #061c35 !important;
 }
+
 .p-menu {
     width: 7rem !important;
     background: #061c35 !important;
@@ -118,96 +119,6 @@ body {
     border-width: 1px 1px 1px 1px !important;
 }
 
-.p-menubar {
-    padding-right: 0 !important;
-    background: #010919 !important;
-    color: #fff !important;
-    border: 0px !important;
-}
-
-.p-menubar .p-menuitem-link .p-menuitem-icon {
-    margin-left: .5em !important;
-}
-
-.p-menubar .p-submenu-list {
-    border: 0px !important;
-    width: fit-content !important;
-    padding-right: 3px;
-}
-
-.p-menubar .p-menubar-root-list {
-    overflow: visible !important;
-}
-
-.p-menubar .p-menubar-root-list > .p-menuitem > .p-menuitem-link:hover {
-    background: #626262 !important;
-    color: #FFFFFF !important;
-}
-
-.p-menubar .p-menuitem-link {
-    padding: 6px 6px !important;
-    background: #010919 !important;
-    color: #fff;
-    font-size: 1rem !important;
-    border: 0px !important;
-}
-
-.p-menubar .p-menubar-root-list {
-    width: fit-content !important;
-    overflow: visible !important;
-}
-
-.p-menubar .p-menubar-root-list > .p-menuitem > .p-menuitem-link {
-    width: fit-content !important;
-    overflow: visible !important;
-}
-
-.p-menubar .p-menubar-root-list > .p-menuitem.p-menuitem-active > .p-menuitem-link {
-    background: #153359 !important;
-    color: #FFFFFF !important;
-    overflow: visible !important;
-}
-
-.p-menubar-root-list > .p-menuitem-active > p-menubarsub > .p-submenu-list {
-    width: fit-content;
-    background: #153359 !important;
-}
-
-.p-menubar .p-menuitem-link:hover {
-    background: #153359 !important;
-    color: #FFFFFF !important;
-}
-
-.p-menubar .p-menubar-button {
-    background: #153359 !important;
-    color: #FFFFFF !important;
-}
-
-.p-menubar .p-menubar-button:hover {
-    background: #153359 !important;
-    color: #FFFFFF !important;
-}
-
-.p-menubar .p-menubar-root-list > .p-menuitem.p-menuitem-active > .p-menuitem-link .p-menuitem-icon, .p-menubar .p-menubar-root-list > .p-menuitem.p-menuitem-active > .p-menuitem-link .p-menuitem-text, .p-menubar .p-menubar-root-list > .p-menuitem.p-menuitem-active > .p-menuitem-link .p-submenu-icon, .p-menubar .p-menubar-root-list > .p-menuitem.p-menuitem-active > .p-menuitem-link:not(.p-disabled):hover .p-menuitem-icon, .p-menubar .p-menubar-root-list > .p-menuitem.p-menuitem-active > .p-menuitem-link:not(.p-disabled):hover .p-menuitem-text, .p-menubar .p-menubar-root-list > .p-menuitem.p-menuitem-active > .p-menuitem-link:not(.p-disabled):hover .p-submenu-icon {
-    color: #FFFFFF !important;
-}
-
-.p-menuitem-icon {
-    color: #FFFFFF !important;
-}
-
-.p-menuitem-text {
-    color: #FFFFFF !important;
-}
-
-.p-submenu-icon {
-    color: #FFFFFF !important;
-}
-
-.p-menubar .p-menubar-root-list > .p-menuitem.p-menuitem-active > .p-menuitem-link .p-menuitem-icon, .p-menubar .p-menubar-root-list > .p-menuitem.p-menuitem-active > .p-menuitem-link .p-menuitem-text, .p-menubar .p-menubar-root-list > .p-menuitem.p-menuitem-active > .p-menuitem-link .p-submenu-icon, .p-menubar .p-menubar-root-list > .p-menuitem.p-menuitem-active > .p-menuitem-link:not(.p-disabled):hover .p-menuitem-icon, .p-menubar .p-menubar-root-list > .p-menuitem.p-menuitem-active > .p-menuitem-link:not(.p-disabled):hover .p-menuitem-text, .p-menubar .p-menubar-root-list > .p-menuitem.p-menuitem-active > .p-menuitem-link:not(.p-disabled):hover .p-submenu-icon {
-    color: #FFFFFF !important;
-}
-
 .p-submenu {
     white-space: nowrap;
     width: auto !important;
@@ -246,20 +157,21 @@ a {
     transition: all .2s ease-in-out;
 }
 
+a.notifier__notification-message:hover,
+a.notifier__notification-message:active,
+a.notifier__notification-message:focus {
+    color: white !important
+}
+
 a:hover {
     cursor: pointer !important;
-    color: #8bcbff !important;
-    text-shadow: 0 0 4px #8bcbff,
-    0 0 8px #8bcbff,
-    0 0 16px rgb(0, 102, 255),
-    0 0 24px rgb(0, 102, 255),
-    0 0 36px rgb(0, 102, 255) !important;
+    color: #df4863 !important;
 }
 
 a:focus,
 a:active {
     cursor: pointer !important;
-    color: #8bcbff !important;
+    color: #df4863 !important;
     text-shadow: none !important;
 }
 
@@ -272,18 +184,13 @@ a:active {
 
 .spanlink:hover {
     cursor: pointer !important;
-    color: #8bcbff !important;
-    text-shadow: 0 0 4px #8bcbff,
-    0 0 8px #8bcbff,
-    0 0 16px rgb(0, 102, 255),
-    0 0 24px rgb(0, 102, 255),
-    0 0 36px rgb(0, 102, 255) !important;
+    color: #df4863 !important;
 }
 
 .spanlink:focus,
 .spanlnk:hover {
     cursor: pointer !important;
-    color: #8bcbff !important;
+    color: #df4863 !important;
     text-shadow: none !important;
 }
 
@@ -293,6 +200,7 @@ a:active {
 }
 
 .subrow {
+    display: flex;
     margin-bottom: 10px;
     flex-wrap: nowrap !important;
 }
@@ -311,7 +219,7 @@ a:active {
 }
 
 .modal-plugin {
-     padding: 1rem;
+    padding: 1rem;
 }
 
 .modal-header {
@@ -319,7 +227,7 @@ a:active {
     color: #153359 !important;
     border-bottom: 0px !important;
     margin: 0;
-    display:inline-flex !important;
+    display: inline-flex !important;
 }
 
 .modal-footer {
@@ -357,39 +265,80 @@ a:active {
 .sidebar-content-header > h4 {
     text-decoration: underline;
 }
+
 .single-display {
     margin-left: auto !important;
     margin-right: auto !important;
     padding-top: 45px !important;
 }
+
 .h2 {
     background: transparent !important;
+}
+
+h4 {
+    color: #ffffff !important;
 }
 
 .no-ul {
     text-decoration: none !important;
 }
+
 .no-up {
     text-transform: none !important;
 }
+
 a.p-button {
     display: block !important;
 }
+
 a.p-button > p {
     float: left !important;
     margin-top: 0 !important;
     margin-bottom: 0 !important;
 }
+
 a.p-button > i {
     float: left !important;
     margin-top: 0 !important;
     margin-bottom: 0 !important;
 }
+
 a.p-button > p-image {
     float: right !important;
 }
+
 #contact.content-section {
     height: auto !important;
+}
+
+button.p-button:hover, button.p-button:active {
+    cursor: pointer !important;
+    color: white !important;
+}
+
+button.p-button-text:hover, button.p-button-text:active {
+    cursor: pointer !important;
+    color: #df4863 !important;
+}
+
+.navbar li a:hover,
+.navbar li a:focus,
+.navbar li a.active {
+    outline: 0 !important;
+    color: #df4863 !important;
+}
+
+button.p-button-text.active {
+    cursor: pointer !important;
+    color: #df4863 !important;
+    text-shadow: none !important;
+}
+
+button.active {
+    cursor: pointer !important;
+    color: white !important;
+    text-shadow: none !important;
 }
 
 .request-spinner {
@@ -399,10 +348,69 @@ a.p-button > p-image {
 }
 
 @keyframes fa-spin {
-0% {
-    transform: rotate(0deg);
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
 }
-100% {
-    transform: rotate(360deg);
+
+.p-dataview .p-dataview-content {
+    background-color: transparent !important;
 }
+
+.p-grid {
+    background-color: transparent !important;
+}
+
+.p-dataview-emptymessage {
+    color: white !important;
+}
+
+.p-datatable-header,
+.p-datatable-table,
+.p-datatable-thead,
+.p-datatable-tbody {
+    background: transparent !important;
+    color: white !important;
+    border: 0 !important;
+}
+
+th.p-resizable-column {
+    border: 0 !important;
+}
+
+.p-datatable .p-datatable-tbody > tr > td {
+    background: transparent !important;
+    color: white !important;
+    border: 0 !important;
+}
+
+.p-datatable .p-datatable-tbody > tr {
+    background: transparent !important;
+    color: white !important;
+    border: 0 !important;
+}
+
+.p-datatable-thead > tr > th {
+    background: transparent !important;
+    color: white !important;
+}
+
+.p-datatable-tbody > tr > td > span {
+    background: transparent !important;
+    color: white !important;
+}
+
+.p-paginator {
+    background: transparent !important;
+    color: white !important;
+    border: 0 !important;
+}
+
+ul.banner-social-buttons > li > a:hover,
+ul.banner-social-buttons > li > a:focus,
+ul.banner-social-buttons > li > a:active {
+    color: white !important;
 }

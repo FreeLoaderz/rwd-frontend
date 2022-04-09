@@ -1,0 +1,57 @@
+<section id="rewards" style="height: 100vh">
+    <div *ngIf="walletLoaded && !listingTokens" style="width: 80vw;height: 100vh">
+        <div style="display:flex">
+            <h4>Available Rewards</h4>
+        </div>
+        <p-dataView #tokenView [value]="tokens" layout="grid" filterBy="tokenname">
+            <ng-template let-token pTemplate="gridItem">
+                <div class="me-4 mb-4">
+                    <div class="grid-item">
+                        <div class="grid-item-top">
+                            <span class="ms-2">{{token.amount}} available</span>
+                        </div>
+                        <div class="grid-item-content">
+                            <img src="../../../../assets/ada.png">
+                            <p class="grid-item-token-name">{{token.displayName}}</p>
+                        </div>
+                        <div class="grid-item-bottom">
+                            <button *ngIf="!token.selected" pButton
+                                    title="Claim Token"
+                                    (click)="toggleSelect(token)"
+                                    class="p-button p-button-rounded p-button-primary ms-auto me-auto mb-2"
+                                    label="Claim Token" icon="fa-solid fa-square">
+                            </button>
+                            <button *ngIf="token.selected" pButton
+                                    title="Claim Token"
+                                    (click)="toggleSelect(token)"
+                                    class="p-button p-button-rounded p-button-success ms-auto me-auto mb-2"
+                                    label="Claim Token" icon="fa-solid fa-square-check">
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </ng-template>
+            <ng-template pTemplate="empty">
+                <h4>No tokens available to be claimed</h4>
+            </ng-template>
+        </p-dataView>
+        <div>
+            <button *ngIf="selectedTokens.size > 0" pButton
+                    title="Submit Claims"
+                    (click)="claimSelectedTokens()"
+                    class="p-button p-button-rounded p-button-primary"
+                    style="margin-left: 1.7rem"
+                    label="Submit Claims" icon="fa-solid fa-arrow-up-from-bracket">
+            </button>
+        </div>
+    </div>
+    <div *ngIf="!walletLoaded" style="width: 100%;height: 100%">
+        <h4><i class="fa-solid fa-spinner request-spinner me-2"></i></h4>
+    </div>
+    <div *ngIf="listingTokens" style="width: 100%;height: 100%">
+        <h4><i class="fa-solid fa-spinner request-spinner me-2"></i>Searching for tokens...</h4>
+    </div>
+</section>
+<ng-template #notificationTemplate let-notificationData="notification">
+    <p class="notifier__notification-message" [innerHTML]="notificationData.message"></p>
+</ng-template>
