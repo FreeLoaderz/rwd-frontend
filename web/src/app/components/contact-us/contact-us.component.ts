@@ -22,14 +22,14 @@ export class ContactUsComponent extends NotificationComponent {
             'subject': ['', Validators.required],
             'message': ['', Validators.required]
         });
-        this.titleService.setTitle("Feedback");
+        this.titleService.setTitle("Contact Us");
 
     }
 
 
     public submitFeedback() {
         if (this.contactUsForm.valid) {
-            console.log(this.contactUsForm.value)
+            console.log(this.contactUsForm.value);
         }
     }
 }

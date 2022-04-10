@@ -414,3 +414,38 @@ ul.banner-social-buttons > li > a:focus,
 ul.banner-social-buttons > li > a:active {
     color: white !important;
 }
+
+.fa-user-tie {
+    color: #3737ff !important;
+}
+
+.fa-chevron-right {
+    color: wheat !important;
+}
+
+.fa-chevron-down {
+    color: wheat !important;
+}
+.fa-message {
+    color: snow !important;
+}
+
+.fa-share-nodes {
+    color: lawngreen !important;
+}
+.fa-wallet {
+    color: tan !important;
+}
+.fa-coins {
+    color: gold !important;
+}
+.fa-coins {
+    color: gold !important;
+}
+
+.fa-right-from-bracket {
+    color: tan !important;
+}
+.fa-clock-rotate-left {
+    color: silver !important;
+}

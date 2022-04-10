@@ -37,8 +37,8 @@ export class TestnetComponent extends NotificationComponent implements OnInit, O
         this.walletSubscription.unsubscribe();
     }
 
-    public airdrop() {
-        this.restService.airdrop()
+    public generateRewards() {
+        this.restService.generateRewards(globalThis.customerId, globalThis.multiSigType)
             .catch(e => this.handleError(e));
     }
 }

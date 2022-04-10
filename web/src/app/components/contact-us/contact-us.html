@@ -3,7 +3,7 @@
         <div class="ms-2 me-2" style="min-width: 200px !important;max-width: 200px !important; ">
         </div>
         <div class="sidebar-content ms-5" style="padding-top: 0px !important">
-            <h4>Contact US</h4>
+            <h4>Contact Us</h4>
             <div class="blackdiv" style="padding-top: 0px !important;max-width: 70%">
                 <form [formGroup]="contactUsForm" (ngSubmit)="submitFeedback()" style="padding-top: 1.5rem;">
                     <div *ngIf="contactUsForm.get('name').errors?.required
@@ -27,8 +27,8 @@
                            placeholder="Email.."
                            [formControl]="contactUsForm.controls['email']"
                            tooltip="Enter your email..">
-                    <div *ngIf="contactUsForm.get('subject').errors?.required
-                && (contactUsForm.get('subject').dirty || contactUsForm.get('subject').touched)" class="invalid-error">
+                    <div *ngIf="contactUsForm.get('subject').errors?.required && (contactUsForm.get('subject').dirty
+                     || contactUsForm.get('subject').touched)" class="invalid-error">
                         Subject is required
                     </div>
                     <input type="text" class="form-control col-sm-3 mb-3"
@@ -45,8 +45,7 @@
                               cols="50"
                               placeholder="Message.."
                               [formControl]="contactUsForm.controls['message']"
-                              tooltip="Enter the message..">
-                   tooltip="Enter the message.."></textarea>
+                              tooltip="Enter the message.."></textarea>
                     <div class="row subrow">
                         <button pButton
                                 [disabled]="!contactUsForm.valid"
