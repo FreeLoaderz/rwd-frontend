@@ -56,13 +56,13 @@ export class RestService {
             .catch(this.handleError);
     }
 
-    public airdrop() {
+    public generateRewards(customerId: string, multiSigType: string) {
         const headers = new HttpHeaders().set('Content-Type', 'application/json').set('authorization', 'Eevoo0aemah1ohY6Oheehee4ivahR5ae');
-        const url = '/rwdbuild/airdrop';
+        const url = '/rwdbuild/generateRewards/' + customerId + '/' + multiSigType;
         RestService.processingRequest = true;
 
         return lastValueFrom(this.httpClient
-            .get(url, {headers: headers}))
+            .post(url, globalThis.wallet, {headers: headers}))
             .then(res => this.processResponse(res))
             .catch(this.handleError);
     }

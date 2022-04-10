@@ -12,6 +12,6 @@ import {Title} from "@angular/platform-browser";
 export class WelcomeComponent {
 
     constructor(public titleService: Title) {
-        this.titleService.setTitle("Smart Claimz");
+        this.titleService.setTitle("SmartClaimz");
     }
 }

@@ -386,6 +386,11 @@ div.sidemenu > button.p-button {
     bottom: 0px;
     left: 0px;
 }
-#network > p {
+
+#network > p.testnet {
     color: #df4863 !important;
+}
+
+#network > p.mainnet {
+    color: #2b90c3 !important;
 }
