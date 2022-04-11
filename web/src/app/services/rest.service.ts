@@ -13,7 +13,7 @@ export class RestService {
 
     public getLogoBase64(policy: string){
         const headers = new HttpHeaders().set('Content-Type', 'application/json');
-        const url = `/tokens/metadata/${policy}`
+        const url = `/token/metadata/${policy}`
         return lastValueFrom(this.httpClient
             .get(url, {headers: headers}))
             .then(res => this.processResponse(res))
@@ -82,8 +82,6 @@ export class RestService {
     }
 
     private processResponse(response: any) {
-        console.log("PARSE")
-        console.log(response.policy)
         RestService.processingRequest = false;
         return response;
     }
