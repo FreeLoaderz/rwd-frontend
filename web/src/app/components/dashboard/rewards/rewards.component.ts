@@ -69,24 +69,27 @@ export class RewardsComponent extends NotificationComponent implements OnInit, O
     public listTokens() {
         this.listingTokens = true;
         globalThis.tokens = [];
-        /**    if (location.hostname === 'localhost') {
+         if (location.hostname === 'localhost') {
+            console.log("LOGO")
+            console.log(this.restService.getLogoBase64("00000002df633853f6a47465c9496721d2d5b1291b8398016c0e87ae6e7574636f696e"));
             const example: Token = new Token({
                 "tokenname": "744d494e",
-                "currencysymbol": "dd78158839fae805523ba4c0aa5cd3d7fa4adb43f7ae8c7ebf1d5dd9",
+                "currencysymbol": "00000002df633853f6a47465c9496721d2d5b1291b8398016c0e87ae6e7574636f696e",
                 "fingerprint": "sajdfqhw4iuhqwieufwae",
                 "amount": 1000,
+                "logo": this.restService.getLogoBase64("00000002df633853f6a47465c9496721d2d5b1291b8398016c0e87ae6e7574636f696e"),
                 selected: false
             });
             globalThis.tokens.push(example);
             this.tokens = [...globalThis.tokens];
             this.listingTokens = false;
-        } else {**/
+        } else {
         this.claimReturn = null;
         globalThis.avialableTokens = new AvailableTokens();
         this.restService.getAvailableTokens()
             .then(res => this.processTokenList(res))
             .catch(e => this.processError(e));
-        //   }
+          }
     }
 
     public processTokenList(data: any) {

@@ -7,6 +7,7 @@ export class Token {
     public fingerprint: string;
     public amount: number;
     public last_calc_epoch: number;
+    public logo: string;
     public selected: boolean = false;
 
     constructor(data: any) {

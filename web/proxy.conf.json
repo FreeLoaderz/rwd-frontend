@@ -24,6 +24,19 @@
     "pathRewrite": {
       "^/rwdinfo": ""
     }
+  },
+  "/tokens": {
+    "target": {
+      "host": "127.0.0.1",
+      "protocol": "http",
+      "port": 4000
+    },
+    "secure": false,
+    "logLevel": "debug",
+    "changeOrigin": true,
+    "pathRewrite": {
+      "^/rwdinfo": ""
+    }
   }
 }
 
