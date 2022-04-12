@@ -12,6 +12,8 @@ import {SpoRewardClaim} from "../../../data/spo-reward-claim";
 import {WalletService} from "../../../services/wallet.service";
 import {Title} from "@angular/platform-browser";
 import {UtilityService} from "../../../services/utility.service";
+import {TokenMetadata} from "../../../data/token-metadata";
+import {TokenMetadataService} from "../../../services/token-metadata.service";
 
 @Component({
     selector: 'rewards',
@@ -22,8 +24,10 @@ import {UtilityService} from "../../../services/utility.service";
 export class RewardsComponent extends NotificationComponent implements OnInit, OnDestroy {
     public walletSubscription: Subscription;
     public claimSubscription: Subscription;
+    public tokenMetadataSubscription: Subscription;
     public tokens: Array<Token> = [];
     public selectedTokens: Map<string, Token> = new Map<string, Token>();
+    public tokenMetadata: Map<string, TokenMetadata> = new Map<string, TokenMetadata>();
     public claimReturn: string;
     public walletLoaded: boolean = false;
     public initialized: boolean = false;
@@ -34,15 +38,18 @@ export class RewardsComponent extends NotificationComponent implements OnInit, O
 
     constructor(public router: Router, public notifierService: NotifierService, public restService: RestService,
                 public walletObserverService: WalletObserverService, public walletService: WalletService,
-                public titleService: Title) {
+                public titleService: Title, public tokenMetadataService: TokenMetadataService) {
         super(notifierService);
         if (globalThis.tokens == null) {
-            globalThis.tokens = [];
+            globalThis.tokens = new Map<string, Token>();
         }
         this.titleService.setTitle("Rewards");
     }
 
     public ngOnInit() {
+        this.tokenMetadataSubscription = this.tokenMetadataService.tokenMetadata$.subscribe(tokenMetadata => {
+            this.processMetadata(tokenMetadata);
+        });
         this.walletSubscription = this.walletObserverService.loaded$.subscribe(
             loaded => {
                 console.log("wallet loaded [" + loaded + "]");
@@ -52,6 +59,7 @@ export class RewardsComponent extends NotificationComponent implements OnInit, O
                 }
             }
         );
+        this.tokenMetadata = this.tokenMetadataService.tokenMetadata;
         this.walletLoaded = this.walletService.walletLoaded;
         if (this.walletLoaded === true) {
             this.listTokens();
@@ -68,36 +76,63 @@ export class RewardsComponent extends NotificationComponent implements OnInit, O
 
     public listTokens() {
         this.listingTokens = true;
-        globalThis.tokens = [];
-         if (location.hostname === 'localhost') {
-            console.log("LOGO")
-            console.log(this.restService.getLogoBase64("00000002df633853f6a47465c9496721d2d5b1291b8398016c0e87ae6e7574636f696e"));
+        globalThis.tokens.clear();
+     /**   if (location.hostname === 'localhost') {
+            console.log("LOGO");
+            console.log();
             const example: Token = new Token({
                 "tokenname": "744d494e",
                 "currencysymbol": "00000002df633853f6a47465c9496721d2d5b1291b8398016c0e87ae6e7574636f696e",
                 "fingerprint": "sajdfqhw4iuhqwieufwae",
                 "amount": 1000,
-                "logo": this.restService.getLogoBase64("00000002df633853f6a47465c9496721d2d5b1291b8398016c0e87ae6e7574636f696e"),
+                "logo": "",
                 selected: false
             });
-            globalThis.tokens.push(example);
-            this.tokens = [...globalThis.tokens];
+            globalThis.tokens.set(example.tokenname, example);
+            if (!this.tokenMetadata.has(example.tokenname)) {
+                this.tokenMetadataService.getLogoMetadata(example.currencysymbol)
+                    .then(res => this.processMetadata(new TokenMetadata(res)))
+                    .catch(e => this.processError(e));
+            }
+            this.tokens = [...globalThis.tokens.values()];
             this.listingTokens = false;
-        } else {
-        this.claimReturn = null;
-        globalThis.avialableTokens = new AvailableTokens();
-        this.restService.getAvailableTokens()
-            .then(res => this.processTokenList(res))
-            .catch(e => this.processError(e));
-          }
+        } else { **/
+            this.claimReturn = null;
+            globalThis.availableTokens = new AvailableTokens();
+            this.restService.getAvailableTokens()
+                .then(res => this.processTokenList(res))
+                .catch(e => this.processError(e));
+        // }
     }
 
+    public processMetadata(tokenMetadata: TokenMetadata) {
+        this.tokenMetadata.set(tokenMetadata.name, tokenMetadata);
+        if (globalThis.tokens.has(tokenMetadata.name)) {
+            const token = globalThis.tokens.get(tokenMetadata.name);
+            token.logo = tokenMetadata.logo;
+            globalThis.tokens.set(tokenMetadata.name, token);
+        }
+        this.tokens = [...globalThis.tokens.values()];
+    }
+
+    /**
+     * @TODO -> We have the list of tokens, but we don't have the logos for the tokens. Need to pull the logos,
+     * store them in localstorage, associate them to the tokens from this list, then display them.
+     */
     public processTokenList(data: any) {
-        globalThis.tokens = [];
+        globalThis.tokens.clear();
         for (let i = 0; i < data.length; ++i) {
             const newToken = new Token(data[i]);
             if (newToken.amount > 0) {
-                globalThis.tokens.push(newToken);
+                if (this.tokenMetadata.has(newToken.tokenname)) {
+                    newToken.logo = this.tokenMetadata.get(newToken.tokenname).logo;
+                    globalThis.tokens.set(newToken.tokenname, newToken);
+                } else {
+                    globalThis.tokens.set(newToken.tokenname, newToken);
+                    this.tokenMetadataService.getLogoMetadata(newToken.currencysymbol)
+                        .then(res => this.processMetadata(new TokenMetadata(res)))
+                        .catch(e => this.processError(e));
+                }
             }
         }
         this.tokens = [...globalThis.tokens];

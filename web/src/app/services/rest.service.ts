@@ -6,18 +6,8 @@ import * as wasm from "../../assets/scripts/cardano_serialization_lib.min.js";
 @Injectable()
 export class RestService {
     public static processingRequest: boolean = false;
-    public static API_ENDPOINT = ["https://tokens.cardano.org/metadata/"]
 
     constructor(private httpClient: HttpClient) {
-    }
-
-    public getLogoBase64(policy: string){
-        const headers = new HttpHeaders().set('Content-Type', 'application/json');
-        const url = `/token/metadata/${policy}`
-        return lastValueFrom(this.httpClient
-            .get(url, {headers: headers}))
-            .then(res => this.processResponse(res))
-            .catch(this.handleError);
     }
 
     public getAvailableTokens() {

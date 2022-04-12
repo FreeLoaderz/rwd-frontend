@@ -32,6 +32,7 @@ import {AppRoutingModule} from "./app-routing.module";
 import {NgbCollapseModule} from "@ng-bootstrap/ng-bootstrap";
 import {NetworkComponent} from "./components/network/network.component";
 import {TestnetComponent} from "./components/testnet/testnet.component";
+import {TokenMetadataService} from "./services/token-metadata.service";
 
 const customNotifierOptions: NotifierOptions = {
     position: {
@@ -87,7 +88,7 @@ const customNotifierOptions: NotifierOptions = {
         DropdownModule, MenubarModule, DataViewModule, ImageModule,
         ButtonModule],
     bootstrap: [NavbarComponent],
-    providers: [RestService, WalletObserverService, WalletService]
+    providers: [RestService, WalletObserverService, WalletService, TokenMetadataService]
 })
 
 export class AppModule {

@@ -9,6 +9,8 @@ import {WalletService} from "../../services/wallet.service";
 import {WalletObserverService} from "../../services/wallet-observer.service";
 import {Subscription} from "rxjs";
 import {DOCUMENT} from "@angular/common";
+import {TokenMetadata} from "../../data/token-metadata";
+import {TokenMetadataService} from "../../services/token-metadata.service";
 
 @Component({
     selector: 'navbar',
@@ -35,7 +37,8 @@ export class NavbarComponent extends NotificationComponent implements OnInit, Af
 
     constructor(@Inject(DOCUMENT) private document: any,
                 public router: Router, public titleService: Title, public walletObserverService: WalletObserverService,
-                public notifierService: NotifierService, public walletService: WalletService) {
+                public notifierService: NotifierService, public walletService: WalletService,
+                public tokenMetadataService: TokenMetadataService) {
         super(notifierService);
         this.titleService.setTitle("Rewards");
         globalThis.customerId = 1;
@@ -43,6 +46,7 @@ export class NavbarComponent extends NotificationComponent implements OnInit, Af
     }
 
     ngOnInit() {
+        this.tokenMetadataService.init();
         this.docElem = this.document.documentElement;
         this.walletSubscription = this.walletObserverService.loaded$.subscribe(
             loaded => {
