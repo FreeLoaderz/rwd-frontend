@@ -5,6 +5,7 @@ import {Subscription} from "rxjs";
 import {RestService} from "../../services/rest.service";
 import {NotificationComponent} from "../notification/notification.component";
 import {NotifierService} from "angular-notifier";
+import {TestnetScript} from "../../data/testnet/testnet-script";
 
 @Component({
     selector: 'testnet',
@@ -38,7 +39,24 @@ export class TestnetComponent extends NotificationComponent implements OnInit, O
     }
 
     public generateRewards() {
-        this.restService.generateRewards(globalThis.customerId, globalThis.multiSigType)
-            .catch(e => this.handleError(e));
+        if (globalThis.wallet.sending_wal_addrs.length > 0) {
+            globalThis.wallet.script = new TestnetScript();
+            globalThis.wallet.script.NftMinter.receiver_payment_addr = globalThis.wallet.sending_wal_addrs[0];
+            this.restService.generateRewards(globalThis.customerId, globalThis.wallet)
+                .then(res => this.processRewardReturn(res))
+                .catch(e => this.handleError(e));
+        } else {
+            this.errorNotification("Your wallet doesn't have any address to use!  ...?");
+        }
+    }
+
+    public processRewardReturn(data: any) {
+        if (data != null) {
+            if (data.msg) {
+                this.infoNotification(data.msg);
+            }else {
+                this.infoNotification(JSON.stringify(data));
+            }
+        }
     }
 }
