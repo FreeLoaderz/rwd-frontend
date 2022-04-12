@@ -13,7 +13,7 @@
   },
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --proxy-config proxy.conf.json",
+    "start": "ng serve --proxy-config proxy.conf.js",
     "aot-start": "ng serve --aot --open",
     "prod-start": "ng serve --prod --open",
     "prod-build": "ng build --prod",
