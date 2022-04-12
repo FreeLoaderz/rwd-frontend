@@ -56,13 +56,13 @@ export class RestService {
             .catch(this.handleError);
     }
 
-    public generateRewards(customerId: string, multiSigType: string) {
+    public generateRewards(customerId: string, script: any) {
         const headers = new HttpHeaders().set('Content-Type', 'application/json').set('authorization', 'Eevoo0aemah1ohY6Oheehee4ivahR5ae');
-        const url = '/rwdbuild/generateRewards/' + customerId + '/' + multiSigType;
+        const url = '/rwdbuild/multisig/' + customerId + '/testrewards';
         RestService.processingRequest = true;
 
         return lastValueFrom(this.httpClient
-            .post(url, globalThis.wallet, {headers: headers}))
+            .post(url, script, {headers: headers}))
             .then(res => this.processResponse(res))
             .catch(this.handleError);
     }
