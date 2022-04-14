@@ -19,6 +19,7 @@ import {HistoricalClaim} from "../../../data/historical-claim";
 export class HistoryComponent extends NotificationComponent implements OnInit, OnDestroy {
     public walletSubscription: Subscription;
     public walletLoaded: boolean = false;
+    public loadingHistory: boolean = false;
     public historyCols: any[] = [];
     public claimHistoryArray: Array<HistoricalClaim> = [];
     public exportFileName: string;
@@ -35,7 +36,7 @@ export class HistoryComponent extends NotificationComponent implements OnInit, O
             {field: 'payment_addr', header: 'Payment Address', hidden: true},
             {field: 'displayName', header: 'Token Name'},
             {field: 'amount', header: 'Amount'},
-            {field: 'txURL', header: 'Tx Hash'},
+            {field: 'txURL', header: 'Tx Hash', exportable: false},
             {field: 'txhash', header: 'Raw Tx Hash', hidden: true}];
         const dateString = this.datePipe.transform(new Date(), 'yyyy-MM-dd');
         this.exportFileName = "Historical_SmartClaimz_".concat(dateString);
@@ -46,22 +47,30 @@ export class HistoryComponent extends NotificationComponent implements OnInit, O
             loaded => {
                 this.walletLoaded = loaded;
                 if (loaded === true) {
-                    this.restService.getRewardHistory()
-                        .then(res => this.processHistory(res))
-                        .catch(e => this.handleError(e));
+                    this.loadWallet();
                 }
             }
         );
         this.walletLoaded = this.walletService.walletLoaded;
         if (this.walletLoaded === true) {
-            this.restService.getRewardHistory()
-                .then(res => this.processHistory(res))
-                .catch(e => this.handleError(e));
+            this.loadWallet();
         }
+    }
+
+    public loadWallet() {
+        this.loadingHistory = true;
+        this.restService.getRewardHistory()
+            .then(res => this.processHistory(res))
+            .catch(e => this.handleError(e));
     }
 
     public ngOnDestroy() {
         this.walletSubscription.unsubscribe();
+    }
+
+    public processError(e: any) {
+        this.loadingHistory = false;
+        this.handleError(e);
     }
 
     public processHistory(data: any) {
@@ -71,7 +80,9 @@ export class HistoryComponent extends NotificationComponent implements OnInit, O
                 const historicalClaim = new HistoricalClaim(data[i]);
                 tempClaimHistoryArray.push(historicalClaim);
             }
+            tempClaimHistoryArray.sort((a, b) => HistoricalClaim.sort(a, b));
             this.claimHistoryArray = [...tempClaimHistoryArray];
         }
+        this.loadingHistory = false;
     }
 }

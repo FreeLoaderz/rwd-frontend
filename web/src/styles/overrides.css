@@ -458,3 +458,9 @@ ul.banner-social-buttons > li > a:active {
 .fa-clock-rotate-left {
     color: silver !important;
 }
+
+input, textarea {
+    -moz-border-radius: 25px 25px 25px 25px !important;
+    -webkit-border-radius: 25px !important;
+    border-radius: 25px 25px 25px 25px !important;
+}

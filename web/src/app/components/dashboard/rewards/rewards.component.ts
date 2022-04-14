@@ -28,6 +28,8 @@ export class RewardsComponent extends NotificationComponent implements OnInit, O
     public walletLoaded: boolean = false;
     public initialized: boolean = false;
     public listingTokens: boolean = false;
+    public submittingTx: boolean = false;
+    public selectAll: boolean = false;
 
     @ViewChild('tokenView', {static: false}) public tokenView: any;
     @ViewChild('notificationTemplate', {static: false}) public notificationTemplate: any;
@@ -97,6 +99,7 @@ export class RewardsComponent extends NotificationComponent implements OnInit, O
                 globalThis.tokens.push(newToken);
             }
         }
+        globalThis.tokens.sort((a, b) => Token.sort(a, b));
         this.tokens = [...globalThis.tokens];
         this.initialized = true;
         this.listingTokens = false;
@@ -118,14 +121,11 @@ export class RewardsComponent extends NotificationComponent implements OnInit, O
                     globalThis.wallet.script.SpoRewardClaim = rwd;
                     globalThis.wallet.script.SpoRewardClaim.recipient_stake_addr = globalThis.wallet.sending_stake_addr;
                     globalThis.wallet.script.SpoRewardClaim.recipient_payment_addr = globalThis.wallet.sending_wal_addrs[0];
-                    this.infoNotification("Submitting token claim");
+                    this.submittingTx = true;
                     this.restService.buildTokenClaimTx(globalThis.customerId, globalThis.multiSigType)
                         .then(res => {
-                            this.selectedTokens.clear();
-                            this.claimSubscription.unsubscribe();
-                            this.claimSubscription = null;
                             if (res.msg) {
-                                this.errorNotification("Error! " + res.msg);
+                                this.showError(res.msg);
                             } else {
                                 this.processClaimTokens(res);
                             }
@@ -139,21 +139,43 @@ export class RewardsComponent extends NotificationComponent implements OnInit, O
         }
     }
 
-    public processClaimTokens(data: any) {
-        this.claimReturn = data;
-        console.log(data);
-        const signature = globalThis.walletApi.signTx(data.tx, true);
-        signature.then((finalSignature: Observable<string>) => {
-            console.log(finalSignature);
-            this.selectedTokens.clear();
-            this.restService.signAndFinalizeTx(globalThis.customerId, globalThis.multiSigType, finalSignature, data)
-                .then(res => this.processSignTx(res))
-                .catch(e => this.processError(e));
+    public resetSelection(clearAll: boolean) {
+        this.selectedTokens.clear();
+        this.tokens.forEach(token => {
+            token.selected = false;
         });
+        this.listingTokens = false;
+        if (this.claimSubscription != null) {
+            this.claimSubscription.unsubscribe();
+            this.claimSubscription = null;
+        }
+        this.submittingTx = false;
+        if (clearAll) {
+            this.selectAll = false;
+        }
+    }
+
+    public processClaimTokens(data: any) {
+        if ((data != null) && (data.tx != null)) {
+            this.successNotification("Token claim created");
+            this.claimReturn = data;
+            console.log(data);
+            const signature = globalThis.walletApi.signTx(data.tx, true);
+            signature.then((finalSignature: Observable<string>) => {
+                console.log(finalSignature);
+                this.infoNotification("Submitting Signature");
+                this.restService.signAndFinalizeTx(globalThis.customerId, globalThis.multiSigType, finalSignature, data)
+                    .then(res => this.processSignTx(res))
+                    .catch(e => this.processError(e));
+            }).catch(e => this.showError(e));
+        } else {
+            this.errorNotification("Token claim could not be created");
+        }
     }
 
     public processSignTx(data: any) {
         console.log(data);
+        this.resetSelection(true);
         if ((data != null) && (data.txhash != null)) {
             const txURL = UtilityService.generateTxHashURL(data.txhash, true);
             this.customNotification("success", "TX Successfully transmitted! " + txURL, this.notificationTemplate);
@@ -180,15 +202,31 @@ export class RewardsComponent extends NotificationComponent implements OnInit, O
             token.selected = true;
             this.selectedTokens.set(token.fingerprint, token);
         }
+        if (this.selectedTokens.size === this.tokens.length) {
+            this.selectAll = true;
+        } else {
+            this.selectAll = false;
+        }
+    }
+
+    public toggleSelectAll() {
+        this.selectAll = !this.selectAll;
+        this.resetSelection(false);
+        if (this.selectAll) {
+            this.tokens.forEach(token => {
+                token.selected = true;
+                this.selectedTokens.set(token.fingerprint, token);
+            });
+        }
+    }
+
+    public showError(error) {
+        this.resetSelection(true);
+        this.errorNotification(error);
     }
 
     public processError(error) {
-        this.selectedTokens.clear();
-        this.listingTokens = false;
-        if (this.claimSubscription != null) {
-            this.claimSubscription.unsubscribe();
-            this.claimSubscription = null;
-        }
+        this.resetSelection(true);
         this.handleError(error);
     }
 }
