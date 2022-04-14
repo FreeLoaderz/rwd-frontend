@@ -12,5 +12,14 @@ export class WalletObserverService {
     setloaded(loaded: boolean) {
         this.loaded.next(loaded);
     }
+
+    private error = new Subject<boolean>();
+    // Observable boolean stream
+    error$ = this.error.asObservable();
+
+    // Service message command
+    setError(error: boolean) {
+        this.error.next(error);
+    }
 }
 

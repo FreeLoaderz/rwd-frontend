@@ -25,6 +25,7 @@ export class NavbarComponent extends NotificationComponent implements OnInit, Af
     public walletSubstring: string;
     public walletLoaded: boolean = false;
     public walletSubscription: Subscription;
+    public walletErrorSubscription: Subscription;
     public isTestNet: boolean = false;
     public isMenuCollapsed: boolean = true;
     public screenWidth: number;
@@ -48,6 +49,14 @@ export class NavbarComponent extends NotificationComponent implements OnInit, Af
             loaded => {
                 this.walletLoaded = loaded;
                 this.isTestNet = (globalThis.wallet.network === 0);
+            }
+        );
+
+        this.walletErrorSubscription = this.walletObserverService.error$.subscribe(
+            error => {
+                this.walletLoaded = false;
+                this.errorNotification("Wallet could not be loaded! Make sure DApp access is enabled!");
+                this.disconnectWallet();
             }
         );
     }

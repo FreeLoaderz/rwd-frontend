@@ -40,7 +40,7 @@ h4 {
     background-color: black !important;
 }
 
-.grid-item-top{
+.grid-item-top {
     padding-top: .5rem;
     padding-bottom: .5rem;
     padding-left: .5rem;
@@ -64,6 +64,7 @@ h4 {
     margin-top: .5rem;
     margin-bottom: .5rem;
 }
+
 .grid-entry {
     padding-top: 0rem !important;
     padding-bottom: 0rem !important;
@@ -299,6 +300,7 @@ li + li {
     max-height: 200px !important;
     min-height: 200px !important;
 }
+
 .grid-item:active, .grid-item:focus, .grid-item:hover {
     box-shadow: 8px 8px 14px 0px rgb(0, 0, 0) !important;
     transform: scale(1.1, 1.1);
@@ -364,7 +366,7 @@ div.sidemenu > button.p-button {
 
 #contact {
     min-height: 85vh !important;
- }
+}
 
 .center-div {
     position: absolute;
@@ -393,4 +395,9 @@ div.sidemenu > button.p-button {
 
 #network > p.mainnet {
     color: #2b90c3 !important;
+}
+
+.history-search {
+    float: right;
+    margin-top: -8px !important;
 }
