@@ -6,6 +6,7 @@ import {HistoryComponent} from "./components/dashboard/history/history.component
 import {ContactUsComponent} from "./components/contact-us/contact-us.component";
 import {DashboardComponent} from "./components/dashboard/dashboard.component";
 import {TestnetComponent} from "./components/testnet/testnet.component";
+import { TokenMetaDataComponent } from './components/token-metadata/token-metadata.component';
 
 
 const routes: Routes = [
@@ -34,6 +35,10 @@ const routes: Routes = [
             {path: 'rewards', component: RewardsComponent},
             {path: 'history', component: HistoryComponent}
         ]
+    },
+    {
+        path: 'explore',
+        component: TokenMetaDataComponent,
     }
 ];
 

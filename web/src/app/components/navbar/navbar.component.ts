@@ -210,6 +210,12 @@ export class NavbarComponent extends NotificationComponent implements OnInit, Af
         this.router.navigate(['/dashboard']);
     }
 
+    public routeTokenMetadata() {
+        this.isMenuCollapsed = true;
+        this.setActive("TOKENMETADATA");
+        this.router.navigate(['/explore'])
+    }
+
     public routeTestnet() {
         this.isMenuCollapsed = true;
         this.setActive("TESTNET");
