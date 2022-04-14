@@ -47,6 +47,20 @@ export class Token {
             }
         }
     }
+    public static sort(a: any, b: any): number {
+        if (a.amount < b.amount) {
+            return 1;
+        } else if (a.amount > b.amount) {
+            return -1;
+        }
+        if (a.displayName > b.displayName) {
+            return 1;
+        } else if (a.displayName < b.displayName) {
+            return -1;
+        }
+        // a must be equal to b
+        return 0;
+    }
 }
 
 const example = {

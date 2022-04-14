@@ -9,6 +9,7 @@ export class WalletService {
     public walletSubstring: string;
     public numWalletCalls: number = 0;
     public walletLoaded: boolean = false;
+    public errorLoadingWallet: boolean = false;
 
     constructor(public walletObserver: WalletObserverService) {
         this.walletObserver.loaded$.subscribe(loaded => {
@@ -119,6 +120,7 @@ export class WalletService {
      */
     public finishWalletConnect(api: any, source: string) {
         if (api != null) {
+            this.errorLoadingWallet = false;
             globalThis.walletSource = source;
             globalThis.walletApi = api;
             /**
@@ -255,11 +257,20 @@ export class WalletService {
         }
     }
 
+    public walletFinishedLoading() {
+        if (!this.errorLoadingWallet) {
+            this.walletObserver.setloaded(true);
+        } else {
+            this.walletObserver.setError(true);
+        }
+    }
+
     /**
      * @TODO -> Need some kind of error handling for this.. not just print console
      * @param e
      */
     public handleError(e: any) {
+        this.errorLoadingWallet = true;
         console.log("Wallet Service error occured! [" + e + "]");
         if (--this.numWalletCalls === 0) {
             this.walletObserver.setloaded(true);

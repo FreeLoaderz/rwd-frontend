@@ -1,5 +1,6 @@
-import {Component} from '@angular/core';
+import {Component, Inject} from '@angular/core';
 import {Title} from "@angular/platform-browser";
+import {DOCUMENT} from "@angular/common";
 
 @Component({
     selector: 'welcome',
@@ -11,7 +12,11 @@ import {Title} from "@angular/platform-browser";
  */
 export class WelcomeComponent {
 
-    constructor(public titleService: Title) {
+    constructor(@Inject(DOCUMENT) private document: any, public titleService: Title) {
         this.titleService.setTitle("SmartClaimz");
+    }
+
+    scrollToElement(element): void {
+        this.document.getElementById(element).scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"});
     }
 }

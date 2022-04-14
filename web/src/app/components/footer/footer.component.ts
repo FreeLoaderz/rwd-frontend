@@ -13,4 +13,11 @@ export class FooterComponent {
 
     constructor() {
     }
+
+    public compress(): boolean {
+        if (window.innerWidth < 1000) {
+            return true;
+        }
+        return false;
+    }
 }

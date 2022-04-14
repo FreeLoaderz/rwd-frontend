@@ -395,7 +395,7 @@ th.p-resizable-column {
 
 .p-datatable-thead > tr > th {
     background: transparent !important;
-    color: white !important;
+    color: #2b90c3 !important;
 }
 
 .p-datatable-tbody > tr > td > span {
@@ -457,4 +457,20 @@ ul.banner-social-buttons > li > a:active {
 
 .fa-clock-rotate-left {
     color: silver !important;
+}
+
+input, textarea {
+    -moz-border-radius: 25px 25px 25px 25px !important;
+    -webkit-border-radius: 25px !important;
+    border-radius: 25px 25px 25px 25px !important;
+}
+
+.p-button-primary {
+    background-color: #2b90c3 !important;
+}
+
+.p-button-primary:focus,
+.p-button-primary:active,
+.p-button-primary:hover {
+    background-color: #153359 !important;
 }

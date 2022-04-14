@@ -69,6 +69,20 @@ export class HistoricalClaim {
             }
         }
     }
+    public static sort(a: any, b: any): number {
+        if (a.timestamp < b.timestamp) {
+            return 1;
+        } else if (a.timestamp > b.timestamp) {
+            return -1;
+        }
+        if (a.displayName > b.displayName) {
+            return 1;
+        } else if (a.displayName < b.displayName) {
+            return -1;
+        }
+        // a must be equal to b
+        return 0;
+    }
 }
 
 const example = {

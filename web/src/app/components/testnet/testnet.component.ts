@@ -19,6 +19,7 @@ import {TestnetScript} from "../../data/testnet/testnet-script";
 export class TestnetComponent extends NotificationComponent implements OnInit, OnDestroy {
     public walletSubscription: Subscription;
     public walletLoaded: boolean = false;
+    public submitted: boolean = false;
 
     constructor(public walletObserverService: WalletObserverService, public walletService: WalletService,
                 public restService: RestService, public notifierService: NotifierService) {
@@ -38,25 +39,39 @@ export class TestnetComponent extends NotificationComponent implements OnInit, O
         this.walletSubscription.unsubscribe();
     }
 
+    public disableGenRewards(): boolean {
+        if ((!this.walletLoaded) || (this.submitted)) {
+            return true;
+        }
+        return false;
+    }
+
     public generateRewards() {
         if (globalThis.wallet.sending_wal_addrs.length > 0) {
             globalThis.wallet.script = new TestnetScript();
             globalThis.wallet.script.NftMinter.receiver_payment_addr = globalThis.wallet.sending_wal_addrs[0];
+            this.submitted = true;
             this.restService.generateRewards(globalThis.customerId, globalThis.wallet)
                 .then(res => this.processRewardReturn(res))
-                .catch(e => this.handleError(e));
+                .catch(e => this.processError(e));
         } else {
             this.errorNotification("Your wallet doesn't have any address to use!  ...?");
         }
     }
 
     public processRewardReturn(data: any) {
+        this.submitted = false;
         if (data != null) {
             if (data.msg) {
-                this.infoNotification(data.msg);
-            }else {
+                this.successNotification(data.msg);
+            } else {
                 this.infoNotification(JSON.stringify(data));
             }
         }
+    }
+
+    public processError(e: any) {
+        this.submitted = false;
+        this.handleError(e);
     }
 }
