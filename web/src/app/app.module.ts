@@ -26,6 +26,7 @@ import {DashboardComponent} from "./components/dashboard/dashboard.component";
 import {RewardsComponent} from "./components/dashboard/rewards/rewards.component";
 import {ContactUsComponent} from "./components/contact-us/contact-us.component";
 import {HistoryComponent} from "./components/dashboard/history/history.component";
+import { PendingComponent } from './components/dashboard/pending/pending.component';
 import {CommonModule} from "@angular/common";
 import {FileUploadModule} from "primeng/fileupload";
 import {AppRoutingModule} from "./app-routing.module";
@@ -78,7 +79,7 @@ const customNotifierOptions: NotifierOptions = {
 
 @NgModule({
     declarations: [NavbarComponent, WelcomeComponent, FooterComponent, InfoComponent, DashboardComponent, RewardsComponent,
-        ContactUsComponent, HistoryComponent, NetworkComponent, TestnetComponent],
+        ContactUsComponent, HistoryComponent, PendingComponent, NetworkComponent, TestnetComponent],
     imports: [BrowserModule, FormsModule, ReactiveFormsModule, AppRoutingModule, RouterModule,
         TooltipModule.forRoot(), OverlayPanelModule, ModalModule.forRoot(),
         NotifierModule.withConfig(customNotifierOptions),

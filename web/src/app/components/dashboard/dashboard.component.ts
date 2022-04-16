@@ -38,9 +38,15 @@ export class DashboardComponent extends NotificationComponent implements AfterVi
         this.router.navigate(['/dashboard/feedback']);
     }
 
+    public showPending() {
+        this.setActive("pending");
+        this.router.navigate(['/dashboard/pending']);
+    }
+
     public setActive(sourceId: string) {
         this.document.getElementById("rewards").classList.remove("active");
         this.document.getElementById("history").classList.remove("active");
+        this.document.getElementById("pending").classList.remove("active");
         this.document.getElementById(sourceId).classList.add("active");
     }
 }
