@@ -1,3 +1,31 @@
-<section id="network">
+<section id="network" style="display: flex">
     <p [ngClass]="network">{{network}}</p>
+    <a (click)="showTermsModal()" class="ms-auto me-2" style="dislay:flex !important;float: right">Terms of Service</a>
 </section>
+<div bsModal #terms="bs-modal" class="modal fade" role="dialog" tabindex="-1"
+     [config]="{backdrop: 'static'}">
+    <div class="tos-dialog">
+        <div class="modal-content tos-modal">
+            <div class="modal-header">
+                <h4 class="modal-title pull-left" style="color: #153359 !important">Terms of Service</h4>
+            </div>
+            <div class="modal-body">
+                <iframe src="assets/SmartClaimz-Terms_of_Service.html"
+                       height="100%"
+                       width="100%"></iframe>
+            </div>
+            <div class="modal-footer">
+                <button pButton type="submit" class="p-button-rounded p-button-primary me-1" icon="fa-solid fa-download"
+                        title="Download TOS"
+                        iconPos="left"
+                        (click)="downloadModal()"
+                        label="Download" style="text-decoration: none !important"></button>
+                <button pButton type="button" class="p-button-rounded p-button-secondary ms-1" icon="fa-solid fa-times"
+                        title="Close"
+                        iconPos="left"
+                        label="Close"
+                        (click)="hideTermsModal()"></button>
+            </div>
+        </div>
+    </div>
+</div>
