@@ -1,7 +1,8 @@
-import {Component, Injectable, OnDestroy, OnInit} from "@angular/core";
+import {Component, Injectable, OnDestroy, OnInit, ViewChild} from "@angular/core";
 import {WalletObserverService} from "../../services/wallet-observer.service";
 import {WalletService} from "../../services/wallet.service";
 import {Subscription} from "rxjs";
+import {ModalDirective} from "ngx-bootstrap/modal";
 
 @Component({
     selector: 'network',
@@ -15,6 +16,7 @@ import {Subscription} from "rxjs";
 export class NetworkComponent implements OnInit, OnDestroy {
     public walletSubscription: Subscription;
     public network: string = "";
+    @ViewChild('terms', {static: false}) public terms: ModalDirective;
 
     constructor(public walletObserverService: WalletObserverService, public walletService: WalletService) {
     }
@@ -32,6 +34,19 @@ export class NetworkComponent implements OnInit, OnDestroy {
         if (this.walletService.walletLoaded) {
             this.setNetwork();
         }
+    }
+
+    public showTermsModal() {
+        this.terms.show();
+    }
+
+    public downloadModal() {
+        this.hideTermsModal();
+        window.open('assets/SmartClaimz-Terms_of_Service.pdf');
+    }
+
+    public hideTermsModal() {
+        this.terms.hide();
     }
 
     public setNetwork() {
