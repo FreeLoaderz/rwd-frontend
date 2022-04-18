@@ -3,25 +3,18 @@
         <div class="ms-2 me-2" style="min-width: 200px !important;max-width: 200px !important; "></div>
         <div class="sidebar-content ms-5" style="padding-top: 0px !important">
             <p>Explore the Tokens!</p>
-            <!-- <p-table [value]="tokenMetadata" responsiveLayout="scroll">
+            <p-table [value]="tokenMetadata" responsiveLayout="scroll">
                 <ng-template pTemplate="header">
                     <tr>
-                        <th>Name</th>
-                        <th>Ticker</th>
-                        <th>Description</th>
-                        <th>URL</th>
                         <th>Policy</th>
                     </tr>
                 </ng-template>
-                <ng-template pTemplate="body" let-product>
+                <ng-template pTemplate="body" let-listAllTokens>
                     <tr>
-                        <td>{{tokenMetadata.name}}</td>
-                        <td>{{tokenMetadata.ticker}}</td>
-                        <td>{{tokenMetadata.description}}</td>
-                        <td>{{tokenMetadata.policy}}</td>
+                        <td>{{listAllTokens.policy}}</td>
                     </tr>
                 </ng-template>
-            </p-table> -->
+            </p-table>
         </div>
     </div>
 </section>

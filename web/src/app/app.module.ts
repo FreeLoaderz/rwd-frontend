@@ -33,6 +33,7 @@ import {NgbCollapseModule} from "@ng-bootstrap/ng-bootstrap";
 import {NetworkComponent} from "./components/network/network.component";
 import {TestnetComponent} from "./components/testnet/testnet.component";
 import {TokenMetadataService} from "./services/token-metadata.service";
+import { TokenMetaDataComponent } from './components/token-metadata/token-metadata.component';
 
 const customNotifierOptions: NotifierOptions = {
     position: {
@@ -79,7 +80,7 @@ const customNotifierOptions: NotifierOptions = {
 
 @NgModule({
     declarations: [NavbarComponent, WelcomeComponent, FooterComponent, InfoComponent, DashboardComponent, RewardsComponent,
-        ContactUsComponent, HistoryComponent, NetworkComponent, TestnetComponent],
+        ContactUsComponent, HistoryComponent, NetworkComponent, TestnetComponent, TokenMetaDataComponent],
     imports: [BrowserModule, FormsModule, ReactiveFormsModule, AppRoutingModule, RouterModule,
         TooltipModule.forRoot(), OverlayPanelModule, ModalModule.forRoot(),
         NotifierModule.withConfig(customNotifierOptions),
