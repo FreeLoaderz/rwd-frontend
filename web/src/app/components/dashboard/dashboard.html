@@ -1,6 +1,16 @@
-<section id="dashboard" class="ms-5 me-5 content-section">
+<section id="dashboard" class="content-section">
     <div class="sidebyside">
-        <div class="blackdiv sidemenu ms-2 me-2 row">
+        <div class="collapsesidemenu">
+            <button *ngIf="sideMenuHidden" pButton class="p-button-text"
+                    icon="fa-solid fa-angles-right"
+                    (click)="hideSideMenu(false)"
+                    title="Show side menu"></button>
+            <button *ngIf="!sideMenuHidden" pButton class="p-button-text"
+                    icon="fa-solid fa-angles-left"
+                    (click)="hideSideMenu(true)"
+                    title="Hide side menu"></button>
+        </div>
+        <div *ngIf="!sideMenuHidden" class="blackdiv sidemenu ms-2 me-2 row">
             <button pButton class="p-button-text no-ul"
                     title="Collect Rewards" id="rewards"
                     (click)="showCollectRewards()"><i class="fa-solid fa-coins me-2"></i>Rewards
@@ -11,7 +21,7 @@
             </button>
             <div class="mt-auto mb-0" style="height: 100%"></div>
         </div>
-        <div class="sidebar-content ms-5" style="padding-top: 0px !important">
+        <div class="sidebar-content ms-3" style="padding-top: 0px !important">
             <router-outlet></router-outlet>
         </div>
     </div>

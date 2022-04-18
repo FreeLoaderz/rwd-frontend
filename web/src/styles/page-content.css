@@ -347,6 +347,7 @@ div.sidemenu > button.p-button {
     min-height: 110px !important;
     max-height: 110px !important;
     padding: 0px !important;
+    margin-right: 4rem !important;
 }
 
 .invalid-error {
@@ -400,4 +401,10 @@ div.sidemenu > button.p-button {
 .history-search {
     float: right;
     margin-top: -8px !important;
+}
+
+.collapsesidemenu {
+    width: 35px;
+    margin-right: 1em;
+    margin-left: 0;
 }
