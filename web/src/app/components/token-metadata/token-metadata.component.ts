@@ -42,6 +42,7 @@ export class TokenMetaDataComponent implements OnInit {
         if (globalThis.tokenMetadata.has(exploreMetadata.policy)) {
             const getTokenMetadata = new TokenMetadata(exploreMetadata);
             globalThis.tokenMetadata.set(getTokenMetadata.policy, getTokenMetadata)
+            this.listAllTokens = [...globalThis.tokenMetadata.values()]
         }
     }
 
