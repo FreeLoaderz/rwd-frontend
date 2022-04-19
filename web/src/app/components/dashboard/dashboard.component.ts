@@ -12,6 +12,7 @@ import {DOCUMENT} from "@angular/common";
 })
 export class DashboardComponent extends NotificationComponent implements AfterViewInit {
     public walletSubscription: Subscription;
+    public sideMenuHidden: boolean = false;
 
     constructor(@Inject(DOCUMENT) private document: Document,
                 public router: Router, public notifierService: NotifierService) {
@@ -42,5 +43,9 @@ export class DashboardComponent extends NotificationComponent implements AfterVi
         this.document.getElementById("rewards").classList.remove("active");
         this.document.getElementById("history").classList.remove("active");
         this.document.getElementById(sourceId).classList.add("active");
+    }
+
+    public hideSideMenu(hide: boolean) {
+        this.sideMenuHidden = hide;
     }
 }
