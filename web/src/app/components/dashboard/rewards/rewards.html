@@ -61,7 +61,7 @@
         </p-dataView>
         <div>
             <button *ngIf="selectedTokens.size > 0" pButton
-                    title="Submit Claimz" [disabled]="!walletLoaded || submittingTx"
+                    title="Submit Claimz" [loading]="!walletLoaded || submittingTx"
                     (click)="claimSelectedTokens()"
                     class="p-button p-button-rounded p-button-primary"
                     style="margin-left: 1.7rem"
