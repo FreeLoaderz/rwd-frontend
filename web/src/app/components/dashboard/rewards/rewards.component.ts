@@ -12,7 +12,6 @@ import {SpoRewardClaim} from "../../../data/spo-reward-claim";
 import {WalletService} from "../../../services/wallet.service";
 import {Title} from "@angular/platform-browser";
 import {UtilityService} from "../../../services/utility.service";
-import {animate, state, style, transition, trigger} from "@angular/animations";
 
 @Component({
     selector: 'rewards',
