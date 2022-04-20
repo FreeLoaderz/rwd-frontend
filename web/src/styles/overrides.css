@@ -446,6 +446,10 @@ ul.banner-social-buttons > li > a:active {
     color: snow !important;
 }
 
+.fa-question {
+    color: snow !important
+}
+
 .fa-share-nodes {
     color: lawngreen !important;
 }
