@@ -7,7 +7,7 @@
             <div class="blackdiv sidebar-content mt-1" style="min-width: 50vw !important;max-width: 50vw !important">
                 <button pButton
                         title="Generate rewards for my Stake address"
-                        (click)="generateRewards()" [disabled]="disableGenRewards()"
+                        (click)="generateRewards()" [loading]="submitted"
                         class="p-button p-button-rounded p-button-primary ms-auto me-auto mb-2 mt-2"
                         label="Generate Rewards" icon="fa-solid fa-parachute-box">
                 </button>

@@ -1,7 +1,7 @@
 import {Buffer} from 'buffer';
 
 export class UtilityService {
-    public static scanURLs = ["https://testnet.cardanoscan.io/transaction/", "https://testnet.cardanoscan.io/transaction/"];
+    public static scanURLs = ["https://testnet.cardanoscan.io/transaction/", "https://cardanoscan.io/transaction/"];
 
     public static hexToBytes(hex: string) {
         const bytes = [];
