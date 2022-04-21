@@ -12,20 +12,20 @@ export class TokenMetadata {
             if (data.policy) {
                 this.policy = data.policy;
             }
-            if ((data.name) && (data.name.value)) {
-                this.name = data.name.value;
+            if (data.name) {
+                this.name = data.name;
             }
-            if ((data.url) && (data.url.value)) {
-                this.url = data.url.value;
+            if (data.url) {
+                this.url = data.url;
             }
-            if ((data.description) && (data.description.value)) {
-                this.description = data.description.value;
+            if (data.description) {
+                this.description = data.description;
             }
-            if ((data.logo) && (data.logo.value)) {
-                this.logo = data.logo.value;
+            if (data.logo) {
+                this.logo = data.logo;
             }
-            if ((data.ticker) && (data.ticker.value)) {
-                this.ticker = data.ticker.value;
+            if (data.ticker) {
+                this.ticker = data.ticker;
             }
             if (data.subject) {
                 this.subject = data.subject;

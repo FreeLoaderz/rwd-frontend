@@ -22,10 +22,11 @@ export class TokenMetadataService {
         if (localStorage.getItem('tokenMetadata') != null) {
             setTimeout(() => {
                 const data = JSON.parse(localStorage.getItem('tokenMetadata'));
-                console.log("here")
-                console.log(data);
                 for (let i = 0; i < data.length; ++i) {
+                    console.log("here")
+                    console.log(data);
                     const tokenMetadata = new TokenMetadata(data[i]);
+                    console.log(tokenMetadata)
                     globalThis.tokenMetadata.set(tokenMetadata.name, tokenMetadata);
                     this.observableMetadata.next(tokenMetadata);
                     if (tokenMetadata.name !== undefined) {

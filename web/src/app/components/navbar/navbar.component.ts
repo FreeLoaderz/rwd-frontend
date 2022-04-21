@@ -256,6 +256,7 @@ export class NavbarComponent extends NotificationComponent implements OnInit, Af
             }
         }
         this.document.getElementById("CONTACTUS").classList.remove("nav-active");
+        this.document.getElementById("TOKENMETADATA").classList.remove("nav-active");
         if (sourceId != null) {
             this.document.getElementById(sourceId).classList.add("nav-active");
         }
