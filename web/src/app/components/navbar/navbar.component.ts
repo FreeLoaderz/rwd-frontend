@@ -45,7 +45,7 @@ export class NavbarComponent extends NotificationComponent implements OnInit, Af
         globalThis.multiSigType = "sporwc";
 
         this.router.events.subscribe(event => {
-            if (event instanceof NavigationEnd) {
+            if ((event instanceof NavigationEnd) && (location.host === 'rwd.freeloaderz.io')) {
                 gtag('set', 'page_path', event.urlAfterRedirects);
                 gtag('event', 'page_view');
             }
