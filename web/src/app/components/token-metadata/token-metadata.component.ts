@@ -14,11 +14,11 @@ import {TokenMetadataService} from "../../services/token-metadata.service";
 export class TokenMetaDataComponent implements OnInit {
     public tokenMetadataSubscription: Subscription;
     public tokenMetadata: Map<string, TokenMetadata> = new Map<string, TokenMetadata>();
-    
-    // Set different tokenMetadata variable as an array?
     public listAllTokens: Array<TokenMetadata> = []
     public observableMetadata = new Subject<TokenMetadata>();
     public tokenMetadata$ = this.observableMetadata.asObservable();
+
+    cols: any[]
 
     @ViewChild('tokenView', {static: false}) public tokenView: any;
 
@@ -34,6 +34,14 @@ export class TokenMetaDataComponent implements OnInit {
         this.tokenMetadataSubscription = this.tokenMetadataService.tokenMetadata$.subscribe(tokenMetadata => {
             this.processMetadata(tokenMetadata);
         });
+
+        this.cols = [
+            { field: 'name', header: 'Name'},
+            { field: 'logo', header: 'Logo'},
+            { field: 'ticker', header: 'Ticker'},
+            { field: 'url', header: 'URL'},
+            { field: 'policy', header: 'Policy'}
+        ]
     }
 
     public processMetadata(exploreMetadata: TokenMetadata) {

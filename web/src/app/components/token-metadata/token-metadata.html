@@ -3,29 +3,24 @@
         <div style="padding-top: 0px !important;max-width: 90%">
             <p>Explore the Tokens!</p>
             <div class="me-4 mb-4">
-                <!-- Need to add different grid items to page-content.css -->
-                <div class="grid-item">
-                    <div class="grid-item-top">
-                        <p-table [value]="listAllTokens" responsiveLayout="scroll">
-                            <ng-template pTemplate="header">
-                                <tr>
-                                    <th>Name</th>
-                                    <th>Ticker</th>
-                                    <th>URL</th>
-                                    <th>Policy</th>
-                                </tr>
-                            </ng-template>
-                            <ng-template pTemplate="body" let-listAllTokens >
-                                <tr>
-                                    <td>{{listAllTokens.name}}</td>
-                                    <td>{{listAllTokens.ticker}}</td>
-                                    <td><a href="https://cardanoscan.io/token/{{listAllTokens.policy}}">{{listAllTokens.url}}</a></td>
-                                    <td><a href="https://cardanoscan.io/token/{{listAllTokens.policy}}">CardanoScan Policy ID Link </a></td>
-                                </tr>
-                            </ng-template>
-                         </p-table>  
-                    </div>
-                </div>
+                <p-table [columns]="cols" [value]="listAllTokens" responsiveLayout="scroll">
+                    <ng-template pTemplate="header" let-columns>
+                        <tr>
+                            <th *ngFor="let col of columns">
+                                {{col.header}}
+                            </th>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-listAllTokens >
+                        <tr>
+                            <td>{{listAllTokens.name}}</td>
+                            <td><img src="data:image/png;base64,{{listAllTokens.logo}}"></td>
+                            <td>{{listAllTokens.ticker}}</td>
+                            <td><a href="{{listAllTokens.url}}">{{listAllTokens.name}} Website</a></td>
+                            <td><a href="https://cardanoscan.io/token/{{listAllTokens.policy}}">{{listAllTokens.name}} Policy ID</a></td>
+                        </tr>
+                    </ng-template>
+                </p-table>  
             </div>
         </div>
     </div>
