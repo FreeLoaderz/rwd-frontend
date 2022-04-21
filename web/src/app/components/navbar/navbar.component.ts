@@ -3,7 +3,7 @@ import {Title} from "@angular/platform-browser";
 import {NotifierService} from "angular-notifier";
 import {ModalDirective} from "ngx-bootstrap/modal";
 import {MenuItem} from "primeng/api";
-import {Router} from "@angular/router";
+import {NavigationEnd, Router} from "@angular/router";
 import {NotificationComponent} from '../notification/notification.component';
 import {WalletService} from "../../services/wallet.service";
 import {WalletObserverService} from "../../services/wallet-observer.service";
@@ -11,6 +11,8 @@ import {Subscription} from "rxjs";
 import {DOCUMENT} from "@angular/common";
 import {TokenMetadata} from "../../data/token-metadata";
 import {TokenMetadataService} from "../../services/token-metadata.service";
+
+declare let gtag: Function;
 
 @Component({
     selector: 'navbar',
@@ -44,6 +46,13 @@ export class NavbarComponent extends NotificationComponent implements OnInit, Af
         this.titleService.setTitle("Rewards");
         globalThis.customerId = 1;
         globalThis.multiSigType = "sporwc";
+
+        this.router.events.subscribe(event => {
+            if ((event instanceof NavigationEnd) && (location.host === 'rwd.freeloaderz.io')) {
+                gtag('set', 'page_path', event.urlAfterRedirects);
+                gtag('event', 'page_view');
+            }
+        });
     }
 
     ngOnInit() {
