@@ -182,6 +182,13 @@ a:active {
     transition: all .2s ease-in-out;
 }
 
+.spanlinkDark {
+    color: black !important;
+    -webkit-transition: all .2s ease-in-out;
+    -moz-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+}
+
 .spanlink:hover {
     cursor: pointer !important;
     color: #df4863 !important;
