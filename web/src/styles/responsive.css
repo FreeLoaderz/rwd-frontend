@@ -20,6 +20,10 @@
     dl.faq button {
         font-size: 14px;
     }
+    .blinking20 {
+        height: 116px !important;
+        width: 300px !important;
+    }
 }
 
 @media only screen and (max-device-width: 480px) {

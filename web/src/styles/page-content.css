@@ -358,6 +358,8 @@ div.sidemenu > button.p-button {
     position: relative;
     bottom: 0px;
     height: auto !important;
+    margin-bottom: 25px !important;
+    margin-top: 25px !important;
 }
 
 #copyright > p {
