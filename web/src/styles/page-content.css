@@ -408,3 +408,23 @@ div.sidemenu > button.p-button {
     margin-right: 1em;
     margin-left: 0;
 }
+
+.spanlinkDark {
+    color: black !important;
+    -webkit-transition: all .2s ease-in-out;
+    -moz-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+}
+
+.spanlinkBlue {
+    color: #8dc0d3 !important;
+    -webkit-transition: all .2s ease-in-out;
+    -moz-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+}
+a.spanlinkBlue:hover,
+a.spanlinkBlue:focus,
+a.spanlinkBlue.active {
+    outline: 0 !important;
+    color: #df4863 !important;
+}

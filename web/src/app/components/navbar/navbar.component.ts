@@ -209,6 +209,12 @@ export class NavbarComponent extends NotificationComponent implements OnInit, Af
         this.router.navigate(['/contact-us']);
     }
 
+    public routeFaq() {
+        this.isMenuCollapsed = true;
+        this.setActive("FAQ");
+        this.router.navigate(['/faq']);
+    }
+
     public routeRewards() {
         this.isMenuCollapsed = true;
         this.setActive("REWARDS");
@@ -246,6 +252,7 @@ export class NavbarComponent extends NotificationComponent implements OnInit, Af
             }
         }
         this.document.getElementById("CONTACTUS").classList.remove("nav-active");
+        this.document.getElementById("FAQ").classList.remove("nav-active");
         if (sourceId != null) {
             this.document.getElementById(sourceId).classList.add("nav-active");
         }
