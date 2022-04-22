@@ -1,50 +1,87 @@
 <section id="faq" class="content-section">
-    <div class="container ms-auto me-auto">
-        <h4>SmartClaimz FAQ</h4>
-        <div class="blackdiv" style="padding-top: 0px">
-            <p-panel class="ms-2 me-2" [header]="'What is SmartClaimz?'" [collapsed]="true" [toggleable]="true"
-                     [toggler]="'header'">
-                <p>
-                    <a href="https://www.freeloaderz.io/" class="spanlinkBlue" target="_blank">FreeLoaderz</a>
-                    SmartClaimz is a novel reward distribution platform that aims to be the premier token claiming Web3
-                    dApp for end users. Decentralized autonomous organizations (DAOs), token projects, NFT projects,
-                    video game projects, and more will be able to offer their
-                    tokens through SmartClaimz to their users.</p>
-                <p>To speed up the transactions, SmartClaimz submits them to the FreeLoaderz Load Balancers. The Load
-                    Balancers pass the transaction to Cardano Submit API enabled Relays. Each of these Relays are run
-                    by members of the FreeLoaderz Coalition.
-                </p>
-            </p-panel>
-            <p-panel class="ms-2 me-2" [header]="'How do I participate?'" [collapsed]="true" [toggleable]="true"
-                     [toggler]="'header'">
-                <p>
-                    Once you connect your wallet you will be presented with the tokens that are available to claim. The
-                    distribution mechanics depend on the issuer of that token. If something doesn't seem right please
-                    reach out to the project for more information.
-                </p>
-            </p-panel>
-            <p-panel class="ms-2 me-2" [header]="'What does \'ERROR no collateral provided\' mean?'" [collapsed]="true"
-                     [toggleable]="true" [toggler]="'header'">
-                <p>
-                    The need for <a href="https://docs.cardano.org/plutus/collateral-mechanism" class="spanlinkBlue"
-                                    target="blank_">collateral</a> was introduced with the addition of smart contracts
-                    on Cardano. Setting the collateral in your wallet helps ensure that the transaction will be
-                    validated properly. Currently, most wallets recommend that you set the collateral to
-                    5 ADA. The Vasil hard fork will bring a more deterministic method to match the exact amount needed.
-                </p>
-            </p-panel>
-            <p-panel class="ms-2 me-2" [header]="'Where can I learn more about SmartClaimz?'" [collapsed]="true"
-                     [toggleable]="true" [toggler]="'header'">
-                <p>
-                    For step-by-step instructions on how to use SmartClaimz, see in depth <a
-                        href="https://docs.google.com/document/d/1FZrcek6yxMvwdAyLgVwfqKgCGtpGjPYnuZu26JNWees/edit"
-                        class="spanlinkBlue" target="blank_">tutorial</a>.
-                    FreeLoaderz also has a <a
-                        href="https://freeloaderz.medium.com/smartclaimz-web3-dapp-testnet-690a1bac7440"
-                        class="spanlinkBlue" target="blank_">Medium article</a> that has many of the key
-                    links for the FreeLoaderz project including the FreeLoaderz Discord link.
-                </p>
-            </p-panel>
+    <div class="faq-section">
+        <div class="container text-left left-container ms-auto">
+            <h4>SmartClaimz FAQ</h4>
+            <div class="blackdiv" style="padding-top: 0px;display: flex;">
+                <dl class="faq">
+                    <dt>
+                        <button class="toggleButton" type="button" aria-expanded="false" aria-controls="faq1_desc" (click)="toggleComponent('faq1_desc')">What is SmartClaimz?<i class="fa-solid fa-chevron-down ms-auto me-0"></i>
+                        </button>
+                    </dt>
+                    <dd>
+                        <div id="faq1_desc" class="desc">
+                            <p>
+                                <a href="https://www.freeloaderz.io/" class="spanlinkBlue" target="_blank">FreeLoaderz</a>
+                                SmartClaimz is a novel reward distribution platform that aims to be the premier token
+                                claiming Web3
+                                dApp for end users. Decentralized autonomous organizations (DAOs), token projects, NFT
+                                projects,
+                                video game projects, and more will be able to offer their
+                                tokens through SmartClaimz to their users.</p>
+                                <p>To speed up the transactions, SmartClaimz submits them to the FreeLoaderz Load
+                                Balancers. The Load
+                                Balancers pass the transaction to Cardano Submit API enabled Relays. Each of these
+                                Relays are run
+                                by members of the FreeLoaderz Coalition.
+                            </p>
+                        </div>
+                    </dd>
+                    <dt>
+                        <button class="toggleButton" type="button" aria-expanded="false" aria-controls="faq2_desc"
+                                (click)="toggleComponent('faq2_desc')">How do I participate?<i class="fa-solid fa-chevron-down ms-auto me-0"></i>
+                        </button>
+                    </dt>
+                    <dd>
+                        <div id="faq2_desc" class="desc">
+                            <p>
+                                Once you connect your wallet you will be presented with the tokens that are available to
+                                claim. The
+                                distribution mechanics depend on the issuer of that token. If something doesn't seem
+                                right please
+                                reach out to the project for more information.
+                            </p>
+                        </div>
+                    </dd>
+                    <dt>
+                        <button class="toggleButton" type="button" aria-expanded="false" aria-controls="faq3_desc" (click)="toggleComponent('faq3_desc')">What does 'ERROR no
+                            collateral provided' mean?<i class="fa-solid fa-chevron-down ms-auto me-0"></i>
+                        </button>
+                    </dt>
+                    <dd>
+                        <div id="faq3_desc" class="desc">
+                            <p>
+                                The need for <a href="https://docs.cardano.org/plutus/collateral-mechanism"
+                                                class="spanlinkBlue"
+                                                target="blank_">collateral</a> was introduced with the addition of smart
+                                contracts
+                                on Cardano. Setting the collateral in your wallet helps ensure that the transaction will
+                                be
+                                validated properly. Currently, most wallets recommend that you set the collateral to
+                                5 ADA. The Vasil hard fork will bring a more deterministic method to match the exact
+                                amount needed.
+                            </p>
+                        </div>
+                    </dd>
+                    <dt>
+                        <button type="button" class="toggleButton" aria-expanded="false" aria-controls="faq4_desc" (click)="toggleComponent('faq4_desc')">Where can I learn more
+                            about SmartClaimz?<i class="fa-solid fa-chevron-down ms-auto me-0"></i>
+                        </button>
+                    </dt>
+                    <dd>
+                        <div id="faq4_desc" class="desc">
+                            <p>
+                                For step-by-step instructions on how to use SmartClaimz, see in depth <a
+                                    href="https://docs.google.com/document/d/1FZrcek6yxMvwdAyLgVwfqKgCGtpGjPYnuZu26JNWees/edit"
+                                    class="spanlinkBlue" target="blank_">tutorial</a>.</p>
+                                <p>FreeLoaderz also has a <a
+                                    href="https://freeloaderz.medium.com/smartclaimz-web3-dapp-testnet-690a1bac7440"
+                                    class="spanlinkBlue" target="blank_">Medium article</a> that has many of the key
+                                links for the FreeLoaderz project including the FreeLoaderz Discord link.
+                            </p>
+                        </div>
+                    </dd>
+                </dl>
+            </div>
         </div>
     </div>
 </section>

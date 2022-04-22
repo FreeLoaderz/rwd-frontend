@@ -15,10 +15,20 @@
     /* for sumo sized (mac) screens */
 }
 
+@media only screen and (max-device-width: 800px) {
+    /* styles for mobile browsers smaller than 480px !important; (iPhone) */
+    dl.faq button {
+        font-size: 14px;
+    }
+    .blinking20 {
+        height: 116px !important;
+        width: 300px !important;
+    }
+}
+
 @media only screen and (max-device-width: 480px) {
     /* styles for mobile browsers smaller than 480px !important; (iPhone) */
 }
-
 @media only screen and (device-width: 768px) {
     /* default iPad screens */
 }
