@@ -5,7 +5,7 @@
             <div class="blackdiv" style="padding-top: 0px;display: flex;">
                 <dl class="faq">
                     <dt>
-                        <button type="button" aria-expanded="false" aria-controls="faq1_desc">What is SmartClaimz?<i class="fa-solid fa-chevron-down ms-auto me-0"></i>
+                        <button class="toggleButton" type="button" aria-expanded="false" aria-controls="faq1_desc" (click)="toggleComponent('faq1_desc')">What is SmartClaimz?<i class="fa-solid fa-chevron-down ms-auto me-0"></i>
                         </button>
                     </dt>
                     <dd>
@@ -27,7 +27,8 @@
                         </div>
                     </dd>
                     <dt>
-                        <button type="button" aria-expanded="false" aria-controls="faq2_desc">How do I participate?<i class="fa-solid fa-chevron-down ms-auto me-0"></i>
+                        <button class="toggleButton" type="button" aria-expanded="false" aria-controls="faq2_desc"
+                                (click)="toggleComponent('faq2_desc')">How do I participate?<i class="fa-solid fa-chevron-down ms-auto me-0"></i>
                         </button>
                     </dt>
                     <dd>
@@ -42,7 +43,7 @@
                         </div>
                     </dd>
                     <dt>
-                        <button p-button type="button" class="p-button-text" aria-expanded="false" aria-controls="faq3_desc">What does 'ERROR no
+                        <button class="toggleButton" type="button" aria-expanded="false" aria-controls="faq3_desc" (click)="toggleComponent('faq3_desc')">What does 'ERROR no
                             collateral provided' mean?<i class="fa-solid fa-chevron-down ms-auto me-0"></i>
                         </button>
                     </dt>
@@ -62,7 +63,7 @@
                         </div>
                     </dd>
                     <dt>
-                        <button type="button" aria-expanded="false" aria-controls="faq4_desc">Where can I learn more
+                        <button type="button" class="toggleButton" aria-expanded="false" aria-controls="faq4_desc" (click)="toggleComponent('faq4_desc')">Where can I learn more
                             about SmartClaimz?<i class="fa-solid fa-chevron-down ms-auto me-0"></i>
                         </button>
                     </dt>
