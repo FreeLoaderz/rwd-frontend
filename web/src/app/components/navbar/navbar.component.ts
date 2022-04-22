@@ -235,7 +235,7 @@ export class NavbarComponent extends NotificationComponent implements OnInit, Af
         globalThis.walletApi = null;
         globalThis.wallet = null;
         this.walletSubstring = null;
-   //     this.router.navigate(['/welcome']);
+        this.router.navigate(['/welcome']);
     }
 
     public getWalletSubstring() {
