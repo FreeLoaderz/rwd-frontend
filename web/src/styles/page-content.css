@@ -448,12 +448,16 @@ img {
     font-size: small;
     background-color: transparent;
     margin-left: 1rem;
+    color: white;
+    inline-size: 150px;
+    align-items: center;
 }
 
 .token-list-action {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
+    color: white
 }
 
 .token-category-icon {

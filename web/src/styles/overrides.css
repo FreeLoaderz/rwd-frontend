@@ -564,10 +564,12 @@ div.p-panel-content > p {
 }
 
 .p-orderlist .p-orderlist-list {
+    border: none !important;
     background-color: transparent !important;
 }
 
 .p-orderlist .p-orderlist-filter-container {
+    border: none !important;
     background-color: transparent !important;
 }
 

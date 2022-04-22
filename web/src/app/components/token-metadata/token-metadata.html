@@ -6,12 +6,15 @@
                 <ng-template class="token-container" pTemplate="body" let-listAllTokens>
                     <div class="token-item">
                         <div class="image-container">
-                            <h5>{{listAllTokens.name}}</h5>
                             <img src="data:image/png;base64,{{listAllTokens.logo}}">
                         </div>
                         <div class="token-list-detail">
-                            <p><a class="spanlinkBlue" target="_blank" href="{{listAllTokens.url}}">{{listAllTokens.url}}</a></p>
-                            <p><a class="spanlinkBlue" target="_blank" style="font-size: x-small;" href="https://cardanoscan.io/token/{{listAllTokens.policy}}">{{listAllTokens.policy}}</a></p>
+                            <h5>{{listAllTokens.name}}</h5>
+                            <p style="margin-left: 1.5rem;"><a class="spanlinkBlue" target="_blank" href="https://cardanoscan.io/token/{{listAllTokens.policy}}"><i class="fa-solid fa-pencil-square me-1" aria-hidden="true"></i></a></p>
+                        </div>
+                        <div class="token-list-action">
+                            <h6>Website</h6>
+                            <p style="margin-right: 1rem;"><a class="spanlinkBlue" target="_blank" href="{{listAllTokens.url}}"><i class="fa-solid fa-globe me-1" aria-hidden="true"></i></a></p>
                         </div>
                     </div>
                 </ng-template>
