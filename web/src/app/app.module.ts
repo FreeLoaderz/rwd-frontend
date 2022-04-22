@@ -13,6 +13,8 @@ import {MenubarModule} from "primeng/menubar";
 import {DataViewModule} from "primeng/dataview";
 import {ImageModule} from "primeng/image";
 import {ButtonModule} from "primeng/button";
+import {PanelModule} from 'primeng/panel';
+import {OrderListModule} from 'primeng/orderlist';
 import {RestService} from "./services/rest.service";
 import {WalletObserverService} from "./services/wallet-observer.service";
 import {BrowserModule} from "@angular/platform-browser";
@@ -32,8 +34,10 @@ import {AppRoutingModule} from "./app-routing.module";
 import {NgbCollapseModule} from "@ng-bootstrap/ng-bootstrap";
 import {NetworkComponent} from "./components/network/network.component";
 import {TestnetComponent} from "./components/testnet/testnet.component";
+import { FaqComponent } from './components/faq/faq.component';
 import {TokenMetadataService} from "./services/token-metadata.service";
 import { TokenMetaDataComponent } from './components/token-metadata/token-metadata.component';
+
 
 const customNotifierOptions: NotifierOptions = {
     position: {
@@ -80,14 +84,14 @@ const customNotifierOptions: NotifierOptions = {
 
 @NgModule({
     declarations: [NavbarComponent, WelcomeComponent, FooterComponent, InfoComponent, DashboardComponent, RewardsComponent,
-        ContactUsComponent, HistoryComponent, NetworkComponent, TestnetComponent, TokenMetaDataComponent],
+        ContactUsComponent, HistoryComponent, NetworkComponent, TestnetComponent, FaqComponent, TokenMetaDataComponent],
     imports: [BrowserModule, FormsModule, ReactiveFormsModule, AppRoutingModule, RouterModule,
         TooltipModule.forRoot(), OverlayPanelModule, ModalModule.forRoot(),
         NotifierModule.withConfig(customNotifierOptions),
         FormsModule, ReactiveFormsModule, NgbCollapseModule,
         CheckboxModule, TableModule, HttpClientModule,
         DropdownModule, MenubarModule, DataViewModule, ImageModule,
-        ButtonModule],
+        ButtonModule, PanelModule, BrowserAnimationsModule, OrderListModule],
     bootstrap: [NavbarComponent],
     providers: [RestService, WalletObserverService, WalletService, TokenMetadataService]
 })

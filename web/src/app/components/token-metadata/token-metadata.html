@@ -1,27 +1,21 @@
-<section id="tokenMetadata" class="ms-5 me-5 content-section">
-    <div class="container text-center ms-auto me-auto padding: 5px">
-        <div style="padding-top: 0px !important;max-width: 90%">
-            <p>Explore the Tokens!</p>
-            <div class="me-4 mb-4">
-                <p-table [columns]="cols" [value]="listAllTokens" responsiveLayout="scroll">
-                    <ng-template pTemplate="header" let-columns>
-                        <tr>
-                            <th *ngFor="let col of columns">
-                                {{col.header}}
-                            </th>
-                        </tr>
-                    </ng-template>
-                    <ng-template pTemplate="body" let-listAllTokens >
-                        <tr>
-                            <td>{{listAllTokens.name}}</td>
-                            <td><img src="data:image/png;base64,{{listAllTokens.logo}}"></td>
-                            <td>{{listAllTokens.ticker}}</td>
-                            <td><a href="{{listAllTokens.url}}">{{listAllTokens.name}} Website</a></td>
-                            <td><a href="https://cardanoscan.io/token/{{listAllTokens.policy}}">{{listAllTokens.name}} Policy ID</a></td>
-                        </tr>
-                    </ng-template>
-                </p-table>  
-            </div>
+<section id="tokenMetadata" class="content-section">
+    <div class="container ms-auto me-auto">
+        <h4>Explore the Tokens!</h4>
+        <div class="blackdiv" style="padding-top: 0px;">
+            <p-orderList [value]="listAllTokens" filterBy="name" filterPlaceholder="Filter by name" [dragdrop]="true">
+                <ng-template class="token-container" pTemplate="body" let-listAllTokens>
+                    <div class="token-item">
+                        <div class="image-container">
+                            <h5>{{listAllTokens.name}}</h5>
+                            <img src="data:image/png;base64,{{listAllTokens.logo}}">
+                        </div>
+                        <div class="token-list-detail">
+                            <p><a class="spanlinkBlue" target="_blank" href="{{listAllTokens.url}}">{{listAllTokens.url}}</a></p>
+                            <p><a class="spanlinkBlue" target="_blank" style="font-size: x-small;" href="https://cardanoscan.io/token/{{listAllTokens.policy}}">{{listAllTokens.policy}}</a></p>
+                        </div>
+                    </div>
+                </ng-template>
+            </p-orderList>  
         </div>
     </div>
 </section>

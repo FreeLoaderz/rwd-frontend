@@ -26,15 +26,6 @@ export class TokenMetaDataComponent implements OnInit {
         if (globalThis.tokenMetadata == null) {
             globalThis.tokenMetadata = new Map<string, TokenMetadata>();
         }
-    }
-
-    ngOnInit() {
-        this.tokenMetadataService.init();
-        // this.listTokens()
-        this.tokenMetadataSubscription = this.tokenMetadataService.tokenMetadata$.subscribe(tokenMetadata => {
-            this.processMetadata(tokenMetadata);
-        });
-
         this.cols = [
             { field: 'name', header: 'Name'},
             { field: 'logo', header: 'Logo'},
@@ -42,6 +33,14 @@ export class TokenMetaDataComponent implements OnInit {
             { field: 'url', header: 'URL'},
             { field: 'policy', header: 'Policy'}
         ]
+    }
+
+    public ngOnInit() {
+        this.tokenMetadataService.init();
+        this.tokenMetadataSubscription = this.tokenMetadataService.tokenMetadata$.subscribe(tokenMetadata => {
+            this.processMetadata(tokenMetadata);
+        });
+
     }
 
     public processMetadata(exploreMetadata: TokenMetadata) {
@@ -53,10 +52,6 @@ export class TokenMetaDataComponent implements OnInit {
             this.listAllTokens = [...globalThis.tokenMetadata.values()]
         }
     }
-
-    public listTokens() {
-        // this.listingTokens = true;
-        }
     
     public processError(error) {
         console.log("Error Occured")

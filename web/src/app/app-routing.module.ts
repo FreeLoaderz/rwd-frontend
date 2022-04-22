@@ -7,6 +7,7 @@ import {ContactUsComponent} from "./components/contact-us/contact-us.component";
 import {DashboardComponent} from "./components/dashboard/dashboard.component";
 import {TestnetComponent} from "./components/testnet/testnet.component";
 import { TokenMetaDataComponent } from './components/token-metadata/token-metadata.component';
+import { FaqComponent } from './components/faq/faq.component';
 
 
 const routes: Routes = [
@@ -26,6 +27,10 @@ const routes: Routes = [
     {
         path: 'contact-us',
         component: ContactUsComponent,
+    },
+    {
+        path: 'faq',
+        component: FaqComponent
     },
     {
         path: 'dashboard',
