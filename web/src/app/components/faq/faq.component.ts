@@ -1,9 +1,6 @@
-import {Component} from "@angular/core";
-import {FormGroup, FormBuilder, Validators} from '@angular/forms';
-import {NotificationComponent} from "../notification/notification.component";
-import {Router} from "@angular/router";
-import {NotifierService} from "angular-notifier";
+import {Component, Inject} from "@angular/core";
 import {Title} from "@angular/platform-browser";
+import {DOCUMENT} from "@angular/common";
 
 @Component({
     selector: 'faq',
@@ -11,25 +8,9 @@ import {Title} from "@angular/platform-browser";
     templateUrl: './faq.html'
 })
 
-export class FaqComponent extends NotificationComponent {
-    public contactUsForm: FormGroup;
+export class FaqComponent {
 
-    constructor(public router: Router,  public titleService: Title, public notifierService: NotifierService, private fb: FormBuilder) {
-        super(notifierService);
-        this.contactUsForm = fb.group({
-            'name': ['', Validators.required],
-            'email': ['', [Validators.email, Validators.required]],
-            'subject': ['', Validators.required],
-            'message': ['', Validators.required]
-        });
-        this.titleService.setTitle("Contact Us");
-
-    }
-
-
-    public submitFeedback() {
-        if (this.contactUsForm.valid) {
-            console.log(this.contactUsForm.value);
-        }
+    constructor(@Inject(DOCUMENT) private document: any, public titleService: Title) {
+        this.titleService.setTitle("FAQ");
     }
 }

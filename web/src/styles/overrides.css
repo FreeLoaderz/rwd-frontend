@@ -182,13 +182,6 @@ a:active {
     transition: all .2s ease-in-out;
 }
 
-.spanlinkDark {
-    color: black !important;
-    -webkit-transition: all .2s ease-in-out;
-    -moz-transition: all .2s ease-in-out;
-    transition: all .2s ease-in-out;
-}
-
 .spanlink:hover {
     cursor: pointer !important;
     color: #df4863 !important;
@@ -236,6 +229,7 @@ a:active {
     margin: 0;
     display: inline-flex !important;
 }
+
 .modal-footer {
     font-weight: bold !important;
     color: #153359 !important;
@@ -255,6 +249,7 @@ a:active {
     color: #153359 !important;
     border: 0px !important;
 }
+
 .tos-dialog {
     position: relative;
     width: 800px !important;
@@ -264,10 +259,12 @@ a:active {
     margin-left: auto !important;
     margin-right: auto !important;
 }
+
 .tos-modal {
     width: 800px !important;
     height: 80vh !important;
 }
+
 .sidebar-header > h4 {
     text-decoration: underline;
 }
@@ -437,6 +434,10 @@ ul.banner-social-buttons > li > a:active {
     overflow-x: hidden !important;
 }
 
+.fa-circle-question {
+    color: #8dc0d3 !important;
+}
+
 .fa-user-tie {
     color: #3737ff !important;
 }
@@ -495,4 +496,62 @@ input, textarea {
 .p-button-primary:active,
 .p-button-primary:hover {
     background-color: #153359 !important;
+}
+
+.p-panel-title,
+.p-panel-header {
+    cursor: pointer !important;
+    background-color: transparent !important;
+    border: 0 !important;
+    color: #2b90c3 !important;
+    font-weight: bold;
+}
+
+.p-panel-title:hover,
+.p-panel-header:hover,
+.p-panel-title:active,
+.p-panel-header:active,
+.p-panel-title:focus,
+.p-panel-header:focus {
+    background-color: #061c35 !important;
+    color: #df4863 !important;
+}
+
+.p-panel-header:active > .p-panel-title,
+.p-panel-header:focus > .p-panel-title,
+.p-panel-header:hover > .p-panel-title {
+    background-color: #061c35 !important;
+    color: #df4863 !important;
+}
+.panel-active {
+    background-color: #061c35 !important;
+    color: #df4863 !important;
+}
+
+.p-toggleable-content {
+    background: transparent !important;
+}
+
+.p-panel-content {
+    background-color: transparent !important;
+    border: 0 !important;
+}
+
+div.p-panel-content > p {
+    background: transparent !important;
+    color: white !important;
+}
+
+.pi-minus,
+.pi-plus {
+    color: white !important;
+}
+
+.pi-minus:active,
+.pi-plus:active,
+.pi-minus:hover,
+.pi-plus:hover,
+.pi-minus:focus,
+.pi-plus:focus {
+    color: #df4863 !important;
 }

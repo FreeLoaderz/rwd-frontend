@@ -1,29 +1,48 @@
-<section id="faq" class="ms-5 me-5 content-section">
-    <div class="container text-center ms-auto me-auto padding: 5px">
+<section id="faq" class="content-section">
+    <div class="container ms-auto me-auto">
         <h4>SmartClaimz FAQ</h4>
         <div class="blackdiv" style="padding-top: 0px">
-            <p-panel class="ms-2 me-2" header="What is SmartClaimz?" collapsed="true" toggleable="true">
+            <p-panel class="ms-2 me-2" [header]="'What is SmartClaimz?'" [collapsed]="true" [toggleable]="true"
+                     [toggler]="'header'">
                 <p>
-                    FreeLoaderz SmartClaimz is a novel reward distribution platform that aims to be the premier web3 dapp for end users to be able to claim. Decentralized autonomous organizations (DAOs), token projects, NFT projects, video game projects, and more will all be able to deploy quality tokens to users
+                    <a href="https://www.freeloaderz.io/" class="spanlinkBlue" target="_blank">FreeLoaderz</a>
+                    SmartClaimz is a novel reward distribution platform that aims to be the premier token claiming Web3
+                    dApp for end users. Decentralized autonomous organizations (DAOs), token projects, NFT projects,
+                    video game projects, and more will be able to offer their
+                    tokens through SmartClaimz to their users.</p>
+                <p>To speed up the transactions, SmartClaimz submits them to the FreeLoaderz Load Balancers. The Load
+                    Balancers pass the transaction to Cardano Submit API enabled Relays. Each of these Relays are run
+                    by members of the FreeLoaderz Coalition.
                 </p>
             </p-panel>
-            <p-panel class="ms-2 me-2" header="How do I participate?" collapsed="true" toggleable="true">
+            <p-panel class="ms-2 me-2" [header]="'How do I participate?'" [collapsed]="true" [toggleable]="true"
+                     [toggler]="'header'">
                 <p>
-                    Once you connect your wallet you will be presented with the tokens that are available to claim. The distribution mechanics depend on the issuer of that token so if something doesn't seem right please reach out to the project for more information
+                    Once you connect your wallet you will be presented with the tokens that are available to claim. The
+                    distribution mechanics depend on the issuer of that token. If something doesn't seem right please
+                    reach out to the project for more information.
                 </p>
             </p-panel>
-            <p-panel class="ms-2 me-2" header="Seeing 'ERROR no collateral provided'" collapsed="true" toggleable="true">
+            <p-panel class="ms-2 me-2" [header]="'What does \'ERROR no collateral provided\' mean?'" [collapsed]="true"
+                     [toggleable]="true" [toggler]="'header'">
                 <p>
-                    The need for collateral was introduced with the addition of smart contracts on Cardano. Setting the collateral in your wallet helps ensure that the transaction will be validated properly. Right now, most wallets reccomend you set the collateral to
-                    5 $ADA but with the Vasil hard fork a more deterministic method will be implemented to match the exact amount needed.
-                    <a href="https://docs.cardano.org/plutus/collateral-mechanism" class="spanlinkDark" target="blank_">Read more about collateral here.</a>
+                    The need for <a href="https://docs.cardano.org/plutus/collateral-mechanism" class="spanlinkBlue"
+                                    target="blank_">collateral</a> was introduced with the addition of smart contracts
+                    on Cardano. Setting the collateral in your wallet helps ensure that the transaction will be
+                    validated properly. Currently, most wallets recommend that you set the collateral to
+                    5 ADA. The Vasil hard fork will bring a more deterministic method to match the exact amount needed.
                 </p>
             </p-panel>
-            <p-panel class="ms-2 me-2" header="I want to provide feedback and learn more where do I go?" collapsed="true" toggleable="true">
+            <p-panel class="ms-2 me-2" [header]="'Where can I learn more about SmartClaimz?'" [collapsed]="true"
+                     [toggleable]="true" [toggler]="'header'">
                 <p>
-                    A more in depth tutorial for how to use SmartClaimz is written <a href="https://docs.google.com/document/d/1FZrcek6yxMvwdAyLgVwfqKgCGtpGjPYnuZu26JNWees/edit" class="spanlinkDark" target="blank_">here.</a>
-                    If you have any suggestions or find any bugs we'd love to hear from you! We also have a medium article that has many of the key links for the FreeLoaderz project,
-                    <a href="https://freeloaderz.medium.com/smartclaimz-web3-dapp-testnet-690a1bac7440" class="spanlinkDark" target="blank_">Click here!</a>
+                    For step-by-step instructions on how to use SmartClaimz, see in depth <a
+                        href="https://docs.google.com/document/d/1FZrcek6yxMvwdAyLgVwfqKgCGtpGjPYnuZu26JNWees/edit"
+                        class="spanlinkBlue" target="blank_">tutorial</a>.
+                    FreeLoaderz also has a <a
+                        href="https://freeloaderz.medium.com/smartclaimz-web3-dapp-testnet-690a1bac7440"
+                        class="spanlinkBlue" target="blank_">Medium article</a> that has many of the key
+                    links for the FreeLoaderz project including the FreeLoaderz Discord link.
                 </p>
             </p-panel>
         </div>
