@@ -445,7 +445,9 @@ ul.banner-social-buttons > li > a:active {
 .fa-chevron-right {
     color: wheat !important;
 }
-
+.fa-chevron-up {
+    color: wheat !important;
+}
 .fa-chevron-down {
     color: wheat !important;
 }
@@ -500,6 +502,7 @@ input, textarea {
 
 .p-panel-title,
 .p-panel-header {
+    display: flex !important;
     cursor: pointer !important;
     background-color: transparent !important;
     border: 0 !important;
