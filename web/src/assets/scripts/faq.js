@@ -43,6 +43,7 @@ class DisclosureButton {
             if (this.buttonNode.getElementsByClassName("fa-chevron-up")[0] != null) {
                 this.buttonNode.getElementsByClassName("fa-chevron-up")[0].classList.add("fa-chevron-down");
                 this.buttonNode.getElementsByClassName("fa-chevron-up")[0].classList.remove("fa-chevron-up");
+                this.buttonNode.classList.remove('focus');
             }
             this.hideContent();
         } else {
@@ -54,7 +55,7 @@ class DisclosureButton {
                     }
                     this.allButtons[i].setAttribute('aria-expanded', 'false');
                     var id = this.allButtons[i].getAttribute('aria-controls');
-                    if (id != null) {   
+                    if (id != null) {
                         document.getElementById(id).classList.remove("faq-hide");
                         document.getElementById(id).classList.remove("faq-show");
                         document.getElementById(id).classList.add("faq-hide");
