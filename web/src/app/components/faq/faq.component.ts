@@ -15,6 +15,7 @@ export class FaqComponent {
     constructor(@Inject(DOCUMENT) public document: any, public titleService: Title) {
         this.titleService.setTitle("FAQ");
         setTimeout(() => {
+            // ngAfterViewInit and ngAfterContentInit was NOT being called on mobile for some reason
             while (this.document.getElementsByClassName("toggleButton").length === 0) {
                 this.delay(100);
             }
