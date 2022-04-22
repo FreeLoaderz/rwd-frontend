@@ -422,9 +422,67 @@ div.sidemenu > button.p-button {
     -moz-transition: all .2s ease-in-out;
     transition: all .2s ease-in-out;
 }
+
 a.spanlinkBlue:hover,
 a.spanlinkBlue:focus,
 a.spanlinkBlue.active {
     outline: 0 !important;
     color: #df4863 !important;
+}
+
+.faq-section {
+    width: 100%;
+    padding: 50px 0;
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    min-height: 100vh;
+}
+dl.faq {
+    width: 100% !important;
+}
+dl.faq button {
+    cursor: pointer;
+    display: flex !important;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 16px;
+    padding: 4px 8px;
+    font-size: 20px;
+    text-align: left !important;
+    border: none;
+    background-color: transparent;
+    border-radius: 5px;
+    color: #2b90c3 !important;
+    font-weight: bold;
+    width: 100% !important
+}
+
+dd {
+    margin: 0;
+    padding: 0;
+    margin-left: 1.5em;
+}
+
+dl.faq .desc {
+    margin-top: 25px;
+    display: none;
+    border: 2px solid #000000;
+    color: white;
+    background-color: transparent !important;
+    position: relative;
+    top: 0px;
+    right: 0px;
+}
+
+dl.faq button:hover,
+dl.faq button:focus {
+    background-color: #061c35 !important;
+    color: #df4863 !important;
+    cursor: pointer;
+}
+.faq-hide {
+ display: none !important;
+}
+.faq-show {
+    display: block !important;
 }
