@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit, ViewChild} from "@angular/core";
+import {Component, HostListener, OnDestroy, OnInit, ViewChild} from "@angular/core";
 import {NotificationComponent} from "../../notification/notification.component";
 import {Router} from "@angular/router";
 import {NotifierService} from "angular-notifier";
@@ -66,6 +66,17 @@ export class RewardsComponent extends NotificationComponent implements OnInit, O
             this.claimSubscription.unsubscribe();
             this.claimSubscription = null;
         }
+    }
+
+    @HostListener('window:resize', ['$event'])
+    public getScreenSize(event?) {
+        globalThis.screenHeight = window.innerHeight;
+        globalThis.screenWidth = window.innerWidth;
+    }
+
+    @HostListener('window:orientationchange', ['$event'])
+    public onOrientationChange(event) {
+        this.getScreenSize(event);
     }
 
     public listTokens() {

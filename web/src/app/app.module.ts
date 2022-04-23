@@ -34,6 +34,7 @@ import {NgbCollapseModule} from "@ng-bootstrap/ng-bootstrap";
 import {NetworkComponent} from "./components/network/network.component";
 import {TestnetComponent} from "./components/testnet/testnet.component";
 import { FaqComponent } from './components/faq/faq.component';
+import {ChartModule} from "primeng/chart";
 
 const customNotifierOptions: NotifierOptions = {
     position: {
@@ -83,7 +84,7 @@ const customNotifierOptions: NotifierOptions = {
         ContactUsComponent, HistoryComponent, NetworkComponent, TestnetComponent, FaqComponent],
     imports: [BrowserModule, FormsModule, ReactiveFormsModule, AppRoutingModule, RouterModule,
         TooltipModule.forRoot(), OverlayPanelModule, ModalModule.forRoot(),
-        NotifierModule.withConfig(customNotifierOptions),
+        NotifierModule.withConfig(customNotifierOptions), ChartModule,
         FormsModule, ReactiveFormsModule, NgbCollapseModule,
         CheckboxModule, TableModule, HttpClientModule,
         DropdownModule, MenubarModule, DataViewModule, ImageModule,
