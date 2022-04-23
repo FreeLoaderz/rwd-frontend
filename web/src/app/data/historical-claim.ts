@@ -17,6 +17,9 @@ export class HistoricalClaim {
     public invalid_descr: string;
     public timestamp: string;
     public displayTS: string;
+    public year: number;
+    public month: number;
+    public day: number;
     public updated_at: string;
 
     constructor(data: any) {
@@ -63,6 +66,9 @@ export class HistoricalClaim {
                 const date = new Date(this.timestamp);
                 const datePipe = new DatePipe("en-US");
                 this.displayTS = datePipe.transform(date, 'yy-MM-dd HH:mm:ss');
+                this.year = +datePipe.transform(date, 'yy');
+                this.month = +datePipe.transform(date, 'MM');
+                this.day = +datePipe.transform(date, 'dd');
             }
             if (data.updated_at) {
                 this.updated_at = data.updated_at;

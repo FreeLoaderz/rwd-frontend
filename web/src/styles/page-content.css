@@ -341,6 +341,15 @@ div.sidemenu > button.p-button {
     padding: 25px;
 }
 
+.whitediv {
+    background: white !important;
+    border-radius: 25px;
+    padding: 25px;
+}
+.charts {
+    justify-content: center !important;
+}
+
 .sidemenu {
     min-width: 200px !important;
     max-width: 200px !important;
@@ -390,6 +399,7 @@ div.sidemenu > button.p-button {
     position: sticky;
     bottom: 0px;
     left: 0px;
+    margin-left: .5rem;
 }
 
 #network > p.testnet {
@@ -438,16 +448,27 @@ a.spanlinkBlue.active {
     width: 100%;
 }
 
+
 img {
     width: 75px;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+
+.token-list-name {
+    flex: 1 1 0;
+    font-size: small;
+    background-color: transparent;
+    margin-left: 1rem;
+    color: white;
+    inline-size: 150px;
+    align-items: center;
 }
 
 .token-list-detail {
     flex: 1 1 0;
     font-size: small;
     background-color: transparent;
-    margin-left: 1rem;
+    flex-direction: column;
     color: white;
     inline-size: 150px;
     align-items: center;
@@ -458,16 +479,6 @@ img {
     flex-direction: column;
     align-items: flex-end;
     color: white
-}
-
-.token-category-icon {
-    vertical-align: middle;
-    margin-right: .5rem;
-}
-
-.token-category {
-    vertical-align: middle;
-    line-height: 1;
 }
 
 .image-container {
@@ -484,9 +495,11 @@ img {
     font-weight: bold;
     min-height: 100vh;
 }
+
 dl.faq {
     width: 100% !important;
 }
+
 dl.faq button {
     cursor: pointer;
     display: flex !important;
@@ -527,12 +540,15 @@ dl.faq button:focus {
     color: #df4863 !important;
     cursor: pointer;
 }
+
 .faq-hide {
- display: none !important;
+    display: none !important;
 }
+
 .faq-show {
     display: block !important;
 }
+
 .toggleButton {
 
 }

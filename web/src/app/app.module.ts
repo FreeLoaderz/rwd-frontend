@@ -38,6 +38,7 @@ import { FaqComponent } from './components/faq/faq.component';
 import {TokenMetadataService} from "./services/token-metadata.service";
 import { TokenMetaDataComponent } from './components/token-metadata/token-metadata.component';
 
+import {ChartModule} from "primeng/chart";
 
 const customNotifierOptions: NotifierOptions = {
     position: {
@@ -87,7 +88,7 @@ const customNotifierOptions: NotifierOptions = {
         ContactUsComponent, HistoryComponent, NetworkComponent, TestnetComponent, FaqComponent, TokenMetaDataComponent],
     imports: [BrowserModule, FormsModule, ReactiveFormsModule, AppRoutingModule, RouterModule,
         TooltipModule.forRoot(), OverlayPanelModule, ModalModule.forRoot(),
-        NotifierModule.withConfig(customNotifierOptions),
+        NotifierModule.withConfig(customNotifierOptions), ChartModule,
         FormsModule, ReactiveFormsModule, NgbCollapseModule,
         CheckboxModule, TableModule, HttpClientModule,
         DropdownModule, MenubarModule, DataViewModule, ImageModule,

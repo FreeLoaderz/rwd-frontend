@@ -413,9 +413,29 @@ th.p-resizable-column {
     color: #2b90c3 !important;
 }
 
+.p-datatable-thead > tr > th:hover {
+    color: #df4863 !important;
+    cursor: pointer !important;
+}
+
 .p-datatable-tbody > tr > td > span {
     background: transparent !important;
     color: white !important;
+}
+
+.p-datatable-tbody > tr:hover > td > span {
+    color: #df4863 !important;
+    cursor: default !important;
+}
+
+.p-datatable-tbody > tr:hover > td > span > span > a {
+    color: #df4863 !important;
+    cursor: pointer !important;
+}
+
+.p-datatable-tbody > tr > td > span > span > a:hover {
+    color: #df4863 !important;
+    cursor: pointer !important;
 }
 
 .p-paginator {
@@ -445,9 +465,11 @@ ul.banner-social-buttons > li > a:active {
 .fa-chevron-right {
     color: wheat !important;
 }
+
 .fa-chevron-up {
     color: wheat !important;
 }
+
 .fa-chevron-down {
     color: wheat !important;
 }
@@ -526,6 +548,7 @@ input, textarea {
     background-color: #061c35 !important;
     color: #df4863 !important;
 }
+
 .panel-active {
     background-color: #061c35 !important;
     color: #df4863 !important;
@@ -573,6 +596,20 @@ div.p-panel-content > p {
     background-color: transparent !important;
 }
 
+.p-orderlist .p-orderlist-list .p-orderlist-item:hover{
+    outline: 0 !important;
+    color: #df4863 !important;
+}
+
 .token-name {
     background-color: black !important;
+}
+.p-paginator-element:hover,
+.p-paginator-element:hover > span.p-paginator-icon {
+    color: white !important;
+    background-color: #df4863 !important;
+}
+
+.p-paginator-pages > button.p-highlight {
+    background-color: #2b90c3 !important
 }
