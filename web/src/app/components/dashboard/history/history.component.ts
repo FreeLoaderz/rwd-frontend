@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from "@angular/core";
+import {Component, HostListener, OnDestroy, OnInit} from "@angular/core";
 import {NotificationComponent} from "../../notification/notification.component";
 import {Router} from "@angular/router";
 import {NotifierService} from "angular-notifier";
@@ -9,6 +9,9 @@ import {WalletObserverService} from "../../../services/wallet-observer.service";
 import {WalletService} from "../../../services/wallet.service";
 import {DatePipe} from "@angular/common";
 import {HistoricalClaim} from "../../../data/historical-claim";
+import {ColorService} from "../../../services/color.service";
+import * as d3 from "d3-scale-chromatic";
+import {HistogramData} from "../../../data/histogram-data";
 
 @Component({
     selector: 'history',
@@ -22,8 +25,27 @@ export class HistoryComponent extends NotificationComponent implements OnInit, O
     public loadingHistory: boolean = false;
     public historyCols: any[] = [];
     public claimHistoryArray: Array<HistoricalClaim> = [];
+    public unfilteredClaimHistoryArray: Array<HistoricalClaim> = [];
     public exportFileName: string;
     public datePipe = new DatePipe("en-US");
+    public chartsHidden: boolean = true;
+    public rowHeight: number = 42.25;
+    public maxRows: number = 10;
+    public maxChartHeight: number = 422;
+    public maxChartRowHeight: number = 211;
+    public maxChartWidth: number = 1000;
+    public halfChartWidth: number = 300;
+    // Charts
+    public donutData: any;
+    public donutOptions: any;
+    public colorRangeInfo = {
+        colorStart: 0,
+        colorEnd: 1,
+        useEndAsStart: false,
+    };
+    public basicData: any;
+    public basicOptions: any;
+
 
     constructor(public router: Router, public titleService: Title, public restService: RestService,
                 public walletObserverService: WalletObserverService, public walletService: WalletService,
@@ -40,6 +62,7 @@ export class HistoryComponent extends NotificationComponent implements OnInit, O
             {field: 'txhash', header: 'Raw Tx Hash', hidden: true}];
         const dateString = this.datePipe.transform(new Date(), 'yyyy-MM-dd');
         this.exportFileName = "Historical_SmartClaimz_".concat(dateString);
+        this.setMaxRows(null);
     }
 
     public ngOnInit() {
@@ -64,6 +87,149 @@ export class HistoryComponent extends NotificationComponent implements OnInit, O
             .catch(e => this.handleError(e));
     }
 
+    public generateCharts() {
+        const donutMap: Map<string, number> = new Map<string, number>();
+        const basicMap: Map<number, Map<number, Array<HistoricalClaim>>> = new Map<number, Map<number, Array<HistoricalClaim>>>();
+        this.unfilteredClaimHistoryArray.forEach(claim => {
+            if (donutMap.has(claim.displayName)) {
+                const curAmount: number = +donutMap.get(claim.displayName);
+                const newAmount: number = curAmount + +claim.amount;
+                donutMap.set(claim.displayName, +newAmount);
+                console.log(claim.displayName + " " + curAmount + " + " + claim.amount + " = " + newAmount);
+            } else {
+                donutMap.set(claim.displayName, +claim.amount);
+                console.log(claim.displayName + " " + claim.amount);
+            }
+
+            if (basicMap.has(claim.year)) {
+                const yearMap = basicMap.get(claim.year);
+                if (yearMap.has(claim.month)) {
+                    const monthArray = yearMap.get(claim.month);
+                    monthArray.push(claim);
+                } else {
+                    const monthArray: Array<HistoricalClaim> = new Array<HistoricalClaim>();
+                    monthArray.push(claim);
+                    yearMap.set(claim.month, monthArray);
+                }
+            } else {
+                const yearMap: Map<number, Array<HistoricalClaim>> = new Map<number, Array<HistoricalClaim>>();
+                const monthArray: Array<HistoricalClaim> = new Array<HistoricalClaim>();
+                monthArray.push(claim);
+                yearMap.set(claim.month, monthArray);
+                basicMap.set(claim.year, yearMap);
+            }
+        });
+        const tokenMap: Map<string, HistogramData> = new Map<string, HistogramData>();
+        const yearKeys: Array<number> = [...basicMap.keys()];
+        const sortedYears: number[] = yearKeys.sort((n1, n2) => n1 - n2);
+        const minYear = sortedYears[0];
+        const maxYear = sortedYears[sortedYears.length - 1];
+        let minMonth = 12;
+        let maxMonth = 1;
+        for (let i = 0; i < sortedYears.length; ++i) {
+            const monthMap: Map<number, Array<HistoricalClaim>> = basicMap.get(sortedYears[i]);
+            const monthKeys: Array<number> = [...monthMap.keys()];
+            const sortedMonths: number[] = monthKeys.sort((n1, n2) => n1 - n2);
+            if (i === 0) {
+                minMonth = sortedMonths[0];
+            }
+            if (i === (sortedYears.length - 1)) {
+                maxMonth = sortedMonths[sortedMonths.length - 1];
+            }
+            for (let j = 0; j < sortedMonths.length; ++j) {
+                const monthTotalByToken: Map<string, number> = new Map<string, number>();
+                const claimArray: Array<HistoricalClaim> = monthMap.get(sortedMonths[i]);
+                claimArray.forEach(claim => {
+                    if (monthTotalByToken.has(claim.displayName)) {
+                        const curAmount: number = +monthTotalByToken.get(claim.displayName);
+                        const newAmount: number = curAmount + +claim.amount;
+                        monthTotalByToken.set(claim.displayName, +newAmount);
+                        console.log(claim.displayName + " " + curAmount + " + " + claim.amount + " = " + newAmount);
+                    } else {
+                        monthTotalByToken.set(claim.displayName, +claim.amount);
+                        console.log(claim.displayName + " " + claim.amount);
+                    }
+                });
+                monthTotalByToken.forEach((value, key) => {
+                    if (tokenMap.has(key)) {
+                        const histData: HistogramData = tokenMap.get(key);
+                        if (histData.yearMonthTotalMap.has(sortedYears[i])) {
+                            const monthMap1: Map<number, number> = histData.yearMonthTotalMap.get(sortedYears[i]);
+                            monthMap1.set(sortedMonths[j], value);
+                        } else {
+                            const monthMap2: Map<number, number> = new Map<number, number>();
+                            monthMap2.set(sortedMonths[j], value);
+                            histData.yearMonthTotalMap.set(sortedYears[i], monthMap2);
+                        }
+                    } else {
+                        const histData: HistogramData = new HistogramData();
+                        histData.label = key;
+                        const monthMap3: Map<number, number> = new Map<number, number>();
+                        monthMap3.set(sortedMonths[j], value);
+                        histData.yearMonthTotalMap.set(sortedYears[i], monthMap3);
+                        tokenMap.set(key, histData);
+                    }
+                });
+            }
+        }
+
+        const chartColors = ColorService.interpolateColors(tokenMap.size, d3.interpolateInferno, this.colorRangeInfo);
+        chartColors.forEach(color => {
+            console.log(color);
+        });
+        const tokenNames = [...tokenMap.keys()];
+        for (let i = 0; i < tokenNames.length; ++i) {
+            const histData = tokenMap.get(tokenNames[i]);
+            histData.setArray(minYear, minMonth, maxYear, maxMonth);
+            histData.backgroundColor = chartColors[i];
+        }
+
+        const basicLabels: Array<string> = HistogramData.getLabels(minYear, minMonth, maxYear, maxMonth);
+
+        this.basicData = {
+            labels: [...basicLabels],
+            datasets: [...tokenMap.values()]
+        };
+
+        const labelArray: Array<string> = [];
+        const dataArray: Array<number> = [];
+
+        donutMap.forEach((value, key) => {
+            const label = key + " " + value;
+            labelArray.push(label);
+            dataArray.push(value);
+        });
+        this.donutData = {
+            labels: [...labelArray],
+            datasets: [
+                {
+                    data: [...dataArray],
+                    backgroundColor: [...chartColors],
+                    hoverBackgroundColor: [...chartColors]
+                }
+            ]
+        };
+    }
+
+    @HostListener('window:resize', ['$event'])
+    public setMaxRows(event?) {
+        globalThis.screenHeight = window.innerHeight;
+        const tempMaxRows = +((globalThis.screenHeight - 400) / this.rowHeight).toFixed(0);
+        if (tempMaxRows < 10) {
+            this.maxRows = 10;
+        } else {
+            this.maxRows = tempMaxRows;
+        }
+        this.maxChartHeight = +((this.maxRows * this.rowHeight) + 80).toFixed(0);
+        this.maxChartRowHeight = +(this.maxChartHeight / 2).toFixed(0);
+        this.generateCharts();
+    }
+
+    @HostListener('window:orientationchange', ['$event'])
+    public onOrientationChange(event) {
+        this.setMaxRows(event);
+    }
+
     public ngOnDestroy() {
         this.walletSubscription.unsubscribe();
     }
@@ -82,7 +248,18 @@ export class HistoryComponent extends NotificationComponent implements OnInit, O
             }
             tempClaimHistoryArray.sort((a, b) => HistoricalClaim.sort(a, b));
             this.claimHistoryArray = [...tempClaimHistoryArray];
+            this.unfilteredClaimHistoryArray = [...tempClaimHistoryArray];
+            this.generateCharts();
         }
         this.loadingHistory = false;
+    }
+
+    public hideCharts(hide: boolean) {
+        this.chartsHidden = hide;
+    }
+
+    onFilter(event, dt) {
+        this.unfilteredClaimHistoryArray = [...event.filteredValue];
+        this.generateCharts();
     }
 }

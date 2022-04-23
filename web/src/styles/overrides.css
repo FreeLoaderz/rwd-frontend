@@ -413,9 +413,28 @@ th.p-resizable-column {
     color: #2b90c3 !important;
 }
 
+.p-datatable-thead > tr > th:hover {
+    color: #df4863 !important;
+    cursor: pointer !important;
+}
+
 .p-datatable-tbody > tr > td > span {
     background: transparent !important;
     color: white !important;
+}
+
+.p-datatable-tbody > tr:hover > td > span {
+    color: #df4863 !important;
+    cursor: default !important;
+}
+.p-datatable-tbody > tr:hover > td > span > span > a {
+    color: #df4863 !important;
+    cursor: pointer !important;
+}
+
+.p-datatable-tbody > tr > td > span > span > a:hover {
+    color: #df4863 !important;
+    cursor: pointer !important;
 }
 
 .p-paginator {
