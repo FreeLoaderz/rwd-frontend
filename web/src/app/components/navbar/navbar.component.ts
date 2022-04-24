@@ -66,7 +66,7 @@ export class NavbarComponent extends NotificationComponent implements OnInit, Af
                 this.disconnectWallet();
             }
         );
-        this.httpClient.get("http://api.ipify.org/?format=json").subscribe((res: any) => {
+        this.httpClient.get("https://api.ipify.org/?format=json").subscribe((res: any) => {
             globalThis.ipAddress = res.ip;
         });
     }
