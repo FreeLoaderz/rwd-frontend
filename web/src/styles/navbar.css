@@ -5,12 +5,15 @@
     font-family: Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif !important;
     padding-bottom: 0 !important;
 }
+
 .bg-clear {
     --bs-bg-opacity: 0;
 }
+
 .bg-dark {
     background-color: #061c35;
 }
+
 .navbar li.active {
     outline: none;
     background-color: rgba(95, 119, 255, 0.3);
@@ -33,4 +36,10 @@
     cursor: pointer !important;
     color: #df4863 !important;
     text-shadow: none !important;
+}
+
+.navbar-collapse > ul {
+    padding-left: 10px;
+    padding-right: 10px;
+    background: #061c35 !important;
 }
