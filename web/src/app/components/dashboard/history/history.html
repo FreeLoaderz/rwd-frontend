@@ -17,15 +17,17 @@
                  [resizableColumns]="true" [rowHover]="true">
             <ng-template pTemplate="caption">
                 <div class="ui-helper-clearfix mb-2" style="height: 20px !important;">
-                    <button *ngIf="chartsHidden" pButton class="p-button-text"
+                    <button *ngIf="chartsHidden" pButton class="p-button-rounded p-button-primary"
                             icon="fa-solid fa-chart-column"
+                            label="View Charts"
                             (click)="hideCharts(false)"
-                            title="Chart View"
+                            title="Chart view of your history"
                             style="float: left;margin-top: -10px !important;"></button>
-                    <button *ngIf="!chartsHidden" pButton class="p-button-text"
+                    <button *ngIf="!chartsHidden" pButton class="p-button-rounded p-button-primary"
                             icon="fa-solid fa-table-list"
                             (click)="hideCharts(true)"
-                            title="Table View"
+                            label="View Table"
+                            title="Table view of your history"
                             style="float: left;margin-top: -10px !important;"></button>
                     <button type="button" pButton icon="fa-solid fa-download" iconPos="left"
                             label="CSV"
@@ -33,12 +35,12 @@
                             title="Export CSV"
                             (click)="historyTable.exportCSV()"
                             style="float: right;margin-top: -10px !important;"></button>
-                    <input pInputText class="form-control col-sm-3 me-2 history-search" type="text"
+                    <input pInputText class="col-sm-3 me-2 history-search" type="text" style="width: auto !important;"
                            (input)="historyTable.filterGlobal($event.target.value, 'contains')" placeholder="Search"/>
                 </div>
             </ng-template>
             <ng-template pTemplate="header" let-columns>
-                <tr *ngIf="chartsHidden" >
+                <tr *ngIf="chartsHidden">
                     <th *ngFor="let col of columns" [pSortableColumn]="col.field" pResizableColumn>
                         <span *ngIf="!col.hidden">
                         {{col.header}}
@@ -48,7 +50,7 @@
                 </tr>
             </ng-template>
             <ng-template pTemplate="body" let-rowData let-columns="columns">
-                <tr *ngIf="chartsHidden" >
+                <tr *ngIf="chartsHidden">
                     <td *ngFor="let col of columns" [ngSwitch]="col.field" class="ui-resizable-column">
                         <span *ngIf="!col.hidden">
                         <span *ngSwitchDefault>{{rowData[col.field]}}</span>
@@ -57,8 +59,9 @@
                     </td>
                 </tr>
             </ng-template>
-            <ng-template pTemplate="footer" style="min-height: {{maxChartHeight}}px;max-height: {{maxChartHeight}}px">
-                <div *ngIf="!chartsHidden" class="whitediv" >
+            <ng-template pTemplate="footer">
+                <div *ngIf="!chartsHidden" class="whitediv"
+                     style="min-height: {{maxChartHeight}}px;max-height: {{maxChartHeight}}px"  >
                     <div style="display: flex !important;">
                         <p-chart type="pie" class="charts" [data]="donutData" [options]="donutOptions"
                                  [height]="maxChartRowHeight" [width]="halfChartWidth"

@@ -1,13 +1,35 @@
-import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
 import {Injectable} from "@angular/core";
-import {lastValueFrom} from "rxjs";
-import * as wasm from "../../assets/scripts/cardano_serialization_lib.min.js";
+import {lastValueFrom, Observable} from "rxjs";
+import {FormGroup} from "@angular/forms";
+import {map} from 'rxjs/operators';
 
 @Injectable()
 export class RestService {
     public static processingRequest: boolean = false;
 
     constructor(private httpClient: HttpClient) {
+    }
+
+    public submitFeedback(contactUsForm: FormGroup): Observable<any> {
+        const url = '/feedback/formResponse';
+        let params: HttpParams = new HttpParams().set('entry.1554006855', contactUsForm.value.name);
+        params = params.set('entry.2106341496', contactUsForm.value.email);
+        params = params.set('entry.74038425', contactUsForm.value.subject);
+        params = params.set('entry.1138654956', contactUsForm.value.message);
+        params = params.set('entry.725525851', navigator.userAgent);
+        params = params.set('entry.1773168385', globalThis.ipAddress);
+
+        RestService.processingRequest = true;
+        console.log(url);
+        return this.httpClient
+            .get(url, {responseType: 'text', params: params, observe: 'response'})
+            .pipe(map(data => {
+                if (data.status) {
+                    return data.status;
+                }
+                return 404;
+            }));
     }
 
     public getAvailableTokens() {

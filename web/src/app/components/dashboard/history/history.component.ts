@@ -1,6 +1,6 @@
 import {Component, HostListener, OnDestroy, OnInit} from "@angular/core";
 import {NotificationComponent} from "../../notification/notification.component";
-import {Router} from "@angular/router";
+import {NavigationEnd, Router} from "@angular/router";
 import {NotifierService} from "angular-notifier";
 import {Title} from "@angular/platform-browser";
 import {Subscription} from "rxjs";
@@ -12,6 +12,8 @@ import {HistoricalClaim} from "../../../data/historical-claim";
 import {ColorService} from "../../../services/color.service";
 import * as d3 from "d3-scale-chromatic";
 import {HistogramData} from "../../../data/histogram-data";
+
+declare let gtag: Function;
 
 @Component({
     selector: 'history',
@@ -256,6 +258,15 @@ export class HistoryComponent extends NotificationComponent implements OnInit, O
 
     public hideCharts(hide: boolean) {
         this.chartsHidden = hide;
+        if (location.host === 'rwd.freeloaderz.io') {
+            if (this.chartsHidden) {
+                gtag('set', 'page_path', "History");
+                gtag('event', 'page_view');
+            } else {
+                gtag('set', 'page_path', "History-Charts");
+                gtag('event', 'page_view');
+            }
+        }
     }
 
     onFilter(event, dt) {

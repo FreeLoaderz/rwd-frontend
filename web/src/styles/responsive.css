@@ -25,6 +25,15 @@
         width: 300px !important;
     }
 }
+@media only screen and (max-device-width: 900px) {
+    .banner-social-buttons {
+        display: block !important;
+    }
+    .banner-social-buttons > li {
+        margin-bottom: 15px !important;
+        margin-left: 0 !important;
+    }
+}
 
 @media only screen and (max-device-width: 480px) {
     /* styles for mobile browsers smaller than 480px !important; (iPhone) */

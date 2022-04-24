@@ -1,17 +1,15 @@
-<section id="contact" class="ms-5 me-5 content-section">
-    <div class="sidebyside">
-        <div class="ms-2 me-2" style="min-width: 200px !important;max-width: 200px !important; ">
-        </div>
-        <div class="sidebar-content ms-5" style="padding-top: 0px !important">
+<section id="contact" class="content-section">
+    <div class="center-div-parent">
+        <div class="center-div-child">
             <h4>Contact Us</h4>
-            <div class="blackdiv" style="padding-top: 0px !important;max-width: 70%">
+            <div class="blackdiv" style="padding-top: 0px !important;">
                 <form [formGroup]="contactUsForm" (ngSubmit)="submitFeedback()" style="padding-top: 1.5rem;">
                     <div *ngIf="contactUsForm.get('name').errors?.required
                 && (contactUsForm.get('name').dirty || contactUsForm.get('name').touched)" class="invalid-error">
                         Name is required
                     </div>
-                    <input type="text" class="form-control col-sm-3 mb-3"
-                           placeholder="Name.."
+                    <input type="text" class="form-control mb-3"
+                           placeholder="Name.." style="max-width: 300px;"
                            [formControl]="contactUsForm.controls['name']"
                            tooltip="Enter your name..">
                     <div *ngIf="contactUsForm.get('email').errors?.required
@@ -23,16 +21,16 @@
                          class="invalid-error">
                         Email address is invalid
                     </div>
-                    <input type="text" class="form-control col-sm-3 mb-3"
-                           placeholder="Email.."
+                    <input type="text" class="form-control mb-3"
+                           placeholder="Email.." style="max-width: 300px;"
                            [formControl]="contactUsForm.controls['email']"
                            tooltip="Enter your email..">
                     <div *ngIf="contactUsForm.get('subject').errors?.required && (contactUsForm.get('subject').dirty
                      || contactUsForm.get('subject').touched)" class="invalid-error">
                         Subject is required
                     </div>
-                    <input type="text" class="form-control col-sm-3 mb-3"
-                           placeholder="Subject.."
+                    <input type="text" class="form-control mb-3"
+                           placeholder="Subject.." style="max-width: 300px;"
                            [formControl]="contactUsForm.controls['subject']"
                            tooltip="Enter the subject..">
                     <div *ngIf="contactUsForm.get('message').errors?.required
@@ -40,30 +38,26 @@
                          class="invalid-error">
                         Message is required
                     </div>
-                    <textarea class="form-control col-sm-3 mb-3"
+                    <textarea class="form-control mb-3"
                               rows="5"
                               cols="50"
                               placeholder="Message.."
                               [formControl]="contactUsForm.controls['message']"
                               tooltip="Enter the message.."></textarea>
-                    <div class="row subrow">
-                        <button pButton
-                                [disabled]="!contactUsForm.valid"
-                                title="Send message" style="width: auto;"
-                                type="submit"
-                                class="p-button p-button-rounded p-button-primary ms-3 me-auto"
-                                label="Send" icon="fa-solid fa-paper-plane">
-                        </button>
-                    </div>
+                    <button pButton
+                            [disabled]="!contactUsForm.valid"
+                            title="Send message"
+                            type="submit"
+                            class="p-button-rounded p-button-primary me-auto"
+                            label="Send" icon="fa-solid fa-paper-plane">
+                    </button>
                 </form>
             </div>
         </div>
     </div>
     <div class="contact-info-section mt-5">
         <div class="container text-center ms-auto me-auto">
-            <p></p>
-            <p><a href="mailto:info@freeloaderz.io">info@freeloaderz.io</a>
-            </p>
+            <p><a href="mailto:info@freeloaderz.io">info@freeloaderz.io</a></p>
             <ul class="list-inline banner-social-buttons mt-5">
                 <li>
                     <a href="https://twitter.com/Freeloaderz2022" target="_blank" class="btn btn-default btn-lg"><i
@@ -83,3 +77,6 @@
         </div>
     </div>
 </section>
+<ng-template #notificationTemplate let-notificationData="notification">
+    <p class="notifier__notification-message" [innerHTML]="notificationData.message"></p>
+</ng-template>

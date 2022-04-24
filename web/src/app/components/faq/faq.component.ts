@@ -1,4 +1,4 @@
-import {Component, Inject} from "@angular/core";
+import {AfterViewInit, Component, Inject} from "@angular/core";
 import {Title} from "@angular/platform-browser";
 import {DOCUMENT} from "@angular/common";
 import {DisclosureButton} from "./disclosure-button";
@@ -9,26 +9,19 @@ import {DisclosureButton} from "./disclosure-button";
     templateUrl: './faq.html'
 })
 
-export class FaqComponent {
+export class FaqComponent implements AfterViewInit {
     public buttons: Map<string, DisclosureButton> = new Map<string, DisclosureButton>();
 
     constructor(@Inject(DOCUMENT) public document: any, public titleService: Title) {
         this.titleService.setTitle("FAQ");
-        setTimeout(() => {
-            // ngAfterViewInit and ngAfterContentInit was NOT being called on mobile for some reason
-            while (this.document.getElementsByClassName("toggleButton").length === 0) {
-                this.delay(100);
-            }
-            const buttons = this.document.getElementsByClassName("toggleButton");
-            for (let i = 0; i < buttons.length; i++) {
-                const button = new DisclosureButton(buttons[i]);
-                this.buttons.set(button.id, button);
-            }
-        });
     }
 
-    public delay(ms: number) {
-        return new Promise(resolve => setTimeout(resolve, ms));
+    public ngAfterViewInit() {
+        const buttons = this.document.getElementsByClassName("toggleButton");
+        for (let i = 0; i < buttons.length; i++) {
+            const button = new DisclosureButton(buttons[i]);
+            this.buttons.set(button.id, button);
+        }
     }
 
     public toggleComponent(id: string) {
