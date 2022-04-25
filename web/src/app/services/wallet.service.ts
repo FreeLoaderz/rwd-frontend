@@ -1,8 +1,6 @@
 import {Injectable} from "@angular/core";
 import {Wallet} from "../data/wallet";
 import {WalletObserverService} from "./wallet-observer.service";
-import * as wasm from "../../assets/scripts/cardano_serialization_lib.min.js";
-import {UtilityService} from "./utility.service";
 
 @Injectable()
 export class WalletService {
@@ -21,7 +19,7 @@ export class WalletService {
      * Check if eternl is available
      */
     public eternlAvailable(): boolean {
-        return (globalThis.cardano.eternl != null);
+        return ((globalThis != null) && (globalThis.cardano != null) && (globalThis.cardano.eternl != null));
     }
 
     /**
@@ -45,7 +43,7 @@ export class WalletService {
      * Check if Nami is available
      */
     public namiAvailable(): boolean {
-        return (globalThis.cardano.nami != null);
+        return ((globalThis != null) && (globalThis.cardano != null) && (globalThis.cardano.nami != null));
     }
 
     /**
@@ -69,7 +67,7 @@ export class WalletService {
      * Check if gero is available
      */
     public geroAvailable(): boolean {
-        return (globalThis.cardano.gerowallet != null);
+        return ((globalThis != null) && (globalThis.cardano != null) && (globalThis.cardano.gerowallet != null));
     }
 
     /**
@@ -93,7 +91,7 @@ export class WalletService {
      * Check if flint is available
      */
     public flintAvailable(): boolean {
-        return (globalThis.cardano.flint != null);
+        return ((globalThis != null) && (globalThis.cardano != null) && (globalThis.cardano.flint != null));
     }
 
     /**
@@ -244,14 +242,6 @@ export class WalletService {
      */
     private processMaskedBalance(data: any) {
         globalThis.wallet.maskedBalance = data;
-        try {
-            const balance = wasm.Value.from_bytes(UtilityService.hexToBytes(data));
-            globalThis.wallet.lovelaces = balance.coin().to_str();
-            globalThis.wallet.balance = (globalThis.wallet.lovelaces / 1000000);
-            console.log("ADA Balance [" + globalThis.wallet.balance + "]");
-        } catch (e) {
-            console.log(e);
-        }
         if (--this.numWalletCalls === 0) {
             this.walletObserver.setloaded(true);
         }

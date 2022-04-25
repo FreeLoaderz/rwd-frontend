@@ -11,6 +11,7 @@ import {Subscription} from "rxjs";
 import {DOCUMENT} from "@angular/common";
 import {TokenMetadata} from "../../data/token-metadata";
 import {TokenMetadataService} from "../../services/token-metadata.service";
+import {HttpClient} from "@angular/common/http";
 
 declare let gtag: Function;
 
@@ -38,15 +39,12 @@ export class NavbarComponent extends NotificationComponent implements OnInit, Af
     public docElem: any;
     @ViewChild('connectModal', {static: false}) public connectModal: ModalDirective;
 
-    constructor(@Inject(DOCUMENT) private document: any,
+    constructor(@Inject(DOCUMENT) private document: any, public httpClient: HttpClient,
                 public router: Router, public titleService: Title, public walletObserverService: WalletObserverService,
                 public notifierService: NotifierService, public walletService: WalletService,
                 public tokenMetadataService: TokenMetadataService) {
         super(notifierService);
         this.titleService.setTitle("Rewards");
-        globalThis.customerId = 1;
-        globalThis.multiSigType = "sporwc";
-
         this.router.events.subscribe(event => {
             if ((event instanceof NavigationEnd) && (location.host === 'rwd.freeloaderz.io')) {
                 gtag('set', 'page_path', event.urlAfterRedirects);
@@ -72,12 +70,17 @@ export class NavbarComponent extends NotificationComponent implements OnInit, Af
                 this.disconnectWallet();
             }
         );
+        this.httpClient.get("https://api.ipify.org/?format=json").subscribe((res: any) => {
+            globalThis.ipAddress = res.ip;
+        });
     }
 
     ngAfterContentInit() {
         this.setupMenu();
         this.disconnectWallet();
         this.getScreenSize(null);
+        globalThis.customerId = 1;
+        globalThis.multiSigType = "sporwc";
     }
 
     public openNami() {

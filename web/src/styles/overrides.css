@@ -193,12 +193,6 @@ a:active {
     color: #df4863 !important;
     text-shadow: none !important;
 }
-
-
-.form-control {
-    width: auto !important;
-}
-
 .subrow {
     display: flex;
     margin-bottom: 10px;

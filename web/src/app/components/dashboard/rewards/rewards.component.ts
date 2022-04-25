@@ -45,6 +45,7 @@ export class RewardsComponent extends NotificationComponent implements OnInit, O
         if (globalThis.tokens == null) {
             globalThis.tokens = new Map<string, Token>();
         }
+
         this.titleService.setTitle("Rewards");
     }
 

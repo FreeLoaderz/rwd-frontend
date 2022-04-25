@@ -255,6 +255,12 @@ ul.banner-social-buttons {
     padding: 0;
 }
 
+ul.vertical-social-buttons {
+    margin-bottom: 15px;
+    display: block;
+    padding: 0;
+}
+
 ::-moz-selection {
     text-shadow: gray !important;
     background: #fcfcfc;
@@ -346,13 +352,14 @@ div.sidemenu > button.p-button {
     border-radius: 25px;
     padding: 25px;
 }
+
 .charts {
     justify-content: center !important;
 }
 
 .sidemenu {
-    min-width: 200px !important;
-    max-width: 200px !important;
+    min-width: 215px !important;
+    max-width: 215px !important;
     min-height: 110px !important;
     max-height: 110px !important;
     padding: 0px !important;
@@ -385,6 +392,16 @@ div.sidemenu > button.p-button {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+}
+
+.center-div-parent {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.center-div-child {
+    display: block;
 }
 
 .horizontal-center-div {

@@ -18,21 +18,12 @@ export class TokenMetaDataComponent implements OnInit {
     public observableMetadata = new Subject<TokenMetadata>();
     public tokenMetadata$ = this.observableMetadata.asObservable();
 
-    cols: any[]
-
     @ViewChild('tokenView', {static: false}) public tokenView: any;
 
     constructor(public tokenMetadataService: TokenMetadataService) {
         if (globalThis.tokenMetadata == null) {
             globalThis.tokenMetadata = new Map<string, TokenMetadata>();
         }
-        this.cols = [
-            { field: 'name', header: 'Name'},
-            { field: 'logo', header: 'Logo'},
-            { field: 'ticker', header: 'Ticker'},
-            { field: 'url', header: 'URL'},
-            { field: 'policy', header: 'Policy'}
-        ]
     }
 
     public ngOnInit() {
@@ -44,12 +35,13 @@ export class TokenMetaDataComponent implements OnInit {
     }
 
     public processMetadata(exploreMetadata: TokenMetadata) {
-        globalThis.tokenMetadata.clear();
         globalThis.tokenMetadata.set(exploreMetadata.policy, exploreMetadata);
         if (globalThis.tokenMetadata.has(exploreMetadata.policy)) {
             const getTokenMetadata = new TokenMetadata(exploreMetadata);
-            globalThis.tokenMetadata.set(getTokenMetadata.policy, getTokenMetadata)
-            this.listAllTokens = [...globalThis.tokenMetadata.values()]
+            this.listAllTokens.push(getTokenMetadata)
+            globalThis.tokenMetadata.set(this.listAllTokens, getTokenMetadata)
+            this.listAllTokens = [...this.listAllTokens.values()]
+
         }
     }
     

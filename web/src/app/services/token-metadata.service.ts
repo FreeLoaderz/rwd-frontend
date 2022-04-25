@@ -12,6 +12,8 @@ export class TokenMetadataService {
     public observableMetadata = new Subject<TokenMetadata>();
     public tokenMetadata$ = this.observableMetadata.asObservable();
 
+    public tokenMetadataList: Array<TokenMetadata> = []
+
     constructor(private httpClient: HttpClient) {
     }
 
@@ -22,15 +24,19 @@ export class TokenMetadataService {
         if (localStorage.getItem('tokenMetadata') != null) {
             setTimeout(() => {
                 const data = JSON.parse(localStorage.getItem('tokenMetadata'));
+
+                // Fill in array data here for local testing
+                // const data = []
+
                 for (let i = 0; i < data.length; ++i) {
-                    const tokenMetadata = new TokenMetadata(data[i]);
-                    globalThis.tokenMetadata.set(tokenMetadata.name, tokenMetadata);
+                    const tokenMetadata = new TokenMetadata(data[i])
+                    console.log(tokenMetadata)
                     this.observableMetadata.next(tokenMetadata);
-                    if (tokenMetadata.name !== undefined) {
-                        console.log("Loaded metadata for token [" + tokenMetadata.name + "]");
-                        globalThis.tokenMetadata.set(tokenMetadata.name, tokenMetadata);
-                        this.observableMetadata.next(tokenMetadata);
-                    }
+                    // if (tokenMetadata.name !== undefined) {
+                    //     console.log("Loaded metadata for token [" + tokenMetadata.name + "]");
+                    //     globalThis.tokenMetadata.set(tokenMetadata.name, tokenMetadata);
+                    //     this.observableMetadata.next(tokenMetadata);
+                    // }
                 }
             });
         }
