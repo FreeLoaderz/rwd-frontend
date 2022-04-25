@@ -465,7 +465,6 @@ a.spanlinkBlue.active {
 .token-item {
     display: flex;
     align-items: center;
-    padding: .5rem;
     width: 100%;
 }
 
@@ -483,6 +482,7 @@ img {
     color: white;
     inline-size: 150px;
     align-items: center;
+    padding-right: 1rem;
 }
 
 .token-list-detail {
