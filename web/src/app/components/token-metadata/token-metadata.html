@@ -9,17 +9,17 @@
                             <img src="data:image/png;base64,{{rowData.logo}}">
                         </div>
                         <div class="token-list-name">
-                            <h5 style="margin-left: .5rem; color: #df4863">{{rowData.name}}</h5>
-                            <p style="margin-left: .5rem; color: #df4863">{{rowData.description}}</p>
+                            <h5 style="margin-left: .5rem; color: blue">{{rowData.name}}</h5>
+                            <p style="margin-left: .5rem;">{{rowData.description}}</p>
 
                         </div>
                         <div class="token-list-detail">
-                            <h5 style="color: #df4863">Policy ID</h5>
-                            <p style="margin-left: 1.5rem;"><a class="spanlinkBlue" target="_blank" href="https://cardanoscan.io/token/{{rowData.policy}}"><i class="fa-solid fa-pencil-square me-1" aria-hidden="true"></i></a></p>
+                            <h5 style="color: blue">Policy ID</h5>
+                            <p style="margin-left: 1.5rem;"><a class="spanlinkMetadata" target="_blank" href="https://cardanoscan.io/token/{{rowData.policy}}"><i class="fa-solid fa-pencil-square me-1" aria-hidden="true"></i></a></p>
                         </div>
                         <div class="token-list-action">
-                            <h5 style="color: #df4863;">Website</h5>
-                            <p style="margin-right: 1rem;"><a class="spanlinkBlue" target="_blank" href="{{rowData.url}}"><i class="fa-solid fa-globe me-1" aria-hidden="true"></i></a></p>
+                            <h5 style="color: blue;">Website</h5>
+                            <p style="margin-right: 1rem;"><a class="spanlinkMetadata" target="_blank" href="{{rowData.url}}"><i class="fa-solid fa-globe me-1" aria-hidden="true"></i></a></p>
                         </div>
                     </div>
                 </ng-template>

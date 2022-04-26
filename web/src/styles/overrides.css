@@ -582,7 +582,7 @@ div.p-panel-content > p {
 
 .p-orderlist .p-orderlist-list {
     border: none !important;
-    background-color: transparent !important;
+    background-color: black !important;
 }
 
 .p-orderlist .p-orderlist-filter-container {
@@ -590,9 +590,8 @@ div.p-panel-content > p {
     background-color: transparent !important;
 }
 
-.p-orderlist .p-orderlist-list .p-orderlist-item:hover{
-    outline: 0 !important;
-    color: #df4863 !important;
+.p-orderlist .p-orderlist-list .p-orderlist-item:hover {
+    background: #df4863 !important;
 }
 
 .token-name {

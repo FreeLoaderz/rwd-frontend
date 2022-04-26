@@ -462,12 +462,31 @@ a.spanlinkBlue.active {
     outline: 0 !important;
     color: #df4863 !important;
 }
+
+.spanlinkMetadata {
+    color: #8dc0d3 !important;
+    -webkit-transition: all .2s ease-in-out;
+    -moz-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+}
+
+a.spanlinkMetadata:hover,
+a.spanlinkMetadata:focus,
+a.spanlinkMetadata.active {
+    outline: 0 !important;
+    color: black !important;
+}
+
 .token-item {
     display: flex;
     align-items: center;
     width: 100%;
 }
 
+.p-orderlist .p-orderlist-list .p-orderlist-item:hover{
+    outline: 0 !important;
+    color: #df4863 !important;
+}
 
 img {
     width: 75px;
