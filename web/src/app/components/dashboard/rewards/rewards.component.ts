@@ -48,7 +48,6 @@ export class RewardsComponent extends NotificationComponent implements OnInit, O
     public ngOnInit() {
         this.walletSubscription = this.walletObserverService.loaded$.subscribe(
             loaded => {
-                console.log("wallet loaded [" + loaded + "]");
                 this.walletLoaded = loaded;
                 if ((loaded === true) && (!this.initialized)) {
                     this.listTokens();
@@ -122,7 +121,6 @@ export class RewardsComponent extends NotificationComponent implements OnInit, O
             this.claimSubscription = this.walletObserverService.loaded$.subscribe(loaded => {
                 if (loaded) {
                     this.claimReturn = null;
-                    console.log("claimSelectedTokens");
                     globalThis.wallet.script = new Script(null);
                     const rwd = new SpoRewardClaim(null);
                     for (let i = 0; i < this.tokens.length; ++i) {

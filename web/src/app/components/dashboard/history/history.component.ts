@@ -97,10 +97,8 @@ export class HistoryComponent extends NotificationComponent implements OnInit, O
                 const curAmount: number = +donutMap.get(claim.displayName);
                 const newAmount: number = curAmount + +claim.amount;
                 donutMap.set(claim.displayName, +newAmount);
-                console.log(claim.displayName + " " + curAmount + " + " + claim.amount + " = " + newAmount);
             } else {
                 donutMap.set(claim.displayName, +claim.amount);
-                console.log(claim.displayName + " " + claim.amount);
             }
 
             if (basicMap.has(claim.year)) {
@@ -146,10 +144,8 @@ export class HistoryComponent extends NotificationComponent implements OnInit, O
                         const curAmount: number = +monthTotalByToken.get(claim.displayName);
                         const newAmount: number = curAmount + +claim.amount;
                         monthTotalByToken.set(claim.displayName, +newAmount);
-                        console.log(claim.displayName + " " + curAmount + " + " + claim.amount + " = " + newAmount);
                     } else {
                         monthTotalByToken.set(claim.displayName, +claim.amount);
-                        console.log(claim.displayName + " " + claim.amount);
                     }
                 });
                 monthTotalByToken.forEach((value, key) => {
@@ -176,9 +172,6 @@ export class HistoryComponent extends NotificationComponent implements OnInit, O
         }
 
         const chartColors = ColorService.interpolateColors(tokenMap.size, d3.interpolateInferno, this.colorRangeInfo);
-        chartColors.forEach(color => {
-            console.log(color);
-        });
         const tokenNames = [...tokenMap.keys()];
         for (let i = 0; i < tokenNames.length; ++i) {
             const histData = tokenMap.get(tokenNames[i]);

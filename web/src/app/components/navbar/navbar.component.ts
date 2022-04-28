@@ -26,6 +26,7 @@ export class NavbarComponent extends NotificationComponent implements OnInit, Af
     public userMenu: MenuItem[];
     public connectMenuItem: MenuItem;
     public walletSubstring: string;
+    public walletImage: string;
     public walletLoaded: boolean = false;
     public walletSubscription: Subscription;
     public walletErrorSubscription: Subscription;
@@ -62,7 +63,7 @@ export class NavbarComponent extends NotificationComponent implements OnInit, Af
         this.walletErrorSubscription = this.walletObserverService.error$.subscribe(
             error => {
                 this.walletLoaded = false;
-                this.errorNotification("Wallet could not be loaded! Make sure DApp access is enabled!");
+                this.errorNotification(error);
                 this.disconnectWallet();
             }
         );
@@ -156,6 +157,7 @@ export class NavbarComponent extends NotificationComponent implements OnInit, Af
         if (error != null) {
             this.errorNotification(error);
         } else {
+            this.walletImage = "../../assets/icons/eternl.png";
             this.hideConnectModal();
             this.router.navigate(['/dashboard']);
         }
@@ -170,6 +172,7 @@ export class NavbarComponent extends NotificationComponent implements OnInit, Af
         if (error != null) {
             this.errorNotification(error);
         } else {
+            this.walletImage = "../../assets/icons/nami.png";
             this.hideConnectModal();
             this.router.navigate(['/dashboard']);
         }
@@ -181,6 +184,7 @@ export class NavbarComponent extends NotificationComponent implements OnInit, Af
         if (error != null) {
             this.errorNotification(error);
         } else {
+            this.walletImage = "../../assets/icons/gero.png";
             this.hideConnectModal();
             this.router.navigate(['/dashboard']);
         }
@@ -190,13 +194,13 @@ export class NavbarComponent extends NotificationComponent implements OnInit, Af
         return this.walletService.geroAvailable();
     }
 
-
     // Flint
     public connectFlint() {
         const error = this.walletService.connectFlint();
         if (error != null) {
             this.errorNotification(error);
         } else {
+            this.walletImage = "../../assets/icons/flint.png";
             this.hideConnectModal();
             this.router.navigate(['/dashboard']);
         }
@@ -206,6 +210,9 @@ export class NavbarComponent extends NotificationComponent implements OnInit, Af
         return this.walletService.flintAvailable();
     }
 
+    public getWalletSource() {
+        return globalThis.walletSource;
+    }
     public routeContactUs() {
         this.isMenuCollapsed = true;
         this.setActive("CONTACTUS");

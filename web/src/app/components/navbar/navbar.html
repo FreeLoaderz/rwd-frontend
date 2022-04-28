@@ -26,6 +26,14 @@
             <ul *ngIf="connected()" style="float: right;"
                 class="navbar-nav ms-auto me-2 mb-2 mb-lg-0">
                 <li class="nav-item">
+                    <a *ngIf="walletLoaded" style="display: flex !important" class="nav-link" (click)="disconnectWallet()">
+                        <p-image src="{{walletImage}}" class="me-1 mt-auto mb-auto" title="Click to disconnect"
+                                 alt="{{getWalletSource()}}" width="25" height="25"></p-image>
+                        <span title="Click to disconnect">{{getWalletSubstring()}}</span></a>
+                    <a *ngIf="!walletLoaded" class="nav-link"><img width="18" height="18" src="assets/smartclaimz.ico"
+                                                                   class="request-spinner" style="margin-top: 3px"></a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link nav-active" id="REWARDS" (click)="routeRewards()">
                         <i class="fa-solid fa-coins me-1"></i>Rewards</a>
                 </li>
@@ -40,12 +48,6 @@
                 <li class="nav-item">
                     <a class="nav-link" id="FAQ" (click)="routeFaq()">
                         <i class="fa-solid fa-circle-question me-1"></i>FAQ</a>
-                </li>
-                <li class="nav-item">
-                    <a *ngIf="walletLoaded" class="nav-link" (click)="disconnectWallet()"><i
-                            class="fa-solid fa-right-from-bracket me-1"></i>{{getWalletSubstring()}}</a>
-                    <a *ngIf="!walletLoaded" class="nav-link"><img width="18" height="18" src="assets/smartclaimz.ico"
-                                                                   class="request-spinner" style="margin-top: 3px"></a>
                 </li>
             </ul>
         </div>

@@ -28,10 +28,11 @@ export class WalletService {
     public connectEternl(): string {
         if (globalThis.cardano.eternl != null) {
             globalThis.cardano.eternl.enable().then((api) => {
+                    console.log(api);
                     this.finishWalletConnect(api, "eternl");
                 }
             ).catch((e) => {
-                return ("Could not connect with Eternl!");
+                this.walletObserver.setError("Could not connect with Eternl!");
             });
         } else {
             return ("Eternl extension not installed");
@@ -55,7 +56,7 @@ export class WalletService {
                     this.finishWalletConnect(api, "nami");
                 }
             ).catch((e) => {
-                return ("Could not connect with Nami!");
+                this.walletObserver.setError("Could not connect with Nami!");
             });
         } else {
             return ("Nami extension not installed");
@@ -79,7 +80,7 @@ export class WalletService {
                     this.finishWalletConnect(api, "gero");
                 }
             ).catch((e) => {
-                return ("Could not connect with Gero!");
+                this.walletObserver.setError("Could not connect with Gero!");
             });
         } else {
             return ("Gero extension not installed");
@@ -103,7 +104,7 @@ export class WalletService {
                     this.finishWalletConnect(api, "flint");
                 }
             ).catch((e) => {
-                return ("Could not connect with flint!");
+                this.walletObserver.setError("Could not connect with Flint!");
             });
         } else {
             return ("Flint extension not installed");
@@ -118,6 +119,19 @@ export class WalletService {
      */
     public finishWalletConnect(api: any, source: string) {
         if (api != null) {
+/**
+            globalThis.walletApi.getWalletIdImpl = () => {
+
+                return Promise.all([globalThis.walletApi.getUsedAddresses(), globalThis.walletApi.getUnusedAddresses()])
+                    .then(([walletUsedAddresses, walletUnusedAddresses]) => {
+                        const addresses = walletUnusedAddresses.concat(walletUsedAddresses);
+                        return require('blake2b')(20)
+                            .update(Buffer.from(addresses.map(a => a.to_bech32).join('')))
+                            .digest('hex');
+                    });
+            };
+**/
+
             this.errorLoadingWallet = false;
             globalThis.walletSource = source;
             globalThis.walletApi = api;
@@ -251,7 +265,7 @@ export class WalletService {
         if (!this.errorLoadingWallet) {
             this.walletObserver.setloaded(true);
         } else {
-            this.walletObserver.setError(true);
+            this.walletObserver.setError("One or more errors occured while loading your wallet!");
         }
     }
 
