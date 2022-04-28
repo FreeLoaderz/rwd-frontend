@@ -8,6 +8,7 @@ import {lastValueFrom, Subject} from "rxjs";
  */
 @Injectable()
 export class TokenMetadataService {
+    public policySubstring: string
     public tokenMetadata: Map<string, TokenMetadata> = new Map<string, TokenMetadata>();
     public observableMetadata = new Subject<TokenMetadata>();
     public tokenMetadata$ = this.observableMetadata.asObservable();
@@ -26,11 +27,14 @@ export class TokenMetadataService {
                 const data = JSON.parse(localStorage.getItem('tokenMetadata'));
 
                 // Fill in array data here for local testing
-                // const data = []
+            //     const data = [{
+                   
+            //     },
+
+            // ]
 
                 for (let i = 0; i < data.length; ++i) {
                     const tokenMetadata = new TokenMetadata(data[i])
-                    console.log(tokenMetadata)
                     this.observableMetadata.next(tokenMetadata);
                     // if (tokenMetadata.name !== undefined) {
                     //     console.log("Loaded metadata for token [" + tokenMetadata.name + "]");
@@ -68,6 +72,22 @@ export class TokenMetadataService {
         });
         console.log("localstore tokenmetadata -> [" + metadataList.length + "]");
         localStorage.setItem('tokenMetadata', JSON.stringify(metadataList));
+    }
+
+    public getPolicyIdSubstring() {
+        if (this.policySubstring != null) {
+            return this.policySubstring;
+        } else {
+           const metadata = globalThis.tokenMetadata
+           let policyArray = []
+           const policies = metadata.keys()
+           for (let policy of policies) {
+               this.policySubstring = policy.slice(0, policy.length/8) + "..." + policy.slice(policy.length - 10)
+               policyArray.push(this.policySubstring)
+           }
+           //Need to add *NgFor in html
+           return policyArray;
+        }
     }
 
     handleError(error: any) {

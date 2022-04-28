@@ -9,11 +9,25 @@ html {
 }
 
 .no-webp > body {
-    background: url('../assets/rwd-background.png') no-repeat center center fixed;
+    background-image: url('../assets/rwd-background.png');
+    background-color: #102648;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
 }
 
 .webp > body {
-    background: url('../assets/rwd-background.webp') no-repeat center center fixed;
+    background-image: url('../assets/rwd-background.webp');
+    background-color:  #102648;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
 }
 
 body {
@@ -36,8 +50,9 @@ body {
     }
 }
 
-.container-fluid {
-    padding-left: 5px !important;
+.router-wrapper {
+    padding-top: 75px;
+    overflow-x: auto;
 }
 
 .p-menuitem-link,

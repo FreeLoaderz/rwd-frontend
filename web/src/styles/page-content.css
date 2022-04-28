@@ -465,6 +465,7 @@ a.spanlinkBlue.active {
 
 .spanlinkMetadata {
     color: #8dc0d3 !important;
+    font-size: x-small;
     -webkit-transition: all .2s ease-in-out;
     -moz-transition: all .2s ease-in-out;
     transition: all .2s ease-in-out;
@@ -481,6 +482,11 @@ a.spanlinkMetadata.active {
     display: flex;
     align-items: center;
     width: 100%;
+}
+
+.token-header {
+    display: flex;
+    justify-content: space-between;
 }
 
 .p-orderlist .p-orderlist-list .p-orderlist-item:hover{
@@ -506,19 +512,20 @@ img {
 
 .token-list-detail {
     flex: 1 1 0;
-    font-size: small;
     background-color: transparent;
     flex-direction: column;
     color: white;
     inline-size: 150px;
     align-items: center;
+    overflow-wrap: break-word;
 }
 
 .token-list-action {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-    color: white
+    color: white;
+    overflow-wrap: break-word;
 }
 
 .image-container {
@@ -555,7 +562,10 @@ dl.faq button {
     border-radius: 5px;
     color: #2b90c3 !important;
     font-weight: bold;
-    width: 100% !important
+    width: 100% !important;
+    -webkit-transition: background .25s ease-in-out, padding .25s ease-in-out;
+    -moz-transition: background .25s ease-in-out, padding .25s ease-in-out;
+    transition: background .25s ease-in-out, padding .25s ease-in-out;
 }
 
 dd {
@@ -590,6 +600,15 @@ dl.faq button:focus {
     display: block !important;
 }
 
-.toggleButton {
-
+.rewards-view {
+    width: 70vw;
+    height: 100vh
+}
+.rewards-header {
+    display:flex;
+    width: 90%;
+}
+.claimall {
+    width: auto;
+    margin-left: auto;
 }

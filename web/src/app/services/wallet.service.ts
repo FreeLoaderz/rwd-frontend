@@ -1,6 +1,7 @@
 import {Injectable} from "@angular/core";
 import {Wallet} from "../data/wallet";
 import {WalletObserverService} from "./wallet-observer.service";
+import converter from "bech32-converting";
 
 @Injectable()
 export class WalletService {
@@ -28,10 +29,11 @@ export class WalletService {
     public connectEternl(): string {
         if (globalThis.cardano.eternl != null) {
             globalThis.cardano.eternl.enable().then((api) => {
+                    console.log(api);
                     this.finishWalletConnect(api, "eternl");
                 }
             ).catch((e) => {
-                return ("Could not connect with Eternl!");
+                this.walletObserver.setError("Could not connect with Eternl!");
             });
         } else {
             return ("Eternl extension not installed");
@@ -55,7 +57,7 @@ export class WalletService {
                     this.finishWalletConnect(api, "nami");
                 }
             ).catch((e) => {
-                return ("Could not connect with Nami!");
+                this.walletObserver.setError("Could not connect with Nami!");
             });
         } else {
             return ("Nami extension not installed");
@@ -79,7 +81,7 @@ export class WalletService {
                     this.finishWalletConnect(api, "gero");
                 }
             ).catch((e) => {
-                return ("Could not connect with Gero!");
+                this.walletObserver.setError("Could not connect with Gero!");
             });
         } else {
             return ("Gero extension not installed");
@@ -103,7 +105,7 @@ export class WalletService {
                     this.finishWalletConnect(api, "flint");
                 }
             ).catch((e) => {
-                return ("Could not connect with flint!");
+                this.walletObserver.setError("Could not connect with Flint!");
             });
         } else {
             return ("Flint extension not installed");
@@ -125,12 +127,9 @@ export class WalletService {
              * https://cips.cardano.org/cips/cip30/
              */
             globalThis.wallet = new Wallet(null);
-            this.numWalletCalls = 6;
             globalThis.walletApi.getNetworkId()
                 .then(data => this.processNetworkId(data))
                 .catch(e => this.handleError(e));
-            this.updateWallet();
-            this.numWalletCalls++;
         }
     }
 
@@ -171,6 +170,7 @@ export class WalletService {
         if (--this.numWalletCalls === 0) {
             this.walletObserver.setloaded(true);
         }
+        this.updateWallet();
     }
 
     /**
@@ -181,6 +181,11 @@ export class WalletService {
     private processRewardAddresses(data: any) {
         if (data[0] != null) {
             globalThis.wallet.sending_stake_addr = data[0];
+            let prefix = "stake";
+            if (globalThis.wallet.network === 0) {
+                prefix = "stake_test";
+            }
+            globalThis.wallet.bech32_stake_addr = converter(prefix).toBech32(globalThis.wallet.sending_stake_addr);
             if (--this.numWalletCalls === 0) {
                 this.walletObserver.setloaded(true);
             }
@@ -251,7 +256,7 @@ export class WalletService {
         if (!this.errorLoadingWallet) {
             this.walletObserver.setloaded(true);
         } else {
-            this.walletObserver.setError(true);
+            this.walletObserver.setError("One or more errors occured while loading your wallet!");
         }
     }
 
@@ -288,11 +293,15 @@ export class WalletService {
     public getWalletSubstring() {
         if (this.walletSubstring != null) {
             return this.walletSubstring;
-        } else if ((globalThis.wallet != null) && (globalThis.wallet.sending_stake_addr != null)) {
-            const toEndOfString = globalThis.wallet.sending_stake_addr.length - 5;
-            this.walletSubstring = globalThis.wallet.sending_stake_addr.substring(0, 5)
-                .concat("...")
-                .concat(globalThis.wallet.sending_stake_addr.substring(toEndOfString));
+        } else if ((globalThis.wallet != null)
+            && (globalThis.wallet.sending_wal_addrs != null)
+            && (globalThis.wallet.sending_wal_addrs.length > 0)) {
+            let prefix = "addr";
+            if (globalThis.wallet.network === 0) {
+                prefix = "addr_test";
+            }
+            const tempAddr = converter(prefix).toBech32(globalThis.wallet.sending_wal_addrs[0].substring(0, 93));
+            this.walletSubstring = tempAddr.substring(0, (prefix.length + 7));
             return this.walletSubstring;
         }
         return "";

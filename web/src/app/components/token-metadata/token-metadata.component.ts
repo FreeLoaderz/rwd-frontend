@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit, ViewChild} from "@angular/core";
+import {Component, HostListener, OnInit, ViewChild} from "@angular/core";
 import { TokenMetadata } from "../../data/token-metadata";
 import {NotificationComponent} from "../notification/notification.component";
 import { Subject, Subscription} from "rxjs";
@@ -18,12 +18,22 @@ export class TokenMetaDataComponent implements OnInit {
     public observableMetadata = new Subject<TokenMetadata>();
     public tokenMetadata$ = this.observableMetadata.asObservable();
 
+    cols: any[]
+
     @ViewChild('tokenView', {static: false}) public tokenView: any;
 
     constructor(public tokenMetadataService: TokenMetadataService) {
         if (globalThis.tokenMetadata == null) {
             globalThis.tokenMetadata = new Map<string, TokenMetadata>();
         }
+
+        this.cols = [
+            { field: 'name', header: 'Name'},
+            { field: 'logo', header: 'Logo'},
+            { field: 'ticker', header: 'Ticker'},
+            { field: 'url', header: 'URL'},
+            { field: 'policy', header: 'Policy'}
+        ]
     }
 
     public ngOnInit() {
@@ -35,14 +45,29 @@ export class TokenMetaDataComponent implements OnInit {
     }
 
     public processMetadata(exploreMetadata: TokenMetadata) {
-        globalThis.tokenMetadata.set(exploreMetadata.policy, exploreMetadata);
-        if (globalThis.tokenMetadata.has(exploreMetadata.policy)) {
+        if (exploreMetadata.policy) {
             const getTokenMetadata = new TokenMetadata(exploreMetadata);
             this.listAllTokens.push(getTokenMetadata)
-            globalThis.tokenMetadata.set(this.listAllTokens, getTokenMetadata)
+            globalThis.tokenMetadata.set(getTokenMetadata.policy, this.listAllTokens)
             this.listAllTokens = [...this.listAllTokens.values()]
-
         }
+    }
+
+    @HostListener('window:resize', ['$event'])
+    public getScreenSize(event?) {
+        console.log("MEMEME")
+        globalThis.screenHeight = window.innerHeight;
+        globalThis.screenWidth = window.innerWidth;
+    }
+
+    @HostListener('window:orientationchange', ['$event'])
+    public onOrientationChange(event) {
+        console.log("LALALLA")
+        this.getScreenSize(event);
+    }
+
+    public getPolicyIdSubstring() {
+        return this.tokenMetadataService.getPolicyIdSubstring();
     }
     
     public processError(error) {

@@ -14,12 +14,11 @@
 
                         </div>
                         <div class="token-list-detail">
-                            <h5 style="color: blue">Policy ID</h5>
-                            <p style="margin-left: 1.5rem;"><a class="spanlinkMetadata" target="_blank" href="https://cardanoscan.io/token/{{rowData.policy}}"><i class="fa-solid fa-pencil-square me-1" aria-hidden="true"></i></a></p>
+                            <p style="margin-right: 1.5rem; font-size: x-small;"><a class="spanlinkMetadata" target="_blank" href="https://cardanoscan.io/token/{{rowData.policy}}">{{getPolicyIdSubstring()}}</a></p>
                         </div>
                         <div class="token-list-action">
-                            <h5 style="color: blue;">Website</h5>
-                            <p style="margin-right: 1rem;"><a class="spanlinkMetadata" target="_blank" href="{{rowData.url}}"><i class="fa-solid fa-globe me-1" aria-hidden="true"></i></a></p>
+                            <!-- <h5 style="color: blue;">Website</h5> -->
+                            <p style="margin-right: 1rem;"><a class="spanlinkMetadata" target="_blank" href="{{rowData.url}}">{{rowData.url}}</a></p>
                         </div>
                     </div>
                 </ng-template>

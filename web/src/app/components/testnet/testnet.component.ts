@@ -63,7 +63,11 @@ export class TestnetComponent extends NotificationComponent implements OnInit, O
         this.submitted = false;
         if (data != null) {
             if (data.msg) {
-                this.successNotification(data.msg);
+                if (data.msg !== 'connection reset by server') {
+                    this.successNotification(data.msg);
+                } else {
+                    this.errorNotification("Please wait a minute and try your request again");
+                }
             } else {
                 this.infoNotification(JSON.stringify(data));
             }
