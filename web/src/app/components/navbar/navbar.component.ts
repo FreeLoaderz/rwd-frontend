@@ -252,7 +252,6 @@ export class NavbarComponent extends NotificationComponent implements OnInit, Af
         return this.walletService.getWalletSubstring();
     }
 
-
     public setActive(sourceId: string) {
         this.isMenuCollapsed = true;
         if (this.connected()) {

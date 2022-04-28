@@ -4,19 +4,19 @@
                                       style="display:flex;margin: 0 !important;">
             <span class="ms-2" style="display:flex; float: left">Searching for tokens...</span></h4>
     </div>
-    <div *ngIf="!listingTokens" style="width: 70vw;height: 100vh">
-        <div style="display:flex;width: 90%">
-            <h4 style="display:flex">Available Rewards</h4>
-            <button *ngIf="tokens.length > 1 && !selectAll" pButton style="display:flex"
+    <div *ngIf="!listingTokens" class="rewards-view">
+        <div class="rewards-header">
+            <h4>Available Rewards</h4>
+            <button *ngIf="tokens.length > 1 && !selectAll" pButton
                     title="Claim All" [disabled]="!walletLoaded || submittingTx"
                     (click)="toggleSelectAll()"
-                    class="p-button p-button-rounded p-button-primary ms-auto me-2 mb-2"
+                    class="p-button p-button-rounded p-button-primary me-2 claimall"
                     label="Claim All" icon="fa-solid fa-square">
             </button>
-            <button *ngIf="tokens.length > 1 && selectAll" pButton style="display:flex"
+            <button *ngIf="tokens.length > 1 && selectAll" pButton
                     title="Claim All" [disabled]="!walletLoaded || submittingTx"
                     (click)="toggleSelectAll()"
-                    class="p-button p-button-rounded p-button-success ms-auto me-2 mb-2"
+                    class="p-button p-button-rounded p-button-success me-2 claimall"
                     label="Claim All" icon="fa-solid fa-square-check">
             </button>
 

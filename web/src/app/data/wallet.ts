@@ -3,6 +3,7 @@ import {Script} from "./script";
 export class Wallet {
     public user: string = "freeloaderz";
     public sending_stake_addr: string;
+    public bech32_stake_addr: string;
     public sending_wal_addrs: Array<string> = [];
     public inputs: Array<string> = [];
     public excludes: Array<string> = [];
@@ -49,6 +50,9 @@ export class Wallet {
             }
             if (data.maskedBalance) {
                 this.maskedBalance = data.maskedBalance;
+            }
+            if (data.bech32_stake_addr) {
+                this.bech32_stake_addr = data.bech32_stake_addr;
             }
         }
     }

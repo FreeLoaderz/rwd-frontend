@@ -1,6 +1,7 @@
 import {Injectable} from "@angular/core";
 import {Wallet} from "../data/wallet";
 import {WalletObserverService} from "./wallet-observer.service";
+import converter from "bech32-converting";
 
 @Injectable()
 export class WalletService {
@@ -119,19 +120,6 @@ export class WalletService {
      */
     public finishWalletConnect(api: any, source: string) {
         if (api != null) {
-/**
-            globalThis.walletApi.getWalletIdImpl = () => {
-
-                return Promise.all([globalThis.walletApi.getUsedAddresses(), globalThis.walletApi.getUnusedAddresses()])
-                    .then(([walletUsedAddresses, walletUnusedAddresses]) => {
-                        const addresses = walletUnusedAddresses.concat(walletUsedAddresses);
-                        return require('blake2b')(20)
-                            .update(Buffer.from(addresses.map(a => a.to_bech32).join('')))
-                            .digest('hex');
-                    });
-            };
-**/
-
             this.errorLoadingWallet = false;
             globalThis.walletSource = source;
             globalThis.walletApi = api;
@@ -139,12 +127,9 @@ export class WalletService {
              * https://cips.cardano.org/cips/cip30/
              */
             globalThis.wallet = new Wallet(null);
-            this.numWalletCalls = 6;
             globalThis.walletApi.getNetworkId()
                 .then(data => this.processNetworkId(data))
                 .catch(e => this.handleError(e));
-            this.updateWallet();
-            this.numWalletCalls++;
         }
     }
 
@@ -185,6 +170,7 @@ export class WalletService {
         if (--this.numWalletCalls === 0) {
             this.walletObserver.setloaded(true);
         }
+        this.updateWallet();
     }
 
     /**
@@ -195,6 +181,11 @@ export class WalletService {
     private processRewardAddresses(data: any) {
         if (data[0] != null) {
             globalThis.wallet.sending_stake_addr = data[0];
+            let prefix = "stake";
+            if (globalThis.wallet.network === 0) {
+                prefix = "stake_test";
+            }
+            globalThis.wallet.bech32_stake_addr = converter(prefix).toBech32(globalThis.wallet.sending_stake_addr);
             if (--this.numWalletCalls === 0) {
                 this.walletObserver.setloaded(true);
             }
@@ -302,11 +293,15 @@ export class WalletService {
     public getWalletSubstring() {
         if (this.walletSubstring != null) {
             return this.walletSubstring;
-        } else if ((globalThis.wallet != null) && (globalThis.wallet.sending_stake_addr != null)) {
-            const toEndOfString = globalThis.wallet.sending_stake_addr.length - 5;
-            this.walletSubstring = globalThis.wallet.sending_stake_addr.substring(0, 5)
-                .concat("...")
-                .concat(globalThis.wallet.sending_stake_addr.substring(toEndOfString));
+        } else if ((globalThis.wallet != null)
+            && (globalThis.wallet.sending_wal_addrs != null)
+            && (globalThis.wallet.sending_wal_addrs.length > 0)) {
+            let prefix = "addr";
+            if (globalThis.wallet.network === 0) {
+                prefix = "addr_test";
+            }
+            const tempAddr = converter(prefix).toBech32(globalThis.wallet.sending_wal_addrs[0].substring(0, 93));
+            this.walletSubstring = tempAddr.substring(0, (prefix.length + 7));
             return this.walletSubstring;
         }
         return "";

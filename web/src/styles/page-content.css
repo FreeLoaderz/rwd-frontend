@@ -528,6 +528,15 @@ dl.faq button:focus {
     display: block !important;
 }
 
-.toggleButton {
-
+.rewards-view {
+    width: 70vw;
+    height: 100vh
+}
+.rewards-header {
+    display:flex;
+    width: 90%;
+}
+.claimall {
+    width: auto;
+    margin-left: auto;
 }
