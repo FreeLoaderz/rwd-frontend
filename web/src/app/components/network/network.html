@@ -1,6 +1,6 @@
 <section id="network" style="display: flex">
     <p [ngClass]="network">{{network}}</p>
-    <a (click)="showTermsModal()" class="ms-auto me-2" style="dislay:flex !important;float: right">Terms of Service</a>
+    <a (click)="showTermsModal()" class="ms-auto me-3" style="dislay:flex !important;float: right">Terms of Service</a>
 </section>
 <div bsModal #terms="bs-modal" class="modal fade" role="dialog" tabindex="-1"
      [config]="{backdrop: 'static'}">

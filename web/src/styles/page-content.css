@@ -490,7 +490,10 @@ dl.faq button {
     border-radius: 5px;
     color: #2b90c3 !important;
     font-weight: bold;
-    width: 100% !important
+    width: 100% !important;
+    -webkit-transition: background .25s ease-in-out, padding .25s ease-in-out;
+    -moz-transition: background .25s ease-in-out, padding .25s ease-in-out;
+    transition: background .25s ease-in-out, padding .25s ease-in-out;
 }
 
 dd {
@@ -525,6 +528,15 @@ dl.faq button:focus {
     display: block !important;
 }
 
-.toggleButton {
-
+.rewards-view {
+    width: 70vw;
+    height: 100vh
+}
+.rewards-header {
+    display:flex;
+    width: 90%;
+}
+.claimall {
+    width: auto;
+    margin-left: auto;
 }

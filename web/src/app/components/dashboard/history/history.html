@@ -61,7 +61,7 @@
             </ng-template>
             <ng-template pTemplate="footer">
                 <div *ngIf="!chartsHidden" class="whitediv"
-                     style="min-height: {{maxChartHeight}}px;max-height: {{maxChartHeight}}px"  >
+                     style="min-height: {{maxChartHeight}}px;max-height: {{maxChartHeight}}px;overflow-y: hidden;">
                     <div style="display: flex !important;">
                         <p-chart type="pie" class="charts" [data]="donutData" [options]="donutOptions"
                                  [height]="maxChartRowHeight" [width]="halfChartWidth"
