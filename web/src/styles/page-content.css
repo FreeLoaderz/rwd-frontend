@@ -532,11 +532,28 @@ dl.faq button:focus {
     width: 70vw;
     height: 100vh
 }
+
 .rewards-header {
-    display:flex;
+    display: flex;
     width: 90%;
 }
+
 .claimall {
     width: auto;
     margin-left: auto;
 }
+
+.tos-modal {
+    width: 800px;
+    height: 80vh !important;
+}
+
+.tos-dialog {
+    position: relative;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    pointer-events: none;
+    justify-content: center;
+    display: flex;
+}
+

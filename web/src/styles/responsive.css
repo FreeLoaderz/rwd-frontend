@@ -33,6 +33,10 @@
         height: 116px !important;
         width: 300px !important;
     }
+    .tos-modal {
+        width: 100vw !important;
+    }
+
 }
 @media only screen and (max-device-width: 900px) {
     .banner-social-buttons {
