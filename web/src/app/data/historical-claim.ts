@@ -13,6 +13,7 @@ export class HistoricalClaim {
     public user_id: string;
     public txhash: string;
     public txURL: string;
+    public txShortURL: string;
     public invalid: string;
     public invalid_descr: string;
     public timestamp: string;
@@ -54,6 +55,8 @@ export class HistoricalClaim {
             if (data.txhash) {
                 this.txhash = data.txhash;
                 this.txURL = UtilityService.generateTxHashURL(data.txhash, false);
+                const shortHash = data.txhash.substring(0, 5).concat("...").concat(data.txhash.substring(data.txhash.length - 5));
+                this.txShortURL = UtilityService.generateShortTxHashURL(data.txhash, shortHash, false);
             }
             if (data.invalid) {
                 this.invalid = data.invalid;
@@ -75,6 +78,7 @@ export class HistoricalClaim {
             }
         }
     }
+
     public static sort(a: any, b: any): number {
         if (a.timestamp < b.timestamp) {
             return 1;

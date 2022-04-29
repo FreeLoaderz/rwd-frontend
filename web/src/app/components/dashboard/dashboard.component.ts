@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, Inject} from '@angular/core';
+import {AfterViewInit, Component, HostListener, Inject} from '@angular/core';
 import {NotificationComponent} from "../notification/notification.component";
 import {NotifierService} from "angular-notifier";
 import {Router} from "@angular/router";
@@ -17,6 +17,7 @@ export class DashboardComponent extends NotificationComponent implements AfterVi
     constructor(@Inject(DOCUMENT) private document: Document,
                 public router: Router, public notifierService: NotifierService) {
         super(notifierService);
+        this.getScreenSize(null);
     }
 
     public ngAfterViewInit() {
@@ -37,6 +38,19 @@ export class DashboardComponent extends NotificationComponent implements AfterVi
     public showFeedback() {
         this.setActive("feedback");
         this.router.navigate(['/dashboard/feedback']);
+    }
+
+
+    @HostListener('window:resize', ['$event'])
+    public getScreenSize(event?) {
+        if (window.innerWidth < 1200) {
+            this.hideSideMenu(true);
+        }
+    }
+
+    @HostListener('window:orientationchange', ['$event'])
+    public onOrientationChange(event) {
+        this.getScreenSize(event);
     }
 
     public setActive(sourceId: string) {

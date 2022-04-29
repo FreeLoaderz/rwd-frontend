@@ -14,10 +14,12 @@ export class FooterComponent {
     constructor() {
     }
 
-    public compress(): boolean {
-        if (window.innerWidth < 1000) {
-            return true;
+    public compressionLevel(): number {
+        if (window.innerWidth > 900) {
+            return 0;
+        } else if (window.innerWidth > 400) {
+            return 1;
         }
-        return false;
+        return 2;
     }
 }

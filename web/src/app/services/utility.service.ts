@@ -28,4 +28,13 @@ export class UtilityService {
         }
         return url;
     }
+
+    public static generateShortTxHashURL(txhash: string, txShortHash: string, addBR: boolean) {
+        let url = "<a class=\"notifier__notification-message\" target=\"_blank\" href=\"" +
+            this.scanURLs[globalThis.wallet.network] + txhash + "\">" + txShortHash + "</a>";
+        if (addBR) {
+            url = "<br>" + url;
+        }
+        return url;
+    }
 }

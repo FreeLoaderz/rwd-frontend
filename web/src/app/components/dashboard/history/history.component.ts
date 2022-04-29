@@ -54,17 +54,10 @@ export class HistoryComponent extends NotificationComponent implements OnInit, O
                 public notifierService: NotifierService) {
         super(notifierService);
         this.titleService.setTitle("History");
-        this.historyCols = [
-            {field: 'displayTS', header: 'Date/Time'},
-            {field: 'stake_addr', header: 'Stake Address', hidden: true},
-            {field: 'payment_addr', header: 'Payment Address', hidden: true},
-            {field: 'displayName', header: 'Token Name'},
-            {field: 'amount', header: 'Amount'},
-            {field: 'txURL', header: 'Tx Hash', exportable: false},
-            {field: 'txhash', header: 'Raw Tx Hash', hidden: true}];
         const dateString = this.datePipe.transform(new Date(), 'yyyy-MM-dd');
         this.exportFileName = "Historical_SmartClaimz_".concat(dateString);
-        this.setMaxRows(null);
+        this.setMaxRows();
+        this.setColumns();
     }
 
     public ngOnInit() {
@@ -207,7 +200,35 @@ export class HistoryComponent extends NotificationComponent implements OnInit, O
     }
 
     @HostListener('window:resize', ['$event'])
-    public setMaxRows(event?) {
+    public windowResize(event?) {
+        this.setColumns();
+        this.setMaxRows();
+    }
+
+    public setColumns() {
+        if (window.innerWidth <= 1200) {
+            this.historyCols = [
+                {field: 'displayTS', header: 'Date/Time'},
+                {field: 'stake_addr', header: 'Stake Address', hidden: true},
+                {field: 'payment_addr', header: 'Payment Address', hidden: true},
+                {field: 'displayName', header: 'Token Name'},
+                {field: 'amount', header: 'Amount'},
+                {field: 'txShortURL', header: 'Tx Hash', exportable: false},
+                {field: 'txhash', header: 'Raw Tx Hash', hidden: true}];
+        } else {
+            this.historyCols = [
+                {field: 'displayTS', header: 'Date/Time'},
+                {field: 'stake_addr', header: 'Stake Address', hidden: true},
+                {field: 'payment_addr', header: 'Payment Address', hidden: true},
+                {field: 'displayName', header: 'Token Name'},
+                {field: 'amount', header: 'Amount'},
+                {field: 'txURL', header: 'Tx Hash', exportable: false},
+                {field: 'txhash', header: 'Raw Tx Hash', hidden: true}];
+        }
+        this.historyCols = [...this.historyCols];
+    }
+
+    public setMaxRows() {
         globalThis.screenHeight = window.innerHeight;
         const tempMaxRows = +((globalThis.screenHeight - 400) / this.rowHeight).toFixed(0);
         if (tempMaxRows < 10) {
@@ -222,7 +243,7 @@ export class HistoryComponent extends NotificationComponent implements OnInit, O
 
     @HostListener('window:orientationchange', ['$event'])
     public onOrientationChange(event) {
-        this.setMaxRows(event);
+        this.windowResize(event);
     }
 
     public ngOnDestroy() {

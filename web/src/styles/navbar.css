@@ -43,3 +43,6 @@
     padding-right: 10px;
     background: transparent !important;
 }
+div.navbar-collapse.collapse.show > ul {
+    background-color: #061c35 !important;
+}

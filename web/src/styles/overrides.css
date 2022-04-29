@@ -87,6 +87,10 @@ body {
     margin-left: 0px !important;
 }
 
+.slowblinking {
+    animation: blink 5s ease-in-out infinite;
+}
+
 .blinking {
     animation: blink 2s ease-in infinite;
 }
@@ -591,4 +595,38 @@ div.p-panel-content > p {
     justify-content: center !important;
     display: flex !important;
     margin: 0 auto !important;
+}
+
+div.collapsesidemenu > button.p-button-text > span.fa-angles-right {
+    -webkit-animation: color-change 10s infinite !important;
+    -moz-animation: color-change 10s infinite !important;
+    -o-animation: color-change 10s infinite !important;
+    -ms-animation: color-change 10s infinite !important;
+    animation: color-change 10s infinite !important;
+}
+
+@-webkit-keyframes color-change {
+    0% { color: #df4863; }
+    50% { color: #2b90c3; }
+    100% { color: #df4863; }
+}
+@-moz-keyframes color-change {
+    0% { color: #df4863; }
+    50% { color: #2b90c3; }
+    100% { color: #df4863; }
+}
+@-ms-keyframes color-change {
+    0% { color: #df4863; }
+    50% { color: #2b90c3; }
+    100% { color: #df4863; }
+}
+@-o-keyframes color-change {
+    0% { color: #df4863; }
+    50% { color: #2b90c3; }
+    100% { color: #df4863; }
+}
+@keyframes color-change {
+    0% { color: #df4863; }
+    50% { color: #2b90c3; }
+    100% { color: #df4863; }
 }
