@@ -10,7 +10,7 @@
                                       style="display:flex;margin: 0 !important;">
             <span class="ms-2" style="display:flex; float: left">Searching token history...</span></h4>
     </div>
-    <div *ngIf="!loadingHistory" class="blackdiv" style="min-width: 1150px;max-width: 1150px">
+    <div *ngIf="!loadingHistory" class="blackdiv">
         <p-table #historyTable [columns]="historyCols" [value]="claimHistoryArray"
                  exportFilename="{{exportFileName}}" [rows]="maxRows" (onFilter)="onFilter($event, historyTable)"
                  [paginator]="chartsHidden" [globalFilterFields]="['displayName','txhash']"
@@ -55,6 +55,7 @@
                         <span *ngIf="!col.hidden">
                         <span *ngSwitchDefault>{{rowData[col.field]}}</span>
                         <span *ngSwitchCase="'txURL'" [innerHTML]="rowData[col.field]"></span>
+                        <span *ngSwitchCase="'txShortURL'" [innerHTML]="rowData[col.field]"></span>
                             </span>
                     </td>
                 </tr>

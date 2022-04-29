@@ -21,7 +21,7 @@ html {
 
 .webp > body {
     background-image: url('../assets/rwd-background.webp');
-    background-color:  #102648;
+    background-color: #102648;
     background-position: center center;
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -85,6 +85,10 @@ body {
 .popoutClass {
     padding: 0 !important;
     margin-left: 0px !important;
+}
+
+.slowblinking {
+    animation: blink 5s ease-in-out infinite;
 }
 
 .blinking {
@@ -208,6 +212,7 @@ a:active {
     color: #df4863 !important;
     text-shadow: none !important;
 }
+
 .subrow {
     display: flex;
     margin-bottom: 10px;
@@ -257,21 +262,6 @@ a:active {
     font-weight: bold !important;
     color: #153359 !important;
     border: 0px !important;
-}
-
-.tos-dialog {
-    position: relative;
-    width: 800px !important;
-    margin-top: 0.5rem;
-    margin-bottom: 0.5rem;
-    pointer-events: none;
-    margin-left: auto !important;
-    margin-right: auto !important;
-}
-
-.tos-modal {
-    width: 800px !important;
-    height: 80vh !important;
 }
 
 .sidebar-header > h4 {
@@ -467,7 +457,7 @@ ul.banner-social-buttons > li > a:active {
     color: #8dc0d3 !important;
 }
 
-.fa-user-tie {
+.fa-toolbox {
     color: #3737ff !important;
 }
 
@@ -599,4 +589,44 @@ div.p-panel-content > p {
 
 .p-paginator-pages > button.p-highlight {
     background-color: #2b90c3 !important
+}
+
+.modal-dialog-centered {
+    justify-content: center !important;
+    display: flex !important;
+    margin: 0 auto !important;
+}
+
+div.collapsesidemenu > button.p-button-text > span.fa-angles-right {
+    -webkit-animation: color-change 10s infinite !important;
+    -moz-animation: color-change 10s infinite !important;
+    -o-animation: color-change 10s infinite !important;
+    -ms-animation: color-change 10s infinite !important;
+    animation: color-change 10s infinite !important;
+}
+
+@-webkit-keyframes color-change {
+    0% { color: #df4863; }
+    50% { color: #2b90c3; }
+    100% { color: #df4863; }
+}
+@-moz-keyframes color-change {
+    0% { color: #df4863; }
+    50% { color: #2b90c3; }
+    100% { color: #df4863; }
+}
+@-ms-keyframes color-change {
+    0% { color: #df4863; }
+    50% { color: #2b90c3; }
+    100% { color: #df4863; }
+}
+@-o-keyframes color-change {
+    0% { color: #df4863; }
+    50% { color: #2b90c3; }
+    100% { color: #df4863; }
+}
+@keyframes color-change {
+    0% { color: #df4863; }
+    50% { color: #2b90c3; }
+    100% { color: #df4863; }
 }

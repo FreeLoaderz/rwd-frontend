@@ -1,6 +1,17 @@
-<section id="copyright" class="container text-center">
-    <p *ngIf="!compress()">Using Smart Contracts, Tokens, and Crypto is always a risk. Do your own research before using this application.</p>
-    <p *ngIf="compress()">Using Smart Contracts, Tokens, and Crypto is always a risk.</p>
-    <p *ngIf="compress()">Do your own research before using this application.</p>
+<section id="copyright" class="text-center">
+    <span *ngIf="compressionLevel() === 0">
+    <p>Using Smart Contracts, Tokens, and Crypto is always a risk. Do your own research before using this application.</p>
     <p>Copyright &copy;2022 Freeloaderz DAO LLC. All Rights Reserved.</p>
+    </span>
+    <span *ngIf="compressionLevel() === 1">
+    <p>Using Smart Contracts, Tokens, and Crypto is always a risk.</p>
+    <p>Do your own research before using this application.</p>
+    <p>Copyright &copy;2022 Freeloaderz DAO LLC. All Rights Reserved.</p>
+    </span>
+    <span *ngIf="compressionLevel() === 2">
+    <p>Using Smart Contracts, Tokens, and Crypto is always a risk.</p>
+    <p>Do your own research before using this application.</p>
+    <p>Copyright &copy;2022 Freeloaderz DAO LLC.</p>
+    <p>All Rights Reserved.</p>
+    </span>
 </section>
