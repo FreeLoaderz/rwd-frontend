@@ -59,7 +59,7 @@ body {
 .p-menuitem-list,
 .p-menuitem-icon,
 .p-menuitem-text {
-    font-size: .75rem !important;
+    font-size: 18px !important;
     background: #061c35 !important;
 }
 
@@ -465,6 +465,10 @@ ul.banner-social-buttons > li > a:active {
     color: wheat !important;
 }
 
+.pi-angle-down {
+    color: wheat !important;
+}
+
 .fa-chevron-up {
     color: wheat !important;
 }
@@ -629,4 +633,58 @@ div.collapsesidemenu > button.p-button-text > span.fa-angles-right {
     0% { color: #df4863; }
     50% { color: #2b90c3; }
     100% { color: #df4863; }
+}
+
+body .p-menubar {
+    padding: 0;
+    background: transparent !important;
+    border: 0px !important;
+}
+
+body .p-menubar, .p-menuitem-text {
+    background:  transparent;
+    color: #FFFFFF;
+    font-size: 18px !important;
+    /*font-weight: 400 !important;*/
+    border: 0px !important;
+}
+
+body .p-menubar .p-menuitem-link {
+    background:  transparent !important;
+    color: white !important;
+    font-size: 18px !important;
+    /*font-weight: 400 !important;*/
+    border: 0px !important;
+}
+
+body .p-menubar .p-menuitem-link .p-menuitem-text {
+    background:  transparent !important;
+    color: white !important;
+    font-size: 18px !important;
+    /*font-weight: 400 !important;*/
+    border: 0px !important;
+}
+
+body .p-menubar .p-menuitem.p-menuitem:active > .p-menuitem-link .p-menuitem-text,
+body .p-menubar .p-menuitem.p-menuitem:focus > .p-menuitem-link .p-menuitem-text,
+body .p-menubar .p-menuitem.p-menuitem:hover > .p-menuitem-link .p-menuitem-text {
+    background: transparent !important;
+    color: #df4863 !important;
+    font-size: 18px !important;
+    /*font-weight: 400 !important;*/
+    border: 0px !important;
+}
+
+body .p-menubar .p-menuitem.p-menuitem:active > .p-menuitem-link,
+body .p-menubar .p-menuitem.p-menuitem:hover > .p-menuitem-link {
+    background: transparent !important;
+    color: #df4863 !important;
+    font-size: 18px !important;
+    /*font-weight: 400 !important;*/
+    border: 0px !important;
+}
+
+body .p-menubar .p-submenu-list {
+    background: #061c35 !important;
+    border: 0 !important;
 }

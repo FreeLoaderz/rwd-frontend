@@ -1,23 +1,23 @@
 import {Component, HostListener, OnDestroy, OnInit} from "@angular/core";
-import {NotificationComponent} from "../../notification/notification.component";
+import {NotificationComponent} from "../notification/notification.component";
 import {NavigationEnd, Router} from "@angular/router";
 import {NotifierService} from "angular-notifier";
 import {Title} from "@angular/platform-browser";
 import {Subscription} from "rxjs";
-import {RestService} from "../../../services/rest.service";
-import {WalletObserverService} from "../../../services/wallet-observer.service";
-import {WalletService} from "../../../services/wallet.service";
+import {RestService} from "../../services/rest.service";
+import {WalletObserverService} from "../../services/wallet-observer.service";
+import {WalletService} from "../../services/wallet.service";
 import {DatePipe} from "@angular/common";
-import {HistoricalClaim} from "../../../data/historical-claim";
-import {ColorService} from "../../../services/color.service";
+import {HistoricalClaim} from "../../data/historical-claim";
+import {ColorService} from "../../services/color.service";
 import * as d3 from "d3-scale-chromatic";
-import {HistogramData} from "../../../data/histogram-data";
+import {HistogramData} from "../../data/histogram-data";
 
 declare let gtag: Function;
 
 @Component({
     selector: 'history',
-    styleUrls: ['../../../../styles/page-content.css'],
+    styleUrls: ['../../../styles/page-content.css'],
     templateUrl: './history.html'
 })
 

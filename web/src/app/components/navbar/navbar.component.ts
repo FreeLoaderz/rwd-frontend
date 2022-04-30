@@ -20,11 +20,21 @@ declare let gtag: Function;
 })
 
 /**
- * Navigation Bar rewards
+ * Navigation Bar
  */
 export class NavbarComponent extends NotificationComponent implements OnInit, AfterContentInit {
-    public userMenu: MenuItem[];
-    public connectMenuItem: MenuItem;
+    public collapsedConnectedMenu: MenuItem[];
+    public collapsedMenu: MenuItem[];
+    public rewardsMenu: MenuItem[];
+    public claimzMenuItem: MenuItem;
+    public historicalMenuItem: MenuItem;
+    public connectMenuItem: MenuItem[];
+    public testnetMenu: MenuItem;
+    public helpMenu: MenuItem[];
+    public faqMenuItem: MenuItem;
+    public contactUsMenuItem: MenuItem;
+    public compressMenu: boolean = false;
+    public connected: boolean = false;
     public walletSubstring: string;
     public walletImage: string;
     public walletLoaded: boolean = false;
@@ -55,8 +65,10 @@ export class NavbarComponent extends NotificationComponent implements OnInit, Af
         this.docElem = this.document.documentElement;
         this.walletSubscription = this.walletObserverService.loaded$.subscribe(
             loaded => {
-                this.walletLoaded = loaded;
                 this.isTestNet = (globalThis.wallet.network === 0);
+                this.setupMenu();
+                this.connected = loaded;
+                this.walletLoaded = loaded;
             }
         );
 
@@ -97,29 +109,114 @@ export class NavbarComponent extends NotificationComponent implements OnInit, Af
     }
 
     public setupMenu() {
-        this.connectMenuItem = {
+        this.connectMenuItem = [{
             label: 'Connect',
-            id: 'Connect',
-            icon: 'fas fa-sign-in-alt',
+            id: 'CONNECT',
+            icon: 'fa-solid fa-wallet',
             command: (event) => {
                 this.showConnectModal();
             }
+        }];
+        this.claimzMenuItem = {
+            label: 'Claimz',
+            id: 'CLAIMZ',
+            icon: 'fa-solid fa-coins',
+            command: (event) => {
+                this.showCollectRewards();
+            }
         };
-        if (!this.connected()) {
-            this.userMenu = [{
-                label: 'Connect Wallet',
-                id: 'UserMenu',
-                icon: 'fas fa-user',
-                items: [this.connectMenuItem
-                ]
+        this.historicalMenuItem = {
+            label: 'Historical',
+            id: 'HISTORICAL',
+            icon: 'fa-solid fa-clock-rotate-left',
+            command: (event) => {
+                this.showHistory();
+            }
+        };
+        this.rewardsMenu = [{
+            label: 'Rewards',
+            id: 'REWARDS',
+            icon: 'fa-solid fa-coins',
+            items: [this.claimzMenuItem,
+                this.historicalMenuItem]
+        }];
+        this.testnetMenu = {
+            label: 'Testnet',
+            id: 'TESTNET',
+            icon: 'fa-solid fa-toolbox',
+            command: (event) => {
+                this.routeTestnet();
+            }
+        };
+        this.faqMenuItem = {
+            label: 'FAQ',
+            id: 'FAQ',
+            icon: 'fa-solid fa-circle-question',
+            command: (event) => {
+                this.routeFaq();
+            }
+        };
+        this.contactUsMenuItem = {
+            label: 'Contact Us',
+            id: 'CONTACTUS',
+            icon: 'fa-solid fa-message ',
+            command: (event) => {
+                this.routeContactUs();
+            }
+        };
+
+        if (!this.isTestNet) {
+            this.helpMenu = [{
+                label: 'Help',
+                id: 'HELP',
+                icon: 'fa-solid fa-circle-question',
+                items: [this.contactUsMenuItem,
+                    this.faqMenuItem]
+            }];
+            this.collapsedConnectedMenu = [{
+                id: 'CompressedMenu',
+                icon: 'fas fa-bars',
+                items: [
+                    this.claimzMenuItem,
+                    this.historicalMenuItem,
+                    this.contactUsMenuItem,
+                    this.faqMenuItem]
+            }];
+            this.collapsedMenu = [{
+                id: 'CompressedMenu',
+                icon: 'fas fa-bars',
+                items: [
+                    this.connectMenuItem[0],
+                    this.contactUsMenuItem,
+                    this.faqMenuItem]
             }];
         } else {
-            this.userMenu = [{
-                label: 'Wallet Connected',
-                id: 'UserMenu',
-                icon: 'fas fa-user',
-                items: [this.connectMenuItem
-                ]
+            this.helpMenu = [{
+                label: 'Help',
+                id: 'HELP',
+                icon: 'fa-solid fa-circle-question',
+                items: [this.contactUsMenuItem,
+                    this.faqMenuItem,
+                    this.testnetMenu]
+            }];
+            this.collapsedConnectedMenu = [{
+                id: 'CompressedMenu',
+                icon: 'fas fa-bars',
+                items: [
+                    this.claimzMenuItem,
+                    this.historicalMenuItem,
+                    this.contactUsMenuItem,
+                    this.faqMenuItem,
+                    this.testnetMenu]
+            }];
+            this.collapsedMenu = [{
+                id: 'CompressedMenu',
+                icon: 'fas fa-bars',
+                items: [
+                    this.connectMenuItem[0],
+                    this.contactUsMenuItem,
+                    this.faqMenuItem,
+                    this.testnetMenu]
             }];
         }
     }
@@ -128,7 +225,13 @@ export class NavbarComponent extends NotificationComponent implements OnInit, Af
     public getScreenSize(event?) {
         globalThis.screenHeight = window.innerHeight;
         globalThis.screenWidth = window.innerWidth;
+        if (globalThis.screenWidth < 1024) {
+            this.compressMenu = true;
+        } else {
+            this.compressMenu = false;
+        }
     }
+
 
     @HostListener('window:orientationchange', ['$event'])
     public onOrientationChange(event) {
@@ -144,10 +247,6 @@ export class NavbarComponent extends NotificationComponent implements OnInit, Af
         this.connectModal.hide();
     }
 
-    public connected(): boolean {
-        return (globalThis.wallet != null);
-    }
-
     public eternlAvailable(): boolean {
         return this.walletService.eternlAvailable();
     }
@@ -159,7 +258,7 @@ export class NavbarComponent extends NotificationComponent implements OnInit, Af
         } else {
             this.walletImage = "../../assets/icons/eternl.png";
             this.hideConnectModal();
-            this.router.navigate(['/dashboard']);
+            this.router.navigate(['/rewards']);
         }
     }
 
@@ -174,7 +273,7 @@ export class NavbarComponent extends NotificationComponent implements OnInit, Af
         } else {
             this.walletImage = "../../assets/icons/nami.png";
             this.hideConnectModal();
-            this.router.navigate(['/dashboard']);
+            this.router.navigate(['/rewards']);
         }
     }
 
@@ -186,7 +285,7 @@ export class NavbarComponent extends NotificationComponent implements OnInit, Af
         } else {
             this.walletImage = "../../assets/icons/gero.png";
             this.hideConnectModal();
-            this.router.navigate(['/dashboard']);
+            this.router.navigate(['/rewards']);
         }
     }
 
@@ -202,7 +301,7 @@ export class NavbarComponent extends NotificationComponent implements OnInit, Af
         } else {
             this.walletImage = "../../assets/icons/flint.png";
             this.hideConnectModal();
-            this.router.navigate(['/dashboard']);
+            this.router.navigate(['/rewards']);
         }
     }
 
@@ -213,6 +312,18 @@ export class NavbarComponent extends NotificationComponent implements OnInit, Af
     public getWalletSource() {
         return globalThis.walletSource;
     }
+
+    public showCollectRewards() {
+        this.setActive("REWARDS");
+        this.router.navigate(['/rewards']);
+    }
+
+    public showHistory() {
+        this.setActive("REWARDS");
+        this.router.navigate(['/history']);
+
+    }
+
     public routeContactUs() {
         this.isMenuCollapsed = true;
         this.setActive("CONTACTUS");
@@ -228,7 +339,7 @@ export class NavbarComponent extends NotificationComponent implements OnInit, Af
     public routeRewards() {
         this.isMenuCollapsed = true;
         this.setActive("REWARDS");
-        this.router.navigate(['/dashboard']);
+        this.router.navigate(['/rewards']);
     }
 
     public routeTestnet() {
@@ -254,7 +365,7 @@ export class NavbarComponent extends NotificationComponent implements OnInit, Af
 
     public setActive(sourceId: string) {
         this.isMenuCollapsed = true;
-        if (this.connected()) {
+        if (this.connected) {
             this.document.getElementById("REWARDS").classList.remove("nav-active");
             if (this.isTestNet) {
                 this.document.getElementById("TESTNET").classList.remove("nav-active");
