@@ -572,4 +572,6 @@ dl.faq button:focus {
     justify-content: center;
     display: flex;
 }
-
+.no-tx {
+    text-transform: none !important;
+}

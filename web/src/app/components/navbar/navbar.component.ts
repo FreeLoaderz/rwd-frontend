@@ -30,6 +30,7 @@ export class NavbarComponent extends NotificationComponent implements OnInit, Af
     public historicalMenuItem: MenuItem;
     public connectMenuItem: MenuItem[];
     public testnetMenu: MenuItem;
+    public walletMenu: MenuItem;
     public helpMenu: MenuItem[];
     public faqMenuItem: MenuItem;
     public contactUsMenuItem: MenuItem;
@@ -67,7 +68,6 @@ export class NavbarComponent extends NotificationComponent implements OnInit, Af
             loaded => {
                 this.isTestNet = (globalThis.wallet.network === 0);
                 this.setupMenu();
-                this.connected = loaded;
                 this.walletLoaded = loaded;
             }
         );
@@ -109,40 +109,55 @@ export class NavbarComponent extends NotificationComponent implements OnInit, Af
     }
 
     public setupMenu() {
+        this.walletMenu = {
+            label: this.getWalletSubstring(),
+            title: 'Disconnect wallet',
+            id: 'DISCONNECT',
+            icon: 'fa-solid fa-wallet',
+            command: (event) => {
+                this.disconnectWallet();
+            }
+        };
+
         this.connectMenuItem = [{
-            label: 'Connect',
+            label: 'CONNECT',
             id: 'CONNECT',
+            title: 'Connect wallet',
             icon: 'fa-solid fa-wallet',
             command: (event) => {
                 this.showConnectModal();
             }
         }];
         this.claimzMenuItem = {
-            label: 'Claimz',
+            label: 'CLAIMZ',
             id: 'CLAIMZ',
+            title: 'Claim your available rewards',
             icon: 'fa-solid fa-coins',
             command: (event) => {
                 this.showCollectRewards();
             }
         };
         this.historicalMenuItem = {
-            label: 'Historical',
+            label: 'HISTORICAL',
             id: 'HISTORICAL',
+            title: 'See historical claimz',
             icon: 'fa-solid fa-clock-rotate-left',
             command: (event) => {
                 this.showHistory();
             }
         };
         this.rewardsMenu = [{
-            label: 'Rewards',
+            label: 'REWARDS',
             id: 'REWARDS',
+            title: 'Claim or see historical rewards',
             icon: 'fa-solid fa-coins',
             items: [this.claimzMenuItem,
                 this.historicalMenuItem]
         }];
         this.testnetMenu = {
-            label: 'Testnet',
+            label: 'TESTNET',
             id: 'TESTNET',
+            title: 'Tools for testnet testing',
             icon: 'fa-solid fa-toolbox',
             command: (event) => {
                 this.routeTestnet();
@@ -151,14 +166,16 @@ export class NavbarComponent extends NotificationComponent implements OnInit, Af
         this.faqMenuItem = {
             label: 'FAQ',
             id: 'FAQ',
+            title: 'Frequently asked questions',
             icon: 'fa-solid fa-circle-question',
             command: (event) => {
                 this.routeFaq();
             }
         };
         this.contactUsMenuItem = {
-            label: 'Contact Us',
+            label: 'CONTACT US',
             id: 'CONTACTUS',
+            title: 'Send feedback or questions',
             icon: 'fa-solid fa-message ',
             command: (event) => {
                 this.routeContactUs();
@@ -167,57 +184,44 @@ export class NavbarComponent extends NotificationComponent implements OnInit, Af
 
         if (!this.isTestNet) {
             this.helpMenu = [{
-                label: 'Help',
+                label: 'HELP',
                 id: 'HELP',
+                title: 'Contact us, FAQ',
                 icon: 'fa-solid fa-circle-question',
                 items: [this.contactUsMenuItem,
                     this.faqMenuItem]
             }];
-            this.collapsedConnectedMenu = [{
-                id: 'CompressedMenu',
-                icon: 'fas fa-bars',
-                items: [
-                    this.claimzMenuItem,
-                    this.historicalMenuItem,
-                    this.contactUsMenuItem,
-                    this.faqMenuItem]
-            }];
-            this.collapsedMenu = [{
-                id: 'CompressedMenu',
-                icon: 'fas fa-bars',
-                items: [
-                    this.connectMenuItem[0],
-                    this.contactUsMenuItem,
-                    this.faqMenuItem]
-            }];
+            this.collapsedConnectedMenu = [
+                this.claimzMenuItem,
+                this.historicalMenuItem,
+                this.contactUsMenuItem,
+                this.faqMenuItem];
+            this.collapsedMenu = [
+                this.connectMenuItem[0],
+                this.contactUsMenuItem,
+                this.faqMenuItem];
         } else {
             this.helpMenu = [{
-                label: 'Help',
+                label: 'HELP',
                 id: 'HELP',
+                title: 'Contact us, FAQ, Testnet tools',
                 icon: 'fa-solid fa-circle-question',
                 items: [this.contactUsMenuItem,
                     this.faqMenuItem,
                     this.testnetMenu]
             }];
-            this.collapsedConnectedMenu = [{
-                id: 'CompressedMenu',
-                icon: 'fas fa-bars',
-                items: [
-                    this.claimzMenuItem,
-                    this.historicalMenuItem,
-                    this.contactUsMenuItem,
-                    this.faqMenuItem,
-                    this.testnetMenu]
-            }];
-            this.collapsedMenu = [{
-                id: 'CompressedMenu',
-                icon: 'fas fa-bars',
-                items: [
-                    this.connectMenuItem[0],
-                    this.contactUsMenuItem,
-                    this.faqMenuItem,
-                    this.testnetMenu]
-            }];
+            this.collapsedConnectedMenu = [
+                this.claimzMenuItem,
+                this.historicalMenuItem,
+                this.contactUsMenuItem,
+                this.faqMenuItem,
+                this.testnetMenu];
+            this.collapsedMenu = [
+                this.connectMenuItem[0],
+                this.contactUsMenuItem,
+                this.faqMenuItem,
+                this.testnetMenu
+            ];
         }
     }
 
@@ -252,6 +256,7 @@ export class NavbarComponent extends NotificationComponent implements OnInit, Af
     }
 
     public connectEternl() {
+        this.connected = true;
         const error = this.walletService.connectEternl();
         if (error != null) {
             this.errorNotification(error);
@@ -267,6 +272,7 @@ export class NavbarComponent extends NotificationComponent implements OnInit, Af
     }
 
     public connectNami() {
+        this.connected = true;
         const error = this.walletService.connectNami();
         if (error != null) {
             this.errorNotification(error);
@@ -279,6 +285,7 @@ export class NavbarComponent extends NotificationComponent implements OnInit, Af
 
     // Gero Wallet
     public connectGero() {
+        this.connected = true;
         const error = this.walletService.connectGero();
         if (error != null) {
             this.errorNotification(error);
@@ -295,6 +302,7 @@ export class NavbarComponent extends NotificationComponent implements OnInit, Af
 
     // Flint
     public connectFlint() {
+        this.connected = true;
         const error = this.walletService.connectFlint();
         if (error != null) {
             this.errorNotification(error);
@@ -356,6 +364,7 @@ export class NavbarComponent extends NotificationComponent implements OnInit, Af
         globalThis.walletApi = null;
         globalThis.wallet = null;
         this.walletSubstring = null;
+        this.connected = false;
         this.router.navigate(['/welcome']);
     }
 

@@ -60,7 +60,7 @@ body {
 .p-menuitem-icon,
 .p-menuitem-text {
     font-size: 18px !important;
-    background: #061c35 !important;
+    background: transparent !important;
 }
 
 .p-menu {
@@ -610,39 +610,79 @@ div.collapsesidemenu > button.p-button-text > span.fa-angles-right {
 }
 
 @-webkit-keyframes color-change {
-    0% { color: #df4863; }
-    50% { color: #2b90c3; }
-    100% { color: #df4863; }
+    0% {
+        color: #df4863;
+    }
+    50% {
+        color: #2b90c3;
+    }
+    100% {
+        color: #df4863;
+    }
 }
+
 @-moz-keyframes color-change {
-    0% { color: #df4863; }
-    50% { color: #2b90c3; }
-    100% { color: #df4863; }
+    0% {
+        color: #df4863;
+    }
+    50% {
+        color: #2b90c3;
+    }
+    100% {
+        color: #df4863;
+    }
 }
+
 @-ms-keyframes color-change {
-    0% { color: #df4863; }
-    50% { color: #2b90c3; }
-    100% { color: #df4863; }
+    0% {
+        color: #df4863;
+    }
+    50% {
+        color: #2b90c3;
+    }
+    100% {
+        color: #df4863;
+    }
 }
+
 @-o-keyframes color-change {
-    0% { color: #df4863; }
-    50% { color: #2b90c3; }
-    100% { color: #df4863; }
+    0% {
+        color: #df4863;
+    }
+    50% {
+        color: #2b90c3;
+    }
+    100% {
+        color: #df4863;
+    }
 }
+
 @keyframes color-change {
-    0% { color: #df4863; }
-    50% { color: #2b90c3; }
-    100% { color: #df4863; }
+    0% {
+        color: #df4863;
+    }
+    50% {
+        color: #2b90c3;
+    }
+    100% {
+        color: #df4863;
+    }
 }
 
 body .p-menubar {
     padding: 0;
     background: transparent !important;
     border: 0px !important;
+    position: static !important;
+}
+
+.p-menubar .p-menubar-root-list {
+    background: transparent !important;
+    border: 0 !important;
 }
 
 body .p-menubar, .p-menuitem-text {
-    background:  transparent;
+    background: transparent !important;
     color: #FFFFFF;
     font-size: 18px !important;
     /*font-weight: 400 !important;*/
@@ -650,15 +690,19 @@ body .p-menubar, .p-menuitem-text {
 }
 
 body .p-menubar .p-menuitem-link {
-    background:  transparent !important;
+    background: transparent !important;
     color: white !important;
     font-size: 18px !important;
-    /*font-weight: 400 !important;*/
     border: 0px !important;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    overflow: visible;
+    padding-top: 0 !important;
 }
 
 body .p-menubar .p-menuitem-link .p-menuitem-text {
-    background:  transparent !important;
+    background: transparent !important;
     color: white !important;
     font-size: 18px !important;
     /*font-weight: 400 !important;*/
@@ -685,6 +729,14 @@ body .p-menubar .p-menuitem.p-menuitem:hover > .p-menuitem-link {
 }
 
 body .p-menubar .p-submenu-list {
-    background: #061c35 !important;
+ /**   background: rgb(9, 19, 35) !important; **/
     border: 0 !important;
+}
+.p-menubar .p-menubar-button:hover,
+.p-menubar .p-menubar-button:active,
+.p-menubar .p-menubar-button:focus {
+    background: transparent !important;
+}
+.p-menubar.p-menubar-mobile-active .p-menubar-root-list {
+ /**   background-color: rgb(9, 19, 35) !important; **/
 }

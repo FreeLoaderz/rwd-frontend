@@ -32,6 +32,7 @@ import {NetworkComponent} from "./components/network/network.component";
 import {TestnetComponent} from "./components/testnet/testnet.component";
 import { FaqComponent } from './components/faq/faq.component';
 import {ChartModule} from "primeng/chart";
+import { SharedModule } from 'primeng/api';
 
 const customNotifierOptions: NotifierOptions = {
     position: {
@@ -81,7 +82,7 @@ const customNotifierOptions: NotifierOptions = {
         ContactUsComponent, HistoryComponent, NetworkComponent, TestnetComponent, FaqComponent],
     imports: [BrowserModule, FormsModule, ReactiveFormsModule, AppRoutingModule, RouterModule,
         TooltipModule.forRoot(), OverlayPanelModule, ModalModule.forRoot(),
-        NotifierModule.withConfig(customNotifierOptions), ChartModule,
+        NotifierModule.withConfig(customNotifierOptions), ChartModule, SharedModule,
         FormsModule, ReactiveFormsModule, NgbCollapseModule,
         CheckboxModule, TableModule, HttpClientModule,
         DropdownModule, MenubarModule, DataViewModule, ImageModule,
