@@ -1,91 +1,102 @@
 <section id="history" class="content-section">
-    <div class="container text-left left-container ms-auto">
-        <h4>Reward Claim History</h4>
-        <div *ngIf="!walletLoaded" style="width: 100%">
-            <h4 style="display:flex"><img width="24" height="24" src="../../../assets/smartclaimz.ico"
-                                          class="request-spinner ms-2"
-                                          style="display:flex;margin: 0 !important;">
-                <span class="ms-2" style="display:flex; float: left">Loading wallet...</span></h4>
-        </div>
-        <div *ngIf="loadingHistory" style="width: 100%">
-            <h4 style="display:flex"><img width="24" height="24" src="../../../assets/smartclaimz.ico"
-                                          class="request-spinner ms-2"
-                                          style="display:flex;margin: 0 !important;">
-                <span class="ms-2" style="display:flex; float: left">Searching token history...</span></h4>
-        </div>
-        <div *ngIf="!loadingHistory" class="blackdiv">
-            <p-table #historyTable [columns]="historyCols" [value]="claimHistoryArray"
-                     exportFilename="{{exportFileName}}" [rows]="maxRows" (onFilter)="onFilter($event, historyTable)"
-                     [paginator]="chartsHidden" [globalFilterFields]="['displayName','txhash']"
-                     [resizableColumns]="true" [rowHover]="true">
-                <ng-template pTemplate="caption">
-                    <div class="ui-helper-clearfix mb-2" style="height: 20px !important;">
-                        <button *ngIf="chartsHidden" pButton class="p-button-rounded p-button-primary"
-                                icon="fa-solid fa-chart-column"
-                                label="View Charts"
-                                (click)="hideCharts(false)"
-                                title="Chart view of your history"
-                                style="float: left;margin-top: -10px !important;"></button>
-                        <button *ngIf="!chartsHidden" pButton class="p-button-rounded p-button-primary"
-                                icon="fa-solid fa-table-list"
-                                (click)="hideCharts(true)"
-                                label="View Table"
-                                title="Table view of your history"
-                                style="float: left;margin-top: -10px !important;"></button>
-                        <button type="button" pButton icon="fa-solid fa-download" iconPos="left"
-                                label="CSV"
-                                class="p-button p-button-rounded p-button-primary"
-                                title="Export CSV"
-                                (click)="historyTable.exportCSV()"
-                                style="float: right;margin-top: -10px !important;"></button>
-                        <input pInputText class="col-sm-3 me-2 history-search" type="text"
-                               style="width: auto !important;"
-                               (input)="historyTable.filterGlobal($event.target.value, 'contains')"
-                               placeholder="Search"/>
+    <div class="center-div-parent">
+        <div class="center-div-child">
+            <div class="data-view">
+                <div class="data-header">
+                    <h4>Reward Claim History</h4>
+                    <div *ngIf="!walletLoaded" style="width: 100%">
+                        <h4 style="display:flex"><img width="24" height="24" src="../../../assets/smartclaimz.ico"
+                                                      class="request-spinner ms-2"
+                                                      style="display:flex;margin: 0 !important;">
+                            <span class="ms-2" style="display:flex; float: left">Loading wallet...</span></h4>
                     </div>
-                </ng-template>
-                <ng-template pTemplate="header" let-columns>
-                    <tr *ngIf="chartsHidden">
-                        <th *ngFor="let col of columns" [pSortableColumn]="col.field" pResizableColumn>
+                    <div *ngIf="loadingHistory" style="width: 100%">
+                        <h4 style="display:flex"><img width="24" height="24" src="../../../assets/smartclaimz.ico"
+                                                      class="request-spinner ms-2"
+                                                      style="display:flex;margin: 0 !important;">
+                            <span class="ms-2" style="display:flex; float: left">Searching token history...</span></h4>
+                    </div>
+                </div>
+                <div *ngIf="!loadingHistory" class="blackdiv">
+                    <p-table #historyTable [columns]="historyCols" [value]="claimHistoryArray"
+                             exportFilename="{{exportFileName}}"
+                             (onFilter)="onFilter($event, historyTable)"
+                             [globalFilterFields]="['displayName','txhash']"
+                             [resizableColumns]="true" [rowHover]="true">
+                        <ng-template pTemplate="caption">
+                            <div class="ui-helper-clearfix mb-2" style="height: 20px !important;">
+                                <button *ngIf="chartsHidden" pButton class="p-button-rounded p-button-primary"
+                                        icon="fa-solid fa-chart-column"
+                                        label="Charts"
+                                        (click)="hideCharts(false)"
+                                        title="Chart view of your history"
+                                        style="float: left;margin-top: -10px !important;"></button>
+                                <button *ngIf="!chartsHidden" pButton class="p-button-rounded p-button-primary"
+                                        icon="fa-solid fa-table-list"
+                                        (click)="hideCharts(true)"
+                                        label="Table"
+                                        title="Table view of your history"
+                                        style="float: left;margin-top: -10px !important;"></button>
+                                <button *ngIf="chartsHidden" type="button" pButton icon="fa-solid fa-download" iconPos="left"
+                                        label="CSV"
+                                        class="p-button p-button-rounded p-button-primary"
+                                        title="Export CSV"
+                                        (click)="historyTable.exportCSV()"
+                                        style="float: right;margin-top: -10px !important;"></button>
+                                <input pInputText class="col-sm-3 me-2 history-search" type="search"
+                                       (input)="historyTable.filterGlobal($event.target.value, 'contains')"
+                                       placeholder="Filter.."/>
+                            </div>
+                        </ng-template>
+                        <ng-template pTemplate="header" let-columns>
+                            <tr *ngIf="chartsHidden">
+                                <th *ngFor="let col of columns" [pSortableColumn]="col.field" pResizableColumn>
                         <span *ngIf="!col.hidden">
                         {{col.header}}
                             <p-sortIcon [field]="col.field"></p-sortIcon>
                         </span>
-                        </th>
-                    </tr>
-                </ng-template>
-                <ng-template pTemplate="body" let-rowData let-columns="columns">
-                    <tr *ngIf="chartsHidden">
-                        <td *ngFor="let col of columns" [ngSwitch]="col.field" class="ui-resizable-column">
+                                </th>
+                            </tr>
+                        </ng-template>
+                        <ng-template pTemplate="body" let-rowData let-columns="columns">
+                            <tr *ngIf="chartsHidden">
+                                <td *ngFor="let col of columns" [ngSwitch]="col.field" class="ui-resizable-column">
                         <span *ngIf="!col.hidden">
                         <span *ngSwitchDefault>{{rowData[col.field]}}</span>
                         <span *ngSwitchCase="'txURL'" [innerHTML]="rowData[col.field]"></span>
                         <span *ngSwitchCase="'txShortURL'" [innerHTML]="rowData[col.field]"></span>
                             </span>
-                        </td>
-                    </tr>
-                </ng-template>
-                <ng-template pTemplate="footer">
-                    <div *ngIf="!chartsHidden" class="whitediv"
-                         style="min-height: {{maxChartHeight}}px;max-height: {{maxChartHeight}}px;overflow-y: hidden;">
-                        <div style="display: flex !important;">
-                            <p-chart type="pie" class="charts" [data]="donutData" [options]="donutOptions"
-                                     [height]="maxChartRowHeight" [width]="halfChartWidth"
-                                     [style]="{'width': '50%', 'display':'flex !important'}"></p-chart>
-                            <p-chart type="polarArea" class="charts" [data]="donutData" [options]="donutOptions"
-                                     [style]="{'width': '50%', 'display':'flex !important'}"></p-chart>
-                        </div>
-                        <div style="display: flex !important;">
-                            <p-chart type="bar" class="charts" [data]="basicData" [options]="basicOptions"
-                                     [height]="maxChartRowHeight" [width]="maxChartWidth"
-                                     [style]="{'width': '100%'}"></p-chart>
-                        </div>
-                    </div>
-                </ng-template>
-                <ng-template pTemplate="empty">
-                    <h4>No tokens history available</h4>
-                </ng-template>
-            </p-table>
+                                </td>
+                            </tr>
+                        </ng-template>
+                        <ng-template pTemplate="footer">
+                            <div *ngIf="!chartsHidden" class="whitediv">
+                                <div *ngIf="!compress" style="display: flex !important;">
+                                    <p-chart type="doughnut" class="charts" [data]="donutData" [options]="donutOptions"
+                                             [style]="{'width': '50%', 'display':'flex !important'}"></p-chart>
+                                    <p-chart type="polarArea" class="charts" [data]="donutData" [options]="donutOptions"
+                                             [style]="{'width': '50%', 'display':'flex !important'}"></p-chart>
+                                </div>
+                                <div *ngIf="compress" style="display: flex !important;">
+                                    <p-chart type="doughnut" class="charts" [data]="donutData" [options]="donutOptions"
+                                             [style]="{'width': '100%', 'display':'flex !important'}"></p-chart>
+                                </div>
+                                <div *ngIf="compress" style="display: flex !important;">
+                                    <p-chart type="polarArea" class="charts" [data]="donutData" [options]="donutOptions"
+                                             [style]="{'width': '100%', 'display':'flex !important'}"></p-chart>
+                                </div>
+                                <div *ngIf="!compress" style="display: flex !important;">
+                                    <p-chart type="bar" class="charts" [data]="basicData" [options]="basicOptions"
+                                             [style]="{'width': '100%'}"></p-chart>
+                                </div>
+                            </div>
+                        </ng-template>
+                        <ng-template pTemplate="empty">
+                            <h4>No tokens history available</h4>
+                        </ng-template>
+                    </p-table>
+                </div>
+            </div>
         </div>
     </div>
 </section>

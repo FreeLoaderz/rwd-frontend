@@ -42,7 +42,6 @@ export class NavbarComponent extends NotificationComponent implements OnInit, Af
     public walletSubscription: Subscription;
     public walletErrorSubscription: Subscription;
     public isTestNet: boolean = false;
-    public isMenuCollapsed: boolean = true;
     public screenWidth: number;
     public screenHeight: number;
     public fullScreen: boolean = false;
@@ -229,7 +228,7 @@ export class NavbarComponent extends NotificationComponent implements OnInit, Af
     public getScreenSize(event?) {
         globalThis.screenHeight = window.innerHeight;
         globalThis.screenWidth = window.innerWidth;
-        if (globalThis.screenWidth < 1024) {
+        if (globalThis.screenWidth <= 960) {
             this.compressMenu = true;
         } else {
             this.compressMenu = false;
@@ -243,7 +242,6 @@ export class NavbarComponent extends NotificationComponent implements OnInit, Af
     }
 
     public showConnectModal() {
-        this.isMenuCollapsed = true;
         this.connectModal.show();
     }
 
@@ -322,37 +320,27 @@ export class NavbarComponent extends NotificationComponent implements OnInit, Af
     }
 
     public showCollectRewards() {
-        this.setActive("REWARDS");
         this.router.navigate(['/rewards']);
     }
 
     public showHistory() {
-        this.setActive("REWARDS");
         this.router.navigate(['/history']);
 
     }
 
     public routeContactUs() {
-        this.isMenuCollapsed = true;
-        this.setActive("CONTACTUS");
         this.router.navigate(['/contact-us']);
     }
 
     public routeFaq() {
-        this.isMenuCollapsed = true;
-        this.setActive("FAQ");
         this.router.navigate(['/faq']);
     }
 
     public routeRewards() {
-        this.isMenuCollapsed = true;
-        this.setActive("REWARDS");
         this.router.navigate(['/rewards']);
     }
 
     public routeTestnet() {
-        this.isMenuCollapsed = true;
-        this.setActive("TESTNET");
         this.router.navigate(['/testnet']);
     }
 
@@ -370,21 +358,6 @@ export class NavbarComponent extends NotificationComponent implements OnInit, Af
 
     public getWalletSubstring() {
         return this.walletService.getWalletSubstring();
-    }
-
-    public setActive(sourceId: string) {
-        this.isMenuCollapsed = true;
-        if (this.connected) {
-            this.document.getElementById("REWARDS").classList.remove("nav-active");
-            if (this.isTestNet) {
-                this.document.getElementById("TESTNET").classList.remove("nav-active");
-            }
-        }
-        this.document.getElementById("CONTACTUS").classList.remove("nav-active");
-        this.document.getElementById("FAQ").classList.remove("nav-active");
-        if (sourceId != null) {
-            this.document.getElementById(sourceId).classList.add("nav-active");
-        }
     }
 
     toggleFullScreen() {

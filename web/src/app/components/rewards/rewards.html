@@ -7,8 +7,8 @@
                                               style="display:flex;margin: 0 !important;">
                     <span class="ms-2" style="display:flex; float: left">Searching for tokens...</span></h4>
             </div>
-            <div *ngIf="!listingTokens" class="rewards-view">
-                <div class="rewards-header">
+            <div *ngIf="!listingTokens" class="data-view">
+                <div class="data-header">
                     <h4>Available Rewards</h4>
                     <button *ngIf="tokens.length > 1 && !selectAll" pButton
                             title="Claim All" [disabled]="!walletLoaded || submittingTx"

@@ -366,7 +366,6 @@ div.sidemenu > button.p-button {
 .whitediv {
     background: white !important;
     border-radius: 25px;
-    padding: 25px;
 }
 
 .charts {
@@ -449,7 +448,9 @@ div.sidemenu > button.p-button {
 
 .history-search {
     float: right;
-    margin-top: -8px !important;
+    margin-top: -8px;
+    height: 35px;
+    width: auto;
 }
 
 .collapsesidemenu {
@@ -543,13 +544,13 @@ dl.faq button:focus {
     display: block !important;
 }
 
-.rewards-view {
+.data-view {
     width: 75vw;
     min-height: 100vh;
     height: auto;
 }
 
-.rewards-header {
+.data-header {
     display: flex;
     width: 75vw;
 }
@@ -571,7 +572,4 @@ dl.faq button:focus {
     pointer-events: none;
     justify-content: center;
     display: flex;
-}
-.no-tx {
-    text-transform: none !important;
 }

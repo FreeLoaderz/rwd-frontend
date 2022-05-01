@@ -46,3 +46,7 @@
 #mainnav.show > ul {
     background-color: #061c35 !important;
 }
+
+.navbar-nav {
+    flex-direction: row !important;
+}

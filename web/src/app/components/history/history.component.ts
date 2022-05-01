@@ -1,6 +1,6 @@
 import {Component, HostListener, OnDestroy, OnInit} from "@angular/core";
 import {NotificationComponent} from "../notification/notification.component";
-import {NavigationEnd, Router} from "@angular/router";
+import {Router} from "@angular/router";
 import {NotifierService} from "angular-notifier";
 import {Title} from "@angular/platform-browser";
 import {Subscription} from "rxjs";
@@ -33,10 +33,7 @@ export class HistoryComponent extends NotificationComponent implements OnInit, O
     public chartsHidden: boolean = true;
     public rowHeight: number = 42.25;
     public maxRows: number = 10;
-    public maxChartHeight: number = 422;
-    public maxChartRowHeight: number = 211;
-    public maxChartWidth: number = 1000;
-    public halfChartWidth: number = 300;
+    public compress: boolean = false;
     // Charts
     public donutData: any;
     public donutOptions: any;
@@ -226,6 +223,11 @@ export class HistoryComponent extends NotificationComponent implements OnInit, O
                 {field: 'txhash', header: 'Raw Tx Hash', hidden: true}];
         }
         this.historyCols = [...this.historyCols];
+        if (window.innerWidth < 700) {
+            this.compress = true;
+        } else {
+            this.compress = false;
+        }
     }
 
     public setMaxRows() {
@@ -236,8 +238,6 @@ export class HistoryComponent extends NotificationComponent implements OnInit, O
         } else {
             this.maxRows = tempMaxRows;
         }
-        this.maxChartHeight = +((this.maxRows * this.rowHeight) + 80).toFixed(0);
-        this.maxChartRowHeight = +(this.maxChartHeight / 2).toFixed(0);
         this.generateCharts();
     }
 

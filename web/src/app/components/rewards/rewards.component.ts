@@ -25,7 +25,7 @@ export class RewardsComponent extends NotificationComponent implements OnInit, O
     public tokens: Array<Token> = [];
     public unfilteredTokens: Array<Token> = [];
     public maxItems: number = 10;
-    public showPaging: boolean = true;
+    public showPaging: boolean = false;
     public selectedTokens: Map<string, Token> = new Map<string, Token>();
     public claimReturn: string;
     public walletLoaded: boolean = false;
@@ -102,11 +102,11 @@ export class RewardsComponent extends NotificationComponent implements OnInit, O
             const maxVisableRows = Math.floor(usableHeight / this.gridItemHeight);
             this.maxItems = +maxPerRow * +maxVisableRows;
         }
-        if (this.maxItems < this.tokens.length) {
+    //    if (this.maxItems < this.tokens.length) {
      //       this.showPaging = true;
-        } else {
-            this.showPaging = false;
-        }
+      //  } else {
+       //     this.showPaging = false;
+      //  }
     }
 
     @HostListener('window:orientationchange', ['$event'])
