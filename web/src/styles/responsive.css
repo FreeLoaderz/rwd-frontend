@@ -30,7 +30,33 @@
     }
 }
 
+@media only screen and (max-device-width: 1400px) {
+    .data-view {
+        width: 85vw !important;
+    }
+
+    .data-header {
+        width: 85vw !important;
+    }
+}
+
+
 @media only screen and (max-device-width: 1160px) {
+    .p-button {
+        padding: 0.1rem .5rem !important;
+        font-size: .8rem !important;
+    }
+
+    .grid-item-bottom {
+        bottom: .1rem !important;
+    }
+
+    .history-search {
+        margin-top: -11px !important;
+        height: 26px !important;
+        width: 150px !important;
+    }
+
     .data-view {
         width: 95vw !important;
     }
@@ -93,6 +119,44 @@
         border: 2px solid #fff !important;
         font-size: 31px !important;
     }
+
+    .info-text-end {
+        margin-left: 0 !important;
+        margin-right: auto !important;
+        justify-content: left !important;
+        text-align: left !important;
+    }
+
+    .info-right {
+        display: flex;
+        padding-left: 1vw !important;
+        padding-right: 1vw !important;
+        justify-content: center;
+    }
+
+    .info-left {
+        display: flex;
+        padding-left: 1vw !important;
+        padding-right: 1vw !important;
+        justify-content: center;
+    }
+
+    .info-view {
+        width: 99vw;
+        min-height: 100vh;
+        height: auto;
+    }
+
+    .info-header {
+        display: flex;
+        width: 99vw;
+    }
+
+    .info-text {
+        font-size: 18px;
+        display: block !important;
+    }
+
 }
 
 @media only screen and (max-device-width: 900px) {
@@ -154,7 +218,30 @@
 @media only screen and (max-device-width: 480px) {
     /* styles for mobile browsers smaller than 480px !important; (iPhone) */
     .intro .intro-body .brand-heading {
-        font-size: 28px;
+        font-size: 42px !important;
         text-shadow: 3px .3rem .3rem #000000;
+    }
+
+    .history-search {
+        margin-top: -11px !important;
+        height: 26px !important;
+        width: 100px !important;
+    }
+}
+
+@media only screen and (max-device-width: 319px) {
+    /* styles for mobile browsers smaller than 480px !important; (iPhone) */
+    .intro .intro-body .brand-heading {
+        font-size: 32px !important;
+        text-shadow: 3px .3rem .3rem #000000;
+    }
+
+    .blinking20 {
+        height: 78px !important;
+        width: 200px !important;
+    }
+
+    .modal-dialog {
+        width: 99vw !important;
     }
 }

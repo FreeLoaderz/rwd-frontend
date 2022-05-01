@@ -1,6 +1,10 @@
 export class HistogramData {
     public label: string;
     public backgroundColor: string;
+    public fill: boolean = false;
+    public borderColor: string;
+    public tension: number = .4;
+
     public yearMonthTotalMap: Map<number, Map<number, number>> = new Map<number, Map<number, number>>();
     public data: Array<number> = [];
 
@@ -23,7 +27,6 @@ export class HistogramData {
                     const monthTotalMap = this.yearMonthTotalMap.get(i);
                     if (monthTotalMap.has(j)) {
                         this.data.push(monthTotalMap.get(j));
-
                     } else {
                         this.data.push(0);
 

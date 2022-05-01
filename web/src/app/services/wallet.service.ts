@@ -29,7 +29,6 @@ export class WalletService {
     public connectEternl(): string {
         if (globalThis.cardano.eternl != null) {
             globalThis.cardano.eternl.enable().then((api) => {
-                    console.log(api);
                     this.finishWalletConnect(api, "eternl");
                 }
             ).catch((e) => {
@@ -165,7 +164,6 @@ export class WalletService {
      * @private
      */
     private processNetworkId(data: any) {
-        console.log("processNetworkId [" + data + "]");
         globalThis.wallet.network = data;
         if (--this.numWalletCalls === 0) {
             this.walletObserver.setloaded(true);

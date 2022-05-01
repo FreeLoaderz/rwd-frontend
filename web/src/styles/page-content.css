@@ -544,6 +544,39 @@ dl.faq button:focus {
     display: block !important;
 }
 
+.info-text-end {
+    text-align: right;
+}
+
+.info-right {
+    display: flex;
+    padding-left: 33vw;
+    float: right;
+}
+
+.info-left {
+    display: flex;
+    padding-right: 33vw;
+    float: left;
+}
+
+.info-view {
+    width: 90vw;
+    min-height: 100vh;
+    height: auto;
+    margin-top: 3.25rem !important;
+}
+
+.info-header {
+    display: flex;
+    width: 90vw;
+}
+
+.info-text {
+    font-size: 19px;
+    display: block !important;
+}
+
 .data-view {
     width: 75vw;
     min-height: 100vh;

@@ -262,6 +262,7 @@ a:active {
     font-weight: bold !important;
     color: #153359 !important;
     border: 0px !important;
+    max-width: 350px !important;
 }
 
 .sidebar-header > h4 {
@@ -453,12 +454,19 @@ ul.banner-social-buttons > li > a:active {
     overflow-x: hidden !important;
 }
 
+span.p-menuitem-icon.fa-bolt-lightning {
+    color: goldenrod !important;
+}
+.fa-circle-info {
+    color: forestgreen !important;
+}
+
 .fa-circle-question {
     color: #8dc0d3 !important;
 }
 
 .fa-toolbox {
-    color: #3737ff !important;
+    color: silver !important;
 }
 
 .fa-chevron-right {
@@ -506,7 +514,7 @@ ul.banner-social-buttons > li > a:active {
 }
 
 .fa-clock-rotate-left {
-    color: silver !important;
+    color: steelblue !important;
 }
 
 input, textarea {
@@ -750,4 +758,8 @@ body .p-menubar .p-submenu-list {
 .p-menubar.p-menubar-mobile-active .p-menubar-root-list {
     height: 100vh !important;
     background-color: rgb(9, 19, 35) !important;
+}
+
+.info-text-end {
+    margin-left: auto;
 }

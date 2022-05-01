@@ -48,7 +48,7 @@ export class NavbarComponent extends NotificationComponent implements OnInit, Af
     public docElem: any;
     @ViewChild('connectModal', {static: false}) public connectModal: ModalDirective;
 
-    constructor(@Inject(DOCUMENT) private document: any, public httpClient: HttpClient,
+    constructor(@Inject(DOCUMENT) public document: any, public httpClient: HttpClient,
                 public router: Router, public titleService: Title, public walletObserverService: WalletObserverService,
                 public notifierService: NotifierService, public walletService: WalletService) {
         super(notifierService);
@@ -131,7 +131,7 @@ export class NavbarComponent extends NotificationComponent implements OnInit, Af
             label: 'CLAIMZ',
             id: 'CLAIMZ',
             title: 'Claim your available rewards',
-            icon: 'fa-solid fa-coins',
+            icon: 'fa-solid fa-bolt-lightning',
             command: (event) => {
                 this.showCollectRewards();
             }
@@ -186,7 +186,7 @@ export class NavbarComponent extends NotificationComponent implements OnInit, Af
                 label: 'HELP',
                 id: 'HELP',
                 title: 'Contact us, FAQ',
-                icon: 'fa-solid fa-circle-question',
+                icon: 'fa-solid fa-circle-info',
                 items: [this.contactUsMenuItem,
                     this.faqMenuItem]
             }];
@@ -204,7 +204,7 @@ export class NavbarComponent extends NotificationComponent implements OnInit, Af
                 label: 'HELP',
                 id: 'HELP',
                 title: 'Contact us, FAQ, Testnet tools',
-                icon: 'fa-solid fa-circle-question',
+                icon: 'fa-solid fa-circle-info',
                 items: [this.contactUsMenuItem,
                     this.faqMenuItem,
                     this.testnetMenu]
@@ -353,6 +353,7 @@ export class NavbarComponent extends NotificationComponent implements OnInit, Af
         globalThis.wallet = null;
         this.walletSubstring = null;
         this.connected = false;
+        this.walletObserverService.setloaded(false);
         this.router.navigate(['/welcome']);
     }
 
@@ -401,4 +402,7 @@ export class NavbarComponent extends NotificationComponent implements OnInit, Af
         }
     }
 
+    scrollToElement(element): void {
+        this.document.getElementById(element).scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"});
+    }
 }

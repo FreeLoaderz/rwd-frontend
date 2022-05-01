@@ -81,8 +81,6 @@ export class RewardsComponent extends NotificationComponent implements OnInit, O
     public getScreenSize(event?) {
         globalThis.screenHeight = window.innerHeight;
         globalThis.screenWidth = window.innerWidth;
-        console.log("Height [" + globalThis.screenHeight + "]");
-        console.log("Width [" + globalThis.screenWidth + "]");
         let usableWidth = globalThis.screenWidth * .75;
         const usableHeight = globalThis.screenHeight * .75;
         this.smallGrid = false;
@@ -102,11 +100,11 @@ export class RewardsComponent extends NotificationComponent implements OnInit, O
             const maxVisableRows = Math.floor(usableHeight / this.gridItemHeight);
             this.maxItems = +maxPerRow * +maxVisableRows;
         }
-    //    if (this.maxItems < this.tokens.length) {
-     //       this.showPaging = true;
-      //  } else {
-       //     this.showPaging = false;
-      //  }
+        //    if (this.maxItems < this.tokens.length) {
+        //       this.showPaging = true;
+        //  } else {
+        //     this.showPaging = false;
+        //  }
     }
 
     @HostListener('window:orientationchange', ['$event'])
@@ -117,7 +115,7 @@ export class RewardsComponent extends NotificationComponent implements OnInit, O
     public listTokens() {
         this.listingTokens = true;
         globalThis.tokens = [];
-     /**   if (location.hostname === '127.0.0.1') {
+        /**   if (location.hostname === '127.0.0.1') {
             for (let i = 0; i < 100; i++) {
                 const example: Token = new Token({
                     "tokenname": "tOken" + i,
@@ -132,12 +130,12 @@ export class RewardsComponent extends NotificationComponent implements OnInit, O
             this.getScreenSize(null);
             this.listingTokens = false;
         } else { **/
-            this.claimReturn = null;
-            globalThis.avialableTokens = new AvailableTokens();
-            this.restService.getAvailableTokens()
-                .then(res => this.processTokenList(res))
-                .catch(e => this.processError(e));
-      //  }
+        this.claimReturn = null;
+        globalThis.availableTokens = new AvailableTokens();
+        this.restService.getAvailableTokens()
+            .then(res => this.processTokenList(res))
+            .catch(e => this.processError(e));
+        //  }
     }
 
     public processTokenList(data: any) {
@@ -208,10 +206,8 @@ export class RewardsComponent extends NotificationComponent implements OnInit, O
         if ((data != null) && (data.tx != null)) {
             this.successNotification("Token claim created");
             this.claimReturn = data;
-            console.log(data);
             const signature = globalThis.walletApi.signTx(data.tx, true);
             signature.then((finalSignature: Observable<string>) => {
-                console.log(finalSignature);
                 this.infoNotification("Submitting Signature");
                 this.restService.signAndFinalizeTx(globalThis.customerId, globalThis.multiSigType, finalSignature, data)
                     .then(res => this.processSignTx(res))
@@ -223,7 +219,6 @@ export class RewardsComponent extends NotificationComponent implements OnInit, O
     }
 
     public processSignTx(data: any) {
-        console.log(data);
         this.resetSelection(true);
         if ((data != null) && (data.txhash != null)) {
             const txURL = UtilityService.generateTxHashURL(data.txhash, true);
