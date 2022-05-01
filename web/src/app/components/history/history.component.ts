@@ -203,12 +203,21 @@ export class HistoryComponent extends NotificationComponent implements OnInit, O
     }
 
     public setColumns() {
-        if (window.innerWidth <= 1200) {
+        if (window.innerWidth <= 600) {
+            this.historyCols = [
+                {field: 'shortDate', header: 'Time'},
+                {field: 'stake_addr', header: 'Stake Address', hidden: true},
+                {field: 'payment_addr', header: 'Payment Address', hidden: true},
+                {field: 'displayName', header: 'Token'},
+                {field: 'amount', header: 'Amt'},
+                {field: 'txSuperShortURL', header: 'Hash', exportable: false},
+                {field: 'txhash', header: 'Raw Tx Hash', hidden: true}];
+        } else if (window.innerWidth <= 1200) {
             this.historyCols = [
                 {field: 'displayTS', header: 'Date/Time'},
                 {field: 'stake_addr', header: 'Stake Address', hidden: true},
                 {field: 'payment_addr', header: 'Payment Address', hidden: true},
-                {field: 'displayName', header: 'Token Name'},
+                {field: 'displayName', header: 'Token'},
                 {field: 'amount', header: 'Amount'},
                 {field: 'txShortURL', header: 'Tx Hash', exportable: false},
                 {field: 'txhash', header: 'Raw Tx Hash', hidden: true}];
@@ -217,7 +226,7 @@ export class HistoryComponent extends NotificationComponent implements OnInit, O
                 {field: 'displayTS', header: 'Date/Time'},
                 {field: 'stake_addr', header: 'Stake Address', hidden: true},
                 {field: 'payment_addr', header: 'Payment Address', hidden: true},
-                {field: 'displayName', header: 'Token Name'},
+                {field: 'displayName', header: 'Token'},
                 {field: 'amount', header: 'Amount'},
                 {field: 'txURL', header: 'Tx Hash', exportable: false},
                 {field: 'txhash', header: 'Raw Tx Hash', hidden: true}];

@@ -11,7 +11,7 @@
             </li>
         </ul>
         <div *ngIf="compressMenu" id="mainnav">
-            <ul style="float: right;flex-direction: row !important;" class="navbar-nav ms-auto me-1 mb-2">
+            <ul style="float: right;" class="navbar-nav ms-auto me-1 mb-2">
                 <li *ngIf="!connected" class="nav-item" style="padding-top: 0px">
                     <p-menubar #menu [model]="collapsedMenu"></p-menubar>
                 </li>
@@ -57,7 +57,7 @@
 </nav>
 <div bsModal #connectModal="bs-modal" class="modal fade" role="dialog" tabindex="-1"
      [config]="{backdrop: 'static'}">
-    <div class="modal-dialog modal-dialog-centered" style="width: 350px">
+    <div class="modal-dialog modal-dialog-centered connect-modal">
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title ms-0 me-auto" style="color: #153359 !important">Connect a wallet</h4>

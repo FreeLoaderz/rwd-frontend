@@ -19,10 +19,10 @@
                 </div>
                 <div *ngIf="!loadingHistory" class="blackdiv">
                     <p-table #historyTable [columns]="historyCols" [value]="claimHistoryArray"
-                             exportFilename="{{exportFileName}}"
+                             exportFilename="{{exportFileName}}" [responsiveLayout]="'scroll'"
                              (onFilter)="onFilter($event, historyTable)"
                              [globalFilterFields]="['displayName','txhash']"
-                             [resizableColumns]="true" [rowHover]="true">
+                             [resizableColumns]="'true'" [rowHover]="'true'">
                         <ng-template pTemplate="caption">
                             <div class="ui-helper-clearfix mb-2" style="height: 20px !important;">
                                 <button *ngIf="chartsHidden" pButton class="p-button-rounded p-button-primary"
@@ -37,7 +37,8 @@
                                         label="Table"
                                         title="Table view of your history"
                                         style="float: left;margin-top: -10px !important;"></button>
-                                <button *ngIf="chartsHidden" type="button" pButton icon="fa-solid fa-download" iconPos="left"
+                                <button *ngIf="chartsHidden" type="button" pButton icon="fa-solid fa-download"
+                                        iconPos="left"
                                         label="CSV"
                                         class="p-button p-button-rounded p-button-primary"
                                         title="Export CSV"
@@ -65,6 +66,7 @@
                         <span *ngSwitchDefault>{{rowData[col.field]}}</span>
                         <span *ngSwitchCase="'txURL'" [innerHTML]="rowData[col.field]"></span>
                         <span *ngSwitchCase="'txShortURL'" [innerHTML]="rowData[col.field]"></span>
+                        <span *ngSwitchCase="'txSuperShortURL'" [innerHTML]="rowData[col.field]"></span>
                             </span>
                                 </td>
                             </tr>
