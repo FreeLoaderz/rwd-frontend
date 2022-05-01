@@ -117,7 +117,7 @@ export class RewardsComponent extends NotificationComponent implements OnInit, O
     public listTokens() {
         this.listingTokens = true;
         globalThis.tokens = [];
-        if (location.hostname === '127.0.0.1') {
+     /**   if (location.hostname === '127.0.0.1') {
             for (let i = 0; i < 100; i++) {
                 const example: Token = new Token({
                     "tokenname": "tOken" + i,
@@ -131,13 +131,13 @@ export class RewardsComponent extends NotificationComponent implements OnInit, O
             }
             this.getScreenSize(null);
             this.listingTokens = false;
-        } else {
+        } else { **/
             this.claimReturn = null;
             globalThis.avialableTokens = new AvailableTokens();
             this.restService.getAvailableTokens()
                 .then(res => this.processTokenList(res))
                 .catch(e => this.processError(e));
-        }
+      //  }
     }
 
     public processTokenList(data: any) {
