@@ -1,12 +1,11 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes, PreloadAllModules} from '@angular/router';
 import {WelcomeComponent} from "./components/welcome/welcome.component";
-import {RewardsComponent} from "./components/dashboard/rewards/rewards.component";
-import {HistoryComponent} from "./components/dashboard/history/history.component";
+import {RewardsComponent} from "./components/rewards/rewards.component";
+import {HistoryComponent} from "./components/history/history.component";
 import {ContactUsComponent} from "./components/contact-us/contact-us.component";
-import {DashboardComponent} from "./components/dashboard/dashboard.component";
 import {TestnetComponent} from "./components/testnet/testnet.component";
-import { FaqComponent } from './components/faq/faq.component';
+import {FaqComponent} from './components/faq/faq.component';
 
 
 const routes: Routes = [
@@ -32,13 +31,12 @@ const routes: Routes = [
         component: FaqComponent
     },
     {
-        path: 'dashboard',
-        component: DashboardComponent,
-        children: [
-            {path: '', redirectTo: 'rewards', pathMatch: 'full'},
-            {path: 'rewards', component: RewardsComponent},
-            {path: 'history', component: HistoryComponent}
-        ]
+        path: 'rewards',
+        component: RewardsComponent
+    },
+    {
+        path: 'history', component:
+        HistoryComponent
     }
 ];
 

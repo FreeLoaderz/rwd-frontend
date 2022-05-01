@@ -1,21 +1,21 @@
 import {Component, HostListener, OnDestroy, OnInit, ViewChild} from "@angular/core";
-import {NotificationComponent} from "../../notification/notification.component";
+import {NotificationComponent} from "../notification/notification.component";
 import {Router} from "@angular/router";
 import {NotifierService} from "angular-notifier";
-import {RestService} from "../../../services/rest.service";
-import {AvailableTokens} from "../../../data/available-tokens";
+import {RestService} from "../../services/rest.service";
+import {AvailableTokens} from "../../data/available-tokens";
 import {Observable, Subscription} from "rxjs";
-import {WalletObserverService} from "../../../services/wallet-observer.service";
-import {Token} from "../../../data/token";
-import {Script} from "../../../data/script";
-import {SpoRewardClaim} from "../../../data/spo-reward-claim";
-import {WalletService} from "../../../services/wallet.service";
+import {WalletObserverService} from "../../services/wallet-observer.service";
+import {Token} from "../../data/token";
+import {Script} from "../../data/script";
+import {SpoRewardClaim} from "../../data/spo-reward-claim";
+import {WalletService} from "../../services/wallet.service";
 import {Title} from "@angular/platform-browser";
-import {UtilityService} from "../../../services/utility.service";
+import {UtilityService} from "../../services/utility.service";
 
 @Component({
     selector: 'rewards',
-    styleUrls: ['../../../../styles/page-content.css'],
+    styleUrls: ['../../../styles/page-content.css'],
     templateUrl: './rewards.html'
 })
 
@@ -23,6 +23,9 @@ export class RewardsComponent extends NotificationComponent implements OnInit, O
     public walletSubscription: Subscription;
     public claimSubscription: Subscription;
     public tokens: Array<Token> = [];
+    public unfilteredTokens: Array<Token> = [];
+    public maxItems: number = 10;
+    public showPaging: boolean = false;
     public selectedTokens: Map<string, Token> = new Map<string, Token>();
     public claimReturn: string;
     public walletLoaded: boolean = false;
@@ -30,6 +33,11 @@ export class RewardsComponent extends NotificationComponent implements OnInit, O
     public listingTokens: boolean = false;
     public submittingTx: boolean = false;
     public selectAll: boolean = false;
+    public gridItemWidth: number = 216;
+    public gridItemHeight: number = 216;
+    public gridItemSmallWidth: number = 191;
+    public gridItemSmallHeight: number = 191;
+    public smallGrid: boolean = false;
 
     @ViewChild('tokenView', {static: false}) public tokenView: any;
     @ViewChild('notificationTemplate', {static: false}) public notificationTemplate: any;
@@ -58,6 +66,7 @@ export class RewardsComponent extends NotificationComponent implements OnInit, O
         if (this.walletLoaded === true) {
             this.listTokens();
         }
+        this.getScreenSize(null);
     }
 
     public ngOnDestroy() {
@@ -72,6 +81,32 @@ export class RewardsComponent extends NotificationComponent implements OnInit, O
     public getScreenSize(event?) {
         globalThis.screenHeight = window.innerHeight;
         globalThis.screenWidth = window.innerWidth;
+        console.log("Height [" + globalThis.screenHeight + "]");
+        console.log("Width [" + globalThis.screenWidth + "]");
+        let usableWidth = globalThis.screenWidth * .75;
+        const usableHeight = globalThis.screenHeight * .75;
+        this.smallGrid = false;
+        if (globalThis.screenHeight < 500) {
+            this.smallGrid = true;
+        }
+        if (globalThis.screenWidth < 900) {
+            this.smallGrid = true;
+            usableWidth = globalThis.screenWidth * .95;
+        }
+        if (this.smallGrid) {
+            const maxPerRow = Math.floor(usableWidth / this.gridItemSmallWidth);
+            const maxVisableRows = Math.floor(usableHeight / this.gridItemSmallHeight);
+            this.maxItems = +maxPerRow * +maxVisableRows;
+        } else {
+            const maxPerRow = Math.floor(usableWidth / this.gridItemWidth);
+            const maxVisableRows = Math.floor(usableHeight / this.gridItemHeight);
+            this.maxItems = +maxPerRow * +maxVisableRows;
+        }
+    //    if (this.maxItems < this.tokens.length) {
+     //       this.showPaging = true;
+      //  } else {
+       //     this.showPaging = false;
+      //  }
     }
 
     @HostListener('window:orientationchange', ['$event'])
@@ -82,24 +117,27 @@ export class RewardsComponent extends NotificationComponent implements OnInit, O
     public listTokens() {
         this.listingTokens = true;
         globalThis.tokens = [];
-        /**    if (location.hostname === 'localhost') {
-            const example: Token = new Token({
-                "tokenname": "744d494e",
-                "currencysymbol": "dd78158839fae805523ba4c0aa5cd3d7fa4adb43f7ae8c7ebf1d5dd9",
-                "fingerprint": "sajdfqhw4iuhqwieufwae",
-                "amount": 1000,
-                selected: false
-            });
-            globalThis.tokens.push(example);
-            this.tokens = [...globalThis.tokens];
+     /**   if (location.hostname === '127.0.0.1') {
+            for (let i = 0; i < 100; i++) {
+                const example: Token = new Token({
+                    "tokenname": "tOken" + i,
+                    "currencysymbol": "dd78158839fae805523ba4c0aa5cd3d7fa4adb43f7ae8c7ebf1d5dd9",
+                    "fingerprint": "sajdfqhw4iuhqwieufwae",
+                    "amount": 1000,
+                    selected: false
+                });
+                globalThis.tokens.push(example);
+                this.tokens = [...globalThis.tokens];
+            }
+            this.getScreenSize(null);
             this.listingTokens = false;
-        } else {**/
-        this.claimReturn = null;
-        globalThis.avialableTokens = new AvailableTokens();
-        this.restService.getAvailableTokens()
-            .then(res => this.processTokenList(res))
-            .catch(e => this.processError(e));
-        //   }
+        } else { **/
+            this.claimReturn = null;
+            globalThis.avialableTokens = new AvailableTokens();
+            this.restService.getAvailableTokens()
+                .then(res => this.processTokenList(res))
+                .catch(e => this.processError(e));
+      //  }
     }
 
     public processTokenList(data: any) {
@@ -114,6 +152,7 @@ export class RewardsComponent extends NotificationComponent implements OnInit, O
         this.tokens = [...globalThis.tokens];
         this.initialized = true;
         this.listingTokens = false;
+        this.getScreenSize(null);
     }
 
     public claimSelectedTokens() {
@@ -239,4 +278,9 @@ export class RewardsComponent extends NotificationComponent implements OnInit, O
         this.resetSelection(true);
         this.handleError(error);
     }
+
+    onFilter(event, dt) {
+        this.unfilteredTokens = [...event.filteredValue];
+    }
+
 }

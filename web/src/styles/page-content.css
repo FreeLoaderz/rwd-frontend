@@ -34,7 +34,7 @@ h4 {
 }
 
 .grid-item {
-    margin: .5em;
+    margin: .75em;
     max-width: 30vw !important;
     min-width: 325px !important;
     background-color: black !important;
@@ -297,11 +297,37 @@ li + li {
     min-height: 200px !important;
 }
 
+.grid-item-small {
+    -moz-border-radius: 20px 20px 20px 20px !important;
+    -webkit-border-radius: 20px !important;
+    border-radius: 20px 20px 20px 20px !important;
+    -moz-box-shadow: 2px 2px 4px #000000FF !important;
+    -webkit-box-shadow: 2px 2px 4px #000000FF !important;
+    box-shadow: 4px 4px 6px #000000FF !important;
+
+    max-width: 175px !important;
+    min-width: 175px !important;
+    max-height: 175px !important;
+    min-height: 175px !important;
+}
+
+.grid-item-small > div.grid-item-bottom > button.p-button {
+    padding: 0.1rem .5rem !important;
+    font-size: .8rem !important;
+}
+
+.grid-item-small > div.grid-item-bottom {
+    bottom: 0.1rem !important;
+}
+
+.grid-item-small > div.grid-item-content > p.grid-item-token-name {
+    margin-bottom: .2rem !important;
+}
+
 .grid-item:active, .grid-item:focus, .grid-item:hover {
     box-shadow: 8px 8px 14px 0px rgb(0, 0, 0) !important;
     transform: scale(1.1, 1.1);
 }
-
 
 .grid-item-content {
     text-align: center;
@@ -340,7 +366,6 @@ div.sidemenu > button.p-button {
 .whitediv {
     background: white !important;
     border-radius: 25px;
-    padding: 25px;
 }
 
 .charts {
@@ -423,7 +448,9 @@ div.sidemenu > button.p-button {
 
 .history-search {
     float: right;
-    margin-top: -8px !important;
+    margin-top: -8px;
+    height: 35px;
+    width: auto;
 }
 
 .collapsesidemenu {
@@ -431,6 +458,7 @@ div.sidemenu > button.p-button {
     margin-right: 1em;
     margin-left: 0;
 }
+
 .spanlinkDark {
     color: black !important;
     -webkit-transition: all .2s ease-in-out;
@@ -516,14 +544,15 @@ dl.faq button:focus {
     display: block !important;
 }
 
-.rewards-view {
-    width: 70vw;
-    height: 100vh
+.data-view {
+    width: 75vw;
+    min-height: 100vh;
+    height: auto;
 }
 
-.rewards-header {
+.data-header {
     display: flex;
-    width: 90%;
+    width: 75vw;
 }
 
 .claimall {
@@ -544,4 +573,3 @@ dl.faq button:focus {
     justify-content: center;
     display: flex;
 }
-

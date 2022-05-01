@@ -1,7 +1,7 @@
 .navbar {
     margin-bottom: 0 !important;
     border-bottom: 0px !important;
-    text-transform: uppercase !important;
+
     font-family: Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif !important;
     padding-bottom: 0 !important;
 }
@@ -38,11 +38,15 @@
     text-shadow: none !important;
 }
 
-.navbar-collapse > ul {
+#mainnav > ul {
     padding-left: 10px;
     padding-right: 10px;
     background: transparent !important;
 }
-div.navbar-collapse.collapse.show > ul {
+#mainnav.show > ul {
     background-color: #061c35 !important;
+}
+
+.navbar-nav {
+    flex-direction: row !important;
 }

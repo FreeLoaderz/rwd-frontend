@@ -1,6 +1,43 @@
+@media only screen and (max-device-height: 900px) {
+    .router-wrapper {
+        padding-top: 50px !important;
+    }
+}
+
+@media only screen and (max-device-height: 800px) {
+    #network {
+        font-size: 12px !important;
+    }
+}
+
+@media only screen and (max-device-height: 700px) {
+}
+
+@media only screen and (max-device-height: 500px) {
+    .p-button {
+        padding: 0.1rem .5rem !important;
+        font-size: .8rem !important;
+    }
+
+    .grid-item-bottom {
+        bottom: .1rem !important;
+    }
+
+    .history-search {
+        margin-top: -11px !important;
+        height: 26px !important;
+        width: 150px !important;
+    }
+}
+
 @media only screen and (max-device-width: 1160px) {
-    .rewards-view {
-        width: 90vw !important;
+    .data-view {
+        width: 95vw !important;
+    }
+
+    .data-header {
+        width: 95vw !important;
+        margin-left: .5em;
     }
 
     .blinking20 {
@@ -26,6 +63,16 @@
     .p-datatable .p-datatable-thead > tr > th {
         padding: 0.1rem 0.1rem !important;
     }
+
+    .p-datatable .p-datatable-header {
+        padding: 0 !important;
+    }
+}
+
+@media only screen and (max-device-width: 960px) {
+    .content-section {
+        padding-top: 20px !important
+    }
 }
 
 @media only screen and (max-device-width: 800px) {
@@ -49,10 +96,24 @@
 }
 
 @media only screen and (max-device-width: 900px) {
+    .p-button {
+        padding: 0.1rem .5rem !important;
+        font-size: .8rem !important;
+    }
+
+    .grid-item-bottom {
+        bottom: .1rem !important;
+    }
 
     .blinking20 {
         height: 116px !important;
         width: 300px !important;
+    }
+
+    .history-search {
+        margin-top: -11px !important;
+        height: 26px !important;
+        width: 150px !important;
     }
 
     .banner-social-buttons {

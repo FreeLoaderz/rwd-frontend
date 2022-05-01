@@ -1,52 +1,55 @@
 <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark bg-clear">
     <div class="container-fluid">
         <ul class="navbar-nav ms-2 mb-2">
-            <li class="nav-item">
+            <li *ngIf="compressMenu" class="nav-item">
+                <img src="../../../assets/smartclaimz-small.png" (click)="toggleFullScreen()"
+                     style="cursor: pointer !important" width="135" height="53">
+            </li>
+            <li *ngIf="!compressMenu" class="nav-item">
                 <img src="../../../assets/smartclaimz-small.png" (click)="toggleFullScreen()"
                      style="cursor: pointer !important">
             </li>
         </ul>
-        <button class="navbar-toggler ms-auto me-2" type="button" data-bs-toggle="collapse"
-                data-bs-target="#mainnav" (click)="isMenuCollapsed = !isMenuCollapsed">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div [ngbCollapse]="isMenuCollapsed" class="collapse navbar-collapse" id="mainnav">
-            <ul *ngIf="!connected()" style="float: right;"
-                class="navbar-nav ms-auto me-2 mb-2 mb-lg-0">
-                <li class="nav-item"><a class="nav-link" (click)="showConnectModal()"><i
-                        class="fa-solid fa-wallet me-1"></i>Connect</a>
+        <div *ngIf="compressMenu" id="mainnav">
+            <ul style="float: right;flex-direction: row !important;" class="navbar-nav ms-auto me-1 mb-2">
+                <li *ngIf="!connected" class="nav-item" style="padding-top: 0px">
+                    <p-menubar #menu [model]="collapsedMenu"></p-menubar>
                 </li>
-                <li class="nav-item"><a class="nav-link" id="CONTACTUS" (click)="routeContactUs()">
-                    <i class="fa-solid fa-message me-1"></i>Contact Us</a>
+                <li *ngIf="connected" class="nav-item me-1">
+                    <a *ngIf="walletLoaded" style="display: flex !important" class="nav-link"
+                       (click)="disconnectWallet()">
+                        <p-image src="{{walletImage}}" class="mt-auto mb-auto" title="Disconnect wallet"
+                                 alt="{{getWalletSource()}}" width="20" height="20"></p-image>
+                    </a>
+                    <a *ngIf="!walletLoaded" class="nav-link"><img width="20" height="20" src="assets/smartclaimz.ico"
+                                                                   class="request-spinner"></a>
                 </li>
-                <li class="nav-item"><a class="nav-link" id="FAQ" (click)="routeFaq()">
-                    <i class="fa-solid fa-circle-question me-1"></i>FAQ</a>
+                <li *ngIf="connected" style="display: flex !important;" class="nav-item">
+                    <p-menubar #menu [model]="collapsedConnectedMenu"></p-menubar>
                 </li>
             </ul>
-            <ul *ngIf="connected()" style="float: right;" class="navbar-nav ms-auto me-2 mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a *ngIf="walletLoaded" style="display: flex !important" class="nav-link mb-1" (click)="disconnectWallet()">
-                        <p-image src="{{walletImage}}" class="me-1 mt-auto mb-auto" title="Disconnect wallet"
+        </div>
+        <div *ngIf="!compressMenu" id="mainnav">
+            <ul style="float: right;"
+                class="navbar-nav ms-auto me-1 mb-2">
+                <li *ngIf="!connected" class="nav-item">
+                    <p-menubar [model]="connectMenuItem"></p-menubar>
+                </li>
+                <li *ngIf="connected" class="nav-item me-2">
+                    <a *ngIf="walletLoaded" style="display: flex !important" class="nav-link mb-1"
+                       (click)="disconnectWallet()">
+                        <p-image src="{{walletImage}}" class="me-2 mt-auto mb-auto" title="Disconnect wallet"
                                  alt="{{getWalletSource()}}" width="20" height="20"></p-image>
-                        <span title="Disconnect wallet" style="text-transform: none !important;">{{getWalletSubstring()}}</span></a>
-                    <a *ngIf="!walletLoaded" class="nav-link"><img width="18" height="18" src="assets/smartclaimz.ico"
+                        <span title="Disconnect wallet"
+                              style="text-transform: none !important;">{{getWalletSubstring()}}</span></a>
+                    <a *ngIf="!walletLoaded" class="nav-link mt-1"><img width="18" height="18" src="assets/smartclaimz.ico"
                                                                    class="request-spinner" style="margin-top: 3px"></a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link nav-active" id="REWARDS" (click)="routeRewards()">
-                        <i class="fa-solid fa-coins me-1"></i>Rewards</a>
+                <li *ngIf="connected" class="nav-item">
+                    <p-menubar [model]="rewardsMenu"></p-menubar>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" id="CONTACTUS" (click)="routeContactUs()">
-                        <i class="fa-solid fa-message me-1"></i>Contact Us</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" id="FAQ" (click)="routeFaq()">
-                        <i class="fa-solid fa-circle-question me-1"></i>FAQ</a>
-                </li>
-                <li *ngIf="isTestNet" class="nav-item">
-                    <a class="nav-link" id="TESTNET" (click)="routeTestnet()">
-                        <i class="fa-solid fa-toolbox me-1"></i>Testnet</a>
+                <li class="nav-item me-2">
+                    <p-menubar [model]="helpMenu"></p-menubar>
                 </li>
             </ul>
         </div>
@@ -70,28 +73,28 @@
                     <a pButton class="p-button-rounded p-button-outlined no-ul inverted"
                        [title]="eternlAvailable() ? 'Connect to Eternl':'Eternl wallet not installed. Click to visit their website.'"
                        (click)="eternlAvailable() ? connectEternl(): openEternl()    ">
-                        <p class="ms-1">Eternl</p>
+                        <p class="ms-1" style="font-size: 1rem !important;">Eternl</p>
                         <p-image src="../../assets/icons/eternl.png" alt="Eternl" width="25" height="25">
                         </p-image>
                     </a>
                     <a pButton class="p-button-rounded p-button-outlined no-ul inverted mt-3"
                        (click)="namiAvailable() ? connectNami(): openNami()"
                        [title]="namiAvailable() ? 'Connect to Nami':'Nami wallet not installed. Click to visit their website.'">
-                        <p class="ms-1">Nami</p>
+                        <p class="ms-1" style="font-size: 1rem !important;">Nami</p>
                         <p-image src="../../assets/icons/nami.png" alt="Nami" width="25" height="25">
                         </p-image>
                     </a>
                     <a pButton class="p-button-rounded p-button-outlined no-ul inverted mt-3"
                        (click)="geroAvailable() ? connectGero(): openGero()"
                        [title]="geroAvailable() ? 'Connect to Gero':'Gero wallet not installed. Click to visit their website.'">
-                        <p class="ms-1">Gero</p>
+                        <p class="ms-1" style="font-size: 1rem !important;">Gero</p>
                         <p-image src="../../assets/icons/gero.png" alt="Gero" width="25" height="25">
                         </p-image>
                     </a>
                     <a pButton class="p-button-rounded p-button-outlined no-ul inverted mt-3"
                        (click)="flintAvailable() ? connectFlint() : openFlint()"
                        [title]="flintAvailable() ? 'Connect to Flint':'Flint wallet not installed. Click to visit their website.'">
-                        <p class="ms-1">Flint</p>
+                        <p class="ms-1" style="font-size: 1rem !important;">Flint</p>
                         <p-image src="../../assets/icons/flint.png" alt="Flint" width="25" height="25">
                         </p-image>
                     </a>
