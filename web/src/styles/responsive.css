@@ -119,6 +119,44 @@
         border: 2px solid #fff !important;
         font-size: 31px !important;
     }
+
+    .info-text-end {
+        margin-left: 0 !important;
+        margin-right: auto !important;
+        justify-content: left !important;
+        text-align: left !important;
+    }
+
+    .info-right {
+        display: flex;
+        padding-left: 1vw !important;
+        padding-right: 1vw !important;
+        justify-content: center;
+    }
+
+    .info-left {
+        display: flex;
+        padding-left: 1vw !important;
+        padding-right: 1vw !important;
+        justify-content: center;
+    }
+
+    .info-view {
+        width: 99vw;
+        min-height: 100vh;
+        height: auto;
+    }
+
+    .info-header {
+        display: flex;
+        width: 99vw;
+    }
+
+    .info-text {
+        font-size: 18px;
+        display: block !important;
+    }
+
 }
 
 @media only screen and (max-device-width: 900px) {

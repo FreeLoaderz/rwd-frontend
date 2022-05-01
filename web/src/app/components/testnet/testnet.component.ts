@@ -20,6 +20,7 @@ export class TestnetComponent extends NotificationComponent implements OnInit, O
     public walletSubscription: Subscription;
     public walletLoaded: boolean = false;
     public submitted: boolean = false;
+    public isTestnet: boolean = false;
 
     constructor(public walletObserverService: WalletObserverService, public walletService: WalletService,
                 public restService: RestService, public notifierService: NotifierService) {
@@ -30,9 +31,25 @@ export class TestnetComponent extends NotificationComponent implements OnInit, O
         this.walletSubscription = this.walletObserverService.loaded$.subscribe(
             loaded => {
                 this.walletLoaded = loaded;
+                if (loaded) {
+                    this.setNetwork();
+                } else {
+                    this.isTestnet = false;
+                }
             }
         );
         this.walletLoaded = this.walletService.walletLoaded;
+        if (this.walletLoaded) {
+            this.setNetwork();
+        }
+    }
+
+    public setNetwork() {
+        if (globalThis.wallet.network === 0) {
+            this.isTestnet = true;
+        } else {
+            this.isTestnet = false;
+        }
     }
 
     public ngOnDestroy() {
@@ -66,7 +83,7 @@ export class TestnetComponent extends NotificationComponent implements OnInit, O
                 if (data.msg !== 'connection reset by server') {
                     this.successNotification(data.msg);
                 } else {
-                    this.errorNotification("Please wait a minute and try your request again");
+                    this.errorNotification("Error occured. Please wait a minute and try your request again");
                 }
             } else {
                 this.infoNotification(JSON.stringify(data));

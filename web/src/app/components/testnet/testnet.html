@@ -1,26 +1,36 @@
 <section id="testnet" class="content-section">
     <div class="center-div-parent">
         <div class="center-div-child">
-            <h4>Testnet Tools</h4>
+            <h4>Testnet Tools and Information</h4>
             <div class="blackdiv sidebar-content mt-1"
                  style="min-width: 50vw !important;width: auto;max-width: 90vw !important">
                 <div>
                     <p>To participate in SmartClaimz for Testnet, delegate your Testnet wallet to one of the following
                         Testnet pools.</p>
-                    <div style="display: flex">
-                        <a class="ms-auto me-auto" href="https://apexpool.info/" target="_blank">
-                            <img alt="Apex Pool" src="../../../assets/apex.png" width="100" height="100"/>
-                        </a>
-                        <a class="ms-auto me-auto" href="https://www.panl.org/resources" target="_blank">
-                            <img alt="Panl Stake Pool" src="../../../assets/panl.png" width="100" height="100"/>
-                        </a>
-                        <a class="ms-auto me-auto" href="https://www.lidonation.com/en" target="_blank">
-                            <img alt="Lido Nation" src="../../../assets/Lido.jpg" width="100" height="100"/>
-                        </a>
+                    <div class="mt-4" style="display: flex">
+                        <div class="ms-auto me-auto" style="display: block">
+                            <p>Apex Pool (APEX)</p>
+                            <a href="https://apexpool.info/" target="_blank">
+                                <img alt="Apex Pool" src="../../../assets/apex.png" width="100" height="100"/>
+                            </a>
+                        </div>
+                        <div class="ms-auto me-auto" style="display: block">
+                            <p>Panl Stake Pool (PANL)</p>
+                            <a href="https://www.panl.org/resources" target="_blank">
+                                <img alt="Panl Stake Pool" src="../../../assets/panl.png" width="100" height="100"/>
+                            </a>
+                        </div>
+                        <div class="ms-auto me-auto" style="display: block">
+                            <p>Lido Nation (LIDO)</p>
+                            <a href="https://www.lidonation.com/en" target="_blank">
+                                <img alt="Lido Nation" src="../../../assets/Lido.jpg" width="100" height="100"/>
+                            </a>
+                        </div>
                     </div>
                     <div style="margin-top: 5em">
-                        <p>At any time, you can immediately generate random test rewards for your wallet by using this "Generate Rewards" button.</p>
-                        <button pButton
+                        <p>At any time, you can immediately generate random test rewards for your wallet by using this
+                            "Generate Rewards" button.</p>
+                        <button pButton [disabled]="!walletLoaded"
                                 title="Generate rewards for my Stake address"
                                 (click)="generateRewards()" [loading]="submitted"
                                 class="p-button p-button-rounded p-button-primary ms-auto me-auto"
@@ -29,7 +39,8 @@
                     </div>
                 </div>
                 <div style="margin-top: 5em">
-                    <p style="font-size: smaller">**Rewards for each epoch will eventually be automatically calculated.  If you
+                    <p style="font-size: smaller">**Rewards for each epoch will eventually be automatically calculated.
+                        If you
                         don't see your rewards, it may be that the reward script hasn't been run yet.</p>
                 </div>
             </div>

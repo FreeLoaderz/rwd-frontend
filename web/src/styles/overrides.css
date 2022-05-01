@@ -759,3 +759,7 @@ body .p-menubar .p-submenu-list {
     height: 100vh !important;
     background-color: rgb(9, 19, 35) !important;
 }
+
+.info-text-end {
+    margin-left: auto;
+}

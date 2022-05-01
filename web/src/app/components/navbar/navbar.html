@@ -42,8 +42,9 @@
                                  alt="{{getWalletSource()}}" width="20" height="20"></p-image>
                         <span title="Disconnect wallet"
                               style="text-transform: none !important;">{{getWalletSubstring()}}</span></a>
-                    <a *ngIf="!walletLoaded" class="nav-link mt-1"><img width="18" height="18" src="assets/smartclaimz.ico"
-                                                                   class="request-spinner" style="margin-top: 3px"></a>
+                    <a *ngIf="!walletLoaded" class="nav-link mt-1"><img width="18" height="18"
+                                                                        src="assets/smartclaimz.ico"
+                                                                        class="request-spinner" style="margin-top: 3px"></a>
                 </li>
                 <li *ngIf="connected" class="nav-item">
                     <p-menubar [model]="rewardsMenu"></p-menubar>
@@ -54,6 +55,8 @@
             </ul>
         </div>
     </div>
+    <a (click)="scrollToElement('topAnchor')" id="scrollTop" title="Go to top"><i
+            class="fa-solid fa-arrow-alt-circle-up"></i></a>
 </nav>
 <div bsModal #connectModal="bs-modal" class="modal fade" role="dialog" tabindex="-1"
      [config]="{backdrop: 'static'}">
@@ -107,7 +110,7 @@
 </div>
 <notifier-container>
 </notifier-container>
-<div class="router-wrapper container-fluid">
+<div id="topAnchor" #topAnchor class="router-wrapper container-fluid">
     <router-outlet></router-outlet>
     <footer id="footer"></footer>
 </div>

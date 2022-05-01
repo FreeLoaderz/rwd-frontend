@@ -34,6 +34,7 @@ export class HistoryComponent extends NotificationComponent implements OnInit, O
     public rowHeight: number = 42.25;
     public maxRows: number = 10;
     public compress: boolean = false;
+    public moreThanAMonth: boolean = false;
     // Charts
     public donutData: any;
     public donutOptions: any;
@@ -120,6 +121,9 @@ export class HistoryComponent extends NotificationComponent implements OnInit, O
             const monthMap: Map<number, Array<HistoricalClaim>> = basicMap.get(sortedYears[i]);
             const monthKeys: Array<number> = [...monthMap.keys()];
             const sortedMonths: number[] = monthKeys.sort((n1, n2) => n1 - n2);
+            if ((!this.moreThanAMonth) && (sortedMonths.length > 1)) {
+                this.moreThanAMonth = true;
+            }
             if (i === 0) {
                 minMonth = sortedMonths[0];
             }
@@ -128,7 +132,7 @@ export class HistoryComponent extends NotificationComponent implements OnInit, O
             }
             for (let j = 0; j < sortedMonths.length; ++j) {
                 const monthTotalByToken: Map<string, number> = new Map<string, number>();
-                const claimArray: Array<HistoricalClaim> = monthMap.get(sortedMonths[i]);
+                const claimArray: Array<HistoricalClaim> = monthMap.get(sortedMonths[j]);
                 claimArray.forEach(claim => {
                     if (monthTotalByToken.has(claim.displayName)) {
                         const curAmount: number = +monthTotalByToken.get(claim.displayName);
@@ -167,6 +171,7 @@ export class HistoryComponent extends NotificationComponent implements OnInit, O
             const histData = tokenMap.get(tokenNames[i]);
             histData.setArray(minYear, minMonth, maxYear, maxMonth);
             histData.backgroundColor = chartColors[i];
+            histData.borderColor = chartColors[i];
         }
 
         const basicLabels: Array<string> = HistogramData.getLabels(minYear, minMonth, maxYear, maxMonth);

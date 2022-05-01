@@ -1,8 +1,11 @@
 $(window).scroll(function() {
+    var scrollToTop = document.getElementById("scrollTop");
     if ($(".navbar").offset().top > 75) {
         $(".bg-dark").removeClass("bg-clear");
+        scrollToTop.style.display = "block";
     } else {
         $(".bg-dark").addClass("bg-clear");
+        scrollToTop.style.display = "none";
     }
 });
 

@@ -48,7 +48,7 @@ export class NavbarComponent extends NotificationComponent implements OnInit, Af
     public docElem: any;
     @ViewChild('connectModal', {static: false}) public connectModal: ModalDirective;
 
-    constructor(@Inject(DOCUMENT) private document: any, public httpClient: HttpClient,
+    constructor(@Inject(DOCUMENT) public document: any, public httpClient: HttpClient,
                 public router: Router, public titleService: Title, public walletObserverService: WalletObserverService,
                 public notifierService: NotifierService, public walletService: WalletService) {
         super(notifierService);
@@ -402,4 +402,7 @@ export class NavbarComponent extends NotificationComponent implements OnInit, Af
         }
     }
 
+    scrollToElement(element): void {
+        this.document.getElementById(element).scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"});
+    }
 }
