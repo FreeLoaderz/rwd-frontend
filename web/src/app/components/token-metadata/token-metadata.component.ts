@@ -26,14 +26,6 @@ export class TokenMetaDataComponent implements OnInit {
         if (globalThis.tokenMetadata == null) {
             globalThis.tokenMetadata = new Map<string, TokenMetadata>();
         }
-
-        this.cols = [
-            { field: 'name', header: 'Name'},
-            { field: 'logo', header: 'Logo'},
-            { field: 'ticker', header: 'Ticker'},
-            { field: 'url', header: 'URL'},
-            { field: 'policy', header: 'Policy'}
-        ]
     }
 
     public ngOnInit() {

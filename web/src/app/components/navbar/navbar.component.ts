@@ -34,6 +34,7 @@ export class NavbarComponent extends NotificationComponent implements OnInit, Af
     public helpMenu: MenuItem[];
     public faqMenuItem: MenuItem;
     public contactUsMenuItem: MenuItem;
+    public tokenMetadataMenuItem: MenuItem;
     public compressMenu: boolean = false;
     public connected: boolean = false;
     public walletSubstring: string;
@@ -181,6 +182,16 @@ export class NavbarComponent extends NotificationComponent implements OnInit, Af
             }
         };
 
+        this.tokenMetadataMenuItem = {
+            label: 'EXPLORE',
+            id: 'TOKENMETADATA',
+            title: 'Find all listed tokens',
+            icon: 'fa-solid fa-bag-shopping',
+            command: (event) => {
+                this.routeTokenMetadata();
+            }
+        }; 
+
         if (!this.isTestNet) {
             this.helpMenu = [{
                 label: 'HELP',
@@ -188,17 +199,19 @@ export class NavbarComponent extends NotificationComponent implements OnInit, Af
                 title: 'Contact us, FAQ',
                 icon: 'fa-solid fa-circle-info',
                 items: [this.contactUsMenuItem,
-                    this.faqMenuItem]
+                    this.faqMenuItem, this.tokenMetadataMenuItem]
             }];
             this.collapsedConnectedMenu = [
                 this.claimzMenuItem,
                 this.historicalMenuItem,
                 this.contactUsMenuItem,
-                this.faqMenuItem];
+                this.faqMenuItem,
+                this.tokenMetadataMenuItem];
             this.collapsedMenu = [
                 this.connectMenuItem[0],
                 this.contactUsMenuItem,
-                this.faqMenuItem];
+                this.faqMenuItem,
+                this.tokenMetadataMenuItem];
         } else {
             this.helpMenu = [{
                 label: 'HELP',
@@ -214,11 +227,13 @@ export class NavbarComponent extends NotificationComponent implements OnInit, Af
                 this.historicalMenuItem,
                 this.contactUsMenuItem,
                 this.faqMenuItem,
+                this.tokenMetadataMenuItem,
                 this.testnetMenu];
             this.collapsedMenu = [
                 this.connectMenuItem[0],
                 this.contactUsMenuItem,
                 this.faqMenuItem,
+                this.tokenMetadataMenuItem,
                 this.testnetMenu
             ];
         }
@@ -338,6 +353,10 @@ export class NavbarComponent extends NotificationComponent implements OnInit, Af
 
     public routeRewards() {
         this.router.navigate(['/rewards']);
+    }
+
+    public routeTokenMetadata() {
+        this.router.navigate(['/explore'])
     }
 
     public routeTestnet() {

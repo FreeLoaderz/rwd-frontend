@@ -38,6 +38,10 @@ const routes: Routes = [
     {
         path: 'history', component:
         HistoryComponent
+    },
+    {
+        path: 'explore',
+        component: TokenMetaDataComponent
     }
 ];
 

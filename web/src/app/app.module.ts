@@ -83,7 +83,7 @@ const customNotifierOptions: NotifierOptions = {
 
 @NgModule({
     declarations: [NavbarComponent, WelcomeComponent, FooterComponent, InfoComponent, RewardsComponent,
-        ContactUsComponent, HistoryComponent, NetworkComponent, TestnetComponent, FaqComponent],
+        ContactUsComponent, HistoryComponent, NetworkComponent, TestnetComponent, FaqComponent, TokenMetaDataComponent],
     imports: [BrowserModule, FormsModule, ReactiveFormsModule, AppRoutingModule, RouterModule,
         TooltipModule.forRoot(), OverlayPanelModule, ModalModule.forRoot(),
         NotifierModule.withConfig(customNotifierOptions), ChartModule, SharedModule,
