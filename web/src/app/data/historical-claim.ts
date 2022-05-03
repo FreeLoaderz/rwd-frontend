@@ -13,10 +13,13 @@ export class HistoricalClaim {
     public user_id: string;
     public txhash: string;
     public txURL: string;
+    public txShortURL: string;
+    public txSuperShortURL: string;
     public invalid: string;
     public invalid_descr: string;
     public timestamp: string;
     public displayTS: string;
+    public shortDate: string;
     public year: number;
     public month: number;
     public day: number;
@@ -54,6 +57,10 @@ export class HistoricalClaim {
             if (data.txhash) {
                 this.txhash = data.txhash;
                 this.txURL = UtilityService.generateTxHashURL(data.txhash, false);
+                const shortHash = data.txhash.substring(0, 5).concat("...").concat(data.txhash.substring(data.txhash.length - 5));
+                this.txShortURL = UtilityService.generateShortTxHashURL(data.txhash, shortHash, false);
+                const superShortHash = data.txhash.substring(0, 5).concat("...");
+                this.txSuperShortURL = UtilityService.generateShortTxHashURL(data.txhash, superShortHash, false);
             }
             if (data.invalid) {
                 this.invalid = data.invalid;
@@ -66,6 +73,7 @@ export class HistoricalClaim {
                 const date = new Date(this.timestamp);
                 const datePipe = new DatePipe("en-US");
                 this.displayTS = datePipe.transform(date, 'yy-MM-dd HH:mm:ss');
+                this.shortDate = datePipe.transform(date, 'yy-MM-dd');
                 this.year = +datePipe.transform(date, 'yy');
                 this.month = +datePipe.transform(date, 'MM');
                 this.day = +datePipe.transform(date, 'dd');
@@ -75,6 +83,7 @@ export class HistoricalClaim {
             }
         }
     }
+
     public static sort(a: any, b: any): number {
         if (a.timestamp < b.timestamp) {
             return 1;

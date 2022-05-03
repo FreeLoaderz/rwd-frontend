@@ -34,7 +34,7 @@ h4 {
 }
 
 .grid-item {
-    margin: .5em;
+    margin: .75em;
     max-width: 30vw !important;
     min-width: 325px !important;
     background-color: black !important;
@@ -181,17 +181,6 @@ h4 {
     -moz-transition-duration: 1s;
 }
 
-.btn-circle:hover i.animated {
-    -webkit-animation-name: pulse;
-    -moz-animation-name: pulse;
-    -webkit-animation-duration: 1.5s;
-    -moz-animation-duration: 1.5s;
-    -webkit-animation-iteration-count: infinite;
-    -moz-animation-iteration-count: infinite;
-    -webkit-animation-timing-function: linear;
-    -moz-animation-timing-function: linear;
-}
-
 @-moz-keyframes pulse {
 
     0% {
@@ -308,11 +297,37 @@ li + li {
     min-height: 200px !important;
 }
 
+.grid-item-small {
+    -moz-border-radius: 20px 20px 20px 20px !important;
+    -webkit-border-radius: 20px !important;
+    border-radius: 20px 20px 20px 20px !important;
+    -moz-box-shadow: 2px 2px 4px #000000FF !important;
+    -webkit-box-shadow: 2px 2px 4px #000000FF !important;
+    box-shadow: 4px 4px 6px #000000FF !important;
+
+    max-width: 175px !important;
+    min-width: 175px !important;
+    max-height: 175px !important;
+    min-height: 175px !important;
+}
+
+.grid-item-small > div.grid-item-bottom > button.p-button {
+    padding: 0.1rem .5rem !important;
+    font-size: .8rem !important;
+}
+
+.grid-item-small > div.grid-item-bottom {
+    bottom: 0.1rem !important;
+}
+
+.grid-item-small > div.grid-item-content > p.grid-item-token-name {
+    margin-bottom: .2rem !important;
+}
+
 .grid-item:active, .grid-item:focus, .grid-item:hover {
     box-shadow: 8px 8px 14px 0px rgb(0, 0, 0) !important;
     transform: scale(1.1, 1.1);
 }
-
 
 .grid-item-content {
     text-align: center;
@@ -351,7 +366,6 @@ div.sidemenu > button.p-button {
 .whitediv {
     background: white !important;
     border-radius: 25px;
-    padding: 25px;
 }
 
 .charts {
@@ -378,11 +392,12 @@ div.sidemenu > button.p-button {
     width: 100%;
     background-color: transparent;
     height: auto !important;
-    margin-bottom: 25px !important;
     margin-top: 25px !important;
+    justify-content: center;
+    align-items: center;
 }
 
-#copyright > p {
+#copyright > span > p {
     font-size: small;
     line-height: .1em;
 }
@@ -433,7 +448,9 @@ div.sidemenu > button.p-button {
 
 .history-search {
     float: right;
-    margin-top: -8px !important;
+    margin-top: -8px;
+    height: 35px;
+    width: auto;
 }
 
 .collapsesidemenu {
@@ -537,7 +554,6 @@ img {
 
 .faq-section {
     width: 100%;
-    padding: 50px 0;
     color: rgb(255, 255, 255);
     font-weight: bold;
     min-height: 100vh !important;
@@ -600,15 +616,65 @@ dl.faq button:focus {
     display: block !important;
 }
 
-.rewards-view {
-    width: 70vw;
-    height: 100vh
+.info-text-end {
+    text-align: right;
 }
-.rewards-header {
-    display:flex;
-    width: 90%;
+
+.info-right {
+    display: flex;
+    padding-left: 33vw;
+    float: right;
 }
+
+.info-left {
+    display: flex;
+    padding-right: 33vw;
+    float: left;
+}
+
+.info-view {
+    width: 90vw;
+    min-height: 100vh;
+    height: auto;
+    margin-top: 3.25rem !important;
+}
+
+.info-header {
+    display: flex;
+    width: 90vw;
+}
+
+.info-text {
+    font-size: 19px;
+    display: block !important;
+}
+
+.data-view {
+    width: 75vw;
+    min-height: 100vh;
+    height: auto;
+}
+
+.data-header {
+    display: flex;
+    width: 75vw;
+}
+
 .claimall {
     width: auto;
     margin-left: auto;
+}
+
+.tos-modal {
+    width: 800px;
+    height: 80vh !important;
+}
+
+.tos-dialog {
+    position: relative;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    pointer-events: none;
+    justify-content: center;
+    display: flex;
 }

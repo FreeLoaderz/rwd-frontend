@@ -24,12 +24,9 @@ import {NavbarComponent} from "./components/navbar/navbar.component";
 import {WelcomeComponent} from "./components/welcome/welcome.component";
 import {FooterComponent} from "./components/footer/footer.component";
 import {InfoComponent} from "./components/welcome/info/info.component";
-import {DashboardComponent} from "./components/dashboard/dashboard.component";
-import {RewardsComponent} from "./components/dashboard/rewards/rewards.component";
+import {RewardsComponent} from "./components/rewards/rewards.component";
 import {ContactUsComponent} from "./components/contact-us/contact-us.component";
-import {HistoryComponent} from "./components/dashboard/history/history.component";
-import {CommonModule} from "@angular/common";
-import {FileUploadModule} from "primeng/fileupload";
+import {HistoryComponent} from "./components/history/history.component";
 import {AppRoutingModule} from "./app-routing.module";
 import {NgbCollapseModule} from "@ng-bootstrap/ng-bootstrap";
 import {NetworkComponent} from "./components/network/network.component";
@@ -39,6 +36,7 @@ import {TokenMetadataService} from "./services/token-metadata.service";
 import { TokenMetaDataComponent } from './components/token-metadata/token-metadata.component';
 
 import {ChartModule} from "primeng/chart";
+import { SharedModule } from 'primeng/api';
 
 const customNotifierOptions: NotifierOptions = {
     position: {
@@ -84,11 +82,11 @@ const customNotifierOptions: NotifierOptions = {
 };
 
 @NgModule({
-    declarations: [NavbarComponent, WelcomeComponent, FooterComponent, InfoComponent, DashboardComponent, RewardsComponent,
-        ContactUsComponent, HistoryComponent, NetworkComponent, TestnetComponent, FaqComponent, TokenMetaDataComponent],
+    declarations: [NavbarComponent, WelcomeComponent, FooterComponent, InfoComponent, RewardsComponent,
+        ContactUsComponent, HistoryComponent, NetworkComponent, TestnetComponent, FaqComponent],
     imports: [BrowserModule, FormsModule, ReactiveFormsModule, AppRoutingModule, RouterModule,
         TooltipModule.forRoot(), OverlayPanelModule, ModalModule.forRoot(),
-        NotifierModule.withConfig(customNotifierOptions), ChartModule,
+        NotifierModule.withConfig(customNotifierOptions), ChartModule, SharedModule,
         FormsModule, ReactiveFormsModule, NgbCollapseModule,
         CheckboxModule, TableModule, HttpClientModule,
         DropdownModule, MenubarModule, DataViewModule, ImageModule,

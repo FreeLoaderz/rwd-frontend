@@ -1,8 +1,11 @@
 $(window).scroll(function() {
+    var scrollToTop = document.getElementById("scrollTop");
     if ($(".navbar").offset().top > 75) {
         $(".bg-dark").removeClass("bg-clear");
+        scrollToTop.style.display = "block";
     } else {
         $(".bg-dark").addClass("bg-clear");
+        scrollToTop.style.display = "none";
     }
 });
 
@@ -16,14 +19,3 @@ $(function() {
         event.preventDefault();
     });
 });
-
-// Closes the Responsive Menu on Menu Item Click
-$('.navbar-collapse ul li a').click(function() {
-    $('.navbar-toggle:visible').click();
-});
-
-// remove the focused state after click,
-// otherwise bootstrap will still highlight the link
-$("a").mouseup(function(){
-    $(this).blur();
-})

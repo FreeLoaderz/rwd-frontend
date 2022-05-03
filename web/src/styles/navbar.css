@@ -1,7 +1,7 @@
 .navbar {
     margin-bottom: 0 !important;
     border-bottom: 0px !important;
-    text-transform: uppercase !important;
+
     font-family: Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif !important;
     padding-bottom: 0 !important;
 }
@@ -38,8 +38,31 @@
     text-shadow: none !important;
 }
 
-.navbar-collapse > ul {
+#mainnav > ul {
     padding-left: 10px;
     padding-right: 10px;
     background: transparent !important;
+}
+#mainnav.show > ul {
+    background-color: #061c35 !important;
+}
+
+.navbar-nav {
+    flex-direction: row !important;
+}
+
+#scrollTop {
+    display: none;
+    position: fixed;
+    bottom: 35px;
+    right: 15px;
+    z-index: 99;
+    font-size: 28px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+#scrollTop:hover {
+    color: #df4863;
 }

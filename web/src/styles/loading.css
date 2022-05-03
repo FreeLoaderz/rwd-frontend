@@ -1,23 +1,22 @@
 #pre-load {
     background-color: #061c35;
-    height:100%;
+    height: 100%;
     bottom: 0;
     left: 0;
     position: fixed;
     right: 0;
     top: 0;
     z-index: 999999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #pre-load div.messaging {
     color: white;
     font-family: monospace;
-    left: 0;
-    margin-top: -37px;
-    position: absolute;
-    right: 0;
     text-align: center;
-    top: 30%;
+    display: block;
 }
 
 #pre-load h1 {

@@ -21,7 +21,7 @@ html {
 
 .webp > body {
     background-image: url('../assets/rwd-background.webp');
-    background-color:  #102648;
+    background-color: #102648;
     background-position: center center;
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -59,8 +59,8 @@ body {
 .p-menuitem-list,
 .p-menuitem-icon,
 .p-menuitem-text {
-    font-size: .75rem !important;
-    background: #061c35 !important;
+    font-size: 18px !important;
+    background: transparent !important;
 }
 
 .p-menu {
@@ -85,6 +85,10 @@ body {
 .popoutClass {
     padding: 0 !important;
     margin-left: 0px !important;
+}
+
+.slowblinking {
+    animation: blink 5s ease-in-out infinite;
 }
 
 .blinking {
@@ -208,6 +212,7 @@ a:active {
     color: #df4863 !important;
     text-shadow: none !important;
 }
+
 .subrow {
     display: flex;
     margin-bottom: 10px;
@@ -257,21 +262,7 @@ a:active {
     font-weight: bold !important;
     color: #153359 !important;
     border: 0px !important;
-}
-
-.tos-dialog {
-    position: relative;
-    width: 800px !important;
-    margin-top: 0.5rem;
-    margin-bottom: 0.5rem;
-    pointer-events: none;
-    margin-left: auto !important;
-    margin-right: auto !important;
-}
-
-.tos-modal {
-    width: 800px !important;
-    height: 80vh !important;
+    max-width: 350px !important;
 }
 
 .sidebar-header > h4 {
@@ -463,15 +454,26 @@ ul.banner-social-buttons > li > a:active {
     overflow-x: hidden !important;
 }
 
+span.p-menuitem-icon.fa-bolt-lightning {
+    color: goldenrod !important;
+}
+.fa-circle-info {
+    color: forestgreen !important;
+}
+
 .fa-circle-question {
     color: #8dc0d3 !important;
 }
 
-.fa-user-tie {
-    color: #3737ff !important;
+.fa-toolbox {
+    color: silver !important;
 }
 
 .fa-chevron-right {
+    color: wheat !important;
+}
+
+.pi-angle-down {
     color: wheat !important;
 }
 
@@ -512,7 +514,7 @@ ul.banner-social-buttons > li > a:active {
 }
 
 .fa-clock-rotate-left {
-    color: silver !important;
+    color: steelblue !important;
 }
 
 input, textarea {
@@ -620,4 +622,165 @@ div.p-panel-content > p {
 
 .p-paginator-pages > button.p-highlight {
     background-color: #2b90c3 !important
+}
+
+.modal-dialog-centered {
+    justify-content: center !important;
+    display: flex !important;
+    margin: 0 auto !important;
+}
+
+div.collapsesidemenu > button.p-button-text > span.fa-angles-right {
+    -webkit-animation: color-change 10s infinite !important;
+    -moz-animation: color-change 10s infinite !important;
+    -o-animation: color-change 10s infinite !important;
+    -ms-animation: color-change 10s infinite !important;
+    animation: color-change 10s infinite !important;
+}
+
+@-webkit-keyframes color-change {
+    0% {
+        color: #df4863;
+    }
+    50% {
+        color: #2b90c3;
+    }
+    100% {
+        color: #df4863;
+    }
+}
+
+@-moz-keyframes color-change {
+    0% {
+        color: #df4863;
+    }
+    50% {
+        color: #2b90c3;
+    }
+    100% {
+        color: #df4863;
+    }
+}
+
+@-ms-keyframes color-change {
+    0% {
+        color: #df4863;
+    }
+    50% {
+        color: #2b90c3;
+    }
+    100% {
+        color: #df4863;
+    }
+}
+
+@-o-keyframes color-change {
+    0% {
+        color: #df4863;
+    }
+    50% {
+        color: #2b90c3;
+    }
+    100% {
+        color: #df4863;
+    }
+}
+
+@keyframes color-change {
+    0% {
+        color: #df4863;
+    }
+    50% {
+        color: #2b90c3;
+    }
+    100% {
+        color: #df4863;
+    }
+}
+
+body .p-menubar {
+    padding: 0;
+    background: transparent !important;
+    border: 0px !important;
+    position: static !important;
+}
+
+.p-menubar .p-menubar-root-list {
+    background: transparent !important;
+    border: 0 !important;
+}
+
+body .p-menubar, .p-menuitem-text {
+    background: transparent !important;
+    color: #FFFFFF;
+    font-size: 18px !important;
+    /*font-weight: 400 !important;*/
+    border: 0px !important;
+}
+
+body .p-menubar .p-menuitem-link {
+    background: transparent !important;
+    color: white !important;
+    font-size: 18px !important;
+    border: 0px !important;
+    width: 100%;
+}
+
+body .p-menubar .p-menuitem-link .p-menuitem-text {
+    background: transparent !important;
+    color: white !important;
+    font-size: 18px !important;
+    /*font-weight: 400 !important;*/
+    border: 0px !important;
+}
+
+body .p-menubar .p-menuitem.p-menuitem-active > .p-menuitem-link .p-menuitem-text {
+    background-color: rgb(9, 19, 35) !important;
+    color: #df4863 !important;
+    font-size: 18px !important;
+    /*font-weight: 400 !important;*/
+    border: 0px !important;
+}
+
+body .p-menubar .p-menuitem:focus > .p-menuitem-link .p-menuitem-text,
+body .p-menubar .p-menuitem:hover > .p-menuitem-link .p-menuitem-text {
+    color: #df4863 !important;
+    font-size: 18px !important;
+    border: 0px !important;
+}
+
+body .p-menubar .p-menuitem.p-menuitem-active > .p-menuitem-link {
+    background-color: rgb(9, 19, 35) !important;
+    color: #df4863 !important;
+    font-size: 18px !important;
+    /*font-weight: 400 !important;*/
+    border: 0px !important;
+}
+
+body .p-menubar .p-menuitem:focus > .p-menuitem-link,
+body .p-menubar .p-menuitem:hover > .p-menuitem-link {
+    color: #df4863 !important;
+    font-size: 18px !important;
+    /*font-weight: 400 !important;*/
+    border: 0px !important;
+}
+
+body .p-menubar .p-submenu-list {
+    background: rgb(9, 19, 35) !important;
+    border: 0 !important;
+}
+
+.p-menubar .p-menubar-button:hover,
+.p-menubar .p-menubar-button:active,
+.p-menubar .p-menubar-button:focus {
+    background: transparent !important;
+}
+
+.p-menubar.p-menubar-mobile-active .p-menubar-root-list {
+    height: 100vh !important;
+    background-color: rgb(9, 19, 35) !important;
+}
+
+.info-text-end {
+    margin-left: auto;
 }

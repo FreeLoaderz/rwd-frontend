@@ -1,61 +1,247 @@
-/* This CSS files overrides and supplements Bootstrap's responsive design */
-@media only screen and (min-width: 960px) {
-    /* styles for browsers larger than 960px !important; */
-}
-
-@media only screen and (min-width: 1200px) {
-    /* styles for browsers larger than 1200px !important; */
-}
-
-@media only screen and (min-width: 1440px) {
-    /* styles for browsers larger than 1440px !important; */
-}
-
-@media only screen and (min-width: 1900px) {
-    /* for sumo sized (mac) screens */
-}
-@media only screen and (max-device-width: 1160px) {
-    .rewards-view {
-        width: 90vw !important;
+@media only screen and (max-device-height: 900px) {
+    .router-wrapper {
+        padding-top: 50px !important;
     }
+}
+
+@media only screen and (max-device-height: 800px) {
+    #network {
+        font-size: 12px !important;
+    }
+}
+
+@media only screen and (max-device-height: 700px) {
+}
+
+@media only screen and (max-device-height: 500px) {
+    .p-button {
+        padding: 0.1rem .5rem !important;
+        font-size: .8rem !important;
+    }
+
+    .grid-item-bottom {
+        bottom: .1rem !important;
+    }
+
+    .history-search {
+        margin-top: -11px !important;
+        height: 26px !important;
+        width: 150px !important;
+    }
+}
+
+@media only screen and (max-device-width: 1400px) {
+    .data-view {
+        width: 85vw !important;
+    }
+
+    .data-header {
+        width: 85vw !important;
+    }
+}
+
+
+@media only screen and (max-device-width: 1160px) {
+    .p-button {
+        padding: 0.1rem .5rem !important;
+        font-size: .8rem !important;
+    }
+
+    .grid-item-bottom {
+        bottom: .1rem !important;
+    }
+
+    .history-search {
+        margin-top: -11px !important;
+        height: 26px !important;
+        width: 150px !important;
+    }
+
+    .data-view {
+        width: 95vw !important;
+    }
+
+    .data-header {
+        width: 95vw !important;
+        margin-left: .5em;
+    }
+
+    .blinking20 {
+        height: 128px !important;
+        width: 333px !important;
+    }
+
     .claimall {
         width: auto !important;
         margin-left: 1em !important;
         mergin-right: auto !important;
     }
+
+    .intro .intro-body .brand-heading {
+        font-size: 74px !important;
+        text-shadow: 4px .4rem .4rem #000000 !important;
+    }
+
+    .p-datatable .p-datatable-tbody > tr > td {
+        padding: 0.1rem 0.1rem !important;
+    }
+
+    .p-datatable .p-datatable-thead > tr > th {
+        padding: 0.1rem 0.1rem !important;
+    }
+
+    .p-datatable .p-datatable-header {
+        padding: 0 !important;
+    }
 }
+
+@media only screen and (max-device-width: 960px) {
+    .content-section {
+        padding-top: 20px !important
+    }
+}
+
 @media only screen and (max-device-width: 800px) {
     /* styles for mobile browsers smaller than 480px !important; (iPhone) */
     dl.faq button {
         font-size: 14px;
     }
+
+    .tos-modal {
+        width: 100vw !important;
+    }
+
+    .btn-circle {
+        width: 50px !important;
+        height: 50px !important;
+        margin-top: 12px !important;
+        padding: 2px 12px !important;
+        border: 2px solid #fff !important;
+        font-size: 31px !important;
+    }
+
+    .info-text-end {
+        margin-left: 0 !important;
+        margin-right: auto !important;
+        justify-content: left !important;
+        text-align: left !important;
+    }
+
+    .info-right {
+        display: flex;
+        padding-left: 1vw !important;
+        padding-right: 1vw !important;
+        justify-content: center;
+    }
+
+    .info-left {
+        display: flex;
+        padding-left: 1vw !important;
+        padding-right: 1vw !important;
+        justify-content: center;
+    }
+
+    .info-view {
+        width: 99vw;
+        min-height: 100vh;
+        height: auto;
+    }
+
+    .info-header {
+        display: flex;
+        width: 99vw;
+    }
+
+    .info-text {
+        font-size: 18px;
+        display: block !important;
+    }
+
+}
+
+@media only screen and (max-device-width: 900px) {
+    .p-button {
+        padding: 0.1rem .5rem !important;
+        font-size: .8rem !important;
+    }
+
+    .grid-item-bottom {
+        bottom: .1rem !important;
+    }
+
     .blinking20 {
         height: 116px !important;
         width: 300px !important;
     }
-}
-@media only screen and (max-device-width: 900px) {
+
+    .history-search {
+        margin-top: -11px !important;
+        height: 26px !important;
+        width: 150px !important;
+    }
+
     .banner-social-buttons {
         display: block !important;
     }
+
     .banner-social-buttons > li {
         margin-bottom: 15px !important;
         margin-left: 0 !important;
+    }
+
+    #copyright > span > p {
+        font-size: 10px !important;
+    }
+
+    .intro .intro-body .brand-heading {
+        font-size: 56px !important;
+        text-shadow: 4px .4rem .4rem #000000 !important;
+    }
+
+    dl.faq .desc {
+        font-size: small !important;
+    }
+
+    .toggleButton {
+        font-size: 16px !important;
+    }
+
+    .fa-solid {
+        line-height: inherit !important;
+    }
+
+    dd {
+        margin-left: .5em !important;
     }
 }
 
 @media only screen and (max-device-width: 480px) {
     /* styles for mobile browsers smaller than 480px !important; (iPhone) */
-}
-@media only screen and (device-width: 768px) {
-    /* default iPad screens */
+    .intro .intro-body .brand-heading {
+        font-size: 42px !important;
+        text-shadow: 3px .3rem .3rem #000000;
+    }
+
+    .history-search {
+        margin-top: -11px !important;
+        height: 26px !important;
+        width: 100px !important;
+    }
 }
 
-/* different techniques for iPad screening */
-@media only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation: portrait) {
-    /* For portrait layouts only */
-}
+@media only screen and (max-device-width: 319px) {
+    /* styles for mobile browsers smaller than 480px !important; (iPhone) */
+    .intro .intro-body .brand-heading {
+        font-size: 32px !important;
+        text-shadow: 3px .3rem .3rem #000000;
+    }
 
-@media only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation: landscape) {
-    /* For landscape layouts only */
+    .blinking20 {
+        height: 78px !important;
+        width: 200px !important;
+    }
+
+    .modal-dialog {
+        width: 99vw !important;
+    }
 }

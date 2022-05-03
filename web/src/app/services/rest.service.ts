@@ -6,9 +6,20 @@ import {map} from 'rxjs/operators';
 
 @Injectable()
 export class RestService {
+    public static useNewEndpoints = false;
     public static processingRequest: boolean = false;
 
     constructor(private httpClient: HttpClient) {
+    }
+
+    public testNewEndpoint() {
+        const headers = new HttpHeaders().set('Content-Type', 'application/json').set('authorization', 'Eevoo0aemah1ohY6Oheehee4ivahR5ae');
+        const url = '/rwdinfo/rwd/all/abcdefg';
+        RestService.processingRequest = true;
+        return lastValueFrom(this.httpClient
+            .get(url, {headers: headers}))
+            .then(res => this.processResponse(res))
+            .catch(this.handleError);
     }
 
     public submitFeedback(contactUsForm: FormGroup): Observable<any> {
@@ -21,7 +32,6 @@ export class RestService {
         params = params.set('entry.1773168385', globalThis.ipAddress);
 
         RestService.processingRequest = true;
-        console.log(url);
         return this.httpClient
             .get(url, {responseType: 'text', params: params, observe: 'response'})
             .pipe(map(data => {
@@ -34,9 +44,21 @@ export class RestService {
 
     public getAvailableTokens() {
         const headers = new HttpHeaders().set('Content-Type', 'application/json').set('authorization', 'Eevoo0aemah1ohY6Oheehee4ivahR5ae');
-        const url = '/rwdinfo/rewards/all/' + globalThis.wallet.sending_stake_addr;
+        let url = '/rwdinfo/rewards/all/' + globalThis.wallet.sending_stake_addr;
+         if (RestService.useNewEndpoints === true) {
+            url = '/rwdinfo/rwd/all/' + globalThis.wallet.sending_stake_addr;
+        }
         RestService.processingRequest = true;
-        console.log(url);
+        return lastValueFrom(this.httpClient
+            .get(url, {headers: headers}))
+            .then(res => this.processResponse(res))
+            .catch(this.handleError);
+    }
+
+    public getAvailableForToken(customerId: string, contractId: string) {
+        const headers = new HttpHeaders().set('Content-Type', 'application/json').set('authorization', 'Eevoo0aemah1ohY6Oheehee4ivahR5ae');
+        const url = '/rwdinfo/rwd/one/' + customerId + '/' + contractId + '/' + globalThis.wallet.sending_stake_addr;
+        RestService.processingRequest = true;
         return lastValueFrom(this.httpClient
             .get(url, {headers: headers}))
             .then(res => this.processResponse(res))
@@ -45,7 +67,10 @@ export class RestService {
 
     public buildTokenClaimTx(customerId: string, multiSigType: string) {
         const headers = new HttpHeaders().set('Content-Type', 'application/json').set('authorization', 'Eevoo0aemah1ohY6Oheehee4ivahR5ae');
-        const url = '/rwdbuild/multisig/' + customerId + '/' + multiSigType;
+        let url = '/rwdbuild/multisig/' + customerId + '/' + multiSigType;
+         if (RestService.useNewEndpoints === true ) {
+            url = '/rwdbuild/ms/' + customerId + '/' + multiSigType;
+        }
         RestService.processingRequest = true;
 
         return lastValueFrom(this.httpClient
@@ -56,7 +81,10 @@ export class RestService {
 
     public getRewardHistory() {
         const headers = new HttpHeaders().set('Content-Type', 'application/json').set('authorization', 'Eevoo0aemah1ohY6Oheehee4ivahR5ae');
-        const url = '/rwdinfo/rewards/history/' + globalThis.wallet.sending_stake_addr;
+        let url = '/rwdinfo/rewards/history/' + globalThis.wallet.sending_stake_addr;
+         if (RestService.useNewEndpoints === true ) {
+            url = '/rwdinfo/rwd/history/' + globalThis.wallet.sending_stake_addr;
+        }
         RestService.processingRequest = true;
 
         return lastValueFrom(this.httpClient
@@ -66,9 +94,22 @@ export class RestService {
 
     }
 
+    public getRewardHistoryForToken(customerId: string, contractId: string) {
+        const headers = new HttpHeaders().set('Content-Type', 'application/json').set('authorization', 'Eevoo0aemah1ohY6Oheehee4ivahR5ae');
+        const url = '/rwdinfo/rwd/history/' + customerId + '/' + contractId + '/' + globalThis.wallet.sending_stake_addr;
+        RestService.processingRequest = true;
+        return lastValueFrom(this.httpClient
+            .get(url, {headers: headers}))
+            .then(res => this.processResponse(res))
+            .catch(this.handleError);
+    }
+
     public signAndFinalizeTx(customerId: number, multiSigType: string, signature: any, data: any) {
         const headers = new HttpHeaders().set('Content-Type', 'application/json').set('authorization', 'Eevoo0aemah1ohY6Oheehee4ivahR5ae');
-        const url = '/rwdbuild/multisig/finalize/' + customerId + '/' + multiSigType + '/' + data.id;
+        let url = '/rwdbuild/multisig/finalize/' + customerId + '/' + multiSigType + '/' + data.id;
+         if (RestService.useNewEndpoints === true ) {
+            url = '/rwdbuild/ms/fn/' + customerId + '/' + multiSigType + '/' + data.id;
+        }
         RestService.processingRequest = true;
 
         const params = {'signature': signature};
@@ -80,7 +121,10 @@ export class RestService {
 
     public generateRewards(customerId: string, script: any) {
         const headers = new HttpHeaders().set('Content-Type', 'application/json').set('authorization', 'Eevoo0aemah1ohY6Oheehee4ivahR5ae');
-        const url = '/rwdbuild/multisig/' + customerId + '/testrewards';
+        let url = '/rwdbuild/multisig/' + customerId + '/testrewards';
+         if (RestService.useNewEndpoints === true ) {
+            url = '/rwdbuild/ms/' + customerId + '/testrewards';
+        }
         RestService.processingRequest = true;
 
         return lastValueFrom(this.httpClient

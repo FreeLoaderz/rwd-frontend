@@ -1,23 +1,23 @@
 import {Component, HostListener, OnDestroy, OnInit} from "@angular/core";
-import {NotificationComponent} from "../../notification/notification.component";
-import {NavigationEnd, Router} from "@angular/router";
+import {NotificationComponent} from "../notification/notification.component";
+import {Router} from "@angular/router";
 import {NotifierService} from "angular-notifier";
 import {Title} from "@angular/platform-browser";
 import {Subscription} from "rxjs";
-import {RestService} from "../../../services/rest.service";
-import {WalletObserverService} from "../../../services/wallet-observer.service";
-import {WalletService} from "../../../services/wallet.service";
+import {RestService} from "../../services/rest.service";
+import {WalletObserverService} from "../../services/wallet-observer.service";
+import {WalletService} from "../../services/wallet.service";
 import {DatePipe} from "@angular/common";
-import {HistoricalClaim} from "../../../data/historical-claim";
-import {ColorService} from "../../../services/color.service";
+import {HistoricalClaim} from "../../data/historical-claim";
+import {ColorService} from "../../services/color.service";
 import * as d3 from "d3-scale-chromatic";
-import {HistogramData} from "../../../data/histogram-data";
+import {HistogramData} from "../../data/histogram-data";
 
 declare let gtag: Function;
 
 @Component({
     selector: 'history',
-    styleUrls: ['../../../../styles/page-content.css'],
+    styleUrls: ['../../../styles/page-content.css'],
     templateUrl: './history.html'
 })
 
@@ -33,10 +33,8 @@ export class HistoryComponent extends NotificationComponent implements OnInit, O
     public chartsHidden: boolean = true;
     public rowHeight: number = 42.25;
     public maxRows: number = 10;
-    public maxChartHeight: number = 422;
-    public maxChartRowHeight: number = 211;
-    public maxChartWidth: number = 1000;
-    public halfChartWidth: number = 300;
+    public compress: boolean = false;
+    public moreThanAMonth: boolean = false;
     // Charts
     public donutData: any;
     public donutOptions: any;
@@ -54,17 +52,10 @@ export class HistoryComponent extends NotificationComponent implements OnInit, O
                 public notifierService: NotifierService) {
         super(notifierService);
         this.titleService.setTitle("History");
-        this.historyCols = [
-            {field: 'displayTS', header: 'Date/Time'},
-            {field: 'stake_addr', header: 'Stake Address', hidden: true},
-            {field: 'payment_addr', header: 'Payment Address', hidden: true},
-            {field: 'displayName', header: 'Token Name'},
-            {field: 'amount', header: 'Amount'},
-            {field: 'txURL', header: 'Tx Hash', exportable: false},
-            {field: 'txhash', header: 'Raw Tx Hash', hidden: true}];
         const dateString = this.datePipe.transform(new Date(), 'yyyy-MM-dd');
         this.exportFileName = "Historical_SmartClaimz_".concat(dateString);
-        this.setMaxRows(null);
+        this.setMaxRows();
+        this.setColumns();
     }
 
     public ngOnInit() {
@@ -130,6 +121,9 @@ export class HistoryComponent extends NotificationComponent implements OnInit, O
             const monthMap: Map<number, Array<HistoricalClaim>> = basicMap.get(sortedYears[i]);
             const monthKeys: Array<number> = [...monthMap.keys()];
             const sortedMonths: number[] = monthKeys.sort((n1, n2) => n1 - n2);
+            if ((!this.moreThanAMonth) && (sortedMonths.length > 1)) {
+                this.moreThanAMonth = true;
+            }
             if (i === 0) {
                 minMonth = sortedMonths[0];
             }
@@ -138,7 +132,7 @@ export class HistoryComponent extends NotificationComponent implements OnInit, O
             }
             for (let j = 0; j < sortedMonths.length; ++j) {
                 const monthTotalByToken: Map<string, number> = new Map<string, number>();
-                const claimArray: Array<HistoricalClaim> = monthMap.get(sortedMonths[i]);
+                const claimArray: Array<HistoricalClaim> = monthMap.get(sortedMonths[j]);
                 claimArray.forEach(claim => {
                     if (monthTotalByToken.has(claim.displayName)) {
                         const curAmount: number = +monthTotalByToken.get(claim.displayName);
@@ -177,6 +171,7 @@ export class HistoryComponent extends NotificationComponent implements OnInit, O
             const histData = tokenMap.get(tokenNames[i]);
             histData.setArray(minYear, minMonth, maxYear, maxMonth);
             histData.backgroundColor = chartColors[i];
+            histData.borderColor = chartColors[i];
         }
 
         const basicLabels: Array<string> = HistogramData.getLabels(minYear, minMonth, maxYear, maxMonth);
@@ -207,7 +202,49 @@ export class HistoryComponent extends NotificationComponent implements OnInit, O
     }
 
     @HostListener('window:resize', ['$event'])
-    public setMaxRows(event?) {
+    public windowResize(event?) {
+        this.setColumns();
+        this.setMaxRows();
+    }
+
+    public setColumns() {
+        if (window.innerWidth <= 600) {
+            this.historyCols = [
+                {field: 'shortDate', header: 'Time'},
+                {field: 'stake_addr', header: 'Stake Address', hidden: true},
+                {field: 'payment_addr', header: 'Payment Address', hidden: true},
+                {field: 'displayName', header: 'Token'},
+                {field: 'amount', header: 'Amt'},
+                {field: 'txSuperShortURL', header: 'Hash', exportable: false},
+                {field: 'txhash', header: 'Raw Tx Hash', hidden: true}];
+        } else if (window.innerWidth <= 1200) {
+            this.historyCols = [
+                {field: 'displayTS', header: 'Date/Time'},
+                {field: 'stake_addr', header: 'Stake Address', hidden: true},
+                {field: 'payment_addr', header: 'Payment Address', hidden: true},
+                {field: 'displayName', header: 'Token'},
+                {field: 'amount', header: 'Amount'},
+                {field: 'txShortURL', header: 'Tx Hash', exportable: false},
+                {field: 'txhash', header: 'Raw Tx Hash', hidden: true}];
+        } else {
+            this.historyCols = [
+                {field: 'displayTS', header: 'Date/Time'},
+                {field: 'stake_addr', header: 'Stake Address', hidden: true},
+                {field: 'payment_addr', header: 'Payment Address', hidden: true},
+                {field: 'displayName', header: 'Token'},
+                {field: 'amount', header: 'Amount'},
+                {field: 'txURL', header: 'Tx Hash', exportable: false},
+                {field: 'txhash', header: 'Raw Tx Hash', hidden: true}];
+        }
+        this.historyCols = [...this.historyCols];
+        if (window.innerWidth < 700) {
+            this.compress = true;
+        } else {
+            this.compress = false;
+        }
+    }
+
+    public setMaxRows() {
         globalThis.screenHeight = window.innerHeight;
         const tempMaxRows = +((globalThis.screenHeight - 400) / this.rowHeight).toFixed(0);
         if (tempMaxRows < 10) {
@@ -215,14 +252,12 @@ export class HistoryComponent extends NotificationComponent implements OnInit, O
         } else {
             this.maxRows = tempMaxRows;
         }
-        this.maxChartHeight = +((this.maxRows * this.rowHeight) + 80).toFixed(0);
-        this.maxChartRowHeight = +(this.maxChartHeight / 2).toFixed(0);
         this.generateCharts();
     }
 
     @HostListener('window:orientationchange', ['$event'])
     public onOrientationChange(event) {
-        this.setMaxRows(event);
+        this.windowResize(event);
     }
 
     public ngOnDestroy() {
