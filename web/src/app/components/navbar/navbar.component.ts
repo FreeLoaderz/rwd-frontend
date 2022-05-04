@@ -186,11 +186,11 @@ export class NavbarComponent extends NotificationComponent implements OnInit, Af
             label: 'EXPLORE',
             id: 'TOKENMETADATA',
             title: 'Find all listed tokens',
-            icon: 'fa-solid fa-bag-shopping',
+            icon: 'fa-solid fa-compass',
             command: (event) => {
                 this.routeTokenMetadata();
             }
-        }; 
+        };
 
         if (!this.isTestNet) {
             this.helpMenu = [{
@@ -198,8 +198,10 @@ export class NavbarComponent extends NotificationComponent implements OnInit, Af
                 id: 'HELP',
                 title: 'Contact us, FAQ',
                 icon: 'fa-solid fa-circle-info',
-                items: [this.contactUsMenuItem,
-                    this.faqMenuItem, this.tokenMetadataMenuItem]
+                items: [
+                    this.contactUsMenuItem,
+                    this.faqMenuItem,
+                    this.tokenMetadataMenuItem]
             }];
             this.collapsedConnectedMenu = [
                 this.claimzMenuItem,
@@ -220,6 +222,7 @@ export class NavbarComponent extends NotificationComponent implements OnInit, Af
                 icon: 'fa-solid fa-circle-info',
                 items: [this.contactUsMenuItem,
                     this.faqMenuItem,
+                    this.tokenMetadataMenuItem,
                     this.testnetMenu]
             }];
             this.collapsedConnectedMenu = [
@@ -356,7 +359,7 @@ export class NavbarComponent extends NotificationComponent implements OnInit, Af
     }
 
     public routeTokenMetadata() {
-        this.router.navigate(['/explore'])
+        this.router.navigate(['/explore']);
     }
 
     public routeTestnet() {

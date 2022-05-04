@@ -457,6 +457,9 @@ ul.banner-social-buttons > li > a:active {
 span.p-menuitem-icon.fa-bolt-lightning {
     color: goldenrod !important;
 }
+.fa-compass {
+    color: silver !important;
+}
 .fa-circle-info {
     color: forestgreen !important;
 }
@@ -466,7 +469,7 @@ span.p-menuitem-icon.fa-bolt-lightning {
 }
 
 .fa-toolbox {
-    color: silver !important;
+    color: dimgray !important;
 }
 
 .fa-chevron-right {
@@ -754,6 +757,7 @@ body .p-menubar .p-menuitem.p-menuitem-active > .p-menuitem-link {
     color: #df4863 !important;
     font-size: 18px !important;
     /*font-weight: 400 !important;*/
+    border: 0px !important;
     border: 0px !important;
 }
 
