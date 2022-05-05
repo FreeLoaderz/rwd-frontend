@@ -42,7 +42,7 @@ export class Token {
                     this.last_calc_epoch = data.last_calc_epoch;
                 }
                 if (data.logo) {
-                    this.logo = data.logo
+                    this.logo = data.logo;
                 }
             }catch (e){
                 console.log("TOKEN ERROR");

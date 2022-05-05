@@ -101,31 +101,6 @@ export class TokenMetadataService {
         localStorage.setItem('tokenMetadata', JSON.stringify(metadataList));
     }
 
-    /**
-     * with different policy id's for each coin, this method doesn't really make sense.
-     *
-     * Get what policy id?  Which token?
-     *
-     * Plus it returns a string in one case and an array in another.  This should *not* be called from a component.
-     */
-    public getPolicyIdSubstring() {
-        if (this.policySubstring != null) {
-            // this returns a single string
-            return this.policySubstring;
-        } else {
-            const metadata = globalThis.tokenMetadata;
-            const policyArray = [];
-            const policies = metadata.keys();
-            for (let policy of policies) {
-                this.policySubstring = policy.slice(0, policy.length / 8) + "..." + policy.slice(policy.length - 10);
-                policyArray.push(this.policySubstring);
-            }
-            // Need to add *NgFor in html  <---  This has no HTML
-            // this returns an array..
-            return policyArray;
-        }
-    }
-
     handleError(error: any) {
         const errMsg = (error.message) ? error.message : error.status ? `${error.status} - ${error.statusText}` : 'Unknown Server error';
         console.log(errMsg);

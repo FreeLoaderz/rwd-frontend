@@ -468,9 +468,9 @@ span.p-menuitem-icon.fa-bolt-lightning {
     color: #8dc0d3 !important;
 }
 
-.fa-toolbox {
-    color: dimgray !important;
-}
+.fa-toolbox {	
+    color: silver !important;	
+}	
 
 .fa-chevron-right {
     color: wheat !important;

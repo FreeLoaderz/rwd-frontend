@@ -4,8 +4,7 @@
         <div class="blackdiv" style="padding-top: 0px;">
             <p-orderList [value]="listAllTokens" filterBy="name" filterPlaceholder="Filter by name" [dragdrop]="true">
                 <ng-template class="token-container" pTemplate="body" let-rowData>
-                    <!-- you loop over listAllTokens, not policy -->
-            <!--        <div *ngFor="let policy of getPolicyIdSubstring()" class="token-item"> -->
+                   <div class="token-item">
                         <div class="image-container">
                             <img src="data:image/png;base64,{{rowData.logo}}">
                         </div>
@@ -18,10 +17,9 @@
                             <p style="margin-right: 1.5rem; font-size: x-small;"><a class="spanlinkMetadata" target="_blank" href="https://cardanoscan.io/token/{{rowData.policy}}">{{rowData.policy}}</a></p>
                         </div>
                         <div class="token-list-action">
-                            <!-- <h5 style="color: blue;">Website</h5> -->
                             <p style="margin-right: 1rem;"><a class="spanlinkMetadata" target="_blank" href="{{rowData.url}}">{{rowData.url}}</a></p>
                         </div>
-             <!--       </div> -->
+                   </div>
                 </ng-template>
             </p-orderList>  
         </div>
