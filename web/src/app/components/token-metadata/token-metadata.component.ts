@@ -15,7 +15,7 @@ export class TokenMetaDataComponent implements OnInit, OnDestroy {
     public tokenMetadata: Map<string, TokenMetadata> = new Map<string, TokenMetadata>();
     public listAllTokens: Array<TokenMetadata> = [];
 
-    columns: any[];
+    public policyArray: Array<string> = [];
 
     @ViewChild('tokenView', {static: false}) public tokenView: any;
 
@@ -42,32 +42,18 @@ export class TokenMetaDataComponent implements OnInit, OnDestroy {
 
     public processMetadata(exploreMetadata: TokenMetadata) {
         if (exploreMetadata.policy) {
-            const getTokenMetadata = new TokenMetadata(exploreMetadata);
-            this.listAllTokens.push(getTokenMetadata);
-            /**
-             * This below is "key -> value" pair, but your tokens all have different policies
-             *
-             * With how this is written, you end up putting the previous token(s) into the value for the "next" policy
-             *
-             * If you want to group by policy, you need a separate list.
-             * Check if globalThis.tokenMetadata has the key.
-             * If it doesn't, create a new list and add the value.
-             * If it does, get the list using the key, and then add the value.
-             */
-            globalThis.tokenMetadata.set(getTokenMetadata.policy, this.listAllTokens);
-            this.listAllTokens = [...this.listAllTokens.values()];
+            this.listAllTokens.push(exploreMetadata);
+            this.listAllTokens = [...this.listAllTokens];
+            
+            globalThis.tokenMetadata.set(exploreMetadata.policy, exploreMetadata);
         }
     }
 
     public setPolicy() {
         if (window.innerWidth <= 700) {
-            this.columns = [
-                {field: 'shortPolicy', header: null}
-            ];
-        } else {
-            this.columns = [
-                {field: 'policy', header: null}
-            ];
+            for (const item of globalThis.tokenMetadata.values()) {
+                item.policy = item.shortPolicy;
+            }
         }
     }
 
