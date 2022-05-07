@@ -7,7 +7,7 @@
 html {
     height: 100%
 }
-
+/**
 .no-webp > body {
     background-image: url('../assets/rwd-background.png');
     background-color: #102648;
@@ -29,7 +29,7 @@ html {
     width: 100vw;
     height: 100vh;
 }
-
+**/
 body {
     overflow-x: hidden !important;
     overscroll-behavior: none !important;
@@ -762,4 +762,531 @@ body .p-menubar .p-submenu-list {
 
 .info-text-end {
     margin-left: auto;
+}
+
+body.body0 {
+    background-image: url('../assets/rwd-background.png');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+}
+
+body.body1 {
+    background-image: url('../assets/backgrounds/AdobeStock_90255671_Preview.jpeg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+}
+body.body2 {
+    background-image: url('../assets/backgrounds/AdobeStock_90326503_Preview.jpeg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+}
+body.body3 {
+    background-image: url('../assets/backgrounds/AdobeStock_93743924_Preview.jpeg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+}
+body.body4 {
+    background-image: url('../assets/backgrounds/AdobeStock_103040999_Preview.jpeg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+}
+body.body5 {
+    background-image: url('../assets/backgrounds/AdobeStock_103041007_Preview.jpeg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+}
+body.body6 {
+    background-image: url('../assets/backgrounds/AdobeStock_106125766_Preview.jpeg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+}
+body.body7 {
+    background-image: url('../assets/backgrounds/AdobeStock_106777414_Preview.jpeg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+}
+body.body8 {
+    background-image: url('../assets/backgrounds/AdobeStock_106777556_Preview.jpeg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+}
+body.body9 {
+    background-image: url('../assets/backgrounds/AdobeStock_112890692_Preview.jpeg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+}
+body.body10 {
+    background-image: url('../assets/backgrounds/AdobeStock_115598484_Preview.jpeg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+}
+body.body11 {
+    background-image: url('../assets/backgrounds/AdobeStock_115607034_Preview.jpeg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+}
+body.body12 {
+    background-image: url('../assets/backgrounds/AdobeStock_115608050_Preview.jpeg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+}
+body.body13 {
+    background-image: url('../assets/backgrounds/AdobeStock_119484163_Preview.jpeg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+}
+body.body14 {
+    background-image: url('../assets/backgrounds/AdobeStock_128410531_Preview.jpeg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+}
+body.body15 {
+    background-image: url('../assets/backgrounds/AdobeStock_132366202_Preview.jpeg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+}
+body.body16 {
+    background-image: url('../assets/backgrounds/AdobeStock_144143126_Preview.jpeg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+}
+body.body17 {
+    background-image: url('../assets/backgrounds/AdobeStock_162721786_Preview.jpeg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+}
+body.body18 {
+    background-image: url('../assets/backgrounds/AdobeStock_162721935_Preview.jpeg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+}
+body.body19 {
+    background-image: url('../assets/backgrounds/AdobeStock_162723053_Preview.jpeg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+}
+body.body20 {
+    background-image: url('../assets/backgrounds/AdobeStock_218012314_Preview.jpeg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+}
+body.body21 {
+    background-image: url('../assets/backgrounds/AdobeStock_358542064_Preview.jpeg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+}
+body.body22 {
+    background-image: url('../assets/backgrounds/AdobeStock_358594783_Preview.jpeg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+}
+body.body23 {
+    background-image: url('../assets/backgrounds/AdobeStock_358599529_Preview.jpeg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+}
+body.body24 {
+    background-image: url('../assets/backgrounds/AdobeStock_455204419_Preview.jpeg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+}
+body.body25 {
+    background-image: url('../assets/backgrounds/AdobeStock_456634036_Preview.jpeg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+}
+body.body26 {
+    background-image: url('../assets/backgrounds/AdobeStock_456634837_Preview.jpeg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+}
+body.body27 {
+    background-image: url('../assets/backgrounds/AdobeStock_459107688_Preview.jpeg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+}
+body.body28 {
+    background-image: url('../assets/backgrounds/AdobeStock_462628086_Preview.jpeg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+}
+body.body29 {
+    background-image: url('../assets/backgrounds/AdobeStock_462995716_Preview.jpeg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+}
+body.body30 {
+    background-image: url('../assets/backgrounds/AdobeStock_465478912_Preview.jpeg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+}
+body.body31 {
+    background-image: url('../assets/backgrounds/AdobeStock_467282674_Preview.jpeg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+}
+body.body32 {
+    background-image: url('../assets/backgrounds/11.png');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+}
+body.body33 {
+    background-image: url('../assets/backgrounds/12.png');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+}
+body.body34 {
+    background-image: url('../assets/backgrounds/13.png');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+}
+body.body35 {
+    background-image: url('../assets/backgrounds/14.png');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+}
+body.body36 {
+    background-image: url('../assets/backgrounds/17.png');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+}
+body.body37 {
+    background-image: url('../assets/backgrounds/26.png');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+}
+body.body38 {
+    background-image: url('../assets/backgrounds/C4D_044_01.jpg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+}
+body.body39 {
+    background-image: url('../assets/backgrounds/EarthFromMoon.jpg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+}
+body.body40 {
+    background-image: url('../assets/backgrounds/01.jpg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+}
+body.body41 {
+    background-image: url('../assets/backgrounds/02.jpg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+}
+body.body42 {
+    background-image: url('../assets/backgrounds/03.jpg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+}
+body.body43 {
+    background-image: url('../assets/backgrounds/04.jpg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+}
+body.body44 {
+    background-image: url('../assets/backgrounds/05.jpg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+}
+body.body45 {
+    background-image: url('../assets/backgrounds/earthview.jpg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+}
+body.body46 {
+    background-image: url('../assets/backgrounds/fl2.png');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+}
+body.body47 {
+    background-image: url('../assets/backgrounds/fl3.png');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+}
+body.body48 {
+    background-image: url('../assets/backgrounds/fl4.png');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+}
+body.body49 {
+    background-image: url('../assets/backgrounds/fl5.png');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+}
+body.body50 {
+    background-image: url('../assets/backgrounds/fl6.png');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+}
+body.body51 {
+    background-image: url('../assets/backgrounds/fl7.png');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+}
+body.body52 {
+    background-image: url('../assets/backgrounds/fl8.jpg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+}
+body.body53 {
+    background-image: url('../assets/backgrounds/flz1.png');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+}
+body.body54 {
+    background-image: url('../assets/backgrounds/freeloaderzlogo.jpg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+}
+body.body55 {
+    background-image: url('../assets/backgrounds/MoonFlag.jpg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+}
+body.body56 {
+    background-image: url('../assets/backgrounds/MoonFlag2.jpg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+}
+body.body57 {
+    background-image: url('../assets/backgrounds/moonlanding.jpg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+}
+.fa-angles-right {
+    color: #061c35 !important;
 }

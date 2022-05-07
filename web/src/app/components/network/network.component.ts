@@ -16,6 +16,7 @@ import {ModalDirective} from "ngx-bootstrap/modal";
 export class NetworkComponent implements OnInit, OnDestroy {
     public walletSubscription: Subscription;
     public network: string = "";
+    public backgroundIndex: number = 0;
     @ViewChild('terms', {static: false}) public terms: ModalDirective;
 
     constructor(public walletObserverService: WalletObserverService, public walletService: WalletService) {
@@ -59,5 +60,13 @@ export class NetworkComponent implements OnInit, OnDestroy {
 
     public ngOnDestroy() {
         this.walletSubscription.unsubscribe();
+    }
+
+    public setBodyBackground() {
+        document.body.classList.remove("body".concat(this.backgroundIndex.toFixed(0)));
+        if (++this.backgroundIndex > 57) {
+            this.backgroundIndex = 0;
+        }
+        document.body.classList.add("body".concat(this.backgroundIndex.toFixed(0)));
     }
 }
