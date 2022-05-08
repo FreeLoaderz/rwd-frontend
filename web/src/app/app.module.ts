@@ -30,9 +30,11 @@ import {AppRoutingModule} from "./app-routing.module";
 import {NgbCollapseModule} from "@ng-bootstrap/ng-bootstrap";
 import {NetworkComponent} from "./components/network/network.component";
 import {TestnetComponent} from "./components/testnet/testnet.component";
-import { FaqComponent } from './components/faq/faq.component';
+import {FaqComponent} from './components/faq/faq.component';
 import {ChartModule} from "primeng/chart";
-import { SharedModule } from 'primeng/api';
+import {SharedModule} from 'primeng/api';
+import {MaintenanceComponent} from "./components/maintenance/maintenance.component";
+import {PropertyService} from "./services/property.service";
 
 const customNotifierOptions: NotifierOptions = {
     position: {
@@ -49,7 +51,7 @@ const customNotifierOptions: NotifierOptions = {
     theme: 'material',
     behaviour: {
         autoHide: 5000,
-        onClick: false,
+        onClick: 'hide',
         onMouseover: 'pauseAutoHide',
         showDismissButton: false,
         stacking: 5
@@ -78,7 +80,7 @@ const customNotifierOptions: NotifierOptions = {
 };
 
 @NgModule({
-    declarations: [NavbarComponent, WelcomeComponent, FooterComponent, InfoComponent, RewardsComponent,
+    declarations: [NavbarComponent, WelcomeComponent, FooterComponent, InfoComponent, RewardsComponent, MaintenanceComponent,
         ContactUsComponent, HistoryComponent, NetworkComponent, TestnetComponent, FaqComponent],
     imports: [BrowserModule, FormsModule, ReactiveFormsModule, AppRoutingModule, RouterModule,
         TooltipModule.forRoot(), OverlayPanelModule, ModalModule.forRoot(),
@@ -88,7 +90,7 @@ const customNotifierOptions: NotifierOptions = {
         DropdownModule, MenubarModule, DataViewModule, ImageModule,
         ButtonModule, PanelModule, BrowserAnimationsModule],
     bootstrap: [NavbarComponent],
-    providers: [RestService, WalletObserverService, WalletService]
+    providers: [RestService, WalletObserverService, WalletService, PropertyService]
 })
 
 export class AppModule {

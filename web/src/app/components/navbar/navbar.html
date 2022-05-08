@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark bg-clear">
+<nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-black bg-clear">
     <div class="container-fluid">
         <ul class="navbar-nav ms-2 mb-2">
             <li *ngIf="compressMenu" class="nav-item">
@@ -11,7 +11,7 @@
             </li>
         </ul>
         <div *ngIf="compressMenu" id="mainnav">
-            <ul style="float: right;" class="navbar-nav ms-auto me-1 mb-2">
+            <ul style="float: right;" class="navbar-nav ms-auto me-2 mb-2">
                 <li *ngIf="!connected" class="nav-item" style="padding-top: 0px">
                     <p-menubar #menu [model]="collapsedMenu"></p-menubar>
                 </li>
@@ -31,7 +31,7 @@
         </div>
         <div *ngIf="!compressMenu" id="mainnav">
             <ul style="float: right;"
-                class="navbar-nav ms-auto me-1 mb-2">
+                class="navbar-nav ms-auto me-2 mb-2">
                 <li *ngIf="!connected" class="nav-item">
                     <p-menubar [model]="connectMenuItem"></p-menubar>
                 </li>
@@ -115,3 +115,4 @@
     <footer id="footer"></footer>
 </div>
 <network></network>
+<maintenance></maintenance>

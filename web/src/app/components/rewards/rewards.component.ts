@@ -169,7 +169,7 @@ export class RewardsComponent extends NotificationComponent implements OnInit, O
                     globalThis.wallet.script.SpoRewardClaim.recipient_stake_addr = globalThis.wallet.sending_stake_addr;
                     globalThis.wallet.script.SpoRewardClaim.recipient_payment_addr = globalThis.wallet.sending_wal_addrs[0];
                     this.submittingTx = true;
-                    this.restService.buildTokenClaimTx(globalThis.customerId, globalThis.multiSigType)
+                    this.restService.buildTokenClaimTx(globalThis.multiSigType)
                         .then(res => {
                             if (res.msg) {
                                 this.showError(res.msg);

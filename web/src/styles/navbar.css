@@ -1,8 +1,8 @@
 .navbar {
     margin-bottom: 0 !important;
     border-bottom: 0px !important;
-
     font-family: Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+    font-weight: bold;
     padding-bottom: 0 !important;
 }
 
@@ -10,13 +10,14 @@
     --bs-bg-opacity: 0;
 }
 
-.bg-dark {
-    background-color: #061c35;
+.custom-bg-dark {
+    --bs-bg-opacity: 1;
+    background-color: black !important;
 }
 
 .navbar li.active {
     outline: none;
-    background-color: rgba(95, 119, 255, 0.3);
+    background-color: rgba(0, 0, 0, 0.3);
 }
 
 .navbar li a {

@@ -1,5 +1,5 @@
 <section id="network" style="display: flex">
-    <p [ngClass]="network"><a (click)="setBodyBackground()"><i style="font-size: 8px;" class="fa-solid fa-angles-right me-1"></i></a>{{network}}</p>
+    <p [ngClass]="network">{{network}}</p>
     <a (click)="showTermsModal()" class="ms-auto me-3" style="dislay:flex !important;float: right">Terms of Service</a>
 </section>
 <div bsModal #terms="bs-modal" class="modal fade" role="dialog" tabindex="-1"

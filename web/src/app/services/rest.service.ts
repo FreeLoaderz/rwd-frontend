@@ -12,16 +12,10 @@ export class RestService {
     constructor(private httpClient: HttpClient) {
     }
 
-    public testNewEndpoint() {
-        const headers = new HttpHeaders().set('Content-Type', 'application/json').set('authorization', 'Eevoo0aemah1ohY6Oheehee4ivahR5ae');
-        const url = '/rwdinfo/rwd/all/abcdefg';
-        RestService.processingRequest = true;
-        return lastValueFrom(this.httpClient
-            .get(url, {headers: headers}))
-            .then(res => this.processResponse(res))
-            .catch(this.handleError);
-    }
-
+    /**
+     *
+     * @param contactUsForm
+     */
     public submitFeedback(contactUsForm: FormGroup): Observable<any> {
         const url = '/feedback/formResponse';
         let params: HttpParams = new HttpParams().set('entry.1554006855', contactUsForm.value.name);
@@ -42,12 +36,12 @@ export class RestService {
             }));
     }
 
+    /**
+     * Get the available rewards for a wallet
+     */
     public getAvailableTokens() {
         const headers = new HttpHeaders().set('Content-Type', 'application/json').set('authorization', 'Eevoo0aemah1ohY6Oheehee4ivahR5ae');
-        let url = '/rwdinfo/rewards/all/' + globalThis.wallet.sending_stake_addr;
-         if (RestService.useNewEndpoints === true) {
-            url = '/rwdinfo/rwd/all/' + globalThis.wallet.sending_stake_addr;
-        }
+        const url = '/rwdinfo/rwd/all/' + globalThis.wallet.sending_stake_addr;
         RestService.processingRequest = true;
         return lastValueFrom(this.httpClient
             .get(url, {headers: headers}))
@@ -55,6 +49,11 @@ export class RestService {
             .catch(this.handleError);
     }
 
+    /**
+     * Get the available token information for this contract
+     * @param customerId
+     * @param contractId
+     */
     public getAvailableForToken(customerId: string, contractId: string) {
         const headers = new HttpHeaders().set('Content-Type', 'application/json').set('authorization', 'Eevoo0aemah1ohY6Oheehee4ivahR5ae');
         const url = '/rwdinfo/rwd/one/' + customerId + '/' + contractId + '/' + globalThis.wallet.sending_stake_addr;
@@ -65,26 +64,12 @@ export class RestService {
             .catch(this.handleError);
     }
 
-    public buildTokenClaimTx(customerId: string, multiSigType: string) {
-        const headers = new HttpHeaders().set('Content-Type', 'application/json').set('authorization', 'Eevoo0aemah1ohY6Oheehee4ivahR5ae');
-        let url = '/rwdbuild/multisig/' + customerId + '/' + multiSigType;
-         if (RestService.useNewEndpoints === true ) {
-            url = '/rwdbuild/ms/' + customerId + '/' + multiSigType;
-        }
-        RestService.processingRequest = true;
-
-        return lastValueFrom(this.httpClient
-            .post(url, globalThis.wallet, {headers: headers}))
-            .then(res => this.processResponse(res))
-            .catch(this.handleError);
-    }
-
+    /**
+     * Get the reward history for a wallet
+     */
     public getRewardHistory() {
         const headers = new HttpHeaders().set('Content-Type', 'application/json').set('authorization', 'Eevoo0aemah1ohY6Oheehee4ivahR5ae');
-        let url = '/rwdinfo/rewards/history/' + globalThis.wallet.sending_stake_addr;
-         if (RestService.useNewEndpoints === true ) {
-            url = '/rwdinfo/rwd/history/' + globalThis.wallet.sending_stake_addr;
-        }
+        const url = '/rwdinfo/rwd/history/' + globalThis.wallet.sending_stake_addr;
         RestService.processingRequest = true;
 
         return lastValueFrom(this.httpClient
@@ -94,6 +79,11 @@ export class RestService {
 
     }
 
+    /**
+     * Get the reward history for a contract for this wallet
+     * @param customerId
+     * @param contractId
+     */
     public getRewardHistoryForToken(customerId: string, contractId: string) {
         const headers = new HttpHeaders().set('Content-Type', 'application/json').set('authorization', 'Eevoo0aemah1ohY6Oheehee4ivahR5ae');
         const url = '/rwdinfo/rwd/history/' + customerId + '/' + contractId + '/' + globalThis.wallet.sending_stake_addr;
@@ -104,12 +94,31 @@ export class RestService {
             .catch(this.handleError);
     }
 
+    /**
+     * Build a token claim transaction
+     * @param multiSigType
+     */
+    public buildTokenClaimTx(multiSigType: string) {
+        const headers = new HttpHeaders().set('Content-Type', 'application/json').set('authorization', 'Eevoo0aemah1ohY6Oheehee4ivahR5ae');
+        const url = '/rwdbuild/ms/' + multiSigType;
+        RestService.processingRequest = true;
+
+        return lastValueFrom(this.httpClient
+            .post(url, globalThis.wallet, {headers: headers}))
+            .then(res => this.processResponse(res))
+            .catch(this.handleError);
+    }
+
+    /**
+     * Send the signature of the claim tx
+     * @param customerId
+     * @param multiSigType
+     * @param signature
+     * @param data
+     */
     public signAndFinalizeTx(customerId: number, multiSigType: string, signature: any, data: any) {
         const headers = new HttpHeaders().set('Content-Type', 'application/json').set('authorization', 'Eevoo0aemah1ohY6Oheehee4ivahR5ae');
-        let url = '/rwdbuild/multisig/finalize/' + customerId + '/' + multiSigType + '/' + data.id;
-         if (RestService.useNewEndpoints === true ) {
-            url = '/rwdbuild/ms/fn/' + customerId + '/' + multiSigType + '/' + data.id;
-        }
+        const url = '/rwdbuild/ms/fn/' + customerId + '/' + multiSigType + '/' + data.id;
         RestService.processingRequest = true;
 
         const params = {'signature': signature};
@@ -119,12 +128,14 @@ export class RestService {
             .catch(this.handleError);
     }
 
+    /**
+     * Generate Testnet rewards
+     * @param customerId
+     * @param script
+     */
     public generateRewards(customerId: string, script: any) {
         const headers = new HttpHeaders().set('Content-Type', 'application/json').set('authorization', 'Eevoo0aemah1ohY6Oheehee4ivahR5ae');
-        let url = '/rwdbuild/multisig/' + customerId + '/testrewards';
-         if (RestService.useNewEndpoints === true ) {
-            url = '/rwdbuild/ms/' + customerId + '/testrewards';
-        }
+        const url = '/rwdbuild/ms/' + customerId + '/testrewards';
         RestService.processingRequest = true;
 
         return lastValueFrom(this.httpClient

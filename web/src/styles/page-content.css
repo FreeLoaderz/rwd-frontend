@@ -122,7 +122,7 @@ h4 {
 
 .intro .intro-body .intro-text {
     font-size: 18px;
-    text-shadow: 2px 5px 5px #000000;
+    text-shadow: 3px .3rem .3rem #000000;
 }
 
 .info-section {
@@ -148,7 +148,7 @@ h4 {
     }
 
     .intro .intro-body .intro-text {
-        font-size: 25px;
+        font-size: 28px;
     }
 }
 
@@ -218,7 +218,7 @@ h4 {
 
 .btn {
     text-transform: uppercase;
-    font-family: Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: "Audiowide", Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-weight: 400;
     -webkit-transition: all .3s ease-in-out;
     -moz-transition: all .3s ease-in-out;
@@ -228,7 +228,7 @@ h4 {
 .btn-default {
     border: 1px solid blue;
     color: blue;
-    background-color: transparent;
+    background-color: #2b90c3;
 }
 
 .btn-default:hover,
@@ -605,8 +605,4 @@ dl.faq button:focus {
     pointer-events: none;
     justify-content: center;
     display: flex;
-}
-
-.body1 {
-
 }
