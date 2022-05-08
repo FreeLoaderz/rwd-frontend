@@ -6,6 +6,7 @@ import {HistoryComponent} from "./components/history/history.component";
 import {ContactUsComponent} from "./components/contact-us/contact-us.component";
 import {TestnetComponent} from "./components/testnet/testnet.component";
 import {FaqComponent} from './components/faq/faq.component';
+import {MaintenanceComponent} from "./components/maintenance/maintenance.component";
 
 
 const routes: Routes = [

@@ -65,8 +65,10 @@ export class NavbarComponent extends NotificationComponent implements OnInit, Af
         this.docElem = this.document.documentElement;
         this.walletSubscription = this.walletObserverService.loaded$.subscribe(
             loaded => {
-                this.isTestNet = (globalThis.wallet.network === 0);
-                this.setupMenu();
+                if (loaded) {
+                    this.isTestNet = (globalThis.wallet.network === 0);
+                    this.setupMenu();
+                }
                 this.walletLoaded = loaded;
             }
         );
@@ -81,6 +83,12 @@ export class NavbarComponent extends NotificationComponent implements OnInit, Af
         this.httpClient.get("https://api.ipify.org/?format=json").subscribe((res: any) => {
             globalThis.ipAddress = res.ip;
         });
+        this.setBodyBackground();
+    }
+    public setBodyBackground() {
+        document.body.classList.remove("body".concat("0"));
+        const index = Math.floor(Math.random() * 4);
+        document.body.classList.add("body".concat(index.toFixed(0)));
     }
 
     ngAfterContentInit() {

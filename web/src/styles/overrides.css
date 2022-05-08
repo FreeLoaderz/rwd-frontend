@@ -1,33 +1,43 @@
 /* This file is to make CSS overrides to some of the CSS classes we import from various libraries as needed */
 :root {
     --bs-dark-rgb: 8.6, 18.8, 34.9 !important;
-    --bs-body-bg: #061c35 !important;
+    --bs-body-bg: black !important;
 }
 
 html {
     height: 100%
 }
 
-.no-webp > body {
-    background-image: url('../assets/rwd-background.png');
-    background-color: #102648;
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
-    width: 100vw;
-    height: 100vh;
+.no-webp > body.body0 {
+    background-image: url('../assets/backgrounds/astro-center.jpeg');
 }
 
-.webp > body {
-    background-image: url('../assets/rwd-background.webp');
-    background-color: #102648;
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
-    width: 100vw;
-    height: 100vh;
+.webp > body.body0 {
+    background-image: url('../assets/backgrounds/astro-center.webp');
+}
+
+.no-webp > body.body1 {
+    background-image: url('../assets/backgrounds/astro-planet.jpeg');
+}
+
+.webp > body.body1 {
+    background-image: url('../assets/backgrounds/astro-planet.webp');
+}
+
+.no-webp > body.body2 {
+    background-image: url('../assets/backgrounds/astro-right.jpeg');
+}
+
+.webp > body.body2 {
+    background-image: url('../assets/backgrounds/astro-right.webp');
+}
+
+.no-webp > body.body3 {
+    background-image: url('../assets/backgrounds/planet-rings.jpeg');
+}
+
+.webp > body.body3 {
+    background-image: url('../assets/backgrounds/planet-rings.webp');
 }
 
 body {
@@ -39,6 +49,13 @@ body {
     -o-background-size: cover;
     background-size: cover;
     min-height: 100%;
+    background-color: #102648;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
 }
 
 @keyframes blink {
@@ -60,17 +77,18 @@ body {
 .p-menuitem-icon,
 .p-menuitem-text {
     font-size: 18px !important;
+    font-weight: bold !important;
     background: transparent !important;
 }
 
 .p-menu {
     width: 7rem !important;
-    background: #061c35 !important;
+    background: black !important;
 }
 
 .p-menu-list {
     border: 0px !important;
-    background: #061c35 !important;
+    background: black !important;
 }
 
 .header {
@@ -457,6 +475,7 @@ ul.banner-social-buttons > li > a:active {
 span.p-menuitem-icon.fa-bolt-lightning {
     color: goldenrod !important;
 }
+
 .fa-circle-info {
     color: forestgreen !important;
 }
@@ -549,19 +568,19 @@ input, textarea {
 .p-panel-header:active,
 .p-panel-title:focus,
 .p-panel-header:focus {
-    background-color: #061c35 !important;
+    background-color: black !important;
     color: #df4863 !important;
 }
 
 .p-panel-header:active > .p-panel-title,
 .p-panel-header:focus > .p-panel-title,
 .p-panel-header:hover > .p-panel-title {
-    background-color: #061c35 !important;
+    background-color: black !important;
     color: #df4863 !important;
 }
 
 .panel-active {
-    background-color: #061c35 !important;
+    background-color: black !important;
     color: #df4863 !important;
 }
 
@@ -714,7 +733,7 @@ body .p-menubar .p-menuitem-link .p-menuitem-text {
 }
 
 body .p-menubar .p-menuitem.p-menuitem-active > .p-menuitem-link .p-menuitem-text {
-    background-color: rgb(9, 19, 35) !important;
+    background-color: black !important;
     color: #df4863 !important;
     font-size: 18px !important;
     /*font-weight: 400 !important;*/
@@ -729,7 +748,7 @@ body .p-menubar .p-menuitem:hover > .p-menuitem-link .p-menuitem-text {
 }
 
 body .p-menubar .p-menuitem.p-menuitem-active > .p-menuitem-link {
-    background-color: rgb(9, 19, 35) !important;
+    background-color: black !important;
     color: #df4863 !important;
     font-size: 18px !important;
     /*font-weight: 400 !important;*/
@@ -745,7 +764,7 @@ body .p-menubar .p-menuitem:hover > .p-menuitem-link {
 }
 
 body .p-menubar .p-submenu-list {
-    background: rgb(9, 19, 35) !important;
+    background: black !important;
     border: 0 !important;
 }
 
@@ -757,9 +776,19 @@ body .p-menubar .p-submenu-list {
 
 .p-menubar.p-menubar-mobile-active .p-menubar-root-list {
     height: 100vh !important;
-    background-color: rgb(9, 19, 35) !important;
+    background-color: black !important;
 }
 
 .info-text-end {
     margin-left: auto;
+}
+
+.fa-angles-right {
+    color: black !important;
+}
+.fa-xmark {
+    color: black;
+}
+.fa-xmark:hover {
+    color: #df4863 !important;
 }

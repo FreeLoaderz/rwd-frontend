@@ -47,7 +47,7 @@
     "jquery": "3.6.0",
     "ngx-bootstrap": "8.0.0",
     "node-deb": "0.10.7",
-    "npm": "^8.7.0",
+    "npm": "^8.9.0",
     "popper.js": "1.16.1-lts",
     "primeflex": "3.1.3",
     "primeicons": "5.0.0",

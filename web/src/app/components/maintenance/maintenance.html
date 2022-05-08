@@ -1,0 +1,3 @@
+<ng-template #notificationTemplate let-notificationData="notification">
+    <p class="notifier__notification-message text-black" [innerHTML]="notificationData.message" (click)="stop()"></p>
+</ng-template>

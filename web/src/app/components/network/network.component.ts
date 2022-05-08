@@ -16,6 +16,7 @@ import {ModalDirective} from "ngx-bootstrap/modal";
 export class NetworkComponent implements OnInit, OnDestroy {
     public walletSubscription: Subscription;
     public network: string = "";
+    public backgroundIndex: number = 0;
     @ViewChild('terms', {static: false}) public terms: ModalDirective;
 
     constructor(public walletObserverService: WalletObserverService, public walletService: WalletService) {
