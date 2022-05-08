@@ -2,6 +2,7 @@ import {Component, HostListener, OnDestroy, OnInit, ViewChild} from "@angular/co
 import {TokenMetadata} from "../../data/token-metadata";
 import {Subject, Subscription} from "rxjs";
 import {TokenMetadataService} from "../../services/token-metadata.service";
+import {MetadataObserverService} from "../../services/observables/metadata-observer.service";
 
 
 @Component({
@@ -19,7 +20,7 @@ export class TokenMetaDataComponent implements OnInit, OnDestroy {
 
     @ViewChild('tokenView', {static: false}) public tokenView: any;
 
-    constructor(public tokenMetadataService: TokenMetadataService) {
+    constructor(public tokenMetadataService: TokenMetadataService, public metadataObserver: MetadataObserverService) {
         if (globalThis.tokenMetadata == null) {
             globalThis.tokenMetadata = new Map<string, TokenMetadata>();
         }
@@ -27,7 +28,7 @@ export class TokenMetaDataComponent implements OnInit, OnDestroy {
 
     public ngOnInit() {
         this.tokenMetadataService.init();
-        this.tokenMetadataSubscription = this.tokenMetadataService.tokenMetadata$.subscribe(tokenMetadata => {
+        this.tokenMetadataSubscription = this.metadataObserver.metadata$.subscribe(tokenMetadata => {
             this.processMetadata(tokenMetadata);
         });
 

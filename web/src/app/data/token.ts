@@ -1,4 +1,5 @@
 import {UtilityService} from "../services/utility.service";
+import {TokenMetadata} from "./token-metadata";
 
 export class Token {
     public displayName: string;
@@ -9,6 +10,7 @@ export class Token {
     public last_calc_epoch: number;
     public logo: string;
     public selected: boolean = false;
+    public tokenMetadata: TokenMetadata;
 
     constructor(data: any) {
         if (data != null) {
@@ -43,6 +45,9 @@ export class Token {
                 }
                 if (data.logo) {
                     this.logo = data.logo;
+                }
+                if (data.tokenMetadata) {
+                    this.tokenMetadata = new TokenMetadata(data.tokenMetadata);
                 }
             }catch (e){
                 console.log("TOKEN ERROR");

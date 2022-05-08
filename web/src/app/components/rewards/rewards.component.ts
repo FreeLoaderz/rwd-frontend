@@ -5,13 +5,15 @@ import {NotifierService} from "angular-notifier";
 import {RestService} from "../../services/rest.service";
 import {AvailableTokens} from "../../data/available-tokens";
 import {Observable, Subscription} from "rxjs";
-import {WalletObserverService} from "../../services/wallet-observer.service";
+import {WalletObserverService} from "../../services/observables/wallet-observer.service";
 import {Token} from "../../data/token";
 import {Script} from "../../data/script";
 import {SpoRewardClaim} from "../../data/spo-reward-claim";
 import {WalletService} from "../../services/wallet.service";
 import {Title} from "@angular/platform-browser";
 import {UtilityService} from "../../services/utility.service";
+import {MetadataObserverService} from "../../services/observables/metadata-observer.service";
+import {TokenMetadataService} from "../../services/token-metadata.service";
 
 @Component({
     selector: 'rewards',
@@ -22,7 +24,9 @@ import {UtilityService} from "../../services/utility.service";
 export class RewardsComponent extends NotificationComponent implements OnInit, OnDestroy {
     public walletSubscription: Subscription;
     public claimSubscription: Subscription;
+    public metadataSubscription: Subscription;
     public tokens: Array<Token> = [];
+    public tokenMap: Map<string, Token> = new Map<string, Token>();
     public unfilteredTokens: Array<Token> = [];
     public maxItems: number = 10;
     public showPaging: boolean = false;
@@ -38,12 +42,13 @@ export class RewardsComponent extends NotificationComponent implements OnInit, O
     public gridItemSmallWidth: number = 191;
     public gridItemSmallHeight: number = 191;
     public smallGrid: boolean = false;
-
+    public isTestnet: boolean = false;
     @ViewChild('tokenView', {static: false}) public tokenView: any;
     @ViewChild('notificationTemplate', {static: false}) public notificationTemplate: any;
 
     constructor(public router: Router, public notifierService: NotifierService, public restService: RestService,
-                public walletObserverService: WalletObserverService, public walletService: WalletService,
+                public walletObserverService: WalletObserverService, public metadataService: TokenMetadataService,
+                public metadataObserverService: MetadataObserverService, public walletService: WalletService,
                 public titleService: Title) {
         super(notifierService);
         if (globalThis.tokens == null) {
@@ -57,11 +62,33 @@ export class RewardsComponent extends NotificationComponent implements OnInit, O
         this.walletSubscription = this.walletObserverService.loaded$.subscribe(
             loaded => {
                 this.walletLoaded = loaded;
+                if (globalThis.wallet.network === 0) {
+                    this.isTestnet = true;
+                }
+
                 if ((loaded === true) && (!this.initialized)) {
                     this.listTokens();
                 }
             }
         );
+        this.metadataSubscription = this.metadataObserverService.metadata$.subscribe(metadata => {
+            console.log(metadata);
+            const allTokens: Array<Token> = [...this.tokenMap.values()];
+            for (let i = 0; i < allTokens.length; ++i) {
+                let checkName = allTokens[i].displayName;
+                if (this.isTestnet) {
+                    checkName = allTokens[i].displayName.substring(1);
+                }
+                console.log("Compare [" + checkName + "] to [" + metadata.name + "]");
+                if (checkName === metadata.name) {
+                    allTokens[i].tokenMetadata = metadata;
+                    this.tokens.push(allTokens[i]);
+                    this.tokens.sort((a, b) => Token.sort(a, b));
+                    this.tokens = [...this.tokens];
+                    break;
+                }
+            }
+        });
         this.walletLoaded = this.walletService.walletLoaded;
         if (this.walletLoaded === true) {
             this.listTokens();
@@ -75,6 +102,7 @@ export class RewardsComponent extends NotificationComponent implements OnInit, O
             this.claimSubscription.unsubscribe();
             this.claimSubscription = null;
         }
+        this.metadataSubscription.unsubscribe();
     }
 
     @HostListener('window:resize', ['$event'])
@@ -140,14 +168,22 @@ export class RewardsComponent extends NotificationComponent implements OnInit, O
 
     public processTokenList(data: any) {
         globalThis.tokens = [];
+        this.tokenMap.clear();
         for (let i = 0; i < data.length; ++i) {
+            console.log(data[i]);
             const newToken = new Token(data[i]);
             if (newToken.amount > 0) {
                 globalThis.tokens.push(newToken);
+                this.tokenMap.set(newToken.displayName, newToken);
+                if (this.isTestnet) {
+                    this.metadataService.getTokenMetadata(newToken.displayName.substring(1));
+                } else {
+                    this.metadataService.getTokenMetadata(newToken.displayName);
+                }
             }
         }
-        globalThis.tokens.sort((a, b) => Token.sort(a, b));
-        this.tokens = [...globalThis.tokens];
+        //      globalThis.tokens.sort((a, b) => Token.sort(a, b));
+//        this.tokens = [...globalThis.tokens];
         this.initialized = true;
         this.listingTokens = false;
         this.getScreenSize(null);

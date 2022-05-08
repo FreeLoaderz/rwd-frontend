@@ -1,5 +1,5 @@
 import {Component, Injectable, OnDestroy, OnInit, ViewChild} from "@angular/core";
-import {WalletObserverService} from "../../services/wallet-observer.service";
+import {WalletObserverService} from "../../services/observables/wallet-observer.service";
 import {WalletService} from "../../services/wallet.service";
 import {Subscription} from "rxjs";
 import {ModalDirective} from "ngx-bootstrap/modal";
@@ -16,6 +16,7 @@ import {ModalDirective} from "ngx-bootstrap/modal";
 export class NetworkComponent implements OnInit, OnDestroy {
     public walletSubscription: Subscription;
     public network: string = "";
+    public backgroundIndex: number = 0;
     @ViewChild('terms', {static: false}) public terms: ModalDirective;
 
     constructor(public walletObserverService: WalletObserverService, public walletService: WalletService) {

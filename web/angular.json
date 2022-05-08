@@ -21,9 +21,11 @@
             "polyfills": "src/polyfills.ts",
             "assets": [
               "src/assets",
-              "src/favicon.ico"
+              "src/favicon.ico",
+              "src/assets/config/properties.json"
             ],
             "styles": [
+              "src/styles.css",
               "src/styles/loading.css",
               "src/styles/responsive.css",
               "src/styles/overrides.css",

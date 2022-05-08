@@ -20,7 +20,7 @@
                 <div *ngIf="walletLoaded && !loadingHistory" class="blackdiv">
                     <p-table #historyTable [columns]="historyCols" [value]="claimHistoryArray"
                              exportFilename="{{exportFileName}}" [responsiveLayout]="'scroll'"
-                             (onFilter)="onFilter($event, historyTable)" [paginator]="chartsHidden" [rows]="50"
+                             (onFilter)="onFilter($event, historyTable)" [paginator]="chartsHidden" [rows]="maxRows"
                              [globalFilterFields]="['displayName','txhash']"
                              [resizableColumns]="'true'" [rowHover]="'true'">
                         <ng-template pTemplate="caption">
@@ -83,15 +83,15 @@
                                     <p-chart type="doughnut" class="charts" [data]="donutData" [options]="donutOptions"
                                              [style]="{'width': '100%', 'display':'flex !important'}"></p-chart>
                                 </div>
-                                <div *ngIf="compress" style="display: flex !important;">
+                                <div *ngIf="compress" class="mt-2" style="display: flex !important;">
                                     <p-chart type="polarArea" class="charts" [data]="donutData" [options]="donutOptions"
                                              [style]="{'width': '100%', 'display':'flex !important'}"></p-chart>
                                 </div>
-                                <div *ngIf="!compress && moreThanAMonth" style="display: flex !important;">
+                                <div *ngIf="!compress && moreThanAMonth" class="mt-2" style="display: flex !important;">
                                     <p-chart type="line" class="charts" [data]="basicData" [options]="basicOptions"
                                              [style]="{'width': '100%'}"></p-chart>
                                 </div>
-                                <div *ngIf="!compress && !moreThanAMonth" style="display: flex !important;">
+                                <div *ngIf="!compress && !moreThanAMonth" class="mt-2"  style="display: flex !important;">
                                     <p-chart type="bar" class="charts" [data]="basicData" [options]="basicOptions"
                                              [style]="{'width': '100%'}"></p-chart>
                                 </div>

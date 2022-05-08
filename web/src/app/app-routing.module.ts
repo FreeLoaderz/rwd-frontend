@@ -8,7 +8,6 @@ import {TestnetComponent} from "./components/testnet/testnet.component";
 import { TokenMetaDataComponent } from './components/token-metadata/token-metadata.component';
 import { FaqComponent } from './components/faq/faq.component';
 
-
 const routes: Routes = [
     {
         path: '',
