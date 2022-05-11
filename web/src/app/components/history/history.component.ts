@@ -5,7 +5,7 @@ import {NotifierService} from "angular-notifier";
 import {Title} from "@angular/platform-browser";
 import {Subscription} from "rxjs";
 import {RestService} from "../../services/rest.service";
-import {WalletObserverService} from "../../services/wallet-observer.service";
+import {WalletObserverService} from "../../services/observers/wallet-observer.service";
 import {WalletService} from "../../services/wallet.service";
 import {DatePipe} from "@angular/common";
 import {HistoricalClaim} from "../../data/historical-claim";

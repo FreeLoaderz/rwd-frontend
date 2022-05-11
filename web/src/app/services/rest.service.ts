@@ -1,9 +1,10 @@
 import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
 import {Injectable} from "@angular/core";
-import {lastValueFrom, Observable} from "rxjs";
+import {lastValueFrom, Observable, Subscription} from "rxjs";
 import {FormGroup} from "@angular/forms";
 import {map} from 'rxjs/operators';
 import {PropertyService} from "./property.service";
+import {PropertyObserverService} from "./observers/property-observer.service";
 
 @Injectable()
 export class RestService {
@@ -11,10 +12,15 @@ export class RestService {
     public static processingRequest: boolean = false;
     public static newEndpoints: boolean = false;
     public static authorization: string;
+    public static propertySubscription: Subscription;
 
-    constructor(private httpClient: HttpClient, public propertyService: PropertyService) {
-        RestService.newEndpoints = ("false" !== propertyService.getProperty("newEndpoints"));
-        RestService.authorization = propertyService.getProperty("authorization");
+    constructor(private httpClient: HttpClient, public propertyObserver: PropertyObserverService) {
+        if (RestService.propertySubscription == null) {
+            RestService.propertySubscription = propertyObserver.propertyMap$.subscribe(propertyMap => {
+                RestService.newEndpoints = ("false" !== propertyMap.get("newEndpoints"));
+                RestService.authorization = propertyMap.get("authorization");
+            });
+        }
     }
 
     /**

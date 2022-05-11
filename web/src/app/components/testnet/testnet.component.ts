@@ -1,5 +1,5 @@
 import {Component, Injectable, OnDestroy, OnInit} from "@angular/core";
-import {WalletObserverService} from "../../services/wallet-observer.service";
+import {WalletObserverService} from "../../services/observers/wallet-observer.service";
 import {WalletService} from "../../services/wallet.service";
 import {Subscription} from "rxjs";
 import {RestService} from "../../services/rest.service";

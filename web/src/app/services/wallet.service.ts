@@ -1,6 +1,6 @@
 import {Injectable} from "@angular/core";
 import {Wallet} from "../data/wallet";
-import {WalletObserverService} from "./wallet-observer.service";
+import {WalletObserverService} from "./observers/wallet-observer.service";
 import converter from "bech32-converting";
 
 @Injectable()

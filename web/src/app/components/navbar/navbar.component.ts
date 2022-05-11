@@ -6,10 +6,11 @@ import {MenuItem} from "primeng/api";
 import {NavigationEnd, Router} from "@angular/router";
 import {NotificationComponent} from '../notification/notification.component';
 import {WalletService} from "../../services/wallet.service";
-import {WalletObserverService} from "../../services/wallet-observer.service";
+import {WalletObserverService} from "../../services/observers/wallet-observer.service";
 import {Subscription} from "rxjs";
 import {DOCUMENT} from "@angular/common";
 import {HttpClient} from "@angular/common/http";
+import {PropertyService} from "../../services/property.service";
 
 declare let gtag: Function;
 
@@ -49,6 +50,7 @@ export class NavbarComponent extends NotificationComponent implements OnInit, Af
     @ViewChild('connectModal', {static: false}) public connectModal: ModalDirective;
 
     constructor(@Inject(DOCUMENT) public document: any, public httpClient: HttpClient,
+                public propertyService: PropertyService,
                 public router: Router, public titleService: Title, public walletObserverService: WalletObserverService,
                 public notifierService: NotifierService, public walletService: WalletService) {
         super(notifierService);
