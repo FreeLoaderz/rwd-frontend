@@ -5,7 +5,7 @@ import {NotifierService} from "angular-notifier";
 import {RestService} from "../../services/rest.service";
 import {AvailableTokens} from "../../data/available-tokens";
 import {Observable, Subscription} from "rxjs";
-import {WalletObserverService} from "../../services/wallet-observer.service";
+import {WalletObserverService} from "../../services/observers/wallet-observer.service";
 import {Token} from "../../data/token";
 import {Script} from "../../data/script";
 import {SpoRewardClaim} from "../../data/spo-reward-claim";

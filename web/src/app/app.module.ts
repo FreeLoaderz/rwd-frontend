@@ -15,7 +15,7 @@ import {ImageModule} from "primeng/image";
 import {ButtonModule} from "primeng/button";
 import {PanelModule} from 'primeng/panel';
 import {RestService} from "./services/rest.service";
-import {WalletObserverService} from "./services/wallet-observer.service";
+import {WalletObserverService} from "./services/observers/wallet-observer.service";
 import {BrowserModule} from "@angular/platform-browser";
 import {WalletService} from "./services/wallet.service";
 import {NotifierModule, NotifierOptions} from "angular-notifier";
@@ -35,6 +35,7 @@ import {ChartModule} from "primeng/chart";
 import {SharedModule} from 'primeng/api';
 import {MaintenanceComponent} from "./components/maintenance/maintenance.component";
 import {PropertyService} from "./services/property.service";
+import {PropertyObserverService} from "./services/observers/property-observer.service";
 
 const customNotifierOptions: NotifierOptions = {
     position: {
@@ -90,7 +91,7 @@ const customNotifierOptions: NotifierOptions = {
         DropdownModule, MenubarModule, DataViewModule, ImageModule,
         ButtonModule, PanelModule, BrowserAnimationsModule],
     bootstrap: [NavbarComponent],
-    providers: [RestService, WalletObserverService, WalletService, PropertyService]
+    providers: [RestService, WalletObserverService, WalletService, PropertyService, PropertyObserverService]
 })
 
 export class AppModule {

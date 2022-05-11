@@ -1,17 +1,23 @@
 import {Injectable} from "@angular/core";
-import properties from '../../assets/config/properties.json';
+import {HttpClient} from "@angular/common/http";
+import {PropertyObserverService} from "./observers/property-observer.service";
 
 @Injectable()
 export class PropertyService {
     public propertyMap: Map<string, string> = new Map<string, string>();
+    public properties: any;
+    public loaded: boolean = false;
 
-
-    constructor() {
-        for (const key in properties) {
-            if (properties.hasOwnProperty(key)) {
-                this.propertyMap.set(key, properties[key]);
+    constructor(private httpClient: HttpClient, public propertyObserver: PropertyObserverService) {
+        this.httpClient.get<Map<string, string>>("assets/config/properties.json").subscribe(data => {
+            for (const key in data) {
+                if (data.hasOwnProperty(key)) {
+                    this.propertyMap.set(key, data[key]);
+                }
             }
-        }
+            this.loaded = true;
+            this.propertyObserver.setPropertyMap(this.propertyMap);
+        });
     }
 
     public getProperty(key: string) {
