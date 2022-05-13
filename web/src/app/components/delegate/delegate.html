@@ -1,0 +1,83 @@
+<section id="rewards" class="content-section">
+    <div class="center-div-parent">
+        <div class="center-div-child">
+            <div *ngIf="listingPools" style="width: 70vw;height: 100vh">
+                <h4 style="display:flex"><img width="24" height="24" src="../../../assets/smartclaimz.ico"
+                                              class="request-spinner ms-2"
+                                              style="display:flex;margin: 0 !important;">
+                    <span class="ms-2" style="display:flex; float: left">Searching for pools...</span></h4>
+            </div>
+            <div *ngIf="!listingPools" class="data-view">
+                <div class="data-header">
+                    <h4>Participating Pools</h4>
+                </div>
+                <p-dataView #poolView [value]="pools" layout="grid" filterBy="displayName"
+                            [rows]="maxItems"
+                            [paginator]="showPaging" [filterBy]="['name', 'ticker', 'description']">
+                    <ng-template let-pool pTemplate="gridItem">
+                        <div class="">
+                            <div class="grid-item {{smallGrid ? 'grid-item-small' : ''}}">
+                                <div class="grid-item-top">
+                                    <span class="ms-2">{{pool.name}} ({{pool.ticker}})</span>
+                                </div>
+                                <div class="grid-item-content">
+                                    <img src="{{pool.logo}}">
+                                    <p class="grid-item-token-name">{{pool.description}}</p>
+                                </div>
+                                <div class="grid-item-bottom">
+                                    <button pButton
+                                            title="Delegate" [disabled]="!walletLoaded || submittingTx"
+                                            (click)="showDelegateModal(pool)"
+                                            class="p-button p-button-rounded p-button-success ms-auto me-auto mb-2"
+                                            label="Delegate" icon="fa-solid fa-handshake">
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </ng-template>
+                    <ng-template pTemplate="empty">
+                        <h4 *ngIf="walletLoaded">No pools were found</h4>
+                        <h4 *ngIf="!walletLoaded" style="display:flex"><img width="24" height="24"
+                                                                            src="../../../assets/smartclaimz.ico"
+                                                                            class="request-spinner ms-2"
+                                                                            style="display:flex;margin: 0 !important;">
+                            <span class="ms-2" style="display:flex; float: left">Loading wallet...</span></h4>
+                    </ng-template>
+                </p-dataView>
+            </div>
+        </div>
+    </div>
+</section>
+<div bsModal #delegateModal="bs-modal" class="modal fade" role="dialog" tabindex="-1"
+     [config]="{backdrop: 'static'}">
+    <div class="modal-dialog modal-dialog-centered connect-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title ms-0 me-auto" style="color: #153359 !important">Delegation</h4>
+                <span class="ms-auto">
+                <button pButton class="p-button-rounded p-button-text p-button-plain" icon="pi pi-times"
+                        title="Cancel"
+                        iconPos="left"
+                        (click)="hideDelegateModal()"></button>
+                    </span>
+            </div>
+            <div class="modal-body text-center" style="padding: .1em !important;overflow-y: auto">
+                <div class="ms-2 me-2 row">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button pButton class="p-button-rounded p-button-primary ms-auto me-2" icon="fa-solid fa-handshake"
+                        title="Delegate"
+                        iconPos="left"
+                        (click)="delegate()"></button>
+                <button pButton class="p-button-rounded p-button-secondary ms-auto me-0" icon="fa-solid fa-xmark"
+                        title="Cancel"
+                        iconPos="left"
+                        (click)="delegate()"></button>
+            </div>
+        </div>
+    </div>
+</div>
+<ng-template #notificationTemplate let-notificationData="notification">
+    <p class="notifier__notification-message" [innerHTML]="notificationData.message"></p>
+</ng-template>

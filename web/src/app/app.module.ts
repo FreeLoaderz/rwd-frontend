@@ -36,6 +36,7 @@ import {SharedModule} from 'primeng/api';
 import {MaintenanceComponent} from "./components/maintenance/maintenance.component";
 import {PropertyService} from "./services/property.service";
 import {PropertyObserverService} from "./services/observers/property-observer.service";
+import {DelegateComponent} from "./components/delegate/delegate.component";
 
 const customNotifierOptions: NotifierOptions = {
     position: {
@@ -82,7 +83,7 @@ const customNotifierOptions: NotifierOptions = {
 
 @NgModule({
     declarations: [NavbarComponent, WelcomeComponent, FooterComponent, InfoComponent, RewardsComponent, MaintenanceComponent,
-        ContactUsComponent, HistoryComponent, NetworkComponent, TestnetComponent, FaqComponent],
+        ContactUsComponent, HistoryComponent, NetworkComponent, TestnetComponent, FaqComponent, DelegateComponent],
     imports: [BrowserModule, FormsModule, ReactiveFormsModule, AppRoutingModule, RouterModule,
         TooltipModule.forRoot(), OverlayPanelModule, ModalModule.forRoot(),
         NotifierModule.withConfig(customNotifierOptions), ChartModule, SharedModule,

@@ -487,7 +487,9 @@ span.p-menuitem-icon.fa-bolt-lightning {
 .fa-toolbox {
     color: silver !important;
 }
-
+.fa-compass {
+    color: silver !important;
+}
 .fa-chevron-right {
     color: wheat !important;
 }

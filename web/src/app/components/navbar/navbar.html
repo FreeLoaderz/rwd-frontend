@@ -46,6 +46,9 @@
                                                                         src="assets/smartclaimz.ico"
                                                                         class="request-spinner" style="margin-top: 3px"></a>
                 </li>
+                <li class="nav-item">
+                    <p-menubar [model]="exploreMenu"></p-menubar>
+                </li>
                 <li *ngIf="connected" class="nav-item">
                     <p-menubar [model]="rewardsMenu"></p-menubar>
                 </li>

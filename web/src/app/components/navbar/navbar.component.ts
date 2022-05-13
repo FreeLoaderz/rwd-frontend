@@ -32,6 +32,10 @@ export class NavbarComponent extends NotificationComponent implements OnInit, Af
     public connectMenuItem: MenuItem[];
     public testnetMenu: MenuItem;
     public walletMenu: MenuItem;
+    public exploreMenu: MenuItem[];
+    public delegationMenuItem: MenuItem;
+    public projectsMenuItem: MenuItem;
+    public tokensMenuItem: MenuItem;
     public helpMenu: MenuItem[];
     public faqMenuItem: MenuItem;
     public contactUsMenuItem: MenuItem;
@@ -87,6 +91,7 @@ export class NavbarComponent extends NotificationComponent implements OnInit, Af
         });
         this.setBodyBackground();
     }
+
     public setBodyBackground() {
         document.body.classList.remove("body".concat("0"));
         const index = Math.floor(Math.random() * 4);
@@ -190,7 +195,40 @@ export class NavbarComponent extends NotificationComponent implements OnInit, Af
                 this.routeContactUs();
             }
         };
-
+        this.delegationMenuItem = {
+            id: 'POOLS',
+            label: 'POOLS',
+            title: 'Explore participating pools and delegate',
+            icon: 'fa-solid fa-server',
+            command: (event) => {
+                this.routeDelegation();
+            }
+        };
+        this.projectsMenuItem = {
+            id: 'PROJECTS',
+            label: 'PROJECTS',
+            title: 'Explore participating projects',
+            icon: 'fa-solid fa-folder-open',
+            command: (event) => {
+                this.infoNotification("Project information coming soon");
+            }
+        };
+        this.tokensMenuItem = {
+            id: 'TOKENS',
+            label: 'TOKENS',
+            title: 'Explore available tokens',
+            icon: 'fa-solid fa-vault',
+            command: (event) => {
+                this.infoNotification("Token information coming soon");
+            }
+        };
+        this.exploreMenu = [{
+            label: 'EXPLORE',
+            id: 'EXPLORE',
+            title: 'Explore participating projects and pools',
+            icon: 'fa-solid fa-compass',
+            items: [this.delegationMenuItem]
+        }];
         if (!this.isTestNet) {
             this.helpMenu = [{
                 label: 'HELP',
@@ -201,14 +239,15 @@ export class NavbarComponent extends NotificationComponent implements OnInit, Af
                     this.faqMenuItem]
             }];
             this.collapsedConnectedMenu = [
-                this.claimzMenuItem,
-                this.historicalMenuItem,
-                this.contactUsMenuItem,
-                this.faqMenuItem];
+                this.exploreMenu[0],
+                this.rewardsMenu[0],
+                this.helpMenu[0]
+            ];
             this.collapsedMenu = [
                 this.connectMenuItem[0],
-                this.contactUsMenuItem,
-                this.faqMenuItem];
+                this.exploreMenu[0],
+                this.helpMenu[0]
+];
         } else {
             this.helpMenu = [{
                 label: 'HELP',
@@ -220,16 +259,14 @@ export class NavbarComponent extends NotificationComponent implements OnInit, Af
                     this.testnetMenu]
             }];
             this.collapsedConnectedMenu = [
-                this.claimzMenuItem,
-                this.historicalMenuItem,
-                this.contactUsMenuItem,
-                this.faqMenuItem,
-                this.testnetMenu];
+                this.exploreMenu[0],
+                this.rewardsMenu[0],
+                this.helpMenu[0]
+];
             this.collapsedMenu = [
                 this.connectMenuItem[0],
-                this.contactUsMenuItem,
-                this.faqMenuItem,
-                this.testnetMenu
+                this.exploreMenu[0],
+                this.helpMenu[0]
             ];
         }
     }
@@ -336,6 +373,10 @@ export class NavbarComponent extends NotificationComponent implements OnInit, Af
     public showHistory() {
         this.router.navigate(['/history']);
 
+    }
+
+    public routeDelegation() {
+        this.router.navigate(['/delegation']);
     }
 
     public routeContactUs() {

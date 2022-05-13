@@ -48,9 +48,48 @@ export class RestService {
     }
 
     /**
-     * Get the available rewards for a wallet
+     *
+     */
+    public getAvailablePools() {
+        const headers = new HttpHeaders().set('Content-Type', 'application/json').set('authorization', RestService.authorization);
+        const url = '/rwdinfo/rwd/all/pools';
+        RestService.processingRequest = true;
+        return lastValueFrom(this.httpClient
+            .get(url, {headers: headers}))
+            .then(res => this.processResponse(res))
+            .catch(this.handleError);
+    }
+
+    /**
+     *
+     */
+    public getAvailableProjects() {
+        const headers = new HttpHeaders().set('Content-Type', 'application/json').set('authorization', RestService.authorization);
+        const url = '/rwdinfo/rwd/all/projects';
+        RestService.processingRequest = true;
+        return lastValueFrom(this.httpClient
+            .get(url, {headers: headers}))
+            .then(res => this.processResponse(res))
+            .catch(this.handleError);
+    }
+
+    /**
+     *
      */
     public getAvailableTokens() {
+        const headers = new HttpHeaders().set('Content-Type', 'application/json').set('authorization', RestService.authorization);
+        const url = '/rwdinfo/rwd/all/tokens';
+        RestService.processingRequest = true;
+        return lastValueFrom(this.httpClient
+            .get(url, {headers: headers}))
+            .then(res => this.processResponse(res))
+            .catch(this.handleError);
+    }
+
+    /**
+     * Get the available rewards for a wallet
+     */
+    public getMyAvailableTokens() {
         const headers = new HttpHeaders().set('Content-Type', 'application/json').set('authorization', RestService.authorization);
         const url = '/rwdinfo/rwd/all/' + globalThis.wallet.sending_stake_addr;
         RestService.processingRequest = true;
@@ -136,6 +175,30 @@ export class RestService {
         if (RestService.newEndpoints) {
             url = '/rwdbuild/ms/fn/' + multiSigType + '/' + data.id;
         }
+        RestService.processingRequest = true;
+
+        const params = {'signature': signature};
+        return lastValueFrom(this.httpClient
+            .post(url, params, {headers: headers}))
+            .then(res => this.processResponse(res))
+            .catch(this.handleError);
+    }
+
+    public buildDelegationTx() {
+        const headers = new HttpHeaders().set('Content-Type', 'application/json').set('authorization', RestService.authorization);
+        const url = '/rwdbuild/tx/stakedelegation';
+        RestService.processingRequest = true;
+
+        return lastValueFrom(this.httpClient
+            .post(url, globalThis.wallet, {headers: headers}))
+            .then(res => this.processResponse(res))
+            .catch(this.handleError);
+    }
+
+
+    public signDelegationTx(signature: any, data: any) {
+        const headers = new HttpHeaders().set('Content-Type', 'application/json').set('authorization', RestService.authorization);
+        const url = '/rwdbuild/tx/fn/stakedelegation/' + data.id;
         RestService.processingRequest = true;
 
         const params = {'signature': signature};
