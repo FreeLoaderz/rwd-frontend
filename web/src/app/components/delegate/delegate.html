@@ -11,23 +11,23 @@
                 <div class="data-header">
                     <h4>Participating Pools</h4>
                 </div>
-                <p-dataView #poolView [value]="pools" layout="grid" filterBy="displayName"
+                <p-dataView #poolView [value]="pools" layout="grid" filterBy="name,ticker,description"
                             [rows]="maxItems"
                             [paginator]="showPaging" [filterBy]="['name', 'ticker', 'description']">
                     <ng-template let-pool pTemplate="gridItem">
-                        <div class="">
-                            <div class="grid-item {{smallGrid ? 'grid-item-small' : ''}}">
+                        <div class="mt-2">
+                            <div class="pool-grid-item {{smallGrid ? 'pool-grid-item-small' : ''}}">
                                 <div class="grid-item-top">
-                                    <span class="ms-2">{{pool.name}} ({{pool.ticker}})</span>
+                                    <strong class="ms-auto me-auto">{{pool.name}} ({{pool.ticker}})</strong>
                                 </div>
                                 <div class="grid-item-content">
-                                    <img src="{{pool.logo}}">
-                                    <p class="grid-item-token-name">{{pool.description}}</p>
+                                    <img src="{{pool.logo}}" width="128" height="128">
+                                    <p class="ms-1 me-1 grid-item-token-name" title="{{pool.description}}">{{pool.shortDesc}}</p>
                                 </div>
                                 <div class="grid-item-bottom">
                                     <button pButton
                                             title="Delegate" [disabled]="!walletLoaded || submittingTx"
-                                            (click)="showDelegateModal(pool)"
+                                            (click)="delegate(pool)"
                                             class="p-button p-button-rounded p-button-success ms-auto me-auto mb-2"
                                             label="Delegate" icon="fa-solid fa-handshake">
                                     </button>
@@ -48,36 +48,6 @@
         </div>
     </div>
 </section>
-<div bsModal #delegateModal="bs-modal" class="modal fade" role="dialog" tabindex="-1"
-     [config]="{backdrop: 'static'}">
-    <div class="modal-dialog modal-dialog-centered connect-modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title ms-0 me-auto" style="color: #153359 !important">Delegation</h4>
-                <span class="ms-auto">
-                <button pButton class="p-button-rounded p-button-text p-button-plain" icon="pi pi-times"
-                        title="Cancel"
-                        iconPos="left"
-                        (click)="hideDelegateModal()"></button>
-                    </span>
-            </div>
-            <div class="modal-body text-center" style="padding: .1em !important;overflow-y: auto">
-                <div class="ms-2 me-2 row">
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button pButton class="p-button-rounded p-button-primary ms-auto me-2" icon="fa-solid fa-handshake"
-                        title="Delegate"
-                        iconPos="left"
-                        (click)="delegate()"></button>
-                <button pButton class="p-button-rounded p-button-secondary ms-auto me-0" icon="fa-solid fa-xmark"
-                        title="Cancel"
-                        iconPos="left"
-                        (click)="delegate()"></button>
-            </div>
-        </div>
-    </div>
-</div>
 <ng-template #notificationTemplate let-notificationData="notification">
     <p class="notifier__notification-message" [innerHTML]="notificationData.message"></p>
 </ng-template>

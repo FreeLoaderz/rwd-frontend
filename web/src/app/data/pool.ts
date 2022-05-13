@@ -3,6 +3,7 @@ import converter from "bech32-converting";
 export class Pool {
     public name: string;
     public description: string;
+    public shortDesc: string;
     public ticker: string;
     public homepage: string;
     public id: string;
@@ -17,6 +18,11 @@ export class Pool {
             }
             if (data.description) {
                 this.description = data.description;
+                if (this.description.length > 60) {
+                    this.shortDesc = this.description.substring(0, 60).concat("...");
+                } else {
+                    this.shortDesc = this.description;
+                }
             }
             if (data.ticker) {
                 this.ticker = data.ticker;
@@ -26,7 +32,7 @@ export class Pool {
             }
             if (data.id) {
                 this.id = data.id;
-                this.poolhash = converter('pool1').toBech32(this.id);
+                this.poolhash = converter('pool').toBech32(this.id);
             }
             if (data.logo) {
                 this.logo = data.logo;

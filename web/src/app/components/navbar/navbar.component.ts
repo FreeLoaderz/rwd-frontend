@@ -33,7 +33,7 @@ export class NavbarComponent extends NotificationComponent implements OnInit, Af
     public testnetMenu: MenuItem;
     public walletMenu: MenuItem;
     public exploreMenu: MenuItem[];
-    public delegationMenuItem: MenuItem;
+    public poolMenuItem: MenuItem;
     public projectsMenuItem: MenuItem;
     public tokensMenuItem: MenuItem;
     public helpMenu: MenuItem[];
@@ -195,7 +195,7 @@ export class NavbarComponent extends NotificationComponent implements OnInit, Af
                 this.routeContactUs();
             }
         };
-        this.delegationMenuItem = {
+        this.poolMenuItem = {
             id: 'POOLS',
             label: 'POOLS',
             title: 'Explore participating pools and delegate',
@@ -227,7 +227,9 @@ export class NavbarComponent extends NotificationComponent implements OnInit, Af
             id: 'EXPLORE',
             title: 'Explore participating projects and pools',
             icon: 'fa-solid fa-compass',
-            items: [this.delegationMenuItem]
+            items: [this.projectsMenuItem,
+                this.poolMenuItem,
+            this.tokensMenuItem]
         }];
         if (!this.isTestNet) {
             this.helpMenu = [{
@@ -376,7 +378,7 @@ export class NavbarComponent extends NotificationComponent implements OnInit, Af
     }
 
     public routeDelegation() {
-        this.router.navigate(['/delegation']);
+        this.router.navigate(['/delegate']);
     }
 
     public routeContactUs() {

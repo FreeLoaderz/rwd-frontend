@@ -23,7 +23,6 @@ export class DelegateComponent extends NotificationComponent implements OnInit, 
     public walletSubscription: Subscription;
     public delegationSubscription: Subscription;
     public pools: Array<Pool> = [];
-    public selectedPool: Pool = null;
     public maxItems: number = 10;
     public showPaging: boolean = false;
     public poolDelegationReturn: string;
@@ -31,15 +30,14 @@ export class DelegateComponent extends NotificationComponent implements OnInit, 
     public initialized: boolean = false;
     public listingPools: boolean = false;
     public submittingTx: boolean = false;
-    public gridItemWidth: number = 216;
-    public gridItemHeight: number = 216;
-    public gridItemSmallWidth: number = 191;
-    public gridItemSmallHeight: number = 191;
+    public gridItemWidth: number = 300;
+    public gridItemHeight: number = 300;
+    public gridItemSmallWidth: number = 260;
+    public gridItemSmallHeight: number = 260;
     public smallGrid: boolean = false;
     public isTestnet: boolean = true;
     @ViewChild('poolView', {static: false}) public poolView: any;
     @ViewChild('notificationTemplate', {static: false}) public notificationTemplate: any;
-    @ViewChild('delegateModal', {static: false}) public delegateModal: ModalDirective;
 
     constructor(public router: Router, public notifierService: NotifierService, public restService: RestService,
                 public walletObserverService: WalletObserverService, public walletService: WalletService,
@@ -121,7 +119,7 @@ export class DelegateComponent extends NotificationComponent implements OnInit, 
             "ticker": "TPANL",
             "homepage": "https://www.panl.org",
             "id": "6762b21773213a40496489abd3bb94baeae99d8a0373a198472222a4",
-            "logo": ""
+            "logo": "https://logo.panl.org"
         });
         const lido: Pool = new Pool({
             "name": "Lido Nation",
@@ -130,7 +128,7 @@ export class DelegateComponent extends NotificationComponent implements OnInit, 
             "homepage": "https://www.lidonation.com",
             "extended": "https://www.lidonation.com/metadata-extended.json",
             "id": "bf81c32d4b8d05538431743190421b5e0fc2384c605c2ddfbeabbd5a",
-            "logo": "https://www.lidonation.com/img/lido-logo-square-white-bg.png"
+            "logo": "https://www.lidonation.com/img/llogo-transparent.png"
         });
         const pools: Array<Pool> = [];
         pools.push(apex);
@@ -158,14 +156,13 @@ export class DelegateComponent extends NotificationComponent implements OnInit, 
         this.getScreenSize(null);
     }
 
-    public delegate() {
+    public delegate(pool: Pool) {
         if (this.delegationSubscription == null) {
-            this.hideDelegateModal();
             this.delegationSubscription = this.walletObserverService.loaded$.subscribe(loaded => {
                 if (loaded) {
                     this.poolDelegationReturn = null;
                     globalThis.wallet.script = new Script(null);
-                    const stakeDelegation = new StakeDelegation(this.selectedPool.poolhash);
+                    const stakeDelegation = new StakeDelegation(pool.poolhash);
                     globalThis.wallet.script.StakeDelegation = stakeDelegation;
                     this.submittingTx = true;
                     this.restService.buildDelegationTx()
@@ -197,7 +194,7 @@ export class DelegateComponent extends NotificationComponent implements OnInit, 
                     .catch(e => this.processError(e));
             }).catch(e => this.showError(e));
         } else {
-            this.errorNotification("Token claim could not be created");
+            this.errorNotification("Delegation could not be completed!");
         }
     }
 
@@ -209,6 +206,7 @@ export class DelegateComponent extends NotificationComponent implements OnInit, 
             this.errorNotification("Delegation Failed! " + data.msg);
         }
         this.walletService.updateWallet();
+        this.submittingTx = false;
     }
 
     public disableButtons(): boolean {
@@ -221,10 +219,20 @@ export class DelegateComponent extends NotificationComponent implements OnInit, 
 
     public showError(error) {
         this.errorNotification(error);
+        if (this.delegationSubscription != null) {
+            this.delegationSubscription.unsubscribe();
+            this.delegationSubscription = null;
+        }
+        this.submittingTx = false;
     }
 
     public processError(error) {
         this.handleError(error);
+        if (this.delegationSubscription != null) {
+            this.delegationSubscription.unsubscribe();
+            this.delegationSubscription = null;
+        }
+        this.submittingTx = false;
     }
 
     public setNetwork() {
@@ -233,14 +241,5 @@ export class DelegateComponent extends NotificationComponent implements OnInit, 
         } else {
             this.isTestnet = true;
         }
-    }
-
-    public showDelegateModal(pool: Pool) {
-        this.selectedPool = pool;
-        this.delegateModal.show();
-    }
-
-    public hideDelegateModal() {
-        this.delegateModal.hide();
     }
 }
