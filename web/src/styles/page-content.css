@@ -349,7 +349,8 @@ li + li {
 }
 
 .pool-grid-item-small > div.grid-item-bottom > button.p-button,
-.grid-item-small > div.grid-item-bottom > button.p-button {
+.grid-item-small > div.grid-item-bottom > button.p-button,
+div.div-small > button.p-button {
     padding: 0.1rem .5rem !important;
     font-size: .8rem !important;
 }
@@ -485,6 +486,11 @@ div.sidemenu > button.p-button {
 
 #network > p.mainnet {
     color: #2b90c3 !important;
+}
+.reward-search {
+    float: right;
+    height: 35px;
+    width: auto;
 }
 
 .history-search {

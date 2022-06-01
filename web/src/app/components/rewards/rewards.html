@@ -8,25 +8,29 @@
                     <span class="ms-2" style="display:flex; float: left">Searching for tokens...</span></h4>
             </div>
             <div *ngIf="!listingTokens" class="data-view">
-                <div class="data-header">
+                <div class="data-header mb-2">
                     <h4>Available Rewards</h4>
+                </div>
+                <div class="data-header mb-2 {{smallGrid ? 'div-small' : ''}}">
+                    <input *ngIf="tokens.length > 1" pInputText class="col-sm-3 ms-2 reward-search" type="search"
+                           (input)="tokenView.filter($event.target.value, 'contains')"
+                           placeholder="Filter rewards.."/>
                     <button *ngIf="tokens.length > 1 && !selectAll" pButton
                             title="Claim All" [disabled]="!walletLoaded || submittingTx"
                             (click)="toggleSelectAll()"
-                            class="p-button p-button-rounded p-button-primary me-2 claimall"
+                            class="p-button p-button-rounded p-button-primary ms-2"
                             label="Claim All" icon="fa-solid fa-square">
                     </button>
                     <button *ngIf="tokens.length > 1 && selectAll" pButton
                             title="Claim All" [disabled]="!walletLoaded || submittingTx"
                             (click)="toggleSelectAll()"
-                            class="p-button p-button-rounded p-button-success me-2 claimall"
+                            class="p-button p-button-rounded p-button-success ms-2"
                             label="Claim All" icon="fa-solid fa-square-check">
                     </button>
-
                 </div>
                 <p-dataView #tokenView [value]="tokens" layout="grid" filterBy="displayName"
                             [rows]="maxItems" (onFilter)="onFilter($event, tokenView)"
-                            [paginator]="showPaging" [filterBy]="['displayName']">
+                            [paginator]="showPaging" filterBy="displayName">
                     <ng-template let-token pTemplate="gridItem">
                         <div class="">
                             <div class="grid-item {{smallGrid ? 'grid-item-small' : ''}}">
@@ -63,13 +67,15 @@
                             <span class="ms-2" style="display:flex; float: left">Loading wallet...</span></h4>
                     </ng-template>
                 </p-dataView>
-                <button *ngIf="selectedTokens.size > 0" pButton
-                        title="Submit Claimz" [loading]="!walletLoaded || submittingTx"
-                        (click)="claimSelectedTokens()"
-                        class="p-button p-button-rounded p-button-primary mt-3"
-                        style="margin-left: 1.7rem"
-                        label="Submit Claimz" icon="fa-solid fa-bolt-lightning">
-                </button>
+                <div class="{{smallGrid ? 'div-small' : ''}}">
+                    <button *ngIf="selectedTokens.size > 0" pButton
+                            title="Submit Claimz" [loading]="!walletLoaded || submittingTx"
+                            (click)="claimSelectedTokens()"
+                            class="p-button p-button-rounded p-button-primary mt-3"
+                            style="margin-left: 1.7rem"
+                            label="Submit Claimz" icon="fa-solid fa-bolt-lightning">
+                    </button>
+                </div>
             </div>
         </div>
     </div>

@@ -130,10 +130,19 @@ export class DelegateComponent extends NotificationComponent implements OnInit, 
             "id": "bf81c32d4b8d05538431743190421b5e0fc2384c605c2ddfbeabbd5a",
             "logo": "https://www.lidonation.com/img/llogo-transparent.png"
         });
+        const santo: Pool = new Pool({
+            "name": "SANTO",
+            "description": "Santo Cardano Stake Pool.",
+            "ticker": "SANTO",
+            "homepage": "https://www.santoelectronics.com/santonode",
+            "id": "6a0c2ca24a97f6b1c4477e8688e8de7f786de6efff72ecf4e521db3b",
+            "logo": "https://santoelectronics.com/s/santo.png"
+        });
         const pools: Array<Pool> = [];
         pools.push(apex);
-        pools.push(tpanl);
         pools.push(lido);
+        pools.push(santo);
+        pools.push(tpanl);
         this.poolDelegationReturn = null;
         this.processPoolList(pools);
         /**
