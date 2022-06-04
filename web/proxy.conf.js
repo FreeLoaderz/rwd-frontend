@@ -1,6 +1,6 @@
 const PROXY_CONFIG = {
   "/rwdbuild": {
-    "target": "https://testnet.heimdallr.drasil.io:4000",
+    "target": "https://heimdallr-drasil.apps.testnet.drasil.org",
     "secure": true,
     "logLevel": "debug",
     "changeOrigin": true,
@@ -17,7 +17,7 @@ const PROXY_CONFIG = {
     }
   },
   "/rwdinfo": {
-    "target": "https://testnet.vidar.drasil.io:4000",
+    "target": "https://vidar-drasil.apps.testnet.drasil.org",
     "secure": true,
     "logLevel": "debug",
     "changeOrigin": true,

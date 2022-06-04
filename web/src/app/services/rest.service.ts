@@ -3,22 +3,20 @@ import {Injectable} from "@angular/core";
 import {lastValueFrom, Observable, Subscription} from "rxjs";
 import {FormGroup} from "@angular/forms";
 import {map} from 'rxjs/operators';
-import {PropertyService} from "./property.service";
 import {PropertyObserverService} from "./observers/property-observer.service";
 
 @Injectable()
 export class RestService {
-    public static useNewEndpoints = false;
     public static processingRequest: boolean = false;
-    public static newEndpoints: boolean = false;
-    public static authorization: string;
+    public static heimdallrAuthorization: string;
+    public static vidarAuthorization: string;
     public static propertySubscription: Subscription;
 
     constructor(private httpClient: HttpClient, public propertyObserver: PropertyObserverService) {
         if (RestService.propertySubscription == null) {
             RestService.propertySubscription = propertyObserver.propertyMap$.subscribe(propertyMap => {
-                RestService.newEndpoints = ("false" !== propertyMap.get("newEndpoints"));
-                RestService.authorization = propertyMap.get("authorization");
+                RestService.vidarAuthorization = propertyMap.get("vidar-authorization");
+                RestService.heimdallrAuthorization = propertyMap.get("heimdallr-authorization");
             });
         }
     }
@@ -51,7 +49,7 @@ export class RestService {
      *
      */
     public getAvailablePools() {
-        const headers = new HttpHeaders().set('Content-Type', 'application/json').set('authorization', RestService.authorization);
+        const headers = new HttpHeaders().set('Content-Type', 'application/json').set('Authorization', RestService.vidarAuthorization);
         const url = '/rwdinfo/rwd/all/pools';
         RestService.processingRequest = true;
         return lastValueFrom(this.httpClient
@@ -64,7 +62,7 @@ export class RestService {
      *
      */
     public getAvailableProjects() {
-        const headers = new HttpHeaders().set('Content-Type', 'application/json').set('authorization', RestService.authorization);
+        const headers = new HttpHeaders().set('Content-Type', 'application/json').set('Authorization', RestService.vidarAuthorization);
         const url = '/rwdinfo/rwd/all/projects';
         RestService.processingRequest = true;
         return lastValueFrom(this.httpClient
@@ -77,7 +75,7 @@ export class RestService {
      *
      */
     public getAvailableTokens() {
-        const headers = new HttpHeaders().set('Content-Type', 'application/json').set('authorization', RestService.authorization);
+        const headers = new HttpHeaders().set('Content-Type', 'application/json').set('Authorization', RestService.vidarAuthorization);
         const url = '/rwdinfo/rwd/all/tokens';
         RestService.processingRequest = true;
         return lastValueFrom(this.httpClient
@@ -90,7 +88,7 @@ export class RestService {
      * Get the available rewards for a wallet
      */
     public getMyAvailableTokens() {
-        const headers = new HttpHeaders().set('Content-Type', 'application/json').set('authorization', RestService.authorization);
+        const headers = new HttpHeaders().set('Content-Type', 'application/json').set('Authorization', RestService.vidarAuthorization);
         const url = '/rwdinfo/rwd/all/' + globalThis.wallet.sending_stake_addr;
         RestService.processingRequest = true;
         return lastValueFrom(this.httpClient
@@ -105,7 +103,7 @@ export class RestService {
      * @param contractId
      */
     public getAvailableForToken(customerId: string, contractId: string) {
-        const headers = new HttpHeaders().set('Content-Type', 'application/json').set('authorization', RestService.authorization);
+        const headers = new HttpHeaders().set('Content-Type', 'application/json').set('Authorization', RestService.vidarAuthorization);
         const url = '/rwdinfo/rwd/one/' + customerId + '/' + contractId + '/' + globalThis.wallet.sending_stake_addr;
         RestService.processingRequest = true;
         return lastValueFrom(this.httpClient
@@ -118,7 +116,7 @@ export class RestService {
      * Get the reward history for a wallet
      */
     public getRewardHistory() {
-        const headers = new HttpHeaders().set('Content-Type', 'application/json').set('authorization', RestService.authorization);
+        const headers = new HttpHeaders().set('Content-Type', 'application/json').set('Authorization', RestService.vidarAuthorization);
         const url = '/rwdinfo/rwd/history/' + globalThis.wallet.sending_stake_addr;
         RestService.processingRequest = true;
 
@@ -135,7 +133,7 @@ export class RestService {
      * @param contractId
      */
     public getRewardHistoryForToken(customerId: string, contractId: string) {
-        const headers = new HttpHeaders().set('Content-Type', 'application/json').set('authorization', RestService.authorization);
+        const headers = new HttpHeaders().set('Content-Type', 'application/json').set('Authorization', RestService.vidarAuthorization);
         const url = '/rwdinfo/rwd/history/' + customerId + '/' + contractId + '/' + globalThis.wallet.sending_stake_addr;
         RestService.processingRequest = true;
         return lastValueFrom(this.httpClient
@@ -149,11 +147,8 @@ export class RestService {
      * @param multiSigType
      */
     public buildTokenClaimTx(customerId: string, multiSigType: string) {
-        const headers = new HttpHeaders().set('Content-Type', 'application/json').set('authorization', RestService.authorization);
-        let url = '/rwdbuild/ms/' + customerId + '/' + multiSigType;
-        if (RestService.newEndpoints) {
-            url = '/rwdbuild/ms/' + multiSigType;
-        }
+        const headers = new HttpHeaders().set('Content-Type', 'application/json').set('Authorization', RestService.heimdallrAuthorization);
+        const url = '/rwdbuild/ms/' + multiSigType;
         RestService.processingRequest = true;
 
         return lastValueFrom(this.httpClient
@@ -170,11 +165,8 @@ export class RestService {
      * @param data
      */
     public signAndFinalizeTx(customerId: number, multiSigType: string, signature: any, data: any) {
-        const headers = new HttpHeaders().set('Content-Type', 'application/json').set('authorization', RestService.authorization);
-        let url = '/rwdbuild/ms/fn/' + customerId + '/' + multiSigType + '/' + data.id;
-        if (RestService.newEndpoints) {
-            url = '/rwdbuild/ms/fn/' + multiSigType + '/' + data.id;
-        }
+        const headers = new HttpHeaders().set('Content-Type', 'application/json').set('Authorization', RestService.heimdallrAuthorization);
+        const url = '/rwdbuild/ms/fn/' + multiSigType + '/' + data.id;
         RestService.processingRequest = true;
 
         const params = {'signature': signature};
@@ -185,7 +177,7 @@ export class RestService {
     }
 
     public buildDelegationTx() {
-        const headers = new HttpHeaders().set('Content-Type', 'application/json').set('authorization', RestService.authorization);
+        const headers = new HttpHeaders().set('Content-Type', 'application/json').set('Authorization', RestService.heimdallrAuthorization);
         const url = '/rwdbuild/tx/stakedelegation';
         RestService.processingRequest = true;
 
@@ -197,7 +189,7 @@ export class RestService {
 
 
     public signDelegationTx(signature: any, data: any) {
-        const headers = new HttpHeaders().set('Content-Type', 'application/json').set('authorization', RestService.authorization);
+        const headers = new HttpHeaders().set('Content-Type', 'application/json').set('Authorization', RestService.heimdallrAuthorization);
         const url = '/rwdbuild/tx/fn/stakedelegation/' + data.id;
         RestService.processingRequest = true;
 
@@ -214,7 +206,7 @@ export class RestService {
      * @param script
      */
     public generateRewards(customerId: string, script: any) {
-        const headers = new HttpHeaders().set('Content-Type', 'application/json').set('authorization', RestService.authorization);
+        const headers = new HttpHeaders().set('Content-Type', 'application/json').set('Authorization', RestService.heimdallrAuthorization);
         const url = '/rwdbuild/ms/' + customerId + '/testrewards';
         RestService.processingRequest = true;
 

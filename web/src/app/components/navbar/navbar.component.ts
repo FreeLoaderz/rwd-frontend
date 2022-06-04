@@ -1,4 +1,4 @@
-import {AfterContentInit, Component, HostListener, Inject, OnInit, ViewChild} from '@angular/core';
+import {AfterContentInit, Component, ElementRef, HostListener, Inject, OnInit, ViewChild} from '@angular/core';
 import {Title} from "@angular/platform-browser";
 import {NotifierService} from "angular-notifier";
 import {ModalDirective} from "ngx-bootstrap/modal";
@@ -51,6 +51,8 @@ export class NavbarComponent extends NotificationComponent implements OnInit, Af
     public screenHeight: number;
     public fullScreen: boolean = false;
     public docElem: any;
+    public logoClickCount = 0;
+    @ViewChild('logo') logoElement: ElementRef;
     @ViewChild('connectModal', {static: false}) public connectModal: ModalDirective;
 
     constructor(@Inject(DOCUMENT) public document: any, public httpClient: HttpClient,
@@ -222,14 +224,22 @@ export class NavbarComponent extends NotificationComponent implements OnInit, Af
                 this.infoNotification("Token information coming soon");
             }
         };
+        /*  this.exploreMenu = [{
+              label: 'EXPLORE',
+              id: 'EXPLORE',
+              title: 'Explore participating projects and pools',
+              icon: 'fa-solid fa-compass',
+              items: [this.projectsMenuItem,
+                  this.poolMenuItem,
+              this.tokensMenuItem]
+          }];*/
         this.exploreMenu = [{
             label: 'EXPLORE',
             id: 'EXPLORE',
             title: 'Explore participating projects and pools',
             icon: 'fa-solid fa-compass',
-            items: [this.projectsMenuItem,
-                this.poolMenuItem,
-            this.tokensMenuItem]
+            items: [
+                this.poolMenuItem]
         }];
         if (!this.isTestNet) {
             this.helpMenu = [{
@@ -241,15 +251,15 @@ export class NavbarComponent extends NotificationComponent implements OnInit, Af
                     this.faqMenuItem]
             }];
             this.collapsedConnectedMenu = [
-                this.exploreMenu[0],
                 this.rewardsMenu[0],
+                this.exploreMenu[0],
                 this.helpMenu[0]
             ];
             this.collapsedMenu = [
                 this.connectMenuItem[0],
                 this.exploreMenu[0],
                 this.helpMenu[0]
-];
+            ];
         } else {
             this.helpMenu = [{
                 label: 'HELP',
@@ -261,10 +271,10 @@ export class NavbarComponent extends NotificationComponent implements OnInit, Af
                     this.testnetMenu]
             }];
             this.collapsedConnectedMenu = [
-                this.exploreMenu[0],
                 this.rewardsMenu[0],
+                this.exploreMenu[0],
                 this.helpMenu[0]
-];
+            ];
             this.collapsedMenu = [
                 this.connectMenuItem[0],
                 this.exploreMenu[0],
@@ -415,10 +425,19 @@ export class NavbarComponent extends NotificationComponent implements OnInit, Af
     }
 
     toggleFullScreen() {
-        if (this.fullScreen) {
-            this.closeFullscreen();
-        } else {
-            this.openFullscreen();
+        if (this.logoClickCount++ === 0) {
+            setTimeout(() => {
+                if (this.logoClickCount > 1) {
+                    if (this.fullScreen) {
+                        this.closeFullscreen();
+                    } else {
+                        this.openFullscreen();
+                    }
+                } else {
+                    this.router.navigate(["/welcome"]);
+                }
+                this.logoClickCount = 0;
+            }, 250);
         }
     }
 
