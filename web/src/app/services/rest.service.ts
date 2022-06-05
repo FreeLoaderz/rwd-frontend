@@ -207,7 +207,7 @@ export class RestService {
      */
     public generateRewards(customerId: string, script: any) {
         const headers = new HttpHeaders().set('Content-Type', 'application/json').set('Authorization', RestService.heimdallrAuthorization);
-        const url = '/rwdbuild/ms/' + customerId + '/testrewards';
+        const url = '/rwdbuild/ms/testrewards';
         RestService.processingRequest = true;
 
         return lastValueFrom(this.httpClient
