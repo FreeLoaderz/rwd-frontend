@@ -192,6 +192,10 @@ export class DelegateComponent extends NotificationComponent implements OnInit, 
     }
 
     public processDelegationTx(data: any) {
+        if (this.delegationSubscription != null) {
+            this.delegationSubscription.unsubscribe();
+            this.delegationSubscription = null;
+        }
         if ((data != null) && (data.tx != null)) {
             this.successNotification("Delegation tx created");
             this.poolDelegationReturn = data;
