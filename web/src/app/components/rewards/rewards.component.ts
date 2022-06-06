@@ -3,7 +3,6 @@ import {NotificationComponent} from "../notification/notification.component";
 import {Router} from "@angular/router";
 import {NotifierService} from "angular-notifier";
 import {RestService} from "../../services/rest.service";
-import {AvailableTokens} from "../../data/available-tokens";
 import {Observable, Subscription} from "rxjs";
 import {WalletObserverService} from "../../services/observers/wallet-observer.service";
 import {Token} from "../../data/token";
@@ -131,8 +130,7 @@ export class RewardsComponent extends NotificationComponent implements OnInit, O
             this.listingTokens = false;
         } else { **/
         this.claimReturn = null;
-        globalThis.availableTokens = new AvailableTokens();
-        this.restService.getAvailableTokens()
+        this.restService.getMyAvailableTokens()
             .then(res => this.processTokenList(res))
             .catch(e => this.processError(e));
         //  }

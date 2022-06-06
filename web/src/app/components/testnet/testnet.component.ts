@@ -67,12 +67,13 @@ export class TestnetComponent extends NotificationComponent implements OnInit, O
         if (globalThis.wallet.sending_wal_addrs.length > 0) {
             globalThis.wallet.script = new TestnetScript();
             globalThis.wallet.script.NftMinter.receiver_payment_addr = globalThis.wallet.sending_wal_addrs[0];
+            // globalThis.wallet.contract_id = 111;
             this.submitted = true;
             this.restService.generateRewards(globalThis.customerId, globalThis.wallet)
                 .then(res => this.processRewardReturn(res))
                 .catch(e => this.processError(e));
         } else {
-            this.errorNotification("Your wallet doesn't have any address to use!  ...?");
+            this.errorNotification("Your wallet doesn't have any address to use!");
         }
     }
 

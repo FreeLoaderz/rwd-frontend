@@ -485,9 +485,15 @@ span.p-menuitem-icon.fa-bolt-lightning {
 }
 
 .fa-toolbox {
-    color: silver !important;
+    color: dimgrey !important;
 }
 
+.fa-server {
+    color: skyblue !important;
+}
+.fa-compass {
+    color: silver !important;
+}
 .fa-chevron-right {
     color: wheat !important;
 }
@@ -791,4 +797,10 @@ body .p-menubar .p-submenu-list {
 }
 .fa-xmark:hover {
     color: #df4863 !important;
+}
+.fa-folder-open {
+    color: moccasin !important;
+}
+.fa-vault {
+    color: lightsteelblue !important;
 }

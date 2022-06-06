@@ -12,6 +12,7 @@ export class Wallet {
     public network: number;
     public balance: number;
     public lovelaces: number;
+    public contract_id: number = 1;
     public maskedBalance: string;
 
     constructor(data: any) {

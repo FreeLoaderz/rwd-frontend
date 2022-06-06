@@ -3,7 +3,7 @@ export class NftMinter {
     public mint_metadata: string = "";
     public receiver_payment_addr: string;
     public auto_mint: boolean = false;
-    public contract_id: number = 0;
+    public contract_id: number = 111;
 
     constructor() {
     }

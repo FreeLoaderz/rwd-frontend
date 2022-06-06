@@ -28,6 +28,10 @@
         height: 26px !important;
         width: 150px !important;
     }
+    .reward-search {
+        height: 26px !important;
+        width: 150px !important;
+    }
 }
 
 @media only screen and (max-device-width: 1400px) {
@@ -53,6 +57,11 @@
 
     .history-search {
         margin-top: -11px !important;
+        height: 26px !important;
+        width: 150px !important;
+    }
+
+    .reward-search {
         height: 26px !important;
         width: 150px !important;
     }
@@ -180,6 +189,11 @@
         width: 150px !important;
     }
 
+    .reward-search {
+        height: 26px !important;
+        width: 150px !important;
+    }
+
     .banner-social-buttons {
         display: block !important;
     }
@@ -224,6 +238,10 @@
 
     .history-search {
         margin-top: -11px !important;
+        height: 26px !important;
+        width: 100px !important;
+    }
+    .reward-search {
         height: 26px !important;
         width: 100px !important;
     }
