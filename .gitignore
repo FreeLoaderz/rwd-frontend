@@ -21,3 +21,4 @@ web/.idea
 web/.angular
 web/package-lock.json
 .idea
+properties.json
