@@ -4,7 +4,7 @@ export class TokenMetadata {
     public name: string;
     public url: string;
     public description: string;
-    public logo: number;
+    public logo: string;
     public ticker: string;
     public subject: string;
 
@@ -25,7 +25,7 @@ export class TokenMetadata {
                 this.description = data.description;
             }
             if (data.logo) {
-                this.logo = data.logo;
+                this.logo = 'data:image/png;base64,' + data.logo;
             }
             if (data.ticker) {
                 this.ticker = data.ticker;
