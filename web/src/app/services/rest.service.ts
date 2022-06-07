@@ -216,6 +216,16 @@ export class RestService {
             .catch(this.handleError);
     }
 
+    public getTokenMetadata(tokenName: string) {
+        const headers = new HttpHeaders().set('Content-Type', 'application/json');
+        const url = '/metadata/api/v0/ticker/' + tokenName + '/all';
+        RestService.processingRequest = true;
+        return lastValueFrom(this.httpClient
+            .get(url, {headers: headers}))
+            .then(res => this.processResponse(res))
+            .catch(this.handleError);
+    }
+
     public isProcessingRequest() {
         return RestService.processingRequest;
     }

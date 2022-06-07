@@ -11,6 +11,7 @@ import {SpoRewardClaim} from "../../data/spo-reward-claim";
 import {WalletService} from "../../services/wallet.service";
 import {Title} from "@angular/platform-browser";
 import {UtilityService} from "../../services/utility.service";
+import {TokenMetadata} from "../../data/token-metadata";
 
 @Component({
     selector: 'rewards',
@@ -37,6 +38,7 @@ export class RewardsComponent extends NotificationComponent implements OnInit, O
     public gridItemSmallWidth: number = 191;
     public gridItemSmallHeight: number = 191;
     public smallGrid: boolean = false;
+    public isTestnet: boolean = false;
 
     @ViewChild('tokenView', {static: false}) public tokenView: any;
     @ViewChild('notificationTemplate', {static: false}) public notificationTemplate: any;
@@ -57,6 +59,7 @@ export class RewardsComponent extends NotificationComponent implements OnInit, O
             loaded => {
                 this.walletLoaded = loaded;
                 if ((loaded === true) && (!this.initialized)) {
+                    this.isTestnet = (globalThis.wallet.network === 0);
                     this.listTokens();
                 }
             }
@@ -140,6 +143,23 @@ export class RewardsComponent extends NotificationComponent implements OnInit, O
         globalThis.tokens = [];
         for (let i = 0; i < data.length; ++i) {
             const newToken = new Token(data[i]);
+            setTimeout(() => {
+                let name = newToken.displayName;
+                if ((this.isTestnet) && (newToken.displayName.startsWith("t")) && (newToken.displayName !== 'teuton')) {
+                    name = newToken.displayName.substring(1);
+                    if (name === 'FLZC') {
+                        name = 'FLZ';
+                    }
+                }
+                const tokenMetadata = localStorage.getItem(newToken.displayName);
+                if (tokenMetadata == null) {
+                    this.restService.getTokenMetadata(name)
+                        .then(res => this.addTokenMetadata(newToken, res))
+                        .catch(e => this.processMetadataError(newToken, e));
+                } else if (tokenMetadata !== "notfound") {
+                    newToken.tokenMetadata = new TokenMetadata(JSON.parse(tokenMetadata));
+                }
+            });
             if (newToken.amount > 0) {
                 globalThis.tokens.push(newToken);
             }
@@ -149,6 +169,16 @@ export class RewardsComponent extends NotificationComponent implements OnInit, O
         this.initialized = true;
         this.listingTokens = false;
         this.getScreenSize(null);
+    }
+
+    public processMetadataError(newToken: Token, data: any) {
+        localStorage.setItem(newToken.displayName, "notfound");
+    }
+
+    public addTokenMetadata(newToken: Token, data: any) {
+        const tokenMetadata = new TokenMetadata(data[0]);
+        newToken.tokenMetadata = tokenMetadata;
+        localStorage.setItem(newToken.displayName, JSON.stringify(data[0]));
     }
 
     public claimSelectedTokens() {
