@@ -1,4 +1,5 @@
 import {UtilityService} from "../services/utility.service";
+import {TokenMetadata} from "./token-metadata";
 
 export class Token {
     public displayName: string;
@@ -8,6 +9,7 @@ export class Token {
     public amount: number;
     public last_calc_epoch: number;
     public selected: boolean = false;
+    public tokenMetadata: TokenMetadata;
 
     constructor(data: any) {
         if (data != null) {

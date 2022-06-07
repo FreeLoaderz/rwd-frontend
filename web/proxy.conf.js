@@ -33,13 +33,13 @@ const PROXY_CONFIG = {
       }
     }
   },
-  "/token": {
-    "target": "https://tokens.cardano.org",
+  "/metadata": {
+    "target": "https://token-registry-api.apexpool.info/",
     "secure": true,
     "logLevel": "debug",
     "changeOrigin": true,
     "pathRewrite": {
-      "^/token": ""
+      "^/metadata": ""
     },
     "onProxyRes": function(pr, req, res) {
       if (pr.headers['set-cookie']) {

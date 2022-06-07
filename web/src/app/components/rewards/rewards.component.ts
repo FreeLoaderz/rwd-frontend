@@ -11,6 +11,7 @@ import {SpoRewardClaim} from "../../data/spo-reward-claim";
 import {WalletService} from "../../services/wallet.service";
 import {Title} from "@angular/platform-browser";
 import {UtilityService} from "../../services/utility.service";
+import {TokenMetadata} from "../../data/token-metadata";
 
 @Component({
     selector: 'rewards',
@@ -140,6 +141,16 @@ export class RewardsComponent extends NotificationComponent implements OnInit, O
         globalThis.tokens = [];
         for (let i = 0; i < data.length; ++i) {
             const newToken = new Token(data[i]);
+            setTimeout(() => {
+                const tokenMetadataString = localStorage.getItem(newToken.displayName);
+                if (tokenMetadataString == null) {
+                    this.restService.getTokenMetadata(newToken.displayName)
+                        .then(res => this.addTokenMetadata(newToken, res))
+                        .catch(e => this.processError(e));
+                } else {
+                    newToken.tokenMetadata = new TokenMetadata(tokenMetadataString);
+                }
+            });
             if (newToken.amount > 0) {
                 globalThis.tokens.push(newToken);
             }
@@ -149,6 +160,13 @@ export class RewardsComponent extends NotificationComponent implements OnInit, O
         this.initialized = true;
         this.listingTokens = false;
         this.getScreenSize(null);
+    }
+
+    public addTokenMetadata(newToken: Token, data: any) {
+        console.log(data);
+        const tokenMetadata = new TokenMetadata(data);
+        newToken.tokenMetadata = tokenMetadata;
+        localStorage.setItem(newToken.displayName, data);
     }
 
     public claimSelectedTokens() {
