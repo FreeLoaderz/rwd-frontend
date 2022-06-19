@@ -7,6 +7,7 @@ import {ContactUsComponent} from "./components/contact-us/contact-us.component";
 import {TestnetComponent} from "./components/testnet/testnet.component";
 import {FaqComponent} from './components/faq/faq.component';
 import {DelegateComponent} from "./components/delegate/delegate.component";
+import {TosComponent} from "./components/tos/tos.component";
 
 
 const routes: Routes = [
@@ -42,6 +43,10 @@ const routes: Routes = [
     {
         path: 'delegate', component:
         DelegateComponent
+    },
+    {
+        path: 'tos', component:
+        TosComponent
     }
 ];
 

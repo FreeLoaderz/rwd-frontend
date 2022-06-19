@@ -37,6 +37,7 @@ import {MaintenanceComponent} from "./components/maintenance/maintenance.compone
 import {PropertyService} from "./services/property.service";
 import {PropertyObserverService} from "./services/observers/property-observer.service";
 import {DelegateComponent} from "./components/delegate/delegate.component";
+import {TosComponent} from "./components/tos/tos.component";
 
 const customNotifierOptions: NotifierOptions = {
     position: {
@@ -83,7 +84,7 @@ const customNotifierOptions: NotifierOptions = {
 
 @NgModule({
     declarations: [NavbarComponent, WelcomeComponent, FooterComponent, InfoComponent, RewardsComponent, MaintenanceComponent,
-        ContactUsComponent, HistoryComponent, NetworkComponent, TestnetComponent, FaqComponent, DelegateComponent],
+        ContactUsComponent, HistoryComponent, NetworkComponent, TestnetComponent, FaqComponent, DelegateComponent, TosComponent],
     imports: [BrowserModule, FormsModule, ReactiveFormsModule, AppRoutingModule, RouterModule,
         TooltipModule.forRoot(), OverlayPanelModule, ModalModule.forRoot(),
         NotifierModule.withConfig(customNotifierOptions), ChartModule, SharedModule,

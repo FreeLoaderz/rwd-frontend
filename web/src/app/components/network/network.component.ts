@@ -42,11 +42,11 @@ export class NetworkComponent implements OnInit, OnDestroy {
     }
 
     public downloadModal() {
-        this.hideTermsModal();
+        this.hideTermsModal(null);
         window.open('assets/SmartClaimz-Terms_of_Service.pdf');
     }
 
-    public hideTermsModal() {
+    public hideTermsModal(event: any) {
         this.terms.hide();
     }
 

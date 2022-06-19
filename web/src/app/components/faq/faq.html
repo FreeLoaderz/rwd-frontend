@@ -5,20 +5,23 @@
             <div class="blackdiv" style="padding-top: 0px;display: flex;">
                 <dl class="faq">
                     <dt>
-                        <button class="toggleButton" type="button" aria-expanded="false" aria-controls="faq1_desc" (click)="toggleComponent('faq1_desc')">What is SmartClaimz?<i class="fa-solid fa-chevron-down ms-auto me-0"></i>
+                        <button class="toggleButton" type="button" aria-expanded="false" aria-controls="faq1_desc"
+                                (click)="toggleComponent('faq1_desc')">What is SmartClaimz?<i
+                                class="fa-solid fa-chevron-down ms-auto me-0"></i>
                         </button>
                     </dt>
                     <dd>
                         <div id="faq1_desc" class="desc">
                             <p>
-                                <a href="https://www.freeloaderz.io/" class="spanlinkBlue" target="_blank">FreeLoaderz</a>
+                                <a href="https://www.freeloaderz.io/" class="spanlinkBlue"
+                                   target="_blank">FreeLoaderz</a>
                                 SmartClaimz is a novel reward distribution platform that aims to be the premier token
                                 claiming Web3
                                 dApp for end users. Decentralized autonomous organizations (DAOs), token projects, NFT
                                 projects,
                                 video game projects, and more will be able to offer their
                                 tokens through SmartClaimz to their users.</p>
-                                <p>To speed up the transactions, SmartClaimz submits them to the FreeLoaderz Load
+                            <p>To speed up the transactions, SmartClaimz submits them to the FreeLoaderz Load
                                 Balancers. The Load
                                 Balancers pass the transaction to Cardano Submit API enabled Relays. Each of these
                                 Relays are run
@@ -27,23 +30,154 @@
                         </div>
                     </dd>
                     <dt>
-                        <button class="toggleButton" type="button" aria-expanded="false" aria-controls="faq2_desc"
-                                (click)="toggleComponent('faq2_desc')">How do I participate?<i class="fa-solid fa-chevron-down ms-auto me-0"></i>
+                        <button class="toggleButton" type="button" aria-expanded="false" aria-controls="faq_steps"
+                                (click)="toggleComponent('faq_steps')">
+                            What are the steps to use SmartClaimz?<i class="fa-solid fa-chevron-down ms-auto me-0"></i>
                         </button>
                     </dt>
                     <dd>
-                        <div id="faq2_desc" class="desc">
+                        <div id="faq_steps" class="desc">
+                            <p>Follow these basic instructions to claim tokens on SmartClaimz:</p>
+                            <ul>
+                                <li style="margin-left: 1rem;font-size: 16px !important">Connect your wallet using the
+                                    "Connect" button in the Navigation Bar
+                                </li>
+                                <li style="font-size: 16px !important">Accept the Terms of Service</li>
+                                <li style="font-size: 16px !important">If you are delegated to a participating pool, you
+                                    will see a list of tokens
+                                    available.
+                                </li>
+                                <li style="font-size: 16px !important">Choose the tokens you want to claim</li>
+                                <li style="font-size: 16px !important">Click "Submit Claimz"</li>
+                                <li style="font-size: 16px !important">Sign the transaction</li>
+                                <li style="font-size: 16px !important">The tokens will appear in your wallet once the
+                                    transaction is finalized by the network
+                                </li>
+                            </ul>
                             <p>
-                                Once you connect your wallet you will be presented with the tokens that are available to
-                                claim. The
-                                distribution mechanics depend on the issuer of that token. If something doesn't seem
-                                right please
-                                reach out to the project for more information.
+                                More detailed instructions are available in our
+                                test net <a class="spanlinkBlue"
+                                    href="https://docs.google.com/document/d/1FZrcek6yxMvwdAyLgVwfqKgCGtpGjPYnuZu26JNWees/edit"
+                                    target="_blank">guide</a>.
                             </p>
                         </div>
                     </dd>
                     <dt>
-                        <button class="toggleButton" type="button" aria-expanded="false" aria-controls="faq3_desc" (click)="toggleComponent('faq3_desc')">What does 'ERROR no
+                        <button class="toggleButton" type="button" aria-expanded="false" aria-controls="faq_wallet"
+                                (click)="toggleComponent('faq_wallet')">What wallet should I use?<i
+                                class="fa-solid fa-chevron-down ms-auto me-0"></i>
+                        </button>
+                    </dt>
+                    <dd>
+                        <div id="faq_wallet" class="desc">
+                            <p>At this time we recommend <a href="https://eternl.io/" class="spanlinkBlue" target="_blank">Eternl</a> or
+                                <a href="https://namiwallet.io/" class="spanlinkBlue" target="_blank">Nami</a>.
+                            </p>
+                        </div>
+                    </dd>
+                    <dt>
+                        <button class="toggleButton" type="button" aria-expanded="false"
+                                aria-controls="faq_avail_tokens"
+                                (click)="toggleComponent('faq_avail_tokens')">How do I see my available tokens?<i
+                                class="fa-solid fa-chevron-down ms-auto me-0"></i>
+                        </button>
+                    </dt>
+                    <dd>
+                        <div id="faq_avail_tokens" class="desc">
+                            <p>Click the "Connect" button from the Navigation Bar and choose your wallet. You will be
+                                redirected to the Claimz page
+                                which will show you what tokens are available to you.
+                            </p>
+                        </div>
+                    </dd>
+                    <dt>
+                        <button class="toggleButton" type="button" aria-expanded="false" aria-controls="faq_every_epoch"
+                                (click)="toggleComponent('faq_every_epoch')">Do I have to claim my tokens every epoch?<i
+                                class="fa-solid fa-chevron-down ms-auto me-0"></i>
+                        </button>
+                    </dt>
+                    <dd>
+                        <div id="faq_every_epoch" class="desc">
+                            <p>No, with SmartClaimz you can claim tokens at any time. They continue to accrue until you
+                                claim them.
+                            </p>
+                        </div>
+                    </dd>
+                    <dt>
+                        <button class="toggleButton" type="button" aria-expanded="false"
+                                aria-controls="faq_wallet_connect"
+                                (click)="toggleComponent('faq_wallet_connect')">Why won't my wallet connect?<i
+                                class="fa-solid fa-chevron-down ms-auto me-0"></i>
+                        </button>
+                    </dt>
+                    <dd>
+                        <div id="faq_wallet_connect" class="desc">
+                            <p>There are a couple of things you can try to get your wallet connected. If you make any
+                                changes to your wallet or browser, reload the site.
+                            </p>
+                            <ul>
+                                <li style="margin-left: 1rem;font-size: 16px !important">Clear your browser cache
+                                    (typically left ctrl+shift+del to bring up the browser modal)
+                                </li>
+                                <li style="font-size: 16px !important">Restart your browser</li>
+                                <li style="font-size: 16px !important">Make sure your browser wallet extension is
+                                    installed
+                                </li>
+                                <li style="font-size: 16px !important">Make sure DApp access is enabled in your
+                                    wallet
+                                </li>
+                                <li style="font-size: 16px !important">Remove our site from your wallet's
+                                    allowlist/whitelist
+                                </li>
+                            </ul>
+                        </div>
+                    </dd>
+                    <dt>
+                        <button class="toggleButton" type="button" aria-expanded="false" aria-controls="faq_no_tokens"
+                                (click)="toggleComponent('faq_no_tokens')">Why didn't I get my tokens?<i
+                                class="fa-solid fa-chevron-down ms-auto me-0"></i>
+                        </button>
+                    </dt>
+                    <dd>
+                        <div id="faq_no_tokens" class="desc">
+                            <p>It can take 10 to 15 minutes (possibly more) for you to receive your tokens in your
+                                wallet. It'll depend on network congestion and other factors.
+                                With that, here are some things to be aware of:
+                            </p>
+                            <ul>
+                                <li style="margin-left: 1rem;font-size: 16px !important">If you didn't get the Success
+                                    notification with a link to your claim, it didn't go through
+                                </li>
+                                <li style="font-size: 16px !important">If the transaction went through and you have
+                                    waited 15 minutes, has the ADA been debited from your wallet? If not, the
+                                    transaction hasn't been completed yet
+                                </li>
+                                <li style="font-size: 16px !important">If ADA has been debited for the transaction and
+                                    you still
+                                    have not received tokens, please let us know at <a href="mailto:info@smartclaimz.io" class="spanlinkBlue"
+                                                                                       style="font-size: 16px !important">info@smartclaimz.io</a>
+                                    and we will escalate a ticket for you
+                                </li>
+                            </ul>
+                        </div>
+                    </dd>
+                    <dt>
+                        <button class="toggleButton" type="button" aria-expanded="false"
+                                aria-controls="faq_incorrect_tokens"
+                                (click)="toggleComponent('faq_incorrect_tokens')">What if I didn't receive the correct
+                            number of tokens?<i class="fa-solid fa-chevron-down ms-auto me-0"></i>
+                        </button>
+                    </dt>
+                    <dd>
+                        <div id="faq_incorrect_tokens" class="desc">
+                            <p>As each project has its own metrics, please reach out directly to the project team for the token for a review of
+                                the situation.
+                            </p>
+                        </div>
+                    </dd>
+                    <dt>
+                        <button class="toggleButton" type="button" aria-expanded="false" aria-controls="faq3_desc"
+                                (click)="toggleComponent('faq3_desc')">What does 'ERROR no
                             collateral provided' mean?<i class="fa-solid fa-chevron-down ms-auto me-0"></i>
                         </button>
                     </dt>
@@ -63,19 +197,16 @@
                         </div>
                     </dd>
                     <dt>
-                        <button type="button" class="toggleButton" aria-expanded="false" aria-controls="faq4_desc" (click)="toggleComponent('faq4_desc')">Where can I learn more
+                        <button type="button" class="toggleButton" aria-expanded="false" aria-controls="faq4_desc"
+                                (click)="toggleComponent('faq4_desc')">Where can I learn more
                             about SmartClaimz?<i class="fa-solid fa-chevron-down ms-auto me-0"></i>
                         </button>
                     </dt>
                     <dd>
                         <div id="faq4_desc" class="desc">
-                            <p>
-                                For step-by-step instructions on how to use SmartClaimz, see in depth <a
-                                    href="https://docs.google.com/document/d/1FZrcek6yxMvwdAyLgVwfqKgCGtpGjPYnuZu26JNWees/edit"
-                                    class="spanlinkBlue" target="blank_">tutorial</a>.</p>
-                                <p>FreeLoaderz also has a <a
+                            <p>To find our more, check out the FreeLoaderz <a
                                     href="https://freeloaderz.medium.com/smartclaimz-web3-dapp-testnet-690a1bac7440"
-                                    class="spanlinkBlue" target="blank_">Medium article</a> that has many of the key
+                                    class="spanlinkBlue" target="blank_">Medium article</a> which has many of the key
                                 links for the FreeLoaderz project including the FreeLoaderz Discord link.
                             </p>
                         </div>

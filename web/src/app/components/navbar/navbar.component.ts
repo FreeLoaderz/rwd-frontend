@@ -52,8 +52,10 @@ export class NavbarComponent extends NotificationComponent implements OnInit, Af
     public fullScreen: boolean = false;
     public docElem: any;
     public logoClickCount = 0;
+    public acceptedTOS = false;
     @ViewChild('logo') logoElement: ElementRef;
     @ViewChild('connectModal', {static: false}) public connectModal: ModalDirective;
+    @ViewChild('terms', {static: false}) public terms: ModalDirective;
 
     constructor(@Inject(DOCUMENT) public document: any, public httpClient: HttpClient,
                 public propertyService: PropertyService,
@@ -476,5 +478,13 @@ export class NavbarComponent extends NotificationComponent implements OnInit, Af
 
     scrollToElement(element): void {
         this.document.getElementById(element).scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"});
+    }
+
+    public showTermsModal() {
+        this.terms.show();
+    }
+
+    public hideTermsModal(event: any) {
+        this.terms.hide();
     }
 }
