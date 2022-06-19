@@ -15,7 +15,7 @@ import {RestService} from "../../services/rest.service";
 
 export class ContactUsComponent extends NotificationComponent {
     public contactUsForm: FormGroup;
-    public defaultErrorMessage: string = "Could not submit your feedback. If it continues, please email us at <a class=\"notifier__notification-message\" href=\"mailto:info@freeloaderz.io\">info@freeloaderz.io</a>";
+    public defaultErrorMessage: string = "Could not submit your feedback. If it continues, please email us at <a class=\"notifier__notification-message\" href=\"mailto:info@smartclaimz.io\">info@smartclaimz.io</a>";
     @ViewChild('notificationTemplate', {static: false}) public notificationTemplate: any;
 
 
