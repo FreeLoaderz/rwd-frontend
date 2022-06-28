@@ -55,6 +55,7 @@ export class NavbarComponent extends NotificationComponent implements OnInit, Af
     public acceptedTOS = false;
     @ViewChild('logo') logoElement: ElementRef;
     @ViewChild('connectModal', {static: false}) public connectModal: ModalDirective;
+    @ViewChild('disabledModal', {static: false}) public disabledModal: ModalDirective;
     @ViewChild('terms', {static: false}) public terms: ModalDirective;
 
     constructor(@Inject(DOCUMENT) public document: any, public httpClient: HttpClient,
@@ -302,8 +303,13 @@ export class NavbarComponent extends NotificationComponent implements OnInit, Af
         this.getScreenSize(event);
     }
 
+    public hideDisabledModal() {
+        this.disabledModal.hide();
+    }
+
     public showConnectModal() {
-        this.connectModal.show();
+        //   this.connectModal.show();
+        this.disabledModal.show();
     }
 
     public hideConnectModal() {
