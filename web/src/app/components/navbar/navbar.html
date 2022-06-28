@@ -117,6 +117,35 @@
         </div>
     </div>
 </div>
+<div bsModal #disabledModal="bs-modal" class="modal fade" role="dialog" tabindex="-1"
+     [config]="{backdrop: 'static'}">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title ms-0 me-auto" style="color: #153359 !important">Testnet Complete</h4>
+                <span class="ms-auto">
+                <button pButton class="p-button-rounded p-button-text p-button-plain" icon="pi pi-times"
+                        title="Cancel"
+                        iconPos="left"
+                        (click)="hideDisabledModal()"></button>
+                    </span>
+            </div>
+            <div class="modal-body text-center" style="padding: .1em !important;overflow-y: auto">
+                <div class="ms-2 me-2 row">
+                    <p>The SmartClaimz Testnet phase is complete. Thank you for your participation and feedback!</p>
+                    <p>Watch for updates regarding our Mainnet release in the coming weeks!</p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button pButton type="button" class="p-button-rounded p-button-secondary" icon="fa-solid fa-times"
+                        title="Close"
+                        iconPos="left"
+                        label="Close"
+                        (click)="hideDisabledModal()"></button>
+            </div>
+        </div>
+    </div>
+</div>
 <notifier-container>
 </notifier-container>
 <div id="topAnchor" #topAnchor class="router-wrapper container-fluid">
