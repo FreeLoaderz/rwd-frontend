@@ -8,6 +8,7 @@ import {TestnetComponent} from "./components/testnet/testnet.component";
 import {FaqComponent} from './components/faq/faq.component';
 import {DelegateComponent} from "./components/delegate/delegate.component";
 import {TosComponent} from "./components/tos/tos.component";
+import {BankManagerComponent} from "./components/extensions/meld/bank-manager.component";
 
 
 const routes: Routes = [
@@ -47,6 +48,10 @@ const routes: Routes = [
     {
         path: 'tos', component:
         TosComponent
+    },
+    {
+        path: 'bank-manager', component:
+        BankManagerComponent
     }
 ];
 

@@ -1,5 +1,5 @@
-import {DoBootstrap, NgModule} from '@angular/core';
-import {Route, RouterModule} from "@angular/router";
+import {NgModule} from '@angular/core';
+import {RouterModule} from "@angular/router";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {HttpClientModule} from "@angular/common/http";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
@@ -38,6 +38,7 @@ import {PropertyService} from "./services/property.service";
 import {PropertyObserverService} from "./services/observers/property-observer.service";
 import {DelegateComponent} from "./components/delegate/delegate.component";
 import {TosComponent} from "./components/tos/tos.component";
+import {BankManagerComponent} from "./components/extensions/meld/bank-manager.component";
 
 const customNotifierOptions: NotifierOptions = {
     position: {
@@ -83,7 +84,7 @@ const customNotifierOptions: NotifierOptions = {
 };
 
 @NgModule({
-    declarations: [NavbarComponent, WelcomeComponent, FooterComponent, InfoComponent, RewardsComponent, MaintenanceComponent,
+    declarations: [NavbarComponent, WelcomeComponent, FooterComponent, InfoComponent, RewardsComponent, MaintenanceComponent, BankManagerComponent,
         ContactUsComponent, HistoryComponent, NetworkComponent, TestnetComponent, FaqComponent, DelegateComponent, TosComponent],
     imports: [BrowserModule, FormsModule, ReactiveFormsModule, AppRoutingModule, RouterModule,
         TooltipModule.forRoot(), OverlayPanelModule, ModalModule.forRoot(),

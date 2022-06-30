@@ -24,6 +24,8 @@ declare let gtag: Function;
  * Navigation Bar
  */
 export class NavbarComponent extends NotificationComponent implements OnInit, AfterContentInit {
+    public isExtension: boolean = false;
+    public extensionRoute: string = "";
     public collapsedConnectedMenu: MenuItem[];
     public collapsedMenu: MenuItem[];
     public rewardsMenu: MenuItem[];
@@ -70,6 +72,12 @@ export class NavbarComponent extends NotificationComponent implements OnInit, Af
                 gtag('event', 'page_view');
             }
         });
+        if (location.hostname.startsWith("meld")) {
+            this.isExtension = true;
+            this.extensionRoute = "/bank-manager";
+            this.document.body.classList.add("meld-bg");
+            this.router.navigate([this.extensionRoute]);
+        }
     }
 
     ngOnInit() {
@@ -94,13 +102,17 @@ export class NavbarComponent extends NotificationComponent implements OnInit, Af
         this.httpClient.get("https://api.ipify.org/?format=json").subscribe((res: any) => {
             globalThis.ipAddress = res.ip;
         });
-        this.setBodyBackground();
+        if (!this.isExtension) {
+            this.setBodyBackground();
+        } else {
+            this.document.body.classList.remove("body".concat("0"));
+        }
     }
 
     public setBodyBackground() {
-        document.body.classList.remove("body".concat("0"));
+        this.document.body.classList.remove("body".concat("0"));
         const index = Math.floor(Math.random() * 4);
-        document.body.classList.add("body".concat(index.toFixed(0)));
+        this.document.body.classList.add("body".concat(index.toFixed(0)));
     }
 
     ngAfterContentInit() {
@@ -308,8 +320,8 @@ export class NavbarComponent extends NotificationComponent implements OnInit, Af
     }
 
     public showConnectModal() {
-        //   this.connectModal.show();
-        this.disabledModal.show();
+        this.connectModal.show();
+        // this.disabledModal.show();
     }
 
     public hideConnectModal() {
@@ -425,7 +437,11 @@ export class NavbarComponent extends NotificationComponent implements OnInit, Af
         this.walletSubstring = null;
         this.connected = false;
         this.walletObserverService.setloaded(false);
-        this.router.navigate(['/welcome']);
+        if (!this.isExtension) {
+            this.router.navigate(['/welcome']);
+        } else {
+            this.router.navigate([this.extensionRoute]);
+        }
     }
 
     public getWalletSubstring() {

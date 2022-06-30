@@ -1,0 +1,78 @@
+/** Extensions **/
+
+.extension-section {
+    padding-top: 25px;
+    color: #fff;
+    width: 100%;
+    min-height: 100vh !important;
+    height: auto !important;
+    background-color: transparent;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+
+/** MELD START **/
+body.meld-bg {
+    background-image: -moz-radial-gradient(183.7% 183.7% at 15.31% 145.37%, #4800A5 24.56%, #E51B44 100%), -moz-linear-gradient(78.43deg, rgba(229, 27, 68, 0) 50.98%, #E51B44 75.68%); /* FF3.6-15 */
+    background-image: -webkit-radial-gradient(183.7% 183.7% at 15.31% 145.37%, #4800A5 24.56%, #E51B44 100%), -webkit-linear-gradient(78.43deg, rgba(229, 27, 68, 0) 50.98%, #E51B44 75.68%); /* Chrome10-25,Safari5.1-6 */
+    background-image: radial-gradient(183.7% 183.7% at 15.31% 145.37%, #4800A5 24.56%, #E51B44 100%),   linear-gradient(78.43deg, rgba(229, 27, 68, 0) 50.98%, #E51B44 75.68%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+}
+bank-manager {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.meld-title {
+    margin-top: 21px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 36px;
+    color: #FFFFFF;
+}
+
+.meld-img-logo {
+    width: 241px;
+    height: 102px;
+    cursor: pointer !important;
+}
+img.meld-img-logo {
+    display: unset !important;
+}
+
+.meld-img-bank-mgr {
+    position: absolute;
+    width: 478px;
+    height: 418px;
+    left: 0px;
+    bottom: 0px;
+}
+
+.meld-img-smartclaimz {
+    position: absolute;
+    width: 193px;
+    height: 100px;
+    bottom: 10px;
+    right: 140px;
+    cursor: pointer !important;
+}
+
+.meld-left-grid {
+    width: 20vw;
+    margin-left: 4em;
+    align-items: flex-start;
+    justify-content: left;
+}
+
+.meld-right-grid {
+    display: flex !important;
+    width: 80vw;
+    margin-left: 4em;
+    align-items: flex-start;
+    justify-content: left;
+}
+/** END MELD **/
