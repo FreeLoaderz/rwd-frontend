@@ -8,6 +8,8 @@ export class PropertyService {
     public properties: any;
     public loaded: boolean = false;
 
+    public static MELD_HOMEPAGE: string = "meld-homepage";
+
     constructor(private httpClient: HttpClient, public propertyObserver: PropertyObserverService) {
         this.httpClient.get<Map<string, string>>("assets/config/properties.json").subscribe(data => {
             for (const key in data) {

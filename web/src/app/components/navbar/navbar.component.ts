@@ -48,6 +48,7 @@ export class NavbarComponent extends NotificationComponent implements OnInit, Af
     public walletLoaded: boolean = false;
     public walletSubscription: Subscription;
     public walletErrorSubscription: Subscription;
+    public walletConnectSubscription: Subscription;
     public isTestNet: boolean = false;
     public screenWidth: number;
     public screenHeight: number;
@@ -67,7 +68,9 @@ export class NavbarComponent extends NotificationComponent implements OnInit, Af
         super(notifierService);
         this.titleService.setTitle("Rewards");
         this.router.events.subscribe(event => {
-            if ((event instanceof NavigationEnd) && (location.host === 'rwd.freeloaderz.io')) {
+            if ((event instanceof NavigationEnd) &&
+                ((location.hostname.endsWith('freeloaderz.io')) ||
+                    (location.hostname.endsWith('smartclaimz.io')))) {
                 gtag('set', 'page_path', event.urlAfterRedirects);
                 gtag('event', 'page_view');
             }
@@ -92,6 +95,15 @@ export class NavbarComponent extends NotificationComponent implements OnInit, Af
             }
         );
 
+        this.walletConnectSubscription = this.walletObserverService.showConnect$.subscribe(
+            showConnect => {
+                if (showConnect) {
+                    this.showConnectModal();
+                } else {
+                    this.hideConnectModal();
+                }
+            }
+        );
         this.walletErrorSubscription = this.walletObserverService.error$.subscribe(
             error => {
                 this.walletLoaded = false;
@@ -99,6 +111,7 @@ export class NavbarComponent extends NotificationComponent implements OnInit, Af
                 this.disconnectWallet();
             }
         );
+
         this.httpClient.get("https://api.ipify.org/?format=json").subscribe((res: any) => {
             globalThis.ipAddress = res.ip;
         });
@@ -340,7 +353,9 @@ export class NavbarComponent extends NotificationComponent implements OnInit, Af
         } else {
             this.walletImage = "../../assets/icons/eternl.png";
             this.hideConnectModal();
-            this.router.navigate(['/rewards']);
+            if (!this.isExtension) {
+                this.router.navigate(['/rewards']);
+            }
         }
     }
 
@@ -356,7 +371,9 @@ export class NavbarComponent extends NotificationComponent implements OnInit, Af
         } else {
             this.walletImage = "../../assets/icons/nami.png";
             this.hideConnectModal();
-            this.router.navigate(['/rewards']);
+            if (!this.isExtension) {
+                this.router.navigate(['/rewards']);
+            }
         }
     }
 
@@ -369,7 +386,9 @@ export class NavbarComponent extends NotificationComponent implements OnInit, Af
         } else {
             this.walletImage = "../../assets/icons/gero.png";
             this.hideConnectModal();
-            this.router.navigate(['/rewards']);
+            if (!this.isExtension) {
+                this.router.navigate(['/rewards']);
+            }
         }
     }
 
@@ -386,7 +405,9 @@ export class NavbarComponent extends NotificationComponent implements OnInit, Af
         } else {
             this.walletImage = "../../assets/icons/flint.png";
             this.hideConnectModal();
-            this.router.navigate(['/rewards']);
+            if (!this.isExtension) {
+                this.router.navigate(['/rewards']);
+            }
         }
     }
 

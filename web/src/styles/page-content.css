@@ -498,6 +498,8 @@ div.sidemenu > button.p-button {
     margin-top: -8px;
     height: 35px;
     width: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
 }
 
 .collapsesidemenu {

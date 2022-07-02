@@ -17,17 +17,17 @@
 body.meld-bg {
     background-image: -moz-radial-gradient(183.7% 183.7% at 15.31% 145.37%, #4800A5 24.56%, #E51B44 100%), -moz-linear-gradient(78.43deg, rgba(229, 27, 68, 0) 50.98%, #E51B44 75.68%); /* FF3.6-15 */
     background-image: -webkit-radial-gradient(183.7% 183.7% at 15.31% 145.37%, #4800A5 24.56%, #E51B44 100%), -webkit-linear-gradient(78.43deg, rgba(229, 27, 68, 0) 50.98%, #E51B44 75.68%); /* Chrome10-25,Safari5.1-6 */
-    background-image: radial-gradient(183.7% 183.7% at 15.31% 145.37%, #4800A5 24.56%, #E51B44 100%),   linear-gradient(78.43deg, rgba(229, 27, 68, 0) 50.98%, #E51B44 75.68%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    background-image: radial-gradient(183.7% 183.7% at 15.31% 145.37%, #4800A5 24.56%, #E51B44 100%), linear-gradient(78.43deg, rgba(229, 27, 68, 0) 50.98%, #E51B44 75.68%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
 }
+
 bank-manager {
     position: absolute;
     top: 0;
     left: 0;
 }
+
 .meld-title {
     margin-top: 21px;
-    align-items: center;
-    justify-content: center;
     display: flex;
     font-style: normal;
     font-weight: 900;
@@ -40,6 +40,7 @@ bank-manager {
     height: 102px;
     cursor: pointer !important;
 }
+
 img.meld-img-logo {
     display: unset !important;
 }
@@ -53,11 +54,11 @@ img.meld-img-logo {
 }
 
 .meld-img-smartclaimz {
-    position: absolute;
+    position: fixed;
     width: 193px;
     height: 100px;
     bottom: 10px;
-    right: 140px;
+    right: 10px;
     cursor: pointer !important;
 }
 
@@ -70,9 +71,76 @@ img.meld-img-logo {
 
 .meld-right-grid {
     display: flex !important;
-    width: 80vw;
+    max-width: 50vw;
     margin-left: 4em;
     align-items: flex-start;
     justify-content: left;
 }
+
+.meld-ul {
+    list-style-type: none;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.meld-fake-button {
+    font-size: x-large;
+    font-weight: bolder;
+    color: white !important;
+    pointer-events: none !important;
+}
+
+.meld-connected-button,
+.meld-connected-button > span {
+    margin-left: 2rem;
+    margin-right: 2rem;
+    font-size: large;
+    font-weight: bolder;
+    color: white;
+    background-color: #04BA00 !important;
+    border: 0;
+}
+
+.meld-connected-button > span.p-button-icon {
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.meld-action-button,
+.meld-connected-button {
+    min-width: 250px;
+    max-width: 250px;
+}
+
+.meld-input {
+    max-width: 450px;
+    min-width: 450px;
+    height: 42px;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.meld-action-button,
+.meld-action-button > span {
+    margin: 0;
+    font-size: large;
+    font-weight: bolder;
+    color: #E61C45;
+    background-color: white !important;
+    border: 0;
+}
+
+.meld-action-button:active, .meld-action-button:hover, .meld-action-button:focus,
+.meld-action-button:active > span, .meld-action-button:hover > span, .meld-action-button:focus > span {
+    color: #4800A5 !important;
+}
+
+.meld-ul > li {
+    display: flex;
+    margin-left: 0 !important;
+    padding: 0 !important;
+}
+
 /** END MELD **/
