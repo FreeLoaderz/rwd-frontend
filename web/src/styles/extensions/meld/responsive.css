@@ -179,6 +179,17 @@
     .meld-disconnect-div {
         margin-left: 41px;
     }
+
+    .meld-action-button,
+    .meld-success-button,
+    .meld-error-button {
+        min-width: 215px;
+        max-width: 215px;
+    }
+
+    .meld-fake-button {
+        margin-right: .5em;
+    }
 }
 
 @media only screen and (orientation: landscape) and (max-device-height: 1000px) and (max-device-width: 1200px) {

@@ -58,7 +58,7 @@ img.meld-img-logo {
 
 .meld-fake-button {
     max-height: 48px;
-    margin-right: 3rem !important;
+    margin-right: 3rem;
     font-size: x-large;
     font-weight: bolder;
     color: white !important;
