@@ -11,7 +11,6 @@ import {PropertyObserverService} from "../../../services/observers/property-obse
 import {Subscription} from "rxjs";
 import {RestService} from "../../../services/rest.service";
 import {Script} from "../../../data/script";
-import {SpoRewardClaim} from "../../../data/spo-reward-claim";
 import {WalletVerification} from "../../../data/wallet-verification";
 import {Mint} from "../../../data/mint";
 
@@ -37,7 +36,6 @@ export class BankManagerComponent extends NotificationComponent implements OnIni
     public previousCheckedWalletAddress: string = null;
     public walletAddress: string = "";
     public shortWalletAddress: string = "";
-    public requiresVerification: boolean = false;
     public isTestnet: boolean = false;
     public mintError: boolean = false;
     public mintFinalized: boolean = false;
@@ -135,33 +133,27 @@ export class BankManagerComponent extends NotificationComponent implements OnIni
         if (res !== '') {
             this.verifiedAddress = res;
             this.walletVerified = true;
-            this.requiresVerification = false;
         } else {
             this.walletVerified = false;
-            this.requiresVerification = true;
         }
     }
 
     public showVerificationError(error) {
         this.checkingVerification = false;
-        this.requiresVerification = true;
-        this.invalidAddress = true;
+       // this.invalidAddress = true;
         // remove
-        this.walletVerified = true;
-        this.invalidAddress = false;
-        this.requiresVerification = false;
+             this.walletVerified = true;
+     //   this.invalidAddress = false;
         // end remove
         this.errorNotification(error);
     }
 
     public processVerificationError(error) {
         this.checkingVerification = false;
-        this.requiresVerification = true;
-        this.invalidAddress = true;
+       // this.invalidAddress = true;
         // remove
-        this.walletVerified = true;
-        this.invalidAddress = false;
-        this.requiresVerification = false;
+            this.walletVerified = true;
+      //  this.invalidAddress = false;
         // end remove
 
         this.handleError(error);
@@ -288,5 +280,16 @@ export class BankManagerComponent extends NotificationComponent implements OnIni
         } else {
             this.invalidAddress = true;
         }
+    }
+
+    public disconnect() {
+        globalThis.walletApi = null;
+        globalThis.wallet = null;
+        this.mintError = false;
+        this.mintFinalized = false;
+        this.checkingVerification = false;
+        this.walletVerified = false;
+        this.isMinting = false;
+        this.walletObserverService.setloaded(false);
     }
 }

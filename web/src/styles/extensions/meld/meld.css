@@ -57,23 +57,37 @@ img.meld-img-logo {
 }
 
 .meld-fake-button {
+    max-height: 48px;
     margin-right: 3rem !important;
     font-size: x-large;
     font-weight: bolder;
     color: white !important;
     pointer-events: none !important;
 }
+.meld-error-button,
+.meld-error-button > span {
+    color: white;
+    background-color: red !important;
+}
 
+.meld-success-button,
+.meld-success-button > span {
+    color: white;
+    background-color: #04BA00 !important;
+}
+
+.meld-error-button,
+.meld-error-button > span,
 .meld-success-button,
 .meld-success-button > span {
     margin-left: 0rem;
     font-size: large;
     font-weight: bolder;
-    color: white;
-    background-color: #04BA00 !important;
     border: 0;
+    pointer-events: none !important;
 }
 
+.meld-error-button > span.p-button-icon,
 .meld-success-button > span.p-button-icon {
     padding-left: 0;
     padding-right: 0;
@@ -82,7 +96,8 @@ img.meld-img-logo {
 }
 
 .meld-action-button,
-.meld-success-button {
+.meld-success-button,
+.meld-error-button {
     min-width: 250px;
     max-width: 250px;
 }
@@ -118,4 +133,17 @@ img.meld-img-logo {
 
 .meld-li {
     margin-top: 3em;
+}
+
+.fa-xmark,
+.fa-arrow-right-to-bracket {
+    color: white !important;
+}
+.meld-subtext {
+    font-size: smaller;
+}
+
+.meld-disconnect-div {
+    margin-left: 95px;
+    display: block !important;
 }
