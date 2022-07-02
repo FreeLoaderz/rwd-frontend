@@ -1,0 +1,108 @@
+@media only screen and (max-device-height: 900px) {
+}
+
+@media only screen and (max-device-height: 800px) {
+}
+
+@media only screen and (max-device-height: 700px) {
+    .meld-title {
+        margin-top: 10px;
+        font-size: 24px;
+        margin-bottom: 1rem;
+    }
+
+    .meld-img-bank-mgr {
+        width: 159px;
+        height: 139px;
+    }
+
+    .meld-fake-button,
+    .meld-success-button {
+        margin-right: 1rem !important;
+    }
+
+    .meld-li {
+        margin-top: 1em;
+    }
+}
+
+@media only screen and (max-device-height: 600px) {
+}
+
+@media only screen and (max-device-width: 1400px) {
+}
+
+@media only screen and (max-device-width: 1160px) {
+}
+
+@media only screen and (max-device-width: 960px) {
+}
+
+@media only screen and (max-device-width: 900px) {
+    .meld-img-bank-mgr {
+        width: 239px;
+        height: 209px;
+    }
+    .meld-title {
+        margin-top: 15px;
+        font-size: 28px;
+        margin-bottom: 1rem;
+    }
+    .meld-img-logo {
+        width: 120px;
+        height: 51px;
+    }
+}
+
+
+@media only screen and (max-device-width: 700px) {
+    .meld-li {
+        margin-top: 1em;
+    }
+
+    .meld-title {
+        margin-top: 7px;
+        font-size: 24px;
+        margin-bottom: 1rem;
+    }
+
+    .meld-fake-button,
+    .meld-success-button {
+        margin-right: 1rem !important;
+    }
+
+    .meld-img-smartclaimz {
+        width: 96px;
+        height: 50px;
+    }
+
+    .meld-left-grid {
+        margin-left: 1em;
+    }
+
+    .meld-right-grid {
+        max-width: 70vw;
+        margin-left: 1em;
+    }
+    .meld-img-bank-mgr {
+        width: 159px;
+        height: 139px;
+    }
+}
+
+@media only screen and (max-device-width: 600px) {
+    .sidebyside {
+        display: block;
+    }
+
+    .meld-left-grid {
+        width: 90vw;
+    }
+
+    .meld-right-grid {
+        max-width: 90vw;
+    }
+}
+
+@media only screen and (max-device-width: 319px) {
+}

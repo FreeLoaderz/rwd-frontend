@@ -237,6 +237,17 @@ export class RestService {
             .catch(this.handleError);
     }
 
+    public mint() {
+        const headers = new HttpHeaders().set('Content-Type', 'application/json');
+        const url = '/rwdinfo/mint/';
+        RestService.processingRequest = true;
+
+        return lastValueFrom(this.httpClient
+            .post(url, globalThis.wallet, {headers: headers}))
+            .then(res => this.processResponse(res))
+            .catch(this.handleError);
+    }
+
     public isProcessingRequest() {
         return RestService.processingRequest;
     }

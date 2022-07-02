@@ -1,0 +1,121 @@
+.meld-title {
+    margin-top: 21px;
+    display: flex;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 36px;
+    color: #FFFFFF;
+    margin-bottom: 3rem;
+}
+
+.meld-img-logo {
+    width: 241px;
+    height: 102px;
+    cursor: pointer !important;
+}
+
+img.meld-img-logo {
+    display: unset !important;
+}
+
+.meld-img-bank-mgr {
+    position: absolute;
+    width: 478px;
+    height: 418px;
+    left: 0px;
+    bottom: 0px;
+}
+
+.meld-img-smartclaimz {
+    position: fixed;
+    width: 193px;
+    height: 100px;
+    bottom: 10px;
+    right: 10px;
+    cursor: pointer !important;
+}
+
+.meld-left-grid {
+    width: 20vw;
+    margin-left: 4em;
+    align-items: flex-start;
+    justify-content: left;
+}
+
+.meld-right-grid {
+    display: flex !important;
+    max-width: 50vw;
+    margin-left: 4em;
+    align-items: flex-start;
+    justify-content: left;
+}
+
+.meld-ul {
+    list-style-type: none;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.meld-fake-button {
+    margin-right: 3rem !important;
+    font-size: x-large;
+    font-weight: bolder;
+    color: white !important;
+    pointer-events: none !important;
+}
+
+.meld-success-button,
+.meld-success-button > span {
+    margin-left: 0rem;
+    font-size: large;
+    font-weight: bolder;
+    color: white;
+    background-color: #04BA00 !important;
+    border: 0;
+}
+
+.meld-success-button > span.p-button-icon {
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.meld-action-button,
+.meld-success-button {
+    min-width: 250px;
+    max-width: 250px;
+}
+
+.meld-input {
+    max-width: 450px;
+    min-width: 450px;
+    height: 42px;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.meld-action-button,
+.meld-action-button > span {
+    margin: 0;
+    font-size: large;
+    font-weight: bolder;
+    color: #E61C45;
+    background-color: white !important;
+    border: 0;
+}
+
+.meld-action-button:active, .meld-action-button:hover, .meld-action-button:focus,
+.meld-action-button:active > span, .meld-action-button:hover > span, .meld-action-button:focus > span {
+    color: #4800A5 !important;
+}
+
+.meld-ul > li {
+    display: flex;
+    margin-left: 0 !important;
+    padding: 0 !important;
+}
+
+.meld-li {
+    margin-top: 3em;
+}

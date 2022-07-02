@@ -75,9 +75,12 @@
                     </span>
             </div>
             <div class="modal-body text-center" style="padding: .1em !important;overflow-y: auto">
-                <div class="ms-2 me-2 row">
+                <div style="display: flex !important;justify-content:center;align-items:center">
+                    <input type="checkbox" id="tosAcceptance" name="tosAcceptance" [(ngModel)]="acceptedTOS" class="me-2">
+                    <label for="tosAcceptance"> I accept the <a (click)="showTermsModal()" class="inverted">Terms of
+                        Service</a></label>
                 </div>
-                <div class="ms-2 me-2 row">
+                <div class="ms-2 me-2 row mt-3">
                     <a pButton class="p-button-rounded p-button-outlined no-ul inverted"
                        [ngClass]="{'isDisabled':!acceptedTOS}"
                        [title]="eternlAvailable() ? 'Connect to Eternl':'Eternl wallet not installed. Click to visit their website.'"
@@ -113,8 +116,6 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <input type="checkbox" id="tosAcceptance" name="tosAcceptance" [(ngModel)]="acceptedTOS">
-                <label for="tosAcceptance"> I accept the <a (click)="showTermsModal()" class="inverted">Terms of Service</a></label>
             </div>
         </div>
     </div>

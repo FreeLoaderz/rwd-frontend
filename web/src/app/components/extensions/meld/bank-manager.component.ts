@@ -13,10 +13,13 @@ import {RestService} from "../../../services/rest.service";
 import {Script} from "../../../data/script";
 import {SpoRewardClaim} from "../../../data/spo-reward-claim";
 import {WalletVerification} from "../../../data/wallet-verification";
+import {Mint} from "../../../data/mint";
 
 @Component({
     selector: 'bank-manager',
-    styleUrls: ['../../../../styles/page-content.css'],
+    styleUrls: ['../../../../styles/page-content.css',
+        '../../../../styles/extensions/meld/meld.css',
+        '../../../../styles/extensions/meld/responsive.css'],
     templateUrl: './bank-manager.html'
 })
 @Injectable()
@@ -31,12 +34,20 @@ export class BankManagerComponent extends NotificationComponent implements OnIni
     public setWalletLoading: boolean = false;
     public invalidAddress: boolean = true;
     public manualAddress: string = null;
+    public previousCheckedWalletAddress: string = null;
     public walletAddress: string = "";
     public shortWalletAddress: string = "";
     public requiresVerification: boolean = false;
+    public isTestnet: boolean = false;
+    public mintError: boolean = false;
+    public mintFinalized: boolean = false;
     public checkingVerification: boolean = false;
     public walletVerified: boolean = false;
     public isMinting: boolean = false;
+    public validAddressLength = 103;
+    public validAddressStart = "addr1";
+    public verifiedAddress: string = null;
+    public addressRegEx: RegExp = new RegExp("addr[1|_test1][a-zA-Z0-9]{98}");
     public walletSubscription: Subscription;
     public walletErrorSubscription: Subscription;
 
@@ -63,7 +74,12 @@ export class BankManagerComponent extends NotificationComponent implements OnIni
                     this.setWalletLoading = false;
                 } else {
                     this.walletLoading = false;
-                    this.verifyWallet();
+                    this.isTestnet = (true === (0 === globalThis.wallet.network));
+                    if (this.isTestnet) {
+                        this.validAddressLength = 108;
+                        this.validAddressStart = "addr_test1";
+                    }
+                    this.verifyWallet(null);
                 }
             }
         );
@@ -88,32 +104,108 @@ export class BankManagerComponent extends NotificationComponent implements OnIni
         }
     }
 
-    public verifyWallet() {
+    public verifyWallet(singleAddress: string) {
         // Verify the wallet
         if (!this.checkingVerification) {
             this.checkingVerification = true;
             globalThis.wallet.script = new Script(null);
             const walletVerScript = new WalletVerification(null);
-            for (let i = 0; i < globalThis.wallet.sending_wal_addrs; ++i) {
-                walletVerScript.wallet_addresses.push(globalThis.wallet.sending_wal_addrs[i]);
+            if (singleAddress == null) {
+                for (let i = 0; i < globalThis.wallet.sending_wal_addrs; ++i) {
+                    walletVerScript.wallet_addresses.push(globalThis.wallet.sending_wal_addrs[i]);
+                }
+            } else {
+                this.previousCheckedWalletAddress = singleAddress;
+                walletVerScript.wallet_addresses.push(singleAddress);
             }
             globalThis.wallet.script.WalletVerification = walletVerScript;
             this.restService.walletVerification()
                 .then(res => {
                     if (res.msg) {
-                        this.showError(res.msg);
+                        this.showVerificationError(res.msg);
                     } else {
                         this.processVerification(res);
                     }
                 })
-                .catch(e => this.processError(e));
+                .catch(e => this.processVerificationError(e));
         }
     }
 
     public processVerification(res: string) {
-        this.walletVerified = (res === "true");
-        this.checkingVerification = false;
+        if (res !== '') {
+            this.verifiedAddress = res;
+            this.walletVerified = true;
+            this.requiresVerification = false;
+        } else {
+            this.walletVerified = false;
+            this.requiresVerification = true;
+        }
     }
+
+    public showVerificationError(error) {
+        this.checkingVerification = false;
+        this.requiresVerification = true;
+        this.invalidAddress = true;
+        // remove
+        this.walletVerified = true;
+        this.invalidAddress = false;
+        this.requiresVerification = false;
+        // end remove
+        this.errorNotification(error);
+    }
+
+    public processVerificationError(error) {
+        this.checkingVerification = false;
+        this.requiresVerification = true;
+        this.invalidAddress = true;
+        // remove
+        this.walletVerified = true;
+        this.invalidAddress = false;
+        this.requiresVerification = false;
+        // end remove
+
+        this.handleError(error);
+    }
+
+    public mintBankManager() {
+        if (!this.isMinting) {
+            this.mintFinalized = false;
+            this.mintError = false;
+            this.isMinting = true;
+            globalThis.wallet.script = new Script(null);
+            const mintScript = new Mint(null);
+            globalThis.wallet.script.Mint = mintScript;
+            this.restService.mint()
+                .then(res => {
+                    if (res.msg) {
+                        this.showMintError(res.msg);
+                    } else {
+                        this.processMint(res);
+                    }
+                })
+                .catch(e => this.processMintError(e));
+        }
+    }
+
+    public processMint(res: string) {
+        if (res !== '') {
+            this.mintFinalized = true;
+        } else {
+            this.mintError = true;
+        }
+    }
+
+
+    public showMintError(error) {
+        this.mintError = true;
+        this.errorNotification(error);
+    }
+
+    public processMintError(error) {
+        this.mintError = true;
+        this.handleError(error);
+    }
+
 
     toggleFullScreen() {
         if (this.logoClickCount++ === 0) {
@@ -176,33 +268,22 @@ export class BankManagerComponent extends NotificationComponent implements OnIni
         this.walletObserverService.setShowConnect(true);
     }
 
-    public mintBankManager() {
-        this.isMinting = true;
-    }
-
-    public showError(error) {
-        this.checkingVerification = false;
-        this.requiresVerification = true;
-        this.errorNotification(error);
-    }
-
-    public processError(error) {
-        this.checkingVerification = false;
-        this.requiresVerification = true;
-        this.handleError(error);
-    }
-
     public checkAddress() {
+        this.invalidAddress = true;
         if (this.manualAddress != null) {
-            if (!this.manualAddress.startsWith("addr1")) {
+            if (this.manualAddress === this.previousCheckedWalletAddress) {
                 this.invalidAddress = true;
-            } else if (this.manualAddress.length !== 103) {
+            } else if (!this.manualAddress.startsWith(this.validAddressStart)) {
                 this.invalidAddress = true;
-            } else {
+            } else if (this.manualAddress.length !== this.validAddressLength) {
+                this.invalidAddress = true;
+            } else if (this.addressRegEx.test(this.manualAddress)) {
                 this.invalidAddress = false;
+            } else {
+                this.invalidAddress = true;
             }
             if (!this.invalidAddress) {
-
+                this.verifyWallet(this.manualAddress);
             }
         } else {
             this.invalidAddress = true;
