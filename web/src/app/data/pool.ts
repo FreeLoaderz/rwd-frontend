@@ -6,10 +6,11 @@ export class Pool {
     public shortDesc: string;
     public ticker: string;
     public homepage: string;
-    public id: string;
+    public pool_id: string;
     public poolhash: string;
     public logo: string;
     public extended: string;
+    public url: string;
 
     constructor(data: any) {
         if (data != null) {
@@ -30,12 +31,15 @@ export class Pool {
             if (data.homepage) {
                 this.homepage = data.homepage;
             }
-            if (data.id) {
-                this.id = data.id;
-                this.poolhash = converter('pool').toBech32(this.id);
+            if (data.pool_id) {
+                this.pool_id = data.pool_id;
+                this.poolhash = converter('pool').toBech32(this.pool_id);
             }
             if (data.logo) {
                 this.logo = data.logo;
+            }
+            if (data.url) {
+                this.url = data.url;
             }
             if (data.extended) {
                 this.extended = data.extended;
@@ -44,9 +48,9 @@ export class Pool {
     }
 
     public static sort(a: any, b: any): number {
-        if (a.name < b.name) {
+        if (a.name > b.name) {
             return 1;
-        } else if (a.name > b.name) {
+        } else if (a.name < b.name) {
             return -1;
         }
         if (a.ticker > b.ticker) {

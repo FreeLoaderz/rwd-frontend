@@ -38,6 +38,8 @@ import {PropertyService} from "./services/property.service";
 import {PropertyObserverService} from "./services/observers/property-observer.service";
 import {DelegateComponent} from "./components/delegate/delegate.component";
 import {TosComponent} from "./components/tos/tos.component";
+import {PoolService} from "./services/pool.service";
+import {PoolObserverService} from "./services/observers/pool-observer.service";
 
 const customNotifierOptions: NotifierOptions = {
     position: {
@@ -93,7 +95,7 @@ const customNotifierOptions: NotifierOptions = {
         DropdownModule, MenubarModule, DataViewModule, ImageModule,
         ButtonModule, PanelModule, BrowserAnimationsModule],
     bootstrap: [NavbarComponent],
-    providers: [RestService, WalletObserverService, WalletService, PropertyService, PropertyObserverService]
+    providers: [RestService, WalletObserverService, WalletService, PropertyService, PropertyObserverService, PoolService, PoolObserverService]
 })
 
 export class AppModule {

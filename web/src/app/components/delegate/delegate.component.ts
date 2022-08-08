@@ -11,7 +11,8 @@ import {Title} from "@angular/platform-browser";
 import {UtilityService} from "../../services/utility.service";
 import {Pool} from "../../data/pool";
 import {StakeDelegation} from "../../data/stake-delegation";
-import {ModalDirective} from "ngx-bootstrap/modal";
+import {PoolService} from "../../services/pool.service";
+import {PoolObserverService} from "../../services/observers/pool-observer.service";
 
 @Component({
     selector: 'delegate',
@@ -22,6 +23,7 @@ import {ModalDirective} from "ngx-bootstrap/modal";
 export class DelegateComponent extends NotificationComponent implements OnInit, OnDestroy {
     public walletSubscription: Subscription;
     public delegationSubscription: Subscription;
+    public poolSubscription: Subscription;
     public pools: Array<Pool> = [];
     public maxItems: number = 10;
     public showPaging: boolean = false;
@@ -41,7 +43,7 @@ export class DelegateComponent extends NotificationComponent implements OnInit, 
 
     constructor(public router: Router, public notifierService: NotifierService, public restService: RestService,
                 public walletObserverService: WalletObserverService, public walletService: WalletService,
-                public titleService: Title) {
+                public titleService: Title, public poolService: PoolService, public poolObserverService: PoolObserverService) {
         super(notifierService);
         if (globalThis.pools == null) {
             globalThis.pools = [];
@@ -55,16 +57,27 @@ export class DelegateComponent extends NotificationComponent implements OnInit, 
             loaded => {
                 this.walletLoaded = loaded;
                 this.setNetwork();
+                this.listPools();
+            }
+        );
+        this.poolSubscription = this.poolObserverService.poolList$.subscribe(
+            poolList => {
+                console.log("poolList sub");
+                this.poolDelegationReturn = null;
+                this.processPoolList(poolList);
             }
         );
         this.walletLoaded = this.walletService.walletLoaded;
-        this.listPools();
-        this.getScreenSize(null);
         this.setNetwork();
+        this.getScreenSize(null);
+        if ((this.walletLoaded) && (PoolService.poolList.length > 0)) {
+            this.listPools();
+        }
     }
 
     public ngOnDestroy() {
         this.walletSubscription.unsubscribe();
+        this.poolSubscription.unsubscribe();
         if (this.delegationSubscription != null) {
             this.delegationSubscription.unsubscribe();
             this.delegationSubscription = null;
@@ -104,47 +117,52 @@ export class DelegateComponent extends NotificationComponent implements OnInit, 
     public listPools() {
         this.listingPools = true;
         globalThis.pools = [];
-        const apex: Pool = new Pool({
-            "name": "Apex Cardano Pool",
-            "description": "APEX Stake Pool: Low fees - 340 Fixed Cost and 1.5% Margin (variable fee). SPO with 24 years of IT experience, supporting the Cardano community and the decentralization of Cardano. Delegate your ADA to APEX Pool!",
-            "ticker": "APEX",
-            "homepage": "https://apexpool.info/",
-            "extended": "https://apexpool.info/extended.json",
-            "id": "5f5ed4eb2ba354ab2ad7c8859f3dacf93564637a105e80c8d8a7dc3c",
-            "logo": "https://apexpool.info/img/logo.png"
-        });
-        const tpanl: Pool = new Pool({
-            "name": "TPANL",
-            "description": "PANL Stake Pool Test Environment",
-            "ticker": "TPANL",
-            "homepage": "https://www.panl.org",
-            "id": "6762b21773213a40496489abd3bb94baeae99d8a0373a198472222a4",
-            "logo": "https://logo.panl.org"
-        });
-        const lido: Pool = new Pool({
-            "name": "Lido Nation",
-            "description": "Community for everyone.",
-            "ticker": "LIDO",
-            "homepage": "https://www.lidonation.com",
-            "extended": "https://www.lidonation.com/metadata-extended.json",
-            "id": "bf81c32d4b8d05538431743190421b5e0fc2384c605c2ddfbeabbd5a",
-            "logo": "https://www.lidonation.com/img/llogo-transparent.png"
-        });
-        const santo: Pool = new Pool({
-            "name": "SANTO",
-            "description": "Santo Cardano Stake Pool.",
-            "ticker": "SANTO",
-            "homepage": "https://www.santoelectronics.com/santonode",
-            "id": "6a0c2ca24a97f6b1c4477e8688e8de7f786de6efff72ecf4e521db3b",
-            "logo": "https://santoelectronics.com/s/santo.png"
-        });
-        const pools: Array<Pool> = [];
-        pools.push(apex);
-        pools.push(lido);
-        pools.push(santo);
-        pools.push(tpanl);
-        this.poolDelegationReturn = null;
-        this.processPoolList(pools);
+        if (this.isTestnet) {
+            const pools: Array<Pool> = [];
+            const apex: Pool = new Pool({
+                "name": "Apex Cardano Pool",
+                "description": "APEX Stake Pool: Low fees - 340 Fixed Cost and 1.5% Margin (variable fee). SPO with 24 years of IT experience, supporting the Cardano community and the decentralization of Cardano. Delegate your ADA to APEX Pool!",
+                "ticker": "APEX",
+                "homepage": "https://apexpool.info/",
+                "extended": "https://apexpool.info/extended.json",
+                "id": "5f5ed4eb2ba354ab2ad7c8859f3dacf93564637a105e80c8d8a7dc3c",
+                "logo": "https://apexpool.info/img/logo.png"
+            });
+            const tpanl: Pool = new Pool({
+                "name": "TPANL",
+                "description": "PANL Stake Pool Test Environment",
+                "ticker": "TPANL",
+                "homepage": "https://www.panl.org",
+                "id": "6762b21773213a40496489abd3bb94baeae99d8a0373a198472222a4",
+                "logo": "https://logo.panl.org"
+            });
+            const lido: Pool = new Pool({
+                "name": "Lido Nation",
+                "description": "Community for everyone.",
+                "ticker": "LIDO",
+                "homepage": "https://www.lidonation.com",
+                "extended": "https://www.lidonation.com/metadata-extended.json",
+                "id": "bf81c32d4b8d05538431743190421b5e0fc2384c605c2ddfbeabbd5a",
+                "logo": "https://www.lidonation.com/img/llogo-transparent.png"
+            });
+            const santo: Pool = new Pool({
+                "name": "SANTO",
+                "description": "Santo Cardano Stake Pool.",
+                "ticker": "SANTO",
+                "homepage": "https://www.santoelectronics.com/santonode",
+                "id": "6a0c2ca24a97f6b1c4477e8688e8de7f786de6efff72ecf4e521db3b",
+                "logo": "https://santoelectronics.com/s/santo.png"
+            });
+            pools.push(apex);
+            pools.push(lido);
+            pools.push(santo);
+            pools.push(tpanl);
+            this.poolDelegationReturn = null;
+            this.processPoolList(pools);
+        } else {
+            this.poolDelegationReturn = null;
+            this.processPoolList(PoolService.poolList);
+        }
         /**
          this.restService.getAvailablePools()
          .then(res => this.processPoolList(res))
@@ -254,5 +272,6 @@ export class DelegateComponent extends NotificationComponent implements OnInit, 
         } else {
             this.isTestnet = true;
         }
+        console.log("isTestnet [" + this.isTestnet + "]");
     }
 }
