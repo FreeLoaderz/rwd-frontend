@@ -37,7 +37,7 @@ export class DelegateComponent extends NotificationComponent implements OnInit, 
     public gridItemSmallWidth: number = 260;
     public gridItemSmallHeight: number = 260;
     public smallGrid: boolean = false;
-    public isTestnet: boolean = true;
+    public isTestnet: boolean = false;
     @ViewChild('poolView', {static: false}) public poolView: any;
     @ViewChild('notificationTemplate', {static: false}) public notificationTemplate: any;
 
@@ -62,7 +62,6 @@ export class DelegateComponent extends NotificationComponent implements OnInit, 
         );
         this.poolSubscription = this.poolObserverService.poolList$.subscribe(
             poolList => {
-                console.log("poolList sub");
                 this.poolDelegationReturn = null;
                 this.processPoolList(poolList);
             }
@@ -70,9 +69,7 @@ export class DelegateComponent extends NotificationComponent implements OnInit, 
         this.walletLoaded = this.walletService.walletLoaded;
         this.setNetwork();
         this.getScreenSize(null);
-        if ((this.walletLoaded) && (PoolService.poolList.length > 0)) {
-            this.listPools();
-        }
+        this.listPools();
     }
 
     public ngOnDestroy() {
@@ -270,8 +267,11 @@ export class DelegateComponent extends NotificationComponent implements OnInit, 
         if (globalThis.wallet != null) {
             this.isTestnet = (true === (0 === globalThis.wallet.network));
         } else {
-            this.isTestnet = true;
+            this.isTestnet = false;
         }
-        console.log("isTestnet [" + this.isTestnet + "]");
+    }
+
+    public filterDataView(filter: string) {
+        this.poolView.filter(filter);
     }
 }

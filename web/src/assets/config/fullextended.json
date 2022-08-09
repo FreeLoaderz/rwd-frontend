@@ -305,7 +305,7 @@
 },
 {
     "info": {
-        "url_png_icon_64x64": "https://4wardpool.swiftcryptollc.com/img/4ward-64x64-alt.png",
+        "url_png_icon_64x64": "https://4wardpool.swiftcryptollc.com/img/4ward-64x64.png",
         "url_png_logo": "https://4wardpool.swiftcryptollc.com/img/4ward.png",
         "location": "Leesburg, Virginia, United States",
         "social": {
@@ -314,7 +314,7 @@
             "facebook_handle": "swiftcryptollc",
             "youtube_handle": "",
             "twitch_handle": "",
-            "discord_handle": "",
+            "discord_handle": "Swift Crypto [4WARD]#7182",
             "github_handle": "swiftcryptollc"
         },
         "company": {
@@ -326,10 +326,13 @@
             "vat_id": ""
         },
         "about": {
-            "me": "The ADA for Warriors (4WARD) pool is a mission-driven single pool operated by a small business located in the US. The pool was created as a way to give back to those who have quietly served by donating 50% of the operator's rewards to the Third Option Foundation.  We have since expanded to donating 25% of our operator rewards to Captive Audience. Donations for each mission can be tracked on their respective pages on our main Swift Crypto LLC website.",
+            "me": "The ADA for Warriors (4WARD) pool is a mission-driven single pool operated by a small business located in the US. The pool was created as a way to give back to those who have quietly served by donating 30% of the operator's rewards to the Third Option Foundation. We also donate 10% to Captive Audience and 10% to 500 Rising. Donations for each mission can be tracked on their respective pages on our pool website.",
             "server": "Servers consist of two relays and one block producer deployed in AWS.  Each instance has 4 CPUs and 16 GB RAM (exceeds current hardware requirements).  One relay and the block producer are in the AWS US East Region and the other relay is in the AWS European Central Region.  Security and recovery best practices have been implemented to help ensure availability.",
             "company": "Swift Crypto LLC is a small business registered in Leesburg, Virginia, USA."
         }
+    },
+    "my-pool-ids": {
+        "0": "b6063f0f2fa05d98132f15defed4c69c06ea61451b4ea4cea0ce1b80"
     }
 }
 ,
@@ -1458,4 +1461,20 @@
        }          
     }              
  }
+,
+{
+	"info": {
+		"url_png_icon_64x64": "https://git.io/J3jlr",
+		"url_png_logo": "https://git.io/J3jlM",
+		"location": "Argentina",
+		"social": {
+			"twitter_handle": "LatinStakePools",
+			"telegram_handle": "ITZA_Cardano",
+			"youtube_handle": "channel/UC4nHVVcz6kqIC6m1STfhkkQ"},
+		"about": {
+			"me": "Welcome to Latin Stake Pool's first Cardano stake pool Chichen Itza. Latin Stake Pools in an Argentine start-up which aims to provide the people of Latin America with access to crypto passive income as well as quality educational content via the youtube channel.",
+			"server": "Four nodes, one block producer and three relays. Hosted in four different VPS with three different providers and in three different geographical locations for the best redundancy and uptime."
+		}
+	}
+}
 ]

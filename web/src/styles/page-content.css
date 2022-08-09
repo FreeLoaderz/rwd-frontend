@@ -44,6 +44,7 @@ h4 {
     margin: .75em;
     max-width: 30vw !important;
     min-width: 325px !important;
+    height: 325px;
     background-color: black !important;
 }
 
@@ -51,6 +52,7 @@ h4 {
     padding-top: .5rem;
     padding-bottom: .5rem;
     padding-left: .5rem;
+    height: 20%;
 }
 
 .grid-item-top,
@@ -62,8 +64,7 @@ h4 {
 }
 
 .grid-item-bottom {
-    position: relative;
-    bottom: -.33rem;
+    height: 23%;
 }
 
 .grid-item-token-name {
@@ -374,6 +375,7 @@ div.div-small > button.p-button {
 .grid-item-content {
     text-align: center;
     margin-top: 0.45rem;
+    height: 57%;
 }
 
 .grid-entry {

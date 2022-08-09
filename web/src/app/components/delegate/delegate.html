@@ -8,12 +8,18 @@
                     <span class="ms-2" style="display:flex; float: left">Searching for pools...</span></h4>
             </div>
             <div *ngIf="!listingPools" class="data-view">
-                <div class="data-header">
+                <div class="data-header mb-2">
                     <h4>Participating Pools</h4>
+                </div>
+                <div class="data-header mb-2 {{smallGrid ? 'div-small' : ''}}">
+                    <input pInputText class="ms-2" placeholder="Filter pools.."
+                           style="float: right;padding-left: 7px !important;padding-right: 7px !important;"
+                           type="search" (input)="filterDataView($event.target.value)"
+                           (change)="filterDataView($event.target.value)">
                 </div>
                 <p-dataView #poolView [value]="pools" layout="grid" filterBy="name,ticker,description"
                             [rows]="maxItems"
-                            [paginator]="showPaging" [filterBy]="['name', 'ticker', 'description']">
+                            [paginator]="showPaging" filterBy="name,ticker,description">
                     <ng-template let-pool pTemplate="gridItem">
                         <div class="mt-2">
                             <div class="pool-grid-item {{smallGrid ? 'pool-grid-item-small' : ''}}">
@@ -21,8 +27,10 @@
                                     <strong class="ms-auto me-auto">{{pool.name}} ({{pool.ticker}})</strong>
                                 </div>
                                 <div class="grid-item-content">
-                                    <img src="{{pool.logo}}" width="128" height="128" onerror="this.onerror=null;this.src='/assets/ada.png'">
-                                    <p class="ms-1 me-1 grid-item-token-name" title="{{pool.description}}">{{pool.shortDesc}}</p>
+                                    <img src="{{pool.logo}}" width="64" height="64"
+                                         onerror="this.onerror=null;this.src='/assets/ada.png'">
+                                    <p class="mt-3 ms-1 me-1 grid-item-token-name"
+                                       title="{{pool.description}}">{{pool.shortDesc}}</p>
                                 </div>
                                 <div class="grid-item-bottom">
                                     <button pButton
@@ -41,7 +49,7 @@
                                                                             src="../../../assets/smartclaimz.ico"
                                                                             class="request-spinner ms-2"
                                                                             style="display:flex;margin: 0 !important;">
-                            <span class="ms-2" style="display:flex; float: left">Loading wallet...</span></h4>
+                            <span class="ms-2" style="display:flex; float: left">Loading pools...</span></h4>
                     </ng-template>
                 </p-dataView>
             </div>

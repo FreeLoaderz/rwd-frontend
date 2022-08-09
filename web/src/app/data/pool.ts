@@ -19,8 +19,8 @@ export class Pool {
             }
             if (data.description) {
                 this.description = data.description;
-                if (this.description.length > 60) {
-                    this.shortDesc = this.description.substring(0, 60).concat("...");
+                if (this.description.length > 100) {
+                    this.shortDesc = this.description.substring(0, 100).concat("..");
                 } else {
                     this.shortDesc = this.description;
                 }

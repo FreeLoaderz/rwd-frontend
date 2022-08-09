@@ -9,11 +9,15 @@ export class WalletService {
     public numWalletCalls: number = 0;
     public walletLoaded: boolean = false;
     public errorLoadingWallet: boolean = false;
+    public onlyMainnet: boolean = false;
 
     constructor(public walletObserver: WalletObserverService) {
         this.walletObserver.loaded$.subscribe(loaded => {
             this.walletLoaded = loaded;
         });
+        if (location.host === 'app.smartclaimz.io') {
+            this.onlyMainnet = true;
+        }
     }
 
     /**
@@ -165,10 +169,20 @@ export class WalletService {
      */
     private processNetworkId(data: any) {
         globalThis.wallet.network = data;
-        if (--this.numWalletCalls === 0) {
-            this.walletObserver.setloaded(true);
+        if (((this.onlyMainnet) && (globalThis.wallet.network !== 0)) ||
+            ((!this.onlyMainnet) && (globalThis.wallet.network === 0))) {
+            if (--this.numWalletCalls === 0) {
+                this.walletObserver.setloaded(true);
+            }
+            this.updateWallet();
+        } else {
+            this.walletObserver.setloaded(false);
+            if (this.onlyMainnet) {
+                this.walletObserver.setError("Please connect your mainnet wallet");
+            } else {
+                this.walletObserver.setError("Please connect your testnet wallet");
+            }
         }
-        this.updateWallet();
     }
 
     /**
