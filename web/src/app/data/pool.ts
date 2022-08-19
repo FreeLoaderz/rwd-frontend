@@ -4,6 +4,7 @@ export class Pool {
     public name: string;
     public description: string;
     public shortDesc: string;
+    public compressedDesc: string;
     public ticker: string;
     public homepage: string;
     public pool_id: string;
@@ -23,6 +24,11 @@ export class Pool {
                     this.shortDesc = this.description.substring(0, 100).concat("..");
                 } else {
                     this.shortDesc = this.description;
+                }
+                if (this.description.length > 70) {
+                    this.compressedDesc = this.description.substring(0, 70).concat("..");
+                } else {
+                    this.compressedDesc = this.description;
                 }
             }
             if (data.ticker) {

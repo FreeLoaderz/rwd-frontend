@@ -30,7 +30,7 @@
                                     <img src="{{pool.logo}}" width="64" height="64"
                                          onerror="this.onerror=null;this.src='/assets/ada.png'">
                                     <p class="mt-3 ms-1 me-1 grid-item-token-name"
-                                       title="{{pool.description}}">{{pool.shortDesc}}</p>
+                                       title="{{pool.description}}">{{smallGrid ? pool.compressedDesc : pool.shortDesc}}</p>
                                 </div>
                                 <div class="grid-item-bottom">
                                     <button pButton
