@@ -65,8 +65,8 @@ export class NavbarComponent extends NotificationComponent implements OnInit, Af
         super(notifierService);
         this.titleService.setTitle("Rewards");
         this.router.events.subscribe(event => {
-            if ((event instanceof NavigationEnd) && ((location.host === 'rwd.freeloaderz.io')
-                || (location.host === 'app.smartclaimz.io'))) {
+            if ((event instanceof NavigationEnd) && ((location.host !== 'localhost')
+                && (location.host !== '127.0.0.1'))) {
                 gtag('set', 'page_path', event.urlAfterRedirects);
                 gtag('event', 'page_view');
             }

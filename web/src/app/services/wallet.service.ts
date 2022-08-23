@@ -9,14 +9,14 @@ export class WalletService {
     public numWalletCalls: number = 0;
     public walletLoaded: boolean = false;
     public errorLoadingWallet: boolean = false;
-    public onlyMainnet: boolean = false;
+    public onlyMainnet: boolean = true;
 
     constructor(public walletObserver: WalletObserverService) {
         this.walletObserver.loaded$.subscribe(loaded => {
             this.walletLoaded = loaded;
         });
-        if (location.host === 'app.smartclaimz.io') {
-            this.onlyMainnet = true;
+        if (location.host === 'rwd.freeloaderz.io') {
+            this.onlyMainnet = false;
         }
     }
 
@@ -268,7 +268,7 @@ export class WalletService {
         if (!this.errorLoadingWallet) {
             this.walletObserver.setloaded(true);
         } else {
-            this.walletObserver.setError("One or more errors occured while loading your wallet!");
+            this.walletObserver.setError("One or more errors occurred while loading your wallet!");
         }
     }
 
