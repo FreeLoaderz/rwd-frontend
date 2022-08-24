@@ -252,7 +252,7 @@ export class BankManagerComponent extends NotificationComponent implements OnIni
     }
 
     public routeSmartClaimz() {
-        window.open("http://flz.smartclaimz.io:4200");
+        window.open("https://smartclaimz.io");
     }
 
     public connectWallet() {

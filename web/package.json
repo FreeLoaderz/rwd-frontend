@@ -1,7 +1,7 @@
 {
-  "name": "rewardz",
-  "description": "Angular front-end for the Freeloaderz Rewardz website",
-  "version": "0.0.1-SNAPSHOT",
+  "name": "SmartClaimz",
+  "description": "Angular front-end for the Freeloaderz SmartClaimz website",
+  "version": "1.0.0-SNAPSHOT",
   "node_deb": {
     "entrypoints": {
       "daemon": "index.html"
