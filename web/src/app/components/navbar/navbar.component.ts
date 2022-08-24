@@ -11,6 +11,7 @@ import {Subscription} from "rxjs";
 import {DOCUMENT} from "@angular/common";
 import {HttpClient} from "@angular/common/http";
 import {PropertyService} from "../../services/property.service";
+import {PoolService} from "../../services/pool.service";
 
 declare let gtag: Function;
 
@@ -58,19 +59,17 @@ export class NavbarComponent extends NotificationComponent implements OnInit, Af
     public acceptedTOS = false;
     @ViewChild('logo') logoElement: ElementRef;
     @ViewChild('connectModal', {static: false}) public connectModal: ModalDirective;
-    @ViewChild('disabledModal', {static: false}) public disabledModal: ModalDirective;
     @ViewChild('terms', {static: false}) public terms: ModalDirective;
 
     constructor(@Inject(DOCUMENT) public document: any, public httpClient: HttpClient,
-                public propertyService: PropertyService,
+                public propertyService: PropertyService, public poolService: PoolService,
                 public router: Router, public titleService: Title, public walletObserverService: WalletObserverService,
                 public notifierService: NotifierService, public walletService: WalletService) {
         super(notifierService);
         this.titleService.setTitle("Rewards");
         this.router.events.subscribe(event => {
-            if ((event instanceof NavigationEnd) &&
-                ((location.hostname.endsWith('freeloaderz.io')) ||
-                    (location.hostname.endsWith('smartclaimz.io')))) {
+            if ((event instanceof NavigationEnd) && ((location.host !== 'localhost')
+                && (location.host !== '127.0.0.1'))) {
                 gtag('set', 'page_path', event.urlAfterRedirects);
                 gtag('event', 'page_view');
             }
@@ -328,13 +327,8 @@ export class NavbarComponent extends NotificationComponent implements OnInit, Af
         this.getScreenSize(event);
     }
 
-    public hideDisabledModal() {
-        this.disabledModal.hide();
-    }
-
     public showConnectModal() {
         this.connectModal.show();
-        // this.disabledModal.show();
     }
 
     public hideConnectModal() {

@@ -9,11 +9,15 @@ export class WalletService {
     public numWalletCalls: number = 0;
     public walletLoaded: boolean = false;
     public errorLoadingWallet: boolean = false;
+    public onlyMainnet: boolean = true;
 
     constructor(public walletObserver: WalletObserverService) {
         this.walletObserver.loaded$.subscribe(loaded => {
             this.walletLoaded = loaded;
         });
+        if (location.host === 'rwd.freeloaderz.io') {
+            this.onlyMainnet = false;
+        }
     }
 
     /**
@@ -165,10 +169,20 @@ export class WalletService {
      */
     private processNetworkId(data: any) {
         globalThis.wallet.network = data;
-        if (--this.numWalletCalls === 0) {
-            this.walletObserver.setloaded(true);
+        if (((this.onlyMainnet) && (globalThis.wallet.network !== 0)) ||
+            ((!this.onlyMainnet) && (globalThis.wallet.network === 0))) {
+            if (--this.numWalletCalls === 0) {
+                this.walletObserver.setloaded(true);
+            }
+            this.updateWallet();
+        } else {
+            this.walletObserver.setloaded(false);
+            if (this.onlyMainnet) {
+                this.walletObserver.setError("Please connect your mainnet wallet");
+            } else {
+                this.walletObserver.setError("Please connect your testnet wallet");
+            }
         }
-        this.updateWallet();
     }
 
     /**
@@ -254,7 +268,7 @@ export class WalletService {
         if (!this.errorLoadingWallet) {
             this.walletObserver.setloaded(true);
         } else {
-            this.walletObserver.setError("One or more errors occured while loading your wallet!");
+            this.walletObserver.setError("One or more errors occurred while loading your wallet!");
         }
     }
 

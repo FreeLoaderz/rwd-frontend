@@ -1,0 +1,384 @@
+[
+  {
+    "name": "Fair Pool #01",
+    "ticker": "FAIR",
+    "description": "Highly available pool with a fair margin of 0.5%",
+    "homepage": "https://fairpool.eu",
+    "extended": "https://fairpool.eu/fair01-extended.json",
+    "nonce": "1596230916"
+  },
+  {
+    "name": "Hedges Stake Pool",
+    "description": "Where The Grass Is Greener",
+    "ticker": "HEDGE",
+    "homepage": "https://Hedgespool.com",
+    "extended": "https://www.hedgespool.com/poolExtended.json"
+  },
+  {
+    "name": "EnigmA",
+    "ticker": "one",
+    "description": "1 pool 3 missions. Decentralize Cardano network. 5% Donation to Cancer research hospitals. 3 raffle tickets for every epoch when we hit a block. ",
+    "homepage": "https://red-sky.one",
+    "nonce": "1602354255",
+    "extended": "https://red-sky.one/extended-metadata.json"
+  },
+  {
+    "name": "46 South Stake Pool",
+    "description": "46 South Stake Pool - The world's southernmost Cardano stake pool. Running on 100% renewable energy. Located in Invercargill, New Zealand (46 degrees South!)",
+    "ticker": "46S",
+    "homepage": "https://46s.au.ngrok.io",
+    "extended": "https://raw.githubusercontent.com/snic-csp/stakepool/master/extended-meta.json"
+  },
+  {
+    "name": "N2O",
+    "ticker": "N2O",
+    "description": "N2O - A catalyst for acceleration. - We g0 WSSH!",
+    "homepage": "https://0xdeadbeef.network",
+    "nonce": "1647365607"
+  },
+  {
+    "name": "ADA Coinz",
+    "description": "Grow your ADA coins with COINZ.",
+    "ticker": "COINZ",
+    "homepage": "https://adacoinz.com",
+    "extended": "https://adacoinz.com/poolinfo/extended.json"
+  },
+  {
+    "name": "Cardano Blockhouse",
+    "description": "Cardano Blockhouse is highly secured by a hardware firewall, DDoS protection, VPN connections and frequent backups | runs on reliable enterprise hardware | we are planting trees through primaklima.org to reduce the CO2 emissions.",
+    "ticker": "CBH",
+    "homepage": "https://cardano-blockhouse.de/",
+    "extended": "https://cardano-blockhouse.de/extended1.json"
+  },
+  {
+    "name": "AdaLoop",
+    "ticker": "ALoop",
+    "description": "Support Cardano vision, member of CSPA and MDP - Ardana ISPO Bonus - 20% of rewards donating to AbleGamers Charity #SoEveryoneCanGame.",
+    "homepage": "https://adaloop.org",
+    "extended": "https://adaloop.org/ext_metadata.json"
+  },
+  {
+    "name": "Maple Pool",
+    "description": "Your friendly canadian pool, soory eh!",
+    "ticker": "MPOL",
+    "homepage": "https://twitter.com/maple_pool",
+    "extended": "https://raw.githubusercontent.com/gopex21/c/main/mpol-extended.json"
+  },
+  {
+    "name": "Santo",
+    "description": "Santo Stake Pool - 07-18-2021 - Fast, Reliable and Responsive",
+    "ticker": "SANTO",
+    "homepage": "https://santoelectronics.com/santonode",
+    "extended": "https://santoelectronics.com/s/metadata3e.json"
+  },
+  {
+    "name": "ADA for Warriors",
+    "description": "Mission-driven single pool that donates it's op's rewards to the Third Option Foundation (30%), Captive Audience (10%), and 500 Rising (10%).",
+    "ticker": "4WARD",
+    "homepage": "https://4wardpool.swiftcryptollc.com",
+    "extended": "https://4wardpool.swiftcryptollc.com/extendedPoolMetaData.json"
+  },
+  {
+    "name": "Apex Cardano Pool",
+    "description": "APEX Stake Pool: Low fees - 340 Fixed Cost and 1.99% Margin (variable fee). SPO with 24 years of IT experience, supporting the Cardano community and the decentralization of Cardano. Delegate to APEX Stake Pool!",
+    "ticker": "APEX",
+    "homepage": "https://apexpool.info/",
+    "extended": "https://apexpool.info/extended.json"
+  },
+  {
+    "name": "CNFT Stake Pool",
+    "description": "CNFT Pool - A pool for those who enjoy and embrace the Cardano NFT community - Bare Metal on 100% Renewable Energy",
+    "ticker": "CNFT",
+    "homepage": "https://cnftpool.com",
+    "extended": "https://tinyurl.com/53sk6zek"
+  },
+  {
+    "name": "AdaRare Stake Pool",
+    "ticker": "ARARE",
+    "description": "Secure and ready to use",
+    "homepage": "https://arare.io/",
+    "nonce": "1614915653",
+    "extended": "https://git.io/JqTy9"
+  },
+  {
+    "name": "DEGAS - The Pool Fighting GHG Emissions",
+    "description": "Staking rewards will be used to fight energy waste and reduce GHG emissions with 10% of profits donated to selected NGOs and Charities. Supporting decentralization and a sustainable blockchain.",
+    "ticker": "DEGAS",
+    "homepage": "https://degas-pool.com",
+    "extended": "https://git.io/JsZTu"
+  },
+  {
+    "name": "Lido Nation",
+    "description": "Community for everyone.",
+    "ticker": "LIDO",
+    "homepage": "https://www.lidonation.com",
+    "extended": "https://www.lidonation.com/metadata-extended.json"
+  },
+  {
+    "name": "Envy Stake Pool",
+    "description": "ENVY provides excellent staking service, with zero margin fees. 20% operator rewards are donated to Dave Thomas Foundation for Adoption & Save the Children. @EnvyStakePool on Twitter & www.envystakepool.com. We support decentralization.",
+    "ticker": "ENVY",
+    "homepage": "https://envystakepool.com",
+    "extended": "https://git.io/Ju1j9"
+  },
+  {
+    "name": "FasoPool",
+    "description": "Fasopool is bare metal StakePool that supports Cardano Decentralization.(Nebraska,USA)",
+    "ticker": "FASO",
+    "homepage": "https://fasostakepool.com/",
+    "extended": "https://raw.githubusercontent.com/link78/fasopooldata/main/faso-extended.json"
+  },
+  {
+    "name": "ADASquirrel",
+    "ticker": "SQRL",
+    "description": "ADA Squirrel from Italy with LOVElace",
+    "homepage": "https://adasquirrel.com",
+    "nonce": "1657030367",
+    "extended": "https://adasquirrel.com/meta/extended.json"
+  },
+  {
+    "name": "Rabbitholepools",
+    "description": "Follow the White Rabbit!",
+    "ticker": "RABIT",
+    "homepage": "https://rabbitholepools.io",
+    "extended": "https://raw.githubusercontent.com/adrem1/Pool-metadata/master/rabbithole_extended.json"
+  },
+  {
+    "name": "Reservoir Node",
+    "description": "Two locations. 100% solar and wind energy. 25% of fixed fee donated.",
+    "ticker": "RSV",
+    "homepage": "https://reservoir.network",
+    "extended": "http://38.242.193.215/rsv-extended.json"
+  },
+  {
+    "name": "TOPO⚡ Pool",
+    "description": "Passionate IT pro with 20+ years experience. Pool up since epoch 208 with 99.9% uptime. Member of ALDEA DAO",
+    "ticker": "TOPO⚡",
+    "homepage": "https://topopool.com",
+    "extended": "https://storage.googleapis.com/topo-pool/topo-extra.json"
+  },
+  {
+    "name": "EUSKAL STAKE POOL",
+    "description": "High Performance, Safe and Supportive Cardano Stake Pool",
+    "ticker": "EUSKL",
+    "homepage": "https://euskalstakepool.win",
+    "extended": "https://raw.githubusercontent.com/padrogass/adasp/main/extended.json"
+  },
+  {
+    "name": "ADA Rewards",
+    "description": "Committed to your rewards, our community, and a world in need of liberty",
+    "ticker": "ADAR",
+    "homepage": "https://adarewards.org",
+    "extended": "https://git.io/JSR0b"
+  },
+  {
+    "name": "The ADA House",
+    "ticker": "ADAHS",
+    "description": "a secure & reliable cardano stake pool",
+    "homepage": "https://the.adahou.se",
+    "extended": "https://the.adahou.se/poolmeta_ext.09.05.json"
+  },
+  {
+    "name": "JED Stakepool",
+    "ticker": "JED",
+    "description": "Supporting Crohns and Colitis Australia and Green Fleet Australia.",
+    "homepage": "https://adapool.jed.id.au",
+    "nonce": "1646727739",
+    "extended": "https://adapool.jed.id.au/extended.json"
+  },
+  {
+    "name": "ShareTheLovelace",
+    "description": "West Australian Pool commited to helping humans best friend",
+    "ticker": "STLL",
+    "homepage": "https://sharethelovelace.xyz",
+    "extended": "https://sharethelovelace.xyz/ext_metadata.json"
+  },
+  {
+    "name": "Right Stake Pool",
+    "description": "Non-profit. Single stake pool. Solely for Cardano decentralization. Support us!",
+    "ticker": "RIGHT",
+    "homepage": "https://rightstakepool.com"
+  },
+  {
+    "name": "Harmonic",
+    "description": "A pool that supports decentralization through the creation of utility software, running on bare metal servers",
+    "ticker": "ARMN",
+    "homepage": "https://harmonicpool.on.fleek.co",
+    "extended": "https://raw.githubusercontent.com/HarmonicPool/poolInfos/main/extendedMetaData.json"
+  },
+  {
+    "name": "𝛑 + ₳ = ∞",
+    "description": "PIADA provides educational content specializing in Raspberry Pi and ARM 64-bit SoC based stake pool operations.",
+    "ticker": "PIADA",
+    "homepage": "https://tinyurl.com/3n6ftstn",
+    "extended": "https://piada.io/piada.extended-metadata.json"
+  },
+  {
+    "name": "Happy HUG Staking",
+    "description": "Maximize your ADA and stake with HUG - Dedicated infrastructure managed and secured by an IT professional - Single stake pool helping decentralize Cardano and donating 20% of pool operator rewards to mental health charities :-)",
+    "ticker": "HUG",
+    "homepage": "https://adastaking.co.uk",
+    "extended": "https://git.io/JP9XY"
+  },
+  {
+    "name": "Alfa Pool",
+    "description": "Alfa Cardano Pool. Professional operated high performance Baremetal Node with cloud Relays. 99,99% uptime! Support ADA decentralization.",
+    "ticker": "ALFA",
+    "homepage": "https://www.alfa-pool.com/",
+    "extended": "https://raw.githubusercontent.com/alfacardanopool/APOOL/main/extended.json"
+  },
+  {
+    "name": "ADA Moon Stake Pool",
+    "ticker": "AMOON",
+    "description": "High Performance, Secure and Cloud hosted pool. Let's together send, ADA TO THE MOON!",
+    "homepage": "https://adamoon.net",
+    "extended": "https://adamoon.net/extended.json"
+  },
+  {
+    "name": "TSC Stake Pool",
+    "description": "The official Staking Pool of Tyler S. Stake your ADA with us for the lowest margins offered on YouTube. Lower margin = more rewards for you!",
+    "ticker": "TSC",
+    "homepage": "https://tylerscrypto.com"
+  },
+  {
+    "name": "The Great Pool",
+    "description": "The Great Pool, our mission is to spread love throughout the world, one ADA at a time.",
+    "ticker": "GREAT",
+    "homepage": "https://greatstakepool.com",
+    "extended": "https://raw.githubusercontent.com/adosiawolf/m/master/greatx"
+  },
+  {
+    "name": "Wells Pool",
+    "description": "Drop your ada in our wells and watch your wildest dreams come true.",
+    "ticker": "WELLS",
+    "homepage": "https://wells-pool.com"
+  },
+  {
+    "name": "Coudre Bros",
+    "description": "Mission driven pool - 50 % of rewards goes to donations, mainly to a Nobel peace prize winner Doctors Without Borders. Single pool. Powerful bare metal servers.",
+    "ticker": "CBROS",
+    "homepage": "https://www.coudrebros.eu",
+    "extended": "https://raw.githubusercontent.com/Couder82/coudrebros/main/meta.json"
+  },
+  {
+    "name": "PetLoverStake",
+    "description": "A place for pet lovers and environmentalists who bet on Cardano as the crypto of the future",
+    "ticker": "PET♥",
+    "homepage": "https://petloverstake.com",
+    "extended": "https://petloverstake.com/extMetadata.json"
+  },
+  {
+    "name": "Zebra Staking",
+    "description": "Environmentally friendly pool run by professional software developers, using self hosted bare metal hardware. We support the decentralisation of Cardano and plan to build helpful tools to support the community.",
+    "ticker": "ZEBRA",
+    "homepage": "https://zebrastaking.com/",
+    "adapools.org": "65d74d5ac04b2727e9fd04b3a5b1b739",
+    "extended": "https://zebrastaking.com/data/extendedMeta.json"
+  },
+  {
+    "name": "AquaPoolADA",
+    "ticker": "AQUA",
+    "description": "Dive Into Cardano.",
+    "homepage": "http://aquapool.io/",
+    "nonce": "1597789007"
+  },
+  {
+    "name": "Pool for EUTXO innovation",
+    "description": "Driving cross-chain innovation on Cardano, Ergo and Nervos since 2022",
+    "ticker": "EUTXO",
+    "homepage": "https://eutxo.net"
+  },
+  {
+    "name": "Cardano Fans",
+    "description": "We believe in access to financial system for everybody",
+    "ticker": "CRFA",
+    "homepage": "https://cardano.fans",
+    "extended": "https://cardano.fans/static/crfa.extended.metadata.json"
+  },
+  {
+    "name": "Blockchain Better Have My Money",
+    "description": "Delegate to BBHMM - Blockchain Better Have My Money 🔐",
+    "ticker": "BBHMM",
+    "homepage": "https://www.bbhmm.net/",
+    "extended": "https://pool.bbhmm.net/poolmeta_extended.json"
+  },
+  {
+    "name": "A New Pool for A New Africa",
+    "ticker": "ANEW",
+    "description": "Thanks to our delegators, Wealth derived from Digital Assets given back to Local African Communities",
+    "homepage": "https://www.anewpool.io",
+    "nonce": "1614500625",
+    "extended": "https://raw.githubusercontent.com/sadaka-io/extended-metadata/main/meta.json"
+  },
+  {
+    "name": "Monster",
+    "ticker": "MNSTR",
+    "description": "Monster Stake Pool is dedicated to raising awareness of Multiple Sclerosis, as well as raising funds for MS Reasearch.",
+    "homepage": "https://www.monster-stakepool.com/",
+    "nonce": "1645034668",
+    "extended": "https://mnstrspo.github.io/extended-meta.json"
+  },
+  {
+    "name": "ItalyADA",
+    "description": "Pool operators from Italy, Milan, here to provide you with the best service and exclusive activities, reach us to find out more!",
+    "ticker": "HWL",
+    "homepage": "https://www.hwlegnano.it/cardano/",
+    "extended": "https://status.hwlegnano.it/poolMetaDataExtended.json"
+  },
+  {
+    "name": "Mylo Pool",
+    "description": "Mylo Cardano Stake pool is hosted on Azure with enterprise grade security and managed by professionals.  We believe in Cardano and support it by donating to local charity and empowering the community",
+    "ticker": "MYLO",
+    "homepage": "https://mylo.farm"
+  },
+  {
+    "name": "Latino_Staking_Pool",
+    "ticker": "LATIN",
+    "extended": "https://raw.githubusercontent.com/CL-LLC/MD/main/extended.json",
+    "homepage": "https://cardanolatino.com/cardanoenglish/Latino-Staking-Pool-Eng/",
+    "description": "We are totally aligned with Cardano's Vision and Mission with the intention of making our world a more fair place for all / Comprometidos con la Vision y la Mision de Cardano con la Intencion de hacer de nuestro mundo un lugar mas justo para todos ",
+    "verification string": "239295d6c10c617ee6"
+  },
+  {
+    "name": "Nimuë Lady of the Lake Pool",
+    "description": "Nimuë will bestow upon you the gift of freedom. Secure and reliable Belgium based stake pool perpetuating the Cardano vision. Donating 10% of pool fee to #teamtrees and Vétérinaires Sans Frontières.",
+    "ticker": "NIMUE",
+    "homepage": "https://nimuepool.io",
+    "extended": "https://nimuepool.io/metadata/nimue.ext.json"
+  },
+  {
+    "name": "PSILOBYTE",
+    "ticker": "PSB",
+    "description": "Low 1% fees | Support @ 1-877-PSBYTE-6 | Canada Baremetal + Worldwide cloud pool by Psilobyte",
+    "homepage": "https://psilobyte.io",
+    "extended": "https://psilobyte.io/ada/psb-meta-ext.json"
+  },
+  {
+    "name": "Easy Staking Pool",
+    "description": "Staking ADA has never been so easy",
+    "ticker": "EASY1",
+    "homepage": "http://easystaking.org/"
+  },
+  {
+    "name": "CloudStruct Cardano Staking",
+    "description": "Highly-available, secure cloud-based pool with multiple relays, managed by cloud infrastructure specialists - Supporting online privacy and liberty. Donating to the Electronic Frontier Foundation.",
+    "ticker": "CSCS",
+    "homepage": "https://cardano.cloudstruct.net",
+    "extended": "https://cscs-pool-metadata.s3.amazonaws.com/extended-20211008-232118.json"
+  },
+  {
+    "name": "LoneStar Staking Pool",
+    "description": "Staking Pool in the Lone Star State",
+    "ticker": "LSSP",
+    "homepage": "https://LoneStarStaking.net",
+    "Location": "Fort Worth, TX",
+    "extended": "https://rb.gy/scm14d"
+  },
+  {
+    "name": "Chichen Itza",
+    "description": "Stake Pool from Argentina, Member of AldeaDAO, Member of Single Pool Alliance, Hosky Rug Pool, Carbon Neutral, Geo-redundancy, Poolperks",
+    "ticker": "ITZA",
+    "homepage": "https://latinstakepools.com/",
+    "extended": "https://raw.githubusercontent.com/LatinStakePools/ITZA/main/extendedMetada.json"
+  }
+]

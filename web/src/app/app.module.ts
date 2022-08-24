@@ -39,6 +39,8 @@ import {PropertyObserverService} from "./services/observers/property-observer.se
 import {DelegateComponent} from "./components/delegate/delegate.component";
 import {TosComponent} from "./components/tos/tos.component";
 import {BankManagerComponent} from "./components/extensions/meld/bank-manager.component";
+import {PoolService} from "./services/pool.service";
+import {PoolObserverService} from "./services/observers/pool-observer.service";
 
 const customNotifierOptions: NotifierOptions = {
     position: {
@@ -84,8 +86,9 @@ const customNotifierOptions: NotifierOptions = {
 };
 
 @NgModule({
-    declarations: [NavbarComponent, WelcomeComponent, FooterComponent, InfoComponent, RewardsComponent, MaintenanceComponent, BankManagerComponent,
-        ContactUsComponent, HistoryComponent, NetworkComponent, TestnetComponent, FaqComponent, DelegateComponent, TosComponent],
+    declarations: [NavbarComponent, WelcomeComponent, FooterComponent, InfoComponent, RewardsComponent,
+        MaintenanceComponent, BankManagerComponent, ContactUsComponent, HistoryComponent, NetworkComponent,
+        TestnetComponent, FaqComponent, DelegateComponent, TosComponent],
     imports: [BrowserModule, FormsModule, ReactiveFormsModule, AppRoutingModule, RouterModule,
         TooltipModule.forRoot(), OverlayPanelModule, ModalModule.forRoot(),
         NotifierModule.withConfig(customNotifierOptions), ChartModule, SharedModule,
@@ -94,7 +97,8 @@ const customNotifierOptions: NotifierOptions = {
         DropdownModule, MenubarModule, DataViewModule, ImageModule,
         ButtonModule, PanelModule, BrowserAnimationsModule],
     bootstrap: [NavbarComponent],
-    providers: [RestService, WalletObserverService, WalletService, PropertyService, PropertyObserverService]
+    providers: [RestService, WalletObserverService, WalletService, PropertyService,
+        PropertyObserverService, PoolService, PoolObserverService]
 })
 
 export class AppModule {

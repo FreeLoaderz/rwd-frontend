@@ -66,8 +66,7 @@ const PROXY_CONFIG = {
         pr.headers['set-cookie'] = cookies;
       }
     }
-  },
-
+  }
 };
 
 module.exports = PROXY_CONFIG;

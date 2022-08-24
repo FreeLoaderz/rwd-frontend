@@ -28,7 +28,7 @@
                             label="Claim All" icon="fa-solid fa-square-check">
                     </button>
                 </div>
-                <p-dataView #tokenView [value]="tokens" layout="grid" filterBy="displayName"
+                <p-dataView #tokenView [value]="tokens" layout="grid"
                             [rows]="maxItems" (onFilter)="onFilter($event, tokenView)"
                             [paginator]="showPaging" filterBy="displayName">
                     <ng-template let-token pTemplate="gridItem">
