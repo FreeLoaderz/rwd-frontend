@@ -52,9 +52,11 @@ export class NetworkComponent implements OnInit, OnDestroy {
 
     public setNetwork() {
         if (globalThis.wallet.network === 0) {
-            this.network = "testnet";
-        } else {
+            this.network = "preview";
+        } else if (globalThis.wallet.network === 1) {
             this.network = "mainnet";
+        } else {
+            this.network = "unknown";
         }
     }
 

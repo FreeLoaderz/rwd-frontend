@@ -180,7 +180,7 @@ export class WalletService {
             if (this.onlyMainnet) {
                 this.walletObserver.setError("Please connect your mainnet wallet");
             } else {
-                this.walletObserver.setError("Please connect your testnet wallet");
+                this.walletObserver.setError("Please connect your preview wallet");
             }
         }
     }

@@ -1,6 +1,6 @@
 import {NftMinter} from "./nft-minter";
 
-export class TestnetScript {
+export class PreviewScript {
     public NftMinter: NftMinter;
 
     constructor() {

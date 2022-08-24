@@ -37,7 +37,7 @@ export class DelegateComponent extends NotificationComponent implements OnInit, 
     public gridItemSmallWidth: number = 260;
     public gridItemSmallHeight: number = 260;
     public smallGrid: boolean = false;
-    public isTestnet: boolean = false;
+    public isPreview: boolean = false;
     @ViewChild('poolView', {static: false}) public poolView: any;
     @ViewChild('notificationTemplate', {static: false}) public notificationTemplate: any;
 
@@ -114,7 +114,7 @@ export class DelegateComponent extends NotificationComponent implements OnInit, 
     public listPools() {
         this.listingPools = true;
         globalThis.pools = [];
-        if (this.isTestnet) {
+        if (this.isPreview) {
             const pools: Array<Pool> = [];
             const apex: Pool = new Pool({
                 "name": "Apex Cardano Pool",
@@ -122,36 +122,36 @@ export class DelegateComponent extends NotificationComponent implements OnInit, 
                 "ticker": "APEX",
                 "homepage": "https://apexpool.info/",
                 "extended": "https://apexpool.info/extended.json",
-                "id": "5f5ed4eb2ba354ab2ad7c8859f3dacf93564637a105e80c8d8a7dc3c",
+                "id": "5a849bd6a495d0630f6ba6a367ba4e2b3ccc7a53515812105560c152",
                 "logo": "https://apexpool.info/img/logo.png"
             });
             const tpanl: Pool = new Pool({
-                "name": "TPANL",
-                "description": "PANL Stake Pool Test Environment",
-                "ticker": "TPANL",
+                "name": "PANL Stake Pool (Preview)",
+                "description": "Proudly contributing to the longevity of the Cardano network through reliable node operation",
+                "ticker": "PANL",
                 "homepage": "https://www.panl.org",
-                "id": "6762b21773213a40496489abd3bb94baeae99d8a0373a198472222a4",
+                "id": "2d74b091820b0aadce3c9e8f8afd9117c706968162867cb725ba478d",
                 "logo": "https://logo.panl.org"
             });
-            const lido: Pool = new Pool({
-                "name": "Lido Nation",
-                "description": "Community for everyone.",
-                "ticker": "LIDO",
-                "homepage": "https://www.lidonation.com",
-                "extended": "https://www.lidonation.com/metadata-extended.json",
+            const envy: Pool = new Pool({
+                "name": "ENVY Preview Pool",
+                "description": "ENVY provides excellent staking service, with zero margin fees. 20% operator rewards are donated to Dave Thomas Foundation for Adoption & Save the Children. @EnvyStakePool on Twitter & www.envystakepool.com. We support decentralization.",
+                "ticker": "ENVY",
+                "homepage": "https://envystakepool.com",
+                "extended": "https://git.io/Ju1j9",
                 "id": "bf81c32d4b8d05538431743190421b5e0fc2384c605c2ddfbeabbd5a",
-                "logo": "https://www.lidonation.com/img/llogo-transparent.png"
+                "logo": "https://static.wixstatic.com/media/63a3ee_c86a030e820640eda11b6342d3e45610~mv2.png"
             });
             const santo: Pool = new Pool({
                 "name": "SANTO",
                 "description": "Santo Cardano Stake Pool.",
                 "ticker": "SANTO",
                 "homepage": "https://www.santoelectronics.com/santonode",
-                "id": "6a0c2ca24a97f6b1c4477e8688e8de7f786de6efff72ecf4e521db3b",
+                "id": "bf81c32d4b8d05538431743190421b5e0fc2384c605c2ddfbeabbd5a",
                 "logo": "https://santoelectronics.com/s/santo.png"
             });
             pools.push(apex);
-            pools.push(lido);
+            pools.push(envy);
             pools.push(santo);
             pools.push(tpanl);
             this.poolDelegationReturn = null;
@@ -265,9 +265,9 @@ export class DelegateComponent extends NotificationComponent implements OnInit, 
 
     public setNetwork() {
         if (globalThis.wallet != null) {
-            this.isTestnet = (true === (0 === globalThis.wallet.network));
+            this.isPreview = (true === (0 === globalThis.wallet.network));
         } else {
-            this.isTestnet = false;
+            this.isPreview = false;
         }
     }
 

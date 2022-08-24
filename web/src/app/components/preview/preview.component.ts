@@ -5,22 +5,22 @@ import {Subscription} from "rxjs";
 import {RestService} from "../../services/rest.service";
 import {NotificationComponent} from "../notification/notification.component";
 import {NotifierService} from "angular-notifier";
-import {TestnetScript} from "../../data/testnet/testnet-script";
+import {PreviewScript} from "../../data/preview/preview-script";
 
 @Component({
-    selector: 'testnet',
+    selector: 'preview',
     styleUrls: ['../../../styles/page-content.css'],
-    templateUrl: './testnet.html',
+    templateUrl: './preview.html',
 })
 @Injectable()
 /**
  *
  */
-export class TestnetComponent extends NotificationComponent implements OnInit, OnDestroy {
+export class PreviewComponent extends NotificationComponent implements OnInit, OnDestroy {
     public walletSubscription: Subscription;
     public walletLoaded: boolean = false;
     public submitted: boolean = false;
-    public isTestnet: boolean = false;
+    public isPreview: boolean = false;
 
     constructor(public walletObserverService: WalletObserverService, public walletService: WalletService,
                 public restService: RestService, public notifierService: NotifierService) {
@@ -34,7 +34,7 @@ export class TestnetComponent extends NotificationComponent implements OnInit, O
                 if (loaded) {
                     this.setNetwork();
                 } else {
-                    this.isTestnet = false;
+                    this.isPreview = false;
                 }
             }
         );
@@ -46,9 +46,9 @@ export class TestnetComponent extends NotificationComponent implements OnInit, O
 
     public setNetwork() {
         if (globalThis.wallet.network === 0) {
-            this.isTestnet = true;
+            this.isPreview = true;
         } else {
-            this.isTestnet = false;
+            this.isPreview = false;
         }
     }
 
@@ -65,7 +65,7 @@ export class TestnetComponent extends NotificationComponent implements OnInit, O
 
     public generateRewards() {
         if (globalThis.wallet.sending_wal_addrs.length > 0) {
-            globalThis.wallet.script = new TestnetScript();
+            globalThis.wallet.script = new PreviewScript();
             globalThis.wallet.script.NftMinter.receiver_payment_addr = globalThis.wallet.sending_wal_addrs[0];
             // globalThis.wallet.contract_id = 111;
             this.submitted = true;

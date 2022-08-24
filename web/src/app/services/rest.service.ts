@@ -201,7 +201,7 @@ export class RestService {
     }
 
     /**
-     * Generate Testnet rewards
+     * Generate Preview rewards
      * @param customerId
      * @param script
      */

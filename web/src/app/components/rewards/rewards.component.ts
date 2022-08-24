@@ -38,7 +38,7 @@ export class RewardsComponent extends NotificationComponent implements OnInit, O
     public gridItemSmallWidth: number = 191;
     public gridItemSmallHeight: number = 191;
     public smallGrid: boolean = false;
-    public isTestnet: boolean = false;
+    public isPreview: boolean = false;
 
     @ViewChild('tokenView', {static: false}) public tokenView: any;
     @ViewChild('notificationTemplate', {static: false}) public notificationTemplate: any;
@@ -59,7 +59,7 @@ export class RewardsComponent extends NotificationComponent implements OnInit, O
             loaded => {
                 this.walletLoaded = loaded;
                 if ((loaded === true) && (!this.initialized)) {
-                    this.isTestnet = (globalThis.wallet.network === 0);
+                    this.isPreview = (globalThis.wallet.network === 0);
                     this.listTokens();
                 }
             }
@@ -145,7 +145,7 @@ export class RewardsComponent extends NotificationComponent implements OnInit, O
             const newToken = new Token(data[i]);
             setTimeout(() => {
                 let name = newToken.displayName;
-                if ((this.isTestnet) && (newToken.displayName.startsWith("t")) && (newToken.displayName !== 'teuton')) {
+                if ((this.isPreview) && (newToken.displayName.startsWith("t")) && (newToken.displayName !== 'teuton')) {
                     name = newToken.displayName.substring(1);
                     if (name === 'FLZC') {
                         name = 'FLZ';

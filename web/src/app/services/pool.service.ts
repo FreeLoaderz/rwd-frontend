@@ -23,7 +23,6 @@ export class PoolService {
         }
         if (PoolService.poolList.length === 0) {
             this.httpClient.get<Array<any>>("assets/config/fullmetadata.json").subscribe(data => {
-                console.log("load full");
                 for (let i = 0; i < data.length; ++i) {
                     const pool: Pool = new Pool(data[i]);
                     PoolService.poolList.push(pool);
@@ -31,7 +30,6 @@ export class PoolService {
 
                 this.httpClient.get<Array<any>>("assets/config/fullextended.json").subscribe(exData => {
                     let poolIndex: number = 0;
-                    console.log("load ext");
                     for (let i = 0; i < exData.length; ++i) {
                         while ((PoolService.poolList[poolIndex].extended == null) &&
                         (poolIndex < PoolService.poolList.length)) {

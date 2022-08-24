@@ -36,7 +36,7 @@ export class BankManagerComponent extends NotificationComponent implements OnIni
     public previousCheckedWalletAddress: string = null;
     public walletAddress: string = "";
     public shortWalletAddress: string = "";
-    public isTestnet: boolean = false;
+    public isPreview: boolean = false;
     public mintError: boolean = false;
     public mintFinalized: boolean = false;
     public checkingVerification: boolean = false;
@@ -72,8 +72,8 @@ export class BankManagerComponent extends NotificationComponent implements OnIni
                     this.setWalletLoading = false;
                 } else {
                     this.walletLoading = false;
-                    this.isTestnet = (true === (0 === globalThis.wallet.network));
-                    if (this.isTestnet) {
+                    this.isPreview = (true === (0 === globalThis.wallet.network));
+                    if (this.isPreview) {
                         this.validAddressLength = 108;
                         this.validAddressStart = "addr_test1";
                     }

@@ -33,7 +33,7 @@ export class NavbarComponent extends NotificationComponent implements OnInit, Af
     public claimzMenuItem: MenuItem;
     public historicalMenuItem: MenuItem;
     public connectMenuItem: MenuItem[];
-    public testnetMenu: MenuItem;
+    public previewMenu: MenuItem;
     public walletMenu: MenuItem;
     public exploreMenu: MenuItem[];
     public poolMenuItem: MenuItem;
@@ -197,13 +197,13 @@ export class NavbarComponent extends NotificationComponent implements OnInit, Af
             items: [this.claimzMenuItem,
                 this.historicalMenuItem]
         }];
-        this.testnetMenu = {
-            label: 'TESTNET',
-            id: 'TESTNET',
-            title: 'Tools for testnet testing',
+        this.previewMenu = {
+            label: 'PREVIEW',
+            id: 'PREVIEW',
+            title: 'Tools for preview testing',
             icon: 'fa-solid fa-toolbox',
             command: (event) => {
-                this.routeTestnet();
+                this.routePreview();
             }
         };
         this.faqMenuItem = {
@@ -291,11 +291,11 @@ export class NavbarComponent extends NotificationComponent implements OnInit, Af
             this.helpMenu = [{
                 label: 'HELP',
                 id: 'HELP',
-                title: 'Contact us, FAQ, Testnet tools',
+                title: 'Contact us, FAQ, Preview tools',
                 icon: 'fa-solid fa-circle-info',
                 items: [this.contactUsMenuItem,
                     this.faqMenuItem,
-                    this.testnetMenu]
+                    this.previewMenu]
             }];
             this.collapsedConnectedMenu = [
                 this.rewardsMenu[0],
@@ -438,8 +438,8 @@ export class NavbarComponent extends NotificationComponent implements OnInit, Af
         this.router.navigate(['/rewards']);
     }
 
-    public routeTestnet() {
-        this.router.navigate(['/testnet']);
+    public routePreview() {
+        this.router.navigate(['/preview']);
     }
 
     public anyWalletAvailable(): boolean {
