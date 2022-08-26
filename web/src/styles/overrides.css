@@ -799,3 +799,7 @@ body .p-menubar .p-submenu-list {
     opacity: 0.5;
     text-decoration: none;
 }
+
+li + li {
+    margin-left: 0 !important;
+}
