@@ -285,10 +285,6 @@ img::-moz-selection {
     align-items: stretch;
 }
 
-li + li {
-    margin-left: 1rem;
-}
-
 .grid-item {
     border: none !important;
     margin: .5em;
