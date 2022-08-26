@@ -27,21 +27,25 @@ export class PoolService {
                     const pool: Pool = new Pool(data[i]);
                     PoolService.poolList.push(pool);
                 }
-
-                this.httpClient.get<Array<any>>("assets/config/fullextended.json").subscribe(exData => {
-                    let poolIndex: number = 0;
-                    for (let i = 0; i < exData.length; ++i) {
-                        while ((PoolService.poolList[poolIndex].extended == null) &&
-                        (poolIndex < PoolService.poolList.length)) {
+                this.httpClient.get<Array<any>>("assets/config/pool_ids.json").subscribe(poolids => {
+                    for (let i = 0; i < poolids.length; ++i) {
+                        PoolService.poolList[i].setPoolId(poolids[i].pool_id);
+                    }
+                    this.httpClient.get<Array<any>>("assets/config/fullextended.json").subscribe(exData => {
+                        let poolIndex: number = 0;
+                        for (let i = 0; i < exData.length; ++i) {
+                            while ((PoolService.poolList[poolIndex].extended == null) &&
+                            (poolIndex < PoolService.poolList.length)) {
+                                ++poolIndex;
+                            }
+                            if ((exData[i].info) && (exData[i].info.url_png_icon_64x64)) {
+                                PoolService.poolList[poolIndex].logo = exData[i].info.url_png_icon_64x64;
+                            }
                             ++poolIndex;
                         }
-                        if ((exData[i].info) && (exData[i].info.url_png_icon_64x64)) {
-                            PoolService.poolList[poolIndex].logo = exData[i].info.url_png_icon_64x64;
-                        }
-                        ++poolIndex;
-                    }
-                    PoolService.poolList.sort((a, b) => Pool.sort(a, b));
-                    this.poolObserver.setPoolList(PoolService.poolList);
+                        PoolService.poolList.sort((a, b) => Pool.sort(a, b));
+                        this.poolObserver.setPoolList(PoolService.poolList);
+                    });
                 });
             });
         }

@@ -38,6 +38,7 @@ export class DelegateComponent extends NotificationComponent implements OnInit, 
     public gridItemSmallHeight: number = 260;
     public smallGrid: boolean = false;
     public isPreview: boolean = false;
+    public wasPreview: boolean = false;
     @ViewChild('poolView', {static: false}) public poolView: any;
     @ViewChild('notificationTemplate', {static: false}) public notificationTemplate: any;
 
@@ -56,8 +57,13 @@ export class DelegateComponent extends NotificationComponent implements OnInit, 
         this.walletSubscription = this.walletObserverService.loaded$.subscribe(
             loaded => {
                 this.walletLoaded = loaded;
-                this.setNetwork();
-                this.listPools();
+                if (this.walletLoaded) {
+                    this.wasPreview = this.isPreview;
+                    this.setNetwork();
+                    if (this.wasPreview !== this.isPreview) {
+                        this.listPools();
+                    }
+                }
             }
         );
         this.poolSubscription = this.poolObserverService.poolList$.subscribe(
@@ -122,7 +128,7 @@ export class DelegateComponent extends NotificationComponent implements OnInit, 
                 "ticker": "APEX",
                 "homepage": "https://apexpool.info/",
                 "extended": "https://apexpool.info/extended.json",
-                "id": "5a849bd6a495d0630f6ba6a367ba4e2b3ccc7a53515812105560c152",
+                "pool_id": "5a849bd6a495d0630f6ba6a367ba4e2b3ccc7a53515812105560c152",
                 "logo": "https://apexpool.info/img/logo.png"
             });
             const tpanl: Pool = new Pool({
@@ -130,7 +136,7 @@ export class DelegateComponent extends NotificationComponent implements OnInit, 
                 "description": "Proudly contributing to the longevity of the Cardano network through reliable node operation",
                 "ticker": "PANL",
                 "homepage": "https://www.panl.org",
-                "id": "2d74b091820b0aadce3c9e8f8afd9117c706968162867cb725ba478d",
+                "pool_id": "2d74b091820b0aadce3c9e8f8afd9117c706968162867cb725ba478d",
                 "logo": "https://logo.panl.org"
             });
             const envy: Pool = new Pool({
@@ -139,7 +145,7 @@ export class DelegateComponent extends NotificationComponent implements OnInit, 
                 "ticker": "ENVY",
                 "homepage": "https://envystakepool.com",
                 "extended": "https://git.io/Ju1j9",
-                "id": "bf81c32d4b8d05538431743190421b5e0fc2384c605c2ddfbeabbd5a",
+                "pool_id": "bf81c32d4b8d05538431743190421b5e0fc2384c605c2ddfbeabbd5a",
                 "logo": "https://static.wixstatic.com/media/63a3ee_c86a030e820640eda11b6342d3e45610~mv2.png"
             });
             const santo: Pool = new Pool({
@@ -147,7 +153,7 @@ export class DelegateComponent extends NotificationComponent implements OnInit, 
                 "description": "Santo Cardano Stake Pool.",
                 "ticker": "SANTO",
                 "homepage": "https://www.santoelectronics.com/santonode",
-                "id": "bf81c32d4b8d05538431743190421b5e0fc2384c605c2ddfbeabbd5a",
+                "pool_id": "bf81c32d4b8d05538431743190421b5e0fc2384c605c2ddfbeabbd5a",
                 "logo": "https://santoelectronics.com/s/santo.png"
             });
             pools.push(apex);

@@ -37,9 +37,11 @@ export class Pool {
             if (data.homepage) {
                 this.homepage = data.homepage;
             }
+            if (data.poolhash) {
+                this.poolhash = data.poolhash;
+            }
             if (data.pool_id) {
-                this.pool_id = data.pool_id;
-                this.poolhash = converter('pool').toBech32(this.pool_id);
+                this.setPoolId(data.pool_id);
             }
             if (data.logo) {
                 this.logo = data.logo;
@@ -50,6 +52,13 @@ export class Pool {
             if (data.extended) {
                 this.extended = data.extended;
             }
+        }
+    }
+
+    public setPoolId(pool_id: string) {
+        this.pool_id = pool_id;
+        if (this.poolhash == null) {
+            this.poolhash = converter('pool').toBech32(this.pool_id);
         }
     }
 
