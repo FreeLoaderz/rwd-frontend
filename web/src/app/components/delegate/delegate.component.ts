@@ -145,7 +145,7 @@ export class DelegateComponent extends NotificationComponent implements OnInit, 
                 "ticker": "ENVY",
                 "homepage": "https://envystakepool.com",
                 "extended": "https://git.io/Ju1j9",
-                "pool_id": "bf81c32d4b8d05538431743190421b5e0fc2384c605c2ddfbeabbd5a",
+                "pool_id": "440f29b9cedd46f74dbcd26baec3993fb87526a736fcbead0093c394",
                 "logo": "https://static.wixstatic.com/media/63a3ee_c86a030e820640eda11b6342d3e45610~mv2.png"
             });
             const santo: Pool = new Pool({
@@ -153,7 +153,7 @@ export class DelegateComponent extends NotificationComponent implements OnInit, 
                 "description": "Santo Cardano Stake Pool.",
                 "ticker": "SANTO",
                 "homepage": "https://www.santoelectronics.com/santonode",
-                "pool_id": "bf81c32d4b8d05538431743190421b5e0fc2384c605c2ddfbeabbd5a",
+                "pool_id": "a37590eac372aaf255821556bc47a0cf4a41afa6ae289232b29639bf",
                 "logo": "https://santoelectronics.com/s/santo.png"
             });
             pools.push(apex);
