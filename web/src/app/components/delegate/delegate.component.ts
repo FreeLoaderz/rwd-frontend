@@ -131,14 +131,6 @@ export class DelegateComponent extends NotificationComponent implements OnInit, 
                 "pool_id": "5a849bd6a495d0630f6ba6a367ba4e2b3ccc7a53515812105560c152",
                 "logo": "https://apexpool.info/img/logo.png"
             });
-            const tpanl: Pool = new Pool({
-                "name": "PANL Stake Pool (Preview)",
-                "description": "Proudly contributing to the longevity of the Cardano network through reliable node operation",
-                "ticker": "PANL",
-                "homepage": "https://www.panl.org",
-                "pool_id": "2d74b091820b0aadce3c9e8f8afd9117c706968162867cb725ba478d",
-                "logo": "https://logo.panl.org"
-            });
             const envy: Pool = new Pool({
                 "name": "ENVY Preview Pool",
                 "description": "ENVY provides excellent staking service, with zero margin fees. 20% operator rewards are donated to Dave Thomas Foundation for Adoption & Save the Children. @EnvyStakePool on Twitter & www.envystakepool.com. We support decentralization.",
@@ -159,7 +151,6 @@ export class DelegateComponent extends NotificationComponent implements OnInit, 
             pools.push(apex);
             pools.push(envy);
             pools.push(santo);
-            pools.push(tpanl);
             this.poolDelegationReturn = null;
             this.processPoolList(pools);
         } else {
