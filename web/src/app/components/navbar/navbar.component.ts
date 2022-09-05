@@ -33,7 +33,6 @@ export class NavbarComponent extends NotificationComponent implements OnInit, Af
     public claimzMenuItem: MenuItem;
     public historicalMenuItem: MenuItem;
     public connectMenuItem: MenuItem[];
-    public previewMenu: MenuItem;
     public walletMenu: MenuItem;
     public exploreMenu: MenuItem[];
     public poolMenuItem: MenuItem;
@@ -50,7 +49,7 @@ export class NavbarComponent extends NotificationComponent implements OnInit, Af
     public walletSubscription: Subscription;
     public walletErrorSubscription: Subscription;
     public walletConnectSubscription: Subscription;
-    public isTestNet: boolean = false;
+    public isPreview: boolean = false;
     public screenWidth: number;
     public screenHeight: number;
     public fullScreen: boolean = false;
@@ -87,7 +86,7 @@ export class NavbarComponent extends NotificationComponent implements OnInit, Af
         this.walletSubscription = this.walletObserverService.loaded$.subscribe(
             loaded => {
                 if (loaded) {
-                    this.isTestNet = (globalThis.wallet.network === 0);
+                    this.isPreview = (globalThis.wallet.network === 0);
                     this.setupMenu();
                 }
                 this.walletLoaded = loaded;
@@ -220,15 +219,6 @@ export class NavbarComponent extends NotificationComponent implements OnInit, Af
             items: [this.claimzMenuItem,
                 this.historicalMenuItem]
         }];
-        this.previewMenu = {
-            label: 'PREVIEW',
-            id: 'PREVIEW',
-            title: 'Tools for preview testing',
-            icon: 'fa-solid fa-toolbox',
-            command: (event) => {
-                this.routePreview();
-            }
-        };
         this.faqMenuItem = {
             label: 'FAQ',
             id: 'FAQ',
@@ -291,7 +281,7 @@ export class NavbarComponent extends NotificationComponent implements OnInit, Af
             items: [
                 this.poolMenuItem]
         }];
-        if (!this.isTestNet) {
+        if (!this.isPreview) {
             this.helpMenu = [{
                 label: 'HELP',
                 id: 'HELP',
@@ -317,8 +307,7 @@ export class NavbarComponent extends NotificationComponent implements OnInit, Af
                 title: 'Contact us, FAQ, Preview tools',
                 icon: 'fa-solid fa-circle-info',
                 items: [this.contactUsMenuItem,
-                    this.faqMenuItem,
-                    this.previewMenu]
+                    this.faqMenuItem]
             }];
             this.collapsedConnectedMenu = [
                 this.rewardsMenu[0],

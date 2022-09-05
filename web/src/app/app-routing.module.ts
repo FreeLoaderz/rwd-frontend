@@ -4,7 +4,6 @@ import {WelcomeComponent} from "./components/welcome/welcome.component";
 import {RewardsComponent} from "./components/rewards/rewards.component";
 import {HistoryComponent} from "./components/history/history.component";
 import {ContactUsComponent} from "./components/contact-us/contact-us.component";
-import {PreviewComponent} from "./components/preview/preview.component";
 import {FaqComponent} from './components/faq/faq.component';
 import {DelegateComponent} from "./components/delegate/delegate.component";
 import {TosComponent} from "./components/tos/tos.component";
@@ -20,10 +19,6 @@ const routes: Routes = [
     {
         path: 'welcome',
         component: WelcomeComponent,
-    },
-    {
-        path: 'preview',
-        component: PreviewComponent,
     },
     {
         path: 'contact-us',

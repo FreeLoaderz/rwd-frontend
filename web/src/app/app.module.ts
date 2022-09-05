@@ -29,7 +29,6 @@ import {HistoryComponent} from "./components/history/history.component";
 import {AppRoutingModule} from "./app-routing.module";
 import {NgbCollapseModule} from "@ng-bootstrap/ng-bootstrap";
 import {NetworkComponent} from "./components/network/network.component";
-import {PreviewComponent} from "./components/preview/preview.component";
 import {FaqComponent} from './components/faq/faq.component';
 import {ChartModule} from "primeng/chart";
 import {SharedModule} from 'primeng/api';
@@ -88,7 +87,7 @@ const customNotifierOptions: NotifierOptions = {
 @NgModule({
     declarations: [NavbarComponent, WelcomeComponent, FooterComponent, InfoComponent, RewardsComponent,
         MaintenanceComponent, BankManagerComponent, ContactUsComponent, HistoryComponent, NetworkComponent,
-        PreviewComponent, FaqComponent, DelegateComponent, TosComponent],
+        FaqComponent, DelegateComponent, TosComponent],
     imports: [BrowserModule, FormsModule, ReactiveFormsModule, AppRoutingModule, RouterModule,
         TooltipModule.forRoot(), OverlayPanelModule, ModalModule.forRoot(),
         NotifierModule.withConfig(customNotifierOptions), ChartModule, SharedModule,
