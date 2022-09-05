@@ -133,8 +133,31 @@ export class NavbarComponent extends NotificationComponent implements OnInit, Af
         this.getScreenSize(null);
         globalThis.customerId = 1;
         globalThis.multiSigType = "sporwc";
+        this.checkLoadWallet();
     }
 
+    /**
+     * Check if we have connected before
+     */
+    public checkLoadWallet() {
+        if (localStorage.getItem('SmartClaimzWalletSource') != null) {
+            const walletSource = localStorage.getItem('SmartClaimzWalletSource');
+            switch (walletSource) {
+                case 'eternl':
+                    this.connectEternl();
+                    break;
+                case 'nami':
+                    this.connectNami();
+                    break;
+                case 'flint':
+                    this.connectFlint();
+                    break;
+                case 'gero':
+                    this.connectGero();
+                    break;
+            }
+        }
+    }
     public openNami() {
         window.open("https://namiwallet.io/", "_blank");
     }
