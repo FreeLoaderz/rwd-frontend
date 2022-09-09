@@ -157,6 +157,7 @@ export class NavbarComponent extends NotificationComponent implements OnInit, Af
             }
         }
     }
+
     public openNami() {
         window.open("https://namiwallet.io/", "_blank");
     }
@@ -340,11 +341,15 @@ export class NavbarComponent extends NotificationComponent implements OnInit, Af
     }
 
     public showConnectModal() {
-        this.connectModal.show();
+        if (this.connectModal != null) {
+            this.connectModal.show();
+        }
     }
 
     public hideConnectModal() {
-        this.connectModal.hide();
+        if (this.connectModal != null) {
+            this.connectModal.hide();
+        }
     }
 
     public eternlAvailable(): boolean {

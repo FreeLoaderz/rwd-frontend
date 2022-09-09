@@ -11,15 +11,27 @@ export class PropertyService {
     public static MELD_HOMEPAGE: string = "meld-homepage";
 
     constructor(private httpClient: HttpClient, public propertyObserver: PropertyObserverService) {
-        this.httpClient.get<Map<string, string>>("assets/config/properties.json").subscribe(data => {
-            for (const key in data) {
-                if (data.hasOwnProperty(key)) {
-                    this.propertyMap.set(key, data[key]);
+        if (location.hostname.indexOf("smartclaimz") > -1) {
+            this.httpClient.get<Map<string, string>>("assets/config/propertiesmainnet.json").subscribe(data => {
+                for (const key in data) {
+                    if (data.hasOwnProperty(key)) {
+                        this.propertyMap.set(key, data[key]);
+                    }
                 }
-            }
-            this.loaded = true;
-            this.propertyObserver.setPropertyMap(this.propertyMap);
-        });
+                this.loaded = true;
+                this.propertyObserver.setPropertyMap(this.propertyMap);
+            });
+        } else {
+            this.httpClient.get<Map<string, string>>("assets/config/properties.json").subscribe(data => {
+                for (const key in data) {
+                    if (data.hasOwnProperty(key)) {
+                        this.propertyMap.set(key, data[key]);
+                    }
+                }
+                this.loaded = true;
+                this.propertyObserver.setPropertyMap(this.propertyMap);
+            });
+        }
     }
 
     public getProperty(key: string) {
