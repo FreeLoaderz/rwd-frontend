@@ -1,7 +1,8 @@
-import {Token} from "./token";
+import {TokenClaim} from "./token-claim";
+
 
 export class MarketPlace {
-    public tokens: Array<Token> = [];
+    public tokens: Array<TokenClaim> = [];
     public metadata: Array<string> = [];
     public royalties_addr: string;
     public royalties_rate: number;
@@ -11,7 +12,7 @@ export class MarketPlace {
         if (data != null) {
             if (data.tokens) {
                 data.tokens.foreach((token) => {
-                    this.tokens.push(new Token(token));
+                    this.tokens.push(new TokenClaim(token));
                 });
             }
             if (data.metadata) {

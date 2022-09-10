@@ -86,7 +86,7 @@ export class RestService {
         } else {
             headers = new HttpHeaders().set('Content-Type', 'application/json');
         }
-        const url = '/rwdinfo/rwd/tokens';
+        const url = '/rwdinfo/tokens';
         RestService.processingRequest = true;
         return lastValueFrom(this.httpClient
             .get(url, {headers: headers}))
@@ -271,10 +271,16 @@ export class RestService {
             .catch(this.handleError);
     }
 
-    public getTokenMetadata(tokenName: string) {
-        const headers = new HttpHeaders().set('Content-Type', 'application/json');
-        const url = '/metadata/api/v0/ticker/' + tokenName + '/all';
+     public async getTokenInfo(fingerprint: string) {
+        let headers;
+        if (RestService.vidarAuthorization != null) {
+            headers = new HttpHeaders().set('Content-Type', 'application/json').set('Authorization', RestService.vidarAuthorization);
+        } else {
+            headers = new HttpHeaders().set('Content-Type', 'application/json');
+        }
+        const url = '/rwdinfo/token/info/' + fingerprint;
         RestService.processingRequest = true;
+
         return lastValueFrom(this.httpClient
             .get(url, {headers: headers}))
             .then(res => this.processResponse(res))

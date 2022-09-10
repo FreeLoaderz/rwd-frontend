@@ -40,14 +40,6 @@ h4 {
     background-color: black !important;
 }
 
-.pool-grid-item {
-    margin: .75em;
-    max-width: 30vw !important;
-    min-width: 325px !important;
-    height: 325px;
-    background-color: black !important;
-}
-
 .grid-item-top {
     padding-top: .5rem;
     padding-bottom: .5rem;
@@ -67,7 +59,7 @@ h4 {
     height: 23%;
 }
 
-.grid-item-token-name {
+.grid-item-info-name {
     color: white;
     margin-top: .5rem;
     margin-bottom: .5rem;
@@ -281,7 +273,7 @@ img::-moz-selection {
 
 .sidebyside {
     display: flex;
-    width: 100%;
+    width: auto;
     align-items: stretch;
 }
 
@@ -301,20 +293,38 @@ img::-moz-selection {
     min-height: 200px !important;
 }
 
-.pool-grid-item {
-    border: none !important;
+.info-grid-item {
+    background-color: black;
+    border: none;
     margin: .5em;
-    -moz-border-radius: 25px 25px 25px 25px !important;
-    -webkit-border-radius: 25px !important;
-    border-radius: 25px 25px 25px 25px !important;
-    -moz-box-shadow: 3px 3px 5px #000000FF !important;
-    -webkit-box-shadow: 3px 3px 5px #000000FF !important;
-    box-shadow: 6px 6px 9px #000000FF !important;
+    -moz-border-radius: 25px 25px 25px 25px;
+    -webkit-border-radius: 25px;
+    border-radius: 25px 25px 25px 25px;
+    -moz-box-shadow: 3px 3px 5px #000000FF;
+    -webkit-box-shadow: 3px 3px 5px #000000FF;
+    box-shadow: 6px 6px 9px #000000FF;
+    height: 325px;
+    max-width: 300px;
+    min-width: 300px;
+    max-height: 300px;
+    min-height: 300px;
+}
 
-    max-width: 300px !important;
-    min-width: 300px !important;
-    max-height: 300px !important;
-    min-height: 300px !important;
+.info-grid-item-token {
+    background-color: black;
+    border: none;
+    margin: .5em;
+    -moz-border-radius: 25px 25px 25px 25px;
+    -webkit-border-radius: 25px;
+    border-radius: 25px 25px 25px 25px;
+    -moz-box-shadow: 3px 3px 5px #000000FF;
+    -webkit-box-shadow: 3px 3px 5px #000000FF;
+    box-shadow: 6px 6px 9px #000000FF;
+
+    max-width: 275px;
+    min-width: 275px;
+    max-height: 275px;
+    min-height: 275px;
 }
 
 .grid-item-small {
@@ -331,7 +341,7 @@ img::-moz-selection {
     min-height: 175px !important;
 }
 
-.pool-grid-item-small {
+.info-grid-item-small {
     -moz-border-radius: 20px 20px 20px 20px !important;
     -webkit-border-radius: 20px !important;
     border-radius: 20px 20px 20px 20px !important;
@@ -345,24 +355,24 @@ img::-moz-selection {
     min-height: 260px !important;
 }
 
-.pool-grid-item-small > div.grid-item-bottom > button.p-button,
+.info-grid-item-small > div.grid-item-bottom > button.p-button,
 .grid-item-small > div.grid-item-bottom > button.p-button,
 div.div-small > button.p-button {
     padding: 0.1rem .5rem !important;
     font-size: .8rem !important;
 }
 
-.pool-grid-item-small > div.grid-item-bottom,
+.info-grid-item-small > div.grid-item-bottom,
 .grid-item-small > div.grid-item-bottom {
     bottom: 0.1rem !important;
 }
 
-.pool-grid-item-small > div.grid-item-content > p.grid-item-token-name,
-.grid-item-small > div.grid-item-content > p.grid-item-token-name {
+.info-grid-item-small > div.grid-item-content > p.grid-item-info-name,
+.grid-item-small > div.grid-item-content > p.grid-item-info-name {
     margin-bottom: .2rem !important;
 }
 
-.pool-grid-item:active, .pool-grid-item:focus, .pool-grid-item:hover,
+.info-grid-item:active, .info-grid-item:focus, .info-grid-item:hover,
 .grid-item:active, .grid-item:focus, .grid-item:hover {
     box-shadow: 8px 8px 14px 0px rgb(0, 0, 0) !important;
     transform: scale(1.1, 1.1);
@@ -463,6 +473,32 @@ div.sidemenu > button.p-button {
     display: block;
 }
 
+.left-grid {
+    align-items: flex-start;
+    justify-content: left;
+    background-color: black;
+    border: none;
+    margin: 2em;
+    padding: 2em;
+    -moz-border-radius: 25px 25px 25px 25px;
+    -webkit-border-radius: 25px;
+    border-radius: 25px 25px 25px 25px;
+    -moz-box-shadow: 3px 3px 5px #000000FF;
+    -webkit-box-shadow: 3px 3px 5px #000000FF;
+    box-shadow: 6px 6px 9px #000000FF;
+}
+
+.right-grid {
+    display: flex !important;
+    width: auto;
+    align-items: flex-start;
+    justify-content: left;
+    background-color: transparent!important;
+    border: none;
+    margin: 2em;
+    padding: 2em;
+}
+
 .horizontal-center-div {
     margin-top: 5rem;
     position: absolute;
@@ -485,6 +521,7 @@ div.sidemenu > button.p-button {
 #network > p.mainnet {
     color: #2b90c3 !important;
 }
+
 .reward-search {
     float: right;
     height: 35px;

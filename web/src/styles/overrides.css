@@ -791,7 +791,9 @@ body .p-menubar .p-submenu-list {
 .fa-vault {
     color: lightsteelblue !important;
 }
-
+.fa-sack-dollar {
+    color: goldenrod !important;
+}
 .isDisabled {
     color: currentColor;
     cursor: not-allowed;

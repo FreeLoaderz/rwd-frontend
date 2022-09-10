@@ -7,6 +7,10 @@ import {Title} from "@angular/platform-browser";
 import {Pool} from "../../data/pool";
 import {TokenService} from "../../services/token.service";
 import {Token} from "../../data/token";
+import {TokenObserverService} from "../../services/observers/token-observer.service";
+import {Subscription} from "rxjs";
+import {PoolService} from "../../services/pool.service";
+import {PoolsComponent} from "../pools/pools.component";
 
 @Component({
     selector: 'tokens',
@@ -16,6 +20,7 @@ import {Token} from "../../data/token";
 
 export class TokensComponent extends NotificationComponent implements OnInit, OnDestroy {
     public tokens: Array<Token> = [];
+    public pools: Array<Pool> = [];
     public maxItems: number = 10;
     public showPaging: boolean = false;
     public initialized: boolean = false;
@@ -24,27 +29,39 @@ export class TokensComponent extends NotificationComponent implements OnInit, On
     public gridItemHeight: number = 300;
     public gridItemSmallWidth: number = 260;
     public gridItemSmallHeight: number = 260;
-    public smallGrid: boolean = false;
+    public smallGrid: boolean = true;
     public isPreview: boolean = false;
+    public listingPools: boolean = true;
+    public selectedToken: Token = null;
+    public tokenSubscription: Subscription;
     @ViewChild('tokenView', {static: false}) public tokenView: any;
+    @ViewChild('poolView', {static: false}) public poolView: PoolsComponent;
     @ViewChild('notificationTemplate', {static: false}) public notificationTemplate: any;
 
     constructor(public router: Router, public notifierService: NotifierService, public restService: RestService,
-                public titleService: Title, public tokenService: TokenService) {
+                public titleService: Title, public tokenService: TokenService, public tokenObserverService: TokenObserverService) {
         super(notifierService);
         if (globalThis.tokens == null) {
             globalThis.tokens = [];
         }
+        this.tokenSubscription = this.tokenObserverService.tokenList$.subscribe(tokenList => {
+            if (tokenList.length > 0) {
+                this.listTokens();
+            }
+        });
 
         this.titleService.setTitle("Tokens");
     }
 
     public ngOnInit() {
         this.getScreenSize(null);
-        this.listTokens();
+        if (this.tokenObserverService.tokenList.length > 0) {
+            this.listTokens();
+        }
     }
 
     public ngOnDestroy() {
+        this.tokenSubscription.unsubscribe();
     }
 
     public tokensLoaded() {
@@ -82,31 +99,36 @@ export class TokensComponent extends NotificationComponent implements OnInit, On
     }
 
     public listTokens() {
-        this.listingTokens = true;
-        globalThis.tokens = [];
-        if (!this.isPreview) {
-            this.processTokenList(TokenService.tokenList);
-        }
-    }
-
-    public processTokenList(data: any) {
-        globalThis.tokens = [];
-        for (let i = 0; i < data.length; ++i) {
-            const newToken = new Token(data[i]);
-            globalThis.tokens.push(newToken);
-        }
-        globalThis.tokens.sort((a, b) => Pool.sort(a, b));
-        this.tokens = [...globalThis.tokens];
-        this.initialized = true;
-        this.listingTokens = false;
-        this.getScreenSize(null);
+        this.tokens = [...TokenService.tokenList];
     }
 
     public filterDataView(filter: string) {
         this.tokenView.filter(filter);
     }
 
-    public explore(token: Token) {
-        console.log(token);
+    public details(token: Token) {
+        this.listingPools = true;
+        this.selectedToken = token;
+        this.pools = [];
+        if (token != null) {
+            for (let i = 0; i < token.pools.length; ++i) {
+                console.log("POOL -> " + token.pools[i]);
+                if (PoolService.poolMap.has(token.pools[i])) {
+                    const pool = PoolService.poolMap.get(token.pools[i]);
+                    console.log(pool);
+                    for (let j = 0; j < 25; ++j) {
+                        this.pools.push(pool);
+                    }
+                }
+            }
+            this.pools = [...this.pools];
+            setTimeout(() => {
+                if (this.poolView != null) {
+                    console.log("poolView not null");
+                    this.poolView.updatePools(this.pools);
+                }
+            });
+            this.listingPools = false;
+        }
     }
 }

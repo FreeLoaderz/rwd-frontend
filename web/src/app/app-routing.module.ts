@@ -9,6 +9,7 @@ import {DelegateComponent} from "./components/delegate/delegate.component";
 import {TosComponent} from "./components/tos/tos.component";
 import {BankManagerComponent} from "./components/extensions/meld/bank-manager.component";
 import {TokensComponent} from "./components/tokens/tokens.component";
+import {PoolsComponent} from "./components/pools/pools.component";
 
 
 const routes: Routes = [

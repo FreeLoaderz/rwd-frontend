@@ -1,16 +1,13 @@
-import {Component, HostListener, OnDestroy, OnInit, ViewChild} from "@angular/core";
+import {Component, OnDestroy, OnInit} from "@angular/core";
 import {NotificationComponent} from "../notification/notification.component";
 import {Router} from "@angular/router";
 import {NotifierService} from "angular-notifier";
 import {RestService} from "../../services/rest.service";
-import {Observable, Subscription} from "rxjs";
+import {Subscription} from "rxjs";
 import {WalletObserverService} from "../../services/observers/wallet-observer.service";
-import {Script} from "../../data/script";
 import {WalletService} from "../../services/wallet.service";
 import {Title} from "@angular/platform-browser";
-import {UtilityService} from "../../services/utility.service";
 import {Pool} from "../../data/pool";
-import {StakeDelegation} from "../../data/stake-delegation";
 import {PoolService} from "../../services/pool.service";
 import {PoolObserverService} from "../../services/observers/pool-observer.service";
 
@@ -22,25 +19,12 @@ import {PoolObserverService} from "../../services/observers/pool-observer.servic
 
 export class DelegateComponent extends NotificationComponent implements OnInit, OnDestroy {
     public walletSubscription: Subscription;
-    public delegationSubscription: Subscription;
-    public poolSubscription: Subscription;
-    public pools: Array<Pool> = [];
-    public maxItems: number = 10;
-    public showPaging: boolean = false;
-    public poolDelegationReturn: string;
     public walletLoaded: boolean = false;
+    public pools: Array<Pool> = [];
     public initialized: boolean = false;
     public listingPools: boolean = false;
-    public submittingTx: boolean = false;
-    public gridItemWidth: number = 300;
-    public gridItemHeight: number = 300;
-    public gridItemSmallWidth: number = 260;
-    public gridItemSmallHeight: number = 260;
-    public smallGrid: boolean = false;
     public isPreview: boolean = false;
     public wasPreview: boolean = false;
-    @ViewChild('poolView', {static: false}) public poolView: any;
-    @ViewChild('notificationTemplate', {static: false}) public notificationTemplate: any;
 
     constructor(public router: Router, public notifierService: NotifierService, public restService: RestService,
                 public walletObserverService: WalletObserverService, public walletService: WalletService,
@@ -66,56 +50,15 @@ export class DelegateComponent extends NotificationComponent implements OnInit, 
                 }
             }
         );
-        this.poolSubscription = this.poolObserverService.poolList$.subscribe(
-            poolList => {
-                this.poolDelegationReturn = null;
-                this.processPoolList(poolList);
-            }
-        );
         this.walletLoaded = this.walletService.walletLoaded;
         this.setNetwork();
-        this.getScreenSize(null);
         this.listPools();
     }
 
     public ngOnDestroy() {
         this.walletSubscription.unsubscribe();
-        this.poolSubscription.unsubscribe();
-        if (this.delegationSubscription != null) {
-            this.delegationSubscription.unsubscribe();
-            this.delegationSubscription = null;
-        }
     }
 
-    @HostListener('window:resize', ['$event'])
-    public getScreenSize(event?) {
-        globalThis.screenHeight = window.innerHeight;
-        globalThis.screenWidth = window.innerWidth;
-        let usableWidth = globalThis.screenWidth * .75;
-        const usableHeight = globalThis.screenHeight * .75;
-        this.smallGrid = false;
-        if (globalThis.screenHeight < 500) {
-            this.smallGrid = true;
-        }
-        if (globalThis.screenWidth < 900) {
-            this.smallGrid = true;
-            usableWidth = globalThis.screenWidth * .95;
-        }
-        if (this.smallGrid) {
-            const maxPerRow = Math.floor(usableWidth / this.gridItemSmallWidth);
-            const maxVisableRows = Math.floor(usableHeight / this.gridItemSmallHeight);
-            this.maxItems = +maxPerRow * +maxVisableRows;
-        } else {
-            const maxPerRow = Math.floor(usableWidth / this.gridItemWidth);
-            const maxVisableRows = Math.floor(usableHeight / this.gridItemHeight);
-            this.maxItems = +maxPerRow * +maxVisableRows;
-        }
-    }
-
-    @HostListener('window:orientationchange', ['$event'])
-    public onOrientationChange(event) {
-        this.getScreenSize(event);
-    }
 
     public listPools() {
         this.listingPools = true;
@@ -151,17 +94,10 @@ export class DelegateComponent extends NotificationComponent implements OnInit, 
             pools.push(apex);
             pools.push(envy);
             pools.push(santo);
-            this.poolDelegationReturn = null;
             this.processPoolList(pools);
         } else {
-            this.poolDelegationReturn = null;
             this.processPoolList(PoolService.poolList);
         }
-        /**
-         this.restService.getAvailablePools()
-         .then(res => this.processPoolList(res))
-         .catch(e => this.processError(e));
-         */
     }
 
     public processPoolList(data: any) {
@@ -174,91 +110,8 @@ export class DelegateComponent extends NotificationComponent implements OnInit, 
         this.pools = [...globalThis.pools];
         this.initialized = true;
         this.listingPools = false;
-        this.getScreenSize(null);
     }
 
-    public delegate(pool: Pool) {
-        if (this.delegationSubscription == null) {
-            this.delegationSubscription = this.walletObserverService.loaded$.subscribe(loaded => {
-                if (loaded) {
-                    this.poolDelegationReturn = null;
-                    globalThis.wallet.script = new Script(null);
-                    const stakeDelegation = new StakeDelegation(pool.poolhash);
-                    globalThis.wallet.script.StakeDelegation = stakeDelegation;
-                    this.submittingTx = true;
-                    this.restService.buildDelegationTx()
-                        .then(res => {
-                            if (res.msg) {
-                                this.showError(res.msg);
-                            } else {
-                                this.processDelegationTx(res);
-                            }
-                        })
-                        .catch(e => this.processError(e));
-                }
-            });
-            this.walletService.updateWallet();
-        } else {
-            this.warnNotification("Please wait.. currently attempting to delegate.");
-        }
-    }
-
-    public processDelegationTx(data: any) {
-        if (this.delegationSubscription != null) {
-            this.delegationSubscription.unsubscribe();
-            this.delegationSubscription = null;
-        }
-        if ((data != null) && (data.tx != null)) {
-            this.successNotification("Delegation tx created");
-            this.poolDelegationReturn = data;
-            const signature = globalThis.walletApi.signTx(data.tx, true);
-            signature.then((finalSignature: Observable<string>) => {
-                this.infoNotification("Submitting Signature");
-                this.restService.signDelegationTx(finalSignature, data)
-                    .then(res => this.processSignTx(res))
-                    .catch(e => this.processError(e));
-            }).catch(e => this.showError(e));
-        } else {
-            this.errorNotification("Delegation could not be completed!");
-        }
-    }
-
-    public processSignTx(data: any) {
-        if ((data != null) && (data.txhash != null)) {
-            const txURL = UtilityService.generateTxHashURL(data.txhash, true);
-            this.customNotification("success", "Delegation successful! " + txURL, this.notificationTemplate);
-        } else {
-            this.errorNotification("Delegation Failed! " + data.msg);
-        }
-        this.walletService.updateWallet();
-        this.submittingTx = false;
-    }
-
-    public disableButtons(): boolean {
-        if ((!this.walletLoaded) || (this.restService.isProcessingRequest())) {
-            return true;
-        }
-        return false;
-    }
-
-
-    public showError(error) {
-        this.errorNotification(error);
-        if (this.delegationSubscription != null) {
-            this.delegationSubscription.unsubscribe();
-            this.delegationSubscription = null;
-        }
-        this.submittingTx = false;
-    }
-
-    public processError(error) {
-        this.handleError(error);
-        if (this.delegationSubscription != null) {
-            this.delegationSubscription.unsubscribe();
-            this.delegationSubscription = null;
-        }
-        this.submittingTx = false;
-    }
 
     public setNetwork() {
         if (globalThis.wallet != null) {
@@ -266,9 +119,5 @@ export class DelegateComponent extends NotificationComponent implements OnInit, 
         } else {
             this.isPreview = false;
         }
-    }
-
-    public filterDataView(filter: string) {
-        this.poolView.filter(filter);
     }
 }

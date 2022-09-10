@@ -11,7 +11,7 @@ import {Subscription} from "rxjs";
 import {DOCUMENT} from "@angular/common";
 import {HttpClient} from "@angular/common/http";
 import {PropertyService} from "../../services/property.service";
-import {PoolService} from "../../services/pool.service";
+import {PropertyObserverService} from "../../services/observers/property-observer.service";
 
 declare let gtag: Function;
 
@@ -49,6 +49,7 @@ export class NavbarComponent extends NotificationComponent implements OnInit, Af
     public walletSubscription: Subscription;
     public walletErrorSubscription: Subscription;
     public walletConnectSubscription: Subscription;
+    public propertiesSubscription: Subscription;
     public isPreview: boolean = false;
     public screenWidth: number;
     public screenHeight: number;
@@ -61,7 +62,7 @@ export class NavbarComponent extends NotificationComponent implements OnInit, Af
     @ViewChild('terms', {static: false}) public terms: ModalDirective;
 
     constructor(@Inject(DOCUMENT) public document: any, public httpClient: HttpClient,
-                public propertyService: PropertyService, public poolService: PoolService,
+                public propertyService: PropertyService, public propertyObserverService: PropertyObserverService,
                 public router: Router, public titleService: Title, public walletObserverService: WalletObserverService,
                 public notifierService: NotifierService, public walletService: WalletService) {
         super(notifierService);
@@ -132,7 +133,15 @@ export class NavbarComponent extends NotificationComponent implements OnInit, Af
         this.getScreenSize(null);
         globalThis.customerId = 1;
         globalThis.multiSigType = "sporwc";
-        this.checkLoadWallet();
+        if (this.propertyObserverService.propertyMap.size === 0) {
+            this.propertiesSubscription = this.propertyObserverService.propertyMap$.subscribe(propMap => {
+                if (propMap.size > 0) {
+                    this.checkLoadWallet();
+                }
+            });
+        } else {
+            this.checkLoadWallet();
+        }
     }
 
     /**
@@ -260,7 +269,7 @@ export class NavbarComponent extends NotificationComponent implements OnInit, Af
             id: 'TOKENS',
             label: 'TOKENS',
             title: 'Explore available tokens',
-            icon: 'fa-solid fa-vault',
+            icon: 'fa-solid fa-sack-dollar',
             command: (event) => {
                 this.routeTokens();
             }

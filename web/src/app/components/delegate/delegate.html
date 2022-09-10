@@ -8,54 +8,8 @@
                     <span class="ms-2" style="display:flex; float: left">Searching for pools...</span></h4>
             </div>
             <div *ngIf="!listingPools" class="data-view">
-                <div class="data-header mb-2">
-                    <h4>Participating Pools</h4>
-                </div>
-                <div class="data-header mb-2 {{smallGrid ? 'div-small' : ''}}">
-                    <input pInputText class="ms-2" placeholder="Filter pools.."
-                           style="float: right;padding-left: 7px !important;padding-right: 7px !important;"
-                           type="search" (input)="filterDataView($event.target.value)"
-                           (change)="filterDataView($event.target.value)">
-                </div>
-                <p-dataView #poolView [value]="pools" layout="grid" filterBy="name,ticker,description"
-                            [rows]="maxItems"
-                            [paginator]="showPaging" filterBy="name,ticker,description">
-                    <ng-template let-pool pTemplate="gridItem">
-                        <div class="mt-2">
-                            <div class="pool-grid-item {{smallGrid ? 'pool-grid-item-small' : ''}}">
-                                <div class="grid-item-top">
-                                    <strong class="ms-auto me-auto">{{pool.name}} ({{pool.ticker}})</strong>
-                                </div>
-                                <div class="grid-item-content">
-                                    <img src="{{pool.logo}}" width="64" height="64"
-                                         onerror="this.onerror=null;this.src='/assets/ada.png'">
-                                    <p class="mt-3 ms-1 me-1 grid-item-token-name"
-                                       title="{{pool.description}}">{{smallGrid ? pool.compressedDesc : pool.shortDesc}}</p>
-                                </div>
-                                <div class="grid-item-bottom">
-                                    <button pButton
-                                            title="Delegate" [disabled]="!walletLoaded || submittingTx"
-                                            (click)="delegate(pool)"
-                                            class="p-button p-button-rounded p-button-success ms-auto me-auto mb-2"
-                                            label="Delegate" icon="fa-solid fa-handshake">
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </ng-template>
-                    <ng-template pTemplate="empty">
-                        <h4 *ngIf="walletLoaded">No pools were found</h4>
-                        <h4 *ngIf="!walletLoaded" style="display:flex"><img width="24" height="24"
-                                                                            src="../../../assets/smartclaimz.ico"
-                                                                            class="request-spinner ms-2"
-                                                                            style="display:flex;margin: 0 !important;">
-                            <span class="ms-2" style="display:flex; float: left">Loading pools...</span></h4>
-                    </ng-template>
-                </p-dataView>
+                <pools [pools]="pools"></pools>
             </div>
         </div>
     </div>
 </section>
-<ng-template #notificationTemplate let-notificationData="notification">
-    <p class="notifier__notification-message" [innerHTML]="notificationData.message"></p>
-</ng-template>

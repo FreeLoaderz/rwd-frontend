@@ -6,20 +6,28 @@ import {PoolObserverService} from "./observers/pool-observer.service";
 @Injectable()
 export class PoolService {
     public static poolList: Array<Pool> = [];
+    public static poolMap: Map<string, Pool> = new Map<string, Pool>();
     public static initialized: boolean = false;
 
     constructor(private httpClient: HttpClient, public poolObserver: PoolObserverService) {
-        if (location.host.endsWith('smartclaimz.io')) {
-            if (!PoolService.initialized) {
+    }
+
+    public initialize() {
+        if (PoolService.initialized === false) {
+            PoolService.initialized = true;
+            if ((location.host.endsWith('smartclaimz.io')) ||
+                (location.host.startsWith("127.0.0.1"))) {
                 PoolService.initialized = true;
                 this.httpClient.get<Array<any>>("assets/config/fullmetadata.json").subscribe(data => {
                     for (let i = 0; i < data.length; ++i) {
                         const pool: Pool = new Pool(data[i]);
                         PoolService.poolList.push(pool);
                     }
-                    this.httpClient.get<Array<any>>("assets/config/pool_ids.json").subscribe(poolids => {
-                        for (let i = 0; i < poolids.length; ++i) {
-                            PoolService.poolList[i].setPoolId(poolids[i].pool_id);
+                    this.httpClient.get<Array<any>>("assets/config/poolhash.json").subscribe(poolhashes => {
+                        for (let i = 0; i < poolhashes.length; ++i) {
+                            PoolService.poolList[i].setPoolhash(poolhashes[i].poolhash);
+                            console.log(PoolService.poolList[i].pool_id + " -> " + PoolService.poolList[i].ticker);
+                            PoolService.poolMap.set(PoolService.poolList[i].pool_id, PoolService.poolList[i]);
                         }
                         this.httpClient.get<Array<any>>("assets/config/fullextended.json").subscribe(exData => {
                             let poolIndex: number = 0;

@@ -38,10 +38,9 @@ export class Pool {
                 this.homepage = data.homepage;
             }
             if (data.poolhash) {
-                this.poolhash = data.poolhash;
+                this.setPoolhash(data.poolhash);
             }
             if (data.pool_id) {
-                this.setPoolId(data.pool_id);
             }
             if (data.logo) {
                 this.logo = data.logo;
@@ -55,10 +54,10 @@ export class Pool {
         }
     }
 
-    public setPoolId(pool_id: string) {
-        this.pool_id = pool_id;
-        if (this.poolhash == null) {
-            this.poolhash = converter('pool').toBech32(this.pool_id);
+    public setPoolhash(poolhash: string) {
+        this.poolhash = poolhash;
+        if (this.pool_id == null) {
+            this.pool_id = converter('pool').toBech32(this.poolhash);
         }
     }
 
