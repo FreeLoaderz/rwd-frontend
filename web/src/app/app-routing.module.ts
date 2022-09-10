@@ -8,6 +8,7 @@ import {FaqComponent} from './components/faq/faq.component';
 import {DelegateComponent} from "./components/delegate/delegate.component";
 import {TosComponent} from "./components/tos/tos.component";
 import {BankManagerComponent} from "./components/extensions/meld/bank-manager.component";
+import {TokensComponent} from "./components/tokens/tokens.component";
 
 
 const routes: Routes = [
@@ -39,6 +40,10 @@ const routes: Routes = [
     {
         path: 'delegate', component:
         DelegateComponent
+    },
+    {
+        path: 'tokens', component:
+        TokensComponent
     },
     {
         path: 'tos', component:

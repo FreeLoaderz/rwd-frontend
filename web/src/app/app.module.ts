@@ -40,6 +40,8 @@ import {TosComponent} from "./components/tos/tos.component";
 import {BankManagerComponent} from "./components/extensions/meld/bank-manager.component";
 import {PoolService} from "./services/pool.service";
 import {PoolObserverService} from "./services/observers/pool-observer.service";
+import {TokenService} from "./services/token.service";
+import {TokensComponent} from "./components/tokens/tokens.component";
 
 const customNotifierOptions: NotifierOptions = {
     position: {
@@ -87,7 +89,7 @@ const customNotifierOptions: NotifierOptions = {
 @NgModule({
     declarations: [NavbarComponent, WelcomeComponent, FooterComponent, InfoComponent, RewardsComponent,
         MaintenanceComponent, BankManagerComponent, ContactUsComponent, HistoryComponent, NetworkComponent,
-        FaqComponent, DelegateComponent, TosComponent],
+        FaqComponent, DelegateComponent, TosComponent, TokensComponent],
     imports: [BrowserModule, FormsModule, ReactiveFormsModule, AppRoutingModule, RouterModule,
         TooltipModule.forRoot(), OverlayPanelModule, ModalModule.forRoot(),
         NotifierModule.withConfig(customNotifierOptions), ChartModule, SharedModule,
@@ -96,7 +98,7 @@ const customNotifierOptions: NotifierOptions = {
         DropdownModule, MenubarModule, DataViewModule, ImageModule,
         ButtonModule, PanelModule, BrowserAnimationsModule],
     bootstrap: [NavbarComponent],
-    providers: [RestService, WalletObserverService, WalletService, PropertyService,
+    providers: [RestService, WalletObserverService, WalletService, PropertyService, TokenService,
         PropertyObserverService, PoolService, PoolObserverService]
 })
 

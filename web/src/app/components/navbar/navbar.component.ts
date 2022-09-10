@@ -262,7 +262,7 @@ export class NavbarComponent extends NotificationComponent implements OnInit, Af
             title: 'Explore available tokens',
             icon: 'fa-solid fa-vault',
             command: (event) => {
-                this.infoNotification("Token information coming soon");
+                this.routeTokens();
             }
         };
         /*  this.exploreMenu = [{
@@ -280,7 +280,8 @@ export class NavbarComponent extends NotificationComponent implements OnInit, Af
             title: 'Explore participating projects and pools',
             icon: 'fa-solid fa-compass',
             items: [
-                this.poolMenuItem]
+                this.poolMenuItem,
+                this.tokensMenuItem]
         }];
         if (!this.isPreview) {
             this.helpMenu = [{
@@ -441,6 +442,10 @@ export class NavbarComponent extends NotificationComponent implements OnInit, Af
 
     public routeDelegation() {
         this.router.navigate(['/delegate']);
+    }
+
+    public routeTokens() {
+        this.router.navigate(['/tokens']);
     }
 
     public routeContactUs() {

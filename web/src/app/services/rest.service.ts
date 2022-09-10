@@ -86,7 +86,7 @@ export class RestService {
         } else {
             headers = new HttpHeaders().set('Content-Type', 'application/json');
         }
-        const url = '/rwdinfo/rwd/all/tokens';
+        const url = '/rwdinfo/rwd/tokens';
         RestService.processingRequest = true;
         return lastValueFrom(this.httpClient
             .get(url, {headers: headers}))

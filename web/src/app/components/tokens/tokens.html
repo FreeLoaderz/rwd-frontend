@@ -1,0 +1,61 @@
+<section id="tokens" class="content-section">
+    <div class="center-div-parent">
+        <div class="center-div-child">
+            <div *ngIf="listingTokens" style="width: 70vw;height: 100vh">
+                <h4 style="display:flex"><img width="24" height="24" src="../../../assets/smartclaimz.ico"
+                                              class="request-spinner ms-2"
+                                              style="display:flex;margin: 0 !important;">
+                    <span class="ms-2" style="display:flex; float: left">Searching for Tokens...</span></h4>
+            </div>
+            <div *ngIf="!listingTokens" class="data-view">
+                <div class="data-header mb-2">
+                    <h4>Participating Tokens</h4>
+                </div>
+                <div class="data-header mb-2 {{smallGrid ? 'div-small' : ''}}">
+                    <input pInputText class="ms-2" placeholder="Filter Tokens.."
+                           style="float: right;padding-left: 7px !important;padding-right: 7px !important;"
+                           type="search" (input)="filterDataView($event.target.value)"
+                           (change)="filterDataView($event.target.value)">
+                </div>
+                <p-dataView #tokenView [value]="tokens" layout="grid" filterBy="name,ticker,description"
+                            [rows]="maxItems"
+                            [paginator]="showPaging" filterBy="name,ticker,description">
+                    <ng-template let-token pTemplate="gridItem">
+                        <div class="mt-2">
+                            <div class="token-grid-item {{smallGrid ? 'token-grid-item-small' : ''}}">
+                                <div class="grid-item-top">
+                                    <strong class="ms-auto me-auto">{{token.name}} ({{token.ticker}})</strong>
+                                </div>
+                                <div class="grid-item-content">
+                                    <img src="{{token.logo}}" width="64" height="64"
+                                         onerror="this.onerror=null;this.src='/assets/ada.png'">
+                                    <p class="mt-3 ms-1 me-1 grid-item-token-name"
+                                       title="{{token.description}}">{{smallGrid ? token.compressedDesc : token.shortDesc}}</p>
+                                </div>
+                                <div class="grid-item-bottom">
+                                    <button pButton
+                                            title="Show more"
+                                            (click)="explore(token)"
+                                            class="p-button p-button-rounded p-button-success ms-auto me-auto mb-2"
+                                            label="Delegate" icon="fa-solid fa-handshake">
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </ng-template>
+                    <ng-template pTemplate="empty">
+                        <h4 *ngIf="tokensLoaded()">No Tokens were found</h4>
+                        <h4 *ngIf="!tokensLoaded()" style="display:flex"><img width="24" height="24"
+                                                                            src="../../../assets/smartclaimz.ico"
+                                                                            class="request-spinner ms-2"
+                                                                            style="display:flex;margin: 0 !important;">
+                            <span class="ms-2" style="display:flex; float: left">Loading Tokens...</span></h4>
+                    </ng-template>
+                </p-dataView>
+            </div>
+        </div>
+    </div>
+</section>
+<ng-template #notificationTemplate let-notificationData="notification">
+    <p class="notifier__notification-message" [innerHTML]="notificationData.message"></p>
+</ng-template>
