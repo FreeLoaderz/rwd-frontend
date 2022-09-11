@@ -34,6 +34,7 @@ export class PoolsComponent extends NotificationComponent implements OnInit, OnD
     public delegationSubscription: Subscription;
     public walletSubscription: Subscription;
     @Input() public pools: Array<Pool>;
+    @Input() public inTokens: boolean = false;
 
     @ViewChild('poolView', {static: false}) public poolView: any;
     @ViewChild('notificationTemplate', {static: false}) public notificationTemplate: any;
@@ -51,6 +52,7 @@ export class PoolsComponent extends NotificationComponent implements OnInit, OnD
             }
         );
         this.walletLoaded = this.walletService.walletLoaded;
+        this.getScreenSize(null);
     }
 
     public ngOnDestroy() {
@@ -101,7 +103,7 @@ export class PoolsComponent extends NotificationComponent implements OnInit, OnD
                 if (loaded) {
                     this.poolDelegationReturn = null;
                     globalThis.wallet.script = new Script(null);
-                    const stakeDelegation = new StakeDelegation(pool.poolhash);
+                    const stakeDelegation = new StakeDelegation(pool.pool_id);
                     globalThis.wallet.script.StakeDelegation = stakeDelegation;
                     this.submittingTx = true;
                     this.restService.buildDelegationTx()

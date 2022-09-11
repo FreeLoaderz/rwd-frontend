@@ -19,7 +19,6 @@ export class TokenClaim {
                     try {
                         this.displayName = UtilityService.hexToString(data.tokenname);
                     } catch (e: any) {
-                        console.log("Could not convert token name [" + data.tokenname + "]");
                         this.displayName = data.tokenname;
                     }
                 }
@@ -43,7 +42,6 @@ export class TokenClaim {
                     this.last_calc_epoch = data.last_calc_epoch;
                 }
             }catch (e){
-                console.log("TOKEN ERROR");
                 console.log(e);
             }
         }

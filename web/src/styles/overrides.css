@@ -69,7 +69,7 @@ body {
 
 .router-wrapper {
     padding-top: 75px;
-    overflow-x: auto;
+    overflow-y: auto;
 }
 
 .p-menuitem-link,
@@ -804,4 +804,24 @@ body .p-menubar .p-submenu-list {
 
 li + li {
     margin-left: 0 !important;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #000000;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #021038;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #df4863;
 }

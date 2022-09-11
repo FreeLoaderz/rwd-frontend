@@ -38,7 +38,6 @@ export class HistoricalClaim {
                 try {
                     this.displayName = UtilityService.hexToString(data.tokenname);
                 } catch (e: any) {
-                    console.log("Could not convert token name [" + data.tokenname + "]");
                     this.displayName = data.tokenname;
                 }
             }

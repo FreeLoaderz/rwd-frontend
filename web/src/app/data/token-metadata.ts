@@ -9,6 +9,7 @@ export class TokenMetadata {
     public logo: string;
     public type: string;
     public homepage: string;
+    public homepageURL: string;
     public mediaType: string;
 
     constructor(data: any, ipfsPrefix: string) {
@@ -33,7 +34,9 @@ export class TokenMetadata {
                         if (token.homepage != null) {
                             this.homepage = token.homepage;
                             if (!this.homepage.startsWith("http")) {
-                                this.homepage = "https://".concat(this.homepage);
+                                this.homepageURL = "https://".concat(this.homepage);
+                            } else {
+                                this.homepageURL = this.homepage;
                             }
                         }
 
@@ -69,6 +72,7 @@ export class TokenMetadata {
                 this.logo = data.logo;
                 this.type = data.type;
                 this.homepage = data.homepage;
+                this.homepageURL = data.homepageURL;
                 this.mediaType = data.mediaType;
             }
         }

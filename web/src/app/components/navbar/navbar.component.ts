@@ -274,25 +274,16 @@ export class NavbarComponent extends NotificationComponent implements OnInit, Af
                 this.routeTokens();
             }
         };
-        /*  this.exploreMenu = [{
-              label: 'EXPLORE',
-              id: 'EXPLORE',
-              title: 'Explore participating projects and pools',
-              icon: 'fa-solid fa-compass',
-              items: [this.projectsMenuItem,
-                  this.poolMenuItem,
-              this.tokensMenuItem]
-          }];*/
-        this.exploreMenu = [{
-            label: 'EXPLORE',
-            id: 'EXPLORE',
-            title: 'Explore participating projects and pools',
-            icon: 'fa-solid fa-compass',
-            items: [
-                this.poolMenuItem,
-                this.tokensMenuItem]
-        }];
         if (!this.isPreview) {
+            this.exploreMenu = [{
+                label: 'EXPLORE',
+                id: 'EXPLORE',
+                title: 'Explore participating projects and pools',
+                icon: 'fa-solid fa-compass',
+                items: [
+                    this.poolMenuItem,
+                    this.tokensMenuItem]
+            }];
             this.helpMenu = [{
                 label: 'HELP',
                 id: 'HELP',
@@ -312,6 +303,14 @@ export class NavbarComponent extends NotificationComponent implements OnInit, Af
                 this.helpMenu[0]
             ];
         } else {
+            this.exploreMenu = [{
+                label: 'EXPLORE',
+                id: 'EXPLORE',
+                title: 'Explore participating projects and pools',
+                icon: 'fa-solid fa-compass',
+                items: [
+                    this.poolMenuItem]
+            }];
             this.helpMenu = [{
                 label: 'HELP',
                 id: 'HELP',

@@ -43,7 +43,6 @@ export class Token {
                 try {
                     this.displayName = UtilityService.hexToString(data.tokenname);
                 } catch (e: any) {
-                    console.log("Could not convert token name [" + data.tokenname + "]");
                     this.displayName = data.tokenname;
                 }
             }
@@ -61,7 +60,6 @@ export class Token {
                     const pool_id = data.pools[i].substring(0, data.pools[i].indexOf(","));
                     this.pools.push(pool_id);
                 }
-                console.log(this.displayName + " -> " + this.pools.length);
             }
             if (data.mode != null) {
                 this.mode = data.mode;

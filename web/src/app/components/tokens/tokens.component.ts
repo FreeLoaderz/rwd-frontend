@@ -1,4 +1,4 @@
-import {Component, HostListener, OnDestroy, OnInit, ViewChild} from "@angular/core";
+import {Component, HostListener, Inject, OnDestroy, OnInit, ViewChild} from "@angular/core";
 import {NotificationComponent} from "../notification/notification.component";
 import {Router} from "@angular/router";
 import {NotifierService} from "angular-notifier";
@@ -11,6 +11,7 @@ import {TokenObserverService} from "../../services/observers/token-observer.serv
 import {Subscription} from "rxjs";
 import {PoolService} from "../../services/pool.service";
 import {PoolsComponent} from "../pools/pools.component";
+import {DOCUMENT} from "@angular/common";
 
 @Component({
     selector: 'tokens',
@@ -38,8 +39,9 @@ export class TokensComponent extends NotificationComponent implements OnInit, On
     @ViewChild('poolView', {static: false}) public poolView: PoolsComponent;
     @ViewChild('notificationTemplate', {static: false}) public notificationTemplate: any;
 
-    constructor(public router: Router, public notifierService: NotifierService, public restService: RestService,
-                public titleService: Title, public tokenService: TokenService, public tokenObserverService: TokenObserverService) {
+    constructor(@Inject(DOCUMENT) public document: any,
+                public notifierService: NotifierService, public restService: RestService,
+                public titleService: Title, public tokenObserverService: TokenObserverService) {
         super(notifierService);
         if (globalThis.tokens == null) {
             globalThis.tokens = [];
@@ -112,23 +114,19 @@ export class TokensComponent extends NotificationComponent implements OnInit, On
         this.pools = [];
         if (token != null) {
             for (let i = 0; i < token.pools.length; ++i) {
-                console.log("POOL -> " + token.pools[i]);
                 if (PoolService.poolMap.has(token.pools[i])) {
                     const pool = PoolService.poolMap.get(token.pools[i]);
-                    console.log(pool);
-                    for (let j = 0; j < 25; ++j) {
-                        this.pools.push(pool);
-                    }
+                    this.pools.push(pool);
                 }
             }
             this.pools = [...this.pools];
             setTimeout(() => {
                 if (this.poolView != null) {
-                    console.log("poolView not null");
                     this.poolView.updatePools(this.pools);
                 }
             });
             this.listingPools = false;
+            this.document.getElementById("topAnchor").scrollIntoView({block: "start", inline: "nearest"});
         }
     }
 }

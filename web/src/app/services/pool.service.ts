@@ -26,7 +26,6 @@ export class PoolService {
                     this.httpClient.get<Array<any>>("assets/config/poolhash.json").subscribe(poolhashes => {
                         for (let i = 0; i < poolhashes.length; ++i) {
                             PoolService.poolList[i].setPoolhash(poolhashes[i].poolhash);
-                            console.log(PoolService.poolList[i].pool_id + " -> " + PoolService.poolList[i].ticker);
                             PoolService.poolMap.set(PoolService.poolList[i].pool_id, PoolService.poolList[i]);
                         }
                         this.httpClient.get<Array<any>>("assets/config/fullextended.json").subscribe(exData => {

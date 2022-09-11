@@ -1,4 +1,4 @@
-<section id="rewards" class="content-section">
+<section id="pools" class="content-section">
     <div class="center-div-parent">
         <div class="center-div-child">
             <div *ngIf="listingPools" style="width: 70vw;height: 100vh">
@@ -8,7 +8,7 @@
                     <span class="ms-2" style="display:flex; float: left">Searching for pools...</span></h4>
             </div>
             <div *ngIf="!listingPools" class="data-view">
-                <pools [pools]="pools"></pools>
+                <pools [pools]="pools" [inTokens]="false"></pools>
             </div>
         </div>
     </div>

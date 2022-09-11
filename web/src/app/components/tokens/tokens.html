@@ -58,63 +58,94 @@
                 </p-dataView>
             </div>
         </div>
-        <div *ngIf="selectedToken != null" class="center-div-child">
+        <div id="selectedTokenDiv" *ngIf="selectedToken != null" class="center-div-child">
             <div class="data-view sidebyside">
-                <div class="left-grid" style="display: block !important">
-                    <div style="display: flex!important;">
-                        <img src="{{selectedToken.tokenMetadata.logo}}" width="64" height="64"
-                             onerror="this.onerror=null;this.src='/assets/ada.png'" class="ms-3 me-0 mb-0 mt-0">
-                        <strong class="ms-3 me-auto mt-auto mb-auto">{{selectedToken.displayName}}</strong>
-                    </div>
-                    <div style="text-align: left!important;">
-                        <p class="mt-3 ms-3 me-auto grid-item-info-name">{{selectedToken.tokenMetadata.description}}</p>
-
-                        <table class="ms-3 me-auto mt-3">
-                            <tr>
-                                <td>
-                                    <p>Policy</p>
-                                </td>
-                                <td>
-                                    <p class="ms-4"><a href="https://cardanoscan.io/tokenPolicy/{{selectedToken.tokenMetadata.policy}}"
-                                          title="{{selectedToken.tokenMetadata.policy}}"
-                                          target="_blank">{{selectedToken.tokenMetadata.shortPolicy}}</a>
-                                    </p>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <p>Fingerprint</p>
-                                </td>
-                                <td>
-                                    <p class="ms-4"><a href="https://cardanoscan.io/token/{{selectedToken.tokenMetadata.fingerprint}}"
-                                          title="{{selectedToken.tokenMetadata.fingerprint}}"
-                                          target="_blank">{{selectedToken.tokenMetadata.shortFingerprint}}</a>
-                                    </p>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <p>Homepage</p>
-                                </td>
-                                <td>
-                                    <p class="ms-4"><a href="{{selectedToken.tokenMetadata.homepage}}"
-                                          title="Token homepage {{selectedToken.tokenMetadata.homepage}}"
-                                          target="_blank">{{selectedToken.tokenMetadata.homepage}}</a>
-                                    </p>
-                                </td>
-                            </tr>
-                        </table>
-                        <button pButton
-                                title="Back to token list"
-                                (click)="details(null)"
-                                class="p-button p-button-rounded p-button-success ms-3 me-auto mb-0 mt-2"
-                                label="Back" icon="fa-solid fa-arrow-left">
-                        </button>
+                <div class="left-grid-container" style="display: block !important">
+                    <div class="left-grid">
+                        <div style="display: flex!important;">
+                            <img src="{{selectedToken.tokenMetadata.logo}}" width="64" height="64"
+                                 onerror="this.onerror=null;this.src='/assets/ada.png'" class="{{smallGrid ? 'ms-0' : 'ms-3'}} me-0 mb-0 mt-0">
+                            <strong class="ms-3 me-auto mt-auto mb-auto">{{selectedToken.displayName}}</strong>
+                        </div>
+                        <div style="text-align: left!important;">
+                            <p class="mt-3 {{smallGrid ? 'ms-0' : 'ms-3'}} me-auto grid-item-info-name">{{selectedToken.tokenMetadata.description}}</p>
+                            <table *ngIf="!smallGrid" class="ms-3 me-auto mt-3">
+                                <tr >
+                                    <td>
+                                        <p>Policy</p>
+                                    </td>
+                                    <td>
+                                        <p class="ms-4"><a
+                                                href="https://cardanoscan.io/tokenPolicy/{{selectedToken.tokenMetadata.policy}}"
+                                                title="{{selectedToken.tokenMetadata.policy}}"
+                                                target="_blank">{{selectedToken.tokenMetadata.shortPolicy}}</a>
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <p>Fingerprint</p>
+                                    </td>
+                                    <td>
+                                        <p class="ms-4"><a
+                                                href="https://cardanoscan.io/token/{{selectedToken.tokenMetadata.fingerprint}}"
+                                                title="{{selectedToken.tokenMetadata.fingerprint}}"
+                                                target="_blank">{{selectedToken.tokenMetadata.shortFingerprint}}</a>
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <p>Homepage</p>
+                                    </td>
+                                    <td>
+                                        <p class="ms-4"><a href="{{selectedToken.tokenMetadata.homepage}}"
+                                                           title="Token homepage {{selectedToken.tokenMetadata.homepage}}"
+                                                           target="_blank">{{selectedToken.tokenMetadata.homepage}}</a>
+                                        </p>
+                                    </td>
+                                </tr>
+                            </table>
+                            <table *ngIf="smallGrid" class="ms-0 me-auto mt-1">
+                                <tr >
+                                    <td>
+                                        <p style="margin-bottom: .2em!important"><a
+                                                href="https://cardanoscan.io/tokenPolicy/{{selectedToken.tokenMetadata.policy}}"
+                                                title="Policy {{selectedToken.tokenMetadata.policy}}"
+                                                target="_blank">{{selectedToken.tokenMetadata.shortPolicy}}</a>
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <p style="margin-bottom: .2em!important"><a
+                                                href="https://cardanoscan.io/token/{{selectedToken.tokenMetadata.fingerprint}}"
+                                                title="Fingerprint {{selectedToken.tokenMetadata.fingerprint}}"
+                                                target="_blank">{{selectedToken.tokenMetadata.shortFingerprint}}</a>
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <p style="margin-bottom: .2em!important"><a href="{{selectedToken.tokenMetadata.homepageURL}}"
+                                                           title="Token homepage {{selectedToken.tokenMetadata.homepage}}"
+                                                           target="_blank">{{selectedToken.tokenMetadata.homepage}}</a>
+                                        </p>
+                                    </td>
+                                </tr>
+                            </table>
+                            <button pButton
+                                    title="Back to token list"
+                                    (click)="details(null)"
+                                    class="p-button p-button-rounded p-button-success {{smallGrid ? 'ms-0' : 'ms-3'}} mt-2 me-auto mb-0"
+                                    label="Back" icon="fa-solid fa-arrow-left">
+                            </button>
+                        </div>
                     </div>
                 </div>
                 <div class="right-grid" style="display: block !important">
                     <div *ngIf="!listingPools" class="data-view" style="width: auto!important">
-                        <pools #poolView [pools]="pools"></pools>
+                        <pools #poolView [pools]="pools" [inTokens]="true"></pools>
                     </div>
                 </div>
             </div>

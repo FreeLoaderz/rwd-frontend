@@ -44,6 +44,7 @@ h4 {
     padding-top: .5rem;
     padding-bottom: .5rem;
     padding-left: .5rem;
+    padding-right: .5rem;
     height: 20%;
 }
 
@@ -203,7 +204,7 @@ h4 {
     padding-top: 50px;
     color: #fff;
     width: 100%;
-    min-height: 100vh !important;
+    min-height: 50vh !important;
     height: auto !important;
     background-color: transparent;
     -webkit-background-size: cover;
@@ -473,13 +474,16 @@ div.sidemenu > button.p-button {
     display: block;
 }
 
+.left-grid-container {
+    background-color: transparent;
+    border: none;
+}
 .left-grid {
+    padding: 2em;
+    height: auto;
     align-items: flex-start;
     justify-content: left;
     background-color: black;
-    border: none;
-    margin: 2em;
-    padding: 2em;
     -moz-border-radius: 25px 25px 25px 25px;
     -webkit-border-radius: 25px;
     border-radius: 25px 25px 25px 25px;
@@ -490,12 +494,10 @@ div.sidemenu > button.p-button {
 
 .right-grid {
     display: flex !important;
-    width: auto;
     align-items: flex-start;
     justify-content: left;
     background-color: transparent!important;
     border: none;
-    margin: 2em;
     padding: 2em;
 }
 
@@ -670,6 +672,11 @@ dl.faq button:focus {
 .data-header {
     display: flex;
     width: 75vw;
+}
+
+.token-pool-header {
+    display: flex;
+    width: 50vw;
 }
 
 .claimall {

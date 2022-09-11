@@ -1,13 +1,13 @@
-<div class="data-header mb-2">
+<div class="{{inTokens ? 'token-pool-header' : 'data-header'}} mb-2">
     <h4>Participating Pools</h4>
 </div>
-<div class="data-header mb-2 {{smallGrid ? 'div-small' : ''}}">
+<div class="{{inTokens ? 'token-pool-header' : 'data-header'}} mb-2 {{smallGrid ? 'div-small' : ''}}">
     <input pInputText class="ms-2" placeholder="Filter pools.."
            style="float: right;padding-left: 7px !important;padding-right: 7px !important;"
            type="search" (input)="filterDataView($event.target.value)"
            (change)="filterDataView($event.target.value)">
 </div>
-<p-dataView #poolView [value]="pools" layout="grid"
+<p-dataView #poolView [value]="pools" layout="grid" class="{{inTokens ? 'token-pool-header' : 'data-header'}}"
             [rows]="maxItems"
             [paginator]="showPaging" filterBy="name,ticker,description">
     <ng-template let-pool pTemplate="gridItem">

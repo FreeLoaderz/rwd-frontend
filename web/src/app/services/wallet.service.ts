@@ -15,9 +15,7 @@ export class WalletService {
         this.walletObserver.loaded$.subscribe(loaded => {
             this.walletLoaded = loaded;
         });
-        if ((location.host === 'rwd.freeloaderz.io') ||
-            (location.host.startsWith('127.0.0.1')) ||
-            (location.host.startsWith('localhost'))) {
+        if (location.host === 'rwd.freeloaderz.io') {
             this.onlyMainnet = false;
         }
     }
@@ -272,7 +270,7 @@ export class WalletService {
      */
     public handleError(e: any) {
         this.errorLoadingWallet = true;
-        console.log("Wallet Service error occured! [" + e + "]");
+        console.log(e);
         if (--this.numWalletCalls === 0) {
             this.walletObserver.setloaded(true);
         }

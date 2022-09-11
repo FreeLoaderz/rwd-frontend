@@ -30,13 +30,6 @@
     "extended": "https://raw.githubusercontent.com/snic-csp/stakepool/master/extended-meta.json"
   },
   {
-    "name": "N2O",
-    "ticker": "N2O",
-    "description": "N2O - A catalyst for acceleration. - We g0 WSSH!",
-    "homepage": "https://0xdeadbeef.network",
-    "nonce": "1647365607"
-  },
-  {
     "name": "ADA Coinz",
     "description": "Grow your ADA coins with COINZ.",
     "ticker": "COINZ",
