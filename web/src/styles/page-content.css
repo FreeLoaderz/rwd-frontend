@@ -498,7 +498,7 @@ div.sidemenu > button.p-button {
     justify-content: left;
     background-color: transparent!important;
     border: none;
-    padding: 2em;
+    padding: 0 2em 2em !important;
 }
 
 .horizontal-center-div {
