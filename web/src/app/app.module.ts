@@ -1,5 +1,5 @@
-import {DoBootstrap, NgModule} from '@angular/core';
-import {Route, RouterModule} from "@angular/router";
+import {NgModule} from '@angular/core';
+import {RouterModule} from "@angular/router";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {HttpClientModule} from "@angular/common/http";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
@@ -29,7 +29,6 @@ import {HistoryComponent} from "./components/history/history.component";
 import {AppRoutingModule} from "./app-routing.module";
 import {NgbCollapseModule} from "@ng-bootstrap/ng-bootstrap";
 import {NetworkComponent} from "./components/network/network.component";
-import {TestnetComponent} from "./components/testnet/testnet.component";
 import {FaqComponent} from './components/faq/faq.component';
 import {ChartModule} from "primeng/chart";
 import {SharedModule} from 'primeng/api';
@@ -38,6 +37,13 @@ import {PropertyService} from "./services/property.service";
 import {PropertyObserverService} from "./services/observers/property-observer.service";
 import {DelegateComponent} from "./components/delegate/delegate.component";
 import {TosComponent} from "./components/tos/tos.component";
+import {BankManagerComponent} from "./components/extensions/meld/bank-manager.component";
+import {PoolService} from "./services/pool.service";
+import {PoolObserverService} from "./services/observers/pool-observer.service";
+import {TokenService} from "./services/token.service";
+import {TokensComponent} from "./components/tokens/tokens.component";
+import {TokenObserverService} from "./services/observers/token-observer.service";
+import {PoolsComponent} from "./components/pools/pools.component";
 
 const customNotifierOptions: NotifierOptions = {
     position: {
@@ -83,8 +89,9 @@ const customNotifierOptions: NotifierOptions = {
 };
 
 @NgModule({
-    declarations: [NavbarComponent, WelcomeComponent, FooterComponent, InfoComponent, RewardsComponent, MaintenanceComponent,
-        ContactUsComponent, HistoryComponent, NetworkComponent, TestnetComponent, FaqComponent, DelegateComponent, TosComponent],
+    declarations: [NavbarComponent, WelcomeComponent, FooterComponent, InfoComponent, RewardsComponent,
+        MaintenanceComponent, BankManagerComponent, ContactUsComponent, HistoryComponent, NetworkComponent,
+        FaqComponent, DelegateComponent, TosComponent, TokensComponent, PoolsComponent],
     imports: [BrowserModule, FormsModule, ReactiveFormsModule, AppRoutingModule, RouterModule,
         TooltipModule.forRoot(), OverlayPanelModule, ModalModule.forRoot(),
         NotifierModule.withConfig(customNotifierOptions), ChartModule, SharedModule,
@@ -93,7 +100,8 @@ const customNotifierOptions: NotifierOptions = {
         DropdownModule, MenubarModule, DataViewModule, ImageModule,
         ButtonModule, PanelModule, BrowserAnimationsModule],
     bootstrap: [NavbarComponent],
-    providers: [RestService, WalletObserverService, WalletService, PropertyService, PropertyObserverService]
+    providers: [RestService, WalletObserverService, WalletService, PropertyService, TokenService,
+        PropertyObserverService, PoolService, PoolObserverService, TokenObserverService]
 })
 
 export class AppModule {

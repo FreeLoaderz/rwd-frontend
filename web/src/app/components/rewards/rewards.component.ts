@@ -5,13 +5,15 @@ import {NotifierService} from "angular-notifier";
 import {RestService} from "../../services/rest.service";
 import {Observable, Subscription} from "rxjs";
 import {WalletObserverService} from "../../services/observers/wallet-observer.service";
-import {Token} from "../../data/token";
 import {Script} from "../../data/script";
 import {SpoRewardClaim} from "../../data/spo-reward-claim";
 import {WalletService} from "../../services/wallet.service";
 import {Title} from "@angular/platform-browser";
 import {UtilityService} from "../../services/utility.service";
 import {TokenMetadata} from "../../data/token-metadata";
+import {TokenClaim} from "../../data/token-claim";
+import {PropertyService} from "../../services/property.service";
+import {TokenService} from "../../services/token.service";
 
 @Component({
     selector: 'rewards',
@@ -22,11 +24,11 @@ import {TokenMetadata} from "../../data/token-metadata";
 export class RewardsComponent extends NotificationComponent implements OnInit, OnDestroy {
     public walletSubscription: Subscription;
     public claimSubscription: Subscription;
-    public tokens: Array<Token> = [];
-    public unfilteredTokens: Array<Token> = [];
+    public tokens: Array<TokenClaim> = [];
+    public unfilteredTokens: Array<TokenClaim> = [];
     public maxItems: number = 10;
     public showPaging: boolean = false;
-    public selectedTokens: Map<string, Token> = new Map<string, Token>();
+    public selectedTokens: Map<string, TokenClaim> = new Map<string, TokenClaim>();
     public claimReturn: string;
     public walletLoaded: boolean = false;
     public initialized: boolean = false;
@@ -38,14 +40,16 @@ export class RewardsComponent extends NotificationComponent implements OnInit, O
     public gridItemSmallWidth: number = 191;
     public gridItemSmallHeight: number = 191;
     public smallGrid: boolean = false;
-    public isTestnet: boolean = false;
+    public isPreview: boolean = false;
+    public ipfsPrefix: string;
 
     @ViewChild('tokenView', {static: false}) public tokenView: any;
     @ViewChild('notificationTemplate', {static: false}) public notificationTemplate: any;
 
     constructor(public router: Router, public notifierService: NotifierService, public restService: RestService,
                 public walletObserverService: WalletObserverService, public walletService: WalletService,
-                public titleService: Title) {
+                public titleService: Title, public propertyService: PropertyService,
+                public tokenService: TokenService) {
         super(notifierService);
         if (globalThis.tokens == null) {
             globalThis.tokens = [];
@@ -55,11 +59,12 @@ export class RewardsComponent extends NotificationComponent implements OnInit, O
     }
 
     public ngOnInit() {
+        this.ipfsPrefix = this.propertyService.getProperty("ipfs-prefix");
         this.walletSubscription = this.walletObserverService.loaded$.subscribe(
             loaded => {
                 this.walletLoaded = loaded;
                 if ((loaded === true) && (!this.initialized)) {
-                    this.isTestnet = (globalThis.wallet.network === 0);
+                    this.isPreview = (globalThis.wallet.network === 0);
                     this.listTokens();
                 }
             }
@@ -102,11 +107,6 @@ export class RewardsComponent extends NotificationComponent implements OnInit, O
             const maxVisableRows = Math.floor(usableHeight / this.gridItemHeight);
             this.maxItems = +maxPerRow * +maxVisableRows;
         }
-        //    if (this.maxItems < this.tokens.length) {
-        //       this.showPaging = true;
-        //  } else {
-        //     this.showPaging = false;
-        //  }
     }
 
     @HostListener('window:orientationchange', ['$event'])
@@ -117,68 +117,28 @@ export class RewardsComponent extends NotificationComponent implements OnInit, O
     public listTokens() {
         this.listingTokens = true;
         globalThis.tokens = [];
-        /**   if (location.hostname === '127.0.0.1') {
-            for (let i = 0; i < 100; i++) {
-                const example: Token = new Token({
-                    "tokenname": "tOken" + i,
-                    "currencysymbol": "dd78158839fae805523ba4c0aa5cd3d7fa4adb43f7ae8c7ebf1d5dd9",
-                    "fingerprint": "sajdfqhw4iuhqwieufwae",
-                    "amount": 1000,
-                    selected: false
-                });
-                globalThis.tokens.push(example);
-                this.tokens = [...globalThis.tokens];
-            }
-            this.getScreenSize(null);
-            this.listingTokens = false;
-        } else { **/
         this.claimReturn = null;
         this.restService.getMyAvailableTokens()
             .then(res => this.processTokenList(res))
             .catch(e => this.processError(e));
-        //  }
     }
 
     public processTokenList(data: any) {
         globalThis.tokens = [];
         for (let i = 0; i < data.length; ++i) {
-            const newToken = new Token(data[i]);
-            setTimeout(() => {
-                let name = newToken.displayName;
-                if ((this.isTestnet) && (newToken.displayName.startsWith("t")) && (newToken.displayName !== 'teuton')) {
-                    name = newToken.displayName.substring(1);
-                    if (name === 'FLZC') {
-                        name = 'FLZ';
-                    }
-                }
-                const tokenMetadata = localStorage.getItem(newToken.displayName);
-                if (tokenMetadata == null) {
-                    this.restService.getTokenMetadata(name)
-                        .then(res => this.addTokenMetadata(newToken, res))
-                        .catch(e => this.processMetadataError(newToken, e));
-                } else if (tokenMetadata !== "notfound") {
-                    newToken.tokenMetadata = new TokenMetadata(JSON.parse(tokenMetadata));
-                }
-            });
+            const newToken = new TokenClaim(data[i]);
+            if (TokenService.tokenMap.has(newToken.fingerprint)) {
+                newToken.tokenMetadata = TokenService.tokenMap.get(newToken.fingerprint).tokenMetadata;
+            }
             if (newToken.amount > 0) {
                 globalThis.tokens.push(newToken);
             }
         }
-        globalThis.tokens.sort((a, b) => Token.sort(a, b));
+        globalThis.tokens.sort((a, b) => TokenClaim.sort(a, b));
         this.tokens = [...globalThis.tokens];
         this.initialized = true;
         this.listingTokens = false;
         this.getScreenSize(null);
-    }
-
-    public processMetadataError(newToken: Token, data: any) {
-        localStorage.setItem(newToken.displayName, "notfound");
-    }
-
-    public addTokenMetadata(newToken: Token, data: any) {
-        const tokenMetadata = new TokenMetadata(data[0]);
-        newToken.tokenMetadata = tokenMetadata;
-        localStorage.setItem(newToken.displayName, JSON.stringify(data[0]));
     }
 
     public claimSelectedTokens() {
@@ -266,7 +226,7 @@ export class RewardsComponent extends NotificationComponent implements OnInit, O
         return false;
     }
 
-    public toggleSelect(token: Token) {
+    public toggleSelect(token: TokenClaim) {
         if (this.selectedTokens.has(token.fingerprint)) {
             token.selected = false;
             this.selectedTokens.delete(token.fingerprint);

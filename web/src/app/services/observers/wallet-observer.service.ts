@@ -13,6 +13,15 @@ export class WalletObserverService {
         this.loaded.next(loaded);
     }
 
+    private showConnect = new Subject<boolean>();
+    // Observable boolean stream
+    showConnect$ = this.showConnect.asObservable();
+
+    // Service message command
+    setShowConnect(showConnect: boolean) {
+        this.showConnect.next(showConnect);
+    }
+
     private error = new Subject<string>();
     // Observable boolean stream
     error$ = this.error.asObservable();

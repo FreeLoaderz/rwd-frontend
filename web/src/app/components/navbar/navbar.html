@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-black bg-clear">
+<nav *ngIf="!isExtension" class="navbar navbar-expand-lg fixed-top navbar-dark bg-black bg-clear">
     <div class="container-fluid">
         <ul class="navbar-nav ms-2 mb-2">
             <li *ngIf="compressMenu" class="nav-item">
@@ -75,7 +75,12 @@
                     </span>
             </div>
             <div class="modal-body text-center" style="padding: .1em !important;overflow-y: auto">
-                <div class="ms-2 me-2 row">
+                <div style="display: flex !important;justify-content:center;align-items:center">
+                    <input type="checkbox" id="tosAcceptance" name="tosAcceptance" [(ngModel)]="acceptedTOS" class="me-2">
+                    <label for="tosAcceptance"> I accept the <a (click)="showTermsModal()" class="inverted">Terms of
+                        Service</a></label>
+                </div>
+                <div class="ms-2 me-2 row mt-3">
                     <a pButton class="p-button-rounded p-button-outlined no-ul inverted"
                        [ngClass]="{'isDisabled':!acceptedTOS}"
                        [title]="eternlAvailable() ? 'Connect to Eternl':'Eternl wallet not installed. Click to visit their website.'"
@@ -111,48 +116,16 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <input type="checkbox" id="tosAcceptance" name="tosAcceptance" [(ngModel)]="acceptedTOS">
-                <label for="tosAcceptance"> I accept the <a (click)="showTermsModal()" class="inverted">Terms of Service</a></label>
             </div>
         </div>
     </div>
 </div>
-<div bsModal #disabledModal="bs-modal" class="modal fade" role="dialog" tabindex="-1"
-     [config]="{backdrop: 'static'}">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title ms-0 me-auto" style="color: #153359 !important">Testnet Complete</h4>
-                <span class="ms-auto">
-                <button pButton class="p-button-rounded p-button-text p-button-plain" icon="pi pi-times"
-                        title="Cancel"
-                        iconPos="left"
-                        (click)="hideDisabledModal()"></button>
-                    </span>
-            </div>
-            <div class="modal-body text-center" style="padding: .1em !important;overflow-y: auto">
-                <div class="ms-2 me-2 row">
-                    <p>The SmartClaimz Testnet phase is complete. Thank you for your participation and feedback!</p>
-                    <p>Watch for updates regarding our Mainnet release in the coming weeks!</p>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button pButton type="button" class="p-button-rounded p-button-secondary" icon="fa-solid fa-times"
-                        title="Close"
-                        iconPos="left"
-                        label="Close"
-                        (click)="hideDisabledModal()"></button>
-            </div>
-        </div>
-    </div>
-</div>
-<notifier-container>
-</notifier-container>
+<notifier-container></notifier-container>
 <div id="topAnchor" #topAnchor class="router-wrapper container-fluid">
     <router-outlet></router-outlet>
-    <footer id="footer"></footer>
+    <footer *ngIf="!isExtension" id="footer"></footer>
 </div>
-<network></network>
+<network *ngIf="!isExtension"></network>
 <maintenance></maintenance>
 <div bsModal #terms="bs-modal" class="modal fade" role="dialog" tabindex="-1"
      [config]="{backdrop: 'static'}">

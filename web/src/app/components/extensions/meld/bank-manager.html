@@ -1,0 +1,151 @@
+<section #meld id="meld" class="extension-section">
+    <div class="sidebyside">
+        <div class="meld-left-grid">
+            <img class="meld-img-logo" src="/assets/extensions/meld/meld-logo.png"
+                 title="Single click to go to Meld, double click to toggle full screen" (click)="toggleFullScreen()">
+        </div>
+        <div class="meld-right-grid" style="display: block !important">
+            <span class="meld-title">MELD BANK MANAGER MINTING</span>
+            <ul class="meld-ul">
+                <li style="display: flex" class="meld-li">
+                    <div style="display: block !important">
+                        <button pButton type="button" label="1"
+                                class="p-button-rounded p-button-outlined meld-fake-button"
+                                style="pointer-events: none !important"></button>
+                    </div>
+                    <div *ngIf="!walletLoaded" style="display: block !important">
+                        <button pButton class="p-button-rounded p-button-text no-ul meld-action-button"
+                                [title]="'Connect your Meld ISPO or a payment Wallet'"
+                                (click)="connectWallet()" label="CONNECT WALLET" [loading]="walletLoading"
+                                iconPos="right">
+                        </button>
+                        <p class="mt-1 mb-0 meld-subtext">Connect the wallet you used to participate in the MELD ISPO.</p>
+                    </div>
+                    <div *ngIf="walletLoaded" style="display: block !important">
+                        <button pButton class="p-button-rounded p-button-text no-ul meld-success-button"
+                                [title]="'Connected'" style="max-width: 350px" label="CONNECTED {{shortWalletAddress}}"
+                                (click)="connectWallet()" icon="fa-solid fa-check" iconPos="right">
+                        </button>
+                        <p class="mt-1 mb-0 meld-subtext"></p>
+                    </div>
+                </li>
+                <li *ngIf="walletLoaded && checkingVerification" style="display: flex" class="meld-li">
+                    <div style="display: block !important">
+                        <button pButton type="button" label="2"
+                                class="p-button-rounded p-button-outlined meld-fake-button"
+                                style="pointer-events: none !important"></button>
+                    </div>
+                    <div style="display: block !important">
+                        <button pButton class="p-button-rounded p-button-text no-ul meld-action-button"
+                                [title]="'Verifying your wallet against the Meld ISPO list'"
+                                label="VERIFYING WALLET" [loading]="checkingVerification" iconPos="right">
+                        </button>
+                    </div>
+                </li>
+                <li *ngIf="walletLoaded && !checkingVerification && !walletVerified" style="display: flex"
+                    class="meld-li">
+                    <div style="display: block !important">
+                        <button pButton type="button" label="2"
+                                class="p-button-rounded p-button-outlined meld-fake-button"
+                                style="pointer-events: none !important"></button>
+                    </div>
+                    <div style="display: block !important">
+                        <button pButton class="p-button-rounded p-button-text no-ul meld-error-button"
+                                [title]="'Wallet could not be verified!'" style="max-width: 350px" label="VERIFIED"
+                                icon="fa-solid fa-xmark" iconPos="right">
+                        </button>
+                        <p class="mt-1 mb-0 meld-subtext">The connected wallet is not authorized for this NFT drop.
+                            Disconnect your wallet and re-connect
+                            with the wallet you used for the Meld ISPO.</p>
+                    </div>
+                </li>
+                <li *ngIf="walletLoaded && !checkingVerification && !walletVerified" style="display: flex"
+                    class="meld-li">
+                    <div class="meld-disconnect-div">
+                        <button pButton class="p-button-rounded p-button-text no-ul meld-action-button"
+                                [title]="'Disconnect your wallet'" style="max-width: 350px" label="DISCONNECT"
+                                icon="fa-solid fa-arrow-right-to-bracket" iconPos="right"
+                                (click)="disconnect()">
+                        </button>
+                    </div>
+                </li>
+                <!--  <li *ngIf="walletLoaded && !checkingVerification && !walletVerified" style="display: flex" class="meld-li">
+                      <div style="display: block !important">
+                          <button pButton type="button" label="2"
+                                  class="p-button-rounded p-button-outlined meld-fake-button"
+                                  style="pointer-events: none !important"></button>
+                      </div>
+                      <div style="display: block !important">
+                          <input class="p-button-rounded p-button-outlined no-ul meld-input"
+                                 [ngClass]="invalidAddress ? 'invalid-error' : ''"
+                                 (keyup)="checkAddress()" (change)="checkAddress()"
+                                 [(ngModel)]="manualAddress"
+                                 [title]="'Enter your Meld ISPO wallet address'"
+                          [placeholder]="'Enter your Meld ISPO wallet address'"/>
+                          <p class="mt-1 mb-0 meld-subtext">The connected wallet or address given is not a registered wallet for the Meld ISPO.</p>
+                      </div>
+                  </li> -->
+                <li *ngIf="walletVerified" style="display: flex" class="meld-li">
+                    <div style="display: block !important">
+                        <button pButton type="button" label="2"
+                                class="p-button-rounded p-button-outlined meld-fake-button"
+                                style="pointer-events: none !important"></button>
+                    </div>
+                    <div style="display: block !important">
+                        <button pButton class="p-button-rounded p-button-text no-ul meld-success-button"
+                                [title]="'Wallet verified!'" style="max-width: 350px" label="VERIFIED"
+                                icon="fa-solid fa-check" iconPos="right">
+                        </button>
+                        <p class="mt-1 mb-0 meld-subtext"></p>
+                    </div>
+                </li>
+                <li *ngIf="walletVerified" style="display: flex" class="meld-li">
+                    <div style="display: block !important">
+                        <button pButton type="button" label="3"
+                                class="p-button-rounded p-button-outlined meld-fake-button"
+                                style="pointer-events: none !important"></button>
+                    </div>
+                    <div style="display: block !important">
+                        <strong>2.2 ADA</strong>
+                        <p class="mt-0 mb-0 meld-subtext">Minting fee to be paid by the connected wallet.</p>
+                    </div>
+                </li>
+                <li *ngIf="walletVerified && !mintFinalized" style="display: flex" class="meld-li">
+                    <div style="display: block !important">
+                        <button pButton type="button" label="4"
+                                class="p-button-rounded p-button-outlined meld-fake-button"
+                                style="pointer-events: none !important"></button>
+                    </div>
+                    <div style="display: block !important">
+                        <button pButton class="p-button-rounded p-button-text no-ul meld-action-button"
+                                [title]="'Mint your Bank Manager NFT!'" style="max-width: 350px" iconPos="right"
+                                (click)="mintBankManager()" [loading]="isMinting" label="MINT BANK MANAGER NFT">
+                        </button>
+                        <p class="mt-1 meld-subtext">By submitting and signing the transaction, you are confirming that
+                            you are paying for the minting of the MELD Bank Manager NFT. Once minted it will be sent to your
+                            connected wallet.</p>
+                    </div>
+                </li>
+                <li *ngIf="walletVerified && mintFinalized" style="display: flex" class="meld-li">
+                    <div style="display: block !important">
+                        <button pButton type="button" label="4"
+                                class="p-button-rounded p-button-outlined meld-fake-button"
+                                style="pointer-events: none !important"></button>
+                    </div>
+                    <div style="display: block !important">
+                        <button pButton class="p-button-rounded p-button-text no-ul meld-success-button"
+                                [title]="'Your Bank Manager NFT has been minted!'" style="max-width: 350px"
+                                iconPos="right"
+                                label="MINT SUCCESSFUL">
+                        </button>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div>
+        <img class="meld-img-bank-mgr" src="/assets/extensions/meld/bank-manager-q.png">
+        <img class="meld-img-smartclaimz" title="SmartClaimz" src="/assets/powered-by-smartclaimz.png"
+             (click)="routeSmartClaimz()">
+    </div>
+</section>

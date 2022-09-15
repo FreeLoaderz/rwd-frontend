@@ -2,6 +2,7 @@ import {AfterViewInit, Component, Inject} from "@angular/core";
 import {Title} from "@angular/platform-browser";
 import {DOCUMENT} from "@angular/common";
 import {DisclosureButton} from "./disclosure-button";
+import {Router} from "@angular/router";
 
 @Component({
     selector: 'faq',
@@ -12,7 +13,8 @@ import {DisclosureButton} from "./disclosure-button";
 export class FaqComponent implements AfterViewInit {
     public buttons: Map<string, DisclosureButton> = new Map<string, DisclosureButton>();
 
-    constructor(@Inject(DOCUMENT) public document: any, public titleService: Title) {
+    constructor(@Inject(DOCUMENT) public document: any, public router: Router,
+                public titleService: Title) {
         this.titleService.setTitle("FAQ");
     }
 
@@ -32,5 +34,9 @@ export class FaqComponent implements AfterViewInit {
                 button.toggleExpand();
             }
         });
+    }
+
+    public delegate() {
+        this.router.navigate(['/delegate']);
     }
 }

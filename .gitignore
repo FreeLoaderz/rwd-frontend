@@ -22,3 +22,10 @@ web/.angular
 web/package-lock.json
 .idea
 properties.json
+propertiesmainnet.json
+blockfrost.txt
+allpools.json
+extended.sh
+mainnetpools.sh
+metadataurl.sh
+

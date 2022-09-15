@@ -62,7 +62,12 @@ export class RestService {
      *
      */
     public getAvailableProjects() {
-        const headers = new HttpHeaders().set('Content-Type', 'application/json').set('Authorization', RestService.vidarAuthorization);
+        let headers;
+        if (RestService.vidarAuthorization != null) {
+            headers = new HttpHeaders().set('Content-Type', 'application/json').set('Authorization', RestService.vidarAuthorization);
+        } else {
+            headers = new HttpHeaders().set('Content-Type', 'application/json');
+        }
         const url = '/rwdinfo/rwd/all/projects';
         RestService.processingRequest = true;
         return lastValueFrom(this.httpClient
@@ -75,8 +80,13 @@ export class RestService {
      *
      */
     public getAvailableTokens() {
-        const headers = new HttpHeaders().set('Content-Type', 'application/json').set('Authorization', RestService.vidarAuthorization);
-        const url = '/rwdinfo/rwd/all/tokens';
+        let headers;
+        if (RestService.vidarAuthorization != null) {
+            headers = new HttpHeaders().set('Content-Type', 'application/json').set('Authorization', RestService.vidarAuthorization);
+        } else {
+            headers = new HttpHeaders().set('Content-Type', 'application/json');
+        }
+        const url = '/rwdinfo/tokens';
         RestService.processingRequest = true;
         return lastValueFrom(this.httpClient
             .get(url, {headers: headers}))
@@ -88,7 +98,12 @@ export class RestService {
      * Get the available rewards for a wallet
      */
     public getMyAvailableTokens() {
-        const headers = new HttpHeaders().set('Content-Type', 'application/json').set('Authorization', RestService.vidarAuthorization);
+        let headers;
+        if (RestService.vidarAuthorization != null) {
+            headers = new HttpHeaders().set('Content-Type', 'application/json').set('Authorization', RestService.vidarAuthorization);
+        } else {
+            headers = new HttpHeaders().set('Content-Type', 'application/json');
+        }
         const url = '/rwdinfo/rwd/all/' + globalThis.wallet.sending_stake_addr;
         RestService.processingRequest = true;
         return lastValueFrom(this.httpClient
@@ -103,7 +118,12 @@ export class RestService {
      * @param contractId
      */
     public getAvailableForToken(customerId: string, contractId: string) {
-        const headers = new HttpHeaders().set('Content-Type', 'application/json').set('Authorization', RestService.vidarAuthorization);
+        let headers;
+        if (RestService.vidarAuthorization != null) {
+            headers = new HttpHeaders().set('Content-Type', 'application/json').set('Authorization', RestService.vidarAuthorization);
+        } else {
+            headers = new HttpHeaders().set('Content-Type', 'application/json');
+        }
         const url = '/rwdinfo/rwd/one/' + customerId + '/' + contractId + '/' + globalThis.wallet.sending_stake_addr;
         RestService.processingRequest = true;
         return lastValueFrom(this.httpClient
@@ -116,7 +136,12 @@ export class RestService {
      * Get the reward history for a wallet
      */
     public getRewardHistory() {
-        const headers = new HttpHeaders().set('Content-Type', 'application/json').set('Authorization', RestService.vidarAuthorization);
+        let headers;
+        if (RestService.vidarAuthorization != null) {
+            headers = new HttpHeaders().set('Content-Type', 'application/json').set('Authorization', RestService.vidarAuthorization);
+        } else {
+            headers = new HttpHeaders().set('Content-Type', 'application/json');
+        }
         const url = '/rwdinfo/rwd/history/' + globalThis.wallet.sending_stake_addr;
         RestService.processingRequest = true;
 
@@ -133,7 +158,12 @@ export class RestService {
      * @param contractId
      */
     public getRewardHistoryForToken(customerId: string, contractId: string) {
-        const headers = new HttpHeaders().set('Content-Type', 'application/json').set('Authorization', RestService.vidarAuthorization);
+        let headers;
+        if (RestService.vidarAuthorization != null) {
+            headers = new HttpHeaders().set('Content-Type', 'application/json').set('Authorization', RestService.vidarAuthorization);
+        } else {
+            headers = new HttpHeaders().set('Content-Type', 'application/json');
+        }
         const url = '/rwdinfo/rwd/history/' + customerId + '/' + contractId + '/' + globalThis.wallet.sending_stake_addr;
         RestService.processingRequest = true;
         return lastValueFrom(this.httpClient
@@ -147,7 +177,12 @@ export class RestService {
      * @param multiSigType
      */
     public buildTokenClaimTx(customerId: string, multiSigType: string) {
-        const headers = new HttpHeaders().set('Content-Type', 'application/json').set('Authorization', RestService.heimdallrAuthorization);
+        let headers;
+        if (RestService.heimdallrAuthorization != null) {
+            headers = new HttpHeaders().set('Content-Type', 'application/json').set('Authorization', RestService.heimdallrAuthorization);
+        } else {
+            headers = new HttpHeaders().set('Content-Type', 'application/json');
+        }
         const url = '/rwdbuild/ms/' + multiSigType;
         RestService.processingRequest = true;
 
@@ -165,7 +200,12 @@ export class RestService {
      * @param data
      */
     public signAndFinalizeTx(customerId: number, multiSigType: string, signature: any, data: any) {
-        const headers = new HttpHeaders().set('Content-Type', 'application/json').set('Authorization', RestService.heimdallrAuthorization);
+        let headers;
+        if (RestService.heimdallrAuthorization != null) {
+            headers = new HttpHeaders().set('Content-Type', 'application/json').set('Authorization', RestService.heimdallrAuthorization);
+        } else {
+            headers = new HttpHeaders().set('Content-Type', 'application/json');
+        }
         const url = '/rwdbuild/ms/fn/' + multiSigType + '/' + data.id;
         RestService.processingRequest = true;
 
@@ -177,7 +217,12 @@ export class RestService {
     }
 
     public buildDelegationTx() {
-        const headers = new HttpHeaders().set('Content-Type', 'application/json').set('Authorization', RestService.heimdallrAuthorization);
+        let headers;
+        if (RestService.heimdallrAuthorization != null) {
+            headers = new HttpHeaders().set('Content-Type', 'application/json').set('Authorization', RestService.heimdallrAuthorization);
+        } else {
+            headers = new HttpHeaders().set('Content-Type', 'application/json');
+        }
         const url = '/rwdbuild/tx/stakedelegation';
         RestService.processingRequest = true;
 
@@ -189,7 +234,12 @@ export class RestService {
 
 
     public signDelegationTx(signature: any, data: any) {
-        const headers = new HttpHeaders().set('Content-Type', 'application/json').set('Authorization', RestService.heimdallrAuthorization);
+        let headers;
+        if (RestService.heimdallrAuthorization != null) {
+            headers = new HttpHeaders().set('Content-Type', 'application/json').set('Authorization', RestService.heimdallrAuthorization);
+        } else {
+            headers = new HttpHeaders().set('Content-Type', 'application/json');
+        }
         const url = '/rwdbuild/tx/fn/stakedelegation/' + data.id;
         RestService.processingRequest = true;
 
@@ -201,12 +251,17 @@ export class RestService {
     }
 
     /**
-     * Generate Testnet rewards
+     * Generate Preview rewards
      * @param customerId
      * @param script
      */
     public generateRewards(customerId: string, script: any) {
-        const headers = new HttpHeaders().set('Content-Type', 'application/json').set('Authorization', RestService.heimdallrAuthorization);
+        let headers;
+        if (RestService.heimdallrAuthorization != null) {
+            headers = new HttpHeaders().set('Content-Type', 'application/json').set('Authorization', RestService.heimdallrAuthorization);
+        } else {
+            headers = new HttpHeaders().set('Content-Type', 'application/json');
+        }
         const url = '/rwdbuild/ms/testrewards';
         RestService.processingRequest = true;
 
@@ -216,12 +271,50 @@ export class RestService {
             .catch(this.handleError);
     }
 
-    public getTokenMetadata(tokenName: string) {
-        const headers = new HttpHeaders().set('Content-Type', 'application/json');
-        const url = '/metadata/api/v0/ticker/' + tokenName + '/all';
+     public async getTokenInfo(fingerprint: string) {
+        let headers;
+        if (RestService.vidarAuthorization != null) {
+            headers = new HttpHeaders().set('Content-Type', 'application/json').set('Authorization', RestService.vidarAuthorization);
+        } else {
+            headers = new HttpHeaders().set('Content-Type', 'application/json');
+        }
+        const url = '/rwdinfo/token/info/' + fingerprint;
         RestService.processingRequest = true;
+
         return lastValueFrom(this.httpClient
             .get(url, {headers: headers}))
+            .then(res => this.processResponse(res))
+            .catch(this.handleError);
+    }
+
+    public walletVerification() {
+        let headers;
+        if (RestService.vidarAuthorization != null) {
+            headers = new HttpHeaders().set('Content-Type', 'application/json').set('Authorization', RestService.vidarAuthorization);
+        } else {
+            headers = new HttpHeaders().set('Content-Type', 'application/json');
+        }
+        const url = '/rwdinfo/verify/';
+        RestService.processingRequest = true;
+
+        return lastValueFrom(this.httpClient
+            .post(url, globalThis.wallet, {headers: headers}))
+            .then(res => this.processResponse(res))
+            .catch(this.handleError);
+    }
+
+    public mint() {
+        let headers;
+        if (RestService.vidarAuthorization != null) {
+            headers = new HttpHeaders().set('Content-Type', 'application/json').set('Authorization', RestService.vidarAuthorization);
+        } else {
+            headers = new HttpHeaders().set('Content-Type', 'application/json');
+        }
+        const url = '/rwdinfo/mint/';
+        RestService.processingRequest = true;
+
+        return lastValueFrom(this.httpClient
+            .post(url, globalThis.wallet, {headers: headers}))
             .then(res => this.processResponse(res))
             .catch(this.handleError);
     }

@@ -1,6 +1,6 @@
 const PROXY_CONFIG = {
   "/rwdbuild": {
-    "target": "https://heimdallr-drasil.apps.testnet.drasil.org",
+    "target": "https://heimdallr-mdrsl.apps.testnet.drasil.org",
     "secure": true,
     "logLevel": "debug",
     "changeOrigin": true,
@@ -17,7 +17,7 @@ const PROXY_CONFIG = {
     }
   },
   "/rwdinfo": {
-    "target": "https://vidar-drasil.apps.testnet.drasil.org",
+    "target": "https://vidar-mdrsl.apps.testnet.drasil.org",
     "secure": true,
     "logLevel": "debug",
     "changeOrigin": true,
@@ -66,8 +66,7 @@ const PROXY_CONFIG = {
         pr.headers['set-cookie'] = cookies;
       }
     }
-  },
-
+  }
 };
 
 module.exports = PROXY_CONFIG;

@@ -9,11 +9,15 @@ export class WalletService {
     public numWalletCalls: number = 0;
     public walletLoaded: boolean = false;
     public errorLoadingWallet: boolean = false;
+    public onlyMainnet: boolean = true;
 
     constructor(public walletObserver: WalletObserverService) {
         this.walletObserver.loaded$.subscribe(loaded => {
             this.walletLoaded = loaded;
         });
+        if (location.host === 'rwd.freeloaderz.io') {
+            this.onlyMainnet = false;
+        }
     }
 
     /**
@@ -165,10 +169,20 @@ export class WalletService {
      */
     private processNetworkId(data: any) {
         globalThis.wallet.network = data;
-        if (--this.numWalletCalls === 0) {
-            this.walletObserver.setloaded(true);
+        if (((this.onlyMainnet) && (globalThis.wallet.network !== 0)) ||
+            ((!this.onlyMainnet) && (globalThis.wallet.network === 0))) {
+            if (--this.numWalletCalls === 0) {
+                this.walletObserver.setloaded(true);
+            }
+            this.updateWallet();
+        } else {
+            this.walletObserver.setloaded(false);
+            if (this.onlyMainnet) {
+                this.walletObserver.setError("Please connect your mainnet wallet");
+            } else {
+                this.walletObserver.setError("Please connect your preview wallet");
+            }
         }
-        this.updateWallet();
     }
 
     /**
@@ -185,7 +199,7 @@ export class WalletService {
             }
             globalThis.wallet.bech32_stake_addr = converter(prefix).toBech32(globalThis.wallet.sending_stake_addr);
             if (--this.numWalletCalls === 0) {
-                this.walletObserver.setloaded(true);
+                this.finishedWalletCalls();
             }
         } else {
             this.handleError("Reward Address was null?");
@@ -204,7 +218,7 @@ export class WalletService {
             globalThis.wallet.inputs.push(data[i]);
         }
         if (--this.numWalletCalls === 0) {
-            this.walletObserver.setloaded(true);
+            this.finishedWalletCalls();
         }
     }
 
@@ -219,7 +233,7 @@ export class WalletService {
             globalThis.wallet.sending_wal_addrs.push(data[i]);
         }
         if (--this.numWalletCalls === 0) {
-            this.walletObserver.setloaded(true);
+            this.finishedWalletCalls();
         }
     }
 
@@ -234,7 +248,7 @@ export class WalletService {
             globalThis.wallet.collateral.push(data[i]);
         }
         if (--this.numWalletCalls === 0) {
-            this.walletObserver.setloaded(true);
+            this.finishedWalletCalls();
         }
     }
 
@@ -246,15 +260,7 @@ export class WalletService {
     private processMaskedBalance(data: any) {
         globalThis.wallet.maskedBalance = data;
         if (--this.numWalletCalls === 0) {
-            this.walletObserver.setloaded(true);
-        }
-    }
-
-    public walletFinishedLoading() {
-        if (!this.errorLoadingWallet) {
-            this.walletObserver.setloaded(true);
-        } else {
-            this.walletObserver.setError("One or more errors occured while loading your wallet!");
+            this.finishedWalletCalls();
         }
     }
 
@@ -264,7 +270,7 @@ export class WalletService {
      */
     public handleError(e: any) {
         this.errorLoadingWallet = true;
-        console.log("Wallet Service error occured! [" + e + "]");
+        console.log(e);
         if (--this.numWalletCalls === 0) {
             this.walletObserver.setloaded(true);
         }
@@ -303,5 +309,22 @@ export class WalletService {
             return this.walletSubstring;
         }
         return "";
+    }
+
+    /**
+     *
+     * @private
+     */
+    private finishedWalletCalls() {
+        this.walletObserver.setloaded(true);
+        this.storeWalletToLocal(globalThis.walletSource);
+    }
+
+    /**
+     *
+     * @param source
+     */
+    private storeWalletToLocal(source: string) {
+        localStorage.setItem('SmartClaimzWalletSource', source);
     }
 }

@@ -4,12 +4,14 @@ export class Pool {
     public name: string;
     public description: string;
     public shortDesc: string;
+    public compressedDesc: string;
     public ticker: string;
     public homepage: string;
-    public id: string;
+    public pool_id: string;
     public poolhash: string;
     public logo: string;
     public extended: string;
+    public url: string;
 
     constructor(data: any) {
         if (data != null) {
@@ -18,10 +20,15 @@ export class Pool {
             }
             if (data.description) {
                 this.description = data.description;
-                if (this.description.length > 60) {
-                    this.shortDesc = this.description.substring(0, 60).concat("...");
+                if (this.description.length > 100) {
+                    this.shortDesc = this.description.substring(0, 100).concat("..");
                 } else {
                     this.shortDesc = this.description;
+                }
+                if (this.description.length > 70) {
+                    this.compressedDesc = this.description.substring(0, 70).concat("..");
+                } else {
+                    this.compressedDesc = this.description;
                 }
             }
             if (data.ticker) {
@@ -30,12 +37,16 @@ export class Pool {
             if (data.homepage) {
                 this.homepage = data.homepage;
             }
-            if (data.id) {
-                this.id = data.id;
-                this.poolhash = converter('pool').toBech32(this.id);
+            if (data.poolhash) {
+                this.setPoolhash(data.poolhash);
+            }
+            if (data.pool_id) {
             }
             if (data.logo) {
                 this.logo = data.logo;
+            }
+            if (data.url) {
+                this.url = data.url;
             }
             if (data.extended) {
                 this.extended = data.extended;
@@ -43,10 +54,17 @@ export class Pool {
         }
     }
 
+    public setPoolhash(poolhash: string) {
+        this.poolhash = poolhash;
+        if (this.pool_id == null) {
+            this.pool_id = converter('pool').toBech32(this.poolhash);
+        }
+    }
+
     public static sort(a: any, b: any): number {
-        if (a.name < b.name) {
+        if (a.name > b.name) {
             return 1;
-        } else if (a.name > b.name) {
+        } else if (a.name < b.name) {
             return -1;
         }
         if (a.ticker > b.ticker) {

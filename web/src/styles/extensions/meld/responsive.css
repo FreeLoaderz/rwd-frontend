@@ -1,0 +1,351 @@
+@media only screen and (orientation: portrait) and (max-device-width: 1000px) and (max-device-height: 1400px) {
+    .sidebyside {
+        width: 100vw;
+    }
+    .meld-left-grid {
+        width: 22vw;
+        margin-left: 1em;
+    }
+
+    .meld-right-grid {
+        min-width: 60vw;
+    }
+    .meld-title {
+        margin-top: 25px;
+        font-size: 32px;
+    }
+}
+
+@media only screen and (orientation: portrait) and (max-device-width: 1000px) and (max-device-height: 1200px) {
+    .extension-section {
+        margin-top: 0;
+    }
+
+    .sidebyside {
+        display: block !important;
+    }
+
+    .meld-img-logo {
+        width: 162px;
+        height: 69px;
+    }
+
+    .meld-li {
+        margin-top: 1em;
+    }
+
+    .meld-title {
+        margin-top: 9px;
+        font-size: 32px;
+        margin-bottom: 1.2em;
+    }
+
+    .meld-fake-button,
+    .meld-success-button {
+        margin-right: 1rem;
+    }
+
+    .meld-img-smartclaimz {
+        width: 129px;
+        height: 67px;
+    }
+
+    .meld-img-bank-mgr {
+        width: 320px;
+        height: 280px;
+    }
+
+    .meld-right-grid {
+        max-width: 65vw;
+        margin-left: 1.5em;
+    }
+
+    .meld-subtext {
+        font-size: smaller;
+    }
+
+    .meld-disconnect-div {
+        margin-left: 41px;
+    }
+}
+
+@media only screen and (orientation: portrait) and (max-device-width: 599px) and (max-device-height: 1000px) {
+    .extension-section {
+        margin-top: 0;
+        padding-top: 15px;
+    }
+
+    .sidebyside {
+        display: block !important;
+    }
+
+    .meld-img-logo {
+        width: 120px;
+        height: 51px;
+    }
+
+    .meld-li {
+        margin-top: 1em;
+    }
+
+    .meld-title {
+        margin-top: 5px;
+        font-size: 28px;
+        margin-bottom: 1em;
+    }
+
+    .meld-fake-button,
+    .meld-success-button {
+        margin-right: 1rem;
+    }
+
+    .meld-img-smartclaimz {
+        width: 64px;
+        height: 33px;
+    }
+
+    .meld-img-bank-mgr {
+        width: 159px;
+        height: 139px;
+    }
+
+    .meld-left-grid {
+        margin-left: 1em;
+    }
+
+    .meld-right-grid {
+        max-width: 70vw;
+        margin-left: 1em;
+    }
+
+    .meld-subtext {
+        font-size: small;
+    }
+
+    .meld-disconnect-div {
+        margin-left: 41px;
+    }
+}
+
+@media only screen and (orientation: portrait) and (max-device-height: 800px) and (max-device-width: 400px) {
+    .extension-section {
+        margin-top: 0;
+        padding-top: 5px;
+    }
+
+    .meld-img-logo {
+        width: 120px;
+        height: 51px;
+    }
+
+    .meld-li {
+        margin-top: 0;
+    }
+
+    .meld-title {
+        margin-top: 7px;
+        font-size: 24px;
+        margin-bottom: .5em;
+    }
+
+    .meld-fake-button,
+    .meld-success-button {
+        margin-right: 1rem;
+    }
+
+    .meld-img-smartclaimz {
+        width: 64px;
+        height: 33px;
+    }
+
+    .meld-img-bank-mgr {
+        width: 119px;
+        height: 104px;
+    }
+
+    .meld-left-grid {
+        margin-left: 1em;
+    }
+
+    .meld-right-grid {
+        max-width: 70vw;
+        margin-left: 1em;
+    }
+
+    .meld-subtext {
+        font-size: x-small;
+    }
+
+    .meld-disconnect-div {
+        margin-left: 41px;
+    }
+
+    .meld-action-button,
+    .meld-success-button,
+    .meld-error-button {
+        min-width: 215px;
+        max-width: 215px;
+    }
+
+    .meld-fake-button {
+        margin-right: .5em;
+    }
+}
+
+@media only screen and (orientation: landscape) and (max-device-height: 1000px) and (max-device-width: 1200px) {
+    .extension-section {
+        margin-top: 0;
+    }
+
+    .meld-img-logo {
+        width: 162px;
+        height: 69px;
+    }
+
+    .meld-li {
+        margin-top: 1em;
+    }
+
+    .meld-title {
+        margin-top: 9px;
+        font-size: 32px;
+        margin-bottom: 1.2em;
+    }
+
+    .meld-fake-button,
+    .meld-success-button {
+        margin-right: 1rem;
+    }
+
+    .meld-img-smartclaimz {
+        width: 129px;
+        height: 67px;
+    }
+
+    .meld-img-bank-mgr {
+        width: 320px;
+        height: 280px;
+    }
+
+    .meld-right-grid {
+        max-width: 65vw;
+        margin-left: 1.5em;
+    }
+
+    .meld-subtext {
+        font-size: smaller;
+    }
+
+    .meld-disconnect-div {
+        margin-left: 41px;
+    }
+}
+
+@media only screen and (orientation: landscape) and (max-device-height: 599px) and (max-device-width: 1000px) {
+    .extension-section {
+        margin-top: 0;
+        padding-top: 15px;
+    }
+
+    .meld-img-logo {
+        width: 120px;
+        height: 51px;
+    }
+
+    .meld-li {
+        margin-top: 1em;
+    }
+
+    .meld-title {
+        margin-top: 5px;
+        font-size: 28px;
+        margin-bottom: 1em;
+    }
+
+    .meld-fake-button,
+    .meld-success-button {
+        margin-right: 1rem;
+    }
+
+    .meld-img-smartclaimz {
+        width: 64px;
+        height: 33px;
+    }
+
+    .meld-img-bank-mgr {
+        width: 159px;
+        height: 139px;
+    }
+
+    .meld-left-grid {
+        margin-left: 1em;
+    }
+
+    .meld-right-grid {
+        max-width: 70vw;
+        margin-left: 1em;
+    }
+
+    .meld-subtext {
+        font-size: small;
+    }
+
+    .meld-disconnect-div {
+        margin-left: 41px;
+    }
+}
+
+@media only screen and (orientation: landscape) and (max-device-height: 400px) and (max-device-width: 800px) {
+    .extension-section {
+        margin-top: 0;
+        padding-top: 5px;
+    }
+
+    .meld-img-logo {
+        width: 120px;
+        height: 51px;
+    }
+
+    .meld-li {
+        margin-top: 0;
+    }
+
+    .meld-title {
+        margin-top: 7px;
+        font-size: 24px;
+        margin-bottom: .5em;
+    }
+
+    .meld-fake-button,
+    .meld-success-button {
+        margin-right: 1rem;
+    }
+
+    .meld-img-smartclaimz {
+        width: 64px;
+        height: 33px;
+    }
+
+    .meld-img-bank-mgr {
+        width: 119px;
+        height: 104px;
+    }
+
+    .meld-left-grid {
+        margin-left: 1em;
+    }
+
+    .meld-right-grid {
+        max-width: 70vw;
+        margin-left: 1em;
+    }
+
+    .meld-subtext {
+        font-size: x-small;
+    }
+
+    .meld-disconnect-div {
+        margin-left: 41px;
+    }
+}
+

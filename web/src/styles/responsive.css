@@ -108,6 +108,20 @@
     .content-section {
         padding-top: 20px !important
     }
+    .token-pool-header {
+        width: 65vw!important;
+        margin-bottom: 0!important;
+    }
+    .left-grid {
+        padding: 1em!important;
+    }
+    .right-grid {
+        padding: 0 1em 1em !important;
+    }
+    .grid-item-info-name {
+        margin-top: .25rem;
+        margin-bottom: .25rem;
+    }
 }
 
 @media only screen and (max-device-width: 800px) {
@@ -173,7 +187,6 @@
         padding: 0.1rem .5rem !important;
         font-size: .8rem !important;
     }
-
     .grid-item-bottom {
         bottom: .1rem !important;
     }

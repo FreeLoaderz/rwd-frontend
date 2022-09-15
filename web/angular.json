@@ -22,7 +22,11 @@
             "assets": [
               "src/assets",
               "src/favicon.ico",
-              "src/assets/config/properties.json"
+              "src/assets/config/properties.json",
+              "src/assets/config/propertiesmainnet.json",
+              "src/assets/config/poolhash.json",
+              "src/assets/config/fullmetadata.json",
+              "src/assets/config/fullextended.json"
             ],
             "styles": [
               "src/styles.css",

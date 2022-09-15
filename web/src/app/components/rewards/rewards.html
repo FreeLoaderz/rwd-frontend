@@ -28,7 +28,7 @@
                             label="Claim All" icon="fa-solid fa-square-check">
                     </button>
                 </div>
-                <p-dataView #tokenView [value]="tokens" layout="grid" filterBy="displayName"
+                <p-dataView #tokenView [value]="tokens" layout="grid"
                             [rows]="maxItems" (onFilter)="onFilter($event, tokenView)"
                             [paginator]="showPaging" filterBy="displayName">
                     <ng-template let-token pTemplate="gridItem">
@@ -41,13 +41,13 @@
                                     <img *ngIf="token.tokenMetadata != null" src="{{token.tokenMetadata.logo}}"
                                          width="64px" height="64px">
                                     <img *ngIf="token.tokenMetadata == null" src="../../../assets/ada.png">
-                                    <p *ngIf="token.tokenMetadata != null" class="grid-item-token-name mt-1">
+                                    <p *ngIf="token.tokenMetadata != null" class="grid-item-info-name mt-1">
                                         <a href="{{token.tokenMetadata.url}}"
                                            target="_blank"
                                            title="{{token.tokenMetadata.description}}"
                                            tooltip="{{token.tokenMetadata.description}}">{{token.displayName}}</a></p>
                                     <p *ngIf="token.tokenMetadata == null"
-                                       class="grid-item-token-name">{{token.displayName}}</p>
+                                       class="grid-item-info-name">{{token.displayName}}</p>
                                 </div>
                                 <div class="grid-item-bottom">
                                     <button *ngIf="!token.selected" pButton

@@ -1,8 +1,9 @@
 <section id="faq" class="content-section">
     <div class="faq-section">
         <div class="container ms-auto">
-            <h4>SmartClaimz FAQ</h4>
-            <div class="blackdiv" style="padding-top: 0px;display: flex;">
+            <h4 class="mb-4">Frequently Asked Questions</h4>
+            <h4>SmartClaimz</h4>
+            <div class="blackdiv" style="padding-top: 10px;padding-bottom: 10px;display: flex;">
                 <dl class="faq">
                     <dt>
                         <button class="toggleButton" type="button" aria-expanded="false" aria-controls="faq1_desc"
@@ -39,7 +40,7 @@
                         <div id="faq_steps" class="desc">
                             <p>Follow these basic instructions to claim tokens on SmartClaimz:</p>
                             <ul>
-                                <li style="margin-left: 1rem;font-size: 16px !important">Connect your wallet using the
+                                <li style="font-size: 16px !important">Connect your wallet using the
                                     "Connect" button in the Navigation Bar
                                 </li>
                                 <li style="font-size: 16px !important">Accept the Terms of Service</li>
@@ -56,25 +57,56 @@
                             </ul>
                             <p>
                                 More detailed instructions are available in our
-                                test net <a class="spanlinkBlue"
-                                    href="https://docs.google.com/document/d/1FZrcek6yxMvwdAyLgVwfqKgCGtpGjPYnuZu26JNWees/edit"
-                                    target="_blank">guide</a>.
+                                preview <a class="spanlinkBlue"
+                                            href="https://docs.google.com/document/d/1cGkCN7Go0Q1tQchBzcI-7-QqQlAVeloDg_j3OqdTabY/edit?usp=sharing"
+                                            target="_blank">guide</a>.
                             </p>
                         </div>
                     </dd>
                     <dt>
+                        <button type="button" class="toggleButton" aria-expanded="false" aria-controls="faq4_desc"
+                                (click)="toggleComponent('faq4_desc')">Where can I learn more
+                            about SmartClaimz?<i class="fa-solid fa-chevron-down ms-auto me-0"></i>
+                        </button>
+                    </dt>
+                    <dd>
+                        <div id="faq4_desc" class="desc">
+                            <p>To learn more about FreeLoaderz and SmartClaimz, check out the FreeLoaderz SmartClaimz <a
+                                    href="https://freeloaderz.medium.com/smartclaimz-web3-dapp-testnet-690a1bac7440"
+                                    class="spanlinkBlue" target="_blank">Medium article</a> and join us in our FreeLoaderz <a
+                                    href="https://discord.gg/rP4PdV8jRY" target="_blank"
+                                    class="spanlinkBlue">Discord Server</a>.
+                            </p>
+                        </div>
+                    </dd>
+                </dl>
+            </div>
+        </div>
+        <div class="container ms-auto mt-4">
+            <h4>Wallets</h4>
+            <div class="blackdiv" style="padding-top: 10px;padding-bottom: 10px;display: flex;">
+                <dl class="faq">
+                    <dt>
                         <button class="toggleButton" type="button" aria-expanded="false" aria-controls="faq_wallet"
-                                (click)="toggleComponent('faq_wallet')">What wallet should I use?<i
+                                (click)="toggleComponent('faq_wallet')">Which wallet should I use?<i
                                 class="fa-solid fa-chevron-down ms-auto me-0"></i>
                         </button>
                     </dt>
                     <dd>
                         <div id="faq_wallet" class="desc">
-                            <p>At this time we recommend <a href="https://eternl.io/" class="spanlinkBlue" target="_blank">Eternl</a> or
+                            <p>We recommend <a href="https://eternl.io/" class="spanlinkBlue"
+                                               target="_blank">Eternl</a> or
                                 <a href="https://namiwallet.io/" class="spanlinkBlue" target="_blank">Nami</a>.
                             </p>
                         </div>
                     </dd>
+                </dl>
+            </div>
+        </div>
+        <div class="container ms-auto mt-4">
+            <h4>Tokens</h4>
+            <div class="blackdiv" style="padding-top: 10px;padding-bottom: 10px;display: flex;">
+                <dl class="faq">
                     <dt>
                         <button class="toggleButton" type="button" aria-expanded="false"
                                 aria-controls="faq_avail_tokens"
@@ -91,6 +123,52 @@
                         </div>
                     </dd>
                     <dt>
+                        <button class="toggleButton" type="button" aria-expanded="false"
+                                aria-controls="faq_reward_calcs"
+                                (click)="toggleComponent('faq_reward_calcs')">What token reward calculations does
+                            SmartClaimz
+                            use?<i class="fa-solid fa-chevron-down ms-auto me-0"></i>
+                        </button>
+                    </dt>
+                    <dd>
+                        <div id="faq_reward_calcs" class="desc">
+                            <p>There are currently three token reward calculations within SmartClaimz.</p>
+                            <ul>
+                                <li style="font-size: 16px !important">Custom FreeLoaderz FLZ/tFLZ: (S-150)^0.6 + 50.0 =
+                                    P
+                                    <ul>
+                                        <li style="font-size: 16px !important">S = Staked amount to participating pool
+                                        </li>
+                                        <li style="font-size: 16px !important">P = FLZ/tFLZ payout per epoch</li>
+                                        <li style="font-size: 16px !important">More information can be found <a
+                                                class="spanlinkBlue"
+                                                target="_blank"
+                                                href="https://freeloaderz.medium.com/freeloaderz-pspo-9d1df5fdadc2">here</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <ul>
+                                <li style="font-size: 16px !important">Custom Drasil DRSL/tDRSL: 10,000 / TS * S = P
+                                    <ul>
+                                        <li style="font-size: 16px !important">TS = Total Staked in all pools</li>
+                                        <li style="font-size: 16px !important">S = Stake of Claiming wallet</li>
+                                        <li style="font-size: 16px !important">P = DRSL/tDRSL payout per epoch</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <ul>
+                                <li style="font-size: 16px !important">Fixed ratio CDN/tCDN: 0.3 * S = P
+                                    <ul>
+                                        <li style="font-size: 16px !important">S = Stake of Claiming Wallet</li>
+                                        <li style="font-size: 16px !important">P = Payout of CDN/tCDN per epoch
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </dd>
+                    <dt>
                         <button class="toggleButton" type="button" aria-expanded="false" aria-controls="faq_every_epoch"
                                 (click)="toggleComponent('faq_every_epoch')">Do I have to claim my tokens every epoch?<i
                                 class="fa-solid fa-chevron-down ms-auto me-0"></i>
@@ -103,6 +181,120 @@
                             </p>
                         </div>
                     </dd>
+                </dl>
+            </div>
+        </div>
+        <div class="container ms-auto mt-4">
+            <h4>LoadWarrior NFTs</h4>
+            <div class="blackdiv" style="padding-top: 10px;padding-bottom: 10px;display: flex;">
+                <dl class="faq">
+                    <dt>
+                        <button class="toggleButton" type="button" aria-expanded="false"
+                                aria-controls="faq_load_warrior"
+                                (click)="toggleComponent('faq_load_warrior')">What are the LoadWarrior NFTs?<i
+                                class="fa-solid fa-chevron-down ms-auto me-0"></i>
+                        </button>
+                    </dt>
+                    <dd>
+                        <div id="faq_load_warrior" class="desc">
+                            <p>The LoadWarrior NFTs are SmartClaimz Fee Saver NFTs.</p>
+                            <p>LoadWarrior Series 1 (SOLD OUT) - PolicyID
+                                <a href="https://cexplorer.io/policy/8cfa9a13c339f6d1e9fd3373698194e4a0b6da205c6f36cd1c324fcd"
+                                   class="spanlinkBlue"
+                                   target="_blank">8cfa9a13c339f6d1e9fd3373698194e4a0b6da205c6f36cd1c324fcd</a></p>
+                            <p>If one of these NFTs is detected in a user's wallet, SmartClaimz will apply three
+                                different
+                                claim fee discounts (10%, 25%, or 50%). Series 1 has
+                                25 unique images with 10 variations (total quantity 250) of each image with the
+                                following metadata rarities:
+                            <p>
+                            <ul>
+                                <li style="font-size: 16px !important">Quantity: 6 (10% discount)</li>
+                                <li style="font-size: 16px !important">Quantity: 3 (25% discount)</li>
+                                <li style="font-size: 16px !important">Quantity: 1 (50% discount)</li>
+                            </ul>
+                        </div>
+                    </dd>
+                    <dt>
+                        <button class="toggleButton" type="button" aria-expanded="false"
+                                aria-controls="faq_load_warrior_ready"
+                                (click)="toggleComponent('faq_load_warrior_ready')">Why don't I see my LoadWarrior NFT
+                            discount?<i
+                                    class="fa-solid fa-chevron-down ms-auto me-0"></i>
+                        </button>
+                    </dt>
+                    <dd>
+                        <div id="faq_load_warrior_ready" class="desc">
+                            <p>Unfortunately, we do not anticipate the LoadWarrior NFT fee discount functionality to be
+                                ready at launch in September.</p>
+                            <p>If you are a LoadWarrior NFT holder, you have two options:</p>
+                            <ul>
+                                <li style="font-size: 16px !important">Wait to claim them all until this functionality
+                                    is completed (anticipating October)
+                                </li>
+                                <li style="font-size: 16px !important">Claim now and not get the claim fee discount</li>
+                            </ul>
+                            <p>Our recommendation is that you wait. Waiting to claim your rewards will lower your
+                                overall fees in general. As a reminder, your rewards accumulate and never expire.</p>
+                        </div>
+                    </dd>
+                </dl>
+            </div>
+        </div>
+        <div class="container ms-auto mt-4">
+            <h4>FreeLoaderz PSPO</h4>
+            <div class="blackdiv" style="padding-top: 10px;padding-bottom: 10px;display: flex;">
+                <dl class="faq">
+                    <dt>
+                        <button class="toggleButton" type="button" aria-expanded="false"
+                                aria-controls="faq_pspo"
+                                (click)="toggleComponent('faq_pspo')">What is the FreeLoaderz PSPO?<i
+                                class="fa-solid fa-chevron-down ms-auto me-0"></i>
+                        </button>
+                    </dt>
+                    <dd>
+                        <div id="faq_pspo" class="desc">
+                            <p>The Freeloaderz PSPO is a chance for delegates of participating FreeLoaderz pools to earn
+                                FLZ.</p>
+                            <ul>
+                                <li style="font-size: 16px !important">The FLZ token allows you to vote on FreeLoaderz
+                                    governance
+                                </li>
+                                <li style="font-size: 16px !important">The PSPO will last from September to December or
+                                    when a total of 7.5 Million FLZ is distributed
+                                </li>
+                            </ul>
+                        </div>
+                    </dd>
+                    <dt>
+                        <button class="toggleButton" type="button" aria-expanded="false"
+                                aria-controls="faq_pspo_participate"
+                                (click)="toggleComponent('faq_pspo_participate')">How do I participate in the
+                            FreeLoaderz PSPO?<i
+                                    class="fa-solid fa-chevron-down ms-auto me-0"></i>
+                        </button>
+                    </dt>
+                    <dd>
+                        <div id="faq_pspo_participate" class="desc">
+                            <p>It's easy to participate in the Freeloaderz PSPO!</p>
+                            <ul>
+                                <li style="font-size: 16px !important">Stake to a participating pool listed in the <a
+                                        (click)="delegate()" class="spanlinkBlue">pools</a> section.
+                                </li>
+                                <li style="font-size: 16px !important">Keep your normal ADA staking rewards and get free
+                                    FLZ
+                                </li>
+                                <li style="font-size: 16px !important">Claim your tokens here on SmartClaimz!</li>
+                            </ul>
+                        </div>
+                    </dd>
+                </dl>
+            </div>
+        </div>
+        <div class="container ms-auto mt-4">
+            <h4>General Errors</h4>
+            <div class="blackdiv" style="padding-top: 10px;padding-bottom: 10px;display: flex;">
+                <dl class="faq">
                     <dt>
                         <button class="toggleButton" type="button" aria-expanded="false"
                                 aria-controls="faq_wallet_connect"
@@ -116,7 +308,7 @@
                                 changes to your wallet or browser, reload the site.
                             </p>
                             <ul>
-                                <li style="margin-left: 1rem;font-size: 16px !important">Clear your browser cache
+                                <li style="font-size: 16px !important">Clear your browser cache
                                     (typically left ctrl+shift+del to bring up the browser modal)
                                 </li>
                                 <li style="font-size: 16px !important">Restart your browser</li>
@@ -145,7 +337,7 @@
                                 With that, here are some things to be aware of:
                             </p>
                             <ul>
-                                <li style="margin-left: 1rem;font-size: 16px !important">If you didn't get the Success
+                                <li style="font-size: 16px !important">If you didn't get the Success
                                     notification with a link to your claim, it didn't go through
                                 </li>
                                 <li style="font-size: 16px !important">If the transaction went through and you have
@@ -154,7 +346,8 @@
                                 </li>
                                 <li style="font-size: 16px !important">If ADA has been debited for the transaction and
                                     you still
-                                    have not received tokens, please let us know at <a href="mailto:info@smartclaimz.io" class="spanlinkBlue"
+                                    have not received tokens, please let us know at <a href="mailto:info@smartclaimz.io"
+                                                                                       class="spanlinkBlue"
                                                                                        style="font-size: 16px !important">info@smartclaimz.io</a>
                                     and we will escalate a ticket for you
                                 </li>
@@ -170,7 +363,8 @@
                     </dt>
                     <dd>
                         <div id="faq_incorrect_tokens" class="desc">
-                            <p>As each project has its own metrics, please reach out directly to the project team for the token for a review of
+                            <p>As each project has its own metrics, please reach out directly to the project team for
+                                the token for a review of
                                 the situation.
                             </p>
                         </div>
@@ -186,28 +380,13 @@
                             <p>
                                 The need for <a href="https://docs.cardano.org/plutus/collateral-mechanism"
                                                 class="spanlinkBlue"
-                                                target="blank_">collateral</a> was introduced with the addition of smart
+                                                target="_blank">collateral</a> was introduced with the addition of smart
                                 contracts
                                 on Cardano. Setting the collateral in your wallet helps ensure that the transaction will
                                 be
                                 validated properly. Currently, most wallets recommend that you set the collateral to
                                 5 ADA. The Vasil hard fork will bring a more deterministic method to match the exact
                                 amount needed.
-                            </p>
-                        </div>
-                    </dd>
-                    <dt>
-                        <button type="button" class="toggleButton" aria-expanded="false" aria-controls="faq4_desc"
-                                (click)="toggleComponent('faq4_desc')">Where can I learn more
-                            about SmartClaimz?<i class="fa-solid fa-chevron-down ms-auto me-0"></i>
-                        </button>
-                    </dt>
-                    <dd>
-                        <div id="faq4_desc" class="desc">
-                            <p>To find our more, check out the FreeLoaderz <a
-                                    href="https://freeloaderz.medium.com/smartclaimz-web3-dapp-testnet-690a1bac7440"
-                                    class="spanlinkBlue" target="blank_">Medium article</a> which has many of the key
-                                links for the FreeLoaderz project including the FreeLoaderz Discord link.
                             </p>
                         </div>
                     </dd>

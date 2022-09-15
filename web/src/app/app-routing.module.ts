@@ -4,10 +4,12 @@ import {WelcomeComponent} from "./components/welcome/welcome.component";
 import {RewardsComponent} from "./components/rewards/rewards.component";
 import {HistoryComponent} from "./components/history/history.component";
 import {ContactUsComponent} from "./components/contact-us/contact-us.component";
-import {TestnetComponent} from "./components/testnet/testnet.component";
 import {FaqComponent} from './components/faq/faq.component';
 import {DelegateComponent} from "./components/delegate/delegate.component";
 import {TosComponent} from "./components/tos/tos.component";
+import {BankManagerComponent} from "./components/extensions/meld/bank-manager.component";
+import {TokensComponent} from "./components/tokens/tokens.component";
+import {PoolsComponent} from "./components/pools/pools.component";
 
 
 const routes: Routes = [
@@ -19,10 +21,6 @@ const routes: Routes = [
     {
         path: 'welcome',
         component: WelcomeComponent,
-    },
-    {
-        path: 'testnet',
-        component: TestnetComponent,
     },
     {
         path: 'contact-us',
@@ -45,8 +43,16 @@ const routes: Routes = [
         DelegateComponent
     },
     {
+        path: 'tokens', component:
+        TokensComponent
+    },
+    {
         path: 'tos', component:
         TosComponent
+    },
+    {
+        path: 'bank-manager', component:
+        BankManagerComponent
     }
 ];
 

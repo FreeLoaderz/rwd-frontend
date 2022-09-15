@@ -38,20 +38,17 @@ export class MaintenanceComponent extends NotificationComponent implements OnIni
 
     public processMaintenance() {
         if ((this.maintenance != null) && (this.maintenance.trim() !== '')) {
-            console.log(this.maintenance);
             this.maintenance = this.maintenance.concat("<a><i class='ms-2 fa-solid fa-xmark'></i></a>");
             setTimeout(async () => {
                 while (this.keepAlive) {
                     this.customNotification("warning", this.maintenance, this.notificationTemplate);
                     await new Promise(f => setTimeout(f, 30000));
                 }
-                console.log("stopped");
             });
         }
     }
 
     public stop() {
-        console.log("stop");
         this.keepAlive = false;
     }
 }

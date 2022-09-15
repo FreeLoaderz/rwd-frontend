@@ -1,37 +1,79 @@
 export class TokenMetadata {
+    public fingerprint: string;
+    public shortFingerprint: string;
     public policy: string;
     public shortPolicy: string;
-    public name: string;
-    public url: string;
     public description: string;
+    public shortDesc: string;
+    public compressedDesc: string;
     public logo: string;
-    public ticker: string;
-    public subject: string;
+    public type: string;
+    public homepage: string;
+    public homepageURL: string;
+    public mediaType: string;
 
-    constructor(data: any) {
+    constructor(data: any, ipfsPrefix: string) {
         if (data != null) {
-            if (data.policy) {
+            if (ipfsPrefix != null) {
+                if (data.fingerprint != null) {
+                    this.fingerprint = data.fingerprint;
+                    const concatFingerprint = data.fingerprint.substring(0, 8).concat("...").concat(data.fingerprint.substring(data.fingerprint.length - 8));
+                    this.shortFingerprint = concatFingerprint;
+                }
+                if (data.policy) {
+                    this.policy = data.policy;
+                    const concatPolicy = data.policy.substring(0, 8).concat("...").concat(data.policy.substring(data.policy.length - 8));
+                    this.shortPolicy = concatPolicy;
+                }
+                if (data.tokenname != null) {
+                    if ((data["json"]) && (data["json"][this.policy]) &&
+                        (data["json"][this.policy]) &&
+                        (data["json"][this.policy][data.tokenname])) {
+                        const token = data["json"][this.policy][data.tokenname];
+                        this.type = token.type;
+                        if (token.homepage != null) {
+                            this.homepage = token.homepage;
+                            if (!this.homepage.startsWith("http")) {
+                                this.homepageURL = "https://".concat(this.homepage);
+                            } else {
+                                this.homepageURL = this.homepage;
+                            }
+                        }
+
+                        this.mediaType = token.mediaType;
+                        if (token.image.startsWith("ipfs")) {
+                            this.logo = ipfsPrefix.concat(token.image.replace("ipfs://", ""));
+                        } else {
+                            this.logo = token.image;
+                        }
+                        if (token.description != null) {
+                            this.description = token.description;
+                            if (this.description.length > 100) {
+                                this.shortDesc = this.description.substring(0, 100).concat("..");
+                            } else {
+                                this.shortDesc = this.description;
+                            }
+                            if (this.description.length > 70) {
+                                this.compressedDesc = this.description.substring(0, 70).concat("..");
+                            } else {
+                                this.compressedDesc = this.description;
+                            }
+                        }
+                    }
+                }
+            } else {
+                this.fingerprint = data.fingerprint;
+                this.shortFingerprint = data.shortFingerprint;
                 this.policy = data.policy;
-                const concatPolicy = data.policy.substring(0, 5).concat("...").concat(data.policy.substring(data.policy.length - 5));
-                this.shortPolicy = concatPolicy;
-            }
-            if (data.name) {
-                this.name = data.name;
-            }
-            if (data.url) {
-                this.url = data.url;
-            }
-            if (data.description) {
+                this.shortPolicy = data.shortPolicy;
                 this.description = data.description;
-            }
-            if (data.logo) {
-                this.logo = 'data:image/png;base64,' + data.logo;
-            }
-            if (data.ticker) {
-                this.ticker = data.ticker;
-            }
-            if (data.subject) {
-                this.subject = data.subject;
+                this.compressedDesc = data.compressedDesc;
+                this.shortDesc = data.shortDesc;
+                this.logo = data.logo;
+                this.type = data.type;
+                this.homepage = data.homepage;
+                this.homepageURL = data.homepageURL;
+                this.mediaType = data.mediaType;
             }
         }
     }
