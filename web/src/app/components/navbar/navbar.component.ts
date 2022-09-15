@@ -481,6 +481,7 @@ export class NavbarComponent extends NotificationComponent implements OnInit, Af
         globalThis.wallet = null;
         this.walletSubstring = null;
         this.connected = false;
+        localStorage.removeItem('SmartClaimzWalletSource');
         this.walletObserverService.setloaded(false);
         if (!this.isExtension) {
             this.router.navigate(['/welcome']);
