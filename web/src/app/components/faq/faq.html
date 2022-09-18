@@ -58,9 +58,21 @@
                             <p>
                                 More detailed instructions are available in our
                                 preview <a class="spanlinkBlue"
-                                            href="https://docs.google.com/document/d/1cGkCN7Go0Q1tQchBzcI-7-QqQlAVeloDg_j3OqdTabY/edit?usp=sharing"
-                                            target="_blank">guide</a>.
+                                           href="https://docs.google.com/document/d/1cGkCN7Go0Q1tQchBzcI-7-QqQlAVeloDg_j3OqdTabY/edit?usp=sharing"
+                                           target="_blank">guide</a>.
                             </p>
+                        </div>
+                    </dd>
+                    <dt>
+                        <button type="button" class="toggleButton" aria-expanded="false" aria-controls="faq_fees"
+                                (click)="toggleComponent('faq_fees')">What fees are associated with making a token claim?<i class="fa-solid fa-chevron-down ms-auto me-0"></i>
+                        </button>
+                    </dt>
+                    <dd>
+                        <div id="faq_fees" class="desc">
+                            <p>No matter how many tokens are made in a claim, every claim has a 1.7 ADA Service fee along with the nominal Cardano network fee. (We cannot control the Cardano
+                                network fee and it is variable.)</p>
+                            <p>Since tokens don't expire by default on SmartClaimz, a user can save on fees in the long run by not claiming every epoch.</p>
                         </div>
                     </dd>
                     <dt>
@@ -73,9 +85,10 @@
                         <div id="faq4_desc" class="desc">
                             <p>To learn more about FreeLoaderz and SmartClaimz, check out the FreeLoaderz SmartClaimz <a
                                     href="https://freeloaderz.medium.com/smartclaimz-web3-dapp-testnet-690a1bac7440"
-                                    class="spanlinkBlue" target="_blank">Medium article</a> and join us in our FreeLoaderz <a
-                                    href="https://discord.gg/rP4PdV8jRY" target="_blank"
-                                    class="spanlinkBlue">Discord Server</a>.
+                                    class="spanlinkBlue" target="_blank">Medium article</a> and join us in our
+                                FreeLoaderz <a
+                                        href="https://discord.gg/rP4PdV8jRY" target="_blank"
+                                        class="spanlinkBlue">Discord Server</a>.
                             </p>
                         </div>
                     </dd>
