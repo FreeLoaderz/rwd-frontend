@@ -102,7 +102,7 @@
   },
   {
     "name": "Lido Nation",
-    "description": "Community for everyone.",
+    "description": "The Future is for Everyone.",
     "ticker": "LIDO",
     "homepage": "https://www.lidonation.com",
     "extended": "https://www.lidonation.com/metadata-extended.json"
@@ -163,13 +163,6 @@
     "ticker": "ADAR",
     "homepage": "https://adarewards.org",
     "extended": "https://git.io/JSR0b"
-  },
-  {
-    "name": "The ADA House",
-    "ticker": "ADAHS",
-    "description": "a secure & reliable cardano stake pool",
-    "homepage": "https://the.adahou.se",
-    "extended": "https://the.adahou.se/poolmeta_ext.09.05.json"
   },
   {
     "name": "JED Stakepool",
@@ -329,8 +322,7 @@
     "ticker": "LATIN",
     "extended": "https://raw.githubusercontent.com/CL-LLC/MD/main/extended.json",
     "homepage": "https://cardanolatino.com/cardanoenglish/Latino-Staking-Pool-Eng/",
-    "description": "We are totally aligned with Cardano's Vision and Mission with the intention of making our world a more fair place for all / Comprometidos con la Vision y la Mision de Cardano con la Intencion de hacer de nuestro mundo un lugar mas justo para todos ",
-    "verification string": "239295d6c10c617ee6"
+    "description": "We are totally aligned with Cardano's Vision and Mission with the intention of making our world a more fair place for all/Comprometidos con la Vision y la Mision de Cardano con la Intencion de hacer de nuestro mundo un lugar mas justo para todos"
   },
   {
     "name": "Nimuë Lady of the Lake Pool",
@@ -373,5 +365,12 @@
     "ticker": "ITZA",
     "homepage": "https://latinstakepools.com/",
     "extended": "https://raw.githubusercontent.com/LatinStakePools/ITZA/main/extendedMetada.json"
+  },
+  {
+    "name": "Euro Pool",
+    "description": "Join EURO pool to earn extra $WOLF and $Charly tokens on taptools.io and most importantly to support cardano-tools.io!",
+    "ticker": "EURO",
+    "homepage": "https://cardano-tools.io/europool",
+    "extended": "https://cardano-tools.io/pool-metadata-euro-extended.json"
   }
 ]

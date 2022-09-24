@@ -48,19 +48,6 @@ export class RestService {
     /**
      *
      */
-    public getAvailablePools() {
-        const headers = new HttpHeaders().set('Content-Type', 'application/json').set('Authorization', RestService.vidarAuthorization);
-        const url = '/rwdinfo/rwd/all/pools';
-        RestService.processingRequest = true;
-        return lastValueFrom(this.httpClient
-            .get(url, {headers: headers}))
-            .then(res => this.processResponse(res))
-            .catch(this.handleError);
-    }
-
-    /**
-     *
-     */
     public getAvailableProjects() {
         let headers;
         if (RestService.vidarAuthorization != null) {
@@ -87,6 +74,21 @@ export class RestService {
             headers = new HttpHeaders().set('Content-Type', 'application/json');
         }
         const url = '/rwdinfo/tokens';
+        RestService.processingRequest = true;
+        return lastValueFrom(this.httpClient
+            .get(url, {headers: headers}))
+            .then(res => this.processResponse(res))
+            .catch(this.handleError);
+    }
+
+    public getAvailablePools() {
+        let headers;
+        if (RestService.vidarAuthorization != null) {
+            headers = new HttpHeaders().set('Content-Type', 'application/json').set('Authorization', RestService.vidarAuthorization);
+        } else {
+            headers = new HttpHeaders().set('Content-Type', 'application/json');
+        }
+        const url = '/rwdinfo/pools';
         RestService.processingRequest = true;
         return lastValueFrom(this.httpClient
             .get(url, {headers: headers}))
@@ -271,7 +273,7 @@ export class RestService {
             .catch(this.handleError);
     }
 
-     public async getTokenInfo(fingerprint: string) {
+    public async getTokenInfo(fingerprint: string) {
         let headers;
         if (RestService.vidarAuthorization != null) {
             headers = new HttpHeaders().set('Content-Type', 'application/json').set('Authorization', RestService.vidarAuthorization);
