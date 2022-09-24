@@ -2,6 +2,7 @@ import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
 import {Pool} from "../data/pool";
 import {PoolObserverService} from "./observers/pool-observer.service";
+import {RestService} from "./rest.service";
 
 @Injectable()
 export class PoolService {
@@ -9,7 +10,8 @@ export class PoolService {
     public static poolMap: Map<string, Pool> = new Map<string, Pool>();
     public static initialized: boolean = false;
 
-    constructor(private httpClient: HttpClient, public poolObserver: PoolObserverService) {
+    constructor(private httpClient: HttpClient, public poolObserver: PoolObserverService,
+                public restService: RestService) {
     }
 
     public initialize() {

@@ -1,899 +1,853 @@
 [
-{
-  "info": {
+  {
+    "info": {
       "url_png_icon_64x64": "https://fairpool.eu/icon-64x64.png",
       "url_png_logo": "https://fairpool.eu/icon-512x512.png",
       "location": "",
       "social": {
-          "twitter_handle": "@fair_pool",
-          "telegram_handle": "fair_pool01",
-          "facebook_handle": "",
-          "youtube_handle": "",
-          "twitch_handle": "",
-          "discord_handle": ""
+        "twitter_handle": "@fair_pool",
+        "telegram_handle": "fair_pool01",
+        "facebook_handle": "",
+        "youtube_handle": "",
+        "twitch_handle": "",
+        "discord_handle": ""
       },
       "about": {
-          "me": "Welcome to FAIR Pool #01 Cardano Staking Pool. Staking since the first shelley epoch. This is a cardano staking pool based in europe with focus on strengthening and decentralizing the cardano network. We offer highly available, secure staking based on automated and scalable nodes driven by a modern server environment. We deeply believe in decentralization and giving back the power to each individual. The margin is set to 0.5% and we offer the lowest possible fixed fee of 340 ADA and this will never change for the lifetime of this pool."
+        "me": "Welcome to FAIR Pool #01 Cardano Staking Pool. Staking since the first shelley epoch. This is a cardano staking pool based in europe with focus on strengthening and decentralizing the cardano network. We offer highly available, secure staking based on automated and scalable nodes driven by a modern server environment. We deeply believe in decentralization and giving back the power to each individual. The margin is set to 0.5% and we offer the lowest possible fixed fee of 340 ADA and this will never change for the lifetime of this pool."
       }
-  },
-  "telegram-admin-handle": {
+    },
+    "telegram-admin-handle": {
       "0": "FAIR_Pool"
-  }
-}
-,
-{
-  "info": {
-    "url_png_icon_64x64": "https://www.hedgespool.com/Hedges_64_Circle.png",
-    "url_png_logo": "https://www.hedgespool.com/01_Hedges_Ticker.png",
-    "location": "USA",
-    "social": {
-      "twitter_handle": "HedgesPool",
-      "telegram_handle": "HedgesStakePool",
-      "youtube_handle": "channel/UCf0wuvFsay_HeEf0X_YXF4g",
-      "discord_handle": "Nm8FM7JtqB"
-    },
-
-    "about": {
-      "me": "",
-      "server": "Encourage decentralization by delegating to the reliable and hard working Hedges Stake Pool",
-      "company": "HedgesPool"
-    },
-    "my-pool-ids": {
-      "0": "281f1aa1feb755f5bb1173a59e78ae5167fea70f728219e6810f28ee"
     }
-  }
-},
-
-{
+  },
+  {
     "info": {
-        "url_png_icon_64x64": "https://red-sky.one/wp-content/uploads/2021/12/enigma_s_logo.png",
-        "url_png_logo": "https://red-sky.one/wp-content/uploads/2021/12/enigma_s_logo.png",
-        "location": "Ontario, England",
-        "social": {
-            "twitter_handle": "EnigmA_SPO",
-            "telegram_handle": "EnigmApool",
-            "tiktok_handle": "cardano.spo?lang=en",
-            "discord": "https://discord.gg/trhq94BMcE"
-        },
-        "company": {
-            "name": "Red-Sky",
-            "location": "Ontario"
-        },
-        "about": {
-            "me": "The EnigmA stake pool is operational since epoch 222. We are an independent stake pool operator and support SPOs who are running single pools. We will never start the 2nd pool as we believe in the decentralization of the network. Our mission is to Decentralizing the Cardano network, Donate to Cancer research hospitals and give back to our delegators. We thank you for your love and support. Let’s mint some ADA together!",
-            "mission": "Our mission is to help the Cardano network to become more secure and decentralize. Securing the Cardano network is important, but it is also important that we take care of our local community and our delegators. We Donate 5% of our reward to Cancer research hospitals and another 5% ADA as an extra bonus on top of regular staking rewards for our delegators.",
-            "server": "Running Bare Metal Server"
-        }
+      "url_png_icon_64x64": "https://www.hedgespool.com/Hedges_64_Circle.png",
+      "url_png_logo": "https://www.hedgespool.com/01_Hedges_Ticker.png",
+      "location": "USA",
+      "social": {
+        "twitter_handle": "HedgesPool",
+        "telegram_handle": "HedgesStakePool",
+        "youtube_handle": "channel/UCf0wuvFsay_HeEf0X_YXF4g",
+        "discord_handle": "Nm8FM7JtqB"
+      },
+      "about": {
+        "me": "",
+        "server": "Encourage decentralization by delegating to the reliable and hard working Hedges Stake Pool",
+        "company": "HedgesPool"
+      },
+      "my-pool-ids": {
+        "0": "281f1aa1feb755f5bb1173a59e78ae5167fea70f728219e6810f28ee"
+      }
+    }
+  },
+  {
+    "info": {
+      "url_png_icon_64x64": "https://red-sky.one/wp-content/uploads/2021/12/enigma_s_logo.png",
+      "url_png_logo": "https://red-sky.one/wp-content/uploads/2021/12/enigma_s_logo.png",
+      "location": "Ontario, England",
+      "social": {
+        "twitter_handle": "EnigmA_SPO",
+        "telegram_handle": "EnigmApool",
+        "tiktok_handle": "cardano.spo?lang=en",
+        "discord": "https://discord.gg/trhq94BMcE"
+      },
+      "company": {
+        "name": "Red-Sky",
+        "location": "Ontario"
+      },
+      "about": {
+        "me": "The EnigmA stake pool is operational since epoch 222. We are an independent stake pool operator and support SPOs who are running single pools. We will never start the 2nd pool as we believe in the decentralization of the network. Our mission is to Decentralizing the Cardano network, Donate to Cancer research hospitals and give back to our delegators. We thank you for your love and support. Let’s mint some ADA together!",
+        "mission": "Our mission is to help the Cardano network to become more secure and decentralize. Securing the Cardano network is important, but it is also important that we take care of our local community and our delegators. We Donate 5% of our reward to Cancer research hospitals and another 5% ADA as an extra bonus on top of regular staking rewards for our delegators.",
+        "server": "Running Bare Metal Server"
+      }
     },
     "my-pool-id": {
-        "1": "3805681d8d4bc9c7f298c24fdeca3406849e2db84a0708718d96d0b2"
+      "1": "3805681d8d4bc9c7f298c24fdeca3406849e2db84a0708718d96d0b2"
     }
-}
-
-,
-{
-	"info": {
-		"url_png_icon_64x64": "https://46s.au.ngrok.io/images/undraw/46S-64x64.PNG",
-		"url_png_logo": "https://46s.au.ngrok.io/images/undraw/46S.PNG",
-		"location": "Invercargill, New Zealand",
-		"social": {
-			"twitter_handle": "46south1",
-			"telegram_handle": "CSP_46S",
-			"facebook_handle": "46South",
-			"youtube_handle": "",
-			"twitch_handle": "",
-			"discord_handle": "",
-			"github_handle": ""
-		},
-		"company": {
-			"name": "",
-			"addr": "",
-			"city": "Invercargill",
-			"country": "New Zealand",
-			"company_id": "",
-			"vat_id": ""
-		},
-		"about": {
-			"me": "Cardano enthusiast, crypto believer",
-			"server": "World's southernmost Cardano Stake Pool running on bare metal servers. Running on 100% renewable energy. Located in Invercargill, New Zealand",
-			"company": ""
-		},
-
-		"my-pool-ids": {
-			"0": "12d4d2f7a7c5b4ae10853d093257d71bd3ac6d2abccc2b65fc0bff8f"
-		},
-		"when-satured-then-recommend": {
-			"0": ""
-		},
-		"adapools_ext": {
-			"prometheus": {
-				"0": {
-					"name": "",
-					"type": "",
-					"key": ""
-				},
-				"1": {
-					"name": "",
-					"type": "",
-					"key": ""
-				},
-				"2": {
-					"name": "",
-					"type": "",
-					"key": ""
-				}
-			}
-		}
-	}
-	
-}
-,
-{
+  },
+  {
     "info": {
-        "url_png_icon_64x64": "https://adacoinz.com/poolinfo/images/coinz-logo-64x64.png",
-        "url_png_logo": "https://adacoinz.com/poolinfo/images/coinz-logo-208x208.png",
-        "location": "N. Virginia, United States",
-        "social": {
-            "twitter_handle": "adacoinz",
-            "telegram_handle": "adacoinz",
-            "facebook_handle": "adacoinzstaking",
-            "youtube_handle": "uBz3ZPM5lgd41sDaUCLmkw",
-            "twitch_handle": "",
-            "discord_handle": "wVv746p8Vd",
-            "github_handle": "adacoinz"
-        },
-        "company": {
-            "name": "ADA COINZ",
-            "addr": "",
-            "city": "Los Angeles",
-            "country": "California",
-            "company_id": "",
-            "vat_id": ""
-        },
-        "about": {
-            "me": "I am an IT professional with 20 years experience. Cardano is hope and a blessing.",
-            "server": "Stake pools are on AWS and GCP in multiple zones for high availability and resiliance.",
-            "company": "ADA stake pool, helping the decentralization of the blockchain and giving back via donations."
-        },
-        "rss": ""
+      "url_png_icon_64x64": "https://46s.au.ngrok.io/images/undraw/46S-64x64.PNG",
+      "url_png_logo": "https://46s.au.ngrok.io/images/undraw/46S.PNG",
+      "location": "Invercargill, New Zealand",
+      "social": {
+        "twitter_handle": "46south1",
+        "telegram_handle": "CSP_46S",
+        "facebook_handle": "46South",
+        "youtube_handle": "",
+        "twitch_handle": "",
+        "discord_handle": "",
+        "github_handle": ""
+      },
+      "company": {
+        "name": "",
+        "addr": "",
+        "city": "Invercargill",
+        "country": "New Zealand",
+        "company_id": "",
+        "vat_id": ""
+      },
+      "about": {
+        "me": "Cardano enthusiast, crypto believer",
+        "server": "World's southernmost Cardano Stake Pool running on bare metal servers. Running on 100% renewable energy. Located in Invercargill, New Zealand",
+        "company": ""
+      },
+      "my-pool-ids": {
+        "0": "12d4d2f7a7c5b4ae10853d093257d71bd3ac6d2abccc2b65fc0bff8f"
+      },
+      "when-satured-then-recommend": {
+        "0": ""
+      },
+      "adapools_ext": {
+        "prometheus": {
+          "0": {
+            "name": "",
+            "type": "",
+            "key": ""
+          },
+          "1": {
+            "name": "",
+            "type": "",
+            "key": ""
+          },
+          "2": {
+            "name": "",
+            "type": "",
+            "key": ""
+          }
+        }
+      }
+    }
+  },
+  {
+    "info": {
+      "url_png_icon_64x64": "https://adacoinz.com/poolinfo/images/coinz-logo-64x64.png",
+      "url_png_logo": "https://adacoinz.com/poolinfo/images/coinz-logo-208x208.png",
+      "location": "N. Virginia, United States",
+      "social": {
+        "twitter_handle": "adacoinz",
+        "telegram_handle": "adacoinz",
+        "facebook_handle": "adacoinzstaking",
+        "youtube_handle": "uBz3ZPM5lgd41sDaUCLmkw",
+        "twitch_handle": "",
+        "discord_handle": "wVv746p8Vd",
+        "github_handle": "adacoinz"
+      },
+      "company": {
+        "name": "ADA COINZ",
+        "addr": "",
+        "city": "Los Angeles",
+        "country": "California",
+        "company_id": "",
+        "vat_id": ""
+      },
+      "about": {
+        "me": "I am an IT professional with 20 years experience. Cardano is hope and a blessing.",
+        "server": "Stake pools are on AWS and GCP in multiple zones for high availability and resiliance.",
+        "company": "ADA stake pool, helping the decentralization of the blockchain and giving back via donations."
+      },
+      "rss": ""
     },
     "my-pool-ids": {
-        "0": "91991d9238f3f270a46fc237acc3abcdf2456ff163c1639951d75d15"
+      "0": "91991d9238f3f270a46fc237acc3abcdf2456ff163c1639951d75d15"
     },
     "when-satured-then-recommend": {},
     "telegram-admin-handle": {
-        "0": "adacoinz"
+      "0": "adacoinz"
     },
     "adapools_ext": {
-        "prometheus": {
-            "0": {
-                "name": "relay 1",
-                "type": "relay",
-                "key": "relay01.adacoinz.com/connect"
-            },
-            "1": {
-                "name": "relay 2",
-                "type": "relay",
-                "key": "relay02.adacoinz.com/connect"
-            },
-            "2": {
-                "name": "block producer",
-                "type": "bp",
-                "key": "core01.adacoinz.com/connect"
-            }
+      "prometheus": {
+        "0": {
+          "name": "relay 1",
+          "type": "relay",
+          "key": "relay01.adacoinz.com/connect"
+        },
+        "1": {
+          "name": "relay 2",
+          "type": "relay",
+          "key": "relay02.adacoinz.com/connect"
+        },
+        "2": {
+          "name": "block producer",
+          "type": "bp",
+          "key": "core01.adacoinz.com/connect"
         }
+      }
     }
-}
-,
-{
+  },
+  {
     "info": {
-        "url_png_icon_64x64": "https://cardano-blockhouse.de/img/logo_64x64.png",
-        "url_png_logo": "https://cardano-blockhouse.de/img/logo_horizontal_ap.png",
-        "location": "Germany",
-        "social": {
-            "twitter_handle": "cardanoBH",
-            "telegram_handle": "CardanoBlockhouse",
-            "facebook_handle": "",
-            "youtube_handle": "",
-            "twitch_handle": "",
-            "discord_handle": "",
-            "github_handle": "cardano-blockhouse",
-            "Verification": "695ef38fa1b86aa499"
-        },
-        "about": {
-            "me": "Cardano's Blockhouse welcomes you at our stake pool. We build Cardano's blocks! One experienced system administrator manages our stake pool 24/7 so that you can rely on best block rewards at all times. We're glad to serve you.",
-            "server": "To achieve best redundancy and geographical distribution a mix of virtual and physical bare-metal machines is used. Each of our relay- and block-nodes is equipped with at least 4 dedicated cores, 32 GByte ECC RAM and reliable storage. Ressources are easily scalable and get adjusted whenever required."
-        }
+      "url_png_icon_64x64": "https://cardano-blockhouse.de/img/logo_64x64.png",
+      "url_png_logo": "https://cardano-blockhouse.de/img/logo_horizontal_ap.png",
+      "location": "Germany",
+      "social": {
+        "twitter_handle": "cardanoBH",
+        "telegram_handle": "CardanoBlockhouse",
+        "facebook_handle": "",
+        "youtube_handle": "",
+        "twitch_handle": "",
+        "discord_handle": "",
+        "github_handle": "cardano-blockhouse",
+        "Verification": "695ef38fa1b86aa499"
+      },
+      "about": {
+        "me": "Cardano's Blockhouse welcomes you at our stake pool. We build Cardano's blocks! One experienced system administrator manages our stake pool 24/7 so that you can rely on best block rewards at all times. We're glad to serve you.",
+        "server": "To achieve best redundancy and geographical distribution a mix of virtual and physical bare-metal machines is used. Each of our relay- and block-nodes is equipped with at least 4 dedicated cores, 32 GByte ECC RAM and reliable storage. Ressources are easily scalable and get adjusted whenever required."
+      }
     }
-},
-{
-       "info": {
-        "url_png_icon_64x64": "https://adaloop.org/Logo.png",
-        "location": "Montreal, Canada",
-        "social": {
-            "twitter_handle": "AdaLoopPool",
-            "telegram_handle": "AdaLoop"
-        },
-        "about": {
-            "me": "Earn Rewards and Support AbleGamers | IT pro working in the industry for over 20 years across various technologies",
-            "server": "Node Canada, Relays US and Germany | BP config CPU:8cores|RAM:32G|Fast NVMe"
-    },
-    "my-pool-ids": {
+  },
+  {
+    "info": {
+      "url_png_icon_64x64": "https://adaloop.org/Logo.png",
+      "location": "Montreal, Canada",
+      "social": {
+        "twitter_handle": "AdaLoopPool",
+        "telegram_handle": "AdaLoop"
+      },
+      "about": {
+        "me": "Earn Rewards and Support AbleGamers | IT pro working in the industry for over 20 years across various technologies",
+        "server": "Node Canada, Relays US and Germany | BP config CPU:8cores|RAM:32G|Fast NVMe"
+      },
+      "my-pool-ids": {
         "0": "297b5acd8b90df8a1bfd98aa1a61f323b87fead4b8a2b55f2fb83ce6"
-    },
-    "when-satured-then-recommend": {
+      },
+      "when-satured-then-recommend": {
         "0": "Small Pools - Support Decentralization!"
+      }
     }
-}
-}
-,
-{
+  },
+  {
     "info": {
-        "url_png_icon_64x64": "https://twitter.com/maple_pool/photo",
-        "url_png_logo": "https://twitter.com/maple_pool/photo",
-        "location": "Montreal, Canada",
-        "social": {
-            "twitter_handle": "maple_pool"
-        },
-        "about": {
-            "me": "Bare Metal Pool run by experimented Systems Administrator and a Facilities Engineer",
-            "server": "Hydro powered Bare Metal Pool with a relay node and a core node with continuous backups and monitored 24/7"
-        }
+      "url_png_icon_64x64": "https://twitter.com/maple_pool/photo",
+      "url_png_logo": "https://twitter.com/maple_pool/photo",
+      "location": "Montreal, Canada",
+      "social": {
+        "twitter_handle": "maple_pool"
+      },
+      "about": {
+        "me": "Bare Metal Pool run by experimented Systems Administrator and a Facilities Engineer",
+        "server": "Hydro powered Bare Metal Pool with a relay node and a core node with continuous backups and monitored 24/7"
+      }
     },
     "my-pool-ids": {
-        "0": "063951946e3d221231229a73c92446fdb9532d813e3b0d6144f16ece"
+      "0": "063951946e3d221231229a73c92446fdb9532d813e3b0d6144f16ece"
     }
-}
-,
-{
+  },
+  {
     "how-to-implement": "https://raw.githubusercontent.com/cardanians/adapools.org/master/example-meta.json",
     "info": {
-        "url_png_icon_64x64": "https://santoelectronics.com/s/santo64x64.png",
-        "url_png_logo": "https://santoelectronics.com/s/santo.png",
-        "location": "Michigan, USA",
-        "social": {
-            "twitter_handle": "nodesanto",
-            "telegram_handle": "santoelectronics",
-            "facebook_handle": "",
-            "youtube_handle": "",
-            "twitch_handle": "",
-            "discord_handle": "SantoNode#1173",
-            "github_handle": "santonode"
-        },
-        "company": {
-            "name": "Santo Electronics",
-            "addr": "3547 Alpine Ave, #2000",
-            "city": "Grand Rapids, Michigan",
-            "country": "USA",
-            "company_id": "",
-            "vat_id": ""
-        },
-        "about": {
-            "me": "Chris Nunez, Owner and Operator",
-            "server": "Linux 8core 16gb servers USA-UK-Singapore",
-            "company": ""
-        }
+      "url_png_icon_64x64": "https://santoelectronics.com/s/santo64x64.png",
+      "url_png_logo": "https://santoelectronics.com/s/santo.png",
+      "location": "Michigan, USA",
+      "social": {
+        "twitter_handle": "nodesanto",
+        "telegram_handle": "santoelectronics",
+        "facebook_handle": "",
+        "youtube_handle": "",
+        "twitch_handle": "",
+        "discord_handle": "SantoNode#1173",
+        "github_handle": "santonode"
+      },
+      "company": {
+        "name": "Santo Electronics",
+        "addr": "3547 Alpine Ave, #2000",
+        "city": "Grand Rapids, Michigan",
+        "country": "USA",
+        "company_id": "",
+        "vat_id": ""
+      },
+      "about": {
+        "me": "Chris Nunez, Owner and Operator",
+        "server": "Linux 8core 16gb servers USA-UK-Singapore",
+        "company": ""
+      }
     },
     "my-pool-ids": {
-        "0": "9837e1eca79504f57acd4e12f2db93ee04a76bca308cae61a6ee205a"
+      "0": "9837e1eca79504f57acd4e12f2db93ee04a76bca308cae61a6ee205a"
     },
     "when-satured-then-recommend": {
-        "0": "9837e1eca79504f57acd4e12f2db93ee04a76bca308cae61a6ee205a"
+      "0": "9837e1eca79504f57acd4e12f2db93ee04a76bca308cae61a6ee205a"
     },
     "telegram-admin-handle": {
-        "0": "santoelectronics"
+      "0": "santoelectronics"
     },
     "adapools_ext": {
-        "prometheus": {
-            "0": {
-                "name": "relay 1 eu",
-                "type": "relay",
-                "key": "example_get_own_on_adapools.org/connect"
-            },
-            "1": {
-                "name": "relay 2 usa",
-                "type": "relay",
-                "key": "example_get_own_on_adapools.org/connect"
-            },
-            "2": {
-                "name": "block producer home",
-                "type": "bp",
-                "key": "example_get_own_on_adapools.org/connect"
-            }
+      "prometheus": {
+        "0": {
+          "name": "relay 1 eu",
+          "type": "relay",
+          "key": "example_get_own_on_adapools.org/connect"
+        },
+        "1": {
+          "name": "relay 2 usa",
+          "type": "relay",
+          "key": "example_get_own_on_adapools.org/connect"
+        },
+        "2": {
+          "name": "block producer home",
+          "type": "bp",
+          "key": "example_get_own_on_adapools.org/connect"
         }
+      }
     }
-},
-{
+  },
+  {
     "info": {
-        "url_png_icon_64x64": "https://4wardpool.swiftcryptollc.com/img/4ward-64x64.png",
-        "url_png_logo": "https://4wardpool.swiftcryptollc.com/img/4ward.png",
-        "location": "Leesburg, Virginia, United States",
-        "social": {
-            "twitter_handle": "swiftcryptollc",
-            "telegram_handle": "swiftcryptollc",
-            "facebook_handle": "swiftcryptollc",
-            "youtube_handle": "",
-            "twitch_handle": "",
-            "discord_handle": "Swift Crypto [4WARD]#7182",
-            "github_handle": "swiftcryptollc"
-        },
-        "company": {
-            "name": "Swift Crypto LLC",
-            "addr": "",
-            "city": "Leesburg, Virginia",
-            "country": "US",
-            "company_id": "",
-            "vat_id": ""
-        },
-        "about": {
-            "me": "The ADA for Warriors (4WARD) pool is a mission-driven single pool operated by a small business located in the US. The pool was created as a way to give back to those who have quietly served by donating 30% of the operator's rewards to the Third Option Foundation. We also donate 10% to Captive Audience and 10% to 500 Rising. Donations for each mission can be tracked on their respective pages on our pool website.",
-            "server": "Servers consist of two relays and one block producer deployed in AWS.  Each instance has 4 CPUs and 16 GB RAM (exceeds current hardware requirements).  One relay and the block producer are in the AWS US East Region and the other relay is in the AWS European Central Region.  Security and recovery best practices have been implemented to help ensure availability.",
-            "company": "Swift Crypto LLC is a small business registered in Leesburg, Virginia, USA."
-        }
+      "url_png_icon_64x64": "https://4wardpool.swiftcryptollc.com/img/4ward-64x64.png",
+      "url_png_logo": "https://4wardpool.swiftcryptollc.com/img/4ward.png",
+      "location": "Leesburg, Virginia, United States",
+      "social": {
+        "twitter_handle": "swiftcryptollc",
+        "telegram_handle": "swiftcryptollc",
+        "facebook_handle": "swiftcryptollc",
+        "youtube_handle": "",
+        "twitch_handle": "",
+        "discord_handle": "Swift Crypto [4WARD]#7182",
+        "github_handle": "swiftcryptollc"
+      },
+      "company": {
+        "name": "Swift Crypto LLC",
+        "addr": "",
+        "city": "Leesburg, Virginia",
+        "country": "US",
+        "company_id": "",
+        "vat_id": ""
+      },
+      "about": {
+        "me": "The ADA for Warriors (4WARD) pool is a mission-driven single pool operated by a small business located in the US. The pool was created as a way to give back to those who have quietly served by donating 30% of the operator's rewards to the Third Option Foundation. We also donate 10% to Captive Audience and 10% to 500 Rising. Donations for each mission can be tracked on their respective pages on our pool website.",
+        "server": "Servers consist of two relays and one block producer deployed in AWS.  Each instance has 4 CPUs and 16 GB RAM (exceeds current hardware requirements).  One relay and the block producer are in the AWS US East Region and the other relay is in the AWS European Central Region.  Security and recovery best practices have been implemented to help ensure availability.",
+        "company": "Swift Crypto LLC is a small business registered in Leesburg, Virginia, USA."
+      }
     },
     "my-pool-ids": {
-        "0": "b6063f0f2fa05d98132f15defed4c69c06ea61451b4ea4cea0ce1b80"
+      "0": "b6063f0f2fa05d98132f15defed4c69c06ea61451b4ea4cea0ce1b80"
     }
-}
-,
-{ 
+  },
+  {
     "info": {
-        "url_png_icon_64x64": "https://apexpool.info/img/icon.png",
-        "url_png_logo": "https://apexpool.info/img/logo.png",
-        "social": {
-            "twitter_handle": "cardanoapexpool",
-            "telegram_handle": "apexpool",
-            "facebook_handle": "",
-            "youtube_handle": "",
-            "twitch_handle": "",
-            "discord_handle": "EY7JDK2Q53",
-            "github_handle": "cardano-apexpool"
-        }
+      "url_png_icon_64x64": "https://apexpool.info/img/icon.png",
+      "url_png_logo": "https://apexpool.info/img/logo.png",
+      "social": {
+        "twitter_handle": "cardanoapexpool",
+        "telegram_handle": "apexpool",
+        "facebook_handle": "",
+        "youtube_handle": "",
+        "twitch_handle": "",
+        "discord_handle": "EY7JDK2Q53",
+        "github_handle": "cardano-apexpool"
+      }
     },
     "my-pool-ids": {
-        "0": "538299a358e79a289c8de779f8cd09dd6a6bb286de717d1f744bb357"
+      "0": "538299a358e79a289c8de779f8cd09dd6a6bb286de717d1f744bb357"
     }
-}
-,
-{
+  },
+  {
     "info": {
-        "url_png_icon_64x64": "https://i.ibb.co/87g1Gr6/mm64.png",
-        "url_png_logo": "https://i.ibb.co/0stb2cT/mm200.png",
-        "location": "Melbourne, Australia",
-        "social": {
-            "twitter_handle": "MattyForAll",
-            "telegram_handle": "",
-            "facebook_handle": "",
-            "youtube_handle": "channel/UCpz7w-c5CNqEyp6XW1YMkcA",
-            "twitch_handle": "",
-            "discord_handle": "",
-            "github_handle": ""
-        },
-        "company": {
-            "name": "",
-            "addr": "",
-            "city": "",
-            "country": "",
-            "company_id": "",
-            "vat_id": ""
-        },
-        "about": {
-            "me": "",
-            "server": "Bare Metal Server - 100% Renewables - With backup relay in the cloud",
-            "company": ""
-        },
-    "my-pool-ids": {
+      "url_png_icon_64x64": "https://i.ibb.co/87g1Gr6/mm64.png",
+      "url_png_logo": "https://i.ibb.co/0stb2cT/mm200.png",
+      "location": "Melbourne, Australia",
+      "social": {
+        "twitter_handle": "MattyForAll",
+        "telegram_handle": "",
+        "facebook_handle": "",
+        "youtube_handle": "channel/UCpz7w-c5CNqEyp6XW1YMkcA",
+        "twitch_handle": "",
+        "discord_handle": "",
+        "github_handle": ""
+      },
+      "company": {
+        "name": "",
+        "addr": "",
+        "city": "",
+        "country": "",
+        "company_id": "",
+        "vat_id": ""
+      },
+      "about": {
+        "me": "",
+        "server": "Bare Metal Server - 100% Renewables - With backup relay in the cloud",
+        "company": ""
+      },
+      "my-pool-ids": {
         "0": "68cc6dc773c067328a43e5e21086b515d23f8326c59035245996f34b",
         "1": ""
       }
     }
-}
-,
-{
+  },
+  {
     "info": {
-        "url_png_icon_64x64": "https://img1.wsimg.com/isteam/ip/d3044e9b-ce48-45c6-89e5-82bbb7031bde/favicon/208e8929-1198-45c5-88f1-b5446c78b26b.png/:/rs=w:64,h:64,m",
-        "url_png_logo": "https://img1.wsimg.com/isteam/ip/d3044e9b-ce48-45c6-89e5-82bbb7031bde/favicon/208e8929-1198-45c5-88f1-b5446c78b26b.png",
-        "location": "San-Fransisco, California",
-        "social": {
-            "twitter_handle": "AdaRarePool",
-            "telegram_handle": "Ararepool",
-            "facebook_handle": "",
-            "youtube_handle": "channel/UC2_Vi4_n_jiSMLAVSCGYWjA/featured",
-            "twitch_handle": "",
-            "discord_handle": "BWATTgu2D2",
-            "github_handle": "ARARE-pool"
-        },
-        "company": {
-            "name": "ADA Rare",
-            "addr": "",
-            "city": "Los-Angeles",
-            "country": "California",
-            "company_id": "",
-            "vat_id": ""
-        },
-        "about": {
-            "me": "...",
-            "server": "Secured Server - STABILITY",
-            "company": "..."
-        },
-        "rss": ""
+      "url_png_icon_64x64": "https://img1.wsimg.com/isteam/ip/d3044e9b-ce48-45c6-89e5-82bbb7031bde/favicon/208e8929-1198-45c5-88f1-b5446c78b26b.png/:/rs=w:64,h:64,m",
+      "url_png_logo": "https://img1.wsimg.com/isteam/ip/d3044e9b-ce48-45c6-89e5-82bbb7031bde/favicon/208e8929-1198-45c5-88f1-b5446c78b26b.png",
+      "location": "San-Fransisco, California",
+      "social": {
+        "twitter_handle": "AdaRarePool",
+        "telegram_handle": "Ararepool",
+        "facebook_handle": "",
+        "youtube_handle": "channel/UC2_Vi4_n_jiSMLAVSCGYWjA/featured",
+        "twitch_handle": "",
+        "discord_handle": "BWATTgu2D2",
+        "github_handle": "ARARE-pool"
+      },
+      "company": {
+        "name": "ADA Rare",
+        "addr": "",
+        "city": "Los-Angeles",
+        "country": "California",
+        "company_id": "",
+        "vat_id": ""
+      },
+      "about": {
+        "me": "...",
+        "server": "Secured Server - STABILITY",
+        "company": "..."
+      },
+      "rss": ""
     },
     "my-pool-ids": {
-        "0": "f65731aa68706607718d140426c75cd7ac2c40703c31c325fdd46f91"
+      "0": "f65731aa68706607718d140426c75cd7ac2c40703c31c325fdd46f91"
     },
     "telegram-admin-handle": {
-        "0": "Adarare"
+      "0": "Adarare"
     },
     "adapools_ext": {
-        "prometheus": {
-             "0": {
-                "name": "block producer home",
-                "type": "bp",
-                "key": "55f6ead48089a770048632c4df47008d"
-            }
+      "prometheus": {
+        "0": {
+          "name": "block producer home",
+          "type": "bp",
+          "key": "55f6ead48089a770048632c4df47008d"
         }
+      }
     }
-}
-,
-{
-	"info": {
-		"url_png_icon_64x64": "https://git.io/JZRNK",
-		"url_png_logo": "https://git.io/JZRNL",
-		"location": "Singapore",
-		"social": {
-			"twitter_handle": "Degas_stakepool",
-			"telegram_handle": "boomalax",
-			"facebook_handle": "https://www.facebook.com/degas.stakepool",
-			"youtube_handle": "",
-			"twitch_handle": "",
-			"discord_handle": "Lonely_Extension927",
-			"github_handle": "F2ViADA"
-		},
-		"about": {
-			"me": "French Engineer with a strong interest for the energy sector and sustainability. Supporting a Gas flaring reduction, energy waste reduction and energy transition startup.",
-			"server": "BareMetal Block Producer and Linode cloud Relays",
-			"mission": "Support the energy transition and fight GHG emission. Part of Mission Driven Pools, Single Pool Operators and Bare Metal Alliances"
-		},
-		"my-pool-ids": {
-			"0": "pool1g9v6nnrn8x7jcj26mqernsh3h97g6gyhamttzg8q39yvjr60g7k"
-		},
-"types": {
-                "charity": true,
-                "business": false,
-                "beneficial": true
-            }
-	}
-}
-,
-{
+  },
+  {
     "info": {
-        "url_png_icon_64x64": "https://www.lidonation.com/img/lido-nation-icon-white-bg.png",
-        "url_png_logo": "https://www.lidonation.com/img/lido-logo-square-white-bg.png",
-        "location": "Minneapolis, Minnesota",
-        "social": {
-            "twitter_handle": "lidonation",
-            "facebook_handle": "lidonation",
-            "youtube_handle": "lidonation"
-        },
-        "about": {
-            "me": "We are two polyglot developers and educators building a community rooted in and starting with cardano but aiming to provide education and communication for the entire public blockchain space.",
-            "server": "A kubernetes deployment hosted on google cloud. 32Gbps network. Auto scaling. Self healing. ",
-            "company": "Lido Nation"
-        }
+      "url_png_icon_64x64": "https://git.io/JZRNK",
+      "url_png_logo": "https://git.io/JZRNL",
+      "location": "Singapore",
+      "social": {
+        "twitter_handle": "Degas_stakepool",
+        "telegram_handle": "boomalax",
+        "facebook_handle": "https://www.facebook.com/degas.stakepool",
+        "youtube_handle": "",
+        "twitch_handle": "",
+        "discord_handle": "Lonely_Extension927",
+        "github_handle": "F2ViADA"
+      },
+      "about": {
+        "me": "French Engineer with a strong interest for the energy sector and sustainability. Supporting a Gas flaring reduction, energy waste reduction and energy transition startup.",
+        "server": "BareMetal Block Producer and Linode cloud Relays",
+        "mission": "Support the energy transition and fight GHG emission. Part of Mission Driven Pools, Single Pool Operators and Bare Metal Alliances"
+      },
+      "my-pool-ids": {
+        "0": "pool1g9v6nnrn8x7jcj26mqernsh3h97g6gyhamttzg8q39yvjr60g7k"
+      },
+      "types": {
+        "charity": true,
+        "business": false,
+        "beneficial": true
+      }
+    }
+  },
+  {
+    "info": {
+      "url_png_icon_64x64": "https://www.lidonation.com/img/lido-logo-social.png",
+      "url_png_logo": "https://www.lidonation.com/img/llogo-transparent.png",
+      "location": "Minneapolis, Minnesota",
+      "social": {
+        "twitter_handle": "lidonation",
+        "facebook_handle": "lidonation",
+        "youtube_handle": "lidonation"
+      },
+      "about": {
+        "me": "We are two polyglot developers and educators building a community rooted in and starting with cardano but aiming to provide education and communication for the entire public blockchain space.",
+        "server": "A kubernetes deployment hosted on google cloud. 32Gbps network. Auto scaling. Self healing. ",
+        "company": "Lido Nation Foundation is a non-profit registered in Wyoming, United States, operated out of Minnesota by man lido and lady lido."
+      }
     },
     "my-pool-ids": {
-        "0": "b5a1a820cc3783a4e637bce79d1cc2774b241c08251e45c5d1f8f3f6"
+      "0": "b5a1a820cc3783a4e637bce79d1cc2774b241c08251e45c5d1f8f3f6"
     }
-}
-,
-{
+  },
+  {
     "info": {
-        "url_png_icon_64x64": "https://raw.githubusercontent.com/EtherealStakePool/Cardano/main/icon.png",
-        "url_png_logo": "https://raw.githubusercontent.com/EtherealStakePool/Cardano/main/logo.png",
-     "social": {
-            "twitter_handle": "EnvyStakePool",
-            "telegram_handle": "EnvyStakePool"
-        },
-     "company": {
-            "name": "Envy Stake Pool",
-            "city": "USA, USA",
-            "country": "USA"
-        },
-     "about": {
-            "me": "We are two brothers with a passion for Cardano who want to help build the community and learn more about this exciting technology by investing our time, money, and energy into providing a high quality stake pool for anyone who wants to participate!",
-            "server": "Currently using Digital Ocean servers for block producer and relay nodes. We use an air-gapped offline machine for sensitive transactions."
-        },
-    "my-pool-ids": {
+      "url_png_icon_64x64": "https://raw.githubusercontent.com/EtherealStakePool/Cardano/main/icon.png",
+      "url_png_logo": "https://raw.githubusercontent.com/EtherealStakePool/Cardano/main/logo.png",
+      "social": {
+        "twitter_handle": "EnvyStakePool",
+        "telegram_handle": "EnvyStakePool"
+      },
+      "company": {
+        "name": "Envy Stake Pool",
+        "city": "USA, USA",
+        "country": "USA"
+      },
+      "about": {
+        "me": "We are two brothers with a passion for Cardano who want to help build the community and learn more about this exciting technology by investing our time, money, and energy into providing a high quality stake pool for anyone who wants to participate!",
+        "server": "Currently using Digital Ocean servers for block producer and relay nodes. We use an air-gapped offline machine for sensitive transactions."
+      },
+      "my-pool-ids": {
         "0": "14eae9da8ab6d322176ea88f40e9d32d843996bf2de88240e35594ea",
         "1": ""
       },
-    "telegram-admin-handle": {
+      "telegram-admin-handle": {
         "0": "EnvyStakePool"
+      }
     }
-    }
-}
-,
-{
-     "verification":"32f2d23a920d915806",
+  },
+  {
+    "verification": "32f2d23a920d915806",
     "info": {
-        "url_png_icon_64x64": "https://kakstorage.blob.core.windows.net/fasopool/cover.png",
-        "url_png_logo": "https://kakstorage.blob.core.windows.net/fasopool/cover.png",
-        "location": "Lincoln Nebraska, United States",
-        "social": {
-            "twitter_handle": "FasoPool",
-            "telegram_handle": "https://t.me/fasopool",
-            "facebook_handle": "",
-            "youtube_handle": "",
-            "twitch_handle": "",
-            "discord_handle": "FasoStakePool",
-            "github_handle": ""
-        },
-        "company": {
-            "name": "",
-            "addr": "",
-            "city": "",
-            "country": "",
-            "company_id": "",
-            "vat_id": ""
-        },
-        "about": {
-            "me": "",
-            "server": "Nodes are running on Bare Metal servers power with solar energy: support decentralization ",
-            "company": ""
-        },
-        "rss": ""
+      "url_png_icon_64x64": "https://kakstorage.blob.core.windows.net/fasopool/cover.png",
+      "url_png_logo": "https://kakstorage.blob.core.windows.net/fasopool/cover.png",
+      "location": "Lincoln Nebraska, United States",
+      "social": {
+        "twitter_handle": "FasoPool",
+        "telegram_handle": "https://t.me/fasopool",
+        "facebook_handle": "",
+        "youtube_handle": "",
+        "twitch_handle": "",
+        "discord_handle": "FasoStakePool",
+        "github_handle": ""
+      },
+      "company": {
+        "name": "",
+        "addr": "",
+        "city": "",
+        "country": "",
+        "company_id": "",
+        "vat_id": ""
+      },
+      "about": {
+        "me": "",
+        "server": "Nodes are running on Bare Metal servers power with solar energy: support decentralization ",
+        "company": ""
+      },
+      "rss": ""
     },
     "my-pool-ids": {
-        "0": "pool1wz4euuc8r3gfya335gvpxl2nuajkvkjh3d6ylm4w83wcz7lqxc6"
+      "0": "pool1wz4euuc8r3gfya335gvpxl2nuajkvkjh3d6ylm4w83wcz7lqxc6"
     },
     "telegram-admin-handle": {
-        "0": ""
+      "0": ""
     }
-}
-,
-{
- "info": {
-        "url_png_icon_64x64": "https://adasquirrel.com/meta/logo_ico.png",
-        "url_png_logo": "https://adasquirrel.com/meta/logo_stake.png",
-        "location": "Pompei, Italy",
-        "social": {
-            "twitter_handle": "AdaSquirrel",
-            "telegram_handle": "Adasquirrel",
-            "facebook_handle": "Adasquirrel",
-	    "discord_handle": "910611072233402378"
-        },
-    "my-pool-ids": {
-        "0": "c9a397b8aa1d963030999d4edfd0f809f290f9899c73dfa1ad3a6d70"
-    }    
-  }
-},
-{
-    "info": {
-        "social": {
-            "twitter_handle": "rabbitholepools",
-            "telegram_handle": "Rabbitholepools",
-            "youtube_handle": "channel/UC1_T_adN8v-PDqaiJ0dYXLg",
-            "github_handle": "adrem1"
-        },
-        "company": {
-            "name": "Rabbitholepools",
-            "city": "Townsville",
-            "country": "Australia",
-            "vat_id": "ABN37447403966"
-        },
-        "about": {
-            "company": "We are an Australian Cardano Stake Pool, committed to security, decentralisation and always running one pool only. Our fees are 1% now and going forward, and our focus for community outreach is centred on local recycling and clean transport projects."
-        },
-    "my-pool-ids": {
-        "0": "9fa14b049b735e287da702a2b0a7c2a6612e81db9cc4284339a6a2f1"
-    },
-    "when-satured-then-recommend": {
-        "0": "c94e6fe1123bf111b77b57994bcd836af8ba2b3aa72cfcefbec2d3d4"
-    }
-    }
-}
-,
-{
-  "info": {
-    "url_png_icon_64x64": "http://38.242.193.215/rsv64.png",
-    "url_png_logo": "",
-    "location": "",
-    "social": {
-      "twitter_handle": "RSVNODE",
-      "telegram_handle": "",
-      "facebook_handle": "",
-      "youtube_handle": "",
-      "twitch_handle": "",
-      "discord_handle": "",
-      "github_handle": ""
-    },
-    "company": {
-      "name": "",
-      "addr": "",
-      "city": "",
-      "country": "",
-      "company_id": "",
-      "vat_id": ""
-    },
-    "about": {
-      "me": "Experienced system administrator and Catalyst community advisor",
-      "server": "i7-6700 quad core mini servers, 16 GB ram, SSD",
-      "company": "Redundant internet connections and battery backup make our pool highly resilient"
-    },
-    "rss": ""
   },
-  "telegram-admin-handle": [
-    ""
-  ],
-  "my-pool-ids": [
-    ""
-  ],
-  "when-satured-then-recommend": [
-    ""
-  ]
-}
-,
-{
-    "how-to-implement": "",
+  {
     "info": {
-        "url_png_icon_64x64": "https://storage.googleapis.com/topo-pool/ada2.png",
-        "url_png_logo": "https://storage.googleapis.com/topo-pool/ada.png",
-        "location": "Earth",
-        "social": {
-            "twitter_handle": "TOPO_Pool",
-            "telegram_handle": "TOPOpool",
-            "facebook_handle": "",
-            "youtube_handle": "CardanoHispano",
-            "twitch_handle": "",
-            "discord_handle": "CrypTopo [TOPO⚡]#9159",
-            "github_handle": ""
-        },
-        "company": {
-            "name": "",
-            "addr": "",
-            "city": "",
-            "country": "",
-            "company_id": "",
-            "vat_id": ""
-        },
-        "about": {
-            "me": "IT pro with over 20 years experience in Systems and Network Administration, security and VoIP. Our stake holders can rest assured we will make every effort to stay competitive and reliable. Pool up since epoch 208 (first in the Shelley era) with 99.9% uptime transparently shown in our website. Member of the SPOCRA alliance and active participant in the Cardano community. -- https://www.linkedin.com/in/avilsmeier/ -- Nuestro pool es parte del grupo de Cardano Hispano (https://www.youtube.com/CardanoHispano), que busca ofrecer información clara y útil a operadores y delegadores de la comunidad hispana en general.",
-            "server": "Multiple Servers hosted in geographically distributed datacenters with different cloud providers for true decentralization. Professionally set up and maintained. Built from source with focus on security and stability for maximum uptime.",
-            "company": "TOPO Pool - An independent pool operator"
-        },
-        "rss": ""
+      "url_png_icon_64x64": "https://adasquirrel.com/meta/logo_ico.png",
+      "url_png_logo": "https://adasquirrel.com/meta/logo_stake.png",
+      "location": "Pompei, Italy",
+      "social": {
+        "twitter_handle": "AdaSquirrel",
+        "telegram_handle": "Adasquirrel",
+        "facebook_handle": "Adasquirrel",
+        "discord_handle": "QE9ptgUrd4"
+      },
+      "my-pool-ids": {
+        "0": "c9a397b8aa1d963030999d4edfd0f809f290f9899c73dfa1ad3a6d70"
+      }
+    }
+  },
+  {
+    "info": {
+      "social": {
+        "twitter_handle": "rabbitholepools",
+        "telegram_handle": "Rabbitholepools",
+        "youtube_handle": "channel/UC1_T_adN8v-PDqaiJ0dYXLg",
+        "github_handle": "adrem1"
+      },
+      "company": {
+        "name": "Rabbitholepools",
+        "city": "Townsville",
+        "country": "Australia",
+        "vat_id": "ABN37447403966"
+      },
+      "about": {
+        "company": "We are an Australian Cardano Stake Pool, committed to security, decentralisation and always running one pool only. Our fees are 1% now and going forward, and our focus for community outreach is centred on local recycling and clean transport projects."
+      },
+      "my-pool-ids": {
+        "0": "9fa14b049b735e287da702a2b0a7c2a6612e81db9cc4284339a6a2f1"
+      },
+      "when-satured-then-recommend": {
+        "0": "c94e6fe1123bf111b77b57994bcd836af8ba2b3aa72cfcefbec2d3d4"
+      }
+    }
+  },
+  {
+    "info": {
+      "url_png_icon_64x64": "http://38.242.193.215/rsv64.png",
+      "url_png_logo": "",
+      "location": "",
+      "social": {
+        "twitter_handle": "RSVNODE",
+        "telegram_handle": "",
+        "facebook_handle": "",
+        "youtube_handle": "",
+        "twitch_handle": "",
+        "discord_handle": "",
+        "github_handle": ""
+      },
+      "company": {
+        "name": "",
+        "addr": "",
+        "city": "",
+        "country": "",
+        "company_id": "",
+        "vat_id": ""
+      },
+      "about": {
+        "me": "Experienced system administrator and Catalyst community advisor",
+        "server": "i7-6700 quad core mini servers, 16 GB ram, SSD",
+        "company": "Redundant internet connections and battery backup make our pool highly resilient"
+      },
+      "rss": ""
     },
+    "telegram-admin-handle": [
+      ""
+    ],
     "my-pool-ids": [
-        "9dda57fac3474adbe8b64be48aafeff6aa31f59909231f202b642d33"
+      ""
     ],
     "when-satured-then-recommend": [
-        ""
+      ""
+    ]
+  },
+  {
+    "how-to-implement": "",
+    "info": {
+      "url_png_icon_64x64": "https://storage.googleapis.com/topo-pool/ada2.png",
+      "url_png_logo": "https://storage.googleapis.com/topo-pool/ada.png",
+      "location": "Earth",
+      "social": {
+        "twitter_handle": "TOPO_Pool",
+        "telegram_handle": "TOPOpool",
+        "facebook_handle": "",
+        "youtube_handle": "CardanoHispano",
+        "twitch_handle": "",
+        "discord_handle": "CrypTopo [TOPO⚡]#9159",
+        "github_handle": ""
+      },
+      "company": {
+        "name": "",
+        "addr": "",
+        "city": "",
+        "country": "",
+        "company_id": "",
+        "vat_id": ""
+      },
+      "about": {
+        "me": "IT pro with over 20 years experience in Systems and Network Administration, security and VoIP. Our stake holders can rest assured we will make every effort to stay competitive and reliable. Pool up since epoch 208 (first in the Shelley era) with 99.9% uptime transparently shown in our website. Member of the SPOCRA alliance and active participant in the Cardano community. -- https://www.linkedin.com/in/avilsmeier/ -- Nuestro pool es parte del grupo de Cardano Hispano (https://www.youtube.com/CardanoHispano), que busca ofrecer información clara y útil a operadores y delegadores de la comunidad hispana en general.",
+        "server": "Multiple Servers hosted in geographically distributed datacenters with different cloud providers for true decentralization. Professionally set up and maintained. Built from source with focus on security and stability for maximum uptime.",
+        "company": "TOPO Pool - An independent pool operator"
+      },
+      "rss": ""
+    },
+    "my-pool-ids": [
+      "9dda57fac3474adbe8b64be48aafeff6aa31f59909231f202b642d33"
+    ],
+    "when-satured-then-recommend": [
+      ""
     ],
     "telegram-admin-handle": [
-        ""
+      ""
     ]
-},
-{
-    "verification":"f47ce2c5974fdb9b58",
+  },
+  {
+    "verification": "f47ce2c5974fdb9b58",
     "how-to-implement": " in your meta.json - define *extended* with url to this (json) file - https://raw.githubusercontent.com/cardanians/adapools.org/master/example-meta.json",
     "info": {
-        "url_png_icon_64x64": "https://euskalstakepool.win/wp-content/uploads/2021/03/euskalstakepool-cardano-to-the-moon_64x64.png",
-        "url_png_logo": "https://euskalstakepool.win/wp-content/uploads/2021/03/euskalstakepool-cardano-to-the-moon-50k.png",
-        "location": "Bilbao, Spain",
-        "social": {
-            "twitter_handle": "euskalstakepool",
-            "telegram_handle": "+OWS5F7Tpp85iODU0",
-            "facebook_handle": "",
-            "youtube_handle": "",
-            "twitch_handle": "",
-            "discord_handle": "E7PTx3mkee",
-            "github_handle": ""
-        },
-        "company": {
-            "name": "Euskal Stake Pool",
-            "addr": "",
-            "city": "Bilbao",
-            "country": "Spain",
-            "company_id": "",
-            "vat_id": ""
-        },
-        "about": {
-            "me": "Euskal Stake Pool",
-            "server": "The 1st Basque Country's Cardano Stakepool.High Performance, Safe and Supportive Cardano Stake Pool. Minswap FISO Partner.",
-            "company": "Euskal StakePool"
-        },
-        "rss": ""
+      "url_png_icon_64x64": "https://euskalstakepool.win/wp-content/uploads/2021/03/euskalstakepool-cardano-to-the-moon_64x64.png",
+      "url_png_logo": "https://euskalstakepool.win/wp-content/uploads/2021/03/euskalstakepool-cardano-to-the-moon-50k.png",
+      "location": "Bilbao, Spain",
+      "social": {
+        "twitter_handle": "euskalstakepool",
+        "telegram_handle": "+OWS5F7Tpp85iODU0",
+        "facebook_handle": "",
+        "youtube_handle": "",
+        "twitch_handle": "",
+        "discord_handle": "E7PTx3mkee",
+        "github_handle": ""
+      },
+      "company": {
+        "name": "Euskal Stake Pool",
+        "addr": "",
+        "city": "Bilbao",
+        "country": "Spain",
+        "company_id": "",
+        "vat_id": ""
+      },
+      "about": {
+        "me": "Euskal Stake Pool",
+        "server": "The 1st Basque Country's Cardano Stakepool.High Performance, Safe and Supportive Cardano Stake Pool. Minswap FISO Partner.",
+        "company": "Euskal StakePool"
+      },
+      "rss": ""
     },
     "my-pool-ids": {
-        "0": "b4122e4d02a6986e9604d5c74ab2974e80638f78e6bd1aa01b883e6e",
-        "1": ""
+      "0": "b4122e4d02a6986e9604d5c74ab2974e80638f78e6bd1aa01b883e6e",
+      "1": ""
     },
     "when-satured-then-recommend": {
-        "0": "",
-        "1": ""
+      "0": "",
+      "1": ""
     },
     "telegram-admin-handle": {
-        "0": "euskalstakepool"
+      "0": "euskalstakepool"
     },
     "adapools_ext": {
-        "prometheus": {
-            "0": {
-                "name": "",
-                "type": "",
-                "key": ""
-            },
-            "1": {
-                "name": "",
-                "type": "",
-                "key": ""
-            },
-            "2": {
-                "name": "",
-                "type": "",
-                "key": ""
-            }
-        }
-    }
-}
-,
-{
-    "info": {
-        "url_png_icon_64x64": "https://github.com/mccamca/adarewards/raw/main/AdarIcon.png",
-        "url_png_logo": "https://github.com/mccamca/adarewards/raw/main/AdarLogoSmall.png",
-        "location": "Oregon, US",
-        "social": {
-            "twitter_handle": "ada_rewards",
-            "telegram_handle": "adar_spo",
-            "facebook_handle": "adar.stakepool",
-            "youtube_handle": "",
-            "twitch_handle": "",
-            "discord_handle": "MYdjqQRT9K",
-            "github_handle": ""
+      "prometheus": {
+        "0": {
+          "name": "",
+          "type": "",
+          "key": ""
         },
-        "company": {
-            "name": "ADA Rewards, LLC",
-            "addr": "5305 River Rd North STE B",
-            "city": "Keizer, OR",
-            "country": "US",
-            "company_id": "189358493",
-            "vat_id": ""
+        "1": {
+          "name": "",
+          "type": "",
+          "key": ""
         },
-        "about": {
-            "me": "30 years as an engineer doing Automation, DevOps, and IT",
-            "server": "Cloud / Bare Metal Hybrid",
-            "company": "ADA Rewards, LLC"
+        "2": {
+          "name": "",
+          "type": "",
+          "key": ""
         }
+      }
     }
-}
-,
-{
- "info": {
-  "url_png_icon_64x64": "https://the.adahou.se/adahs_64.png",
-  "url_png_logo": "https://the.adahou.se/adahs_256.png",
-  "location": "The Netherlands, Europe",
-  "social": {
-   "twitter_handle": "Bos020",
-   "telegram_handle": "ADAHSPool",
-   "facebook_handle": ""
   },
-  "company": {},
-  "about": {
-   "me": "I created the ADA HOUSE (ticker ADAHS) out of passion for the Cardano project. With my experience as an IT pro for 25 years I feel I can contribute to the ecosystem. Seeking delegators to help me on this mission."
-  }
- },
- "telegram-admin-handle": [],
- "my-pool-ids": [
-  "5201765589793cc9a04d8f378bc85125ec0ef7bf70beb84d01692c82"
- ],
- "when-satured-then-recommend": []
-}
-,
-{
+  {
     "info": {
-        "url_png_icon_64x64": "https://adapool.jed.id.au/jedlogo64x64.png",
-        "url_png_logo": "https://adapool.jed.id.au/jedlogo.png",
-        "location": "Brisbane, Australia",
-        "social": {
-            "instagram_handle": "",
-            "discord_handle": "84E99xT25j",
-            "reddit_handle": "JED_Stakepool",
-            "twitter_handle": "JStakepool",
-            "facebook_handle": "",
-            "youtube_handle": "",
-            "twitch_handle": "",
-            "telegram_handle": "jedstackingpool",
-            "github_handle": ""
-        },
-        "company": {
-            "name": "JED Stakepool"
-        },
-        "about": {
-            "me": "",
-            "server": "",
-            "company": ""
-    },
-    "my-pool-ids": {
+      "url_png_icon_64x64": "https://github.com/mccamca/adarewards/raw/main/AdarIcon.png",
+      "url_png_logo": "https://github.com/mccamca/adarewards/raw/main/AdarLogoSmall.png",
+      "location": "Oregon, US",
+      "social": {
+        "twitter_handle": "ada_rewards",
+        "telegram_handle": "adar_spo",
+        "facebook_handle": "adar.stakepool",
+        "youtube_handle": "",
+        "twitch_handle": "",
+        "discord_handle": "MYdjqQRT9K",
+        "github_handle": ""
+      },
+      "company": {
+        "name": "ADA Rewards, LLC",
+        "addr": "5305 River Rd North STE B",
+        "city": "Keizer, OR",
+        "country": "US",
+        "company_id": "189358493",
+        "vat_id": ""
+      },
+      "about": {
+        "me": "30 years as an engineer doing Automation, DevOps, and IT",
+        "server": "Cloud / Bare Metal Hybrid",
+        "company": "ADA Rewards, LLC"
+      }
+    }
+  },
+  {
+    "info": {
+      "url_png_icon_64x64": "https://adapool.jed.id.au/jedlogo64x64.png",
+      "url_png_logo": "https://adapool.jed.id.au/jedlogo.png",
+      "location": "Brisbane, Australia",
+      "social": {
+        "instagram_handle": "",
+        "discord_handle": "84E99xT25j",
+        "reddit_handle": "JED_Stakepool",
+        "twitter_handle": "JStakepool",
+        "facebook_handle": "",
+        "youtube_handle": "",
+        "twitch_handle": "",
+        "telegram_handle": "jedstackingpool",
+        "github_handle": ""
+      },
+      "company": {
+        "name": "JED Stakepool"
+      },
+      "about": {
+        "me": "",
+        "server": "",
+        "company": ""
+      },
+      "my-pool-ids": {
         "0": "pool1mukzsec605hfk2tsx4r4xd2rjfjytua8puge5pa0g82rgqm0kt9",
         "1": "df2c28671a7d2e9b29703547533543926445f3a70f119a07af41d434"
-         },
-    "adapools_ext": {
+      },
+      "adapools_ext": {
         "prometheus": {
-            "0": {
-                "name": "relay 1",
-                "type": "relay",
-                "key": ""
-            },
-            "1": {
-                "name": "relay 2",
-                "type": "relay",
-                "key": ""
-            },
-            "2": {
-                "name": "block producer",
-                "type": "bp",
-                "key": ""
-              }
+          "0": {
+            "name": "relay 1",
+            "type": "relay",
+            "key": ""
+          },
+          "1": {
+            "name": "relay 2",
+            "type": "relay",
+            "key": ""
+          },
+          "2": {
+            "name": "block producer",
+            "type": "bp",
+            "key": ""
           }
-       }
+        }
+      }
     }
   },
-{
-       "info": {
-        "url_png_icon_64x64": "http://sharethelovelace.xyz/static/images/om64.png",
-	"url_png_logo":	"http://sharethelovelace.xyz/static/images/om.png",
-        "location": "Perth, Australia",
-        "social": {
-            "twitter_handle": "sharethlovelace",
-            "telegram_handle": "",
-            "github_handle": ""
-        },
-        "about": {
-            "me": "Single Pool Operator",
-            "server": "Australian Block Producer 6CPU 16GB 180GB NVME | Top Tier Cloud Hosted & Geographically distributed Relays (USA,Germany,Australia)"
-    },
-    "my-pool-ids": {
+  {
+    "info": {
+      "url_png_icon_64x64": "http://sharethelovelace.xyz/static/images/om64.png",
+      "url_png_logo": "http://sharethelovelace.xyz/static/images/om.png",
+      "location": "Perth, Australia",
+      "social": {
+        "twitter_handle": "sharethlovelace",
+        "telegram_handle": "",
+        "github_handle": ""
+      },
+      "about": {
+        "me": "Single Pool Operator",
+        "server": "Australian Block Producer 6CPU 16GB 180GB NVME | Top Tier Cloud Hosted & Geographically distributed Relays (USA,Germany,Australia)"
+      },
+      "my-pool-ids": {
         "0": "033c7a00ae33e9a0fa6802b388ccfa5ca9633d712231c41c468c2d39"
-    },
-    "when-satured-then-recommend": {
+      },
+      "when-satured-then-recommend": {
         "0": "small pools - support decentralization"
+      }
     }
-}
-},
-{
-   "info": {
-        "url_png_icon_64x64": "https://raw.githubusercontent.com/HarmonicPool/poolInfos/main/HarmonicLogo_64x64.png",
-        "url_png_logo": "https://raw.githubusercontent.com/HarmonicPool/poolInfos/9d44ae4afcdfff0e5394a208f408147c5150a20c/HarmonicLogo_fullBg_small.png",
-        "location": "Italy",
-        "social": {
-            "twitter_handle": "MicheleHarmonic",
-            "telegram_handle": "Michele_ARMN",
-            "facebook_handle": "",
-            "youtube_handle": "",
-            "twitch_handle": "",
-            "discord_handle": "",
-            "github_handle": "HarmonicPool"
-        },
-        "company": {
-            "name": "Harmonic",
-            "addr": "",
-            "city": "",
-            "country": "Italy",
-            "company_id": "",
-            "vat_id": ""
-        },
-        "about": {
-            "me": "enhusiast SPO, always looking for integrating innovations",
-            "server": "Dedicated servers with 16 RAM each, stable and reliable internet connection, equipped with Uninterrupted Power Supply",
-            "company": ""
-        },
-        "my-pool-ids": {
-            "0": "2a05c534817a0b97ce0c5a2354b6e35a067c52408fa70c77e0b5e378",
-            "1": ""
-        }
+  },
+  {
+    "info": {
+      "url_png_icon_64x64": "https://raw.githubusercontent.com/HarmonicPool/poolInfos/main/HarmonicLogo_64x64.png",
+      "url_png_logo": "https://raw.githubusercontent.com/HarmonicPool/poolInfos/9d44ae4afcdfff0e5394a208f408147c5150a20c/HarmonicLogo_fullBg_small.png",
+      "location": "Italy",
+      "social": {
+        "twitter_handle": "MicheleHarmonic",
+        "telegram_handle": "Michele_ARMN",
+        "facebook_handle": "",
+        "youtube_handle": "",
+        "twitch_handle": "",
+        "discord_handle": "",
+        "github_handle": "HarmonicPool"
+      },
+      "company": {
+        "name": "Harmonic",
+        "addr": "",
+        "city": "",
+        "country": "Italy",
+        "company_id": "",
+        "vat_id": ""
+      },
+      "about": {
+        "me": "enhusiast SPO, always looking for integrating innovations",
+        "server": "Dedicated servers with 16 RAM each, stable and reliable internet connection, equipped with Uninterrupted Power Supply",
+        "company": ""
+      },
+      "my-pool-ids": {
+        "0": "2a05c534817a0b97ce0c5a2354b6e35a067c52408fa70c77e0b5e378",
+        "1": ""
+      }
     }
-}
-,
-{
+  },
+  {
     "info": {
       "url_png_icon_64x64": "https://piada.io/piada64.png",
       "url_png_logo": "https://piada.io/piadaFull.png",
@@ -929,552 +883,587 @@
     "when-satured-then-recommend": [
       "8264de3cdb1798dd8758e24cda5101184b44543e7c4421c7815f9ed8"
     ]
-}
-  
-,
-{
-   "info": {
-        "url_png_icon_64x64": "https://git.io/JPdmn",
-        "url_png_logo": "https://git.io/JPdmW",
-        "location": "Leeds, England",
-        "social": {
-            "twitter_handle": "HUG_Pool"
-        },
-        "company": {
-            "name": "Happy HUG Staking"
-        },
-        "about": {
-            "me": "Hi, my name is Mark and I'm the pool operator of HUG. I have over 10 years’ experience working in the IT industry, my main skills are system admin and network engineering. Currently, I'm a network engineer working for one of the largest NHS trusts in the UK, which has over 25k devices connected to the network. I am also an under 10s football coach qualified to FA Level 1 :-) ",
-            "server": "Energy efficient, baremetal core and relays hosted in Leeds UK, Dual core 12Gb relays and 16Gb quad core producer node. Gigabit network connectivity, with enhanced local network security.",
-            "company": "Happy HUG Staking"
-        }
-    },
-    "my-pool-ids": {
-        "0": "2f5de17f4aef94923d82520eb9787d3081772bdea1264d919dcf48cb"
-    }
-}
-,
-{
+  },
+  {
     "info": {
-        "url_png_icon_64x64": "https://raw.githubusercontent.com/alfacardanopool/APOOL/main/64x64.png",
-        "url_png_logo": "https://raw.githubusercontent.com/alfacardanopool/APOOL/main/logo.png",
-        "location": "Thessaloniki, Greece",
-        "social": {
-            "twitter_handle": "AlfaCardanoPool",
-            "telegram_handle": "alfacardanopool",
-            "facebook_handle": "",
-            "youtube_handle": "",
-            "twitch_handle": "",
-            "discord_handle": "afeyYp8Vd4",
-            "github_handle": "alfacardanopool"
-        },
-        "company": {
-            "name": "₳lfa Cardano Pool • https://linktr.ee/alfapool"
-        },
-        "about": {
-            "server": "Baremetal core with baremetal backup located in Greece plus many cloud relays",
-            "company": "Alfa Pool • Professionally operated high performance Cardano stake pool, 99,9% uptime! • Support ADA decentralization"
-        }
+      "url_png_icon_64x64": "https://git.io/JPdmn",
+      "url_png_logo": "https://git.io/JPdmW",
+      "location": "Leeds, England",
+      "social": {
+        "twitter_handle": "HUG_Pool"
+      },
+      "company": {
+        "name": "Happy HUG Staking"
+      },
+      "about": {
+        "me": "Hi, my name is Mark and I'm the pool operator of HUG. I have over 10 years’ experience working in the IT industry, my main skills are system admin and network engineering. Currently, I'm a network engineer working for one of the largest NHS trusts in the UK, which has over 25k devices connected to the network. I am also an under 10s football coach qualified to FA Level 1 :-) ",
+        "server": "Energy efficient, baremetal core and relays hosted in Leeds UK, Dual core 12Gb relays and 16Gb quad core producer node. Gigabit network connectivity, with enhanced local network security.",
+        "company": "Happy HUG Staking"
+      }
     },
     "my-pool-ids": {
-        "0": "pool18qddv82sx8p22uxzdrf0qx9lkewxadlr9ef45kpcf7dzz3n56qv",
-        "1": "381ad61d5031c2a570c268d2f018bfb65c6eb7e32e535a58384f9a21"
+      "0": "2f5de17f4aef94923d82520eb9787d3081772bdea1264d919dcf48cb"
+    }
+  },
+  {
+    "info": {
+      "url_png_icon_64x64": "https://raw.githubusercontent.com/alfacardanopool/APOOL/main/64x64.png",
+      "url_png_logo": "https://raw.githubusercontent.com/alfacardanopool/APOOL/main/logo.png",
+      "location": "Thessaloniki, Greece",
+      "social": {
+        "twitter_handle": "AlfaCardanoPool",
+        "telegram_handle": "alfacardanopool",
+        "facebook_handle": "",
+        "youtube_handle": "",
+        "twitch_handle": "",
+        "discord_handle": "afeyYp8Vd4",
+        "github_handle": "alfacardanopool"
+      },
+      "company": {
+        "name": "₳lfa Cardano Pool • https://linktr.ee/alfapool"
+      },
+      "about": {
+        "server": "Baremetal core with baremetal backup located in Greece plus many cloud relays",
+        "company": "Alfa Pool • Professionally operated high performance Cardano stake pool, 99,9% uptime! • Support ADA decentralization"
+      }
+    },
+    "my-pool-ids": {
+      "0": "pool18qddv82sx8p22uxzdrf0qx9lkewxadlr9ef45kpcf7dzz3n56qv",
+      "1": "381ad61d5031c2a570c268d2f018bfb65c6eb7e32e535a58384f9a21"
     },
     "when-satured-then-recommend": {
-        "0": "",
-        "1": ""
+      "0": "",
+      "1": ""
     }
-}
-,
-{
+  },
+  {
     "info": {
-        "url_png_icon_64x64": "https://adamoon.net/assets/img/amoonicon-64x64.png",
-        "url_png_logo": "https://adamoon.net/assets/img/logo-small.png",
-        "location": "California | USA",
-        "social": {
-            "twitter_handle": "adamoonpool",
-            "telegram_handle": "adamoonpool",
-            "facebook_handle": "",
-            "youtube_handle": "",
-            "twitch_handle": "",
-            "discord_handle": "",
-            "github_handle": ""
-        },
-        "company": {
-            "name": "ADA Moon Pool",
-            "addr": "",
-            "city": "Costa Mesa | San Francisco",
-            "country": "USA",
-            "company_id": "",
-            "vat_id": ""
-        },
-        "about": {
-            "me": "We are a team of (two) IT professionals with over 15 years of experience, Single pool operators, from Costa Mesa | Bay Area, California, USA. Truly amazed by the vision and mission of Cardano, to change the world. We are happy to be a part of and are working towards helping grow Cardano community.",
-            "server": "Cloud hosted secure servers with Block Producer disconnected from internet, connected via a bastion host, 2 Relays, an airgapped machine for hybrid (online/offline) transaction signing capability and integration with Hardware wallet.",
-            "company": "ADA Moon Pool"
-        },
-    "my-pool-ids": {
+      "url_png_icon_64x64": "https://adamoon.net/assets/img/amoonicon-64x64.png",
+      "url_png_logo": "https://adamoon.net/assets/img/logo-small.png",
+      "location": "California | USA",
+      "social": {
+        "twitter_handle": "adamoonpool",
+        "telegram_handle": "adamoonpool",
+        "facebook_handle": "",
+        "youtube_handle": "",
+        "twitch_handle": "",
+        "discord_handle": "",
+        "github_handle": ""
+      },
+      "company": {
+        "name": "ADA Moon Pool",
+        "addr": "",
+        "city": "Costa Mesa | San Francisco",
+        "country": "USA",
+        "company_id": "",
+        "vat_id": ""
+      },
+      "about": {
+        "me": "We are a team of (two) IT professionals with over 15 years of experience, Single pool operators, from Costa Mesa | Bay Area, California, USA. Truly amazed by the vision and mission of Cardano, to change the world. We are happy to be a part of and are working towards helping grow Cardano community.",
+        "server": "Cloud hosted secure servers with Block Producer disconnected from internet, connected via a bastion host, 2 Relays, an airgapped machine for hybrid (online/offline) transaction signing capability and integration with Hardware wallet.",
+        "company": "ADA Moon Pool"
+      },
+      "my-pool-ids": {
         "0": "059b4217a24a8c67a363968ff1db13a17ed96e611362450c115b2415"
       },
-         "telegram-admin-handle": {
+      "telegram-admin-handle": {
         "0": "joinchat/HqixS7-gOzo4ZDcx"
+      }
     }
-    }
-
-}
-,
-{}
-,
-{
+  },
+  {},
+  {
     "info": {
-        "url_png_icon_64x64": "https://raw.githubusercontent.com/Couder82/coudrebros/main/CBROS_Icon.png",
-        "url_png_logo": "https://raw.githubusercontent.com/Couder82/coudrebros/main/CBROS_Logo.png",
-        "location": "Prague, Czech Republic",
-        "social": {
-            "twitter_handle": "BrosCoudre",
-            "telegram_handle": "CBROS_Pool",
-            "facebook_handle": "CBROS.pool",
-            "youtube_handle": "",
-            "twitch_handle": "",
-            "discord_handle": "",
-            "github_handle": ""
-        },
-        "company": {
-            "name": "Coudrebros",
-            "addr": "",
-            "city": "Prague",
-            "country": "Czech Republic, EU",
-            "company_id": "",
-            "vat_id": ""
-        },
-        "about": {
-            "me": "CBROS is a small mission driven cardano pool based on powerful bare metal servers. 50 % of pool rewards goes to charitable donations - mainly to Médecins Sans Frontières - Doctors Without Borders. Every delegator is most welcomed! We have NFT rewards for all delegators that will delegate more than 10 ADA for more than 3 epochs.",
-            "server": "BP node (Prague, Czech Rep., EU): 6 core CPU, 24 GB RAM, 1 TB SSD, 100 Mbit Ethernet, Ubuntu based OS, UPS Backup ----- Relay node 1 (Chicago, IL, USA): 8 core CPU, 32 GB RAM, 4.3 TB HDD, 150 Mbit Ethernet, Ubuntu based OS, UPS Backup, Generator Backup ----- Relay node 2 (Moravia, Czech Rep., EU): 6 core CPU, 32 GB RAM, 2 TB HDD, 100 Mbit Ethernet, Ubuntu based OS, UPS Backup",
-            "company": ""
-        },
-    "my-pool-ids": {
+      "url_png_icon_64x64": "https://raw.githubusercontent.com/Couder82/coudrebros/main/CBROS_Icon.png",
+      "url_png_logo": "https://raw.githubusercontent.com/Couder82/coudrebros/main/CBROS_Logo.png",
+      "location": "Prague, Czech Republic",
+      "social": {
+        "twitter_handle": "BrosCoudre",
+        "telegram_handle": "CBROS_Pool",
+        "facebook_handle": "CBROS.pool",
+        "youtube_handle": "",
+        "twitch_handle": "",
+        "discord_handle": "",
+        "github_handle": ""
+      },
+      "company": {
+        "name": "Coudrebros",
+        "addr": "",
+        "city": "Prague",
+        "country": "Czech Republic, EU",
+        "company_id": "",
+        "vat_id": ""
+      },
+      "about": {
+        "me": "CBROS is a small mission driven cardano pool based on powerful bare metal servers. 50 % of pool rewards goes to charitable donations - mainly to Médecins Sans Frontières - Doctors Without Borders. Every delegator is most welcomed! We have NFT rewards for all delegators that will delegate more than 10 ADA for more than 3 epochs.",
+        "server": "BP node (Prague, Czech Rep., EU): 6 core CPU, 24 GB RAM, 1 TB SSD, 100 Mbit Ethernet, Ubuntu based OS, UPS Backup ----- Relay node 1 (Chicago, IL, USA): 8 core CPU, 32 GB RAM, 4.3 TB HDD, 150 Mbit Ethernet, Ubuntu based OS, UPS Backup, Generator Backup ----- Relay node 2 (Moravia, Czech Rep., EU): 6 core CPU, 32 GB RAM, 2 TB HDD, 100 Mbit Ethernet, Ubuntu based OS, UPS Backup",
+        "company": ""
+      },
+      "my-pool-ids": {
         "0": "pool1wntxmftndrsj7y4aqles8knl3nfuyj22l83jun02yyx9s962gm3",
         "1": "74d66da57368e12f12bd07f303da7f8cd3c2494af9e32e4dea210c58"
       }
     }
-}
-,
-{
+  },
+  {
     "how-to-implement": "",
     "info": {
-        "url_png_icon_64x64": "https://petloverstake.com/pet-logo-i.png",
-        "url_png_logo": "https://petloverstake.com/pet-massive-i.png",
-        "location": "Germany",
-        "social": {
-            "twitter_handle": "PetStake",
-            "telegram_handle": "petloverstake",
-            "facebook_handle": "petloverstake",
-            "youtube_handle": "",
-            "twitch_handle": "",
-            "discord_handle": "",
-            "github_handle": "petloverstake"
-        },
-        "company": {
-            "name": "Pet Lovers",
-            "addr": "People loving pets live in",
-            "city": "any city",
-            "country": "around the world",
-            "company_id": "",
-            "vat_id": ""
-        },
-        "about": {
-            "me": "Mission driven Cardano Stake Pool: We support Pets and Wildlife. Animal lovers and environmentalists. Committed to caring for our planet, we bet on Cardano as the eco-friendly crypto of the future.",
-            "server": "Linux-Ubuntu 20.04, 8 vCPU Cores, 30 GB RAM, 400 GB",
-            "company": "Pet Lover Stake: an independent pool"
-        }
-	}
-},
-{
-  "info": {
-    "url_png_icon_64x64": "https://zebrastaking/img/zebra-icon.jpg",
-    "url_png_logo": "https://zebrastaking/img/zebra-icon.jpg",
-    "location": "London, England",
-    "social": {
-      "twitter_handle": "zebrastakepool?s=21",
-      "telegram_handle": "zebrapool",
-      "facebook_handle": "",
-      "youtube_handle": "",
-      "twitch_handle": "",
-      "discord_handle": "TbczRU3C",
-      "github_handle": ""
-    },
-    "company": {
-      "name": "",
-      "addr": "",
-      "city": "London",
-      "country": "England",
-      "company_id": "",
-      "vat_id": ""
-    },
-    "about": {
-      "me": "",
-      "server": "",
-      "company": ""
+      "url_png_icon_64x64": "https://petloverstake.com/pet-logo-i.png",
+      "url_png_logo": "https://petloverstake.com/pet-massive-i.png",
+      "location": "Germany",
+      "social": {
+        "twitter_handle": "PetStake",
+        "telegram_handle": "petloverstake",
+        "facebook_handle": "petloverstake",
+        "youtube_handle": "",
+        "twitch_handle": "",
+        "discord_handle": "",
+        "github_handle": "petloverstake"
+      },
+      "company": {
+        "name": "Pet Lovers",
+        "addr": "People loving pets live in",
+        "city": "any city",
+        "country": "around the world",
+        "company_id": "",
+        "vat_id": ""
+      },
+      "about": {
+        "me": "Mission driven Cardano Stake Pool: We support Pets and Wildlife. Animal lovers and environmentalists. Committed to caring for our planet, we bet on Cardano as the eco-friendly crypto of the future.",
+        "server": "Linux-Ubuntu 20.04, 8 vCPU Cores, 30 GB RAM, 400 GB",
+        "company": "Pet Lover Stake: an independent pool"
+      }
     }
-  }
-},
-{
-       "info": {
-        "url_png_icon_64x64": "https://cardano.fans/static/logo64_64.png",
-        "url_png_logo": "https://cardano.fans/static/logo.png",
-        "location": "Berlin, Germany",
-        "social": {
-            "twitter_handle": "matiwinnetou",
-            "telegram_handle": "matiwinnetou",
-            "facebook_handle": "",
-            "youtube_handle": "",
-            "twitch_handle": "",
-            "discord_handle": "",
-            "github_handle": "Cardano-Fans",
-	    "adapools": "47df1446d14b319e3dc9558466a741bb"
-        },
-        "company": {
-            "name": "Cardano Fans",
-            "addr": "",
-            "city": "Berlin",
-            "country": "Germany",
-            "company_id": "",
-            "vat_id": ""
-        },
-        "about": {
-            "me": "Enable finance for everybody including the unbanked.",
-            "server": "Baremetal stakepool with 200 Mbit fiber running on 3 x Intel i7 servers with 16 GB RAM and SSD disks",
-            "company": "..."
-        },
-        "rss": ""
+  },
+  {
+    "info": {
+      "url_png_icon_64x64": "https://zebrastaking/img/zebra-icon.jpg",
+      "url_png_logo": "https://zebrastaking/img/zebra-icon.jpg",
+      "location": "London, England",
+      "social": {
+        "twitter_handle": "zebrastakepool?s=21",
+        "telegram_handle": "zebrapool",
+        "facebook_handle": "",
+        "youtube_handle": "",
+        "twitch_handle": "",
+        "discord_handle": "TbczRU3C",
+        "github_handle": ""
+      },
+      "company": {
+        "name": "",
+        "addr": "",
+        "city": "London",
+        "country": "England",
+        "company_id": "",
+        "vat_id": ""
+      },
+      "about": {
+        "me": "",
+        "server": "",
+        "company": ""
+      }
+    }
+  },
+  {
+    "info": {
+      "url_png_icon_64x64": "https://cardano.fans/static/logo64_64.png",
+      "url_png_logo": "https://cardano.fans/static/logo.png",
+      "location": "Berlin, Germany",
+      "social": {
+        "twitter_handle": "matiwinnetou",
+        "telegram_handle": "matiwinnetou",
+        "facebook_handle": "",
+        "youtube_handle": "",
+        "twitch_handle": "",
+        "discord_handle": "",
+        "github_handle": "Cardano-Fans",
+        "adapools": "47df1446d14b319e3dc9558466a741bb"
+      },
+      "company": {
+        "name": "Cardano Fans",
+        "addr": "",
+        "city": "Berlin",
+        "country": "Germany",
+        "company_id": "",
+        "vat_id": ""
+      },
+      "about": {
+        "me": "Enable finance for everybody including the unbanked.",
+        "server": "Baremetal stakepool with 200 Mbit fiber running on 3 x Intel i7 servers with 16 GB RAM and SSD disks",
+        "company": "..."
+      },
+      "rss": ""
     },
     "my-pool-ids": {
-        "0": "6C518B4861BB88B1395CEB116342CECBCFB8736282655F9A61C4C368"    
+      "0": "6C518B4861BB88B1395CEB116342CECBCFB8736282655F9A61C4C368"
     },
     "when-satured-then-recommend": {
-        "0": "0f292fcaa02b8b2f9b3c8f9fd8e0bb21abedb692a6d5058df3ef2735"
+      "0": "0f292fcaa02b8b2f9b3c8f9fd8e0bb21abedb692a6d5058df3ef2735"
     },
     "telegram-admin-handle": {
-        "0": "matiwinnetou"
+      "0": "matiwinnetou"
     }
-}
-,
-{
-  "itn": {
-    "owner": "ed25519_pk1p79uyvy0x8mxfdt5qdsqcsap267ux7fv389c60pamdrjpzs928lqu7see7",
-    "witness": "ed25519_sig153h8rspshfglrshmejtvggt5zc6guygd9gfju77rz4c38uu3fzhnxc4vem8pk35aufnvhntd3fs0rdcy3588vh9uca3gw5g7dq8kgrgww7390"
   },
-  "verification":"2d064f00cac1eee689",
-  "adapools": {
-    "string": "9e3b2c2afde92b58a98a14aeba677f80"
-  },
-  "info": {
-    "url_png_icon_64x64": "https://www.bbhmm.net/assets/bbhmm_logo_64_64.png",
-    "url_png_logo": "https://www.bbhmm.net/assets/BBHMM_logo.png",
-    "location": "USA",
-    "social": {
-      "twitter_handle": "BBHMM_Stake",
-      "telegram_handle": "BBHMM_Stake_Pool",
-      "facebook_handle": "BBHMMStakePool",
-      "youtube_handle": "channel/UCq8FRB9Q6JOYR1C7ne8Li1Q"
+  {
+    "itn": {
+      "owner": "ed25519_pk1p79uyvy0x8mxfdt5qdsqcsap267ux7fv389c60pamdrjpzs928lqu7see7",
+      "witness": "ed25519_sig153h8rspshfglrshmejtvggt5zc6guygd9gfju77rz4c38uu3fzhnxc4vem8pk35aufnvhntd3fs0rdcy3588vh9uca3gw5g7dq8kgrgww7390"
     },
-    "company": {
-      "name": "BBHMM - Blockchain Better HAve My Money 🔐"
+    "verification": "2d064f00cac1eee689",
+    "adapools": {
+      "string": "9e3b2c2afde92b58a98a14aeba677f80"
     },
-    "about": {
-      "me": "BBHMM Stake Pool",
-      "server": "Hosted in Data Center, private rack, redundant everything, and hardend OS",
-      "company": "BBHMM - Blockchain Better HAve My Money 🔐"
+    "info": {
+      "url_png_icon_64x64": "https://www.bbhmm.net/assets/bbhmm_logo_64_64.png",
+      "url_png_logo": "https://www.bbhmm.net/assets/BBHMM_logo.png",
+      "location": "USA",
+      "social": {
+        "twitter_handle": "BBHMM_Stake",
+        "telegram_handle": "BBHMM_Stake_Pool",
+        "facebook_handle": "BBHMMStakePool",
+        "youtube_handle": "channel/UCq8FRB9Q6JOYR1C7ne8Li1Q"
+      },
+      "company": {
+        "name": "BBHMM - Blockchain Better HAve My Money 🔐"
+      },
+      "about": {
+        "me": "BBHMM Stake Pool",
+        "server": "Hosted in Data Center, private rack, redundant everything, and hardend OS",
+        "company": "BBHMM - Blockchain Better HAve My Money 🔐"
+      }
     }
-  }
-},
-{
+  },
+  {
     "how-to-implement": "in your meta.json - define *extended* with url to this (json) file - https://raw.githubusercontent.com/cardanians/adapools.org/master/example-meta.json",
     "info": {
-        "url_png_icon_64x64": "https://github.com/sadaka-io/extended-metadata/blob/c5316e32a5fc632235a1b2281bd7063853fb4ed6/ANEW%20Africa%20Logo%2064x64.png",
-        "url_png_logo": "https://github.com/sadaka-io/extended-metadata/blob/c5316e32a5fc632235a1b2281bd7063853fb4ed6/ANEW%20Africa%20Logo%20700x700.png",
-        "location": "Sydney, Australia",
-        "social": {
-            "twitter_handle": "ANEW_Pool",
-            "instagram_handle": "anew_pool",
-            "facebook_handle": "AnewPool",
-            "youtube_handle": "",
-            "linkedin_handle": "anew-pool-anew-152869224",
-            "discord_handle": "",
-            "github_handle": "sadaka-io"
-        },
-        "company": {
-            "name": "ANEW",
-            "addr": "",
-            "city": "Sydney",
-            "country": "Australia",
-            "company_id": "",
-            "vat_id": ""
-        },
-        "about": {
-            "me": "ANEW is run by 3 friends with ties to Africa.",
-            "server": "Our infrastructure is higly available and monitored 24x7",
-            "company": "ANEW is a Cardano stake pool driving decentralisation and maximising our delegator's rewards.The pool's mission is Women Empowerment and Education in Africa. 50% of our operating revenue is given back to local communities"
-        }
+      "url_png_icon_64x64": "https://github.com/sadaka-io/extended-metadata/blob/c5316e32a5fc632235a1b2281bd7063853fb4ed6/ANEW%20Africa%20Logo%2064x64.png",
+      "url_png_logo": "https://github.com/sadaka-io/extended-metadata/blob/c5316e32a5fc632235a1b2281bd7063853fb4ed6/ANEW%20Africa%20Logo%20700x700.png",
+      "location": "Sydney, Australia",
+      "social": {
+        "twitter_handle": "ANEW_Pool",
+        "instagram_handle": "anew_pool",
+        "facebook_handle": "AnewPool",
+        "youtube_handle": "",
+        "linkedin_handle": "anew-pool-anew-152869224",
+        "discord_handle": "",
+        "github_handle": "sadaka-io"
+      },
+      "company": {
+        "name": "ANEW",
+        "addr": "",
+        "city": "Sydney",
+        "country": "Australia",
+        "company_id": "",
+        "vat_id": ""
+      },
+      "about": {
+        "me": "ANEW is run by 3 friends with ties to Africa.",
+        "server": "Our infrastructure is higly available and monitored 24x7",
+        "company": "ANEW is a Cardano stake pool driving decentralisation and maximising our delegator's rewards.The pool's mission is Women Empowerment and Education in Africa. 50% of our operating revenue is given back to local communities"
+      }
     },
     "my-pool-ids": {
-        "0": "d7dc0487d80b04e9eb77e3d128debded2da917647df35da25267689f"
+      "0": "d7dc0487d80b04e9eb77e3d128debded2da917647df35da25267689f"
     },
     "when-satured-then-recommend": {
     },
     "telegram-admin-handle": {
     }
-}
-,
-{
-  "info": {
-    "url_png_icon_64x64": "https://i.postimg.cc/rsy76QhR/64x64-trans1-ccexpress-1.png",
-    "url_png_logo": "https://i.postimg.cc/1XW2ywTC/shutterstock-1993823417small-ccexpress.png",
-    "location": "United States",
-    "social": {
-      "twitter_handle": "MnstrPool",
-      "telegram_handle": "",
-      "youtube_handle": "",
-      "discord_handle": "MonSterPool-MNSTR#9042"
+  },
+  {
+    "info": {
+      "url_png_icon_64x64": "https://i.postimg.cc/rsy76QhR/64x64-trans1-ccexpress-1.png",
+      "url_png_logo": "https://i.postimg.cc/1XW2ywTC/shutterstock-1993823417small-ccexpress.png",
+      "location": "United States",
+      "social": {
+        "twitter_handle": "MnstrPool",
+        "telegram_handle": "",
+        "youtube_handle": "",
+        "discord_handle": "MonSterPool-MNSTR#9042"
+      },
+      "about": {
+        "me": "MonSter Stake Pool is an independent, single stake pool.  Our mission is to raise awareness of Multiple Sclerosis and to donate to MS research.  We will be donating 10% of our operator rewards to MS research",
+        "mission": "Our mission is to raise awareness of Multiple Sclerosis and to donate to MS research.  We will be donating 10% of our operator rewards to MS research",
+        "server": "Running Bare Metal Servers",
+        "company": ""
+      }
     },
-    "about": {
-      "me": "MonSter Stake Pool is an independent, single stake pool.  Our mission is to raise awareness of Multiple Sclerosis and to donate to MS research.  We will be donating 10% of our operator rewards to MS research",
-      "mission": "Our mission is to raise awareness of Multiple Sclerosis and to donate to MS research.  We will be donating 10% of our operator rewards to MS research",
-      "server": "Running Bare Metal Servers",
-      "company": ""
+    "my-pool-id": {
+      "1": "a223873b6d882d07c44bfd2baac9f5acbb09c5b886858404cb375a99"
     }
   },
-  "my-pool-id": {
-    "1": "a223873b6d882d07c44bfd2baac9f5acbb09c5b886858404cb375a99"
-  }
-}
-,
-{
+  {
     "info": {
-        "url_png_icon_64x64": "https://status.hwlegnano.it/cardano/HWL-Cardano64x64.png",
-        "url_png_logo": "https://status.hwlegnano.it/cardano/HWL-Cardano.png",
-        "location": "Milan, Italy",
-        "social": {
-            "twitter_handle": "HardwareLegnano",
-            "telegram_handle": "ItalyADAPool",
-            "facebook_handle": "hardware.legnano",
-            "youtube_handle": "channel/UCktutdsi74XvRDGwDn01iJQ",
-            "twitch_handle": "dark34566",
-            "discord_handle": "",
-            "github_handle": "hardware-legnano"
-        },
-        "company": {
-            "name": "Hardware Legnano",
-            "addr": "",
-            "city": "Legnano",
-            "country": "Italy",
-            "company_id": "",
-            "vat_id": ""
-        },
-        "about": {
-            "me": "Hardware Legnano has a long story behind. We believe Cardano will be the currency of the future and so, we've decided to run a Stake Pool here in Italy",
-            "server": "Block Producer is housed at our HQ, three relays are located in a cloud provider at three different sites (EU,US,ASIA). One relay has been added in a italian hosting provider for routing optimization purposes",
-            "company": "Hardware Legnano"
-        }
+      "url_png_icon_64x64": "https://status.hwlegnano.it/cardano/HWL-Cardano64x64.png",
+      "url_png_logo": "https://status.hwlegnano.it/cardano/HWL-Cardano.png",
+      "location": "Milan, Italy",
+      "social": {
+        "twitter_handle": "HardwareLegnano",
+        "telegram_handle": "ItalyADAPool",
+        "facebook_handle": "hardware.legnano",
+        "youtube_handle": "channel/UCktutdsi74XvRDGwDn01iJQ",
+        "twitch_handle": "dark34566",
+        "discord_handle": "",
+        "github_handle": "hardware-legnano"
+      },
+      "company": {
+        "name": "Hardware Legnano",
+        "addr": "",
+        "city": "Legnano",
+        "country": "Italy",
+        "company_id": "",
+        "vat_id": ""
+      },
+      "about": {
+        "me": "Hardware Legnano has a long story behind. We believe Cardano will be the currency of the future and so, we've decided to run a Stake Pool here in Italy",
+        "server": "Block Producer is housed at our HQ, three relays are located in a cloud provider at three different sites (EU,US,ASIA). One relay has been added in a italian hosting provider for routing optimization purposes",
+        "company": "Hardware Legnano"
+      }
     },
     "my-pool-ids": {
-        "0": "de2e00a923f6dd016a43087e608df9b6ddd4e587e8ff4f39c64e2d43"
+      "0": "de2e00a923f6dd016a43087e608df9b6ddd4e587e8ff4f39c64e2d43"
     },
     "telegram-admin-handle": {
-        "0": "Dark345",
-		"1": "LaGrandeOnda"
+      "0": "Dark345",
+      "1": "LaGrandeOnda"
     },
-	"adapools_ext": {
-} 
-	
-},
-{
-      "info": {
-        "url_png_icon_64x64": "https://raw.githubusercontent.com/CL-LLC/MD/main/cl-llc.png",
-        "url_png_logo": "https://raw.githubusercontent.com/CL-LLC/MD/main/cl-llc.png",
-        "location": "Wyoming, USA",
-          "social": {
-              "twitter_handle": "cardanolatino",
-              "telegram_handle": "cardanolatino",
-              "facebook_handle": "CardanoLatinoUS",
-              "youtube_handle": "channel/UCOJ_TtwIG7F-mzadfkbmfGg",
-              "twitch_handle": "",
-              "discord_handle": "",
-              "github_handle": "CL-LLC"
-          },
-          "company": {
-              "name": "Cardano Latino LLC",
-              "addr": "",
-              "city": "Wyoming",
-              "country": "USA",
-              "company_id": "",
-              "vat_id": ""
-          },
-          "about": {
-              "me": "",
-              "server": "Network of 4 8GB servers, located in 3 different cities in Europe. Maintained from South FL, USA and Bogotá, Colombia ",
-              "company": ""
-          },
-          "my-pool-ids": {
-          "0": "e8e00995c7f3820fedf01e75a443c56e20f96ddcf9168b662ce2fdcd",
-          "1": ""
-          },
-          "when-satured-then-recommend": {
-          "0": "",
-          "1": ""
-          },
-          "telegram-admin-handle": {
-          "0": ""        
-          },
-          "itn":   {
-          "owner": "ed25519_pk1uu4jkng2tpaatk2k4yffsaxf9r0yx0uzgdjls87v9jz59qgczsgs775ah5",
-          "witness": "ed25519_sig1nxt3h85exe8jneq0vjdm2pk89kfgvncj5ar40psc8z0q6rqxu6uc8xx9v6tdkh97llf0wc8y2cvcazks9atana075ws82qcwvltjvpcjd3676"
-          },
-          "verification string": "239295d6c10c617ee6"  
- }
-}
-,
-{
-    "info": {
-		"url_png_icon_64x64": "https://nimuepool.io/images/nimue-icon-04.png",
-		"url_png_logo": "https://nimuepool.io/images/nimue-logo-medium-01.png",
-        "location": "Sint-Niklaas, Flanders, Belgium",
-        "social": {
-            "twitter_handle": "nimuepool",
-			"facebook_handle": "nimuepool"
-        },
-		"about": {
-			"server": "Intel NUC 10 Core i7-10710U, VMware ESXi 7, Ubuntu Server 20.04 LTS"
-		}
-    }
-},
-{
-  "info": {
-    "url_png_icon_64x64": "https://psilobyte.io/ada/psb-64x64.png",
-    "url_png_logo": "https://psilobyte.io/ada/psb-180x180.png",
-    "location": "Edmonton, Alberta, Canada",
-    "social": {
-      "twitter_handle": "877PSBYTE6",
-      "telegram_handle": "psilobyte_cardano",
-      "facebook_handle": "",
-      "youtube_handle": "psilobyte",
-      "twitch_handle": "",
-      "discord_handle": ""
-    },
-    "company": {
-      "name": "",
-      "addr": "",
-      "city": "",
-      "country": "",
-      "company_id": "",
-      "vat_id": ""
-    },
-    "about": {
-      "me": "Blockchain Enthusiast | Professional IT Service Provider | Stake Pool Operator | Always looking to improve processes and help the Cardano community. I have been in the IT field for 15+ years, and specialize in Server Infrastructure, Disaster Recovery and Cyber Security. FreeBSD supporter",
-      "server": "Baremetal servers in Edmonton, Alberta. Canada. Multi-Site redundancy for fast disaster recovery. 3x AMD EPYC 8 Core servers 128GB RAM. NVMe SSDs, Gigabit Fibre link with Failover internet. Server-grade EATON Lithium UPS units protecting the network racks. Also running a Singapore and Uruguay cloud nodes for geo-redundancy.",
-      "company": ""
+    "adapools_ext": {
     }
   },
-  "telegram-admin-handle": [
-    "reqlez"
-  ],
-  "my-pool-ids": [
-    "f2fa0dfea7f4caba8cbdd042c4940c783ee57f9516062725b04e19a3"
-  ]
-},
-{
-	"info": {
-		"location": "Ocean, NJ",
-		"url_png_logo_64x64": "https://cardano.cloudstruct.net/images/64px.png",
-		"url_png_logo": "https://cardano.cloudstruct.net/images/icon-01.png",
-		"social": {
-			"twitter_handle": "CSCS_pool",
-			"telegram_handle": "CSCS_pool",
-			"github_handle": "cloudstruct",
-			"discord_handle": "5fPRZnX4qW"
-		},
-		"company": {
-			"name": "CloudStruct, LLC.",
-			"country": "United States of America"
-		},
-		"about": {
-			"me": "Principal/Staff level operations engineers and open source developers with decades combined experience in telecommunications, big data, and distributed systems",
-			"server": "ARM relays and block producers, hosted in the cloud with relays in APAC, EU, NA, and SA",
-			"company": "Cloud based software and services for the Cardano Blockchain"
-		}
-	},
-	"my-pool-ids": {
-		"0": "27b1b4470c84db78ce1ffbfff77bb068abb4e47d43cb6009caaa3523"
-	},
-	"telegram-admin-handle": {
-		"0": "CSCS_pool"
-	},
-	"votes": {
-		"https://cips.cardano.org/cips/cip7/": {
-			"vote": "Yes"
-		},
-		"https://cips.cardano.org/cips/cip8/": {
-			"vote": "Yes"
-		},
-		"https://cips.cardano.org/cips/cip12/": {
-			"vote": "Yes"
-		},
-		"https://cips.cardano.org/cips/cip22/": {
-			"vote": "Yes"
-		},
-		"https://cips.cardano.org/cips/cip23/": {
-			"vote": "Yes"
-		},
-		"https://cips.cardano.org/cips/cip24/": {
-			"vote": "Yes"
-		}
-	}
-}
-,
-{
+  {
     "info": {
-        "url_png_icon_64x64": "https://lonestarstaking.net/",
-        "url_png_logo": "",
-        "location": "Fort Worth, TX USA",
-        "social": {
-            "instagram_handle": "",
-            "discord_handle": "https://discord.gg/Erndawg[LSSP]#1630",
-            "reddit_handle": "https://www.reddit.com/user/erndawg/",
-            "twitter_handle": "lonestarstaking",
-            "facebook_handle": "",
-            "youtube_handle": "",
-            "twitch_handle": "",
-            "telegram_handle": "erndawg",
-            "github_handle": "erndawg22"
-        },
-        "company": {
-            "name": "LONESTAR STAKING LLC"
-        },
-        "about": {
-            "me": "5 year Navy vet, 30 year Aviation Maintenance/spare time 20 year Computer Hardware experience ",
-            "server": "1 Main Blockproducer 1 standby Block producer in New York Ubuntu 20.04 LTS servers",
-            "server": "4 Relays in Dallas, Seattle, Washington D.C. and bare metal in London U.K. Ubuntu 20.04 LTS servers",
-            "company": "RackNerd"
-                      },
-        "my-pool-id": {
+      "url_png_icon_64x64": "https://raw.githubusercontent.com/CL-LLC/MD/main/cl-llc.png",
+      "url_png_logo": "https://raw.githubusercontent.com/CL-LLC/MD/main/cl-llc.png",
+      "location": "Wyoming, USA",
+      "social": {
+        "twitter_handle": "cardanolatino",
+        "telegram_handle": "cardanolatino",
+        "facebook_handle": "CardanoLatinoUS",
+        "youtube_handle": "channel/UCOJ_TtwIG7F-mzadfkbmfGg",
+        "twitch_handle": "",
+        "discord_handle": "",
+        "github_handle": "CL-LLC"
+      },
+      "company": {
+        "name": "Cardano Latino LLC",
+        "addr": "",
+        "city": "Wyoming",
+        "country": "USA",
+        "company_id": "",
+        "vat_id": ""
+      },
+      "about": {
+        "me": "",
+        "server": "Network of 4 servers, 3 with 16GB  and 1 with 32GB , located in 4 different cities in Europe and USA. Maintained from South FL, USA and Bogotá, Colombia ",
+        "company": ""
+      },
+      "my-pool-ids": {
+        "0": "e8e00995c7f3820fedf01e75a443c56e20f96ddcf9168b662ce2fdcd",
+        "1": "022b8984468ce027002518bb37100cfda5e237a63bb50576db81c7c4"
+      },
+      "when-satured-then-recommend": {
+        "0": "",
+        "1": ""
+      },
+      "telegram-admin-handle": {
+        "0": ""
+      },
+      "itn": {
+        "owner": "ed25519_pk1uu4jkng2tpaatk2k4yffsaxf9r0yx0uzgdjls87v9jz59qgczsgs775ah5",
+        "witness": "ed25519_sig1nxt3h85exe8jneq0vjdm2pk89kfgvncj5ar40psc8z0q6rqxu6uc8xx9v6tdkh97llf0wc8y2cvcazks9atana075ws82qcwvltjvpcjd3676"
+      },
+      "verification string": "859c3ae73da45bfc96"
+    }
+  },
+  {
+    "info": {
+      "url_png_icon_64x64": "https://nimuepool.io/images/nimue-icon-04.png",
+      "url_png_logo": "https://nimuepool.io/images/nimue-logo-medium-01.png",
+      "location": "Sint-Niklaas, Flanders, Belgium",
+      "social": {
+        "twitter_handle": "nimuepool",
+        "facebook_handle": "nimuepool"
+      },
+      "about": {
+        "server": "Intel NUC 10 Core i7-10710U, VMware ESXi 7, Ubuntu Server 20.04 LTS"
+      }
+    }
+  },
+  {
+    "info": {
+      "url_png_icon_64x64": "https://psilobyte.io/ada/psb-64x64.png",
+      "url_png_logo": "https://psilobyte.io/ada/psb-180x180.png",
+      "location": "Edmonton, Alberta, Canada",
+      "social": {
+        "twitter_handle": "877PSBYTE6",
+        "telegram_handle": "psilobyte_cardano",
+        "facebook_handle": "",
+        "youtube_handle": "psilobyte",
+        "twitch_handle": "",
+        "discord_handle": ""
+      },
+      "company": {
+        "name": "",
+        "addr": "",
+        "city": "",
+        "country": "",
+        "company_id": "",
+        "vat_id": ""
+      },
+      "about": {
+        "me": "Blockchain Enthusiast | Professional IT Service Provider | Stake Pool Operator | Always looking to improve processes and help the Cardano community. I have been in the IT field for 15+ years, and specialize in Server Infrastructure, Disaster Recovery and Cyber Security. FreeBSD supporter",
+        "server": "Baremetal servers in Edmonton, Alberta. Canada. Multi-Site redundancy for fast disaster recovery. 3x AMD EPYC 8 Core servers 128GB RAM. NVMe SSDs, Gigabit Fibre link with Failover internet. Server-grade EATON Lithium UPS units protecting the network racks. Also running a Singapore and Uruguay cloud nodes for geo-redundancy.",
+        "company": ""
+      }
+    },
+    "telegram-admin-handle": [
+      "reqlez"
+    ],
+    "my-pool-ids": [
+      "f2fa0dfea7f4caba8cbdd042c4940c783ee57f9516062725b04e19a3"
+    ]
+  },
+  {
+    "info": {
+      "location": "Ocean, NJ",
+      "url_png_logo_64x64": "https://cardano.cloudstruct.net/images/64px.png",
+      "url_png_logo": "https://cardano.cloudstruct.net/images/icon-01.png",
+      "social": {
+        "twitter_handle": "CSCS_pool",
+        "telegram_handle": "CSCS_pool",
+        "github_handle": "cloudstruct",
+        "discord_handle": "5fPRZnX4qW"
+      },
+      "company": {
+        "name": "CloudStruct, LLC.",
+        "country": "United States of America"
+      },
+      "about": {
+        "me": "Principal/Staff level operations engineers and open source developers with decades combined experience in telecommunications, big data, and distributed systems",
+        "server": "ARM relays and block producers, hosted in the cloud with relays in APAC, EU, NA, and SA",
+        "company": "Cloud based software and services for the Cardano Blockchain"
+      }
+    },
+    "my-pool-ids": {
+      "0": "27b1b4470c84db78ce1ffbfff77bb068abb4e47d43cb6009caaa3523"
+    },
+    "telegram-admin-handle": {
+      "0": "CSCS_pool"
+    },
+    "votes": {
+      "https://cips.cardano.org/cips/cip7/": {
+        "vote": "Yes"
+      },
+      "https://cips.cardano.org/cips/cip8/": {
+        "vote": "Yes"
+      },
+      "https://cips.cardano.org/cips/cip12/": {
+        "vote": "Yes"
+      },
+      "https://cips.cardano.org/cips/cip22/": {
+        "vote": "Yes"
+      },
+      "https://cips.cardano.org/cips/cip23/": {
+        "vote": "Yes"
+      },
+      "https://cips.cardano.org/cips/cip24/": {
+        "vote": "Yes"
+      }
+    }
+  },
+  {
+    "info": {
+      "url_png_icon_64x64": "https://lonestarstaking.net/",
+      "url_png_logo": "",
+      "location": "Fort Worth, TX USA",
+      "social": {
+        "instagram_handle": "",
+        "discord_handle": "https://discord.gg/Erndawg[LSSP]#1630",
+        "reddit_handle": "https://www.reddit.com/user/erndawg/",
+        "twitter_handle": "lonestarstaking",
+        "facebook_handle": "",
+        "youtube_handle": "",
+        "twitch_handle": "",
+        "telegram_handle": "erndawg",
+        "github_handle": "erndawg22"
+      },
+      "company": {
+        "name": "LONESTAR STAKING LLC"
+      },
+      "about": {
+        "me": "5 year Navy vet, 30 year Aviation Maintenance/spare time 20 year Computer Hardware experience ",
+        "server": "1 Main Blockproducer 1 standby Block producer in New York Ubuntu 20.04 LTS servers",
+        "server": "4 Relays in Dallas, Seattle, Washington D.C. and bare metal in London U.K. Ubuntu 20.04 LTS servers",
+        "company": "RackNerd"
+      },
+      "my-pool-id": {
         "0": "01fbe26f514707ff29c38aa597ad8ff86a1572e760858d0e7ae4fc32"
-       }          
-    }              
- }
-,
-{
-	"info": {
-		"url_png_icon_64x64": "https://git.io/J3jlr",
-		"url_png_logo": "https://git.io/J3jlM",
-		"location": "Argentina",
-		"social": {
-			"twitter_handle": "LatinStakePools",
-			"telegram_handle": "ITZA_Cardano",
-			"youtube_handle": "channel/UC4nHVVcz6kqIC6m1STfhkkQ"},
-		"about": {
-			"me": "Welcome to Latin Stake Pool's first Cardano stake pool Chichen Itza. Latin Stake Pools in an Argentine start-up which aims to provide the people of Latin America with access to crypto passive income as well as quality educational content via the youtube channel.",
-			"server": "Four nodes, one block producer and three relays. Hosted in four different VPS with three different providers and in three different geographical locations for the best redundancy and uptime."
-		}
-	}
-}
+      }
+    }
+  },
+  {
+    "info": {
+      "url_png_icon_64x64": "https://git.io/J3jlr",
+      "url_png_logo": "https://git.io/J3jlM",
+      "location": "Argentina",
+      "social": {
+        "twitter_handle": "LatinStakePools",
+        "telegram_handle": "ITZA_Cardano",
+        "youtube_handle": "channel/UC4nHVVcz6kqIC6m1STfhkkQ"
+      },
+      "about": {
+        "me": "Welcome to Latin Stake Pool's first Cardano stake pool Chichen Itza. Latin Stake Pools in an Argentine start-up which aims to provide the people of Latin America with access to crypto passive income as well as quality educational content via the youtube channel.",
+        "server": "Four nodes, one block producer and three relays. Hosted in four different VPS with three different providers and in three different geographical locations for the best redundancy and uptime."
+      }
+    }
+  },
+  {
+    "how-to-implement": "in your meta.json - define *extended* with url to this (json) file - https://raw.githubusercontent.com/cardanians/adapools.org/master/example-meta.json",
+    "info": {
+      "url_png_icon_64x64": "https://cardano-tools.io/assets/logo_small.png",
+      "url_png_logo": "https://cardano-tools.io/assets/logo.png",
+      "location": "Falkenstein, Germany",
+      "social": {
+        "twitter_handle": "wutzebaer1",
+        "telegram_handle": "wutzebaer",
+        "facebook_handle": "",
+        "youtube_handle": "",
+        "twitch_handle": "",
+        "discord_handle": "",
+        "github_handle": ""
+      },
+      "company": {
+        "name": "Peter",
+        "addr": "",
+        "city": "",
+        "country": "",
+        "company_id": "",
+        "vat_id": ""
+      },
+      "about": {
+        "me": "",
+        "server": "AMD Ryzen™ 9 3900, 2 x 1.92 TB NVMe SSD, 128 GB DDR4 ECC",
+        "company": ""
+      },
+      "rss": ""
+    },
+    "my-pool-ids": {
+      "0": "3bd3996595321d951291b11e1331061c5d8659d9e69390536dfc922c"
+    },
+    "when-satured-then-recommend": {
+      "0": "aa1c56d0973268bd5b4758181e96971f51cf1c9c20fdfd95022b4ad3"
+    },
+    "telegram-admin-handle": {
+      "0": "wutzebaer"
+    },
+    "adapools_ext": {
+      "prometheus": {
+        "0": {
+          "name": "relay 1 eu",
+          "type": "relay",
+          "key": "422b8767acdc62b7b6a0b11cd5204e0e"
+        }
+      }
+    }
+  }
 ]
