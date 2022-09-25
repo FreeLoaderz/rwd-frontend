@@ -1,6 +1,5 @@
 import {Component, HostListener, Inject, OnDestroy, OnInit, ViewChild} from "@angular/core";
 import {NotificationComponent} from "../notification/notification.component";
-import {Router} from "@angular/router";
 import {NotifierService} from "angular-notifier";
 import {RestService} from "../../services/rest.service";
 import {Title} from "@angular/platform-browser";
