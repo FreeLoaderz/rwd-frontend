@@ -19,6 +19,7 @@ export class TokenClaim {
     constructor(data: any) {
         if (data != null) {
             try {
+                console.log(data);
                 if (data.tokenname) {
                     this.tokenname = data.tokenname;
                     try {
@@ -37,11 +38,13 @@ export class TokenClaim {
                 if (data.fingerprint) {
                     this.fingerprint = data.fingerprint;
                 }
-                if ((data.tot_earned) && (data.tot_claimed)) {
+                if ((data.tot_earned) && (data.tot_claimed != null)) {
+                    console.log("build amount");
                     this.tot_earned = data.tot_earned;
                     this.tot_claimed = data.tot_claimed;
                     this.amount = data.tot_earned - data.tot_claimed;
                 } else if (data.amount) {
+                    console.log("do no build amount");
                     this.amount = +data.amount;
                 }
                 if (data.stake_addr != null) {
