@@ -1,7 +1,7 @@
-import {TokenClaim} from "./token-claim";
+import { TokenClaim } from "./token-claimv2";
 
 export class SpoRewardClaim {
-    public reward_tokens: Array<TokenClaim> = [];
+    public rewards: Array<TokenClaim> = [];
     public recipient_stake_addr: string;
     public recipient_payment_addr: number;
 
@@ -9,7 +9,7 @@ export class SpoRewardClaim {
         if (data != null) {
             if (data.tokens) {
                 data.tokens.foreach((token) => {
-                    this.reward_tokens.push(new TokenClaim(token));
+                    this.rewards.push(new TokenClaim(token));
                 });
             }
             if (data.recipient_stake_addr) {

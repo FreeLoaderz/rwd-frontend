@@ -1,33 +1,33 @@
 const PROXY_CONFIG = {
   "/rwdbuild": {
-    "target": "https://heimdallr-mdrsl.apps.testnet.drasil.org",
+    "target": "https://heimdallr-drasil.apps.testnet.drasil.org",
     "secure": true,
     "logLevel": "debug",
     "changeOrigin": true,
     "pathRewrite": {
       "^/rwdbuild": ""
     },
-    "onProxyRes": function(pr, req, res) {
+    "onProxyRes": function (pr, req, res) {
       if (pr.headers['set-cookie']) {
         const cookies = pr.headers['set-cookie'].map(cookie =>
-            cookie.replace(/;(\ )*secure/gi, '')
+          cookie.replace(/;(\ )*secure/gi, '')
         );
         pr.headers['set-cookie'] = cookies;
       }
     }
   },
   "/rwdinfo": {
-    "target": "https://vidar-mdrsl.apps.testnet.drasil.org",
+    "target": "https://vidar-drasil.apps.testnet.drasil.org/",
     "secure": true,
     "logLevel": "debug",
     "changeOrigin": true,
     "pathRewrite": {
       "^/rwdinfo": ""
     },
-    "onProxyRes": function(pr, req, res) {
+    "onProxyRes": function (pr, req, res) {
       if (pr.headers['set-cookie']) {
         const cookies = pr.headers['set-cookie'].map(cookie =>
-            cookie.replace(/;(\ )*secure/gi, '')
+          cookie.replace(/;(\ )*secure/gi, '')
         );
         pr.headers['set-cookie'] = cookies;
       }
@@ -41,10 +41,10 @@ const PROXY_CONFIG = {
     "pathRewrite": {
       "^/metadata": ""
     },
-    "onProxyRes": function(pr, req, res) {
+    "onProxyRes": function (pr, req, res) {
       if (pr.headers['set-cookie']) {
         const cookies = pr.headers['set-cookie'].map(cookie =>
-            cookie.replace(/;(\ )*secure/gi, '')
+          cookie.replace(/;(\ )*secure/gi, '')
         );
         pr.headers['set-cookie'] = cookies;
       }
@@ -58,10 +58,10 @@ const PROXY_CONFIG = {
     "pathRewrite": {
       "^/feedback": ""
     },
-    "onProxyRes": function(pr, req, res) {
+    "onProxyRes": function (pr, req, res) {
       if (pr.headers['set-cookie']) {
         const cookies = pr.headers['set-cookie'].map(cookie =>
-            cookie.replace(/;(\ )*secure/gi, '')
+          cookie.replace(/;(\ )*secure/gi, '')
         );
         pr.headers['set-cookie'] = cookies;
       }
