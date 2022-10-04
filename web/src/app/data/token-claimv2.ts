@@ -39,12 +39,10 @@ export class TokenClaim {
                     this.fingerprint = data.fingerprint;
                 }
                 if ((data.tot_earned) && (data.tot_claimed != null)) {
-                    console.log("build amount");
                     this.tot_earned = data.tot_earned;
                     this.tot_claimed = data.tot_claimed;
                     this.amount = data.tot_earned - data.tot_claimed;
                 } else if (data.amount) {
-                    console.log("do no build amount");
                     this.amount = +data.amount;
                 }
                 if (data.stake_addr != null) {

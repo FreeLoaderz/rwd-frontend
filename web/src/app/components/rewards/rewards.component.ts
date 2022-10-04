@@ -126,11 +126,7 @@ export class RewardsComponent extends NotificationComponent implements OnInit, O
     public processTokenList(data: any) {
         globalThis.tokens = [];
         for (let i = 0; i < data.length; ++i) {
-            console.log("Data: " + data[i].fingerprint);
-        }
-        for (let i = 0; i < data.length; ++i) {
             const newToken = new TokenClaim(data[i]);
-            console.log("newToken: " + newToken.amount);
             if (TokenService.tokenMap.has(newToken.fingerprint)) {
                 newToken.tokenMetadata = TokenService.tokenMap.get(newToken.fingerprint).tokenMetadata;
             }
@@ -138,13 +134,10 @@ export class RewardsComponent extends NotificationComponent implements OnInit, O
                 globalThis.tokens.push(newToken);
             }
         }
-        //globalThis.tokens.sort((a, b) => TokenClaim.sort(a, b));
+        globalThis.tokens.sort((a, b) => TokenClaim.sort(a, b));
         this.tokens = [...globalThis.tokens];
         this.initialized = true;
         this.listingTokens = false;
-        for (let i = 0; i < globalThis.tokens.length; i++) {
-            console.log("Tokens: " + this.tokens[i].fingerprint);
-        }
         this.getScreenSize(null);
     }
 
