@@ -482,9 +482,11 @@ span.p-menuitem-icon.fa-bolt-lightning {
 .fa-server {
     color: skyblue !important;
 }
+
 .fa-compass {
     color: silver !important;
 }
+
 .fa-chevron-right {
     color: wheat !important;
 }
@@ -783,21 +785,27 @@ body .p-menubar .p-submenu-list {
 .fa-angles-right {
     color: black !important;
 }
+
 .fa-xmark {
     color: black;
 }
+
 .fa-xmark:hover {
     color: #df4863 !important;
 }
+
 .fa-folder-open {
     color: moccasin !important;
 }
+
 .fa-vault {
     color: lightsteelblue !important;
 }
+
 .fa-sack-dollar {
     color: goldenrod !important;
 }
+
 .isDisabled {
     color: currentColor;
     cursor: not-allowed;
@@ -832,15 +840,16 @@ li + li {
 
 .p-dropdown {
     border-radius: 25px !important;
-    background-color: white!important;
-    width: auto!important;
-    font-size: 1rem!important;
-    font-weight: 400!important;
-    line-height: 1.5!important;
+    background-color: white !important;
+    width: auto !important;
+    font-size: 1rem;
+    font-weight: 400 !important;
+    line-height: 1.5;
     padding-left: 7px !important;
     padding-right: 7px !important;
 
 }
+
 .p-dropdown-panel,
 .p-dropdown-item {
     border-radius: 25px !important;

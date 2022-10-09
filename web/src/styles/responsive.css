@@ -28,6 +28,7 @@
         height: 26px !important;
         width: 150px !important;
     }
+
     .reward-search {
         height: 26px !important;
         width: 150px !important;
@@ -108,16 +109,20 @@
     .content-section {
         padding-top: 20px !important
     }
+
     .token-pool-header {
-        width: 65vw!important;
-        margin-bottom: 0!important;
+        width: 65vw !important;
+        margin-bottom: 0 !important;
     }
+
     .left-grid {
-        padding: 1em!important;
+        padding: 1em !important;
     }
+
     .right-grid {
         padding: 0 1em 1em !important;
     }
+
     .grid-item-info-name {
         margin-top: .25rem;
         margin-bottom: .25rem;
@@ -187,6 +192,7 @@
         padding: 0.1rem .5rem !important;
         font-size: .8rem !important;
     }
+
     .grid-item-bottom {
         bottom: .1rem !important;
     }
@@ -249,11 +255,25 @@
         text-shadow: 3px .3rem .3rem #000000;
     }
 
+    li.p-dropdown-item {
+        font-size: .85rem !important;
+    }
+
+    .p-dropdown {
+        font-size: .85rem !important;
+        line-height: 1.25 !important;
+    }
+
+    span.p-dropdown-label {
+        font-size: .85rem !important;
+    }
+
     .history-search {
         margin-top: -11px !important;
         height: 26px !important;
         width: 100px !important;
     }
+
     .reward-search {
         height: 26px !important;
         width: 100px !important;

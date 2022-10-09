@@ -1,4 +1,4 @@
-import {Component, ViewChild} from "@angular/core";
+import {Component, HostListener, Inject, ViewChild} from "@angular/core";
 import {FormGroup, FormBuilder, Validators} from '@angular/forms';
 import {NotificationComponent} from "../notification/notification.component";
 import {Router} from "@angular/router";
@@ -6,6 +6,7 @@ import {NotifierService} from "angular-notifier";
 import {Title} from "@angular/platform-browser";
 import {RestService} from "../../services/rest.service";
 import {PulldownField} from "../../data/pulldown-field";
+import {DOCUMENT} from "@angular/common";
 
 
 @Component({
@@ -20,36 +21,36 @@ export class RegisterComponent extends NotificationComponent {
     public defaultErrorMessage: string = "Could not submit your project. If it continues, please email us at <a class=\"notifier__notification-message\" href=\"mailto:info@smartclaimz.io\">info@smartclaimz.io</a>";
     @ViewChild('notificationTemplate', {static: false}) public notificationTemplate: any;
 
-    constructor(public router: Router, public titleService: Title, public notifierService: NotifierService, private fb: FormBuilder,
+    constructor(@Inject(DOCUMENT) public document: any,
+                public router: Router, public titleService: Title, public notifierService: NotifierService, private fb: FormBuilder,
                 public restService: RestService) {
         super(notifierService);
         this.distoOptions = new PulldownField(false, false, false);
         this.distoOptions.addOption("*Select the token distribution method", null);
-        this.distoOptions.addOption("Weighted - based on how much ADA is staked to a pool", "Weighted+-+based+on+how+much+ADA+is+staked+to+a+pool");
-        this.distoOptions.addOption("Evenly distributed amongst provided list of stake pools", "Evenly+distributed+amongst+provided+list+of+stake+pools");
+        this.distoOptions.addOption("Weighted: Based on ADA staked to a pool", "Weighted+-+based+on+how+much+ADA+is+staked+to+a+pool");
+        this.distoOptions.addOption("Even: Even distribution to list of stake pools", "Evenly+distributed+amongst+provided+list+of+stake+pools");
 
         this.registerForm = fb.group({
             'name': ['', Validators.required],
             'email': ['', [Validators.email, Validators.required]],
             'project': ['', Validators.required],
-            'projectUrl': ['', [Validators.required, Validators.pattern(/^http.*$/)]],
+            'projectUrl': ['', [Validators.required, Validators.pattern(/^http(s)?:\/\/.*$/)]],
             'projectDescription': ['', Validators.required],
-            'twitter': ['', Validators.required],
+            'twitter': ['', [Validators.required, Validators.pattern(/^@?(\w){1,15}$/)]],
             'discord': [''],
             'linkedIn': [''],
             'instagram': [''],
             'facebook': [''],
             'tokenName': ['', Validators.required],
-            'policyId': ['', Validators.required],
+            'policyId': ['', [Validators.required, Validators.pattern(/^[0-9a-fA-F]{56}$/)]],
             'tokenDescription': ['', Validators.required],
-            'tokenUrl': ['', [Validators.required, Validators.pattern(/^http.*$/)]],
+            'tokenUrl': ['', [Validators.required, Validators.pattern(/^http(s)?:\/\.*$/)]],
             'decimals': ['', Validators.pattern(/^[0-9]+$/)],
             'distroMethod': ['', Validators.required],
             'bech32Url': ['']
         });
         this.titleService.setTitle("Project Registration");
     }
-
 
     /**
      * Submit the feedback
