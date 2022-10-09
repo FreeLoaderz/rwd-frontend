@@ -34,7 +34,7 @@ export class RegisterComponent extends NotificationComponent {
             'name': ['', Validators.required],
             'email': ['', [Validators.email, Validators.required]],
             'project': ['', Validators.required],
-            'projectUrl': ['', [Validators.required, Validators.pattern(/^http(s)?:\/\/.*$/)]],
+            'projectUrl': ['', [Validators.required, Validators.pattern(/^http(s)?:\/\/[0-9a-zA-Z]{1}.*$/)]],
             'projectDescription': ['', Validators.required],
             'twitter': ['', [Validators.required, Validators.pattern(/^@?(\w){1,15}$/)]],
             'discord': [''],
@@ -44,7 +44,7 @@ export class RegisterComponent extends NotificationComponent {
             'tokenName': ['', Validators.required],
             'policyId': ['', [Validators.required, Validators.pattern(/^[0-9a-fA-F]{56}$/)]],
             'tokenDescription': ['', Validators.required],
-            'tokenUrl': ['', [Validators.required, Validators.pattern(/^http(s)?:\/\.*$/)]],
+            'tokenUrl': ['', [Validators.required, Validators.pattern(/^http(s)?:\/\/[0-9a-zA-Z]{1}.*$/)]],
             'decimals': ['', Validators.pattern(/^[0-9]+$/)],
             'distroMethod': ['', Validators.required],
             'bech32Url': ['']
