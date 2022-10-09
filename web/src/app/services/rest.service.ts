@@ -45,6 +45,38 @@ export class RestService {
             }));
     }
 
+    public submitRegistration(registerForm: FormGroup): Observable<any> {
+        const url = '/register/formResponse';
+        let params: HttpParams = new HttpParams().set('usp', 'pp_url');
+        params = params.set('entry.1445209345', registerForm.value.email);
+        params = params.set('entry.2111957306', registerForm.value.name);
+        params = params.set('entry.1019957974', registerForm.value.project);
+        params = params.set('entry.517542324', registerForm.value.projectUrl);
+        params = params.set('entry.183292568', registerForm.value.projectDescription);
+        params = params.set('entry.1844949805', registerForm.value.twitter);
+        params = params.set('entry.1196449185', registerForm.value.discord);
+        params = params.set('entry.1937437362', registerForm.value.linkedIn);
+        params = params.set('entry.745059288', registerForm.value.instagram);
+        params = params.set('entry.478426149', registerForm.value.facebook);
+        params = params.set('entry.1354993104', registerForm.value.tokenName);
+        params = params.set('entry.590651180', registerForm.value.policyId);
+        params = params.set('entry.2010747889', registerForm.value.tokenDescription);
+        params = params.set('entry.423117119', registerForm.value.tokenUrl);
+        params = params.set('entry.831647180', registerForm.value.decimals);
+        params = params.set('entry.1712015530', registerForm.value.distroMethod);
+        params = params.set('entry.327914681', registerForm.value.bech32Url);
+
+        RestService.processingRequest = true;
+        return this.httpClient
+            .get(url, {responseType: 'text', params: params, observe: 'response'})
+            .pipe(map(data => {
+                if (data.status) {
+                    return data.status;
+                }
+                return 404;
+            }));
+    }
+
     /**
      *
      */

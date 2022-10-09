@@ -44,6 +44,7 @@ import {TokenService} from "./services/token.service";
 import {TokensComponent} from "./components/tokens/tokens.component";
 import {TokenObserverService} from "./services/observers/token-observer.service";
 import {PoolsComponent} from "./components/pools/pools.component";
+import {RegisterComponent} from "./components/register/register.component";
 
 const customNotifierOptions: NotifierOptions = {
     position: {
@@ -91,7 +92,7 @@ const customNotifierOptions: NotifierOptions = {
 @NgModule({
     declarations: [NavbarComponent, WelcomeComponent, FooterComponent, InfoComponent, RewardsComponent,
         MaintenanceComponent, BankManagerComponent, ContactUsComponent, HistoryComponent, NetworkComponent,
-        FaqComponent, DelegateComponent, TosComponent, TokensComponent, PoolsComponent],
+        FaqComponent, DelegateComponent, TosComponent, TokensComponent, PoolsComponent, RegisterComponent],
     imports: [BrowserModule, FormsModule, ReactiveFormsModule, AppRoutingModule, RouterModule,
         TooltipModule.forRoot(), OverlayPanelModule, ModalModule.forRoot(),
         NotifierModule.withConfig(customNotifierOptions), ChartModule, SharedModule,

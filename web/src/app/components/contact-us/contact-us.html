@@ -11,7 +11,7 @@
                     <input type="text" class="form-control mb-3"
                            placeholder="Name.." style="max-width: 300px;"
                            [formControl]="contactUsForm.controls['name']"
-                           tooltip="Enter your name..">
+                           title="Enter your name..">
                     <div *ngIf="contactUsForm.get('email').errors?.required
                     && (contactUsForm.get('email').dirty || contactUsForm.get('email').touched)" class="invalid-error">
                         Email is required
@@ -24,7 +24,7 @@
                     <input type="text" class="form-control mb-3"
                            placeholder="Email.." style="max-width: 300px;"
                            [formControl]="contactUsForm.controls['email']"
-                           tooltip="Enter your email..">
+                           title="Enter your email..">
                     <div *ngIf="contactUsForm.get('subject').errors?.required && (contactUsForm.get('subject').dirty
                      || contactUsForm.get('subject').touched)" class="invalid-error">
                         Subject is required
@@ -32,7 +32,7 @@
                     <input type="text" class="form-control mb-3"
                            placeholder="Subject.." style="max-width: 300px;"
                            [formControl]="contactUsForm.controls['subject']"
-                           tooltip="Enter the subject..">
+                           title="Enter the subject..">
                     <div *ngIf="contactUsForm.get('message').errors?.required
                         && (contactUsForm.get('message').dirty || contactUsForm.get('message').touched)"
                          class="invalid-error">
@@ -43,7 +43,7 @@
                               cols="50"
                               placeholder="Message.."
                               [formControl]="contactUsForm.controls['message']"
-                              tooltip="Enter the message.."></textarea>
+                              title="Enter the message.."></textarea>
                     <button pButton
                             [disabled]="!contactUsForm.valid"
                             title="Send message"
