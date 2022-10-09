@@ -66,6 +66,23 @@ const PROXY_CONFIG = {
         pr.headers['set-cookie'] = cookies;
       }
     }
+  },
+  "/register": {
+    "target": "https://docs.google.com/forms/d/e/1FAIpQLSfqoUfkR5-flblarbuCqqjC_1lG1y5sM-ignnZPLZLuebCnMw",
+    "secure": true,
+    "logLevel": "debug",
+    "changeOrigin": true,
+    "pathRewrite": {
+      "^/register": ""
+    },
+    "onProxyRes": function(pr, req, res) {
+      if (pr.headers['set-cookie']) {
+        const cookies = pr.headers['set-cookie'].map(cookie =>
+            cookie.replace(/;(\ )*secure/gi, '')
+        );
+        pr.headers['set-cookie'] = cookies;
+      }
+    }
   }
 };
 

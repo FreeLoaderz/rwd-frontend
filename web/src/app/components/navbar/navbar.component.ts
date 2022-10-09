@@ -41,6 +41,7 @@ export class NavbarComponent extends NotificationComponent implements OnInit, Af
     public helpMenu: MenuItem[];
     public faqMenuItem: MenuItem;
     public contactUsMenuItem: MenuItem;
+    public registerMenuItem: MenuItem;
     public compressMenu: boolean = false;
     public connected: boolean = false;
     public walletSubstring: string;
@@ -242,9 +243,18 @@ export class NavbarComponent extends NotificationComponent implements OnInit, Af
             label: 'CONTACT US',
             id: 'CONTACTUS',
             title: 'Send feedback or questions',
-            icon: 'fa-solid fa-message ',
+            icon: 'fa-solid fa-message',
             command: (event) => {
                 this.routeContactUs();
+            }
+        };
+        this.registerMenuItem = {
+            label: 'REGISTER PROJECT',
+            id: 'REGISTER',
+            title: 'Register your project with us!',
+            icon: 'fa-solid fa-handshake',
+            command: (event) => {
+                this.routeRegister();
             }
         };
         this.poolMenuItem = {
@@ -290,6 +300,7 @@ export class NavbarComponent extends NotificationComponent implements OnInit, Af
                 title: 'Contact us, FAQ',
                 icon: 'fa-solid fa-circle-info',
                 items: [this.contactUsMenuItem,
+                    this.registerMenuItem,
                     this.faqMenuItem]
             }];
             this.collapsedConnectedMenu = [
@@ -317,6 +328,7 @@ export class NavbarComponent extends NotificationComponent implements OnInit, Af
                 title: 'Contact us, FAQ, Preview tools',
                 icon: 'fa-solid fa-circle-info',
                 items: [this.contactUsMenuItem,
+                    this.registerMenuItem,
                     this.faqMenuItem]
             }];
             this.collapsedConnectedMenu = [
@@ -458,6 +470,10 @@ export class NavbarComponent extends NotificationComponent implements OnInit, Af
 
     public routeContactUs() {
         this.router.navigate(['/contact-us']);
+    }
+
+    public routeRegister() {
+        this.router.navigate(['/register']);
     }
 
     public routeFaq() {
