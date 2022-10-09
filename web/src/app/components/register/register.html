@@ -1,0 +1,211 @@
+<section id="contact" class="content-section">
+    <div class="center-div-parent">
+        <div class="center-div-child">
+            <h4>Project Registration</h4>
+            <div class="blackdiv" style="padding-top: 0px !important;">
+                <form [formGroup]="registerForm" (ngSubmit)="submitRegistration()" style="padding-top: 1.5rem;">
+                    <h5>Project Contact Person Information</h5>
+                    <div *ngIf="registerForm.get('name').errors?.required
+                && (registerForm.get('name').dirty || registerForm.get('name').touched)" class="invalid-error">
+                        Your name is required
+                    </div>
+                    <input type="text" class="form-control mb-3"
+                           placeholder="*Your name.." style="max-width: 350px;"
+                           [formControl]="registerForm.controls['name']"
+                           title="Enter your name..">
+                    <div *ngIf="registerForm.get('email').errors?.required
+                    && (registerForm.get('email').dirty || registerForm.get('email').touched)" class="invalid-error">
+                        Email is required
+                    </div>
+                    <div *ngIf="registerForm.get('email').errors?.email
+                        && (registerForm.get('email').dirty || registerForm.get('email').touched)"
+                         class="invalid-error">
+                        Email address is invalid
+                    </div>
+                    <input type="text" class="form-control mb-3"
+                           placeholder="*Your email.." style="max-width: 350px;"
+                           [formControl]="registerForm.controls['email']"
+                           title="Enter your email..">
+                    <br>
+                    <h5 class="mt-3">Project Information</h5>
+                    <div *ngIf="registerForm.get('project').errors?.required
+                    && (registerForm.get('project').dirty || registerForm.get('project').touched)"
+                         class="invalid-error">
+                        Project name is required
+                    </div>
+                    <input type="text" class="form-control mb-3"
+                           placeholder="*Project name.." style="max-width: 350px;"
+                           [formControl]="registerForm.controls['project']"
+                           title="Enter your project name..">
+                    <div *ngIf="registerForm.get('projectUrl').errors?.required
+                    && (registerForm.get('projectUrl').dirty || registerForm.get('projectUrl').touched)"
+                         class="invalid-error">
+                        Project website is required
+                    </div>
+                    <div *ngIf="registerForm.get('projectUrl').errors?.pattern
+                        && (registerForm.get('projectUrl').dirty || registerForm.get('projectUrl').touched)"
+                         class="invalid-error">
+                        Project website is invalid
+                    </div>
+                    <input type="text" class="form-control mb-3"
+                           placeholder="*Project website.." style="max-width: 350px;"
+                           [formControl]="registerForm.controls['projectUrl']"
+                           title="Enter your project website url..">
+                    <div *ngIf="registerForm.get('projectDescription').errors?.required
+                        && (registerForm.get('projectDescription').dirty || registerForm.get('projectDescription').touched)"
+                         class="invalid-error">
+                        Project Description is required
+                    </div>
+                    <textarea class="form-control mb-3"
+                              rows="5"
+                              cols="50"
+                              placeholder="*Project Description.."
+                              [formControl]="registerForm.controls['projectDescription']"
+                              title="Enter the project description.."></textarea>
+                    <br>
+                    <h5 class="mt-3">Token Information</h5>
+                    <div *ngIf="registerForm.get('tokenName').errors?.required
+                    && (registerForm.get('tokenName').dirty || registerForm.get('tokenName').touched)"
+                         class="invalid-error">
+                        Token name is required
+                    </div>
+                    <input type="text" class="form-control mb-3"
+                           placeholder="*Token name.." style="max-width: 350px;"
+                           [formControl]="registerForm.controls['tokenName']"
+                           title="Enter your token name..">
+                    <div *ngIf="registerForm.get('policyId').errors?.required
+                    && (registerForm.get('policyId').dirty || registerForm.get('policyId').touched)"
+                         class="invalid-error">
+                        Token Policy Id is required
+                    </div>
+                    <input type="text" class="form-control mb-3"
+                           placeholder="*Token Policy Id.." style="max-width: 350px;"
+                           [formControl]="registerForm.controls['policyId']"
+                           title="Enter your Token Policy Id..">
+                    <div *ngIf="registerForm.get('tokenUrl').errors?.required
+                    && (registerForm.get('tokenUrl').dirty || registerForm.get('tokenUrl').touched)"
+                         class="invalid-error">
+                        Cardano Token Registry URL for your token is required
+                    </div>
+                    <div *ngIf="registerForm.get('tokenUrl').errors?.pattern
+                        && (registerForm.get('tokenUrl').dirty || registerForm.get('tokenUrl').touched)"
+                         class="invalid-error">
+                        Registry URL is invalid
+                    </div>
+                    <input type="text" class="form-control mb-3"
+                           placeholder="*Token's Cardano Token Registry URL.." style="max-width: 350px;"
+                           [formControl]="registerForm.controls['tokenUrl']"
+                           title="Enter your token's Cardano Token Registry URL..">
+                    <div *ngIf="registerForm.get('tokenDescription').errors?.required
+                        && (registerForm.get('tokenDescription').dirty || registerForm.get('tokenDescription').touched)"
+                         class="invalid-error">
+                        Token description is required
+                    </div>
+                    <textarea class="form-control mb-3"
+                              rows="5"
+                              cols="50"
+                              placeholder="*Token Description.."
+                              [formControl]="registerForm.controls['tokenDescription']"
+                              title="Enter the token description.."></textarea>
+                    <div *ngIf="registerForm.get('decimals').errors?.pattern
+                    && (registerForm.get('decimals').dirty || registerForm.get('decimals').touched)"
+                         class="invalid-error">
+                        Number of token decimals is required
+                    </div>
+                    <div *ngIf="registerForm.get('decimals').errors?.pattern
+                        && (registerForm.get('decimals').dirty || registerForm.get('decimals').touched)"
+                         class="invalid-error">
+                        Number of token decimals is invalid
+                    </div>
+                    <input type="text" class="form-control mb-3"
+                           placeholder="*Number of token decimals.." style="max-width: 350px;"
+                           [formControl]="registerForm.controls['decimals']"
+                           title="Number of token decimals..">
+                    <div class="mb-3">
+                        <div *ngIf="registerForm.get('distroMethod').errors?.required
+                    && (registerForm.get('distroMethod').dirty || registerForm.get('distroMethod').touched)"
+                             class="invalid-error">
+                            Token distribution method is required
+                        </div>
+                        <p-dropdown [options]="distoOptions.options"
+                                    [formControl]="registerForm.controls['distroMethod']"
+                                    title="Select the token distribution method"
+                                    [style]="{'width': '375px'}"
+                                    placement="top">
+                            <ng-template let-option pTemplate="item">
+                                {{option.label}}
+                            </ng-template>
+                        </p-dropdown>
+                    </div>
+                    <div *ngIf="registerForm.get('bech32Url').errors?.pattern
+                        && (registerForm.get('bech32Url').dirty || registerForm.get('bech32Url').touched)"
+                         class="invalid-error">
+                        Bech32 Pool Id list URL is invalid
+                    </div>
+                    <input type="text" class="form-control mb-3"
+                           placeholder="Bech32 Pool Id List file URL.." style="max-width: 350px;"
+                           [formControl]="registerForm.controls['bech32Url']"
+                           title="URL to a whitelist of participating pools..">
+                    <br>
+                    <h5 class="mt-3">Project Social Information</h5>
+                    <div *ngIf="registerForm.get('twitter').errors?.required
+                    && (registerForm.get('twitter').dirty || registerForm.get('twitter').touched)"
+                         class="invalid-error">
+                        Twitter account is required
+                    </div>
+                    <div *ngIf="registerForm.get('twitter').errors?.pattern
+                        && (registerForm.get('twitter').dirty || registerForm.get('twitter').touched)"
+                         class="invalid-error">
+                        Twitter account is invalid
+                    </div>
+                    <input type="text" class="form-control mb-3"
+                           placeholder="*Project Twitter account.." style="max-width: 350px;"
+                           [formControl]="registerForm.controls['twitter']"
+                           title="Enter project Twitter account..">
+                    <input type="text" class="form-control mb-3"
+                           placeholder="Project Discord information.." style="max-width: 350px;"
+                           [formControl]="registerForm.controls['discord']"
+                           title="Enter project Discord information..">
+                    <div *ngIf="registerForm.get('linkedIn').errors?.pattern
+                        && (registerForm.get('linkedIn').dirty || registerForm.get('linkedIn').touched)"
+                         class="invalid-error">
+                        LinkedIn website URL is invalid
+                    </div>
+                    <input type="text" class="form-control mb-3"
+                           placeholder="Project LinkedIn website.." style="max-width: 350px;"
+                           [formControl]="registerForm.controls['linkedIn']"
+                           title="Enter project LinkedIn website URL..">
+                    <div *ngIf="registerForm.get('instagram').errors?.pattern
+                        && (registerForm.get('instagram').dirty || registerForm.get('instagram').touched)"
+                         class="invalid-error">
+                        Project Instagram information is invalid
+                    </div>
+                    <input type="text" class="form-control mb-3"
+                           placeholder="Project Instagram account.." style="max-width: 350px;"
+                           [formControl]="registerForm.controls['instagram']"
+                           title="Enter project Instagram account information..">
+                    <div *ngIf="registerForm.get('facebook').errors?.pattern
+                        && (registerForm.get('facebook').dirty || registerForm.get('facebook').touched)"
+                         class="invalid-error">
+                        Facebook website URL is invalid
+                    </div>
+                    <input type="text" class="form-control mb-3"
+                           placeholder="Project Facebook website.." style="max-width: 350px;"
+                           [formControl]="registerForm.controls['facebook']"
+                           title="Enter project Facebook website URL..">
+                    <br>
+                    <button pButton
+                            [disabled]="!registerForm.valid"
+                            title="Submit registration"
+                            type="submit"
+                            class="p-button-rounded p-button-primary me-auto"
+                            label="Submit" icon="fa-solid fa-paper-plane">
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+<ng-template #notificationTemplate let-notificationData="notification">
+    <p class="notifier__notification-message" [innerHTML]="notificationData.message"></p>
+</ng-template>

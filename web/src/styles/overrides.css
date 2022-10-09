@@ -463,6 +463,10 @@ span.p-menuitem-icon.fa-bolt-lightning {
     color: goldenrod !important;
 }
 
+.fa-handshake {
+    color: #efb700 !important;
+}
+
 .fa-circle-info {
     color: forestgreen !important;
 }
@@ -824,4 +828,20 @@ li + li {
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
     background: #df4863;
+}
+
+.p-dropdown {
+    border-radius: 25px !important;
+    background-color: white!important;
+    width: auto!important;
+    font-size: 1rem!important;
+    font-weight: 400!important;
+    line-height: 1.5!important;
+    padding-left: 7px !important;
+    padding-right: 7px !important;
+
+}
+.p-dropdown-panel,
+.p-dropdown-item {
+    border-radius: 25px !important;
 }
