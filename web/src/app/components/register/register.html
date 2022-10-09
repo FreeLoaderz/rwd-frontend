@@ -78,6 +78,11 @@
                          class="invalid-error">
                         Token Policy Id is required
                     </div>
+                    <div *ngIf="registerForm.get('policyId').errors?.pattern
+                        && (registerForm.get('policyId').dirty || registerForm.get('policyId').touched)"
+                         class="invalid-error">
+                        Policy Id is invalid
+                    </div>
                     <input type="text" class="form-control mb-3"
                            placeholder="*Token Policy Id.." style="max-width: 350px;"
                            [formControl]="registerForm.controls['policyId']"
@@ -127,7 +132,7 @@
                              class="invalid-error">
                             Token distribution method is required
                         </div>
-                        <p-dropdown [options]="distoOptions.options"
+                        <p-dropdown [options]="distoOptions.options" appendTo="body"
                                     [formControl]="registerForm.controls['distroMethod']"
                                     title="Select the token distribution method"
                                     [style]="{'width': '375px'}"
