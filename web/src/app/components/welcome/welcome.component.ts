@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, Inject} from '@angular/core';
+import {Component, Inject} from '@angular/core';
 import {Title} from "@angular/platform-browser";
 import {DOCUMENT} from "@angular/common";
 import {RestService} from "../../services/rest.service";
@@ -13,8 +13,7 @@ import {RestService} from "../../services/rest.service";
  */
 export class WelcomeComponent {
 
-    constructor(@Inject(DOCUMENT) private document: any, public titleService: Title,
-                public restService: RestService) {
+    constructor(@Inject(DOCUMENT) private document: any, public titleService: Title, public restService: RestService) {
         this.titleService.setTitle("SmartClaimz");
     }
 
