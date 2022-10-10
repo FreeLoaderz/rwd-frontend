@@ -67,7 +67,7 @@ const PROXY_CONFIG = {
       }
     }
   },
-  "/register": {
+  "/projectRegistration": {
     "target": "https://docs.google.com/forms/d/e/1FAIpQLSfqoUfkR5-flblarbuCqqjC_1lG1y5sM-ignnZPLZLuebCnMw",
     "secure": true,
     "logLevel": "debug",

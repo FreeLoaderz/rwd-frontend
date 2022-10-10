@@ -500,7 +500,7 @@ export class NavbarComponent extends NotificationComponent implements OnInit, Af
         localStorage.removeItem('SmartClaimzWalletSource');
         this.walletObserverService.setloaded(false);
         if (!this.isExtension) {
-            this.router.navigate(['/welcome']);
+          //  this.router.navigate(['/welcome']);
         } else {
             this.router.navigate([this.extensionRoute]);
         }

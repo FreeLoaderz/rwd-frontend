@@ -9,7 +9,6 @@ import {DelegateComponent} from "./components/delegate/delegate.component";
 import {TosComponent} from "./components/tos/tos.component";
 import {BankManagerComponent} from "./components/extensions/meld/bank-manager.component";
 import {TokensComponent} from "./components/tokens/tokens.component";
-import {PoolsComponent} from "./components/pools/pools.component";
 import {RegisterComponent} from "./components/register/register.component";
 
 
@@ -18,6 +17,10 @@ const routes: Routes = [
         path: '',
         redirectTo: '/welcome',
         pathMatch: 'full'
+    },
+    {
+        path: 'welcome/:route',
+        component: WelcomeComponent,
     },
     {
         path: 'welcome',
