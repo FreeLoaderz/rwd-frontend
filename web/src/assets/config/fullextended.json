@@ -298,12 +298,12 @@
       "url_png_logo": "https://4wardpool.swiftcryptollc.com/img/4ward.png",
       "location": "Leesburg, Virginia, United States",
       "social": {
-        "twitter_handle": "swiftcryptollc",
+        "twitter_handle": "mehen_cto",
         "telegram_handle": "swiftcryptollc",
         "facebook_handle": "swiftcryptollc",
         "youtube_handle": "",
         "twitch_handle": "",
-        "discord_handle": "Swift Crypto [4WARD]#7182",
+        "discord_handle": "Steven Fisher#7182",
         "github_handle": "swiftcryptollc"
       },
       "company": {
@@ -550,6 +550,9 @@
   },
   {
     "info": {
+      "url_png_icon_64x64": "https://raw.githubusercontent.com/adrem1/Pool-metadata/master/Rabbithole_black_PFP.PNG",
+      "url_png_logo": "https://raw.githubusercontent.com/adrem1/Pool-metadata/master/Rabbithole_black_PFP.PNG",
+      "location": "World",
       "social": {
         "twitter_handle": "rabbitholepools",
         "telegram_handle": "Rabbitholepools",
