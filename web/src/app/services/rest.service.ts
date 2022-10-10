@@ -45,8 +45,12 @@ export class RestService {
             }));
     }
 
+    /**
+     *
+     * @param registerForm
+     */
     public submitRegistration(registerForm: FormGroup): Observable<any> {
-        const url = '/register/formResponse';
+        const url = '/projectRegistration/formResponse';
         let params: HttpParams = new HttpParams().set('usp', 'pp_url');
         params = params.set('entry.1445209345', registerForm.value.email);
         params = params.set('entry.2111957306', registerForm.value.name);
