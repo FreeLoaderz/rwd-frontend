@@ -19,10 +19,6 @@ const routes: Routes = [
         pathMatch: 'full'
     },
     {
-        path: 'welcome/:route',
-        component: WelcomeComponent,
-    },
-    {
         path: 'welcome',
         component: WelcomeComponent,
     },
