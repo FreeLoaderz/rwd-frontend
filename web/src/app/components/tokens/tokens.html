@@ -1,13 +1,7 @@
 <section id="tokens" class="content-section">
     <div class="center-div-parent">
         <div *ngIf="selectedToken == null" class="center-div-child">
-            <div *ngIf="listingTokens" style="width: 70vw;height: 100vh">
-                <h4 style="display:flex"><img width="24" height="24" src="../../../assets/smartclaimz.ico"
-                                              class="request-spinner ms-2"
-                                              style="display:flex;margin: 0 !important;">
-                    <span class="ms-2" style="display:flex; float: left">Searching for Tokens...</span></h4>
-            </div>
-            <div *ngIf="!listingTokens" class="data-view">
+            <div class="data-view">
                 <div class="data-header mb-2">
                     <h4>Participating Tokens</h4>
                 </div>

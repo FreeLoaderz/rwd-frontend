@@ -1468,5 +1468,26 @@
         }
       }
     }
+  },
+  {
+    "info": {
+      "url_png_icon_64x64": "https://the.adahou.se/adahs_64.png",
+      "url_png_logo": "https://the.adahou.se/adahs_256.png",
+      "location": "The Netherlands, Europe",
+      "social": {
+        "twitter_handle": "Bos020",
+        "telegram_handle": "ADAHSPool",
+        "facebook_handle": ""
+      },
+      "company": {},
+      "about": {
+        "me": "I created the ADA HOUSE (ticker ADAHS) out of passion for the Cardano project. With my experience as an IT pro for 25 years I feel I can contribute to the ecosystem. Seeking delegators to help me on this mission."
+      }
+    },
+    "telegram-admin-handle": [],
+    "my-pool-ids": [
+      "5201765589793cc9a04d8f378bc85125ec0ef7bf70beb84d01692c82"
+    ],
+    "when-satured-then-recommend": []
   }
 ]
