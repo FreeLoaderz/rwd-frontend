@@ -34,7 +34,12 @@
         </div>
     </ng-template>
     <ng-template pTemplate="empty">
-        <h4>No pools were found</h4>
+        <h4 *ngIf="poolsLoaded()">No Pools were found</h4>
+        <h4 *ngIf="!poolsLoaded()" style="display:flex"><img width="24" height="24"
+                                                              src="../../../assets/smartclaimz.ico"
+                                                              class="request-spinner ms-2"
+                                                              style="display:flex;margin: 0 !important;">
+            <span class="ms-2" style="display:flex; float: left">Loading Pools...</span></h4>
     </ng-template>
 </p-dataView>
 <ng-template #notificationTemplate let-notificationData="notification">

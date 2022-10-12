@@ -22,7 +22,6 @@ export class DelegateComponent extends NotificationComponent implements OnInit, 
     public walletLoaded: boolean = false;
     public pools: Array<Pool> = [];
     public initialized: boolean = false;
-    public listingPools: boolean = false;
     public isPreview: boolean = false;
     public wasPreview: boolean = false;
     public poolSub: Subscription;
@@ -66,7 +65,6 @@ export class DelegateComponent extends NotificationComponent implements OnInit, 
 
 
     public listPools() {
-        this.listingPools = true;
         globalThis.pools = [];
         if (this.isPreview) {
             const pools: Array<Pool> = [];
@@ -114,7 +112,6 @@ export class DelegateComponent extends NotificationComponent implements OnInit, 
         globalThis.pools.sort((a, b) => Pool.sortByRandom(a, b));
         this.pools = [...globalThis.pools];
         this.initialized = true;
-        this.listingPools = false;
     }
 
 
