@@ -53,6 +53,19 @@ export class PoolsComponent extends NotificationComponent implements OnInit, OnD
         );
         this.walletLoaded = this.walletService.walletLoaded;
         this.getScreenSize(null);
+        this.restService.getAvailablePools()
+            .then(data => this.poolList(data))
+            .catch(e => this.poolError(e));
+    }
+
+    public poolList(data: any) {
+        for (let i = 0; i < data.length; ++i) {
+            console.log(data[i]);
+        }
+    }
+
+    public poolError(e: any) {
+        console.log(e);
     }
 
     public ngOnDestroy() {
