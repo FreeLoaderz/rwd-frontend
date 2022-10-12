@@ -252,7 +252,7 @@ export class NavbarComponent extends NotificationComponent implements OnInit, Af
             label: 'REGISTER PROJECT',
             id: 'REGISTER',
             title: 'Register your project with us!',
-            icon: 'fa-solid fa-handshake',
+            icon: 'fa-solid fa-handshake-angle',
             command: (event) => {
                 this.routeRegister();
             }

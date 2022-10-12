@@ -106,7 +106,7 @@ export class DelegateComponent extends NotificationComponent implements OnInit, 
             const newPool = new Pool(data[i]);
             globalThis.pools.push(newPool);
         }
-        globalThis.pools.sort((a, b) => Pool.sort(a, b));
+        globalThis.pools.sort((a, b) => Pool.sortByRandom(a, b));
         this.pools = [...globalThis.pools];
         this.initialized = true;
         this.listingPools = false;
