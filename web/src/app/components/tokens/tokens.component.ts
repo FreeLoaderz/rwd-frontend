@@ -24,7 +24,6 @@ export class TokensComponent extends NotificationComponent implements OnInit, On
     public maxItems: number = 10;
     public showPaging: boolean = false;
     public initialized: boolean = false;
-    public listingTokens: boolean = false;
     public gridItemWidth: number = 300;
     public gridItemHeight: number = 300;
     public gridItemSmallWidth: number = 260;

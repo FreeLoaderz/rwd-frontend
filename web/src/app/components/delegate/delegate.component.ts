@@ -25,6 +25,7 @@ export class DelegateComponent extends NotificationComponent implements OnInit, 
     public listingPools: boolean = false;
     public isPreview: boolean = false;
     public wasPreview: boolean = false;
+    public poolSub: Subscription;
 
     constructor(public router: Router, public notifierService: NotifierService, public restService: RestService,
                 public walletObserverService: WalletObserverService, public walletService: WalletService,
@@ -38,6 +39,9 @@ export class DelegateComponent extends NotificationComponent implements OnInit, 
     }
 
     public ngOnInit() {
+        this.poolSub = this.poolObserverService.poolList$.subscribe(poolList => {
+            this.processPoolList(poolList);
+        });
         this.walletSubscription = this.walletObserverService.loaded$.subscribe(
             loaded => {
                 this.walletLoaded = loaded;
@@ -57,6 +61,7 @@ export class DelegateComponent extends NotificationComponent implements OnInit, 
 
     public ngOnDestroy() {
         this.walletSubscription.unsubscribe();
+        this.poolSub.unsubscribe();
     }
 
 
@@ -106,7 +111,7 @@ export class DelegateComponent extends NotificationComponent implements OnInit, 
             const newPool = new Pool(data[i]);
             globalThis.pools.push(newPool);
         }
-        globalThis.pools.sort((a, b) => Pool.sort(a, b));
+        globalThis.pools.sort((a, b) => Pool.sortByRandom(a, b));
         this.pools = [...globalThis.pools];
         this.initialized = true;
         this.listingPools = false;

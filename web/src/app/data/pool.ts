@@ -12,6 +12,7 @@ export class Pool {
     public logo: string;
     public extended: string;
     public url: string;
+    public randomNum: number;
 
     constructor(data: any) {
         if (data != null) {
@@ -51,6 +52,7 @@ export class Pool {
             if (data.extended) {
                 this.extended = data.extended;
             }
+            this.randomNum = Math.random() * 1000;
         }
     }
 
@@ -59,6 +61,16 @@ export class Pool {
         if (this.pool_id == null) {
             this.pool_id = converter('pool').toBech32(this.poolhash);
         }
+    }
+
+    public static sortByRandom(a: any, b: any): number {
+        if (a.randomNum > b.randomNum) {
+            return 1;
+        } else if (a.randomNum < b.randomNum) {
+            return -1;
+        }
+        // a must be equal to b
+        return 0;
     }
 
     public static sort(a: any, b: any): number {

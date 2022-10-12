@@ -372,5 +372,13 @@
     "ticker": "EURO",
     "homepage": "https://cardano-tools.io/europool",
     "extended": "https://cardano-tools.io/pool-metadata-euro-extended.json"
-  }
+  },
+{
+  "name": "The ADA House",
+  "ticker": "ADAHS",
+  "description": "a secure & reliable cardano stake pool",
+  "homepage": "https://the.adahou.se",
+  "extended": "https://the.adahou.se/poolmeta_ext.09.05.json"
+}
 ]
+

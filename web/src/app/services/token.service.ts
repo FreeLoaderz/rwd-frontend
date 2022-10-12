@@ -41,7 +41,6 @@ export class TokenService {
                     .catch(e => this.processMetadataError(token, e));
             }
         }
-        TokenService.finished = true;
     }
 
     /**
@@ -57,6 +56,7 @@ export class TokenService {
         localStorage.setItem(token.fingerprint, JSON.stringify(tokenMetadata));
         if (--TokenService.outstandingTokens <= 0) {
             this.tokenObserverService.setTokenList(TokenService.tokenList);
+            TokenService.finished = true;
         }
     }
 
@@ -76,6 +76,7 @@ export class TokenService {
         TokenService.tokenMap.set(token.fingerprint, token);
         if (--TokenService.outstandingTokens <= 0) {
             this.tokenObserverService.setTokenList(TokenService.tokenList);
+            TokenService.finished = true;
         }
     }
 }
