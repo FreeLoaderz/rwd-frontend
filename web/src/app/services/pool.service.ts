@@ -9,6 +9,7 @@ export class PoolService {
     public static poolList: Array<Pool> = [];
     public static poolMap: Map<string, Pool> = new Map<string, Pool>();
     public static initialized: boolean = false;
+    public static finished: boolean = false;
 
     constructor(private httpClient: HttpClient, public poolObserver: PoolObserverService,
                 public restService: RestService) {
@@ -44,6 +45,7 @@ export class PoolService {
                             }
                             PoolService.poolList.sort((a, b) => Pool.sort(a, b));
                             this.poolObserver.setPoolList(PoolService.poolList);
+                            PoolService.finished = true;
                         });
                     });
                 });

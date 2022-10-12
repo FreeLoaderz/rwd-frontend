@@ -13,6 +13,7 @@ import {WalletService} from "../../services/wallet.service";
 import {Title} from "@angular/platform-browser";
 import {PoolService} from "../../services/pool.service";
 import {PoolObserverService} from "../../services/observers/pool-observer.service";
+import {TokenService} from "../../services/token.service";
 
 @Component({
     selector: 'pools',
@@ -184,4 +185,7 @@ export class PoolsComponent extends NotificationComponent implements OnInit, OnD
         this.poolView.filter(filter);
     }
 
+    public poolsLoaded() {
+        return PoolService.finished;
+    }
 }
