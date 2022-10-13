@@ -286,7 +286,7 @@ export class HistoryComponent extends NotificationComponent implements OnInit, O
 
     public hideCharts(hide: boolean) {
         this.chartsHidden = hide;
-        if (location.host === 'rwd.freeloaderz.io') {
+        if (location.host !== 'rwd.freeloaderz.io') {
             if (this.chartsHidden) {
                 gtag('set', 'page_path', "History");
                 gtag('event', 'page_view');
