@@ -19,6 +19,7 @@ export class PoolService {
         if (PoolService.initialized === false) {
             PoolService.initialized = true;
             if ((location.host.endsWith('smartclaimz.io')) ||
+                (location.host.endsWith('smartclaimz.com')) ||
                 (location.host.startsWith("127.0.0.1"))) {
                 PoolService.initialized = true;
                 this.httpClient.get<Array<any>>("assets/config/fullmetadata.json").subscribe(data => {
