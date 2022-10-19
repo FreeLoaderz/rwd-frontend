@@ -1,0 +1,30 @@
+{
+  "fingerprint": "asset1237qehndtzlpgcvd9zhs98qtc50r3c9kdgawqj",
+  "policy": "628436be6fa349ebf4ac3d749e87a36981b930d4bb4319c11e64042c",
+  "tokenname": "FLZ",
+  "meta_key": 721,
+  "json": {
+    "628436be6fa349ebf4ac3d749e87a36981b930d4bb4319c11e64042c": {
+      "FLZ": {
+        "name": "FLZ",
+        "type": "FT",
+        "files": [
+          {
+            "src": "ipfs://QmRLwv8YLoK1ctHXFsdHNJT5dsxPyPURAYi97SQ8eZNa2c",
+            "name": "freeloaderz-logo.jpeg",
+            "mediaType": "image/jpeg"
+          }
+        ],
+        "image": "ipfs://QmRLwv8YLoK1ctHXFsdHNJT5dsxPyPURAYi97SQ8eZNa2c",
+        "traits": [
+          "Initial Core Contributors",
+          "MAXSUPPLY=350000000"
+        ],
+        "homepage": "freeloaderz.io",
+        "mediaType": "image/jpeg",
+        "description": "A Coalition of Cardano Stake Pools dedicated to decentralization"
+      }
+    }
+  },
+  "txhash": "87ae91ca57beda2c4f2c90cfb569538cb414f09c02f11545f035dcea387f35ea"
+}
