@@ -33,7 +33,6 @@ export class DelegateComponent extends NotificationComponent implements OnInit, 
         if (globalThis.pools == null) {
             globalThis.pools = [];
         }
-
         this.titleService.setTitle("Pools");
     }
 
@@ -74,10 +73,11 @@ export class DelegateComponent extends NotificationComponent implements OnInit, 
                 "ticker": "APEX",
                 "homepage": "https://apexpool.info/",
                 "extended": "https://apexpool.info/extended.json",
-                "pool_id": "5a849bd6a495d0630f6ba6a367ba4e2b3ccc7a53515812105560c152",
+                "pool_id": "efae72c07a26e4542ba55ef59d35ad45ffaaac312865e3a758ede997",
                 "logo": "https://apexpool.info/img/logo.png"
             });
-            const envy: Pool = new Pool({
+            /**
+             const envy: Pool = new Pool({
                 "name": "ENVY Preview Pool",
                 "description": "ENVY provides excellent staking service, with zero margin fees. 20% operator rewards are donated to Dave Thomas Foundation for Adoption & Save the Children. @EnvyStakePool on Twitter & www.envystakepool.com. We support decentralization.",
                 "ticker": "ENVY",
@@ -86,16 +86,17 @@ export class DelegateComponent extends NotificationComponent implements OnInit, 
                 "pool_id": "440f29b9cedd46f74dbcd26baec3993fb87526a736fcbead0093c394",
                 "logo": "https://static.wixstatic.com/media/63a3ee_c86a030e820640eda11b6342d3e45610~mv2.png"
             });
+             **/
             const santo: Pool = new Pool({
                 "name": "SANTO",
                 "description": "Santo Cardano Stake Pool.",
                 "ticker": "SANTO",
                 "homepage": "https://www.santoelectronics.com/santonode",
-                "pool_id": "a37590eac372aaf255821556bc47a0cf4a41afa6ae289232b29639bf",
+                "pool_id": "e931eea8a3e9344656f3f233e55c32ea5056303b5c313015871bc57f",
                 "logo": "https://santoelectronics.com/s/santo.png"
             });
             pools.push(apex);
-            pools.push(envy);
+            //    pools.push(envy);
             pools.push(santo);
             this.processPoolList(pools);
         } else {
@@ -118,6 +119,8 @@ export class DelegateComponent extends NotificationComponent implements OnInit, 
     public setNetwork() {
         if (globalThis.wallet != null) {
             this.isPreview = (true === (0 === globalThis.wallet.network));
+        } else if (location.host.endsWith('rwd.freeloaderz.io')) {
+            this.isPreview = true;
         } else {
             this.isPreview = false;
         }

@@ -55,27 +55,34 @@ export class TokenMetadata {
                             } else {
                                 this.logo = token.image;
                             }
-                            console.log("1 -> " + this.logo);
                         } else if (token["files"] != null) {
                             const files = token["files"][0];
-                            if (files.mediaType != null) {
-                                this.mediaType = files.mediaType;
-                            }
-                            if (files.src != null) {
-                                if (files.src.startsWith("ipfs")) {
-                                    this.logo = ipfsPrefix.concat(files.src.replace("ipfs://", ""));
-                                } else {
-                                    this.logo = files.src;
+                            if (files != null) {
+                                if (files.mediaType != null) {
+                                    this.mediaType = files.mediaType;
+                                }
+                                if (files.src != null) {
+                                    if (Array.isArray(files.src)) {
+                                        if (files.src[0].startsWith("ipfs")) {
+                                            this.logo = ipfsPrefix.concat(files.src[0].replace("ipfs://", ""));
+                                        } else {
+                                            this.logo = files.src[0];
+                                        }
+                                    } else {
+                                        if (files.src.startsWith("ipfs")) {
+                                            this.logo = ipfsPrefix.concat(files.src.replace("ipfs://", ""));
+                                        } else {
+                                            this.logo = files.src;
+                                        }
+                                    }
                                 }
                             }
-                            console.log("2 -> " + this.logo);
                         } else if (token.logo != null) {
                             if (token.logo.startsWith("ipfs")) {
                                 this.logo = ipfsPrefix.concat(token.logo.replace("ipfs://", ""));
                             } else {
                                 this.logo = token.logo;
                             }
-                            console.log("3 -> " + this.logo);
                         }
                         if (token.description != null) {
                             this.description = token.description;
@@ -97,8 +104,8 @@ export class TokenMetadata {
                             } else {
                                 this.shortDesc = this.description;
                             }
-                            if (this.description.length > 70) {
-                                this.compressedDesc = this.description.substring(0, 70).concat("..");
+                            if (this.description.length > 50) {
+                                this.compressedDesc = this.description.substring(0, 50).concat("..");
                             } else {
                                 this.compressedDesc = this.description;
                             }
