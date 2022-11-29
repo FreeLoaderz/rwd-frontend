@@ -355,7 +355,6 @@ export class NavbarComponent extends NotificationComponent implements OnInit, Af
         }
     }
 
-
     @HostListener('window:orientationchange', ['$event'])
     public onOrientationChange(event) {
         this.getScreenSize(event);

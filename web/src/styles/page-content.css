@@ -606,7 +606,7 @@ dd {
 
 dl.faq .desc {
     margin-top: 25px;
-    display: none;
+    display: block;
     border: 2px solid #000000;
     color: white;
     background-color: transparent !important;
@@ -623,11 +623,18 @@ dl.faq button:focus {
 }
 
 .faq-hide {
-    display: none !important;
+    margin-top: 0px!important;
+    max-height: 0;
+    opacity: 0;
+    transition: margin-top 1s, opacity .75s, max-height .75s ease-out;
+    overflow: hidden;
 }
 
 .faq-show {
-    display: block !important;
+    margin-top: 25px!important;
+    max-height: 500px;
+    opacity: 1;
+    transition: margin-top 1s, opacity 4s, max-height 1s ease-in;
 }
 
 .info-text-end {
