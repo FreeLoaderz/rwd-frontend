@@ -50,12 +50,27 @@ export class TokenMetadata {
                             this.mediaType = token.mediaType;
                         }
                         if (token.image != null) {
-                            if (token.image.startsWith("ipfs")) {
-                                this.logo = ipfsPrefix.concat(token.image.replace("ipfs://", ""));
+                            if (Array.isArray(token["image"])) {
+                                for (let i = 0; i < token["image"].length; ++i) {
+                                    if (token["image"][i].startsWith("ipfs")) {
+                                        this.logo = ipfsPrefix.concat(token["image"][i].replace("ipfs://", ""));
+                                        console.log("using logo-> " + this.logo);
+                                        break;
+                                        } else {
+                                        this.logo = token["image"][i];
+                                        console.log("using logo-> " + this.logo);
+                                        break;
+                                    }
+                                }
                             } else {
-                                this.logo = token.image;
+                                if (token.image.startsWith("ipfs")) {
+                                    this.logo = ipfsPrefix.concat(token.image.replace("ipfs://", ""));
+                                    console.log("using logo-> " + this.logo);
+                                } else {
+                                    this.logo = token.image;
+                                    console.log("using logo-> " + this.logo);
+                                }
                             }
-                            console.log("1 -> " + this.logo);
                         } else if (token["files"] != null) {
                             const files = token["files"][0];
                             if (files.mediaType != null) {
@@ -64,18 +79,20 @@ export class TokenMetadata {
                             if (files.src != null) {
                                 if (files.src.startsWith("ipfs")) {
                                     this.logo = ipfsPrefix.concat(files.src.replace("ipfs://", ""));
+                                    console.log("using logo-> " + this.logo);
                                 } else {
                                     this.logo = files.src;
+                                    console.log("using logo-> " + this.logo);
                                 }
                             }
-                            console.log("2 -> " + this.logo);
                         } else if (token.logo != null) {
                             if (token.logo.startsWith("ipfs")) {
                                 this.logo = ipfsPrefix.concat(token.logo.replace("ipfs://", ""));
+                                console.log("using logo-> " + this.logo);
                             } else {
                                 this.logo = token.logo;
+                                console.log("using logo-> " + this.logo);
                             }
-                            console.log("3 -> " + this.logo);
                         }
                         if (token.description != null) {
                             this.description = token.description;

@@ -12,6 +12,7 @@ export class TokenService {
     public static finished: boolean = false;
     public static ipfsPrefix: string;
     public static outstandingTokens: number = 0;
+    public static processingMap: Map<string, Token> = new Map<string, Token>();
 
     constructor(public restService: RestService, public tokenObserverService: TokenObserverService) {
     }
@@ -27,18 +28,23 @@ export class TokenService {
     }
 
     public processTokens(res: any) {
-        TokenService.outstandingTokens = res.length;
+        TokenService.outstandingTokens = 0;
         for (let i = 0; i < res.length; ++i) {
             const token: Token = new Token(res[i]);
-            if (localStorage.getItem(token.storageId) != null) {
-                token.tokenMetadata = new TokenMetadata(localStorage.getItem(token.storageId), null);
-                TokenService.tokenList.push(token);
-                TokenService.tokenMap.set(token.fingerprint, token);
-                --TokenService.outstandingTokens;
-            } else {
-                this.restService.getTokenInfo(token.fingerprint)
-                    .then(info => this.processTokenInfo(token, info))
-                    .catch(e => this.processMetadataError(token, e));
+            if (!TokenService.processingMap.has(token.fingerprint)) {
+                ++TokenService.outstandingTokens;
+                TokenService.processingMap.set(token.fingerprint, token);
+                if (localStorage.getItem(token.storageId) != null) {
+                    token.tokenMetadata = new TokenMetadata(localStorage.getItem(token.storageId), null);
+                    TokenService.tokenList.push(token);
+                    TokenService.tokenMap.set(token.fingerprint, token);
+                    --TokenService.outstandingTokens;
+                } else {
+                    this.restService.getTokenInfo(token.fingerprint)
+                        .then(info => this.processTokenInfo(token, info))
+                        .catch(e => this.processMetadataError(token, e));
+                }
+
             }
         }
     }

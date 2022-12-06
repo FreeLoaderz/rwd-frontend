@@ -72,6 +72,8 @@ export class RewardsComponent extends NotificationComponent implements OnInit, O
         this.walletLoaded = this.walletService.walletLoaded;
         if (this.walletLoaded === true) {
             this.listTokens();
+        }else {
+            this.router.navigate(['/welcome']);
         }
         this.getScreenSize(null);
     }
