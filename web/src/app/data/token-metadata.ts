@@ -55,21 +55,17 @@ export class TokenMetadata {
                                 for (let i = 0; i < token["image"].length; ++i) {
                                     if (token["image"][i].startsWith("ipfs")) {
                                         this.logo = ipfsPrefix.concat(token["image"][i].replace("ipfs://", ""));
-                                        console.log("using logo-> " + this.logo);
                                         break;
-                                        } else {
+                                    } else {
                                         this.logo = token["image"][i];
-                                        console.log("using logo-> " + this.logo);
                                         break;
                                     }
                                 }
                             } else {
                                 if (token.image.startsWith("ipfs")) {
                                     this.logo = ipfsPrefix.concat(token.image.replace("ipfs://", ""));
-                                    console.log("using logo-> " + this.logo);
                                 } else {
                                     this.logo = token.image;
-                                    console.log("using logo-> " + this.logo);
                                 }
                             }
                         } else if (token["files"] != null) {
@@ -100,10 +96,8 @@ export class TokenMetadata {
                         } else if (token.logo != null) {
                             if (token.logo.startsWith("ipfs")) {
                                 this.logo = ipfsPrefix.concat(token.logo.replace("ipfs://", ""));
-                                console.log("using logo-> " + this.logo);
                             } else {
                                 this.logo = token.logo;
-                                console.log("using logo-> " + this.logo);
                             }
                         }
                         if (token.description != null) {
