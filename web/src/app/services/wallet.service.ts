@@ -38,6 +38,7 @@ export class WalletService {
             ).catch((e) => {
                 this.walletObserver.setError("Could not connect with Eternl!");
             });
+            return null;
         } else {
             return ("Eternl extension not installed");
         }
@@ -62,6 +63,7 @@ export class WalletService {
             ).catch((e) => {
                 this.walletObserver.setError("Could not connect with Nami!");
             });
+            return null;
         } else {
             return ("Nami extension not installed");
         }
@@ -86,6 +88,7 @@ export class WalletService {
             ).catch((e) => {
                 this.walletObserver.setError("Could not connect with Gero!");
             });
+            return null;
         } else {
             return ("Gero extension not installed");
         }
@@ -110,6 +113,7 @@ export class WalletService {
             ).catch((e) => {
                 this.walletObserver.setError("Could not connect with Flint!");
             });
+            return null;
         } else {
             return ("Flint extension not installed");
         }
