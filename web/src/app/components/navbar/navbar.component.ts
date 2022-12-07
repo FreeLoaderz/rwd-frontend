@@ -108,7 +108,7 @@ export class NavbarComponent extends NotificationComponent implements OnInit, Af
             error => {
                 this.walletLoaded = false;
                 this.errorNotification(error);
-                this.disconnectWallet();
+                this.disconnectWallet(true);
             }
         );
 
@@ -130,7 +130,7 @@ export class NavbarComponent extends NotificationComponent implements OnInit, Af
 
     ngAfterContentInit() {
         this.setupMenu();
-        this.disconnectWallet();
+        this.disconnectWallet(false);
         this.getScreenSize(null);
         globalThis.customerId = 1;
         globalThis.multiSigType = "sporwc";
@@ -191,7 +191,7 @@ export class NavbarComponent extends NotificationComponent implements OnInit, Af
             id: 'DISCONNECT',
             icon: 'fa-solid fa-wallet',
             command: (event) => {
-                this.disconnectWallet();
+                this.disconnectWallet(true);
             }
         };
 
@@ -385,7 +385,7 @@ export class NavbarComponent extends NotificationComponent implements OnInit, Af
             this.walletImage = "../../assets/icons/eternl.png";
             this.hideConnectModal();
             if (!this.isExtension) {
-                this.router.navigate(['/rewards']);
+                //this.router.navigate(['/rewards']);
             }
         }
     }
@@ -403,7 +403,7 @@ export class NavbarComponent extends NotificationComponent implements OnInit, Af
             this.walletImage = "../../assets/icons/nami.png";
             this.hideConnectModal();
             if (!this.isExtension) {
-                this.router.navigate(['/rewards']);
+             //   this.router.navigate(['/rewards']);
             }
         }
     }
@@ -418,7 +418,7 @@ export class NavbarComponent extends NotificationComponent implements OnInit, Af
             this.walletImage = "../../assets/icons/gero.png";
             this.hideConnectModal();
             if (!this.isExtension) {
-                this.router.navigate(['/rewards']);
+             //   this.router.navigate(['/rewards']);
             }
         }
     }
@@ -437,7 +437,7 @@ export class NavbarComponent extends NotificationComponent implements OnInit, Af
             this.walletImage = "../../assets/icons/flint.png";
             this.hideConnectModal();
             if (!this.isExtension) {
-                this.router.navigate(['/rewards']);
+           //     this.router.navigate(['/rewards']);
             }
         }
     }
@@ -491,12 +491,14 @@ export class NavbarComponent extends NotificationComponent implements OnInit, Af
         return this.walletService.anyWalletAvailable();
     }
 
-    public disconnectWallet() {
+    public disconnectWallet(removeWallet: boolean) {
         globalThis.walletApi = null;
         globalThis.wallet = null;
         this.walletSubstring = null;
         this.connected = false;
-        localStorage.removeItem('SmartClaimzWalletSource');
+        if (removeWallet) {
+            localStorage.removeItem('SmartClaimzWalletSource');
+        }
         this.walletObserverService.setloaded(false);
         if (!this.isExtension) {
           //  this.router.navigate(['/welcome']);

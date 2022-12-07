@@ -33,6 +33,7 @@ export class DelegateComponent extends NotificationComponent implements OnInit, 
         if (globalThis.pools == null) {
             globalThis.pools = [];
         }
+
         this.titleService.setTitle("Pools");
     }
 
@@ -73,16 +74,18 @@ export class DelegateComponent extends NotificationComponent implements OnInit, 
                 "ticker": "APEX",
                 "homepage": "https://apexpool.info/",
                 "extended": "https://apexpool.info/extended.json",
-                "pool_id": "efae72c07a26e4542ba55ef59d35ad45ffaaac312865e3a758ede997",
+                "poolhash": "efae72c07a26e4542ba55ef59d35ad45ffaaac312865e3a758ede997",
+                "pool_id": "pool1a7h89sr6ymj9g2a9tm6e6dddghl64tp39pj78f6cah5ewgd4px0",
                 "logo": "https://apexpool.info/img/logo.png"
             });
-             const envy: Pool = new Pool({
+            const envy: Pool = new Pool({
                 "name": "ENVY Preview Pool",
                 "description": "ENVY provides excellent staking service, with zero margin fees. 20% operator rewards are donated to Dave Thomas Foundation for Adoption & Save the Children. @EnvyStakePool on Twitter & www.envystakepool.com. We support decentralization.",
                 "ticker": "ENVY",
                 "homepage": "https://envystakepool.com",
                 "extended": "https://git.io/Ju1j9",
-                "pool_id": "d5c3796128e9657b52511c11b240f1b0ba53c78b9c44c2c9d7920395",
+                "poolhash": "d5c3796128e9657b52511c11b240f1b0ba53c78b9c44c2c9d7920395",
+                "pool_id": "pool16hphjcfga9jhk5j3rsgmys83kza983utn3zv9jwhjgpe2ah4j8x",
                 "logo": "https://static.wixstatic.com/media/63a3ee_c86a030e820640eda11b6342d3e45610~mv2.png"
             });
             const santo: Pool = new Pool({
@@ -90,7 +93,8 @@ export class DelegateComponent extends NotificationComponent implements OnInit, 
                 "description": "Santo Cardano Stake Pool.",
                 "ticker": "SANTO",
                 "homepage": "https://www.santoelectronics.com/santonode",
-                "pool_id": "e931eea8a3e9344656f3f233e55c32ea5056303b5c313015871bc57f",
+                "poolhash": "e931eea8a3e9344656f3f233e55c32ea5056303b5c313015871bc57f",
+                "pool_id": "pool1ayc7a29ray6yv4hn7ge72hpjafg9vvpmtscnq9v8r0zh7azas9c",
                 "logo": "https://santoelectronics.com/s/santo.png"
             });
             pools.push(apex);
@@ -117,8 +121,6 @@ export class DelegateComponent extends NotificationComponent implements OnInit, 
     public setNetwork() {
         if (globalThis.wallet != null) {
             this.isPreview = (true === (0 === globalThis.wallet.network));
-        } else if (location.host.endsWith('rwd.freeloaderz.io')) {
-            this.isPreview = true;
         } else {
             this.isPreview = false;
         }

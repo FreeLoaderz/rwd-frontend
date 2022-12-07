@@ -42,6 +42,7 @@ export class Pool {
                 this.setPoolhash(data.poolhash);
             }
             if (data.pool_id) {
+                this.pool_id = data.pool_id;
             }
             if (data.logo) {
                 this.logo = data.logo;
