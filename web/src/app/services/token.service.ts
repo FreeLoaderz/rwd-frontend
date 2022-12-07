@@ -12,6 +12,7 @@ export class TokenService {
     public static finished: boolean = false;
     public static ipfsPrefix: string;
     public static outstandingTokens: number = 0;
+    public static processingMap: Map<string, Token> = new Map<string, Token>();
 
     constructor(public restService: RestService, public tokenObserverService: TokenObserverService) {
     }
@@ -27,20 +28,26 @@ export class TokenService {
     }
 
     public processTokens(res: any) {
-        TokenService.outstandingTokens = res.length;
+        TokenService.outstandingTokens = 0;
         for (let i = 0; i < res.length; ++i) {
             const token: Token = new Token(res[i]);
-            if (localStorage.getItem(token.storageId) != null) {
-                token.tokenMetadata = new TokenMetadata(localStorage.getItem(token.storageId), null);
-                TokenService.tokenList.push(token);
-                TokenService.tokenMap.set(token.fingerprint, token);
-                --TokenService.outstandingTokens;
-            } else {
-                this.restService.getTokenInfo(token.fingerprint)
-                    .then(info => this.processTokenInfo(token, info))
-                    .catch(e => this.processMetadataError(token, e));
+            if (!TokenService.processingMap.has(token.fingerprint)) {
+                ++TokenService.outstandingTokens;
+                TokenService.processingMap.set(token.fingerprint, token);
+                if (localStorage.getItem(token.storageId) != null) {
+                    token.tokenMetadata = JSON.parse(localStorage.getItem(token.storageId));
+                    TokenService.tokenList.push(token);
+                    TokenService.tokenMap.set(token.fingerprint, token);
+                    --TokenService.outstandingTokens;
+                } else {
+                    this.restService.getTokenInfo(token.fingerprint)
+                        .then(info => this.processTokenInfo(token, info))
+                        .catch(e => this.processMetadataError(token, e));
+                }
+
             }
         }
+        TokenService.processingMap.clear();
     }
 
     /**
@@ -53,7 +60,7 @@ export class TokenService {
         token.tokenMetadata = tokenMetadata;
         TokenService.tokenList.push(token);
         TokenService.tokenMap.set(token.fingerprint, token);
-        localStorage.setItem(token.fingerprint, JSON.stringify(tokenMetadata));
+        localStorage.setItem(token.storageId, JSON.stringify(tokenMetadata));
         if (--TokenService.outstandingTokens <= 0) {
             this.tokenObserverService.setTokenList(TokenService.tokenList);
             TokenService.finished = true;
@@ -70,7 +77,7 @@ export class TokenService {
         tokenMetadata.description = "";
         tokenMetadata.shortDesc = "";
         tokenMetadata.compressedDesc = "";
-        tokenMetadata.logo = "";
+        tokenMetadata.logo = "../../../assets/ada.png";
         token.tokenMetadata = tokenMetadata;
         TokenService.tokenList.push(token);
         TokenService.tokenMap.set(token.fingerprint, token);

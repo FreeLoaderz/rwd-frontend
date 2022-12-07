@@ -17,7 +17,8 @@ export class TokenMetadata {
             if (ipfsPrefix != null) {
                 if (data.fingerprint != null) {
                     this.fingerprint = data.fingerprint;
-                    const concatFingerprint = data.fingerprint.substring(0, 8).concat("...").concat(data.fingerprint.substring(data.fingerprint.length - 8));
+                    const concatFingerprint = data.fingerprint.substring(0, 8).concat("...")
+                        .concat(data.fingerprint.substring(data.fingerprint.length - 8));
                     this.shortFingerprint = concatFingerprint;
                 }
                 if (data.policy != null) {
@@ -50,10 +51,26 @@ export class TokenMetadata {
                             this.mediaType = token.mediaType;
                         }
                         if (token.image != null) {
-                            if (token.image.startsWith("ipfs")) {
-                                this.logo = ipfsPrefix.concat(token.image.replace("ipfs://", ""));
+                            if (Array.isArray(token["image"])) {
+                                for (let i = 0; i < token["image"].length; ++i) {
+                                    if (token["image"][i].startsWith("ipfs")) {
+                                        this.logo = ipfsPrefix.concat(token["image"][i].replace("ipfs://", ""));
+                                        console.log("using logo-> " + this.logo);
+                                        break;
+                                        } else {
+                                        this.logo = token["image"][i];
+                                        console.log("using logo-> " + this.logo);
+                                        break;
+                                    }
+                                }
                             } else {
-                                this.logo = token.image;
+                                if (token.image.startsWith("ipfs")) {
+                                    this.logo = ipfsPrefix.concat(token.image.replace("ipfs://", ""));
+                                    console.log("using logo-> " + this.logo);
+                                } else {
+                                    this.logo = token.image;
+                                    console.log("using logo-> " + this.logo);
+                                }
                             }
                         } else if (token["files"] != null) {
                             const files = token["files"][0];
@@ -76,12 +93,17 @@ export class TokenMetadata {
                                         }
                                     }
                                 }
+                                if (files.mediaType != null) {
+                                    this.mediaType = files.mediaType;
+                                }
                             }
                         } else if (token.logo != null) {
                             if (token.logo.startsWith("ipfs")) {
                                 this.logo = ipfsPrefix.concat(token.logo.replace("ipfs://", ""));
+                                console.log("using logo-> " + this.logo);
                             } else {
                                 this.logo = token.logo;
+                                console.log("using logo-> " + this.logo);
                             }
                         }
                         if (token.description != null) {
@@ -126,6 +148,9 @@ export class TokenMetadata {
                 this.homepageURL = data.homepageURL;
                 this.mediaType = data.mediaType;
             }
+        }
+        if ((this.logo == null) || (!this.logo.startsWith("http"))) {
+            this.logo = "../../../assets/ada.png";
         }
     }
 }

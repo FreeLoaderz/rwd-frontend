@@ -72,6 +72,8 @@ export class RewardsComponent extends NotificationComponent implements OnInit, O
         this.walletLoaded = this.walletService.walletLoaded;
         if (this.walletLoaded === true) {
             this.listTokens();
+        }else {
+            this.router.navigate(['/welcome']);
         }
         this.getScreenSize(null);
     }
@@ -150,7 +152,6 @@ export class RewardsComponent extends NotificationComponent implements OnInit, O
                     const rwd = new SpoRewardClaim(null);
                     for (let i = 0; i < this.tokens.length; ++i) {
                         if ((this.tokens[i] != null) && (this.tokens[i].selected)) {
-                            console.log("Token: " + this.tokens[i]);
                             rwd.rewards.push(this.tokens[i]);
                         }
                     }

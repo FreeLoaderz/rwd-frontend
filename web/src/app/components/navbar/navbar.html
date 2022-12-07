@@ -17,7 +17,7 @@
                 </li>
                 <li *ngIf="connected" class="nav-item me-1">
                     <a *ngIf="walletLoaded" style="display: flex !important" class="nav-link"
-                       (click)="disconnectWallet()">
+                       (click)="disconnectWallet(true)">
                         <p-image src="{{walletImage}}" class="mt-auto mb-auto" title="Disconnect wallet"
                                  alt="{{getWalletSource()}}" width="20" height="20"></p-image>
                     </a>
@@ -37,7 +37,7 @@
                 </li>
                 <li *ngIf="connected" class="nav-item me-2">
                     <a *ngIf="walletLoaded" style="display: flex !important" class="nav-link mb-1"
-                       (click)="disconnectWallet()">
+                       (click)="disconnectWallet(true)">
                         <p-image src="{{walletImage}}" class="me-2 mt-auto mb-auto" title="Disconnect wallet"
                                  alt="{{getWalletSource()}}" width="20" height="20"></p-image>
                         <span title="Disconnect wallet"

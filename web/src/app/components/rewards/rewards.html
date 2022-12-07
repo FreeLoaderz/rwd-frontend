@@ -39,8 +39,9 @@
                                 </div>
                                 <div class="grid-item-content">
                                     <img *ngIf="token.tokenMetadata != null" src="{{token.tokenMetadata.logo}}"
+                                         onerror="this.onerror=null; this.src='../../../assets/ada.png'"
                                          width="64px" height="64px">
-                                    <img *ngIf="token.tokenMetadata == null" src="../../../assets/ada.png">
+                                    <img *ngIf="token.tokenMetadata == null" src="../../../assets/ada.png" onerror="this.onerror=null; this.src='../../../assets/ada.png'">
                                     <p *ngIf="token.tokenMetadata != null" class="grid-item-info-name mt-1">
                                         <a href="{{token.tokenMetadata.url}}"
                                            target="_blank"

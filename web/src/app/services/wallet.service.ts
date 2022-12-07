@@ -1,6 +1,6 @@
-import { Injectable } from "@angular/core";
-import { Wallet } from "../data/wallet";
-import { WalletObserverService } from "./observers/wallet-observer.service";
+import {Injectable} from "@angular/core";
+import {Wallet} from "../data/wallet";
+import {WalletObserverService} from "./observers/wallet-observer.service";
 import converter from "bech32-converting";
 
 @Injectable()
@@ -9,7 +9,7 @@ export class WalletService {
     public numWalletCalls: number = 0;
     public walletLoaded: boolean = false;
     public errorLoadingWallet: boolean = false;
-    public onlyMainnet: boolean = false;
+    public onlyMainnet: boolean = true;
 
     constructor(public walletObserver: WalletObserverService) {
         this.walletObserver.loaded$.subscribe(loaded => {
@@ -17,6 +17,8 @@ export class WalletService {
         });
         if (location.host === 'rwd.freeloaderz.io') {
             this.onlyMainnet = false;
+        } else {
+            this.onlyMainnet = true;
         }
     }
 
@@ -33,11 +35,12 @@ export class WalletService {
     public connectEternl(): string {
         if (globalThis.cardano.eternl != null) {
             globalThis.cardano.eternl.enable().then((api) => {
-                this.finishWalletConnect(api, "eternl");
-            }
+                    this.finishWalletConnect(api, "eternl");
+                }
             ).catch((e) => {
                 this.walletObserver.setError("Could not connect with Eternl!");
             });
+            return null;
         } else {
             return ("Eternl extension not installed");
         }
@@ -57,11 +60,12 @@ export class WalletService {
     public connectNami(): string {
         if (globalThis.cardano.nami != null) {
             globalThis.cardano.nami.enable().then((api) => {
-                this.finishWalletConnect(api, "nami");
-            }
+                    this.finishWalletConnect(api, "nami");
+                }
             ).catch((e) => {
                 this.walletObserver.setError("Could not connect with Nami!");
             });
+            return null;
         } else {
             return ("Nami extension not installed");
         }
@@ -81,11 +85,12 @@ export class WalletService {
     public connectGero(): string {
         if (globalThis.cardano.gerowallet != null) {
             globalThis.cardano.gerowallet.enable().then((api) => {
-                this.finishWalletConnect(api, "gero");
-            }
+                    this.finishWalletConnect(api, "gero");
+                }
             ).catch((e) => {
                 this.walletObserver.setError("Could not connect with Gero!");
             });
+            return null;
         } else {
             return ("Gero extension not installed");
         }
@@ -105,11 +110,12 @@ export class WalletService {
     public connectFlint(): string {
         if (globalThis.cardano.flint != null) {
             globalThis.cardano.flint.enable().then((api) => {
-                this.finishWalletConnect(api, "flint");
-            }
+                    this.finishWalletConnect(api, "flint");
+                }
             ).catch((e) => {
                 this.walletObserver.setError("Could not connect with Flint!");
             });
+            return null;
         } else {
             return ("Flint extension not installed");
         }
