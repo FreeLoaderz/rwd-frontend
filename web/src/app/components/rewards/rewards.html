@@ -65,13 +65,13 @@
                                     <button *ngIf="!token.selected" pButton
                                             title="Claim Token" [disabled]="!walletLoaded || submittingTx"
                                             (click)="toggleSelect(token)"
-                                            class="p-button p-button-rounded p-button-primary ms-auto me-auto mb-2"
+                                            class="p-button p-button-rounded p-button-primary ms-auto me-auto mb-2 mt-2"
                                             label="Claim Token" icon="fa-solid fa-square">
                                     </button>
                                     <button *ngIf="token.selected" pButton
                                             title="Claim Token" [disabled]="!walletLoaded || submittingTx"
                                             (click)="toggleSelect(token)"
-                                            class="p-button p-button-rounded p-button-success ms-auto me-auto mb-2"
+                                            class="p-button p-button-rounded p-button-success ms-auto me-auto mb-2 mt-2"
                                             label="Claim Token" icon="fa-solid fa-square-check">
                                     </button>
                                 </div>
