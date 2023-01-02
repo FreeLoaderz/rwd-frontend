@@ -61,10 +61,17 @@ export class RewardsComponent extends NotificationComponent implements OnInit, O
         this.ipfsPrefix = this.propertyService.getProperty("ipfs-prefix");
         this.walletSubscription = this.walletObserverService.loaded$.subscribe(
             loaded => {
-                this.walletLoaded = loaded;
-                if ((loaded === true) && (!this.initialized)) {
-                    this.isPreview = (globalThis.wallet.network === 0);
-                    this.listTokens();
+                if (this.walletLoaded === false) {
+                    this.walletLoaded = loaded;
+                    if ((loaded === true) && (!this.initialized)) {
+                        this.isPreview = (globalThis.wallet.network === 0);
+                        this.listTokens();
+                    }
+                } else if (loaded === true) {
+                    if ((loaded === true) && (!this.initialized)) {
+                        this.isPreview = (globalThis.wallet.network === 0);
+                        this.listTokens();
+                    }
                 }
             }
         );
