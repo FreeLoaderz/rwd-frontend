@@ -13,6 +13,7 @@ export class Pool {
     public extended: string;
     public url: string;
     public randomNum: number;
+    public nextUpdateMs: number;
 
     constructor(data: any) {
         if (data != null) {
@@ -52,6 +53,12 @@ export class Pool {
             }
             if (data.extended) {
                 this.extended = data.extended;
+            }
+            if (data.nextUpdateMs) {
+                this.nextUpdateMs = data.nextUpdateMs;
+            } else {
+                // check for an update 25 days from now
+                this.nextUpdateMs = new Date().getTime() + 2160000000;
             }
             this.randomNum = Math.random() * 1000;
         }
