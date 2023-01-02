@@ -320,6 +320,7 @@ export class NavbarComponent extends NotificationComponent implements OnInit, Af
                 title: 'Explore participating projects and pools',
                 icon: 'fa-solid fa-compass',
                 items: [
+                    this.tokensMenuItem,
                     this.poolMenuItem]
             }];
             this.helpMenu = [{
@@ -354,7 +355,6 @@ export class NavbarComponent extends NotificationComponent implements OnInit, Af
             this.compressMenu = false;
         }
     }
-
 
     @HostListener('window:orientationchange', ['$event'])
     public onOrientationChange(event) {

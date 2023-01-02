@@ -1,7 +1,12 @@
-import {UtilityService} from "../services/utility.service";
-import {TokenMetadata} from "./token-metadata";
+import { UtilityService } from "../services/utility.service";
+import { TokenMetadata } from "./token-metadata";
 
 export class TokenClaim {
+    public contract_id: number;
+    public stake_addr: string;
+    public policy: string;
+    public tot_earned: number;
+    public tot_claimed: number;
     public displayName: string;
     public tokenname: string;
     public currencysymbol: string;
@@ -14,6 +19,7 @@ export class TokenClaim {
     constructor(data: any) {
         if (data != null) {
             try {
+                console.log(data);
                 if (data.tokenname) {
                     this.tokenname = data.tokenname;
                     try {
@@ -24,16 +30,26 @@ export class TokenClaim {
                 }
                 if (data.policy) {
                     this.currencysymbol = data.policy;
+                    this.policy = data.policy;
                 } else if (data.currencysymbol) {
                     this.currencysymbol = data.currencysymbol;
+                    this.policy = data.currencysymbol;
                 }
                 if (data.fingerprint) {
                     this.fingerprint = data.fingerprint;
                 }
-                if ((data.tot_earned) && (data.tot_claimed)) {
+                if ((data.tot_earned) && (data.tot_claimed != null)) {
+                    this.tot_earned = data.tot_earned;
+                    this.tot_claimed = data.tot_claimed;
                     this.amount = data.tot_earned - data.tot_claimed;
                 } else if (data.amount) {
                     this.amount = +data.amount;
+                }
+                if (data.stake_addr != null) {
+                    this.stake_addr = data.stake_addr;
+                }
+                if (data.contract_id != null) {
+                    this.contract_id = data.contract_id;
                 }
                 if (data.selected != null) {
                     this.selected = data.selected;
@@ -41,7 +57,7 @@ export class TokenClaim {
                 if (data.last_calc_epoch) {
                     this.last_calc_epoch = data.last_calc_epoch;
                 }
-            }catch (e){
+            } catch (e) {
                 console.log(e);
             }
         }

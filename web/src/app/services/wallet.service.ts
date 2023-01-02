@@ -17,6 +17,8 @@ export class WalletService {
         });
         if (location.host === 'rwd.freeloaderz.io') {
             this.onlyMainnet = false;
+        } else {
+            this.onlyMainnet = true;
         }
     }
 
@@ -149,15 +151,21 @@ export class WalletService {
         globalThis.walletApi.getUtxos()
             .then(res => this.processUtxos(res))
             .catch(e => this.handleError(e));
+        /*
+        // Deprecated
         if (globalThis.walletSource === "nami") {
             globalThis.walletApi.getUsedAddresses()
-                .then(res => this.processUnusedAddresses(res))
+                .then(res => this.processUsedAddresses(res))
                 .catch(e => this.handleError(e));
         } else {
             globalThis.walletApi.getUnusedAddresses()
                 .then(res => this.processUnusedAddresses(res))
                 .catch(e => this.handleError(e));
         }
+        */
+        globalThis.walletApi.getUsedAddresses()
+            .then(res => this.processUsedAddresses(res))
+            .catch(e => this.handleError(e));
         globalThis.walletApi.experimental.getCollateral()
             .then(res => this.processCollateral(res))
             .catch(e => this.handleError(e));
@@ -235,6 +243,23 @@ export class WalletService {
         globalThis.wallet.sending_wal_addrs = [];
         for (let i = 0; i < data.length; ++i) {
             globalThis.wallet.sending_wal_addrs.push(data[i]);
+        }
+        if (--this.numWalletCalls === 0) {
+            this.finishedWalletCalls();
+        }
+    }
+
+    /**
+     * Process the used addr/sending_wallet_addr
+     * @param data
+     * @private
+     */
+    private processUsedAddresses(data: any) {
+        globalThis.wallet.sending_wal_addrs = [];
+        for (let i = 0; i < data.length; ++i) {
+            if (data[i].length > 110) {
+                globalThis.wallet.sending_wal_addrs.push(data[i]);
+            }
         }
         if (--this.numWalletCalls === 0) {
             this.finishedWalletCalls();

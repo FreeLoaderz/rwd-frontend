@@ -17,7 +17,8 @@ export class TokenMetadata {
             if (ipfsPrefix != null) {
                 if (data.fingerprint != null) {
                     this.fingerprint = data.fingerprint;
-                    const concatFingerprint = data.fingerprint.substring(0, 8).concat("...").concat(data.fingerprint.substring(data.fingerprint.length - 8));
+                    const concatFingerprint = data.fingerprint.substring(0, 8).concat("...")
+                        .concat(data.fingerprint.substring(data.fingerprint.length - 8));
                     this.shortFingerprint = concatFingerprint;
                 }
                 if (data.policy != null) {
@@ -54,44 +55,49 @@ export class TokenMetadata {
                                 for (let i = 0; i < token["image"].length; ++i) {
                                     if (token["image"][i].startsWith("ipfs")) {
                                         this.logo = ipfsPrefix.concat(token["image"][i].replace("ipfs://", ""));
-                                        console.log("using logo-> " + this.logo);
                                         break;
-                                        } else {
+                                    } else {
                                         this.logo = token["image"][i];
-                                        console.log("using logo-> " + this.logo);
                                         break;
                                     }
                                 }
                             } else {
                                 if (token.image.startsWith("ipfs")) {
                                     this.logo = ipfsPrefix.concat(token.image.replace("ipfs://", ""));
-                                    console.log("using logo-> " + this.logo);
                                 } else {
                                     this.logo = token.image;
-                                    console.log("using logo-> " + this.logo);
                                 }
                             }
                         } else if (token["files"] != null) {
                             const files = token["files"][0];
-                            if (files.mediaType != null) {
-                                this.mediaType = files.mediaType;
-                            }
-                            if (files.src != null) {
-                                if (files.src.startsWith("ipfs")) {
-                                    this.logo = ipfsPrefix.concat(files.src.replace("ipfs://", ""));
-                                    console.log("using logo-> " + this.logo);
-                                } else {
-                                    this.logo = files.src;
-                                    console.log("using logo-> " + this.logo);
+                            if (files != null) {
+                                if (files.mediaType != null) {
+                                    this.mediaType = files.mediaType;
+                                }
+                                if (files.src != null) {
+                                    if (Array.isArray(files.src)) {
+                                        if (files.src[0].startsWith("ipfs")) {
+                                            this.logo = ipfsPrefix.concat(files.src[0].replace("ipfs://", ""));
+                                        } else {
+                                            this.logo = files.src[0];
+                                        }
+                                    } else {
+                                        if (files.src.startsWith("ipfs")) {
+                                            this.logo = ipfsPrefix.concat(files.src.replace("ipfs://", ""));
+                                        } else {
+                                            this.logo = files.src;
+                                        }
+                                    }
+                                }
+                                if (files.mediaType != null) {
+                                    this.mediaType = files.mediaType;
                                 }
                             }
                         } else if (token.logo != null) {
                             if (token.logo.startsWith("ipfs")) {
                                 this.logo = ipfsPrefix.concat(token.logo.replace("ipfs://", ""));
-                                console.log("using logo-> " + this.logo);
                             } else {
                                 this.logo = token.logo;
-                                console.log("using logo-> " + this.logo);
                             }
                         }
                         if (token.description != null) {
@@ -114,8 +120,8 @@ export class TokenMetadata {
                             } else {
                                 this.shortDesc = this.description;
                             }
-                            if (this.description.length > 70) {
-                                this.compressedDesc = this.description.substring(0, 70).concat("..");
+                            if (this.description.length > 50) {
+                                this.compressedDesc = this.description.substring(0, 50).concat("..");
                             } else {
                                 this.compressedDesc = this.description;
                             }
@@ -136,6 +142,60 @@ export class TokenMetadata {
                 this.homepageURL = data.homepageURL;
                 this.mediaType = data.mediaType;
             }
+        }
+        if ((this.logo == null) || (!this.logo.startsWith("http"))) {
+            this.logo = "../../../assets/ada.png";
+        }
+    }
+
+    fromBackup(fingerprint: string, ipfsPrefix: string, data: any) {
+        if ((data != null) && (data[0] != null)) {
+            try {
+                if (this.fingerprint == null) {
+                    this.fingerprint = fingerprint;
+                    const concatFingerprint = fingerprint.substring(0, 8).concat("...")
+                        .concat(fingerprint.substring(fingerprint.length - 8));
+                    this.shortFingerprint = concatFingerprint;
+                }
+                if (this.policy == null) {
+                    this.policy = data[0].policy_id;
+                    if (this.policy) {
+                        const concatPolicy = data[0].policy_id.substring(0, 8).concat("...").concat(data[0].policy_id.substring(data[0].policy_id.length - 8));
+                        this.shortPolicy = concatPolicy;
+                    }
+                }
+                if (this.description == null) {
+                    this.description = data[0].description;
+                    if (this.description.length > 100) {
+                        this.shortDesc = this.description.substring(0, 100).concat("..");
+                    } else {
+                        this.shortDesc = this.description;
+                    }
+                    if (this.description.length > 50) {
+                        this.compressedDesc = this.description.substring(0, 50).concat("..");
+                    } else {
+                        this.compressedDesc = this.description;
+                    }
+                }
+                if (data[0].logo.startsWith("http")) {
+                    this.logo = data[0].logo;
+                } else if (data[0].logo.startsWith("ipfs")) {
+                    this.logo = ipfsPrefix.concat(data[0].logo.replace("ipfs://", ""));
+                } else {
+                    this.logo = "data:image/png;base64,".concat(data[0].logo);
+                }
+                if (this.homepage == null) {
+                    this.homepage = data[0].url;
+                }
+                if (this.homepageURL == null) {
+                    this.homepageURL = data[0].url;
+                }
+            } catch (e) {
+                console.log(e);
+            }
+        } else {
+            console.log("Null response on backup metadata?");
+            console.log(data);
         }
     }
 }

@@ -5,12 +5,13 @@ import {RestService} from "../../services/rest.service";
 import {Title} from "@angular/platform-browser";
 import {Pool} from "../../data/pool";
 import {TokenService} from "../../services/token.service";
-import {Token} from "../../data/token";
+import {sortByName, Token} from "../../data/token";
 import {TokenObserverService} from "../../services/observers/token-observer.service";
 import {Subscription} from "rxjs";
 import {PoolService} from "../../services/pool.service";
 import {PoolsComponent} from "../pools/pools.component";
 import {DOCUMENT} from "@angular/common";
+import {WalletObserverService} from "../../services/observers/wallet-observer.service";
 
 @Component({
     selector: 'tokens',
@@ -33,11 +34,14 @@ export class TokensComponent extends NotificationComponent implements OnInit, On
     public listingPools: boolean = true;
     public selectedToken: Token = null;
     public tokenSubscription: Subscription;
+    public walletSubscription: Subscription;
+    public walletLoaded: boolean = false;
     @ViewChild('tokenView', {static: false}) public tokenView: any;
     @ViewChild('poolView', {static: false}) public poolView: PoolsComponent;
     @ViewChild('notificationTemplate', {static: false}) public notificationTemplate: any;
 
     constructor(@Inject(DOCUMENT) public document: any,
+                public walletObserverService: WalletObserverService,
                 public notifierService: NotifierService, public restService: RestService,
                 public titleService: Title, public tokenObserverService: TokenObserverService) {
         super(notifierService);
@@ -49,7 +53,15 @@ export class TokensComponent extends NotificationComponent implements OnInit, On
                 this.listTokens();
             }
         });
-
+        this.walletSubscription = this.walletObserverService.loaded$.subscribe(
+            loaded => {
+                this.walletLoaded = loaded;
+                if ((loaded === true) && (!this.initialized)) {
+                    this.isPreview = (globalThis.wallet.network === 0);
+                    this.listTokens();
+                }
+            }
+        );
         this.titleService.setTitle("Tokens");
     }
 
@@ -62,10 +74,11 @@ export class TokensComponent extends NotificationComponent implements OnInit, On
 
     public ngOnDestroy() {
         this.tokenSubscription.unsubscribe();
+        this.walletSubscription.unsubscribe();
     }
 
     public tokensLoaded() {
-        return TokenService.finished;
+        return TokenService.tokenList.length > 0;
     }
 
     @HostListener('window:resize', ['$event'])
@@ -100,6 +113,7 @@ export class TokensComponent extends NotificationComponent implements OnInit, On
 
     public listTokens() {
         this.tokens = [...TokenService.tokenList];
+        this.tokens.sort(sortByName);
     }
 
     public filterDataView(filter: string) {
@@ -115,6 +129,8 @@ export class TokensComponent extends NotificationComponent implements OnInit, On
                 if (PoolService.poolMap.has(token.pools[i])) {
                     const pool = PoolService.poolMap.get(token.pools[i]);
                     this.pools.push(pool);
+                } else {
+                    console.log("Missing pool [" + token.pools[i] + "]");
                 }
             }
             this.pools = [...this.pools];

@@ -58,6 +58,7 @@ h4 {
 
 .grid-item-bottom {
     height: 23%;
+    margin-top: -10px!important;
 }
 
 .grid-item-info-name {
@@ -290,8 +291,8 @@ img::-moz-selection {
 
     max-width: 200px !important;
     min-width: 200px !important;
-    max-height: 200px !important;
-    min-height: 200px !important;
+    max-height: 215px !important;
+    min-height: 215px !important;
 }
 
 .info-grid-item {
@@ -307,8 +308,8 @@ img::-moz-selection {
     height: 325px;
     max-width: 300px;
     min-width: 300px;
-    max-height: 300px;
-    min-height: 300px;
+    max-height: 325px;
+    min-height: 325px;
 }
 
 .info-grid-item-token {
@@ -324,8 +325,8 @@ img::-moz-selection {
 
     max-width: 275px;
     min-width: 275px;
-    max-height: 275px;
-    min-height: 275px;
+    max-height: 290px;
+    min-height: 290px;
 }
 
 .grid-item-small {
@@ -606,7 +607,7 @@ dd {
 
 dl.faq .desc {
     margin-top: 25px;
-    display: none;
+    display: block;
     border: 2px solid #000000;
     color: white;
     background-color: transparent !important;
@@ -623,11 +624,18 @@ dl.faq button:focus {
 }
 
 .faq-hide {
-    display: none !important;
+    margin-top: 0px!important;
+    max-height: 0;
+    opacity: 0;
+    transition: margin-top 1s, opacity .75s, max-height .75s ease-out;
+    overflow: hidden;
 }
 
 .faq-show {
-    display: block !important;
+    margin-top: 25px!important;
+    max-height: 500px;
+    opacity: 1;
+    transition: margin-top 1s, opacity 4s, max-height 1s ease-in;
 }
 
 .info-text-end {

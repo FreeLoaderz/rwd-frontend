@@ -124,7 +124,7 @@ export class RestService {
         } else {
             headers = new HttpHeaders().set('Content-Type', 'application/json');
         }
-        const url = '/rwdinfo/pools';
+        const url = '/rwdinfo/tokens/pools';
         RestService.processingRequest = true;
         return lastValueFrom(this.httpClient
             .get(url, {headers: headers}))
@@ -325,6 +325,33 @@ export class RestService {
             .catch(this.handleError);
     }
 
+    public async getPoolInfo(poolId: string) {
+        let headers;
+        if (RestService.vidarAuthorization != null) {
+            headers = new HttpHeaders().set('Content-Type', 'application/json').set('Authorization', RestService.vidarAuthorization);
+        } else {
+            headers = new HttpHeaders().set('Content-Type', 'application/json');
+        }
+        const url = '/rwdinfo/tokens/pools/info/' + poolId;
+        RestService.processingRequest = true;
+
+        return lastValueFrom(this.httpClient
+            .get(url, {headers: headers}))
+            .then(res => this.processResponse(res))
+            .catch(this.handleError);
+    }
+
+    public getPoolMetadata(poolId: string) {
+        const headers = new HttpHeaders().set('Content-Type', 'application/json').set('project_id', "");
+        const url = '/bf/api/v0/pools/' + poolId + '/metadata';
+        RestService.processingRequest = true;
+
+        return lastValueFrom(this.httpClient
+            .post(url, {headers: headers}))
+            .then(res => this.processResponse(res))
+            .catch(this.handleError);
+    }
+
     public walletVerification() {
         let headers;
         if (RestService.vidarAuthorization != null) {
@@ -353,6 +380,16 @@ export class RestService {
 
         return lastValueFrom(this.httpClient
             .post(url, globalThis.wallet, {headers: headers}))
+            .then(res => this.processResponse(res))
+            .catch(this.handleError);
+    }
+
+    public getBackupTokenMetadata(tokenName: string) {
+        const headers = new HttpHeaders().set('Content-Type', 'application/json');
+        const url = '/metadata/api/v0/ticker/' + tokenName + '/all';
+        RestService.processingRequest = true;
+        return lastValueFrom(this.httpClient
+            .get(url, {headers: headers}))
             .then(res => this.processResponse(res))
             .catch(this.handleError);
     }

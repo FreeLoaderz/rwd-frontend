@@ -1,4 +1,4 @@
-import {TokenClaim} from "./token-claim";
+import { TokenClaim } from "./token-claimv2";
 
 
 export class MarketPlace {
@@ -42,12 +42,12 @@ const example = {
         "fingerprint": "",
         "amount": 1
     },
-        {
-            "tokenname": "4172746966637454657374546f6b656e303030323034",
-            "currencysymbol": "dd78158839fae805523ba4c0aa5cd3d7fa4adb43f7ae8c7ebf1d5dd9",
-            "fingerprint": "",
-            "amount": 1
-        }
+    {
+        "tokenname": "4172746966637454657374546f6b656e303030323034",
+        "currencysymbol": "dd78158839fae805523ba4c0aa5cd3d7fa4adb43f7ae8c7ebf1d5dd9",
+        "fingerprint": "",
+        "amount": 1
+    }
     ],
     "metadata": [
         "3435303030303030",

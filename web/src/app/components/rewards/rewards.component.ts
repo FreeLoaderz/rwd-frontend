@@ -1,19 +1,19 @@
-import {Component, HostListener, OnDestroy, OnInit, ViewChild} from "@angular/core";
-import {NotificationComponent} from "../notification/notification.component";
-import {Router} from "@angular/router";
-import {NotifierService} from "angular-notifier";
-import {RestService} from "../../services/rest.service";
-import {Observable, Subscription} from "rxjs";
-import {WalletObserverService} from "../../services/observers/wallet-observer.service";
-import {Script} from "../../data/script";
-import {SpoRewardClaim} from "../../data/spo-reward-claim";
-import {WalletService} from "../../services/wallet.service";
-import {Title} from "@angular/platform-browser";
-import {UtilityService} from "../../services/utility.service";
-import {TokenMetadata} from "../../data/token-metadata";
-import {TokenClaim} from "../../data/token-claim";
-import {PropertyService} from "../../services/property.service";
-import {TokenService} from "../../services/token.service";
+import { Component, HostListener, OnDestroy, OnInit, ViewChild } from "@angular/core";
+import { NotificationComponent } from "../notification/notification.component";
+import { Router } from "@angular/router";
+import { NotifierService } from "angular-notifier";
+import { RestService } from "../../services/rest.service";
+import { Observable, Subscription } from "rxjs";
+import { WalletObserverService } from "../../services/observers/wallet-observer.service";
+import { Script } from "../../data/script";
+import { SpoRewardClaim } from "../../data/spo-reward-claim";
+import { WalletService } from "../../services/wallet.service";
+import { Title } from "@angular/platform-browser";
+import { UtilityService } from "../../services/utility.service";
+import { TokenMetadata } from "../../data/token-metadata";
+import { TokenClaim } from "../../data/token-claimv2";
+import { PropertyService } from "../../services/property.service";
+import { TokenService } from "../../services/token.service";
 
 @Component({
     selector: 'rewards',
@@ -43,13 +43,13 @@ export class RewardsComponent extends NotificationComponent implements OnInit, O
     public isPreview: boolean = false;
     public ipfsPrefix: string;
 
-    @ViewChild('tokenView', {static: false}) public tokenView: any;
-    @ViewChild('notificationTemplate', {static: false}) public notificationTemplate: any;
+    @ViewChild('tokenView', { static: false }) public tokenView: any;
+    @ViewChild('notificationTemplate', { static: false }) public notificationTemplate: any;
 
     constructor(public router: Router, public notifierService: NotifierService, public restService: RestService,
-                public walletObserverService: WalletObserverService, public walletService: WalletService,
-                public titleService: Title, public propertyService: PropertyService,
-                public tokenService: TokenService) {
+        public walletObserverService: WalletObserverService, public walletService: WalletService,
+        public titleService: Title, public propertyService: PropertyService,
+        public tokenService: TokenService) {
         super(notifierService);
         if (globalThis.tokens == null) {
             globalThis.tokens = [];
@@ -152,7 +152,7 @@ export class RewardsComponent extends NotificationComponent implements OnInit, O
                     const rwd = new SpoRewardClaim(null);
                     for (let i = 0; i < this.tokens.length; ++i) {
                         if ((this.tokens[i] != null) && (this.tokens[i].selected)) {
-                            rwd.reward_tokens.push(this.tokens[i]);
+                            rwd.rewards.push(this.tokens[i]);
                         }
                     }
                     globalThis.wallet.script.SpoRewardClaim = rwd;
