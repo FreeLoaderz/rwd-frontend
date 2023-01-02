@@ -291,8 +291,8 @@ img::-moz-selection {
 
     max-width: 200px !important;
     min-width: 200px !important;
-    max-height: 215px !important;
-    min-height: 215px !important;
+    max-height: 200px !important;
+    min-height: 200px !important;
 }
 
 .info-grid-item {
