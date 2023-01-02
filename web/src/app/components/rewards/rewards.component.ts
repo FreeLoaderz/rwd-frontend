@@ -10,7 +10,6 @@ import { SpoRewardClaim } from "../../data/spo-reward-claim";
 import { WalletService } from "../../services/wallet.service";
 import { Title } from "@angular/platform-browser";
 import { UtilityService } from "../../services/utility.service";
-import { TokenMetadata } from "../../data/token-metadata";
 import { TokenClaim } from "../../data/token-claimv2";
 import { PropertyService } from "../../services/property.service";
 import { TokenService } from "../../services/token.service";
