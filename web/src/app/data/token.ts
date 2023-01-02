@@ -91,3 +91,13 @@ export class Token {
         }
     }
 }
+
+export function sortByName(a: any, b: any): number {
+    if (a.displayName > b.displayName) {
+        return 1;
+    } else if (a.displayName < b.displayName) {
+        return -1;
+    }
+    // a must be equal to b
+    return 0;
+}

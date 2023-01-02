@@ -5,7 +5,7 @@ import {RestService} from "../../services/rest.service";
 import {Title} from "@angular/platform-browser";
 import {Pool} from "../../data/pool";
 import {TokenService} from "../../services/token.service";
-import {Token} from "../../data/token";
+import {sortByName, Token} from "../../data/token";
 import {TokenObserverService} from "../../services/observers/token-observer.service";
 import {Subscription} from "rxjs";
 import {PoolService} from "../../services/pool.service";
@@ -78,7 +78,7 @@ export class TokensComponent extends NotificationComponent implements OnInit, On
     }
 
     public tokensLoaded() {
-        return TokenService.finished;
+        return TokenService.tokenList.length > 0;
     }
 
     @HostListener('window:resize', ['$event'])
@@ -113,6 +113,7 @@ export class TokensComponent extends NotificationComponent implements OnInit, On
 
     public listTokens() {
         this.tokens = [...TokenService.tokenList];
+        this.tokens.sort(sortByName);
     }
 
     public filterDataView(filter: string) {

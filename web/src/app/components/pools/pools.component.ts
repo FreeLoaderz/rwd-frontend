@@ -186,6 +186,6 @@ export class PoolsComponent extends NotificationComponent implements OnInit, OnD
     }
 
     public poolsLoaded() {
-        return PoolService.finished;
+        return PoolService.poolList.length > 0;
     }
 }

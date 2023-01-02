@@ -39,8 +39,8 @@ export class Pool {
             if (data.homepage) {
                 this.homepage = data.homepage;
             }
-            if (data.poolhash) {
-                this.setPoolhash(data.poolhash);
+            if (data.hash) {
+                this.setPoolhash(data.hash);
             }
             if (data.pool_id) {
                 this.pool_id = data.pool_id;

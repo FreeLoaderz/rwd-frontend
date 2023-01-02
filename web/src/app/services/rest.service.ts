@@ -342,7 +342,7 @@ export class RestService {
     }
 
     public getPoolMetadata(poolId: string) {
-        const headers = new HttpHeaders().set('Content-Type', 'application/json').set('project_id', "mainnetI0yMK80NU0wkyrXenVjW813kw8chnr7R");
+        const headers = new HttpHeaders().set('Content-Type', 'application/json').set('project_id', "");
         const url = '/bf/api/v0/pools/' + poolId + '/metadata';
         RestService.processingRequest = true;
 

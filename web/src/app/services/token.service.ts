@@ -10,9 +10,7 @@ export class TokenService {
     public static tokenMap: Map<string, Token> = new Map<string, Token>();
     public static seenMap: Map<string, any> = new Map<string, any>();
     public static initialized: boolean = false;
-    public static finished: boolean = false;
     public static ipfsPrefix: string;
-    public static outstandingTokens: number = 0;
 
     constructor(public restService: RestService, public tokenObserverService: TokenObserverService) {
     }
@@ -28,7 +26,6 @@ export class TokenService {
     }
 
     public processTokens(res: any) {
-        TokenService.outstandingTokens = res.length;
         for (let i = 0; i < res.length; ++i) {
             const token: Token = new Token(res[i]);
             if (!TokenService.seenMap.has(token.fingerprint)) {
@@ -43,14 +40,8 @@ export class TokenService {
                             .catch(e => this.processMetadataError(token, e));
                     });
                 }
-            } else {
-                --TokenService.outstandingTokens;
             }
         }
-        setTimeout(() => {
-            this.tokenObserverService.setTokenList(TokenService.tokenList);
-            TokenService.finished = true;
-        }, 2000);
     }
 
     /**
@@ -94,10 +85,7 @@ export class TokenService {
         TokenService.tokenList.push(token);
         TokenService.tokenMap.set(token.fingerprint, token);
         localStorage.setItem(token.fingerprint, JSON.stringify(token.tokenMetadata));
-        if (--TokenService.outstandingTokens <= 0) {
-            this.tokenObserverService.setTokenList(TokenService.tokenList);
-            TokenService.finished = true;
-        }
+        this.tokenObserverService.setTokenList(TokenService.tokenList);
     }
 
     public fillInTokenBlanks(token: Token) {

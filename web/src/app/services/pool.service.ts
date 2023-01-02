@@ -9,9 +9,7 @@ import {TokenMetadata} from "../data/token-metadata";
 export class PoolService {
     public static poolList: Array<Pool> = [];
     public static poolMap: Map<string, Pool> = new Map<string, Pool>();
-    public static seenMap: Map<string, any> = new Map<string, any>();
     public static initialized: boolean = false;
-    public static finished: boolean = false;
 
     constructor(private httpClient: HttpClient, public poolObserver: PoolObserverService,
                 public restService: RestService) {
@@ -22,7 +20,39 @@ export class PoolService {
             PoolService.initialized = true;
             if ((location.host.endsWith('smartclaimz.io')) ||
                 (location.host.endsWith('smartclaimz.com')) ||
-                (location.host.startsWith('dev.d1u08xx2y74gx1.amplifyapp.com')) ||
+                (location.host.startsWith("127.0.0.1"))) {
+                this.httpClient.get<Array<any>>("assets/config/allpools.json").subscribe(data => {
+                    for (let i = 0; i < data.length; ++i) {
+                        const pool: Pool = new Pool(data[i]);
+                        PoolService.poolMap.set(pool.pool_id, pool);
+                        PoolService.poolList.push(pool);
+                        this.poolObserver.setPoolList(PoolService.poolList);
+                    }
+                });
+            }
+        }
+    }
+
+    processExData(pool: Pool, exdata: string) {
+        const exObj = JSON.parse(exdata);
+        if (exObj.info) {
+            if (exObj.info.url_png_icon_64x64) {
+                pool.logo = exObj.info.url_png_icon_64x64;
+            } else if (exObj.info.url_png_logo) {
+                pool.logo = exObj.info.url_png_logo;
+            }
+            localStorage.setItem(pool.ticker, exdata);
+        }
+        PoolService.poolList.push(pool);
+    }
+
+
+    /*
+    public initialize() {
+        if (PoolService.initialized === false) {
+            PoolService.initialized = true;
+            if ((location.host.endsWith('smartclaimz.io')) ||
+                (location.host.endsWith('smartclaimz.com')) ||
                 (location.host.startsWith("127.0.0.1"))) {
                 const nowMs = new Date().getTime();
                 this.restService.getAvailablePools()
@@ -90,5 +120,5 @@ export class PoolService {
                     console.log(e);
                 });
         });
-    }
+    } */
 }
