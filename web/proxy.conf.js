@@ -1,6 +1,6 @@
 const PROXY_CONFIG = {
   "/rwdbuild": {
-    "target": "https://heimdallr-drasil.apps.testnet.drasil.org",
+    "target": "https://heimdallr-mdrsl.apps.testnet.drasil.org",
     "secure": true,
     "logLevel": "debug",
     "changeOrigin": true,
@@ -17,7 +17,7 @@ const PROXY_CONFIG = {
     }
   },
   "/rwdinfo": {
-    "target": "https://vidar-drasil.apps.testnet.drasil.org/",
+    "target": "https://vidar-mdrsl.apps.testnet.drasil.org/",
     "secure": true,
     "logLevel": "debug",
     "changeOrigin": true,
@@ -74,6 +74,23 @@ const PROXY_CONFIG = {
     "changeOrigin": true,
     "pathRewrite": {
       "^/register": ""
+    },
+    "onProxyRes": function(pr, req, res) {
+      if (pr.headers['set-cookie']) {
+        const cookies = pr.headers['set-cookie'].map(cookie =>
+            cookie.replace(/;(\ )*secure/gi, '')
+        );
+        pr.headers['set-cookie'] = cookies;
+      }
+    }
+  },
+  "/bf": {
+    "target": "https://cardano-mainnet.blockfrost.io/",
+    "secure": true,
+    "logLevel": "debug",
+    "changeOrigin": true,
+    "pathRewrite": {
+      "^/bf": ""
     },
     "onProxyRes": function(pr, req, res) {
       if (pr.headers['set-cookie']) {

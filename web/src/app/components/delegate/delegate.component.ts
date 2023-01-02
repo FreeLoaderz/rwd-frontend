@@ -101,8 +101,8 @@ export class DelegateComponent extends NotificationComponent implements OnInit, 
             pools.push(envy);
             pools.push(santo);
             this.processPoolList(pools);
-        } else {
-            this.processPoolList(PoolService.poolList);
+        } else if (PoolService.poolList.length > 0) {
+            this.processPools(PoolService.poolList);
         }
     }
 
@@ -117,6 +117,15 @@ export class DelegateComponent extends NotificationComponent implements OnInit, 
         this.initialized = true;
     }
 
+    public processPools(data: Array<Pool>) {
+        globalThis.pools = [];
+        for (let i = 0; i < data.length; ++i) {
+            globalThis.pools.push(data[i]);
+        }
+        globalThis.pools.sort((a, b) => Pool.sortByRandom(a, b));
+        this.pools = [...globalThis.pools];
+        this.initialized = true;
+    }
 
     public setNetwork() {
         if (globalThis.wallet != null) {

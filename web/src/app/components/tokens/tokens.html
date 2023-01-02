@@ -15,15 +15,15 @@
                             [rows]="maxItems"
                             [paginator]="showPaging" filterBy="displayName,description">
                     <ng-template let-token pTemplate="gridItem">
-                        <div class="mt-2">
+                        <div class="mt-2 mb-2">
                             <div class="info-grid-item {{smallGrid ? 'info-grid-item-small' : ''}}">
                                 <div class="grid-item-top">
                                     <strong class="ms-auto me-auto">{{token.displayName}}</strong>
                                 </div>
-                                <div class="grid-item-content">
+                                <div class="grid-item-content mb-1">
                                     <img src="{{token.tokenMetadata.logo}}" width="64" height="64"
                                          onerror="this.onerror=null;this.src='/assets/ada.png'">
-                                    <p class="mt-3 ms-1 me-1 grid-item-info-name"
+                                    <p class="mt-3 ms-3 me-3 grid-item-info-name"
                                        title="{{token.tokenMetadata.description}}">{{smallGrid ? token.tokenMetadata.compressedDesc : token.tokenMetadata.shortDesc}}</p>
                                     <p *ngIf="token.tokenMetadata.homepageURL != null">
                                         <a href="{{token.tokenMetadata.homepageURL}}"
@@ -34,7 +34,7 @@
                                     <button pButton
                                             title="Show participating pools"
                                             (click)="details(token)"
-                                            class="p-button p-button-rounded p-button-success ms-auto me-auto mb-2"
+                                            class="p-button p-button-rounded p-button-success ms-auto me-auto mt-2 mb-2"
                                             label="Find Pools" icon="fa-solid fa-magnifying-glass">
                                     </button>
                                 </div>

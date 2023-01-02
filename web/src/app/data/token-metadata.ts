@@ -147,4 +147,55 @@ export class TokenMetadata {
             this.logo = "../../../assets/ada.png";
         }
     }
+
+    fromBackup(fingerprint: string, ipfsPrefix: string, data: any) {
+        if ((data != null) && (data[0] != null)) {
+            try {
+                if (this.fingerprint == null) {
+                    this.fingerprint = fingerprint;
+                    const concatFingerprint = fingerprint.substring(0, 8).concat("...")
+                        .concat(fingerprint.substring(fingerprint.length - 8));
+                    this.shortFingerprint = concatFingerprint;
+                }
+                if (this.policy == null) {
+                    this.policy = data[0].policy_id;
+                    if (this.policy) {
+                        const concatPolicy = data[0].policy_id.substring(0, 8).concat("...").concat(data[0].policy_id.substring(data[0].policy_id.length - 8));
+                        this.shortPolicy = concatPolicy;
+                    }
+                }
+                if (this.description == null) {
+                    this.description = data[0].description;
+                    if (this.description.length > 100) {
+                        this.shortDesc = this.description.substring(0, 100).concat("..");
+                    } else {
+                        this.shortDesc = this.description;
+                    }
+                    if (this.description.length > 50) {
+                        this.compressedDesc = this.description.substring(0, 50).concat("..");
+                    } else {
+                        this.compressedDesc = this.description;
+                    }
+                }
+                if (data[0].logo.startsWith("http")) {
+                    this.logo = data[0].logo;
+                } else if (data[0].logo.startsWith("ipfs")) {
+                    this.logo = ipfsPrefix.concat(data[0].logo.replace("ipfs://", ""));
+                } else {
+                    this.logo = "data:image/png;base64,".concat(data[0].logo);
+                }
+                if (this.homepage == null) {
+                    this.homepage = data[0].url;
+                }
+                if (this.homepageURL == null) {
+                    this.homepageURL = data[0].url;
+                }
+            } catch (e) {
+                console.log(e);
+            }
+        } else {
+            console.log("Null response on backup metadata?");
+            console.log(data);
+        }
+    }
 }
