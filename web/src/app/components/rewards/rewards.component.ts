@@ -168,7 +168,7 @@ export class RewardsComponent extends NotificationComponent implements OnInit, O
                     this.restService.buildTokenClaimTx(globalThis.customerId, globalThis.multiSigType)
                         .then(res => {
                             if (res.msg) {
-                                this.showError(res.msg);
+                                this.showError("TX creation failed. An issue occurred with the token(s).");
                             } else {
                                 this.processClaimTokens(res);
                             }
