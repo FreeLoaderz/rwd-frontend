@@ -63,7 +63,6 @@ export class RewardsComponent extends NotificationComponent implements OnInit, O
     public ngOnInit() {
         this.tokenSubscription = this.tokenObserver.tokenList$.subscribe(tokens => {
             for (let i = 0; i < this.tokens.length; ++i) {
-                console.log("Check -> " + this.tokens[i].displayName);
                 for (let j = 0; j < tokens.length; ++j) {
                     if (tokens[j].fingerprint === this.tokens[i].fingerprint) {
                         this.tokens[i].tokenMetadata = tokens[j].tokenMetadata;
