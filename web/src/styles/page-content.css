@@ -356,6 +356,12 @@ img::-moz-selection {
     max-height: 260px !important;
     min-height: 260px !important;
 }
+.grid-item-small > div.grid-item-content {
+    margin-top: -.1rem!important;
+}
+.grid-item-small > div.grid-item-top {
+    padding-top: .3rem;
+}
 
 .info-grid-item-small > div.grid-item-bottom > button.p-button,
 .grid-item-small > div.grid-item-bottom > button.p-button,

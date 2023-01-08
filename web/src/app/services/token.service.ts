@@ -9,6 +9,7 @@ export class TokenService {
     public static tokenList: Array<Token> = [];
     public static tokenMap: Map<string, Token> = new Map<string, Token>();
     public static seenMap: Map<string, any> = new Map<string, any>();
+    public static duplicateList: Array<Token> = [];
     public static initialized: boolean = false;
     public static ipfsPrefix: string;
 
@@ -40,7 +41,27 @@ export class TokenService {
                             .catch(e => this.processMetadataError(token, e));
                     });
                 }
+            } else {
+                TokenService.duplicateList.push(token);
             }
+        }
+        this.updateFromDupes();
+    }
+
+    updateFromDupes() {
+        const seenList = [...TokenService.seenMap.values()];
+        const tokenList = [...TokenService.tokenMap.values()];
+        if (seenList.length === tokenList.length) {
+            for (let i = 0; i < TokenService.duplicateList.length; ++i) {
+                if (TokenService.tokenMap.has(TokenService.duplicateList[i].fingerprint)) {
+                    const token = TokenService.tokenMap.get(TokenService.duplicateList[i].fingerprint);
+                    token.addPools(TokenService.duplicateList[i]);
+                }
+            }
+        } else {
+            setTimeout(() => {
+                this.updateFromDupes();
+            }, 500);
         }
     }
 
