@@ -55,12 +55,7 @@ export class Token {
             if (data.vesting_period != null) {
                 this.vesting_period = data.vesting_period;
             }
-            if ((data.pools != null) && (data.pools.length > 0)) {
-                for (let i = 0; i < data.pools.length; ++i) {
-                    const pool_id = data.pools[i].substring(0, data.pools[i].indexOf(","));
-                    this.pools.push(pool_id);
-                }
-            }
+            this.addPools(data);
             if (data.mode != null) {
                 this.mode = data.mode;
             }
@@ -90,6 +85,17 @@ export class Token {
             this.storageId = this.fingerprint.concat(this.updated_at);
         }
     }
+
+    addPools(data: any) {
+        if ((data.pools != null) && (data.pools.length > 0)) {
+            console.log("ADD " + data.pools.length + " pools");
+            for (let i = 0; i < data.pools.length; ++i) {
+                const pool_id = data.pools[i].substring(0, data.pools[i].indexOf(","));
+                this.pools.push(pool_id);
+            }
+        }
+        this.pools = [...this.pools];
+    }
 }
 
 export function sortByName(a: any, b: any): number {
@@ -101,3 +107,4 @@ export function sortByName(a: any, b: any): number {
     // a must be equal to b
     return 0;
 }
+

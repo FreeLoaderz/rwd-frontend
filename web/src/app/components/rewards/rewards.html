@@ -45,21 +45,23 @@
                     <ng-template let-token pTemplate="gridItem">
                         <div class="">
                             <div class="grid-item {{smallGrid ? 'grid-item-small' : ''}}">
-                                <div class="grid-item-top">
-                                    <span class="ms-2">{{token.amount}} available</span>
+                                <div class="grid-item-top" style="padding-bottom: 0!important;">
+                                    <strong *ngIf="token.tokenMetadata != null" class="grid-item-info-name mt-1 ms-auto me-auto">
+                                        <a href="{{token.tokenMetadata.url}}"
+                                           target="_blank"
+                                           title="{{token.tokenMetadata.description}}"
+                                           title="{{token.tokenMetadata.description}}">{{token.displayName}}</a></strong>
+                                    <strong *ngIf="token.tokenMetadata == null"
+                                       class="grid-item-info-name ms-auto me-auto">{{token.displayName}}</strong>
                                 </div>
-                                <div class="grid-item-content">
+                                <div class="grid-item-content"  style="padding-bottom: .3em!important;">
                                     <img *ngIf="token.tokenMetadata != null" src="{{token.tokenMetadata.logo}}"
                                          onerror="this.onerror=null; this.src='../../../assets/ada.png'"
                                          width="64px" height="64px">
                                     <img *ngIf="token.tokenMetadata == null" src="../../../assets/ada.png" onerror="this.onerror=null; this.src='../../../assets/ada.png'">
-                                    <p *ngIf="token.tokenMetadata != null" class="grid-item-info-name mt-1">
-                                        <a href="{{token.tokenMetadata.url}}"
-                                           target="_blank"
-                                           title="{{token.tokenMetadata.description}}"
-                                           title="{{token.tokenMetadata.description}}">{{token.displayName}}</a></p>
-                                    <p *ngIf="token.tokenMetadata == null"
-                                       class="grid-item-info-name">{{token.displayName}}</p>
+                                    <div class=" mt-2">
+                                    <strong class="ms-auto me-auto" style="color: white">{{token.amount}}</strong>
+                                    </div>
                                 </div>
                                 <div class="grid-item-bottom">
                                     <button *ngIf="!token.selected" pButton
