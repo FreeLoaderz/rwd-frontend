@@ -57,6 +57,13 @@ export class TokenClaim {
                 if (data.last_calc_epoch) {
                     this.last_calc_epoch = data.last_calc_epoch;
                 }
+                if (this.amount != null) {
+                    // gross
+                    if ((this.displayName === 'gimbal')
+                        || (this.displayName === 'HedgeCoin')) {
+                        this.amount = +(this.amount / 1000000).toFixed(3);
+                    }
+                }
             } catch (e) {
                 console.log(e);
             }

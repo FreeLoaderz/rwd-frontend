@@ -13,6 +13,7 @@ import {UtilityService} from "../../services/utility.service";
 import {TokenClaim} from "../../data/token-claimv2";
 import {PropertyService} from "../../services/property.service";
 import {TokenService} from "../../services/token.service";
+import {TokenObserverService} from "../../services/observers/token-observer.service";
 
 @Component({
     selector: 'rewards',
@@ -41,12 +42,14 @@ export class RewardsComponent extends NotificationComponent implements OnInit, O
     public smallGrid: boolean = false;
     public isPreview: boolean = false;
     public ipfsPrefix: string;
+    public tokenSubscription: Subscription;
 
     @ViewChild('tokenView', {static: false}) public tokenView: any;
     @ViewChild('notificationTemplate', {static: false}) public notificationTemplate: any;
 
     constructor(public router: Router, public notifierService: NotifierService, public restService: RestService,
                 public walletObserverService: WalletObserverService, public walletService: WalletService,
+                public tokenObserver: TokenObserverService,
                 public titleService: Title, public propertyService: PropertyService,
                 public tokenService: TokenService) {
         super(notifierService);
@@ -58,6 +61,16 @@ export class RewardsComponent extends NotificationComponent implements OnInit, O
     }
 
     public ngOnInit() {
+        this.tokenSubscription = this.tokenObserver.tokenList$.subscribe(tokens => {
+            for (let i = 0; i < this.tokens.length; ++i) {
+                console.log("Check -> " + this.tokens[i].displayName);
+                for (let j = 0; j < tokens.length; ++j) {
+                    if (tokens[j].fingerprint === this.tokens[i].fingerprint) {
+                        this.tokens[i].tokenMetadata = tokens[j].tokenMetadata;
+                    }
+                }
+            }
+        });
         this.ipfsPrefix = this.propertyService.getProperty("ipfs-prefix");
         this.walletSubscription = this.walletObserverService.loaded$.subscribe(
             loaded => {
@@ -87,6 +100,7 @@ export class RewardsComponent extends NotificationComponent implements OnInit, O
     }
 
     public ngOnDestroy() {
+        this.tokenSubscription.unsubscribe();
         this.walletSubscription.unsubscribe();
         if (this.claimSubscription != null) {
             this.claimSubscription.unsubscribe();
