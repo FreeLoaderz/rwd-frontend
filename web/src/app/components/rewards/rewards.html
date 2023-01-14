@@ -57,7 +57,7 @@
                                 <div class="grid-item-content"  style="padding-bottom: .3em!important;">
                                     <img *ngIf="token.tokenMetadata != null" src="{{token.tokenMetadata.logo}}"
                                          onerror="this.onerror=null; this.src='../../../assets/ada.png'"
-                                         width="64px" height="64px">
+                                         width="{{token.displayName === 'gimbal'? 40 : 64}}" height="64">
                                     <img *ngIf="token.tokenMetadata == null" src="../../../assets/ada.png" onerror="this.onerror=null; this.src='../../../assets/ada.png'">
                                     <div class=" mt-2">
                                     <strong class="ms-auto me-auto" style="color: white">{{token.amount}}</strong>
