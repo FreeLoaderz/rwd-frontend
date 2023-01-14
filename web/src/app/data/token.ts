@@ -14,6 +14,7 @@ export class Token {
     public user_id: number;
     public vesting_period: string;
     public pools: Array<string> = [];
+    public poolMap: Map<string, string> = new Map<string, string>();
     public mode: string;
     public equation: string;
     public start_epoch: number;
@@ -91,10 +92,11 @@ export class Token {
             console.log("ADD " + data.pools.length + " pools");
             for (let i = 0; i < data.pools.length; ++i) {
                 const pool_id = data.pools[i].substring(0, data.pools[i].indexOf(","));
-                this.pools.push(pool_id);
+                this.poolMap.set(pool_id, pool_id);
+//                this.pools.push(pool_id);
             }
         }
-        this.pools = [...this.pools];
+        this.pools = [...this.poolMap.values()];
     }
 }
 
