@@ -21,7 +21,7 @@
                                     <strong class="ms-auto me-auto">{{token.displayName}}</strong>
                                 </div>
                                 <div class="grid-item-content mb-1">
-                                    <img src="{{token.tokenMetadata.logo}}" width="64" height="64"
+                                    <img src="{{token.tokenMetadata.logo}}" width="{{token.displayName === 'gimbal'? 40 : 64}}" height="64"
                                          onerror="this.onerror=null;this.src='/assets/ada.png'">
                                     <p class="mt-3 ms-3 me-3 grid-item-info-name"
                                        title="{{token.tokenMetadata.description}}">{{smallGrid ? token.tokenMetadata.compressedDesc : token.tokenMetadata.shortDesc}}</p>
@@ -57,7 +57,7 @@
                 <div class="left-grid-container" style="display: block !important">
                     <div class="left-grid">
                         <div style="display: flex!important;">
-                            <img src="{{selectedToken.tokenMetadata.logo}}" width="64" height="64"
+                            <img src="{{selectedToken.tokenMetadata.logo}}" width="{{selectedToken.displayName === 'gimbal'? 40 : 64}}" height="64"
                                  onerror="this.onerror=null;this.src='/assets/ada.png'" class="{{smallGrid ? 'ms-0' : 'ms-3'}} me-0 mb-0 mt-0">
                             <strong class="ms-3 me-auto mt-auto mb-auto">{{selectedToken.displayName}}</strong>
                         </div>
