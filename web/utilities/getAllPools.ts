@@ -690,8 +690,9 @@ const fs = require('fs');
 const {exec} = require('child_process');
 const dedupe = [...poolMap.values()];
 let expected = dedupe.length;
+const bfId = "mainnet.....";
 for (let i = 0; i < dedupe.length; ++i) {
-    const url = 'curl -H "project_id: mainnetI0yMK80NU0wkyrXenVjW813kw8chnr7R"  https://cardano-mainnet.blockfrost.io/api/v0/pools/'
+    const url = 'curl -H "project_id: ' + bfId + '"  https://cardano-mainnet.blockfrost.io/api/v0/pools/'
         + dedupe[i] + '/metadata';
     exec(url, (err, stdout, stderr) => {
         if (stdout) {
