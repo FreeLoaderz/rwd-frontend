@@ -75,7 +75,8 @@ export class NavbarComponent extends NotificationComponent implements OnInit, Af
                 gtag('event', 'page_view');
             }
         });
-        if (location.hostname.startsWith("meld")) {
+        if ((location.hostname.startsWith("meld"))
+            || (location.hostname.startsWith("127.0.0.1"))) {
             this.isExtension = true;
             this.extensionRoute = "/bank-manager";
             this.document.body.classList.add("meld-bg");
@@ -404,7 +405,7 @@ export class NavbarComponent extends NotificationComponent implements OnInit, Af
             this.walletImage = "../../assets/icons/nami.png";
             this.hideConnectModal();
             if (!this.isExtension) {
-             //   this.router.navigate(['/rewards']);
+                //   this.router.navigate(['/rewards']);
             }
         }
     }
@@ -419,7 +420,7 @@ export class NavbarComponent extends NotificationComponent implements OnInit, Af
             this.walletImage = "../../assets/icons/gero.png";
             this.hideConnectModal();
             if (!this.isExtension) {
-             //   this.router.navigate(['/rewards']);
+                //   this.router.navigate(['/rewards']);
             }
         }
     }
@@ -438,7 +439,7 @@ export class NavbarComponent extends NotificationComponent implements OnInit, Af
             this.walletImage = "../../assets/icons/flint.png";
             this.hideConnectModal();
             if (!this.isExtension) {
-           //     this.router.navigate(['/rewards']);
+                //     this.router.navigate(['/rewards']);
             }
         }
     }
@@ -502,7 +503,7 @@ export class NavbarComponent extends NotificationComponent implements OnInit, Af
         }
         this.walletObserverService.setloaded(false);
         if (!this.isExtension) {
-          //  this.router.navigate(['/welcome']);
+            //  this.router.navigate(['/welcome']);
         } else {
             this.router.navigate([this.extensionRoute]);
         }

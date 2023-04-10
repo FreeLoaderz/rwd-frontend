@@ -29,7 +29,9 @@ export class TokenService {
     public processTokens(res: any) {
         for (let i = 0; i < res.length; ++i) {
             const token: Token = new Token(res[i]);
-            if (!TokenService.seenMap.has(token.fingerprint)) {
+            // ignore idiotcoin
+            if ((!TokenService.seenMap.has(token.fingerprint))
+                && (token.fingerprint !== 'asset1j5txqed7t6jamcf2gyzsatlnuztfuprwykwrvu')) {
                 TokenService.seenMap.set(token.fingerprint, true);
                 if (localStorage.getItem(token.storageId) != null) {
                     token.tokenMetadata = new TokenMetadata(localStorage.getItem(token.storageId), null);

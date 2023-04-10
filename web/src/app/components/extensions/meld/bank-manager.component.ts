@@ -37,6 +37,7 @@ export class BankManagerComponent extends NotificationComponent implements OnIni
     public walletAddress: string = "";
     public shortWalletAddress: string = "";
     public isPreview: boolean = false;
+    public requiresVerification: boolean = false;
     public mintError: boolean = false;
     public mintFinalized: boolean = false;
     public checkingVerification: boolean = false;
@@ -130,30 +131,35 @@ export class BankManagerComponent extends NotificationComponent implements OnIni
     }
 
     public processVerification(res: string) {
+        this.checkingVerification = false;
         if (res !== '') {
             this.verifiedAddress = res;
             this.walletVerified = true;
+            this.requiresVerification = false;
         } else {
             this.walletVerified = false;
+            this.requiresVerification = true;
         }
     }
 
     public showVerificationError(error) {
         this.checkingVerification = false;
-       // this.invalidAddress = true;
+        this.invalidAddress = true;
         // remove
-             this.walletVerified = true;
-     //   this.invalidAddress = false;
+        this.walletVerified = false;
+        this.requiresVerification = true;
+        //   this.invalidAddress = false;
         // end remove
         this.errorNotification(error);
     }
 
     public processVerificationError(error) {
         this.checkingVerification = false;
-       // this.invalidAddress = true;
+        this.invalidAddress = true;
         // remove
-            this.walletVerified = true;
-      //  this.invalidAddress = false;
+        this.walletVerified = false;
+        this.requiresVerification = true;
+        //  this.invalidAddress = false;
         // end remove
 
         this.handleError(error);
