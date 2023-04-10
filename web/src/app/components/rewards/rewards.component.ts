@@ -150,11 +150,14 @@ export class RewardsComponent extends NotificationComponent implements OnInit, O
         globalThis.tokens = [];
         for (let i = 0; i < data.length; ++i) {
             const newToken = new TokenClaim(data[i]);
-            if (TokenService.tokenMap.has(newToken.fingerprint)) {
-                newToken.tokenMetadata = TokenService.tokenMap.get(newToken.fingerprint).tokenMetadata;
-            }
-            if (newToken.amount > 0) {
-                globalThis.tokens.push(newToken);
+            // ignore idiotcoin
+            if (newToken.fingerprint !== 'asset1j5txqed7t6jamcf2gyzsatlnuztfuprwykwrvu') {
+                if (TokenService.tokenMap.has(newToken.fingerprint)) {
+                    newToken.tokenMetadata = TokenService.tokenMap.get(newToken.fingerprint).tokenMetadata;
+                }
+                if (newToken.amount > 0) {
+                    globalThis.tokens.push(newToken);
+                }
             }
         }
         globalThis.tokens.sort((a, b) => TokenClaim.sort(a, b));
