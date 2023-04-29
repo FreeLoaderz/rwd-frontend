@@ -1,26 +1,21 @@
 <section #meld id="meld" class="extension-section">
+    <div class="meld-top">
+        <img class="meld-img-logo" src="/assets/extensions/meld/meld-logo.png"
+             title="Single click to go to Meld, double click to toggle full screen" (click)="toggleFullScreen()">
+        <!-- <span class="meld-title">MELD BANK MANAGER MINTING</span> -->
+    </div>
     <div class="sidebyside">
         <div class="meld-left-grid">
-            <img class="meld-img-logo" src="/assets/extensions/meld/meld-logo.png"
-                 title="Single click to go to Meld, double click to toggle full screen" (click)="toggleFullScreen()">
-        </div>
-        <div class="meld-right-grid" style="display: block !important">
-            <span class="meld-title">MELD BANK MANAGER MINTING</span>
             <ul class="meld-ul">
                 <li style="display: flex" class="meld-li">
-                    <div style="display: block !important">
-                        <button pButton type="button" label="1"
-                                class="p-button-rounded p-button-outlined meld-fake-button"
-                                style="pointer-events: none !important"></button>
-                    </div>
                     <div *ngIf="!walletLoaded" style="display: block !important">
                         <button pButton class="p-button-rounded p-button-text no-ul meld-action-button"
                                 [title]="'Connect your Meld ISPO or a payment Wallet'"
-                                (click)="connectWallet()" label="CONNECT WALLET" [loading]="walletLoading"
+                                (click)="connectWallet()" label="1. CONNECT YOUR WALLET" [loading]="walletLoading"
                                 iconPos="right">
                         </button>
                         <p class="mt-1 mb-0 meld-subtext">Connect the wallet you used to participate in the MELD
-                            ISPO.</p>
+                            ISPO, or a payment wallet.</p>
                     </div>
                     <div *ngIf="walletLoaded" style="display: block !important">
                         <button pButton class="p-button-rounded p-button-text no-ul meld-success-button"
@@ -43,7 +38,8 @@
                         </button>
                     </div>
                 </li>
-                <li *ngIf="walletLoaded && !checkingVerification && !walletVerified && requiresVerification" style="display: flex"
+                <li *ngIf="walletLoaded && !checkingVerification && !walletVerified && requiresVerification"
+                    style="display: flex"
                     class="meld-li">
                     <div style="display: block !important">
                         <button pButton type="button" label="2"
@@ -57,7 +53,8 @@
                                [(ngModel)]="manualAddress"
                                [title]="'Enter your Meld ISPO wallet address'"
                                [placeholder]="'Enter your Meld ISPO wallet address'"/>
-                        <p class="mt-1 mb-0" style="font-size: small">The connected wallet and/or address given is not a registered wallet for the Meld ISPO.
+                        <p class="mt-1 mb-0" style="font-size: small">The connected wallet and/or address given is not a
+                            registered wallet for the Meld ISPO.
                             Enter a valid Meld ISPO wallet address.</p>
                     </div>
                 </li>
@@ -117,11 +114,12 @@
                     </div>
                 </li>
             </ul>
+            <img class="meld-img-freeloaderz" title="SmartClaimz" src="/assets/extensions/meld/poweredby.svg"
+                 (click)="routeSmartClaimz()">
         </div>
-    </div>
-    <div>
-        <img class="meld-img-bank-mgr" src="/assets/extensions/meld/bank-manager-q.png">
-        <img class="meld-img-smartclaimz" title="SmartClaimz" src="/assets/powered-by-smartclaimz.png"
-             (click)="routeSmartClaimz()">
+        <div class="meld-right-grid" style="display: block !important">
+            <img class="meld-img-mint-bm" src="/assets/extensions/meld/mint-bm.png">
+            <img class="meld-img-bank-mgr" src="/assets/extensions/meld/bm_mint.png">
+        </div>
     </div>
 </section>

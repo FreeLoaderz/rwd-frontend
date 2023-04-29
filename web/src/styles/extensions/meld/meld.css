@@ -9,9 +9,11 @@
 }
 
 .meld-img-logo {
-    width: 241px;
-    height: 102px;
     cursor: pointer !important;
+    margin-left: -39px;
+    margin-right: auto;
+    margin-bottom: 0;
+    margin-top: auto;
 }
 
 img.meld-img-logo {
@@ -19,33 +21,44 @@ img.meld-img-logo {
 }
 
 .meld-img-bank-mgr {
-    position: absolute;
-    width: 478px;
-    height: 418px;
-    left: 0px;
-    bottom: 0px;
+    position: fixed;
+    right: 0px!important;
+    bottom: 0px!important;
+    z-index: -1!important;
 }
 
-.meld-img-smartclaimz {
+.meld-img-mint-bm {
+    position: relative;
+    top: 15vh;
+    left: 0;
+    margin-left: 0!important;
+}
+
+.meld-img-freeloaderz {
     position: fixed;
-    width: 193px;
-    height: 100px;
-    bottom: 10px;
-    right: 10px;
+    bottom: 30px;
+    left: 4em;
     cursor: pointer !important;
 }
-
-.meld-left-grid {
-    width: 20vw;
+.meld-top {
+    width: 100vw;
     margin-left: 4em;
+    height: 130px;
+    align-items: flex-start;
+    justify-content: left;
+}
+.meld-left-grid {
+    width: 50vw;
+    margin-left: 4em;
+    height: 100vh;
     align-items: flex-start;
     justify-content: left;
 }
 
 .meld-right-grid {
     display: flex !important;
-    max-width: 50vw;
-    margin-left: 4em;
+    width: 50vw;
+    height: 100vh;
     align-items: flex-start;
     justify-content: left;
 }
@@ -64,6 +77,7 @@ img.meld-img-logo {
     color: white !important;
     pointer-events: none !important;
 }
+
 .meld-error-button,
 .meld-error-button > span {
     color: white;
@@ -98,14 +112,16 @@ img.meld-img-logo {
 .meld-action-button,
 .meld-success-button,
 .meld-error-button {
-    min-width: 250px;
-    max-width: 250px;
+    width: 624px;
+    height: 59.17px;
+    text-align: left!important;
+    line-height: 100px;
+    letter-spacing: 0.04em;
 }
 
 .meld-input {
-    max-width: 450px;
-    min-width: 450px;
-    height: 42px;
+    max-width: 624px;
+    height: 59.17px;
     padding-left: 1rem;
     padding-right: 1rem;
 }
@@ -113,9 +129,10 @@ img.meld-img-logo {
 .meld-action-button,
 .meld-action-button > span {
     margin: 0;
-    font-size: large;
-    font-weight: bolder;
-    color: #E61C45;
+    font-family: 'BRHendrix-Bold';
+    font-size: 24px;
+    font-weight: 700;
+    color: #AF0941;
     background-color: white !important;
     border: 0;
 }
@@ -126,7 +143,9 @@ img.meld-img-logo {
 }
 
 .meld-ul > li {
-    display: flex;
+    width: 383.38px;
+    height: 33.82px;
+    display: block;
     margin-left: 0 !important;
     padding: 0 !important;
 }
@@ -139,6 +158,7 @@ img.meld-img-logo {
 .fa-arrow-right-to-bracket {
     color: white !important;
 }
+
 .meld-subtext {
     font-size: smaller;
 }

@@ -1,5 +1,4 @@
 .extension-section {
-    padding-top: 25px;
     color: #fff;
     width: 100%;
     min-height: 100vh !important;
@@ -12,9 +11,9 @@
 }
 
 body.meld-bg {
-    background-image: -moz-radial-gradient(183.7% 183.7% at 15.31% 145.37%, #4800A5 24.56%, #E51B44 100%), -moz-linear-gradient(78.43deg, rgba(229, 27, 68, 0) 50.98%, #E51B44 75.68%); /* FF3.6-15 */
-    background-image: -webkit-radial-gradient(183.7% 183.7% at 15.31% 145.37%, #4800A5 24.56%, #E51B44 100%), -webkit-linear-gradient(78.43deg, rgba(229, 27, 68, 0) 50.98%, #E51B44 75.68%); /* Chrome10-25,Safari5.1-6 */
-    background-image: radial-gradient(183.7% 183.7% at 15.31% 145.37%, #4800A5 24.56%, #E51B44 100%), linear-gradient(78.43deg, rgba(229, 27, 68, 0) 50.98%, #E51B44 75.68%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    background-image: -moz-linear-gradient(233.68deg, #5E135A -2.23%, #D30335 83.5%); /* FF3.6-15 */
+    background-image: -webkit-linear-gradient(233.68deg, #5E135A -2.23%, #D30335 83.5%); /* Chrome10-25,Safari5.1-6 */
+    background-image: linear-gradient(233.68deg, #5E135A -2.23%, #D30335 83.5%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
 }
 
 bank-manager {
