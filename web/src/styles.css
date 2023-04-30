@@ -21,3 +21,115 @@ bank-manager {
     top: 0;
     left: 0;
 }
+
+@font-face {
+    font-family: 'BRHendrix-Light';
+    src: url('/assets/extensions/meld/fonts/BRHendrix-Light.woff');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'BRHendrix-ExtraLight';
+    src: url('/assets/extensions/meld/fonts/BRHendrix-ExtraLight.woff');
+    font-weight: 200;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'BRHendrix-Black';
+    src: url('/assets/extensions/meld/fonts/BRHendrix-Black.woff');
+    font-weight: 900;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'BRHendrix-SemiBoldItalic';
+    src: url('/assets/extensions/meld/fonts/BRHendrix-SemiBoldItalic.woff');
+    font-weight: 600;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'BRHendrix-Regular';
+    src: url('/assets/extensions/meld/fonts/BRHendrix-Regular.woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'BRHendrix-Thin';
+    src: url('/assets/extensions/meld/fonts/BRHendrix-Thin.woff');
+    font-weight: 100;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'BRHendrix-BoldItalic';
+    src: url('/assets/extensions/meld/fonts/BRHendrix-BoldItalic.woff');
+    font-weight: bold;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'BRHendrix-MediumItalic';
+    src: url('/assets/extensions/meld/fonts/BRHendrix-MediumItalic.woff');
+    font-weight: 500;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'BRHendrix-ExtraLightItalic';
+    src: url('/assets/extensions/meld/fonts/BRHendrix-ExtraLightItalic.woff');
+    font-weight: 200;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'BRHendrix-RegularItalic';
+    src: url('/assets/extensions/meld/fonts/BRHendrix-RegularItalic.woff');
+    font-weight: normal;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'BRHendrix-SemiBold';
+    src: url('/assets/extensions/meld/fonts/BRHendrix-SemiBold.woff');
+    font-weight: 600;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'BRHendrix-BlackItalic';
+    src: url('/assets/extensions/meld/fonts/BRHendrix-BlackItalic.woff');
+    font-weight: 900;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'BRHendrix-ThinItalic';
+    src: url('/assets/extensions/meld/fonts/BRHendrix-ThinItalic.woff');
+    font-weight: 100;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'BRHendrix-Bold';
+    src: url('/assets/extensions/meld/fonts/BRHendrix-Bold.woff');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'BRHendrix-LightItalic';
+    src: url('/assets/extensions/meld/fonts/BRHendrix-LightItalic.woff');
+    font-weight: 300;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'BRHendrix-Medium';
+    src: url('/assets/extensions/meld/fonts/BRHendrix-Medium.woff');
+    font-weight: 500;
+    font-style: normal;
+}

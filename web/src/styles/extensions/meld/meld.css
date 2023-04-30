@@ -1,13 +1,3 @@
-.meld-title {
-    margin-top: 21px;
-    display: flex;
-    font-style: normal;
-    font-weight: 900;
-    font-size: 36px;
-    color: #FFFFFF;
-    margin-bottom: 3rem;
-}
-
 .meld-img-logo {
     cursor: pointer !important;
     margin-left: -39px;
@@ -28,37 +18,53 @@ img.meld-img-logo {
 }
 
 .meld-img-mint-bm {
-    position: relative;
-    top: 15vh;
-    left: 0;
+    margin-top: 0;
     margin-left: 0!important;
 }
 
 .meld-img-freeloaderz {
     position: fixed;
     bottom: 30px;
-    left: 4em;
     cursor: pointer !important;
 }
-.meld-top {
-    width: 100vw;
-    margin-left: 4em;
-    height: 130px;
+.meld-top-div {
+    width: 80vw;
+    margin-left: 10vw;
+    margin-right: 10vw;
+    height: 20vh;
     align-items: flex-start;
     justify-content: left;
 }
+.meld-middle-div {
+    width: 80vw;
+    margin-left: 10vw;
+    margin-right: 10vw;
+    height: 60vh;
+    align-items: flex-start;
+    justify-content: left;
+}
+.meld-bottom-div {
+    width: 80vw;
+    margin-left: 10vw;
+    margin-right: 10vw;
+    height: 20vh;
+    align-items: flex-start;
+    justify-content: left;
+}
+
 .meld-left-grid {
-    width: 50vw;
-    margin-left: 4em;
-    height: 100vh;
+    width: 38vw;
+    height: 60vh;
+    margin-right: 2vw;
     align-items: flex-start;
     justify-content: left;
 }
 
 .meld-right-grid {
     display: flex !important;
-    width: 50vw;
-    height: 100vh;
+    width: 38vw;
+    height: 60vh;
+    margin-left: 2vw;
     align-items: flex-start;
     justify-content: left;
 }
@@ -67,15 +73,6 @@ img.meld-img-logo {
     list-style-type: none;
     padding: 0 !important;
     margin: 0 !important;
-}
-
-.meld-fake-button {
-    max-height: 48px;
-    margin-right: 3rem;
-    font-size: x-large;
-    font-weight: bolder;
-    color: white !important;
-    pointer-events: none !important;
 }
 
 .meld-error-button,
@@ -103,16 +100,18 @@ img.meld-img-logo {
 
 .meld-error-button > span.p-button-icon,
 .meld-success-button > span.p-button-icon {
-    padding-left: 0;
-    padding-right: 0;
+    padding-left: 1rem;
+    padding-right: 1rem;
     margin-left: 0;
     margin-right: 0;
 }
 
 .meld-action-button,
 .meld-success-button,
-.meld-error-button {
-    width: 624px;
+.meld-error-button,
+.meld-input {
+    width: 33vw;
+    min-width: 300px!important;
     height: 59.17px;
     text-align: left!important;
     line-height: 100px;
@@ -120,8 +119,6 @@ img.meld-img-logo {
 }
 
 .meld-input {
-    max-width: 624px;
-    height: 59.17px;
     padding-left: 1rem;
     padding-right: 1rem;
 }
@@ -129,12 +126,11 @@ img.meld-img-logo {
 .meld-action-button,
 .meld-action-button > span {
     margin: 0;
-    font-family: 'BRHendrix-Bold';
-    font-size: 24px;
-    font-weight: 700;
     color: #AF0941;
     background-color: white !important;
     border: 0;
+    padding-left: 1rem;
+    padding-right: 1rem;
 }
 
 .meld-action-button:active, .meld-action-button:hover, .meld-action-button:focus,
@@ -143,8 +139,6 @@ img.meld-img-logo {
 }
 
 .meld-ul > li {
-    width: 383.38px;
-    height: 33.82px;
     display: block;
     margin-left: 0 !important;
     padding: 0 !important;
@@ -161,9 +155,20 @@ img.meld-img-logo {
 
 .meld-subtext {
     font-size: smaller;
+    width: 33vw;
+    min-width: 300px!important;
 }
 
 .meld-disconnect-div {
     margin-left: 95px;
     display: block !important;
+}
+body.meld-bg .meld-action-button .p-button-label {
+    font-family: 'BRHendrix-Bold';
+    font-size: x-large;
+    line-height: 100px;
+    padding-top: 4px;
+    letter-spacing: 0.04em;
+    color: #AF0941;
+    background-color: white !important;
 }

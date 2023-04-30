@@ -1,4 +1,4 @@
-import {Component, Inject, Injectable, OnInit} from '@angular/core';
+import {Component, HostListener, Inject, Injectable, OnInit} from '@angular/core';
 import {NotificationComponent} from "../../notification/notification.component";
 import {Router} from "@angular/router";
 import {Title} from "@angular/platform-browser";
@@ -46,6 +46,7 @@ export class BankManagerComponent extends NotificationComponent implements OnIni
     public validAddressLength = 103;
     public validAddressStart = "addr1";
     public verifiedAddress: string = null;
+    public compressed: boolean = false;
     public addressRegEx: RegExp = new RegExp("addr[1|_test1][a-zA-Z0-9]{98}");
     public walletSubscription: Subscription;
     public walletErrorSubscription: Subscription;
@@ -86,11 +87,13 @@ export class BankManagerComponent extends NotificationComponent implements OnIni
         this.walletErrorSubscription = this.walletObserverService.error$.subscribe(
             error => {
                 this.walletLoaded = false;
+                this.walletLoading = false;
                 this.errorNotification(error);
                 this.disconnectWallet();
             }
         );
         this.processProperties(this.propertyObserver.propertyMap);
+        this.getScreenSize(null);
     }
 
     disconnectWallet() {
@@ -257,8 +260,8 @@ export class BankManagerComponent extends NotificationComponent implements OnIni
         }
     }
 
-    public routeSmartClaimz() {
-        window.open("https://smartclaimz.io");
+    public routeFreeloaderz() {
+        window.open("https://freeloaderz.io");
     }
 
     public connectWallet() {
@@ -297,5 +300,19 @@ export class BankManagerComponent extends NotificationComponent implements OnIni
         this.walletVerified = false;
         this.isMinting = false;
         this.walletObserverService.setloaded(false);
+    }
+
+    @HostListener('window:resize', ['$event'])
+    public getScreenSize(event?) {
+        if (window.innerWidth <= 1000) {
+            this.compressed = true;
+        } else {
+            this.compressed = false;
+        }
+    }
+
+    @HostListener('window:orientationchange', ['$event'])
+    public onOrientationChange(event) {
+        this.getScreenSize(event);
     }
 }

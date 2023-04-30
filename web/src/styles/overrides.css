@@ -227,6 +227,42 @@ a:active {
 .subrow > label {
     padding-top: 5px;
 }
+.connect-modal .modal-content {
+    background-color: white;
+}
+
+.connect-modal .modal-header,
+.connect-modal .modal-body,
+.connect-modal .modal-footer {
+    color: #153359 !important
+}
+
+body.meld-bg .connect-modal .modal-content {
+    background-color: transparent !important;
+    background-image: -moz-linear-gradient(233.68deg, #5E135A -2.23%, #D30335 83.5%) !important; /* FF3.6-15 */
+    background-image: -webkit-linear-gradient(233.68deg, #5E135A -2.23%, #D30335 83.5%) !important; /* Chrome10-25,Safari5.1-6 */
+    background-image: linear-gradient(233.68deg, #5E135A -2.23%, #D30335 83.5%) !important; /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+}
+
+body.meld-bg .connect-modal .modal-header,
+body.meld-bg .connect-modal .modal-title,
+body.meld-bg .connect-modal .modal-body,
+body.meld-bg .connect-modal .modal-footer {
+    color: white !important;
+}
+
+body.meld-bg a.inverted,
+body.meld-bg a.inverted p {
+    color: white !important;
+    font-weight: bold;
+}
+body.meld-bg a.inverted:hover,
+body.meld-bg a.inverted:hover p,
+body.meld-bg a.inverted:focus,
+body.meld-bg a.inverted:focus p{
+    outline: 0 !important;
+    color: #4800A5 !important;
+}
 
 .modal-content {
     -moz-border-radius: 25px 25px 25px 25px !important;
@@ -241,7 +277,8 @@ a:active {
     padding: 1rem;
 }
 
-.modal-header {
+.modal-header,
+.modal-title {
     font-weight: bold !important;
     color: #153359 !important;
     border-bottom: 0px !important;
