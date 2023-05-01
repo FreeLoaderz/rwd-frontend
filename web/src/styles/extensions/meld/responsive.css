@@ -1,30 +1,210 @@
 @media only screen and (orientation: portrait) and (max-device-width: 1000px) and (max-device-height: 1400px) {
+    .sidebyside {
+        display: block !important;
+    }
+    .meld-img-mint-bm {
+        width: 450px!important;
+    }
+
+    .meld-img-logo {
+    }
+
+    .meld-li {
+        margin-top: 2em;
+    }
+
+    .meld-img-freeloaderz {
+    }
+
+    .meld-img-bank-mgr {
+        width: 450px;
+    }
+
+    .meld-subtext {
+        font-size: small;
+    }
+
     .meld-top-div {
-        height: 15vh;
+        height: 12vh;
     }
 
     .meld-middle-div {
-        margin-left: 5vw;
-        margin-right: 5vw;
-        height: 70vh;
+        margin-left: 10vw;
+        margin-right: 10vw;
+        height: 80vh;
     }
 
     .meld-bottom-div {
-        height: 15vh;
-        margin-left: 5vw;
+        height: 8vh;
+        margin-left: 10vw;
     }
 
     .meld-left-grid,
     .meld-right-grid {
-        width: 38vw;
-        height: 60vh;
+        width: 80vw;
     }
 
-    .meld-img-mint-bm {
-        width: 450px!important;
+    .meld-right-grid {
+        height: 20vh;
+    }
+    .meld-left-grid {
+        height: 60vh;
+    }
+    .meld-action-button,
+    .meld-success-button,
+    .meld-error-button,
+    .meld-subtext,
+    .meld-input {
+        width: 80vw;
+    }
+    .p-button {
+        padding-left: 1rem!important;
+        padding-right: 1rem!important;
+        font-size: medium!important;
+    }
+    input {
+        font-size: medium!important;
     }
 }
 
+@media only screen and (orientation: portrait) and (max-device-width: 1000px) and (max-device-height: 1200px) {
+    .sidebyside {
+        display: block !important;
+    }
+    .meld-img-mint-bm {
+        width: 450px!important;
+    }
+
+    .meld-img-logo {
+    }
+
+    .meld-li {
+        margin-top: 1em;
+    }
+
+    .meld-img-freeloaderz {
+    }
+
+    .meld-img-bank-mgr {
+        width: 400px;
+    }
+
+    .meld-subtext {
+        font-size: small;
+    }
+
+    .meld-top-div {
+        height: 12vh;
+    }
+
+    .meld-middle-div {
+        margin-left: 10vw;
+        margin-right: 10vw;
+        height: 80vh;
+    }
+
+    .meld-bottom-div {
+        height: 8vh;
+        margin-left: 10vw;
+    }
+
+    .meld-left-grid,
+    .meld-right-grid {
+        width: 80vw;
+    }
+
+    .meld-right-grid {
+        height: 25vh;
+    }
+    .meld-left-grid {
+        height: 55vh;
+    }
+    .meld-action-button,
+    .meld-success-button,
+    .meld-error-button,
+    .meld-subtext,
+    .meld-input {
+        width: 80vw;
+    }
+    .p-button {
+        padding-left: 1rem!important;
+        padding-right: 1rem!important;
+        font-size: medium!important;
+    }
+    input {
+        font-size: medium!important;
+    }
+
+}
+@media only screen and (orientation: portrait) and (max-device-width: 800px) and (max-device-height: 1200px) {
+    .sidebyside {
+        display: block !important;
+    }
+    .meld-img-mint-bm {
+        width: 400px!important;
+    }
+
+    .meld-img-logo {
+    }
+
+    .meld-li {
+        margin-top: 1em;
+    }
+
+    .meld-img-freeloaderz {
+    }
+
+    .meld-img-bank-mgr {
+        width: 400px;
+    }
+
+    .meld-subtext {
+        font-size: small;
+    }
+
+    .meld-top-div {
+        height: 12vh;
+    }
+
+    .meld-middle-div {
+        margin-left: 10vw;
+        margin-right: 10vw;
+        height: 80vh;
+    }
+
+    .meld-bottom-div {
+        height: 8vh;
+        margin-left: 10vw;
+    }
+
+    .meld-left-grid,
+    .meld-right-grid {
+        width: 80vw;
+    }
+
+    .meld-right-grid {
+        height: 25vh;
+    }
+    .meld-left-grid {
+        height: 55vh;
+    }
+    .meld-action-button,
+    .meld-success-button,
+    .meld-error-button,
+    .meld-subtext,
+    .meld-input {
+        width: 80vw;
+    }
+    .p-button {
+        padding-left: 1rem!important;
+        padding-right: 1rem!important;
+        font-size: medium!important;
+    }
+    input {
+        font-size: medium!important;
+    }
+
+}
 @media only screen and (orientation: portrait) and (max-device-width: 599px) and (max-device-height: 1000px) {
     .sidebyside {
         display: block !important;
@@ -98,6 +278,78 @@
 
 }
 
+@media only screen and (orientation: portrait) and (max-device-width: 599px) and (max-device-height: 800px) {
+    .sidebyside {
+        display: block !important;
+    }
+
+    .meld-img-mint-bm {
+        width: 300px!important;
+    }
+
+    .meld-img-logo {
+        width: 120px;
+    }
+
+    .meld-li {
+        margin-top: 1em;
+    }
+
+    .meld-img-freeloaderz {
+        width: 128px;
+    }
+
+    .meld-img-bank-mgr {
+        width: 300px;
+    }
+
+    .meld-subtext {
+        font-size: small;
+    }
+
+    .meld-top-div {
+        height: 10vh;
+    }
+
+    .meld-middle-div {
+        margin-left: 5vw;
+        margin-right: 5vw;
+        height: 82vh;
+    }
+
+    .meld-bottom-div {
+        height: 8vh;
+        margin-left: 5vw;
+    }
+
+    .meld-left-grid,
+    .meld-right-grid {
+        width: 90vw;
+    }
+
+    .meld-right-grid {
+        height: 25vh;
+    }
+    .meld-left-grid {
+        height: 55vh;
+    }
+    .meld-action-button,
+    .meld-success-button,
+    .meld-error-button,
+    .meld-subtext,
+    .meld-input {
+        width: 85vw;
+    }
+    .p-button {
+        padding-left: 1rem!important;
+        padding-right: 1rem!important;
+        font-size: medium!important;
+    }
+    input {
+        font-size: medium!important;
+    }
+}
+
 @media only screen and (orientation: portrait) and (max-device-height: 800px) and (max-device-width: 400px) {
     .sidebyside {
         display: block !important;
@@ -128,13 +380,13 @@
     }
 
     .meld-top-div {
-        height: 8vh;
+        height: 12vh;
     }
 
     .meld-middle-div {
         margin-left: 5vw;
         margin-right: 5vw;
-        height: 84vh;
+        height: 80vh;
     }
 
     .meld-bottom-div {
@@ -159,6 +411,14 @@
     .meld-subtext,
     .meld-input  {
         width: 90vw;
+    }
+    .p-button {
+        padding-left: 1rem!important;
+        padding-right: 1rem!important;
+        font-size: medium!important;
+    }
+    input {
+        font-size: medium!important;
     }
 }
 
@@ -216,6 +476,63 @@
     .meld-subtext,
     .meld-input  {
         width: 33vw;
+    }
+}
+@media only screen and (orientation: landscape) and (max-device-height: 800px) and (max-device-width: 1024px) {
+    .meld-img-mint-bm {
+        width: 400px!important;
+    }
+
+    .meld-img-logo {
+    }
+
+    .meld-li {
+        margin-top: 1em;
+    }
+
+    .meld-img-freeloaderz {
+    }
+
+    .meld-img-bank-mgr {
+        width: 400px!important;
+    }
+
+    .meld-subtext {
+        font-size: small;
+    }
+
+    .meld-top-div {
+        height: 15vh;
+    }
+
+    .meld-middle-div {
+        margin-left: 10vw;
+        margin-right: 10vw;
+        height: 70vh;
+    }
+
+    .meld-bottom-div {
+        height: 15vh;
+        margin-left: 10vw;
+    }
+
+    .meld-left-grid,
+    .meld-right-grid {
+        width: 40vw;
+    }
+
+    .meld-right-grid {
+        height: 80vh;
+    }
+    .meld-left-grid {
+        height: 80vh;
+    }
+    .meld-action-button,
+    .meld-success-button,
+    .meld-error-button,
+    .meld-subtext,
+    .meld-input  {
+        width: 40vw;
     }
 }
 
@@ -364,7 +681,7 @@
     }
 }
 
-@media only screen and (max-device-width: 1160px) {
+@media only screen and (max-device-width: 1180px) {
     .p-button {
         padding-left: 1rem!important;
         padding-right: 1rem!important;
@@ -374,7 +691,7 @@
         font-size: large!important;
     }
 }
-@media only screen and (max-device-width: 900px) {
+@media only screen and (max-device-width: 1024px) {
     .p-button {
         padding-left: 1rem!important;
         padding-right: 1rem!important;
@@ -382,5 +699,15 @@
     }
     input {
         font-size: medium!important;
+    }
+}
+@media only screen and (max-device-width: 800px) {
+    .p-button {
+        padding-left: 1rem!important;
+        padding-right: 1rem!important;
+        font-size: small!important;
+    }
+    input {
+        font-size: small!important;
     }
 }
