@@ -421,6 +421,24 @@
         font-size: medium!important;
     }
 }
+@media only screen and (orientation: landscape) and (max-device-height: 1400px) and (max-device-width: 2000px) {
+    .meld-img-mint-bm {
+        width: 600px !important;
+    }
+
+    .meld-img-logo {
+    }
+
+    .meld-li {
+    }
+
+    .meld-img-freeloaderz {
+    }
+
+    .meld-img-bank-mgr {
+        width: 600px !important;
+    }
+}
 
 @media only screen and (orientation: landscape) and (max-device-height: 1000px) and (max-device-width: 1200px) {
     .meld-img-mint-bm {

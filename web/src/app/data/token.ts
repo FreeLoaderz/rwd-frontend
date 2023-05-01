@@ -89,11 +89,13 @@ export class Token {
 
     addPools(data: any) {
         if ((data.pools != null) && (data.pools.length > 0)) {
-            console.log("ADD " + data.pools.length + " pools");
             for (let i = 0; i < data.pools.length; ++i) {
-                const pool_id = data.pools[i].substring(0, data.pools[i].indexOf(","));
-                this.poolMap.set(pool_id, pool_id);
-//                this.pools.push(pool_id);
+                if (data.pools[i].indexOf(",") > 0) {
+                    const pool_id = data.pools[i].substring(0, data.pools[i].indexOf(","));
+                    this.poolMap.set(pool_id, pool_id);
+                }else {
+                    this.poolMap.set(data.pools[i], data.pools[i]);
+                }
             }
         }
         this.pools = [...this.poolMap.values()];

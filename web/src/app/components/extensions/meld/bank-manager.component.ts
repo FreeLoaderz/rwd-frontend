@@ -80,6 +80,9 @@ export class BankManagerComponent extends NotificationComponent implements OnIni
                         this.validAddressStart = "addr_test1";
                     }
                     this.verifyWallet(null);
+                    setTimeout(() => {
+                        localStorage.removeItem('SmartClaimzWalletSource');
+                    }, 1000);
                 }
             }
         );
@@ -97,7 +100,7 @@ export class BankManagerComponent extends NotificationComponent implements OnIni
     }
 
     /**
-     * 
+     *
      */
     public ngOnDestroy() {
         this.disconnect();

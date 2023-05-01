@@ -58,6 +58,7 @@ export class TokenService {
                 if (TokenService.tokenMap.has(TokenService.duplicateList[i].fingerprint)) {
                     const token = TokenService.tokenMap.get(TokenService.duplicateList[i].fingerprint);
                     token.addPools(TokenService.duplicateList[i]);
+                    this.pushToken(token);
                 }
             }
         } else {
@@ -105,8 +106,8 @@ export class TokenService {
     }
 
     public pushToken(token: Token) {
-        TokenService.tokenList.push(token);
         TokenService.tokenMap.set(token.fingerprint, token);
+        TokenService.tokenList = [...TokenService.tokenMap.values()];
         localStorage.setItem(token.fingerprint, JSON.stringify(token.tokenMetadata));
         this.tokenObserverService.setTokenList(TokenService.tokenList);
     }
