@@ -1,4 +1,4 @@
-import {Component, HostListener, Inject, Injectable, OnInit} from '@angular/core';
+import {Component, HostListener, Inject, Injectable, OnDestroy, OnInit} from '@angular/core';
 import {NotificationComponent} from "../../notification/notification.component";
 import {Router} from "@angular/router";
 import {Title} from "@angular/platform-browser";
@@ -22,7 +22,7 @@ import {Mint} from "../../../data/mint";
     templateUrl: './bank-manager.html'
 })
 @Injectable()
-export class BankManagerComponent extends NotificationComponent implements OnInit {
+export class BankManagerComponent extends NotificationComponent implements OnInit, OnDestroy {
     public fullScreen: boolean = false;
     public docElem: any;
     public meldHomepage: string = null;
@@ -94,6 +94,13 @@ export class BankManagerComponent extends NotificationComponent implements OnIni
         );
         this.processProperties(this.propertyObserver.propertyMap);
         this.getScreenSize(null);
+    }
+
+    /**
+     * 
+     */
+    public ngOnDestroy() {
+        this.disconnect();
     }
 
     disconnectWallet() {
@@ -300,6 +307,7 @@ export class BankManagerComponent extends NotificationComponent implements OnIni
         this.walletVerified = false;
         this.isMinting = false;
         this.walletObserverService.setloaded(false);
+        localStorage.removeItem('SmartClaimzWalletSource');
     }
 
     @HostListener('window:resize', ['$event'])
