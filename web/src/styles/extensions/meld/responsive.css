@@ -205,6 +205,145 @@
     }
 
 }
+@media only screen and (orientation: portrait) and (max-device-width: 800px) and (max-device-height: 1200px) {
+    .sidebyside {
+        display: block !important;
+    }
+    .meld-img-mint-bm {
+        width: 400px!important;
+    }
+
+    .meld-img-logo {
+    }
+
+    .meld-li {
+        margin-top: 1em;
+    }
+
+    .meld-img-freeloaderz {
+    }
+
+    .meld-img-bank-mgr {
+        width: 400px;
+    }
+
+    .meld-subtext {
+        font-size: small;
+    }
+
+    .meld-top-div {
+        height: 12vh;
+    }
+
+    .meld-middle-div {
+        margin-left: 10vw;
+        margin-right: 10vw;
+        height: 80vh;
+    }
+
+    .meld-bottom-div {
+        height: 8vh;
+        margin-left: 10vw;
+    }
+
+    .meld-left-grid,
+    .meld-right-grid {
+        width: 80vw;
+    }
+
+    .meld-right-grid {
+        height: 25vh;
+    }
+    .meld-left-grid {
+        height: 55vh;
+    }
+    .meld-action-button,
+    .meld-success-button,
+    .meld-error-button,
+    .meld-subtext,
+    .meld-input {
+        width: 80vw;
+    }
+    .p-button {
+        padding-left: 1rem!important;
+        padding-right: 1rem!important;
+        font-size: medium!important;
+    }
+    input {
+        font-size: medium!important;
+    }
+
+}
+@media only screen and (orientation: portrait) and (max-device-width: 1000px) and (max-device-height: 1000px) {
+    .sidebyside {
+        display: block !important;
+    }
+
+    .meld-img-mint-bm {
+        width: 400px!important;
+    }
+
+    .meld-img-logo {
+    }
+
+    .meld-li {
+        margin-top: 1em;
+    }
+
+    .meld-img-freeloaderz {
+    }
+
+    .meld-img-bank-mgr {
+        width: 375px;
+    }
+
+    .meld-subtext {
+        font-size: small;
+    }
+
+    .meld-top-div {
+        height: 12vh;
+    }
+
+    .meld-middle-div {
+        margin-left: 5vw;
+        margin-right: 5vw;
+        height: 82vh;
+    }
+
+    .meld-bottom-div {
+        height: 8vh;
+        margin-left: 5vw;
+    }
+
+    .meld-left-grid,
+    .meld-right-grid {
+        width: 90vw;
+    }
+
+    .meld-right-grid {
+        height: 25vh;
+    }
+    .meld-left-grid {
+        height: 55vh;
+    }
+    .meld-action-button,
+    .meld-success-button,
+    .meld-error-button,
+    .meld-subtext,
+    .meld-input {
+        width: 85vw;
+    }
+    .p-button {
+        padding-left: 1rem!important;
+        padding-right: 1rem!important;
+        font-size: medium!important;
+    }
+    input {
+        font-size: medium!important;
+    }
+
+}
 @media only screen and (orientation: portrait) and (max-device-width: 599px) and (max-device-height: 1000px) {
     .sidebyside {
         display: block !important;
