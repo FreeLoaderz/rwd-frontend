@@ -154,6 +154,8 @@ img.meld-img-logo {
 }
 
 .meld-subtext {
+    padding-left: 1rem;
+    padding-right: 1rem;
     font-size: smaller;
     width: 33vw;
     min-width: 300px!important;

@@ -10,7 +10,7 @@
             </div>
             <div class="meld-left-grid">
                 <ul class="meld-ul">
-                    <li *ngIf="!walletLoaded" style="display: block;{{compressed ? '': 'margin-top:1em!important'}}" class="meld-li">
+                    <li *ngIf="!walletLoaded" style="display: block;{{compressed ? 'margin-top:.25em!important': 'margin-top:1em!important'}}" class="meld-li">
                         <button pButton class="p-button-rounded p-button-text no-ul meld-action-button"
                                 [title]="'Connect your Meld ISPO or a payment Wallet'"
                                 (click)="connectWallet()" label="1. CONNECT YOUR WALLET" [loading]="walletLoading"
