@@ -1,9 +1,9 @@
-@media only screen and (orientation: portrait) and (max-device-width: 1000px) and (max-device-height: 1400px) {
+@media only screen and (orientation: portrait) and (max-width: 1000px) and (max-height: 1400px) {
     .sidebyside {
         display: block !important;
     }
     .meld-img-mint-bm {
-        width: 450px!important;
+        width: 400px!important;
     }
 
     .meld-img-logo {
@@ -17,7 +17,7 @@
     }
 
     .meld-img-bank-mgr {
-        width: 450px;
+        width: 425px;
     }
 
     .meld-subtext {
@@ -67,12 +67,12 @@
     }
 }
 
-@media only screen and (orientation: portrait) and (max-device-width: 1000px) and (max-device-height: 1200px) {
+@media only screen and (orientation: portrait) and (max-width: 1000px) and (max-height: 1200px) {
     .sidebyside {
         display: block !important;
     }
     .meld-img-mint-bm {
-        width: 450px!important;
+        width: 375px!important;
     }
 
     .meld-img-logo {
@@ -136,12 +136,12 @@
     }
 
 }
-@media only screen and (orientation: portrait) and (max-device-width: 800px) and (max-device-height: 1200px) {
+@media only screen and (orientation: portrait) and (max-width: 800px) and (max-height: 1200px) {
     .sidebyside {
         display: block !important;
     }
     .meld-img-mint-bm {
-        width: 400px!important;
+        width: 375px!important;
     }
 
     .meld-img-logo {
@@ -205,146 +205,7 @@
     }
 
 }
-@media only screen and (orientation: portrait) and (max-device-width: 800px) and (max-device-height: 1200px) {
-    .sidebyside {
-        display: block !important;
-    }
-    .meld-img-mint-bm {
-        width: 400px!important;
-    }
-
-    .meld-img-logo {
-    }
-
-    .meld-li {
-        margin-top: 1em;
-    }
-
-    .meld-img-freeloaderz {
-    }
-
-    .meld-img-bank-mgr {
-        width: 400px;
-    }
-
-    .meld-subtext {
-        font-size: small;
-    }
-
-    .meld-top-div {
-        height: 12vh;
-    }
-
-    .meld-middle-div {
-        margin-left: 10vw;
-        margin-right: 10vw;
-        height: 80vh;
-    }
-
-    .meld-bottom-div {
-        height: 8vh;
-        margin-left: 10vw;
-    }
-
-    .meld-left-grid,
-    .meld-right-grid {
-        width: 80vw;
-    }
-
-    .meld-right-grid {
-        height: 25vh;
-    }
-    .meld-left-grid {
-        height: 55vh;
-    }
-    .meld-action-button,
-    .meld-success-button,
-    .meld-error-button,
-    .meld-subtext,
-    .meld-input {
-        width: 80vw;
-    }
-    .p-button {
-        padding-left: 1rem!important;
-        padding-right: 1rem!important;
-        font-size: medium!important;
-    }
-    input {
-        font-size: medium!important;
-    }
-
-}
-@media only screen and (orientation: portrait) and (max-device-width: 1000px) and (max-device-height: 1000px) {
-    .sidebyside {
-        display: block !important;
-    }
-
-    .meld-img-mint-bm {
-        width: 400px!important;
-    }
-
-    .meld-img-logo {
-    }
-
-    .meld-li {
-        margin-top: 1em;
-    }
-
-    .meld-img-freeloaderz {
-    }
-
-    .meld-img-bank-mgr {
-        width: 375px;
-    }
-
-    .meld-subtext {
-        font-size: small;
-    }
-
-    .meld-top-div {
-        height: 12vh;
-    }
-
-    .meld-middle-div {
-        margin-left: 5vw;
-        margin-right: 5vw;
-        height: 82vh;
-    }
-
-    .meld-bottom-div {
-        height: 8vh;
-        margin-left: 5vw;
-    }
-
-    .meld-left-grid,
-    .meld-right-grid {
-        width: 90vw;
-    }
-
-    .meld-right-grid {
-        height: 25vh;
-    }
-    .meld-left-grid {
-        height: 55vh;
-    }
-    .meld-action-button,
-    .meld-success-button,
-    .meld-error-button,
-    .meld-subtext,
-    .meld-input {
-        width: 85vw;
-    }
-    .p-button {
-        padding-left: 1rem!important;
-        padding-right: 1rem!important;
-        font-size: medium!important;
-    }
-    input {
-        font-size: medium!important;
-    }
-
-}
-@media only screen and (orientation: portrait) and (max-device-width: 599px) and (max-device-height: 1000px) {
+@media only screen and (orientation: portrait) and (max-width: 599px) and (max-height: 1000px) {
     .sidebyside {
         display: block !important;
     }
@@ -417,7 +278,7 @@
 
 }
 
-@media only screen and (orientation: portrait) and (max-device-width: 599px) and (max-device-height: 800px) {
+@media only screen and (orientation: portrait) and (max-width: 599px) and (max-height: 800px) {
     .sidebyside {
         display: block !important;
     }
@@ -489,7 +350,7 @@
     }
 }
 
-@media only screen and (orientation: portrait) and (max-device-height: 800px) and (max-device-width: 400px) {
+@media only screen and (orientation: portrait) and (max-width: 400px) and (max-height: 800px) {
     .sidebyside {
         display: block !important;
     }
@@ -560,7 +421,7 @@
         font-size: medium!important;
     }
 }
-@media only screen and (orientation: landscape) and (max-device-height: 1400px) and (max-device-width: 2000px) {
+@media only screen and (orientation: landscape) and (max-height: 1400px) and (max-width: 2000px) {
     .meld-img-mint-bm {
         width: 600px !important;
     }
@@ -578,10 +439,46 @@
         width: 600px !important;
     }
 }
-
-@media only screen and (orientation: landscape) and (max-device-height: 1000px) and (max-device-width: 1200px) {
+@media only screen and (orientation: landscape) and (max-height: 800px) and (max-width: 2000px) {
     .meld-img-mint-bm {
-        width: 500px!important;
+        width: 500px !important;
+    }
+
+    .meld-img-logo {
+    }
+
+    .meld-li {
+    }
+
+    .meld-img-freeloaderz {
+    }
+
+    .meld-img-bank-mgr {
+        width: 500px !important;
+    }
+}
+@media only screen and (orientation: landscape) and (max-height: 600px) and (max-width: 2000px) {
+    .meld-img-mint-bm {
+        width: 400px !important;
+    }
+
+    .meld-img-logo {
+    }
+
+    .meld-li {
+    }
+
+    .meld-img-freeloaderz {
+    }
+
+    .meld-img-bank-mgr {
+        width: 400px !important;
+    }
+}
+
+@media only screen and (orientation: landscape) and (max-height: 1000px) and (max-width: 1300px) {
+    .meld-img-mint-bm {
+        width: 475px!important;
     }
 
     .meld-img-logo {
@@ -595,6 +492,7 @@
     }
 
     .meld-img-bank-mgr {
+        width: 500px !important;
     }
 
     .meld-subtext {
@@ -635,7 +533,7 @@
         width: 33vw;
     }
 }
-@media only screen and (orientation: landscape) and (max-device-height: 800px) and (max-device-width: 1024px) {
+@media only screen and (orientation: landscape) and (max-height: 800px) and (max-width: 1024px) {
     .meld-img-mint-bm {
         width: 400px!important;
     }
@@ -693,7 +591,7 @@
     }
 }
 
-@media only screen and (orientation: landscape) and (max-device-height: 599px) and (max-device-width: 1000px) {
+@media only screen and (orientation: landscape) and (max-height: 599px) and (max-width: 1000px) {
     .sidebyside {
         display: block !important;
     }
@@ -765,7 +663,7 @@
     }
 }
 
-@media only screen and (orientation: landscape) and (max-device-height: 400px) and (max-device-width: 800px) {
+@media only screen and (orientation: landscape) and (max-height: 400px) and (max-width: 800px) {
     .sidebyside {
         display: block !important;
     }
@@ -838,7 +736,7 @@
     }
 }
 
-@media only screen and (max-device-width: 1180px) {
+@media only screen and (max-width: 1180px) {
     .p-button {
         padding-left: 1rem!important;
         padding-right: 1rem!important;
@@ -848,7 +746,7 @@
         font-size: large!important;
     }
 }
-@media only screen and (max-device-width: 1024px) {
+@media only screen and (max-width: 1024px) {
     .p-button {
         padding-left: 1rem!important;
         padding-right: 1rem!important;
@@ -858,7 +756,7 @@
         font-size: medium!important;
     }
 }
-@media only screen and (max-device-width: 800px) {
+@media only screen and (max-width: 800px) {
     .p-button {
         padding-left: 1rem!important;
         padding-right: 1rem!important;

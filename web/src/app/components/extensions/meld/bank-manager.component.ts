@@ -315,7 +315,7 @@ export class BankManagerComponent extends NotificationComponent implements OnIni
 
     @HostListener('window:resize', ['$event'])
     public getScreenSize(event?) {
-        if (window.innerWidth <= 1000) {
+        if (window.innerWidth <= 973) {
             this.compressed = true;
         } else {
             this.compressed = false;
