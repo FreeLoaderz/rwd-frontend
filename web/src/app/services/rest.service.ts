@@ -352,14 +352,14 @@ export class RestService {
             .catch(this.handleError);
     }
 
-    public walletVerification() {
+    public verifyWallet() {
         let headers;
         if (RestService.vidarAuthorization != null) {
             headers = new HttpHeaders().set('Content-Type', 'application/json').set('Authorization', RestService.vidarAuthorization);
         } else {
             headers = new HttpHeaders().set('Content-Type', 'application/json');
         }
-        const url = '/rwdinfo/verify/';
+        const url = '/api/verifyWallet';
         RestService.processingRequest = true;
 
         return lastValueFrom(this.httpClient
@@ -368,14 +368,49 @@ export class RestService {
             .catch(this.handleError);
     }
 
-    public mint() {
+    public verifyAddress(address: string) {
         let headers;
         if (RestService.vidarAuthorization != null) {
             headers = new HttpHeaders().set('Content-Type', 'application/json').set('Authorization', RestService.vidarAuthorization);
         } else {
             headers = new HttpHeaders().set('Content-Type', 'application/json');
         }
-        const url = '/rwdinfo/mint/';
+        const url = '/api/verifyAddress';
+        RestService.processingRequest = true;
+
+        return lastValueFrom(this.httpClient
+            .post(url, address, {headers: headers}))
+            .then(res => this.processResponse(res))
+            .catch(this.handleError);
+    }
+
+    public mint(address: string) {
+        let headers;
+        if (RestService.vidarAuthorization != null) {
+            headers = new HttpHeaders().set('Content-Type', 'application/json').set('Authorization', RestService.vidarAuthorization);
+        } else {
+            headers = new HttpHeaders().set('Content-Type', 'application/json');
+        }
+        const url = '/api/mint';
+        const params: HttpParams = new HttpParams()
+            .set('walletJson', JSON.stringify(globalThis.wallet))
+            .set('address', address);
+        RestService.processingRequest = true;
+
+        return lastValueFrom(this.httpClient
+            .post(url, params, {headers: headers}))
+            .then(res => this.processResponse(res))
+            .catch(this.handleError);
+    }
+
+    public signMint() {
+        let headers;
+        if (RestService.vidarAuthorization != null) {
+            headers = new HttpHeaders().set('Content-Type', 'application/json').set('Authorization', RestService.vidarAuthorization);
+        } else {
+            headers = new HttpHeaders().set('Content-Type', 'application/json');
+        }
+        const url = '/api/signMint';
         RestService.processingRequest = true;
 
         return lastValueFrom(this.httpClient

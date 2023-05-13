@@ -100,6 +100,23 @@ const PROXY_CONFIG = {
         pr.headers['set-cookie'] = cookies;
       }
     }
+  },
+  "/api": {
+    "target": "http://127.0.0.1:8090/",
+    "secure": false,
+    "logLevel": "debug",
+    "changeOrigin": false,
+    "pathRewrite": {
+      "^/api": ""
+    },
+    "onProxyRes": function(pr, req, res) {
+      if (pr.headers['set-cookie']) {
+        const cookies = pr.headers['set-cookie'].map(cookie =>
+            cookie.replace(/;(\ )*secure/gi, '')
+        );
+        pr.headers['set-cookie'] = cookies;
+      }
+    }
   }
 };
 

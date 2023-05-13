@@ -15,7 +15,10 @@ export class WalletService {
         this.walletObserver.loaded$.subscribe(loaded => {
             this.walletLoaded = loaded;
         });
-        if (location.host === 'rwd.freeloaderz.io') {
+        if ((location.host === 'rwd.freeloaderz.io')
+            || (location.host === '127.0.0.1')
+            || (location.host === '127.0.0.1:4200')
+            || (location.host === 'meld.preview.smartclaimz.io')) {
             this.onlyMainnet = false;
         } else {
             this.onlyMainnet = true;

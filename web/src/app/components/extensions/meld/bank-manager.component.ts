@@ -120,32 +120,45 @@ export class BankManagerComponent extends NotificationComponent implements OnIni
         // Verify the wallet
         if (!this.checkingVerification) {
             this.checkingVerification = true;
-            globalThis.wallet.script = new Script(null);
-            const walletVerScript = new WalletVerification(null);
             if (singleAddress == null) {
-                for (let i = 0; i < globalThis.wallet.sending_wal_addrs; ++i) {
-                    walletVerScript.wallet_addresses.push(globalThis.wallet.sending_wal_addrs[i]);
+                try {
+                    this.restService.verifyWallet()
+                        .then(res => {
+                            if (res != null) {
+                                this.processVerification(res);
+                            } else {
+                                this.showVerificationErrorInfo("Connected wallet has either been minted or it is not on the ISPO list");
+                            }
+                        })
+                        .catch(e => this.processVerificationError(e));
+                } catch (e) {
+                    console.log(e);
                 }
+                /*                for (let i = 0; i < globalThis.wallet.sending_wal_addrs; ++i) {
+                                    walletVerScript.wallet_addresses.push(globalThis.wallet.sending_wal_addrs[i]);
+                                }*/
             } else {
                 this.previousCheckedWalletAddress = singleAddress;
-                walletVerScript.wallet_addresses.push(singleAddress);
+                try {
+                    this.restService.verifyAddress(singleAddress)
+                        .then(res => {
+                            if (res != null) {
+                                this.processVerification(res);
+                            } else {
+                                this.showVerificationError("Address has either been minted or it is not on the ISPO list");
+                            }
+                        })
+                        .catch(e => this.processVerificationError(e));
+                } catch (e) {
+                    console.log(e);
+                }
             }
-            globalThis.wallet.script.WalletVerification = walletVerScript;
-            this.restService.walletVerification()
-                .then(res => {
-                    if (res.msg) {
-                        this.showVerificationError(res.msg);
-                    } else {
-                        this.processVerification(res);
-                    }
-                })
-                .catch(e => this.processVerificationError(e));
         }
     }
 
-    public processVerification(res: string) {
+    public processVerification(res: any) {
         this.checkingVerification = false;
-        if (res !== '') {
+        if (res.address != null) {
             this.verifiedAddress = res;
             this.walletVerified = true;
             this.requiresVerification = false;
@@ -153,6 +166,17 @@ export class BankManagerComponent extends NotificationComponent implements OnIni
             this.walletVerified = false;
             this.requiresVerification = true;
         }
+    }
+
+    public showVerificationErrorInfo(error) {
+        this.checkingVerification = false;
+        this.invalidAddress = true;
+        // remove
+        this.walletVerified = false;
+        this.requiresVerification = true;
+        //   this.invalidAddress = false;
+        // end remove
+        this.infoNotification(error);
     }
 
     public showVerificationError(error) {
@@ -186,7 +210,7 @@ export class BankManagerComponent extends NotificationComponent implements OnIni
             globalThis.wallet.script = new Script(null);
             const mintScript = new Mint(null);
             globalThis.wallet.script.Mint = mintScript;
-            this.restService.mint()
+            this.restService.mint("")
                 .then(res => {
                     if (res.msg) {
                         this.showMintError(res.msg);

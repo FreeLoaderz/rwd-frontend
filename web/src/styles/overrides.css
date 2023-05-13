@@ -573,9 +573,9 @@ span.p-menuitem-icon.fa-bolt-lightning {
 }
 
 input, textarea {
-    -moz-border-radius: 25px 25px 25px 25px !important;
-    -webkit-border-radius: 25px !important;
-    border-radius: 25px 25px 25px 25px !important;
+    -moz-border-radius: 2em !important;
+    -webkit-border-radius: 2em !important;
+    border-radius: 2em !important;
 }
 
 .p-button-primary {
