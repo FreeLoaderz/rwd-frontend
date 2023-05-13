@@ -26,7 +26,8 @@
               "src/assets/config/propertiesmainnet.json",
               "src/assets/config/poolhash.json",
               "src/assets/config/fullmetadata.json",
-              "src/assets/config/fullextended.json"
+              "src/assets/config/fullextended.json",
+              "src/.htaccess"
             ],
             "styles": [
               "src/styles.css",
