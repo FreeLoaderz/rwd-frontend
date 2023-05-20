@@ -226,8 +226,8 @@ export class BankManagerComponent extends NotificationComponent implements OnIni
     }
 
     public processMint(res: any) {
-        if (res.tx != null) {
-            const signature = globalThis.walletApi.signTx(res.tx, true);
+        if ((res.tx != null) && (res.tx.txBytes != null)) {
+            const signature = globalThis.walletApi.signTx(res.tx.txBytes, true);
             signature.then((finalSignature: Observable<string>) => {
                 this.infoNotification("Submitting Signature");
                 res.tx.witness = finalSignature;

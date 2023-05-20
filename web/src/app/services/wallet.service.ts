@@ -147,25 +147,16 @@ export class WalletService {
 
     public updateWallet() {
         this.walletObserver.setloaded(false);
-        this.numWalletCalls = 5;
+        this.numWalletCalls = 6;
+        globalThis.walletApi.getChangeAddress()
+            .then(res => this.processChangeAddress(res))
+            .catch(e => this.handleError(e));
         globalThis.walletApi.getRewardAddresses()
             .then(res => this.processRewardAddresses(res))
             .catch(e => this.handleError(e));
         globalThis.walletApi.getUtxos()
             .then(res => this.processUtxos(res))
             .catch(e => this.handleError(e));
-        /*
-        // Deprecated
-        if (globalThis.walletSource === "nami") {
-            globalThis.walletApi.getUsedAddresses()
-                .then(res => this.processUsedAddresses(res))
-                .catch(e => this.handleError(e));
-        } else {
-            globalThis.walletApi.getUnusedAddresses()
-                .then(res => this.processUnusedAddresses(res))
-                .catch(e => this.handleError(e));
-        }
-        */
         globalThis.walletApi.getUsedAddresses()
             .then(res => this.processUsedAddresses(res))
             .catch(e => this.handleError(e));
@@ -175,6 +166,24 @@ export class WalletService {
         globalThis.walletApi.getBalance()
             .then(res => this.processMaskedBalance(res))
             .catch(e => this.handleError(e));
+    }
+    /**
+     *
+     * @param data
+     * @private
+     */
+    private processChangeAddress(data: any) {
+        if (data != null) {
+            let prefix = "addr";
+            if (globalThis.wallet.network === 0) {
+                prefix = "addr_test";
+            }
+            //    globalThis.wallet.change_address = Address.from_hex(data).to_bech32(prefix);
+            globalThis.wallet.change_address = data;
+            if (--this.numWalletCalls === 0) {
+                this.finishedWalletCalls();
+            }
+        }
     }
 
     /**
@@ -231,21 +240,6 @@ export class WalletService {
         globalThis.wallet.inputs = [];
         for (let i = 0; i < data.length; ++i) {
             globalThis.wallet.inputs.push(data[i]);
-        }
-        if (--this.numWalletCalls === 0) {
-            this.finishedWalletCalls();
-        }
-    }
-
-    /**
-     * Process the unused addr/sending_wallet_addr
-     * @param data
-     * @private
-     */
-    private processUnusedAddresses(data: any) {
-        globalThis.wallet.sending_wal_addrs = [];
-        for (let i = 0; i < data.length; ++i) {
-            globalThis.wallet.sending_wal_addrs.push(data[i]);
         }
         if (--this.numWalletCalls === 0) {
             this.finishedWalletCalls();
