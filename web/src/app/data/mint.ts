@@ -1,7 +1,4 @@
 export class Mint {
-    constructor(data: any) {
-        if (data != null) {
-
-        }
+    constructor(public address: string) {
     }
 }

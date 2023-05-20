@@ -54,7 +54,7 @@
                     <li *ngIf="walletVerified" style="display: flex" class="meld-li">
                         <div style="display: block !important">
                             <button pButton class="p-button-rounded p-button-text no-ul meld-success-button"
-                                    [title]="'Verified'" style="max-width: 350px" label="2. VERIFIED"
+                                    [title]="'Verified'" style="" label="2. VERIFIED"
                                     icon="fa-solid fa-check" iconPos="right">
                             </button>
                             <p class="mt-1 mb-0 meld-subtext"></p>
@@ -69,7 +69,7 @@
                     <li *ngIf="walletVerified && !mintFinalized" style="display: flex" class="meld-li">
                         <div style="display: block !important">
                             <button pButton class="p-button-rounded p-button-text no-ul meld-action-button"
-                                    [title]="'Mint your Bank Manager NFT'" style="max-width: 350px" iconPos="right"
+                                    [title]="'Mint your Bank Manager NFT'" style="" iconPos="right"
                                     (click)="mintBankManager()" [loading]="isMinting" label="4. MINT BANK MANAGER NFT">
                             </button>
                             <p class="mt-1 meld-subtext">By submitting and signing the transaction, you are confirming
@@ -82,7 +82,7 @@
                     <li *ngIf="walletVerified && mintFinalized" style="display: flex" class="meld-li">
                         <div style="display: block !important">
                             <button pButton class="p-button-rounded p-button-text no-ul meld-success-button"
-                                    [title]="'Your Bank Manager NFT has been minted!'" style="max-width: 350px"
+                                    [title]="'Your Bank Manager NFT has been minted!'" style=""
                                     iconPos="right"
                                     label="MINT SUCCESSFUL">
                             </button>
@@ -101,3 +101,6 @@
         <img class="meld-img-bank-mgr" src="/assets/extensions/meld/bm_mint.png">
     </div>
 </section>
+<ng-template #notificationTemplate let-notificationData="notification">
+    <p class="notifier__notification-message" [innerHTML]="notificationData.message"></p>
+</ng-template>

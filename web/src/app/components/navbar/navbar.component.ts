@@ -363,6 +363,9 @@ export class NavbarComponent extends NotificationComponent implements OnInit, Af
     }
 
     public showConnectModal() {
+        if (this.isExtension) {
+            this.acceptedTOS = false;
+        }
         if (this.connectModal != null) {
             this.connectModal.show();
         }

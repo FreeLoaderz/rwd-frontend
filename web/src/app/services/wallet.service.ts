@@ -260,9 +260,7 @@ export class WalletService {
     private processUsedAddresses(data: any) {
         globalThis.wallet.sending_wal_addrs = [];
         for (let i = 0; i < data.length; ++i) {
-            if (data[i].length > 110) {
-                globalThis.wallet.sending_wal_addrs.push(data[i]);
-            }
+            globalThis.wallet.sending_wal_addrs.push(data[i]);
         }
         if (--this.numWalletCalls === 0) {
             this.finishedWalletCalls();

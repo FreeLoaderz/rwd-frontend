@@ -12,14 +12,14 @@ img.meld-img-logo {
 
 .meld-img-bank-mgr {
     position: fixed;
-    right: 0px!important;
-    bottom: 0px!important;
-    z-index: -1!important;
+    right: 0px !important;
+    bottom: 0px !important;
+    z-index: -1 !important;
 }
 
 .meld-img-mint-bm {
     margin-top: 0;
-    margin-left: 0!important;
+    margin-left: 0 !important;
 }
 
 .meld-img-freeloaderz {
@@ -27,6 +27,7 @@ img.meld-img-logo {
     bottom: 30px;
     cursor: pointer !important;
 }
+
 .meld-top-div {
     width: 80vw;
     margin-left: 10vw;
@@ -35,6 +36,7 @@ img.meld-img-logo {
     align-items: flex-start;
     justify-content: left;
 }
+
 .meld-middle-div {
     width: 80vw;
     margin-left: 10vw;
@@ -43,6 +45,7 @@ img.meld-img-logo {
     align-items: flex-start;
     justify-content: left;
 }
+
 .meld-bottom-div {
     width: 80vw;
     margin-left: 10vw;
@@ -111,9 +114,9 @@ img.meld-img-logo {
 .meld-error-button,
 .meld-input {
     width: 33vw;
-    min-width: 300px!important;
+    min-width: 300px !important;
     height: 59.17px;
-    text-align: left!important;
+    text-align: left !important;
     line-height: 100px;
     letter-spacing: 0.04em;
 }
@@ -158,14 +161,17 @@ img.meld-img-logo {
     padding-right: 1rem;
     font-size: smaller;
     width: 33vw;
-    min-width: 300px!important;
+    min-width: 300px !important;
 }
 
 .meld-disconnect-div {
     margin-left: 95px;
     display: block !important;
 }
-body.meld-bg .meld-action-button .p-button-label {
+
+body.meld-bg .meld-action-button .p-button-label,
+body.meld-bg .meld-success-button .p-button-label,
+body.meld-bg .meld-error-button .p-button-label {
     font-family: 'BRHendrix-Bold';
     font-size: x-large;
     line-height: 100px;

@@ -1,4 +1,4 @@
-import {Component, HostListener, Inject, Injectable, OnDestroy, OnInit} from '@angular/core';
+import {Component, HostListener, Inject, Injectable, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {NotificationComponent} from "../../notification/notification.component";
 import {Router} from "@angular/router";
 import {Title} from "@angular/platform-browser";
@@ -8,11 +8,12 @@ import {WalletService} from "../../../services/wallet.service";
 import {DOCUMENT} from "@angular/common";
 import {PropertyService} from "../../../services/property.service";
 import {PropertyObserverService} from "../../../services/observers/property-observer.service";
-import {Subscription} from "rxjs";
+import {Observable, Subscription} from "rxjs";
 import {RestService} from "../../../services/rest.service";
 import {Script} from "../../../data/script";
 import {WalletVerification} from "../../../data/wallet-verification";
 import {Mint} from "../../../data/mint";
+import {UtilityService} from "../../../services/utility.service";
 
 @Component({
     selector: 'bank-manager',
@@ -50,6 +51,7 @@ export class BankManagerComponent extends NotificationComponent implements OnIni
     public addressRegEx: RegExp = new RegExp("addr[1|_test1][a-zA-Z0-9]{98}");
     public walletSubscription: Subscription;
     public walletErrorSubscription: Subscription;
+    @ViewChild('notificationTemplate', {static: false}) public notificationTemplate: any;
 
     constructor(@Inject(DOCUMENT) public document: any,
                 public router: Router, public titleService: Title, public walletObserverService: WalletObserverService,
@@ -57,6 +59,7 @@ export class BankManagerComponent extends NotificationComponent implements OnIni
                 public propertyObserver: PropertyObserverService, public restService: RestService) {
         super(notifierService);
         titleService.setTitle("Meld Bank Manager");
+        localStorage.removeItem('SmartClaimzWalletSource');
     }
 
     ngOnInit() {
@@ -159,7 +162,7 @@ export class BankManagerComponent extends NotificationComponent implements OnIni
     public processVerification(res: any) {
         this.checkingVerification = false;
         if (res.address != null) {
-            this.verifiedAddress = res;
+            this.verifiedAddress = res.address;
             this.walletVerified = true;
             this.requiresVerification = false;
         } else {
@@ -203,17 +206,17 @@ export class BankManagerComponent extends NotificationComponent implements OnIni
     }
 
     public mintBankManager() {
-        if (!this.isMinting) {
+        if ((!this.isMinting) && (this.verifiedAddress != null)) {
             this.mintFinalized = false;
             this.mintError = false;
             this.isMinting = true;
             globalThis.wallet.script = new Script(null);
-            const mintScript = new Mint(null);
+            const mintScript = new Mint(this.verifiedAddress);
             globalThis.wallet.script.Mint = mintScript;
-            this.restService.mint("")
+            this.restService.mint()
                 .then(res => {
-                    if (res.msg) {
-                        this.showMintError(res.msg);
+                    if (res.message) {
+                        this.showMintError(res.message);
                     } else {
                         this.processMint(res);
                     }
@@ -222,12 +225,31 @@ export class BankManagerComponent extends NotificationComponent implements OnIni
         }
     }
 
-    public processMint(res: string) {
-        if (res !== '') {
-            this.mintFinalized = true;
+    public processMint(res: any) {
+        if (res.tx != null) {
+            const signature = globalThis.walletApi.signTx(res.tx, true);
+            signature.then((finalSignature: Observable<string>) => {
+                this.infoNotification("Submitting Signature");
+                res.tx.witness = finalSignature;
+                this.restService.signMint(res.tx)
+                    .then(signRes => this.processSignTx(signRes))
+                    .catch(e => this.handleError(e));
+            }).catch(e => this.handleError(e));
+
         } else {
             this.mintError = true;
         }
+    }
+
+    public processSignTx(data: any) {
+        this.mintFinalized = true;
+        if ((data != null) && (data.txHash != null)) {
+            const txURL = UtilityService.generateTxHashURL(data.txHash, true);
+            this.customNotification("success", "TX Successfully transmitted! " + txURL, this.notificationTemplate);
+        } else {
+            this.errorNotification(data.message);
+        }
+        this.walletService.updateWallet();
     }
 
 
